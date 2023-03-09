@@ -22,9 +22,5 @@ social:
 markdown:             redcarpet
 highlighter:          pygments
 
-# Permalinks
-permalink:            pretty
-relative_permalinks:  true
-
 # 페이징
 paginate:             1
