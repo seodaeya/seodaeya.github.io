@@ -12,6 +12,7 @@ baseurl:      '/'
 link:
   github:     'https://github.com/seodaeya'
   blog:       'https://seodaeya.tistory.com'
+  youtube:    'https://www.youtube.com/@Na.R.D.'
 
 # 소셜 미디어 링크(TODO)
 social:
