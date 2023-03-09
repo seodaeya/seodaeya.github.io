@@ -5,12 +5,21 @@ title:        'Na.R.D.'
 description:  'I am Rule Destroyer.'
 
 # 블로그 URL
-url:          'http://seodaeya.github.io'
+url:          'https://seodaeya.github.io'
 baseurl:      '/'
 
-# 소셜 미디어 링크
+# github
+link:
+  github:     'https://github.com/seodaeya'
+  blog:       'https://seodaeya.tistory.com'
+
+# 소셜 미디어 링크(TODO)
 social:
   github:     'seodaeya'
 
-github:
-  repo:       'https://github.com/seodaeya/seodaeya.github.io'
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# 페이징
+paginate:     1
