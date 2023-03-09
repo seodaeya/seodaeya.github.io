@@ -1,26 +1,30 @@
 # 블로그 제목
-title:        'Na.R.D.'
+title:                'Na.R.D.'
 
 # 블로그 설명
-description:  'I am Rule Destroyer.'
+description:          'I am Rule Destroyer.'
 
 # 블로그 URL
-url:          'https://seodaeya.github.io'
-baseurl:      '/'
+url:                  'https://seodaeya.github.io'
+baseurl:              '/'
 
 # github
 link:
-  github:     'https://github.com/seodaeya'
-  blog:       'https://seodaeya.tistory.com'
-  youtube:    'https://www.youtube.com/@Na.R.D.'
+  github:             'https://github.com/seodaeya'
+  blog:               'https://seodaeya.tistory.com'
+  youtube:            'https://www.youtube.com/@Na.R.D.'
 
 # 소셜 미디어 링크(TODO)
 social:
-  github:     'seodaeya'
+  github:             'seodaeya'
 
 # Dependencies
-markdown:         redcarpet
-highlighter:      pygments
+markdown:             redcarpet
+highlighter:          pygments
+
+# Permalinks
+permalink:            pretty
+relative_permalinks:  true
 
 # 페이징
-paginate:     1
+paginate:             1
