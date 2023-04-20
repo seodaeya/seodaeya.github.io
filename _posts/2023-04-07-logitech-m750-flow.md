@@ -1,6 +1,7 @@
 ---
 layout: youtube
 title: Logitech Signature Plus M750 Mouse FLOW Video
+description: Logitech Signature Plus M750 Mouse, PC to PC 'FLOW' Tech Video
 ytid: WL4GFGCCRl4
 ---
 

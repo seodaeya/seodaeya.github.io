@@ -1,6 +1,7 @@
 ---
 layout: youtube
 title: Pretty and Beautiful Speaker
+description: Ditoo Speaker's Discount Information
 ytid: 1mtzGP98X3E
 ---
 

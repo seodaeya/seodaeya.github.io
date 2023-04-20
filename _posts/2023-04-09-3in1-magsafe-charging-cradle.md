@@ -1,6 +1,7 @@
 ---
 layout: youtube
 title: MagSafe Wireless Fast Charging Cradle
+description: Recommended MagSafe Wireless Fast Charging Cradle for iPhone, Watch, AirPods 3 in 1
 ytid: o56XR1pYZdw
 ---
 

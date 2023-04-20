@@ -12,8 +12,15 @@
   <!-- google -->
   <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086" crossorigin="anonymous"></script>
+
+  {% if page.title == "Home" %}
+    <meta name="title" content="{{ site.title }} - {{ site.description }}">
+    <meta name="description" content="{{ site.title }} - {{ site.description }}">
+  {% else %}
+    <meta name="title" content="{{ page.title }} - {{ site.title }}">
+    <meta name="description" content="{{ page.title }} - {{ page.description }}">
+  {% endif %} >
 
   <title>
     {% if page.title == "Home" %}
