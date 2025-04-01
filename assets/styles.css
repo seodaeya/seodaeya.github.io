@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #f3f4f6;
+    color: #333; /* 모던한 검정색 */
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -14,16 +14,17 @@ header {
 }
 
 header h1 {
-    font-size: 2rem;
-    color: #0078d7;
+    font-size: 2.5rem;
+    color: #333; /* 헤더 제목 색상도 검정으로 변경 */
     margin-bottom: 10px;
 }
 
 nav a {
-    margin-right: 10px;
+    margin-right: 15px;
     text-decoration: none;
-    color: #0078d7;
+    color: #0078d7; /* 링크는 파란색 유지 */
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 nav a:hover {
@@ -31,49 +32,43 @@ nav a:hover {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-main > div {
-    background: #fff;
+    background: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 main h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333; /* 섹션 제목 색상도 검정으로 변경 */
 }
 
-iframe {
-    width: 100%;
-    border: none;
-    border-radius: 8px;
+ul#post-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul#post-list li {
     margin-bottom: 15px;
 }
 
-.post-content {
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: #555;
+ul#post-list li a {
+    text-decoration: none;
+    color: #0078d7; /* 링크는 파란색 유지 */
+    font-weight: bold;
 }
 
-.post-content p {
-    margin: 0 0 10px;
+ul#post-list li a:hover {
+    text-decoration: underline;
 }
 
-footer {
-    text-align: center;
-    margin-top: 30px;
+ul#post-list li .post-date {
+    color: #555; /* 날짜는 약간 연한 검정 */
     font-size: 0.9rem;
-    color: #888;
+    margin-left: 5px;
 }
 
 #social-links {
@@ -83,7 +78,7 @@ footer {
 
 #social-links h2 {
     font-size: 1.5rem;
-    color: #0078d7;
+    color: #333; /* 소셜 섹션 제목 색상도 검정으로 변경 */
     margin-bottom: 15px;
 }
 
@@ -99,13 +94,20 @@ footer {
     display: inline;
 }
 
-#social-links ul li a {
-    text-decoration: none;
-    color: #0078d7;
-    font-weight: bold;
-    font-size: 1.1rem;
+#social-links ul li a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
 }
 
-#social-links ul li a:hover {
-    text-decoration: underline;
+#social-links ul li a img:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #888; /* 푸터는 연한 회색 유지 */
 }

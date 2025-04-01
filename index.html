@@ -10,7 +10,7 @@
     <header>
         <h1>NaRD's Blog</h1>
         <nav>
-            <a href="videos.html">유튜브</a>
+            <a href="videos.html">YouTube</a>
         </nav>
     </header>
     <main>
@@ -18,23 +18,36 @@
         <ul id="post-list"></ul>
     </main>
     <script>
+        // JSON 파일에서 데이터 가져오기
         fetch('datas/posts.json')
             .then(response => response.json())
             .then(posts => {
                 const postList = document.getElementById('post-list');
+
+                // 최신순으로 정렬
+                posts.sort((a, b) => {
+                    const dateA = a.file.split('-')[0]; // yyyymmdd 추출
+                    const dateB = b.file.split('-')[0];
+                    return dateB.localeCompare(dateA); // 최신순 정렬
+                });
+
+                // 글 목록 생성
                 posts.forEach(post => {
+                    const date = post.file.split('-')[0]; // yyyymmdd 추출
+                    const formattedDate = `${date.slice(0, 4)}.${date.slice(4, 6)}.${date.slice(6, 8)}`; // yyyy.mm.dd 형식으로 변환
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="post.html?file=${post.file}">${post.title}</a>`;
+                    li.innerHTML = `<a href="post.html?file=${post.file}">${post.title}</a> <span class="post-date">(${formattedDate})</span>`;
                     postList.appendChild(li);
                 });
-            });
+            })
+            .catch(error => console.error('Error loading posts:', error));
     </script>
     <section id="social-links">
         <h2>Follow Me</h2>
         <ul>
-            <li><a href="https://github.com/seodaeya" target="_blank">GitHub</a></li>
-            <li><a href="https://seodaeya.tistory.com" target="_blank">Blog</a></li>
-            <li><a href="https://www.youtube.com/@Na.R.D." target="_blank">YouTube</a></li>
+            <li><a href="https://github.com/seodaeya" target="_blank"><img src="assets/github-mark.png" alt="GitHub"></a></li>
+            <li><a href="https://seodaeya.tistory.com" target="_blank"><img src="assets/Tistory_logo.png" alt="Blog"></a></li>
+            <li><a href="https://www.youtube.com/@Na.R.D." target="_blank"><img src="assets/youtube_social_circle_white.png" alt="YouTube"></a></li>
         </ul>
     </section>
     <footer>
