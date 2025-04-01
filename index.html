@@ -18,7 +18,7 @@
         <ul id="post-list"></ul>
     </main>
     <script>
-        fetch('posts.json')
+        fetch('datas/posts.json')
             .then(response => response.json())
             .then(posts => {
                 const postList = document.getElementById('post-list');
