@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NaRD's YouTube</title>
     <link rel="stylesheet" href="assets/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
 </head>
 <body>
     <header>
@@ -47,7 +47,7 @@
                             .then(response => response.text())
                             .then(markdown => {
                                 const postContent = videoItem.querySelector('.post-content');
-                                postContent.innerHTML = marked(markdown);
+                                postContent.innerHTML = marked.parse(markdown); // marked() 대신 marked.parse() 사용
                             })
                             .catch(error => console.error(`Error loading post: ${video.post}`, error));
                     }
