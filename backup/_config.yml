@@ -17,3 +17,10 @@ link:
 # 소셜 미디어 링크(TODO)
 social:
   github:             'seodaeya'
+
+# Dependencies
+markdown:             redcarpet
+highlighter:          pygments
+
+# 페이징
+paginate:             1

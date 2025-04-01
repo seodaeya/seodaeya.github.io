@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 글</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>블로그 글</h1>
+        <nav>
+            <a href="index.html">홈</a>
+        </nav>
+    </header>
+    <main id="content">Loading...</main>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get("file");
+
+        if (file) {
+            fetch(`posts/${file}`)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById("content").innerHTML = marked.parse(text);
+                });
+        } else {
+            document.getElementById("content").innerText = "잘못된 접근입니다.";
+        }
+    </script>
+</body>
+</html>

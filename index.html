@@ -1,36 +1,44 @@
----
-layout: default
-title: Home
----
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-
-  </div>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.url }}/page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.url }}">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ site.url }}/page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaRD's Blog</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header>
+        <h1>NaRD's Blog</h1>
+        <nav>
+            <a href="videos.html">유튜브</a>
+        </nav>
+    </header>
+    <main>
+        <h2>블로그 글 목록</h2>
+        <ul id="post-list"></ul>
+    </main>
+    <script>
+        fetch('posts.json')
+            .then(response => response.json())
+            .then(posts => {
+                const postList = document.getElementById('post-list');
+                posts.forEach(post => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="post.html?file=${post.file}">${post.title}</a>`;
+                    postList.appendChild(li);
+                });
+            });
+    </script>
+    <section id="social-links">
+        <h2>Follow Me</h2>
+        <ul>
+            <li><a href="https://github.com/seodaeya" target="_blank">GitHub</a></li>
+            <li><a href="https://seodaeya.tistory.com" target="_blank">Blog</a></li>
+            <li><a href="https://www.youtube.com/@Na.R.D." target="_blank">YouTube</a></li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2025 Na.R.D. All rights reserved.</p>
+    </footer>
+</body>
+</html>
