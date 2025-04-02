@@ -23,7 +23,23 @@
             fetch(`posts/${file}`)
                 .then(response => response.text())
                 .then(text => {
-                    document.getElementById("content").innerHTML = marked.parse(text);
+                    // Markdown을 HTML로 변환
+                    const contentElement = document.getElementById("content");
+                    contentElement.innerHTML = marked.parse(text);
+
+                    // SEO 메타 태그 동적 생성
+                    const metaDescription = document.createElement("meta");
+                    metaDescription.name = "description";
+                    metaDescription.content = text.split("\n")[0]; // 첫 번째 줄을 설명으로 사용
+                    document.head.appendChild(metaDescription);
+
+                    const metaTitle = document.createElement("title");
+                    metaTitle.textContent = text.split("\n")[0]; // 첫 번째 줄을 제목으로 사용
+                    document.head.appendChild(metaTitle);
+                })
+                .catch(error => {
+                    document.getElementById("content").innerText = "글을 불러오는 데 실패했습니다.";
+                    console.error("Error loading post:", error);
                 });
         } else {
             document.getElementById("content").innerText = "잘못된 접근입니다.";
