@@ -66,3 +66,50 @@ main {
 .video-card .post-content p {
     margin: 0 0 10px;
 }
+
+/* 소셜 링크 섹션 스타일 */
+#social-links {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#social-links h2 {
+    font-size: 1.5rem;
+    color: #0078d7;
+    margin-bottom: 15px;
+}
+
+#social-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#social-links ul li {
+    display: inline-block;
+}
+
+#social-links ul li a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#social-links ul li a img {
+    width: 24px;
+    height: 24px;
+}
+
+#social-links ul li a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
