@@ -3,14 +3,32 @@
 
     <url>
         <loc>https://seodaeya.github.io/index.html</loc>
-        <lastmod>2025-04-02</lastmod>
+        <lastmod>2025-04-04</lastmod>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://seodaeya.github.io/videos.html</loc>
-        <lastmod>2025-04-02</lastmod>
+        <lastmod>2025-04-04</lastmod>
         <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://seodaeya.github.io/categories.html</loc>
+        <lastmod>2025-04-04</lastmod>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://seodaeya.github.io/post.html?file=20250404-1.md</loc>
+        <lastmod>2025-04-04</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://seodaeya.github.io/post.html?file=20250404-2.md</loc>
+        <lastmod>2025-04-04</lastmod>
+        <priority>0.7</priority>
     </url>
 
     <url>
