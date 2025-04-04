@@ -12,6 +12,7 @@
         <h1>NaRD's Blog</h1>
         <nav>
             <a href="videos.html">YouTube</a>
+            <a href="categories.html">Categories</a>
         </nav>
     </header>
     <main>
@@ -26,6 +27,9 @@
                 const categories = {};
                 const categoriesContainer = document.getElementById('categories');
 
+                // 최신순으로 정렬
+                posts.sort((a, b) => b.file.split('-')[0].localeCompare(a.file.split('-')[0]));
+
                 // 카테고리별로 분류
                 posts.forEach(post => {
                     if (!categories[post.category]) {
@@ -34,13 +38,14 @@
                     categories[post.category].push(post);
                 });
 
-                // 카테고리별로 글 목록 생성
+                // 카테고리별로 최근 5개 글만 표시
                 Object.keys(categories).forEach(category => {
                     const categorySection = document.createElement('section');
                     categorySection.innerHTML = `
                         <h3>${category}</h3>
                         <ul>
                             ${categories[category]
+                                .slice(0, 5) // 최근 5개 글만 표시
                                 .map(post => {
                                     const date = post.file.split('-')[0]; // yyyymmdd 추출
                                     const formattedDate = `${date.slice(0, 4)}.${date.slice(4, 6)}.${date.slice(6, 8)}`; // yyyy.mm.dd 형식으로 변환

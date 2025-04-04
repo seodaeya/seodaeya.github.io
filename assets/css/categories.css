@@ -1,0 +1,74 @@
+/* 기본 스타일 */
+main {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 카테고리 제목 스타일 */
+main h3 {
+    font-size: 1.5rem;
+    color: #0078d7;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* 글 목록 스타일 */
+main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+main ul li {
+    margin-bottom: 10px;
+}
+
+main ul li a {
+    text-decoration: none;
+    color: #0078d7;
+    font-weight: bold;
+}
+
+main ul li a:hover {
+    text-decoration: underline;
+}
+
+main ul li .post-date {
+    color: #555;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* 페이지네이션 스타일 */
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    background-color: #0078d7;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pagination button:hover {
+    background-color: #005bb5;
+}
+
+#pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
