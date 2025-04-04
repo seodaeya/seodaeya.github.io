@@ -117,6 +117,47 @@ main blockquote {
     font-style: italic;
 }
 
+main h2 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+main section {
+    margin-bottom: 30px;
+}
+
+main section h3 {
+    font-size: 1.5rem;
+    color: #0078d7;
+    margin-bottom: 10px;
+}
+
+main section ul {
+    list-style: none;
+    padding: 0;
+}
+
+main section ul li {
+    margin-bottom: 10px;
+}
+
+main section ul li a {
+    text-decoration: none;
+    color: #0078d7;
+    font-weight: bold;
+}
+
+main section ul li a:hover {
+    text-decoration: underline;
+}
+
+main section ul li .post-date {
+    color: #555;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
 .video-card {
     background: #ffffff;
     border: 1px solid #ddd;

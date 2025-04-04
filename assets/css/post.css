@@ -1,0 +1,65 @@
+/* post.html 전용 스타일 */
+main {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main h1, main h2, main h3, main h4, main h5, main h6 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+main p {
+    margin-bottom: 15px;
+}
+
+/* 표 스타일 */
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+main table th,
+main table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+main table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* 코드 블록 스타일 */
+main pre {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+main code {
+    background: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+}
+
+/* 인용구 스타일 */
+main blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #555;
+    margin: 20px 0;
+    font-style: italic;
+}

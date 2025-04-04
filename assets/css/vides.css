@@ -1,0 +1,32 @@
+/* videos.html 전용 스타일 */
+.video-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.video-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.video-card iframe {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.video-card .post-content {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.video-card .post-content p {
+    margin: 0 0 10px;
+}
