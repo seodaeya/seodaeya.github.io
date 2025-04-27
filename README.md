@@ -13,7 +13,7 @@
 ## 디렉토리 구조
 
 ```plaintext
-c:\Projects\others\seodaeya.github.io\
+seodaeya.github.io
 ├── files\                  # Markdown 파일 및 JSON 데이터 저장
 │   ├── posts\              # 블로그 글 Markdown 파일
 │   ├── videos\             # 동영상 관련 Markdown 파일
@@ -84,7 +84,3 @@ node files/gen/generate-latest-posts.js
 이 프로젝트는 [Vercel](https://vercel.com)을 통해 배포할 수 있습니다. 배포 방법은 아래 문서를 참고하세요:
 
 - [Next.js 배포 문서](https://nextjs.org/docs/app/building-your-application/deploying)
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스를 따릅니다.
