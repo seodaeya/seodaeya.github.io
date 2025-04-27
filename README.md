@@ -1,73 +1,90 @@
-🔍 Claude의 핵심 특징
+# Seodaeya's Blog
 
-✅ 1. 안전성과 직관성 우선 설계
-Claude는 사람과 더 자연스럽고 신뢰할 수 있는 대화를 하도록 훈련되었다. **'헌법 AI(Constitutional AI)'**라는 개념을 통해, 도덕적 기준과 윤리적 판단을 사전에 주입해서 자기검열 없이도 안전한 응답을 생성하도록 설계되었다.
+이 프로젝트는 [Next.js](https://nextjs.org)를 기반으로 한 개인 블로그입니다. 최신 글, 카테고리별 글, 동영상 등을 관리하고 표시할 수 있는 기능을 제공합니다.
 
-즉, "사람이 직접 '이건 위험해'라고 가르치는 게 아니라, 스스로 윤리적인 판단을 하도록 훈련"된 방식.
+## 주요 기능
 
+- **최신 글 표시**: 최신 글 10개를 홈 화면에서 카드 형태로 표시.
+- **카테고리별 글 관리**: 카테고리별로 글을 분류하고, 각 카테고리의 글 목록을 확인 가능.
+- **동영상 관리**: YouTube 동영상을 포함한 콘텐츠를 표시.
+- **Markdown 지원**: Markdown 파일을 기반으로 글과 동영상을 관리.
+- **반응형 디자인**: 다양한 디바이스에서 최적화된 UI 제공.
 
-✅ 2. 긴 문맥 이해력
-Claude 2.1부터는 **최대 200K 토큰(약 15만 단어 이상)**까지 문맥을 이해할 수 있다. 예를 들어,
+## 디렉토리 구조
 
-- 수십 페이지짜리 PDF 분석
+```plaintext
+c:\Projects\others\seodaeya.github.io\
+├── files\                  # Markdown 파일 및 JSON 데이터 저장
+│   ├── posts\              # 블로그 글 Markdown 파일
+│   ├── videos\             # 동영상 관련 Markdown 파일
+│   ├── gen\                # 데이터 생성 스크립트
+│   │   ├── generate-categories.js
+│   │   ├── generate-latest-posts.js
+│   ├── categories.json     # 카테고리별 글 데이터
+│   ├── latest-posts.json   # 최신 글 데이터
+├── pages\                  # Next.js 페이지
+│   ├── index.js            # 홈 페이지
+│   ├── categories\         # 카테고리별 글 목록 페이지
+│   ├── posts\              # 개별 글 페이지
+│   ├── videos\             # 동영상 페이지
+├── components\             # 공통 컴포넌트
+│   ├── Layout.js           # 레이아웃 컴포넌트
+│   ├── Sidebar.js          # 사이드바 컴포넌트
+├── styles\                 # CSS 스타일
+│   ├── home.css            # 홈 페이지 스타일
+│   ├── layout.css          # 레이아웃 스타일
+│   ├── sidebar.css         # 사이드바 스타일
+│   ├── post.css            # 글 페이지 스타일
+├── public\                 # 정적 파일
+├── README.md               # 프로젝트 설명 파일
+```
 
-- 장문의 코드 리뷰
+## 실행 방법
 
-- 논문 요약, 문서 간 비교 등
+### 개발 서버 실행
 
-이런 작업이 가능하다.
+아래 명령어를 실행하여 개발 서버를 시작합니다:
 
-✅ 3. 문서 기반 작업에 최적화
-Claude는 일반 대화뿐 아니라,
+```bash
+npm run dev
+# 또는
+yarn dev
+```
 
-- PDF, Word, Excel 등 오피스 파일 분석
+[http://localhost:3000](http://localhost:3000)에서 결과를 확인할 수 있습니다.
 
-- Markdown, JSON, YAML 기반 데이터 분석
+### 데이터 생성
 
-- 코드 리뷰 및 리팩토링 에 매우 특화되어 있다.
+Markdown 파일을 기반으로 `categories.json` 및 `latest-posts.json` 파일을 생성하려면 아래 스크립트를 실행하세요:
 
-특히 Claude 데스크톱 앱을 설치하면 파일 드래그 앤 드롭 기능으로 바로 대화에 투입할 수 있다.
+```bash
+# 카테고리 데이터 생성
+node files/gen/generate-categories.js
 
-✅ 4. Claude의 모델 버전
+# 최신 글 데이터 생성
+node files/gen/generate-latest-posts.js
+```
 
-| 버전 | 특징 |
-| -- | -- |
-| Claude 1 | 기본형, 안정적 대화 |
-| Claude 2 | 코드 능력과 문서 이해력 개선 |
-| Claude 2.1 | 200K 토큰 컨텍스트 지원 |
-| Claude 3 | (2024 출시) GPT-4와 동급 또는 그 이상 성능 |
+## 주요 페이지
 
-✅ 5. Claude의 활용 방식
-- Claude 웹(https://claude.ai)
+- **홈 페이지**: 최신 글 10개를 카드 형태로 표시.
+- **카테고리 페이지**: 카테고리별로 글을 분류하여 표시.
+- **글 페이지**: Markdown 파일을 기반으로 개별 글 표시.
+- **동영상 페이지**: YouTube 동영상을 포함한 콘텐츠 표시.
 
-- Claude 데스크탑 (Electron 기반)
+## 사용된 기술
 
-- Claude API (Anthropic 제공, OpenAI처럼 사용 가능)
+- **Next.js**: React 기반의 프레임워크로, 서버 사이드 렌더링(SSR) 및 정적 사이트 생성(SSG) 지원.
+- **gray-matter**: Markdown 파일의 Frontmatter를 파싱하기 위한 라이브러리.
+- **marked**: Markdown을 HTML로 변환하기 위한 라이브러리.
+- **CSS**: 최신 블로그 스타일을 적용한 사용자 정의 CSS.
 
-- Claude MCP (Model Context Protocol): 다양한 로컬 및 외부 도구 연동
+## 배포
 
-🛠 Claude의 활용 예시
-- 개발자: 코드 리뷰, 디버깅, 설계 문서 작성
+이 프로젝트는 [Vercel](https://vercel.com)을 통해 배포할 수 있습니다. 배포 방법은 아래 문서를 참고하세요:
 
-- 기획자/마케터: 아이디어 정리, 마케팅 문안 생성, 경쟁 분석
+- [Next.js 배포 문서](https://nextjs.org/docs/app/building-your-application/deploying)
 
-- 교육/연구자: 논문 요약, 데이터 분석, 교육 자료 생성
+## 라이선스
 
-- 콘텐츠 제작자: 유튜브 스크립트 작성, 블로그 포스팅 구조화
-
-📌 Claude와 ChatGPT의 차이점 요약
-
-| 항목 | Claude | ChatGPT |
-|--|--|--|
-| 제작사 | Anthropic | OpenAI |
-| 학습 기법 | 헌법 AI | RLHF (인간 피드백 강화학습) |
-| 안전성 | 매우 강함 | 강함 |
-| 컨텍스트 길이 | 최대 200K (Claude 2.1) | 128K (GPT-4 Turbo) |
-| 문서 작업 | 특히 강력 | 우수 |
-| 응답 스타일 | 직관적·조심스러운 편 | 유연하고 창의적 |
-| API | 있음 (https://docs.anthropic.com) | 있음 (OpenAI) |
-
-# 참고 링크
-- https://www.anthropic.com
-- https://claude.ai
-- https://docs.anthropic.com
+이 프로젝트는 MIT 라이선스를 따릅니다.
