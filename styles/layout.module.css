@@ -1,0 +1,16 @@
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px; /* 사이드바 너비 */
+  flex-shrink: 0; /* 사이드바 크기를 고정 */
+}
+
+.main {
+  margin-left: 250px; /* 사이드바 너비만큼 여백 추가 */
+  padding: 20px;
+  flex: 1;
+  min-height: 100vh; /* 콘텐츠 영역이 화면 높이를 채우도록 설정 */
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}

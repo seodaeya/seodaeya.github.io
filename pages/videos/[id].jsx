@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import '@/styles/post.css';
+import '@/styles/video.css';
 
 export async function getStaticPaths() {
   const vdieosDir = path.join(process.cwd(), '/files/videos');
@@ -28,13 +28,17 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Video({ frontmatter, content }) {
-
   return (
     <div>
       <h1>{frontmatter.title}</h1>
-      {frontmatter?.videoId && <div className="video-container">
-        <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${frontmatter?.videoId}`} allowfullscreen></iframe>
-      </div>}
+      {frontmatter?.videoId && (
+        <div className="video-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${frontmatter?.videoId}`}
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );

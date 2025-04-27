@@ -1,32 +1,30 @@
-/* 홈 컨테이너 스타일 */
-.home-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.homeContainer {
+  max-width: 800px; /* 콘텐츠 최대 너비 */
+  margin: 0 auto; /* 화면 중앙 정렬 */
+  padding: 20px; /* 내부 여백 */
   font-family: Arial, sans-serif;
   color: #333;
 }
 
-.home-container h1 {
+.homeContainer h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: #0078d7;
 }
 
-.home-container p {
+.homeContainer p {
   font-size: 1.2rem;
   margin-bottom: 20px;
   color: #555;
 }
 
-/* 최신 글 목록 스타일 */
-.latest-posts {
+.latestPosts {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.post-card {
+.postCard {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -35,35 +33,35 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.post-card:hover {
+.postCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.post-card h2 {
+.postCard h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #0078d7;
 }
 
-.post-card h2 a {
+.postCard h2 a {
   text-decoration: none;
 }
 
-.post-card h2 a:hover {
+.postCard h2 a:hover {
   text-decoration: underline;
 }
 
-.post-meta {
+.postMeta {
   font-size: 0.9rem;
   color: #777;
 }
 
-.post-meta .category {
+.postMeta .category {
   font-weight: bold;
   color: #0078d7;
 }
 
-.post-meta .date {
+.postMeta .date {
   color: #555;
 }

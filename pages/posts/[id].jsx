@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import '@/styles/post.css';
+import styles from '@/styles/post.module.css'; // CSS Modules import
 
 export async function getStaticPaths() {
   const postsDir = path.join(process.cwd(), '/files/posts');
@@ -29,9 +29,12 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ frontmatter, content }) {
   return (
-    <div>
-      <h1>{frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+    <div className={styles.postContainer}>
+      <h1 className={styles.title}>{frontmatter.title}</h1>
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </div>
   );
 }

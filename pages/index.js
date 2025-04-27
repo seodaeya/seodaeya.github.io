@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
-import '../styles/home.css';
+import styles from '@/styles/home.module.css'; // CSS Modules import
 
 export async function getStaticProps() {
   const latestPostsPath = path.join(process.cwd(), 'files/latest-posts.json');
@@ -16,20 +16,20 @@ export async function getStaticProps() {
 
 export default function Home({ latestPosts }) {
   return (
-    <div className="home-container">
-      <h1>환영합니다!</h1>
-      <p>이곳은 내 블로그입니다. 최신 글을 확인하세요.</p>
-      <div className="latest-posts">
+    <div className={styles.homeContainer}>
+      <h1>NaRD's Blog.</h1>
+      <p>Have a positively radiant day, and may happiness always be with you!</p>
+      <div className={styles.latestPosts}>
         {latestPosts.map((post) => (
-          <div key={post.file} className="post-card">
+          <div key={post.file} className={styles.postCard}>
             <h2>
               <Link href={`/${post.file.replace('.md', '')}`}>
                 {post.title}
               </Link>
             </h2>
-            <p className="post-meta">
-              <span className="category">{post.category}</span> |{' '}
-              <span className="date">{post.date}</span>
+            <p className={styles.postMeta}>
+              <span className={styles.category}>{post.category}</span> |{' '}
+              <span className={styles.date}>{post.date}</span>
             </p>
           </div>
         ))}

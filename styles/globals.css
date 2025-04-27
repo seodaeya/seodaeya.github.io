@@ -2,12 +2,17 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
-  color: #212529;
+  color: #333;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 a {
   text-decoration: none;
-  color: #007bff;
+  color: #0078d7;
 }
 
 a:hover {
