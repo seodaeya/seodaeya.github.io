@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import '@/styles/video.css';
+import styles from '@/styles/video.module.css'; // CSS Modules import
 
 export async function getStaticPaths() {
   const vdieosDir = path.join(process.cwd(), '/files/videos');
@@ -32,7 +32,7 @@ export default function Video({ frontmatter, content }) {
     <div>
       <h1>{frontmatter.title}</h1>
       {frontmatter?.videoId && (
-        <div className="video-container">
+        <div className={styles.videoContainer}>
           <iframe
             src={`https://www.youtube.com/embed/${frontmatter?.videoId}`}
             allowFullScreen
