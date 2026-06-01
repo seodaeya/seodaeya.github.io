@@ -1,0 +1,21 @@
+# Task Checklist for seodaeya.github.io Blog Renewal
+
+- [x] 1. Script Fixes & JSON regeneration
+  - [x] Fix Windows backslashes in `files/gen/generate-latest-posts.js`
+  - [x] Fix Windows backslashes in `files/gen/generate-categories.js`
+  - [x] Run scripts to generate updated JSONs
+- [x] 2. Global Styling & Layout System
+  - [x] Set up HSL tokens, fonts, glassmorphism, animations in `styles/globals.css`
+  - [x] Create `components/Header.js` (glassmorphic navbar, YouTube link)
+  - [x] Create `components/Footer.js` (social links, bio info)
+  - [x] Modify `components/Layout.js` to use Header and Footer
+- [x] 3. SEO & AI Optimization Component
+  - [x] Create `components/SEO.js` supporting JSON-LD, OpenGraph, robot-directives
+- [x] 4. Page Renewals
+  - [x] Redesign Home page (`pages/index.js`) with Hero banner, YouTube embed, split grid
+  - [x] Redesign Category page (`pages/categories/index.jsx`)
+  - [x] Redesign BlogPost template (`pages/posts/[id].jsx`) with AI summaries structure
+  - [x] Redesign VideoPost template (`pages/videos/[id].jsx`) with premium embed frame
+- [x] 5. Verification & Testing
+  - [x] Run build script (`npm run build`)
+  - [x] Run dev server to check styles and links (`npm run dev`)

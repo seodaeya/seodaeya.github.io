@@ -1,16 +1,235 @@
 .layout {
   display: flex;
-}
-
-.sidebar {
-  width: 250px; /* 사이드바 너비 */
-  flex-shrink: 0; /* 사이드바 크기를 고정 */
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .main {
-  margin-left: 250px; /* 사이드바 너비만큼 여백 추가 */
-  padding: 20px;
   flex: 1;
-  min-height: 100vh; /* 콘텐츠 영역이 화면 높이를 채우도록 설정 */
-  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 24px 48px 24px; /* Top padding leaves space for sticky header */
+  box-sizing: border-box;
+}
+
+/* Sticky Header with Glassmorphism */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-header-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glass);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-family: var(--font-headings);
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  transition: opacity 0.3s ease;
+}
+
+.logoText:hover {
+  opacity: 0.9;
+}
+
+.navLinks {
+  display: flex;
+  gap: 28px;
+}
+
+.navLink {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.activeNavLink {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.activeNavLink::after {
+  width: 100%;
+}
+
+.socialArea {
+  display: flex;
+  align-items: center;
+}
+
+.socialIconLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 99, 71, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  color: var(--youtube-red);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.socialIconLink:hover {
+  background: var(--youtube-red);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.youtubeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Premium Footer */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-glass);
+  padding: 60px 24px 30px 24px;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footerLogo {
+  font-family: var(--font-headings);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.footerDescription {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.footerLinks h4 {
+  font-family: var(--font-headings);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.footerLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 10px;
+}
+
+.footerLinks a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-light);
+  text-decoration: none;
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 0 16px;
+  }
+  
+  .socialText {
+    display: none; /* Hide 'YouTube' text on mobile, keep icon */
+  }
+  
+  .socialIconLink {
+    padding: 8px;
+    border-radius: 50%;
+  }
+  
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .main {
+    padding-top: 90px;
+  }
 }

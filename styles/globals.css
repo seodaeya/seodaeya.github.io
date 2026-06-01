@@ -1,20 +1,160 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* HSL Color System */
+  --bg-primary: hsl(224, 25%, 8%);      /* Deep Slate Near-Black */
+  --bg-secondary: hsl(224, 20%, 12%);   /* Card/Panel Slate */
+  --bg-tertiary: hsl(224, 18%, 16%);    /* Lighter Slate for hover states */
+  --bg-header-glass: rgba(15, 23, 42, 0.7);
+  
+  --text-primary: hsl(220, 15%, 95%);   /* High Contrast Off-White */
+  --text-secondary: hsl(220, 10%, 75%); /* Muted Silver/Gray */
+  --text-muted: hsl(220, 10%, 55%);      /* Dim Gray */
+  
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-active: rgba(255, 255, 255, 0.16);
+
+  /* Neon Accents */
+  --accent-primary: hsl(263, 70%, 50%);  /* Vibrant Purple */
+  --accent-light: hsl(263, 85%, 65%);    /* Glowing Violet */
+  --accent-secondary: hsl(190, 90%, 50%);/* Neon Teal/Blue */
+  --accent-gradient: linear-gradient(135deg, hsl(263, 85%, 65%), hsl(190, 90%, 50%));
+  --accent-gradient-hover: linear-gradient(135deg, hsl(263, 95%, 70%), hsl(190, 100%, 55%));
+  
+  --youtube-red: hsl(0, 85%, 55%);
+  
+  /* Fonts */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-headings: 'Outfit', var(--font-body);
+}
+
+/* Base resets & styles */
+html, body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
+/* Custom Selection Highlight */
+::selection {
+  background-color: hsla(263, 85%, 65%, 0.3);
+  color: var(--text-primary);
+}
+
+/* Premium Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border: 2px solid var(--bg-primary);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-tertiary);
+}
+
+/* Links */
 a {
   text-decoration: none;
-  color: #0078d7;
+  color: var(--accent-light);
+  transition: all 0.3s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-top: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Rich Glassmorphism Card Style Utility */
+.glass-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-active);
+  box-shadow: 0 12px 40px rgba(138, 43, 226, 0.15); /* Soft violet glow */
+}
+
+/* Tag/Category Badge */
+.category-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.category-badge:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Grid Layouts */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Embedded Content Wrapper */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border-glass);
+  background: #000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }

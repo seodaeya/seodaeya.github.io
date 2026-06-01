@@ -1,39 +1,258 @@
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
-import styles from '@/styles/home.module.css'; // CSS Modules import
+import matter from 'gray-matter';
+import SEO from '@/components/SEO';
+import styles from '@/styles/home.module.css';
 
 export async function getStaticProps() {
-  const latestPostsPath = path.join(process.cwd(), 'files/latest-posts.json');
-  const latestPosts = JSON.parse(fs.readFileSync(latestPostsPath, 'utf-8'));
+  const postsDir = path.join(process.cwd(), 'files/posts');
+  const videosDir = path.join(process.cwd(), 'files/videos');
+  
+  // Read all blog posts
+  let posts = [];
+  if (fs.existsSync(postsDir)) {
+    const filenames = fs.readdirSync(postsDir);
+    posts = filenames.filter(fn => fn.endsWith('.md')).map(filename => {
+      const filePath = path.join(postsDir, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      // Clean markdown characters for basic excerpt
+      const cleanContent = content
+        .replace(/[#*`_\[\]]/g, '')
+        .replace(/\n+/g, ' ')
+        .trim()
+        .substring(0, 100);
+      
+      return {
+        title: data.title || filename.replace('.md', ''),
+        category: data.category || 'Tech',
+        date: data.date || '',
+        file: `posts/${filename}`,
+        excerpt: cleanContent ? `${cleanContent}...` : '글 내용을 확인해보세요.',
+      };
+    });
+  }
+
+  // Read all video posts
+  let videos = [];
+  if (fs.existsSync(videosDir)) {
+    const filenames = fs.readdirSync(videosDir);
+    videos = filenames.filter(fn => fn.endsWith('.md')).map(filename => {
+      const filePath = path.join(videosDir, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      const cleanContent = content
+        .replace(/[#*`_\[\]]/g, '')
+        .replace(/\n+/g, ' ')
+        .trim()
+        .substring(0, 60);
+
+      return {
+        title: data.title || filename.replace('.md', ''),
+        category: data.category || 'Vlog',
+        date: data.date || '',
+        file: `videos/${filename}`,
+        videoId: data.videoId || null,
+        excerpt: cleanContent ? `${cleanContent}...` : '유튜브 영상을 감상해 보세요.',
+      };
+    });
+  }
+
+  // Sort helper by date string (YYYY-MM-DD or YYYYMMDD)
+  const sortDate = (a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  };
+
+  posts.sort(sortDate);
+  videos.sort(sortDate);
 
   return {
     props: {
-      latestPosts,
+      latestPosts: posts.slice(0, 5),
+      latestVideos: videos.slice(0, 5),
     },
   };
 }
 
-export default function Home({ latestPosts }) {
+export default function Home({ latestPosts, latestVideos }) {
+  // Use first video in the list as the homepage featured video
+  const featuredVideo = latestVideos.length > 0 ? latestVideos[0] : null;
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    try {
+      const d = new Date(dateStr);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}. ${month}. ${day}`;
+    } catch (e) {
+      return dateStr;
+    }
+  };
+
   return (
-    <div className={styles.homeContainer}>
-      <h1>NaRD's Blog.</h1>
-      <p>Have a positively radiant day, and may happiness always be with you!</p>
-      <div className={styles.latestPosts}>
-        {latestPosts.map((post) => (
-          <div key={post.file} className={styles.postCard}>
-            <h2>
-              <Link href={`/${post.file.replace('.md', '')}`}>
-                {post.title}
-              </Link>
-            </h2>
-            <p className={styles.postMeta}>
-              <span className={styles.category}>{post.category}</span> |{' '}
-              <span className={styles.date}>{post.date}</span>
-            </p>
+    <>
+      <SEO 
+        title="나는 사람이다."
+        description="AI 시대에 남기는 지극히 인간적인 기록들. 테크, 생활, 그리고 사람의 온기가 묻어나는 이야기."
+        url="https://seodaeya.github.io"
+      />
+
+      <div className={styles.homeContainer}>
+        {/* 1. Hero Section */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroSubtitleContainer}>
+            <span className={styles.heroSubtitleText}>Human-Centric Blog & YouTube</span>
           </div>
-        ))}
+          <h1 className={styles.heroTitle}>나는 사람이다.</h1>
+          <p className={styles.heroTagline}>
+            AI가 모든 정보를 요약하고 판단하는 시대, 기계적인 알고리즘을 거슬러 
+            인간의 오감으로 느끼고 경험한 지극히 개인적인 기록들을 모아둡니다.
+          </p>
+          <div className={styles.heroActions}>
+            <a 
+              href="https://www.youtube.com/@Na.R.D." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.primaryButton}
+            >
+              유튜브 채널 구독하기
+            </a>
+            <a href="#feed" className={styles.secondaryButton}>
+              최근 콘텐츠 보기
+            </a>
+          </div>
+        </section>
+
+        {/* 2. Featured YouTube Content Showcase */}
+        {featuredVideo && (
+          <section className={"glass-card"}>
+            <div className={styles.featuredShowcase}>
+              <div className="video-wrapper">
+                <iframe
+                  src={`https://www.youtube.com/embed/${featuredVideo.videoId}`}
+                  title={featuredVideo.title}
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className={styles.showcaseContent}>
+                <span className={styles.badgeYouTube}>
+                  <svg className={styles.badgeIcon} viewBox="0 0 24 24">
+                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  Featured Video
+                </span>
+                <h2 className={styles.showcaseTitle}>
+                  <Link href={`/${featuredVideo.file.replace('.md', '')}`}>
+                    {featuredVideo.title}
+                  </Link>
+                </h2>
+                <p className={styles.showcaseDesc}>{featuredVideo.excerpt}</p>
+                <div style={{ marginTop: '8px' }}>
+                  <span className="category-badge">{featuredVideo.category}</span>
+                  <span style={{ marginLeft: '12px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                    {formatDate(featuredVideo.date)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 3. Dual Column Feeds */}
+        <section id="feed" className={styles.feedSection}>
+          {/* Left Column: Blog Posts */}
+          <div>
+            <div className={styles.columnHeader}>
+              <h2 className={styles.columnTitle}>
+                <span className={styles.columnIcon}>📝</span> 최근 블로그 글
+              </h2>
+              <Link href="/categories" className={styles.viewAllLink}>
+                카테고리 전체보기 →
+              </Link>
+            </div>
+            <div className={styles.feedList}>
+              {latestPosts.map((post) => (
+                <Link 
+                  key={post.file} 
+                  href={`/${post.file.replace('.md', '')}`} 
+                  className={styles.miniCard}
+                >
+                  <div className={styles.miniCardHeader}>
+                    <span className="category-badge">{post.category}</span>
+                    <span className={styles.cardMeta}>{formatDate(post.date)}</span>
+                  </div>
+                  <h3 className={styles.cardTitle}>{post.title}</h3>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                    {post.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: YouTube Videos */}
+          <div>
+            <div className={styles.columnHeader}>
+              <h2 className={styles.columnTitle}>
+                <span className={styles.columnIcon}>📺</span> 유튜브 영상 콘텐츠
+              </h2>
+              <a 
+                href="https://www.youtube.com/@Na.R.D." 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.viewAllLink}
+              >
+                채널 바로가기 →
+              </a>
+            </div>
+            <div className={styles.feedList}>
+              {latestVideos.map((video) => (
+                <Link 
+                  key={video.file} 
+                  href={`/${video.file.replace('.md', '')}`} 
+                  className={`${styles.miniCard} ${styles.videoMiniCard}`}
+                >
+                  <div className={styles.videoCardGrid}>
+                    <div className={styles.videoThumbnailWrapper}>
+                      {video.videoId ? (
+                        <>
+                          <img 
+                            src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
+                            alt={video.title}
+                            className={styles.videoThumbnail}
+                            loading="lazy"
+                          />
+                          <div className={styles.playOverlay}>
+                            <svg className={styles.playIcon} viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </>
+                      ) : (
+                        <div style={{ width: '100%', height: '100%', background: 'var(--bg-tertiary)' }} />
+                      )}
+                    </div>
+                    <div className={styles.videoCardInfo}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span className="category-badge" style={{ padding: '2px 8px', fontSize: '0.7rem' }}>
+                          {video.category}
+                        </span>
+                        <span className={styles.cardMeta}>{formatDate(video.date)}</span>
+                      </div>
+                      <h3 className={styles.cardTitle} style={{ fontSize: '1rem' }}>{video.title}</h3>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </>
   );
 }
