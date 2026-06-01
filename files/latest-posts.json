@@ -1,5 +1,11 @@
 [
   {
+    "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
+    "category": "PET",
+    "file": "videos/20260602-1.md",
+    "date": "20260602"
+  },
+  {
     "title": "PostgreSQL 다운로드부터 설치까지",
     "category": "DB",
     "file": "posts/20250427-1.md",
@@ -52,11 +58,5 @@
     "category": "FUN",
     "file": "videos/20230310-1.md",
     "date": "20230310"
-  },
-  {
-    "title": "first shorts video",
-    "category": "FUN",
-    "file": "videos/20230309-1.md",
-    "date": "20230309"
   }
 ]
