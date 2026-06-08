@@ -36,7 +36,7 @@ export default function Header() {
             target="_blank" 
             rel="noopener noreferrer" 
             className={styles.socialIconLink}
-            aria-label="YouTube Channel"
+            aria-label="YouTube 채널"
           >
             <svg 
               className={styles.youtubeIcon}

@@ -29,6 +29,7 @@
   z-index: 1000;
   display: flex;
   align-items: center;
+  padding-top: env(safe-area-inset-top);
 }
 
 .headerContainer {
@@ -39,11 +40,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
 }
 
 .logoLink {
   display: flex;
   align-items: center;
+  min-height: 44px;
 }
 
 .logoText {
@@ -54,8 +57,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
 .logoText:hover {
@@ -64,7 +68,9 @@
 
 .navLinks {
   display: flex;
-  gap: 28px;
+  gap: 8px;
+  justify-content: center;
+  flex: 1;
 }
 
 .navLink {
@@ -73,7 +79,11 @@
   color: var(--text-secondary);
   transition: all 0.3s ease;
   position: relative;
-  padding: 4px 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
 }
 
 .navLink:hover {
@@ -85,7 +95,7 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 10px;
   width: 0;
   height: 2px;
   background: var(--accent-gradient);
@@ -108,6 +118,7 @@
 .socialArea {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .socialIconLink {
@@ -121,6 +132,7 @@
   color: var(--youtube-red);
   font-weight: 600;
   font-size: 0.85rem;
+  min-height: 44px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -211,8 +223,27 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .header {
+    height: 64px;
+  }
+
   .headerContainer {
-    padding: 0 16px;
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .logoText {
+    font-size: 1.08rem;
+  }
+
+  .navLinks {
+    gap: 2px;
+    justify-content: flex-end;
+  }
+
+  .navLink {
+    font-size: 0.86rem;
+    padding: 4px 8px;
   }
   
   .socialText {
@@ -220,7 +251,9 @@
   }
   
   .socialIconLink {
-    padding: 8px;
+    width: 44px;
+    padding: 0;
+    justify-content: center;
     border-radius: 50%;
   }
   
@@ -230,6 +263,30 @@
   }
   
   .main {
-    padding-top: 90px;
+    padding: 84px 16px 40px 16px;
+  }
+
+  .footer {
+    padding: 44px 16px 24px 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .headerContainer {
+    padding: 0 10px;
+  }
+
+  .logoText {
+    font-size: 1rem;
+  }
+
+  .navLink {
+    font-size: 0.8rem;
+    padding: 4px 7px;
+  }
+
+  .socialIconLink {
+    width: 40px;
+    min-height: 40px;
   }
 }

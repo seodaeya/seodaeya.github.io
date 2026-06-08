@@ -1,0 +1,178 @@
+.categoriesPage {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.quickNav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.quickNav a {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.sectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.categorySection {
+  scroll-margin-top: 100px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.sectionCount {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.contentCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 164px;
+  text-decoration: none;
+}
+
+.typeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.typeBadge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.videoBadge {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  color: var(--youtube-red);
+}
+
+.blogBadge {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  color: var(--accent-light);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  overflow-wrap: anywhere;
+}
+
+.contentCard:hover .cardTitle {
+  color: var(--accent-light);
+}
+
+.cardLink {
+  font-size: 0.85rem;
+  color: var(--accent-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .categoriesPage {
+    gap: 36px;
+  }
+
+  .hero {
+    padding: 22px 0 8px;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    margin-bottom: 12px;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .quickNav {
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .quickNav a {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  .sectionList {
+    gap: 46px;
+  }
+
+  .categorySection {
+    scroll-margin-top: 84px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 1.45rem;
+  }
+
+  .contentCard {
+    gap: 16px;
+    min-height: 148px;
+  }
+}
