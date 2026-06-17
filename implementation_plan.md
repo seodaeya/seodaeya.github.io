@@ -1,122 +1,91 @@
-# Blog Renewal for seodaeya.github.io
+# Implementation Plan: Blog Improvements
 
-Renewing the blog at [seodaeya.github.io](https://seodaeya.github.io/) into a modern, visually stunning, responsive site designed to promote both blog content and YouTube videos. The renewal focuses heavily on:
-1. **Trendy Design**: A premium dark-mode theme utilizing glassmorphism, neon violet/teal gradients, smooth micro-animations, and clean typography (Inter & Outfit).
-2. **YouTube & Blog Promotion**: Cross-promotes content using featured cards, embedded players, and links to the user's YouTube channel (`https://www.youtube.com/@Na.R.D.`).
-3. **SEO & AI Search Optimization**: Uses semantic HTML5, descriptive meta-tags, OpenGraph tags, and JSON-LD structured data (`BlogPosting`, `VideoObject`, `Person`, `WebSite`) to make the site highly indexable by search engines and modern AI crawlers (Perplexity, OpenAI, Gemini).
-4. **Human Touch Tagline**: Features the bold, impact-heavy tagline `"나는 사람이다."` (with subtitle `"AI 시대에 남기는 지극히 인간적인 기록들"`) to contrast with the high-tech AI era.
+We are adding the proposed improvements to [seodaeya.github.io](https://seodaeya.github.io/):
+1. **Interactive Search**: Real-time clientside search bar on the homepage.
+2. **Giscus Comments Integration**: A clean comment widget on blog posts using GitHub Discussions.
+3. **Read Time Calculator**: Automatic calculation of reading time for posts based on text length.
+4. **RSS Feed Generator**: Automatic generation of `public/rss.xml` during the build process.
+5. **Dark/Light Theme Toggle**: System-synchronized theme toggle using CSS variables and local storage.
+6. **Smooth Page Transitions**: CSS fade-in-up animations for content reveal when navigating.
 
 ---
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Aesthetic Theme Check**
-> The design uses a premium, dark-centric theme (`hsl(224, 25%, 8%)` background with violet and teal glow accents). This gives a high-tech developer/creator look.
->
-> **Static Export Capability**
-> Since this site is hosted on GitHub Pages (`seodaeya.github.io`), it relies on static export (`next export` / `output: 'export'`). Dynamic SSR features are not supported, so all SEO tags, schema marks, and posts will be fully pre-rendered at build time.
-
----
-
-## Finalized Settings
-
-1. **YouTube Channel**: `https://www.youtube.com/@Na.R.D.`
-2. **Hero Title**: `나는 사람이다.`
-3. **Hero Subtitle**: `AI 시대에 남기는 지극히 인간적인 기록들 | By NaRD`
+> **Giscus Setup Checklist**
+> To make the Giscus comments functional on your live website, you must:
+> 1. Enable **Discussions** in your GitHub repository settings (`seodaeya.github.io` repository -> Settings -> General -> Features -> Check "Discussions").
+> 2. Install the **Giscus GitHub App** on your repository (from [giscus.app](https://giscus.app/)).
+> 3. Retrieve your **Repository ID** and **Discussion Category ID** from the [giscus.app](https://giscus.app/) config helper and update them in `components/Comments.js` (I will provide placeholders and clear comments in the file).
 
 ---
 
 ## Proposed Changes
 
-### 1. Global Styles and Layouts
+### 1. Style & Theme Updates
 
 #### [MODIFY] [globals.css](file:///Users/nard/Projects/seodaeya.github.io/styles/globals.css)
-- Import Google Fonts (`Inter` for body, `Outfit` for headings).
-- Define custom dark-centric variables (HSL tokens) for colors, spacing, borders, gradients, and box shadows.
-- Add base scrollbar styling, code block styling, and custom glassmorphism card class utilities.
+- Add a `.light` theme selector block to override HSL variables for a sleek, light-slate look.
+- Define theme toggle button variables and transition speeds.
+- Add CSS page entry animations (`@keyframes fadeInUp`).
 
-#### [MODIFY] [Layout.js](file:///Users/nard/Projects/seodaeya.github.io/components/Layout.js)
-- Remove the rigid 2-column layout (sidebar on the left, white content on the right).
-- Change to a modern page container with a sticky glassmorphic Header and a structured Footer.
-
-#### [NEW] [Header.js](file:///Users/nard/Projects/seodaeya.github.io/components/Header.js)
-- Build a responsive, floating sticky navbar using glassmorphism.
-- Add active link highlighting, logo/home link, and social icons (YouTube, GitHub).
-
-#### [NEW] [Footer.js](file:///Users/nard/Projects/seodaeya.github.io/components/Footer.js)
-- Create a modern, detailed footer section highlighting copyright, social channel links, and a brief description.
+#### [MODIFY] [layout.module.css](file:///Users/nard/Projects/seodaeya.github.io/styles/layout.module.css)
+- Add styles for the Theme Toggle button (sun/moon switch) in the sticky header.
+- Create transitions to avoid blinking backgrounds during theme swaps.
 
 ---
 
-### 2. Search Optimization (SEO & AI Optimization)
+### 2. Global Layout & Theme Logic
 
-#### [NEW] [SEO.js](file:///Users/nard/Projects/seodaeya.github.io/components/SEO.js)
-- A highly optimized Next.js header component that manages:
-  - Meta tags: keywords, descriptions, robots, Google/Bing verification codes.
-  - Social media meta: OpenGraph (for KakaoTalk, Facebook, Slack) and Twitter Cards.
-  - JSON-LD Structured Data:
-    - For blog posts: `BlogPosting` with custom author info.
-    - For videos: `VideoObject` with YouTube embed/thumbnail URLs.
-    - For homepage: `WebSite` and `Person` (E-E-A-T friendly).
-  - Explicit instruction/meta targets for LLM agents (e.g. `gptbot`, `anthropic-crawler`).
+#### [MODIFY] [_app.js](file:///Users/nard/Projects/seodaeya.github.io/pages/_app.js)
+- Inject a blocking inline script in `<Head>` to read the theme from `localStorage` (or match system preferences) before rendering, preventing FOUC (Flash of Unstyled Content).
+
+#### [MODIFY] [Header.js](file:///Users/nard/Projects/seodaeya.github.io/components/Header.js)
+- Add the Theme Toggle button with sun and moon inline SVGs.
+- Bind theme toggle logic (managing `document.documentElement.classList`).
 
 ---
 
-### 3. Pages & Routing
+### 3. Pages & Features
 
 #### [MODIFY] [index.js](file:///Users/nard/Projects/seodaeya.github.io/pages/index.js)
-- Create a gorgeous Hero Banner introducing "seodaeya" and their creative spaces (Blog + YouTube).
-- Show a **Featured YouTube Embed** highlighting the latest or most popular video.
-- Display a unified Grid containing:
-  - Recent posts with thumbnail/icon, title, and metadata.
-  - Recent videos with a play button overlay and video thumbnail.
-- Integrate smooth CSS animations on load and hover states.
+- Add a search input state `searchQuery`.
+- Filter both blog posts and videos in real-time as the user types.
+- Design a beautiful, glowing search bar in the UI.
+
+#### [NEW] [Comments.js](file:///Users/nard/Projects/seodaeya.github.io/components/Comments.js)
+- Build a Giscus comments loader component.
+- Supports light/dark theme switching dynamically (giscus theme adapts when the blog theme toggles).
 
 #### [MODIFY] [posts/[id].jsx](file:///Users/nard/Projects/seodaeya.github.io/pages/posts/[id].jsx)
-- Wrap in the custom `<SEO>` component to render structured data.
-- Structure content with a clean Markdown layout: tables, lists, highlight panels, and bold text.
-- Introduce an **AI Key Summary** box at the top of posts to facilitate LLM parsing/scraping.
-
-#### [MODIFY] [videos/[id].jsx](file:///Users/nard/Projects/seodaeya.github.io/pages/videos/[id].jsx)
-- Correct path typo `vdieosDir` -> `videosDir`.
-- Wrap in `<SEO>` using the `VideoObject` structured schema.
-- Create a premium video player wrapper with a back button and a link to the YouTube channel.
-
-#### [MODIFY] [categories/index.jsx](file:///Users/nard/Projects/seodaeya.github.io/pages/categories/index.jsx)
-- Display categories as tag badges with counts.
-- Redesign the layout to list articles under categories using glassmorphic post cards.
+- Calculate reading time inside `getStaticProps` (formula: character count / 500 characters per min).
+- Render `⏱️ 읽는 시간: 약 X분` under the title.
+- Render the `<Comments />` widget at the bottom of the article.
 
 ---
 
-### 4. Scripts & Generation
+### 4. Feed & Automation Scripts
 
-#### [MODIFY] [generate-latest-posts.js](file:///Users/nard/Projects/seodaeya.github.io/files/gen/generate-latest-posts.js)
-- Normalize file paths to use Unix-style `/` forward slashes instead of Windows `\\` backslashes to prevent broken URL routing.
+#### [NEW] [generate-rss.js](file:///Users/nard/Projects/seodaeya.github.io/files/gen/generate-rss.js)
+- Create a script that generates `public/rss.xml` with all posts and videos sorted by date.
 
-#### [MODIFY] [generate-categories.js](file:///Users/nard/Projects/seodaeya.github.io/files/gen/generate-categories.js)
-- Normalize file paths to Unix-style `/` forward slashes.
+#### [MODIFY] [package.json](file:///Users/nard/Projects/seodaeya.github.io/package.json)
+- Add `node files/gen/generate-rss.js` to the build pipeline sequence.
 
 ---
 
 ## Verification Plan
 
 ### Automated Tests
-- Validate TypeScript compilation and Next.js static build:
+- Build verification:
   ```bash
   npm run build
   ```
-- Run markdown metadata generator scripts:
-  ```bash
-  node files/gen/generate-latest-posts.js
-  node files/gen/generate-categories.js
-  ```
+- Ensure `public/rss.xml` is successfully generated.
 
 ### Manual Verification
-- Deploy Next.js dev server:
-  ```bash
-  npm run dev
-  ```
-- Check responsiveness on mobile, tablet, and desktop views.
-- Test routing: verify clicking home posts redirects to correct paths (e.g. `/posts/20250404-1` and `/videos/20230428-1`).
-- Verify metadata extraction using browser developer tools: ensure JSON-LD scripts are injected properly.
+- Test light/dark theme toggle: ensure background, borders, and text update smoothly and theme persists on page reload.
+- Test search bar: type keywords and verify feed lists shrink to match.
+- Test reading time: verify different blog posts display different reading time values.
+- Verify Giscus loading frame at the bottom of blog posts.

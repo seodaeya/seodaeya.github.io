@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* HSL Color System */
+  /* HSL Color System - Dark Theme (Default) */
   --bg-primary: hsl(224, 25%, 8%);      /* Deep Slate Near-Black */
   --bg-secondary: hsl(224, 20%, 12%);   /* Card/Panel Slate */
   --bg-tertiary: hsl(224, 18%, 16%);    /* Lighter Slate for hover states */
@@ -28,6 +28,25 @@
   --font-headings: 'Outfit', var(--font-body);
 }
 
+/* Light Theme Overrides */
+:root.light {
+  --bg-primary: hsl(220, 20%, 97%);      /* Soft Light Slate Gray */
+  --bg-secondary: hsl(0, 0%, 100%);      /* Pure White */
+  --bg-tertiary: hsl(220, 15%, 92%);     /* Slightly Darker for Hover */
+  --bg-header-glass: rgba(248, 250, 252, 0.8);
+  
+  --text-primary: hsl(224, 25%, 12%);    /* Deep Slate Gray */
+  --text-secondary: hsl(220, 15%, 38%);  /* Muted Slate */
+  --text-muted: hsl(220, 10%, 55%);       /* Dim Gray */
+  
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --border-glass-active: rgba(0, 0, 0, 0.16);
+  
+  /* Bright Accent Adjustments for Light Contrast */
+  --accent-light: hsl(263, 75%, 55%);
+  --accent-gradient: linear-gradient(135deg, hsl(263, 75%, 55%), hsl(190, 85%, 45%));
+}
+
 /* Base resets & styles */
 html, body {
   margin: 0;
@@ -40,12 +59,8 @@ html, body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 96px;
+  /* Smooth theme transitions */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 *, *::before, *::after {
@@ -94,7 +109,24 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   color: var(--text-primary);
   margin-top: 0;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Page Entrance Animation */
+.page-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Rich Glassmorphism Card Style Utility */
@@ -103,16 +135,24 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-glass);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+:root.light .glass-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-glass-active);
   box-shadow: 0 12px 40px rgba(138, 43, 226, 0.15); /* Soft violet glow */
+}
+
+:root.light .glass-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Tag/Category Badge */
@@ -130,6 +170,10 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
 }
 
+:root.light .category-badge {
+  background: rgba(0, 0, 0, 0.04);
+}
+
 .category-badge:hover {
   background: var(--accent-gradient);
   border-color: transparent;
@@ -140,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Grid Layouts */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
 }
 
@@ -154,6 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-glass);
   background: #000;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
 }
 
 .video-wrapper iframe {
@@ -163,40 +208,4 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-img,
-svg,
-video,
-canvas {
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  html {
-    scroll-padding-top: 84px;
-  }
-
-  .glass-card {
-    border-radius: 14px;
-    padding: 18px;
-  }
-
-  .glass-card:hover {
-    transform: none;
-  }
-
-  .category-badge {
-    min-height: 32px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .grid-container {
-    gap: 14px;
-  }
-
-  .video-wrapper {
-    border-radius: 12px;
-  }
 }

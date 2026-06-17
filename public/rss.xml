@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>나는 사람이다. (NaRD Blog)</title>
+  <link>https://seodaeya.github.io</link>
+  <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
+  <language>ko</language>
+  <lastBuildDate>Wed, 17 Jun 2026 13:54:13 GMT</lastBuildDate>
+  <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)]]></title>
+    <link>https://seodaeya.github.io/videos/20260602-1</link>
+    <guid>https://seodaeya.github.io/videos/20260602-1</guid>
+    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[🦎 우리 집 봄이에게 새로운 가족이 생겼습니다! 원래 혼자 조용히 지내던 우리 집 귀염둥이 크레스티드 게코 암컷 '봄이'에게 드디어 든든한 남자친구가 생겼습니다.  새롭게 우리 집 식구가 된 수컷 도마뱀의 이름은 바로 '챠콜맨'입니다! 이름 그대로 매력적이고 짙은 챠...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[PostgreSQL 다운로드부터 설치까지]]></title>
+    <link>https://seodaeya.github.io/posts/20250427-1</link>
+    <guid>https://seodaeya.github.io/posts/20250427-1</guid>
+    <pubDate>Sun, 27 Apr 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[1단계: PostgreSQL 다운로드 1. PostgreSQL 공식 웹사이트 (https://www.postgresql.org/download/windows/(https://www.postgresql.org/download/windows/))에 접속한다. 2. "Dow...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Claude 조사]]></title>
+    <link>https://seodaeya.github.io/posts/20250404-1</link>
+    <guid>https://seodaeya.github.io/posts/20250404-1</guid>
+    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[🔍 Claude의 핵심 특징 ✅ 1. 안전성과 직관성 우선 설계 Claude는 사람과 더 자연스럽고 신뢰할 수 있는 대화를 하도록 훈련되었다. '헌법 AI(Constitutional AI)'라는 개념을 통해, 도덕적 기준과 윤리적 판단을 사전에 주입해서 자기검열 없이...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Cline 조사]]></title>
+    <link>https://seodaeya.github.io/posts/20250404-2</link>
+    <guid>https://seodaeya.github.io/posts/20250404-2</guid>
+    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[✅ 1. Cline – Claude의 CLI (Command Line Interface) 도구 (가장 가능성 높음) cline은 Claude와 로컬 MCP(Model Context Protocol) 서버를 연결해서 터미널에서 바로 명령어 기반으로 Claude와 대화하거...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Cursor 조사]]></title>
+    <link>https://seodaeya.github.io/posts/20250404-3</link>
+    <guid>https://seodaeya.github.io/posts/20250404-3</guid>
+    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[✅ Cursor란? Cursor는 "코딩을 AI와 함께 하는 새로운 방식"을 제안하는 VS Code 기반의 AI 코드 에디터다. OpenAI의 GPT-4나 Anthropic Claude 같은 LLM 모델을 기반으로, 다음과 같은 코딩 워크플로우를 강화해준다. ---  ...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Listen to the sounds of the MiFA A90 speaker]]></title>
+    <link>https://seodaeya.github.io/videos/20230428-1</link>
+    <guid>https://seodaeya.github.io/videos/20230428-1</guid>
+    <pubDate>Fri, 28 Apr 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[The beat of a cute child. The Mifa A90 speaker boasts 60W of power, and the LEDs make the atmosphere great whether you're outdoors or camping. There i...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Kimchi Jjigae in Guichi Meat Restaurant]]></title>
+    <link>https://seodaeya.github.io/videos/20230426-1</link>
+    <guid>https://seodaeya.github.io/videos/20230426-1</guid>
+    <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[Kimchi Jjigae(=stew) bubbling Kimchi jjigae(=stew) is one of the popular foods in Korea. Blog link of the author of this article: seodaeya.tistory.com...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[MagSafe Wireless Fast Charging Cradle]]></title>
+    <link>https://seodaeya.github.io/videos/20230409-1</link>
+    <guid>https://seodaeya.github.io/videos/20230409-1</guid>
+    <pubDate>Sun, 09 Apr 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[Recommended MagSafe Wireless Fast Charging Cradle for iPhone, Watch, AirPods 3 in 1. If you have many Apple devices at home, it’s a product that I wou...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Logitech Signature Plus M750 Mouse FLOW Video]]></title>
+    <link>https://seodaeya.github.io/videos/20230407-1</link>
+    <guid>https://seodaeya.github.io/videos/20230407-1</guid>
+    <pubDate>Fri, 07 Apr 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[Logitech Signature Plus M750 Mouse, PC to PC 'FLOW' Tech Video. There is more detailed information at this link: seodaeya.tistory.com/200(https://seod...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Pretty and Beautiful Speaker]]></title>
+    <link>https://seodaeya.github.io/videos/20230310-1</link>
+    <guid>https://seodaeya.github.io/videos/20230310-1</guid>
+    <pubDate>Fri, 10 Mar 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[Ditoo Speaker's Discount Information. There is more detailed information at this link: seodaeya.tistory.com/187(https://seodaeya.tistory.com/187)...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[first shorts video]]></title>
+    <link>https://seodaeya.github.io/videos/20230309-1</link>
+    <guid>https://seodaeya.github.io/videos/20230309-1</guid>
+    <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
+    <description><![CDATA[Banana DalDal coffee shake it in dangsan Mamoth The process video of mixing Mamoth Banana Sweet Coffee....]]></description>
+  </item>
+</channel>
+</rss>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import SEO from '@/components/SEO';
+import Comments from '@/components/Comments';
 import styles from '@/styles/post.module.css';
 
 export async function getStaticPaths() {
@@ -27,17 +28,21 @@ export async function getStaticProps({ params }) {
     .trim()
     .substring(0, 150);
 
+  // 자동 읽기 시간 계산 (한국어/영문 평균인 분당 500자 기준)
+  const readingTime = Math.max(1, Math.ceil(content.length / 500));
+
   return {
     props: {
       id: params.id,
       frontmatter: data,
       content: marked(content),
       excerpt: cleanExcerpt ? `${cleanExcerpt}...` : '글 내용을 확인해보세요.',
+      readingTime,
     },
   };
 }
 
-export default function Post({ id, frontmatter, content, excerpt }) {
+export default function Post({ id, frontmatter, content, excerpt, readingTime }) {
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     try {
@@ -48,8 +53,6 @@ export default function Post({ id, frontmatter, content, excerpt }) {
     }
   };
 
-  // Extract first few points for AI 요약 box (automatically generated or custom text)
-  // Let's create a visual highlight container
   return (
     <>
       <SEO
@@ -82,6 +85,8 @@ export default function Post({ id, frontmatter, content, excerpt }) {
             </span>
             <span className={styles.metaSeparator}>|</span>
             <span className={styles.metaItem}>작성자: NaRD</span>
+            <span className={styles.metaSeparator}>|</span>
+            <span className={styles.metaItem}>⏱️ 읽는 시간: 약 {readingTime}분</span>
           </div>
         </header>
 
@@ -106,6 +111,9 @@ export default function Post({ id, frontmatter, content, excerpt }) {
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
+
+        {/* Giscus Comments widget */}
+        <Comments />
       </article>
     </>
   );
