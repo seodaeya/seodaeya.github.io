@@ -1,21 +1,17 @@
-# Task Checklist for seodaeya.github.io Blog Renewal
+# Task Checklist for Blog Improvements Implementation
 
-- [x] 1. Script Fixes & JSON regeneration
-  - [x] Fix Windows backslashes in `files/gen/generate-latest-posts.js`
-  - [x] Fix Windows backslashes in `files/gen/generate-categories.js`
-  - [x] Run scripts to generate updated JSONs
-- [x] 2. Global Styling & Layout System
-  - [x] Set up HSL tokens, fonts, glassmorphism, animations in `styles/globals.css`
-  - [x] Create `components/Header.js` (glassmorphic navbar, YouTube link)
-  - [x] Create `components/Footer.js` (social links, bio info)
-  - [x] Modify `components/Layout.js` to use Header and Footer
-- [x] 3. SEO & AI Optimization Component
-  - [x] Create `components/SEO.js` supporting JSON-LD, OpenGraph, robot-directives
-- [x] 4. Page Renewals
-  - [x] Redesign Home page (`pages/index.js`) with Hero banner, YouTube embed, split grid
-  - [x] Redesign Category page (`pages/categories/index.jsx`)
-  - [x] Redesign BlogPost template (`pages/posts/[id].jsx`) with AI summaries structure
-  - [x] Redesign VideoPost template (`pages/videos/[id].jsx`) with premium embed frame
+- [x] 1. Styles & Themes
+  - [x] Update `styles/globals.css` with light theme variables and page animations
+  - [x] Update `styles/layout.module.css` with Theme Toggle styles
+- [x] 2. Layout & Theme Logic
+  - [x] Modify `pages/_app.js` with theme blocking inline script
+  - [x] Modify `components/Header.js` with Theme Toggle button and states
+- [x] 3. Page Improvements
+  - [x] Modify `pages/index.js` with real-time clientside search input and filter state
+  - [x] Create `components/Comments.js` for Giscus comments loader
+  - [x] Modify `pages/posts/[id].jsx` to compute reading time and render `<Comments />`
+- [x] 4. Feeds & Scripts
+  - [x] Create `files/gen/generate-rss.js` script
+  - [x] Update `package.json` to trigger sitemap and RSS generation during build
 - [x] 5. Verification & Testing
-  - [x] Run build script (`npm run build`)
-  - [x] Run dev server to check styles and links (`npm run dev`)
+  - [x] Run `npm run build` locally to verify zero build errors
