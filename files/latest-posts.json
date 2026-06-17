@@ -6,6 +6,12 @@
     "date": "20260602"
   },
   {
+    "title": "방향지시등 경고등 점검 및 자가 조치 방법 (feat. 싼타페TM - 전구 재조립 팁)",
+    "category": "TECH",
+    "file": "videos/20260510-1.md",
+    "date": "20260510"
+  },
+  {
     "title": "PostgreSQL 다운로드부터 설치까지",
     "category": "DB",
     "file": "posts/20250427-1.md",
@@ -52,11 +58,5 @@
     "category": "TECH",
     "file": "videos/20230407-1.md",
     "date": "20230407"
-  },
-  {
-    "title": "Pretty and Beautiful Speaker",
-    "category": "FUN",
-    "file": "videos/20230310-1.md",
-    "date": "20230310"
   }
 ]
