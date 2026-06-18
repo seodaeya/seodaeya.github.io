@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 17 Jun 2026 14:46:53 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 18 Jun 2026 14:34:21 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)]]></title>
+    <link>https://seodaeya.github.io/videos/20260618-1</link>
+    <guid>https://seodaeya.github.io/videos/20260618-1</guid>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[🖱 멀쩡한 마우스를 분해해 버린 허탈한 자가 수리 후기 게이밍 마우스로 오랜 기간 가성비 끝판왕 자리를 지키고 있는 레이저 바실리스크 X 하이퍼스피드(Razer Basilisk X Hyperspeed).  얼마 전 노트북과 마우스가 올려져 있던 간이 테이블을 옮기다가...]]></description>
+  </item>
   <item>
     <title><![CDATA[봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)]]></title>
     <link>https://seodaeya.github.io/videos/20260602-1</link>
@@ -15,11 +22,11 @@
     <description><![CDATA[🦎 우리 집 봄이에게 새로운 가족이 생겼습니다! 원래 혼자 조용히 지내던 우리 집 귀염둥이 크레스티드 게코 암컷 '봄이'에게 드디어 든든한 남자친구가 생겼습니다.  새롭게 우리 집 식구가 된 수컷 도마뱀의 이름은 바로 '챠콜맨'입니다! 이름 그대로 매력적이고 짙은 챠...]]></description>
   </item>
   <item>
-    <title><![CDATA[싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기]]></title>
+    <title><![CDATA[방향지시등 경고등 점검 및 자가 조치 방법 (feat. 싼타페TM - 전구 재조립 팁)]]></title>
     <link>https://seodaeya.github.io/videos/20260510-1</link>
     <guid>https://seodaeya.github.io/videos/20260510-1</guid>
     <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[계기판에 처음 보는 경고가 떴다 외출하려고 시동을 걸었는데 계기판에 방향지시등을 점검하라는 경고가 떠 있었습니다. 처음엔 당연히 당황했습니다. 약속 시간도 있었고, "이거 바로 정비소 가야 하나?", "운전해도 되는 건가?" 하는 생각이 먼저 들더라고요. 그래도 일단 ...]]></description>
+    <description><![CDATA[🚗 갑작스러운 방향지시등 경고등 발생, 어떻게 대처해야 할까? 외출하려고 기분 좋게 시동을 걸었는데, 갑자기 계기판에 \"방향지시등을 점검하십시오\"라는 경고등이 뜨면 누구나 당황하기 마련입니다.  '당장 카센터에 가야 하나?', '비용은 얼마나 나올까?' 하는 걱정...]]></description>
   </item>
   <item>
     <title><![CDATA[PostgreSQL 다운로드부터 설치까지]]></title>
