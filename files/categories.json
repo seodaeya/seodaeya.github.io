@@ -1,21 +1,21 @@
 {
   "AI": [
     {
-      "title": "Claude 조사",
+      "title": "Anthropic Claude 모델 완전 분석 (Claude 3.5 Sonnet부터 3.7 Sonnet/Thinking까지)",
       "file": "posts/20250404-1.md"
     },
     {
-      "title": "Cline 조사",
+      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
       "file": "posts/20250404-2.md"
     },
     {
-      "title": "Cursor 조사",
+      "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
       "file": "posts/20250404-3.md"
     }
   ],
   "DB": [
     {
-      "title": "PostgreSQL 다운로드부터 설치까지",
+      "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
       "file": "posts/20250427-1.md"
     }
   ],
