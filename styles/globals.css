@@ -53,6 +53,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -184,8 +185,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Grid Layouts */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Embedded Content Wrapper */
