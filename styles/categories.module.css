@@ -74,6 +74,8 @@
   gap: 20px;
   min-height: 164px;
   text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .typeRow {
