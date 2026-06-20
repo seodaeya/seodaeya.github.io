@@ -393,3 +393,16 @@
     text-align: center;
   }
 }
+
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  .heroTagline {
+    font-size: 0.95rem;
+  }
+  .heroSection {
+    padding: 40px 16px;
+  }
+}

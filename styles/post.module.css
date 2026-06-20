@@ -165,6 +165,7 @@
   padding: 20px;
   border-radius: 12px;
   overflow-x: auto;
+  max-width: 100%;
   -webkit-overflow-scrolling: touch;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -180,6 +181,8 @@
   font-size: 0.9rem;
   color: var(--accent-secondary);
   border: 1px solid var(--border-glass);
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .content pre code {
@@ -188,6 +191,8 @@
   border: none;
   font-size: inherit;
   color: var(--text-primary);
+  white-space: pre;
+  word-break: normal;
 }
 
 .content blockquote {
@@ -208,6 +213,7 @@
 .content table {
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
   margin-top: 24px;
   margin-bottom: 36px;
   background-color: var(--bg-secondary);
