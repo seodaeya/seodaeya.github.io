@@ -74,9 +74,13 @@ export default function Post({ id, frontmatter, content, excerpt, readingTime })
         {/* Post Header */}
         <header className={styles.postHeader}>
           {frontmatter.category && (
-            <span className="category-badge" style={{ marginBottom: '16px' }}>
+            <Link
+              href={`/categories#category-${frontmatter.category.toUpperCase()}`}
+              className="category-badge"
+              style={{ marginBottom: '16px' }}
+            >
               {frontmatter.category}
-            </span>
+            </Link>
           )}
           <h1 className={styles.title}>{frontmatter.title}</h1>
           <div className={styles.metaInfo}>

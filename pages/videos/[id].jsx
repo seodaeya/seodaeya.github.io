@@ -86,9 +86,13 @@ export default function Video({ id, frontmatter, content, excerpt }) {
         <div className="glass-card" style={{ marginTop: '32px' }}>
           <header className={styles.videoHeader}>
             {frontmatter.category && (
-              <span className="category-badge" style={{ marginBottom: '16px' }}>
+              <Link
+                href={`/categories#category-${frontmatter.category.toUpperCase()}`}
+                className="category-badge"
+                style={{ marginBottom: '16px' }}
+              >
                 {frontmatter.category}
-              </span>
+              </Link>
             )}
             <h1 className={styles.title}>{frontmatter.title}</h1>
             
