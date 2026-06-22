@@ -126,6 +126,12 @@
   overflow-wrap: anywhere;
 }
 
+.content strong,
+.content b {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 .content img {
   max-width: 100%;
   height: auto;
