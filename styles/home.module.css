@@ -145,6 +145,24 @@
   word-break: break-all;
 }
 
+.showcaseDesc strong,
+.cardExcerpt strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.showcaseDesc em,
+.cardExcerpt em {
+  color: var(--text-primary);
+  font-style: normal;
+}
+
+.showcaseDesc code,
+.cardExcerpt code {
+  color: var(--accent-secondary);
+  font-size: 0.9em;
+}
+
 /* Search Area */
 .searchSection {
   max-width: 600px;
@@ -302,6 +320,15 @@
 
 .miniCard:hover .cardTitle {
   color: var(--accent-light);
+}
+
+.cardExcerpt {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 /* Specific styling for video cards */

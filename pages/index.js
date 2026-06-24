@@ -4,7 +4,10 @@ import path from 'path';
 import matter from 'gray-matter';
 import { useState } from 'react';
 import SEO from '@/components/SEO';
+import contentUtils from '@/lib/content';
 import styles from '@/styles/home.module.css';
+
+const { createPlainExcerpt, createRichExcerpt } = contentUtils;
 
 export async function getStaticProps() {
   const postsDir = path.join(process.cwd(), 'files/posts');
@@ -19,18 +22,13 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
       
-      const cleanContent = content
-        .replace(/[#*`_\[\]]/g, '')
-        .replace(/\n+/g, ' ')
-        .trim()
-        .substring(0, 100);
-      
       return {
         title: data.title || filename.replace('.md', ''),
         category: data.category || 'Tech',
         date: data.date || '',
         file: `posts/${filename}`,
-        excerpt: cleanContent ? `${cleanContent}...` : '글 내용을 확인해보세요.',
+        excerpt: createPlainExcerpt(content, 100) || '글 내용을 확인해보세요.',
+        excerptHtml: createRichExcerpt(content, 100) || '글 내용을 확인해보세요.',
       };
     });
   }
@@ -44,19 +42,14 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
       
-      const cleanContent = content
-        .replace(/[#*`_\[\]]/g, '')
-        .replace(/\n+/g, ' ')
-        .trim()
-        .substring(0, 60);
-
       return {
         title: data.title || filename.replace('.md', ''),
         category: data.category || 'Vlog',
         date: data.date || '',
         file: `videos/${filename}`,
         videoId: data.videoId || null,
-        excerpt: cleanContent ? `${cleanContent}...` : '유튜브 영상을 감상해 보세요.',
+        excerpt: createPlainExcerpt(content, 60) || '유튜브 영상을 감상해 보세요.',
+        excerptHtml: createRichExcerpt(content, 60) || '유튜브 영상을 감상해 보세요.',
       };
     });
   }
@@ -189,7 +182,10 @@ export default function Home({ latestPosts, latestVideos }) {
                     {featuredVideo.title}
                   </Link>
                 </h2>
-                <p className={styles.showcaseDesc}>{featuredVideo.excerpt}</p>
+                <p
+                  className={styles.showcaseDesc}
+                  dangerouslySetInnerHTML={{ __html: featuredVideo.excerptHtml }}
+                />
                 <div style={{ marginTop: '8px' }}>
                   <span className="category-badge">{featuredVideo.category}</span>
                   <span style={{ marginLeft: '12px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -226,9 +222,10 @@ export default function Home({ latestPosts, latestVideos }) {
                       <span className={styles.cardMeta}>{formatDate(post.date)}</span>
                     </div>
                     <h3 className={styles.cardTitle}>{post.title}</h3>
-                    <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                      {post.excerpt}
-                    </p>
+                    <p
+                      className={styles.cardExcerpt}
+                      dangerouslySetInnerHTML={{ __html: post.excerptHtml }}
+                    />
                   </Link>
                 ))
               ) : (

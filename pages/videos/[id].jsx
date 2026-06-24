@@ -4,7 +4,10 @@ import Link from 'next/link';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import SEO from '@/components/SEO';
+import contentUtils from '@/lib/content';
 import styles from '@/styles/video.module.css';
+
+const { createPlainExcerpt } = contentUtils;
 
 export async function getStaticPaths() {
   // 경로 오타 수정: vdieosDir -> videosDir
@@ -22,23 +25,18 @@ export async function getStaticProps({ params }) {
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const cleanExcerpt = content
-    .replace(/[#*`_\[\]]/g, '')
-    .replace(/\n+/g, ' ')
-    .trim()
-    .substring(0, 150);
-
   return {
     props: {
       id: params.id,
       frontmatter: data,
       content: marked(content),
-      excerpt: cleanExcerpt ? `${cleanExcerpt}...` : '유튜브 영상을 시청해보세요.',
+      excerpt: createPlainExcerpt(content, 150) || '유튜브 영상을 시청해보세요.',
     },
   };
 }
 
 export default function Video({ id, frontmatter, content, excerpt }) {
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     try {

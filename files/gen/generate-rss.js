@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
+const { createPlainExcerpt } = require('../../lib/content');
 
 const siteUrl = 'https://seodaeya.github.io';
 const publicDir = path.join(__dirname, '../../public');
@@ -14,18 +15,12 @@ const getFiles = (dir) => {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
     
-    const cleanExcerpt = content
-      .replace(/[#*`_\[\]]/g, '')
-      .replace(/\n+/g, ' ')
-      .trim()
-      .substring(0, 150) + '...';
-      
     const isVideo = dir.includes('videos');
     const route = isVideo ? `videos/${filename.replace('.md', '')}` : `posts/${filename.replace('.md', '')}`;
 
     return {
       title: data.title || filename.replace('.md', ''),
-      description: cleanExcerpt,
+      description: createPlainExcerpt(content, 150),
       link: `${siteUrl}/${route}`,
       date: data.date ? new Date(data.date).toUTCString() : new Date().toUTCString(),
       rawDate: data.date || ''

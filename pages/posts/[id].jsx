@@ -5,7 +5,10 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import SEO from '@/components/SEO';
 import Comments from '@/components/Comments';
+import contentUtils from '@/lib/content';
 import styles from '@/styles/post.module.css';
+
+const { createPlainExcerpt } = contentUtils;
 
 export async function getStaticPaths() {
   const postsDir = path.join(process.cwd(), '/files/posts');
@@ -22,12 +25,6 @@ export async function getStaticProps({ params }) {
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const cleanExcerpt = content
-    .replace(/[#*`_\[\]]/g, '')
-    .replace(/\n+/g, ' ')
-    .trim()
-    .substring(0, 150);
-
   // 자동 읽기 시간 계산 (한국어/영문 평균인 분당 500자 기준)
   const readingTime = Math.max(1, Math.ceil(content.length / 500));
 
@@ -36,13 +33,14 @@ export async function getStaticProps({ params }) {
       id: params.id,
       frontmatter: data,
       content: marked(content),
-      excerpt: cleanExcerpt ? `${cleanExcerpt}...` : '글 내용을 확인해보세요.',
+      excerpt: createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',
       readingTime,
     },
   };
 }
 
 export default function Post({ id, frontmatter, content, excerpt, readingTime }) {
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     try {
