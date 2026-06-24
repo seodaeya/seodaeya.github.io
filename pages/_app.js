@@ -102,6 +102,18 @@ export default function App({ Component, pageProps }) {
         />
         {/* 테마 감지 인라인 스크립트 (FOUC 방지) */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Microsoft Clarity Tracking Code */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "xc3emzy1ib");
+            `
+          }}
+        />
       </Head>
       <Layout>
         {/* 페이지 진입 시 부드러운 페이드인 애니메이션 적용 */}
