@@ -1,5 +1,17 @@
 [
   {
+    "title": "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법",
+    "category": "TECH",
+    "file": "videos/20260624-1.md",
+    "date": "20260624"
+  },
+  {
+    "title": "싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁",
+    "category": "TECH",
+    "file": "videos/20260624-2.md",
+    "date": "20260624"
+  },
+  {
     "title": "맥 미니 화면을 아이패드로! 모니터 없이 사이드카/미러링 유지하는 방법 (더미 HDMI 활용 팁)",
     "category": "TECH",
     "file": "videos/20260622-1.md",
@@ -46,17 +58,5 @@
     "category": "AI",
     "file": "posts/20250404-2.md",
     "date": "20250404"
-  },
-  {
-    "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
-    "category": "AI",
-    "file": "posts/20250404-3.md",
-    "date": "20250404"
-  },
-  {
-    "title": "미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트",
-    "category": "FUN",
-    "file": "videos/20230428-1.md",
-    "date": "20230428"
   }
 ]
