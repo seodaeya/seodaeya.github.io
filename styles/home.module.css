@@ -439,3 +439,27 @@
     padding: 40px 16px;
   }
 }
+
+/* Search Results Layout Optimization */
+.singleColumnFeed {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.noResultsGlobal {
+  text-align: center;
+  padding: 80px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+:root.light .noResultsGlobal {
+  background: rgba(0, 0, 0, 0.02);
+}

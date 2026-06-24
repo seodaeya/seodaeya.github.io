@@ -198,103 +198,109 @@ export default function Home({ latestPosts, latestVideos }) {
         )}
 
         {/* 4. Dual Column Feeds */}
-        <section id="feed" className={styles.feedSection}>
-          {/* Left Column: Blog Posts */}
-          <div>
-            <div className={styles.columnHeader}>
-              <h2 className={styles.columnTitle}>
-                <span className={styles.columnIcon}>📝</span> 블로그 글 {searchQuery && `(${filteredPosts.length})`}
-              </h2>
-              <Link href="/categories" className={styles.viewAllLink}>
-                카테고리 전체보기 →
-              </Link>
-            </div>
-            <div className={styles.feedList}>
-              {filteredPosts.length > 0 ? (
-                filteredPosts.map((post) => (
-                  <Link 
-                    key={post.file} 
-                    href={`/${post.file.replace('.md', '')}`} 
-                    className={styles.miniCard}
-                  >
-                    <div className={styles.miniCardHeader}>
-                      <span className="category-badge">{post.category}</span>
-                      <span className={styles.cardMeta}>{formatDate(post.date)}</span>
-                    </div>
-                    <h3 className={styles.cardTitle}>{post.title}</h3>
-                    <p
-                      className={styles.cardExcerpt}
-                      dangerouslySetInnerHTML={{ __html: post.excerptHtml }}
-                    />
-                  </Link>
-                ))
-              ) : (
-                <div className={styles.noResults}>검색 결과에 맞는 블로그 글이 없습니다.</div>
-              )}
-            </div>
+        {filteredPosts.length === 0 && filteredVideos.length === 0 ? (
+          <div className={styles.noResultsGlobal}>
+            <span style={{ fontSize: '2rem', marginBottom: '16px', display: 'block' }}>🔍</span>
+            입력하신 검색어 <strong>&quot;{searchQuery}&quot;</strong>에 맞는 콘텐츠가 없습니다.
           </div>
+        ) : (
+          <section 
+            id="feed" 
+            className={`${styles.feedSection} ${(searchQuery && (filteredPosts.length === 0 || filteredVideos.length === 0)) ? styles.singleColumnFeed : ''}`}
+          >
+            {/* Left Column: Blog Posts */}
+            {(!searchQuery || filteredPosts.length > 0) && (
+              <div>
+                <div className={styles.columnHeader}>
+                  <h2 className={styles.columnTitle}>
+                    <span className={styles.columnIcon}>📝</span> 블로그 글 {searchQuery && `(${filteredPosts.length})`}
+                  </h2>
+                  <Link href="/categories" className={styles.viewAllLink}>
+                    카테고리 전체보기 →
+                  </Link>
+                </div>
+                <div className={styles.feedList}>
+                  {filteredPosts.map((post) => (
+                    <Link 
+                      key={post.file} 
+                      href={`/${post.file.replace('.md', '')}`} 
+                      className={styles.miniCard}
+                    >
+                      <div className={styles.miniCardHeader}>
+                        <span className="category-badge">{post.category}</span>
+                        <span className={styles.cardMeta}>{formatDate(post.date)}</span>
+                      </div>
+                      <h3 className={styles.cardTitle}>{post.title}</h3>
+                      <p
+                        className={styles.cardExcerpt}
+                        dangerouslySetInnerHTML={{ __html: post.excerptHtml }}
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* Right Column: YouTube Videos */}
-          <div>
-            <div className={styles.columnHeader}>
-              <h2 className={styles.columnTitle}>
-                <span className={styles.columnIcon}>📺</span> 유튜브 영상 콘텐츠 {searchQuery && `(${filteredVideos.length})`}
-              </h2>
-              <a 
-                href="https://www.youtube.com/@Na.R.D." 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={styles.viewAllLink}
-              >
-                채널 바로가기 →
-              </a>
-            </div>
-            <div className={styles.feedList}>
-              {filteredVideos.length > 0 ? (
-                filteredVideos.map((video) => (
-                  <Link 
-                    key={video.file} 
-                    href={`/${video.file.replace('.md', '')}`} 
-                    className={`${styles.miniCard} ${styles.videoMiniCard}`}
+            {/* Right Column: YouTube Videos */}
+            {(!searchQuery || filteredVideos.length > 0) && (
+              <div>
+                <div className={styles.columnHeader}>
+                  <h2 className={styles.columnTitle}>
+                    <span className={styles.columnIcon}>📺</span> 유튜브 영상 콘텐츠 {searchQuery && `(${filteredVideos.length})`}
+                  </h2>
+                  <a 
+                    href="https://www.youtube.com/@Na.R.D." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.viewAllLink}
                   >
-                    <div className={styles.videoCardGrid}>
-                      <div className={styles.videoThumbnailWrapper}>
-                        {video.videoId ? (
-                          <>
-                            <img 
-                              src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
-                              alt={video.title}
-                              className={styles.videoThumbnail}
-                              loading="lazy"
-                            />
-                            <div className={styles.playOverlay}>
-                              <svg className={styles.playIcon} viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                              </svg>
-                            </div>
-                          </>
-                        ) : (
-                          <div style={{ width: '100%', height: '100%', background: 'var(--bg-tertiary)' }} />
-                        )}
-                      </div>
-                      <div className={styles.videoCardInfo}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span className="category-badge" style={{ padding: '2px 8px', fontSize: '0.7rem' }}>
-                            {video.category}
-                          </span>
-                          <span className={styles.cardMeta}>{formatDate(video.date)}</span>
+                    채널 바로가기 →
+                  </a>
+                </div>
+                <div className={styles.feedList}>
+                  {filteredVideos.map((video) => (
+                    <Link 
+                      key={video.file} 
+                      href={`/${video.file.replace('.md', '')}`} 
+                      className={`${styles.miniCard} ${styles.videoMiniCard}`}
+                    >
+                      <div className={styles.videoCardGrid}>
+                        <div className={styles.videoThumbnailWrapper}>
+                          {video.videoId ? (
+                            <>
+                              <img 
+                                src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
+                                alt={video.title}
+                                className={styles.videoThumbnail}
+                                loading="lazy"
+                              />
+                              <div className={styles.playOverlay}>
+                                <svg className={styles.playIcon} viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </>
+                          ) : (
+                            <div style={{ width: '100%', height: '100%', background: 'var(--bg-tertiary)' }} />
+                          )}
                         </div>
-                        <h3 className={styles.cardTitle} style={{ fontSize: '1rem' }}>{video.title}</h3>
+                        <div className={styles.videoCardInfo}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span className="category-badge" style={{ padding: '2px 8px', fontSize: '0.7rem' }}>
+                              {video.category}
+                            </span>
+                            <span className={styles.cardMeta}>{formatDate(video.date)}</span>
+                          </div>
+                          <h3 className={styles.cardTitle} style={{ fontSize: '1rem' }}>{video.title}</h3>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))
-              ) : (
-                <div className={styles.noResults}>검색 결과에 맞는 유튜브 영상이 없습니다.</div>
-              )}
-            </div>
-          </div>
-        </section>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
       </div>
     </>
   );
