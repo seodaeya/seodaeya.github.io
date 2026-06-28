@@ -83,6 +83,8 @@ export default function SEO({
 
       {/* Naver Search Advisor Verification */}
       <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
+      {/* Google Search Console Verification */}
+      <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
