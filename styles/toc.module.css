@@ -1,0 +1,71 @@
+.tocWrapper {
+  position: sticky;
+  top: 100px;
+  width: 220px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding: 16px;
+  border-left: 2px solid var(--border-glass);
+  margin-left: 24px;
+}
+
+.tocTitle {
+  font-family: var(--font-headings);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tocNav {
+  display: block;
+}
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tocItem {
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.tocItem a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tocItem a:hover {
+  color: var(--text-secondary);
+}
+
+.tocSubItem {
+  padding-left: 12px;
+  font-size: 0.78rem;
+}
+
+.active a {
+  color: var(--accent-light) !important;
+  font-weight: 600;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent-light);
+  margin-left: -10px;
+}
+
+.tocWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .tocWrapper {
+    display: none;
+  }
+}
