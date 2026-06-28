@@ -348,3 +348,9 @@
     gap: 12px;
   }
 }
+
+/* Scroll margin for TOC anchor navigation (accounts for fixed header) */
+.content h2,
+.content h3 {
+  scroll-margin-top: 100px;
+}

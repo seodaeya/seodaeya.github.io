@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import styles from '@/styles/toc.module.css';
 
 export default function TOC({ contentSelector, id }) {
@@ -6,48 +6,74 @@ export default function TOC({ contentSelector, id }) {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
-    const container = document.querySelector(contentSelector);
-    if (!container) return;
-
-    // Find all h2 and h3 elements
-    const headingElements = container.querySelectorAll('h2, h3');
-    const headingList = [];
-
-    headingElements.forEach((el, index) => {
-      // Ensure every heading has an ID (SSG should have pre-assigned them)
-      if (!el.id) {
-        el.id = `heading-${index}`;
+    // Small delay to ensure DOM is fully rendered after hydration
+    const timer = setTimeout(() => {
+      const container = document.querySelector(contentSelector);
+      if (!container) {
+        console.warn('[TOC] Container not found:', contentSelector);
+        return;
       }
-      headingList.push({
-        id: el.id,
-        text: el.innerText || el.textContent,
-        level: el.tagName.toLowerCase(),
-      });
-    });
 
-    setHeadings(headingList);
+      const headingElements = container.querySelectorAll('h2, h3');
+      console.log('[TOC] Found headings:', headingElements.length);
 
-    // Track active heading on scroll using IntersectionObserver
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find visible entries
-        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-        if (visibleEntries.length > 0) {
-          // Active heading is the first visible heading
-          setActiveId(visibleEntries[0].target.id);
+      const headingList = [];
+      headingElements.forEach((el, index) => {
+        if (!el.id) {
+          el.id = `heading-${index}`;
         }
-      },
-      {
-        rootMargin: '-80px 0px -60% 0px',
-      }
-    );
+        console.log('[TOC] Heading:', el.id, el.textContent?.substring(0, 30));
+        headingList.push({
+          id: el.id,
+          text: el.innerText || el.textContent,
+          level: el.tagName.toLowerCase(),
+        });
+      });
 
-    headingElements.forEach((el) => observer.observe(el));
+      setHeadings(headingList);
 
-    return () => {
-      headingElements.forEach((el) => observer.unobserve(el));
-    };
+      // IntersectionObserver for active heading tracking
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+          if (visibleEntries.length > 0) {
+            setActiveId(visibleEntries[0].target.id);
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px' }
+      );
+
+      headingElements.forEach((el) => observer.observe(el));
+
+      return () => {
+        headingElements.forEach((el) => observer.unobserve(el));
+      };
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [contentSelector, id]);
+
+  const handleClick = useCallback((e, headingId) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('[TOC] Click:', headingId);
+
+    const targetElement = document.getElementById(headingId);
+    console.log('[TOC] Target element:', targetElement);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      targetElement.setAttribute('tabindex', '-1');
+      targetElement.focus({ preventScroll: true });
+      console.log('[TOC] scrollIntoView called');
+    } else {
+      console.error('[TOC] Element not found for id:', headingId);
+    }
+
+    window.history.replaceState(null, '', `#${headingId}`);
+    setActiveId(headingId);
+  }, []);
 
   if (headings.length === 0) return null;
 
@@ -63,19 +89,7 @@ export default function TOC({ contentSelector, id }) {
             >
               <a 
                 href={`#${h.id}`} 
-                onClick={(e) => {
-                  e.preventDefault();
-                  const targetElement = document.getElementById(h.id);
-                  if (targetElement) {
-                    const yOffset = -90;
-                    const y = targetElement.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) + yOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                    targetElement.setAttribute('tabindex', '-1');
-                    targetElement.focus({ preventScroll: true });
-                  }
-                  window.history.pushState(null, '', `#${h.id}`);
-                  setActiveId(h.id);
-                }}
+                onClick={(e) => handleClick(e, h.id)}
               >
                 {h.text}
               </a>
