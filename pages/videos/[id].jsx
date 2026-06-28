@@ -52,6 +52,7 @@ export default function Video({ id, frontmatter, content, excerpt }) {
       <SEO
         title={frontmatter.title}
         description={excerpt}
+        image={frontmatter.image}
         url={`https://seodaeya.github.io/videos/${id}`}
         type="video"
         videoId={frontmatter.videoId}

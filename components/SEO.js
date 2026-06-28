@@ -12,7 +12,8 @@ export default function SEO({
 }) {
   const pageTitle = title === '나는 사람이다.' ? title : `${title} | 나는 사람이다.`;
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
-  const ogImage = image.startsWith('http') ? image : `https://seodaeya.github.io${image}`;
+  const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
+  const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
 
   // JSON-LD structured data
   const baseSchema = {
@@ -57,15 +58,19 @@ export default function SEO({
       }
     };
   } else if (type === 'video' && videoId) {
+    const thumbnailList = [
+      `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+      `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+    ];
+    if (finalImage && finalImage !== '/na_rd.jpeg') {
+      thumbnailList.unshift(ogImage);
+    }
     specificSchema = {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       'name': title,
       'description': description,
-      'thumbnailUrl': [
-        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-      ],
+      'thumbnailUrl': thumbnailList,
       'uploadDate': date ? new Date(date).toISOString() : new Date().toISOString(),
       'embedUrl': `https://www.youtube.com/embed/${videoId}`,
       'publisher': {
@@ -80,6 +85,7 @@ export default function SEO({
     <Head>
       {/* Basic HTML Meta Tags */}
       <title>{pageTitle}</title>
+      <meta name="thumbnail" content={ogImage} />
 
       {/* Naver Search Advisor Verification */}
       <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />

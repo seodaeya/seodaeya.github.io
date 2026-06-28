@@ -56,6 +56,7 @@ export default function Post({ id, frontmatter, content, excerpt, readingTime })
       <SEO
         title={frontmatter.title}
         description={excerpt}
+        image={frontmatter.image}
         url={`https://seodaeya.github.io/posts/${id}`}
         type="article"
         date={frontmatter.date}
