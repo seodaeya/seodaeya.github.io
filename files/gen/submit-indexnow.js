@@ -58,7 +58,7 @@ const submitIndexNow = () => {
     let body = '';
     res.on('data', (chunk) => { body += chunk; });
     res.on('end', () => {
-      if (res.statusCode === 200) {
+      if (res.statusCode === 200 || res.statusCode === 202) {
         console.log('IndexNow submission succeeded! Bing/Yandex notified.');
       } else {
         console.error(`IndexNow submission failed: ${body}`);
