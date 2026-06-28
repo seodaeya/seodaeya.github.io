@@ -6,6 +6,10 @@ export default function TOC({ contentSelector, id }) {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
+    // Reset state when navigating to a different page
+    setHeadings([]);
+    setActiveId('');
+
     // Small delay to ensure DOM is fully rendered after hydration
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
