@@ -442,6 +442,8 @@
   text-decoration: none;
   transition: all 0.3s ease;
   min-height: 90px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .navCard:hover {
