@@ -64,7 +64,16 @@ export async function getStaticProps({ params }) {
     props: {
       id: params.id,
       frontmatter: data,
-      content: marked(content),
+      content: (() => {
+        const renderer = new marked.Renderer();
+        let headingIndex = 0;
+        renderer.heading = function({ tokens, depth }) {
+          const text = this.parser.parseInline(tokens);
+          const id = 'heading-' + (headingIndex++);
+          return '<h' + depth + ' id="' + id + '">' + text + '</h' + depth + '>';
+        };
+        return marked(content, { renderer });
+      })(),
       excerpt: createPlainExcerpt(content, 150) || '유튜브 영상을 시청해보세요.',
       prevPost,
       nextPost,

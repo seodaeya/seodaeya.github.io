@@ -14,14 +14,14 @@ export default function TOC({ contentSelector, id }) {
     const headingList = [];
 
     headingElements.forEach((el, index) => {
-      // If it doesn't have an ID, assign a unique one
+      // Ensure every heading has an ID (SSG should have pre-assigned them)
       if (!el.id) {
         el.id = `heading-${index}`;
       }
       headingList.push({
         id: el.id,
         text: el.innerText || el.textContent,
-        level: el.tagName.toLowerCase(), // 'h2' or 'h3'
+        level: el.tagName.toLowerCase(),
       });
     });
 
