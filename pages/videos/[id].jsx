@@ -228,7 +228,7 @@ export default function Video({ id, frontmatter, content, excerpt, prevPost, nex
         </div>
 
         {/* Floating Table of Contents */}
-        <TOC contentSelector="#video-content" />
+        <TOC contentSelector="#video-content" id={id} />
       </div>
     </>
   );

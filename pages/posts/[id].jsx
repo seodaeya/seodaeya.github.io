@@ -219,7 +219,7 @@ export default function Post({ id, frontmatter, content, excerpt, readingTime, p
         </article>
 
         {/* Floating Table of Contents */}
-        <TOC contentSelector="#post-content" />
+        <TOC contentSelector="#post-content" id={id} />
       </div>
     </>
   );

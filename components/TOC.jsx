@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '@/styles/toc.module.css';
 
-export default function TOC({ contentSelector }) {
+export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
 
@@ -47,7 +47,7 @@ export default function TOC({ contentSelector }) {
     return () => {
       headingElements.forEach((el) => observer.unobserve(el));
     };
-  }, [contentSelector]);
+  }, [contentSelector, id]);
 
   if (headings.length === 0) return null;
 
@@ -67,10 +67,11 @@ export default function TOC({ contentSelector }) {
                   e.preventDefault();
                   const targetElement = document.getElementById(h.id);
                   if (targetElement) {
-                    // Offset scroll slightly to account for fixed header
                     const yOffset = -90;
-                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    const y = targetElement.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) + yOffset;
                     window.scrollTo({ top: y, behavior: 'smooth' });
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus({ preventScroll: true });
                   }
                   window.history.pushState(null, '', `#${h.id}`);
                   setActiveId(h.id);
