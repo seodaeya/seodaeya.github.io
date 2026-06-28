@@ -3,115 +3,121 @@
   <!-- Core Pages -->
   <url>
     <loc>https://seodaeya.github.io/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/categories</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20250404-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20250404-2</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20250404-3</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20250427-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230309-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230310-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230407-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230409-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230426-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20230428-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260510-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260602-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260618-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260622-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260622-2</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260624-1</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://seodaeya.github.io/videos/20260624-2</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/videos/20260628-1</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

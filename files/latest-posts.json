@@ -1,5 +1,11 @@
 [
   {
+    "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
+    "category": "FUN",
+    "file": "videos/20260628-1.md",
+    "date": "20260628"
+  },
+  {
     "title": "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법",
     "category": "TECH",
     "file": "videos/20260624-1.md",
@@ -51,12 +57,6 @@
     "title": "Anthropic Claude 모델 완전 분석 (Claude 3.5 Sonnet부터 3.7 Sonnet/Thinking까지)",
     "category": "AI",
     "file": "posts/20250404-1.md",
-    "date": "20250404"
-  },
-  {
-    "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-    "category": "AI",
-    "file": "posts/20250404-2.md",
     "date": "20250404"
   }
 ]
