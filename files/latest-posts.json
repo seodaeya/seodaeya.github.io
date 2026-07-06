@@ -1,5 +1,11 @@
 [
   {
+    "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
+    "category": "PET",
+    "file": "videos/20260706-1.md",
+    "date": "20260706"
+  },
+  {
     "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
     "category": "FUN",
     "file": "videos/20260628-1.md",
@@ -52,11 +58,5 @@
     "category": "DB",
     "file": "posts/20250427-1.md",
     "date": "20250427"
-  },
-  {
-    "title": "Anthropic Claude 모델 완전 분석 (Claude 3.5 Sonnet부터 3.7 Sonnet/Thinking까지)",
-    "category": "AI",
-    "file": "posts/20250404-1.md",
-    "date": "20250404"
   }
 ]
