@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
 export default function SEO({
-  title = '나는 사람이다.',
-  description = 'AI 시대에 남기는 지극히 인간적인 기록들',
+  title = '나는 사람이다. | 기술과 일상의 기록',
+  description = 'AI 시대에 남기는 지극히 인간적인 기록들을 모아둔 1인 블로그입니다. 웹 개발, IT 기기 리뷰, 일상적인 경험과 팁 등 유익한 이야기를 나눕니다.',
   keywords = 'NaRD, 블로그, 유튜브, 기술, 라이프',
   url = 'https://seodaeya.github.io',
   type = 'website',
@@ -120,7 +120,7 @@ export default function SEO({
       <meta name="perplexitybot" content="index, follow" />
 
       {/* Canonical Link */}
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={url.endsWith('/') ? url : `${url}/`} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />

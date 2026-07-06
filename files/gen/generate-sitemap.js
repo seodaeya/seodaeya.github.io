@@ -27,7 +27,7 @@ const generateSitemap = () => {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${siteUrl}/categories</loc>
+    <loc>${siteUrl}/categories/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -38,7 +38,7 @@ const generateSitemap = () => {
   posts.forEach(file => {
     const id = file.replace('.md', '');
     xml += `  <url>
-    <loc>${siteUrl}/posts/${id}</loc>
+    <loc>${siteUrl}/posts/${id}/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -49,7 +49,7 @@ const generateSitemap = () => {
   videos.forEach(file => {
     const id = file.replace('.md', '');
     xml += `  <url>
-    <loc>${siteUrl}/videos/${id}</loc>
+    <loc>${siteUrl}/videos/${id}/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

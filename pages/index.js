@@ -102,8 +102,8 @@ export default function Home({ latestPosts, latestVideos }) {
   return (
     <>
       <SEO 
-        title="나는 사람이다."
-        description="AI 시대에 남기는 지극히 인간적인 기록들. 테크, 생활, 그리고 사람의 온기가 묻어나는 이야기."
+        title="나는 사람이다. | 기술과 일상의 기록"
+        description="AI 시대에 남기는 지극히 인간적인 기록들을 모아둔 1인 블로그입니다. 웹 개발, IT 기기 리뷰, 일상적인 경험과 팁 등 유익한 이야기를 나눕니다."
         url="https://seodaeya.github.io"
       />
 

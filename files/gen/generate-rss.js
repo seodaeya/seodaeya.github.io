@@ -21,7 +21,7 @@ const getFiles = (dir) => {
     return {
       title: data.title || filename.replace('.md', ''),
       description: createPlainExcerpt(content, 150),
-      link: `${siteUrl}/${route}`,
+      link: `${siteUrl}/${route}/`,
       date: data.date ? new Date(data.date).toUTCString() : new Date().toUTCString(),
       rawDate: data.date || ''
     };
