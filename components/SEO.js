@@ -95,10 +95,24 @@ export default function SEO({
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charSet="UTF-8" />
+      <meta name="author" content="NaRD" />
+      <meta name="distribution" content="global" />
+      <meta name="rating" content="general" />
+
+      {/* Dublin Core Metadata for Global Search Engines */}
+      <meta name="DC.Title" content={pageTitle} />
+      <meta name="DC.Creator" content="NaRD" />
+      <meta name="DC.Description" content={description} />
+      <meta name="DC.Language" content="ko" />
+      <meta name="DC.Identifier" content={url} />
 
       {/* SEO/AI Crawler Directives */}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="googlebot" content="index, follow" />
+      <meta name="bingbot" content="index, follow, max-image-preview:large" />
+      <meta name="duckduckbot" content="index, follow" />
+      <meta name="slurp" content="index, follow" />
+      <meta name="yandex" content="index, follow" />
       {/* Explicit instructions for AI Search Engines & LLM agents */}
       <meta name="ai-crawlers" content="index, follow" />
       <meta name="gptbot" content="index, follow" />
