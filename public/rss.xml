@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Mon, 06 Jul 2026 13:09:27 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 07 Jul 2026 14:15:39 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법]]></title>
+    <link>https://seodaeya.github.io/posts/20260707-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260707-1/</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 Giscus입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이스 없이 깔끔하게 댓글을 관리할 수 있는 강력한 오...]]></description>
+  </item>
   <item>
     <title><![CDATA[크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법]]></title>
     <link>https://seodaeya.github.io/videos/20260706-1/</link>

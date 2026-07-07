@@ -19,6 +19,12 @@
       "file": "posts/20250427-1.md"
     }
   ],
+  "Dev": [
+    {
+      "title": "깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법",
+      "file": "posts/20260707-1.md"
+    }
+  ],
   "FUN": [
     {
       "title": "당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기",

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import SEO from '@/components/SEO';
+import Comments from '@/components/Comments';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import contentUtils from '@/lib/content';
@@ -233,6 +234,9 @@ export default function Video({ id, frontmatter, content, excerpt, prevPost, nex
                 </div>
               </section>
             )}
+
+            {/* Giscus Comments widget */}
+            <Comments />
           </div>
         </div>
 
