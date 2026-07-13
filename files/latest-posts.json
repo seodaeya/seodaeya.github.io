@@ -1,5 +1,11 @@
 [
   {
+    "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
+    "category": "AI",
+    "file": "posts/20260713-1.md",
+    "date": "20260713"
+  },
+  {
     "title": "깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법",
     "category": "Dev",
     "file": "posts/20260707-1.md",
@@ -52,11 +58,5 @@
     "category": "PET",
     "file": "videos/20260602-1.md",
     "date": "20260602"
-  },
-  {
-    "title": "싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기",
-    "category": "TECH",
-    "file": "videos/20260510-1.md",
-    "date": "20260510"
   }
 ]

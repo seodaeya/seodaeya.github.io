@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 07 Jul 2026 14:31:28 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 13 Jul 2026 12:59:57 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까]]></title>
+    <link>https://seodaeya.github.io/posts/20260713-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260713-1/</guid>
+    <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[OpenAI가 7월 9일 공개한 GPT-5.6은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, Sol, Terra, Luna가 함께 나왔다. 처음 보면 이름이 조금 낯설다. 예전처럼 숫자가 올라간 새 모델 하나를 고르는 방식이 아니라, 같...]]></description>
+  </item>
   <item>
     <title><![CDATA[깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법]]></title>
     <link>https://seodaeya.github.io/posts/20260707-1/</link>
