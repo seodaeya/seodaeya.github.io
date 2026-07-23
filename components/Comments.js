@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Comments() {
   const containerRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -16,11 +18,10 @@ export default function Comments() {
     script.crossOrigin = 'anonymous';
     
     // Giscus 설정 파라미터 (저장소와 토론을 연동)
-    // 💡 실제 사용 시 아래 Repo ID 및 Category ID 값을 본인의 설정값으로 변경해야 작동합니다.
     script.setAttribute('data-repo', 'seodaeya/seodaeya.github.io');
-    script.setAttribute('data-repo-id', 'R_kgDOI6eCxw'); // 👈 본인의 Giscus Repository ID 입력
+    script.setAttribute('data-repo-id', 'R_kgDOI6eCxw');
     script.setAttribute('data-category', 'General');
-    script.setAttribute('data-category-id', 'DIC_kwDOI6eCx84DAshV'); // 👈 본인의 Giscus Category ID 입력
+    script.setAttribute('data-category-id', 'DIC_kwDOI6eCx84DAshV');
     
     script.setAttribute('data-mapping', 'pathname');
     script.setAttribute('data-strict', '0');
@@ -34,7 +35,13 @@ export default function Comments() {
     // 컨테이너 초기화 후 스크립트 탑재
     containerRef.current.innerHTML = '';
     containerRef.current.appendChild(script);
-  }, []);
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = '';
+      }
+    };
+  }, [router.asPath]);
 
   return (
     <div style={{ marginTop: '56px', borderTop: '1px solid var(--border-glass)', paddingTop: '40px' }}>

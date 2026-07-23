@@ -224,7 +224,7 @@ export default function Post({ id, frontmatter, content, excerpt, readingTime, p
           )}
 
           {/* Giscus Comments widget */}
-          <Comments />
+          <Comments key={id} />
         </article>
 
         {/* Floating Table of Contents */}

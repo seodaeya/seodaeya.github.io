@@ -236,7 +236,7 @@ export default function Video({ id, frontmatter, content, excerpt, prevPost, nex
             )}
 
             {/* Giscus Comments widget */}
-            <Comments />
+            <Comments key={id} />
           </div>
         </div>
 
