@@ -38,12 +38,16 @@ const generateLatestPosts = () => {
 
     const filesWithDates = files
         .map(filePath => {
-            const filename = path.basename(filePath);
+            const filename = path.basename(filePath, ".md");
             const date = extractDateFromFilename(filename);
-            return { filePath, date };
+            return { filePath, filename, date };
         })
         .filter(file => file.date)
-        .sort((a, b) => b.date.localeCompare(a.date));
+        .sort((a, b) => {
+            const dateDiff = b.date.localeCompare(a.date);
+            if (dateDiff !== 0) return dateDiff;
+            return b.filename.localeCompare(a.filename);
+        });
 
     const latestPosts = filesWithDates.slice(0, 10).map(file => {
         const content = fs.readFileSync(file.filePath, "utf-8");

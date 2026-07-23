@@ -33,7 +33,11 @@ const generateRSS = () => {
   const videos = getFiles(videosDir);
   
   // 전체 아이템 통합 후 날짜 내림차순 정렬
-  const allItems = [...posts, ...videos].sort((a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime());
+  const allItems = [...posts, ...videos].sort((a, b) => {
+    const timeDiff = new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime();
+    if (timeDiff !== 0) return timeDiff;
+    return (b.link || '').localeCompare(a.link || '');
+  });
   
   let xml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

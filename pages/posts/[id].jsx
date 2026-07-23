@@ -53,7 +53,11 @@ export async function getStaticProps({ params }) {
   const allContent = [
     ...readDir(postsDir, 'posts'),
     ...readDir(videosDir, 'videos')
-  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  ].sort((a, b) => {
+    const timeDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (timeDiff !== 0) return timeDiff;
+    return (b.id || '').localeCompare(a.id || '');
+  });
 
   const currentIndex = allContent.findIndex(item => item.id === params.id && item.type === 'posts');
   

@@ -51,6 +51,23 @@ const generateCategories = () => {
         }
     });
 
+    const extractDateFromFilename = (filename) => {
+        const match = filename.match(/(\d{8})/);
+        return match ? match[1] : '';
+    };
+
+    Object.keys(categories).forEach(cName => {
+        categories[cName].sort((a, b) => {
+            const fileA = path.basename(a.file);
+            const fileB = path.basename(b.file);
+            const dateA = extractDateFromFilename(fileA);
+            const dateB = extractDateFromFilename(fileB);
+            const dateDiff = dateB.localeCompare(dateA);
+            if (dateDiff !== 0) return dateDiff;
+            return fileB.localeCompare(fileA);
+        });
+    });
+
     fs.writeFileSync(outputFile, JSON.stringify(categories, null, 2), "utf-8");
     console.log("categories.json 생성 완료!");
 };

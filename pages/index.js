@@ -55,7 +55,9 @@ export async function getStaticProps() {
   }
 
   const sortDate = (a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    const timeDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (timeDiff !== 0) return timeDiff;
+    return (b.file || b.id || '').localeCompare(a.file || a.id || '');
   };
 
   posts.sort(sortDate);
