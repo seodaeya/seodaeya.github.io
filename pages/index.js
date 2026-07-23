@@ -105,7 +105,7 @@ export default function Home({ latestPosts, latestVideos }) {
     <>
       <SEO 
         title="나는 사람이다. | 기술과 일상의 기록"
-        description="AI 시대에 남기는 지극히 인간적인 기록들을 모아둔 1인 블로그입니다. 웹 개발, IT 기기 리뷰, 일상적인 경험과 팁 등 유익한 이야기를 나눕니다."
+        description="인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기. IT 기기 리뷰, 개발 경험, 일상의 팁을 나눕니다."
         url="https://seodaeya.github.io"
       />
 
@@ -117,8 +117,7 @@ export default function Home({ latestPosts, latestVideos }) {
           </div>
           <h1 className={styles.heroTitle}>나는 사람이다.</h1>
           <p className={styles.heroTagline}>
-            AI가 모든 정보를 요약하고 판단하는 시대, 기계적인 알고리즘을 거슬러 
-            인간의 오감으로 느끼고 경험한 지극히 개인적인 기록들을 모아둡니다.
+            인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기.
           </p>
           <div className={styles.heroActions}>
             <a 
