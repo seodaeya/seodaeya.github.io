@@ -15,8 +15,14 @@ export default function Footer() {
         </div>
 
         <div className={styles.footerLinks}>
-          <h4>연결된 채널</h4>
+          <h4>사이트 안내</h4>
           <ul>
+            <li>
+              <a href="/about/">블로그 소개</a>
+            </li>
+            <li>
+              <a href="/privacy/">개인정보처리방침</a>
+            </li>
             <li>
               <a 
                 href="https://www.youtube.com/@Na.R.D." 
