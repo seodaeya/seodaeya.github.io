@@ -1,5 +1,11 @@
 [
   {
+    "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부",
+    "category": "TECH",
+    "file": "videos/20260803-1.md",
+    "date": "20260803"
+  },
+  {
     "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
     "category": "AI",
     "file": "posts/20260723-2.md",
@@ -52,11 +58,5 @@
     "category": "TECH",
     "file": "videos/20260624-1.md",
     "date": "20260624"
-  },
-  {
-    "title": "노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝",
-    "category": "TECH",
-    "file": "videos/20260622-2.md",
-    "date": "20260622"
   }
 ]
