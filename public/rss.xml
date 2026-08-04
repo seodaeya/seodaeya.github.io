@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 02 Aug 2026 17:16:01 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 04 Aug 2026 14:54:13 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지]]></title>
+    <link>https://seodaeya.github.io/posts/20260804-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260804-1/</guid>
+    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[개발자나 시스템 관리자가 복잡한 코드를 분석하거나 텍스트 데이터를 처리할 때, 웹 브라우저를 열고 카피 앤 페이스트(Copy & Paste)를 반복하는 과정은 작업 흐름을 끊는 커다란 요소입니다. 구글(Google)이 제공하는 공식 Gemini CLI(Command L...]]></description>
+  </item>
   <item>
     <title><![CDATA[SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부]]></title>
     <link>https://seodaeya.github.io/videos/20260803-2/</link>

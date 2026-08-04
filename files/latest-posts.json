@@ -1,5 +1,11 @@
 [
   {
+    "title": "Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지",
+    "category": "TECH",
+    "file": "posts/20260804-1.md",
+    "date": "20260804"
+  },
+  {
     "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부",
     "category": "TECH",
     "file": "videos/20260803-2.md",
@@ -52,11 +58,5 @@
     "category": "PET",
     "file": "videos/20260706-1.md",
     "date": "20260706"
-  },
-  {
-    "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
-    "category": "FUN",
-    "file": "videos/20260628-1.md",
-    "date": "20260628"
   }
 ]
