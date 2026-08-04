@@ -68,7 +68,28 @@ const generateCategories = () => {
         });
     });
 
-    fs.writeFileSync(outputFile, JSON.stringify(categories, null, 2), "utf-8");
+    const categoryOrder = [
+        "AI & Intelligence",
+        "Dev & Software",
+        "Hardware & DIY",
+        "Lifestyle & Tech",
+        "Pet Care"
+    ];
+
+    const sortedCategories = {};
+    categoryOrder.forEach(catKey => {
+        if (categories[catKey]) {
+            sortedCategories[catKey] = categories[catKey];
+        }
+    });
+
+    Object.keys(categories).forEach(catKey => {
+        if (!sortedCategories[catKey]) {
+            sortedCategories[catKey] = categories[catKey];
+        }
+    });
+
+    fs.writeFileSync(outputFile, JSON.stringify(sortedCategories, null, 2), "utf-8");
     console.log("categories.json 생성 완료!");
 };
 
