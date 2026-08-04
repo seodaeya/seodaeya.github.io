@@ -39,6 +39,10 @@
   ],
   "Dev & Software": [
     {
+      "title": "구글 서치콘솔 사이트맵(sitemap.xml) '마지막으로 읽은 날짜' 과거 고정 및 수집 불일치 해결법",
+      "file": "posts/20260805-2.md"
+    },
+    {
       "title": "깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법",
       "file": "posts/20260707-1.md"
     },
