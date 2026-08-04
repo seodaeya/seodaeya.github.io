@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const siteUrl = 'https://seodaeya.github.io';
-const publicDir = path.join(__dirname, '../../public');
-const postsDir = path.join(__dirname, '../posts');
-const videosDir = path.join(__dirname, '../videos');
+const publicDir = path.join(process.cwd(), 'public');
+const postsDir = path.join(process.cwd(), 'files/posts');
+const videosDir = path.join(process.cwd(), 'files/videos');
 
 const getFiles = (dir) => {
   if (!fs.existsSync(dir)) return [];
@@ -32,6 +32,18 @@ const generateSitemap = () => {
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>${siteUrl}/about/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${siteUrl}/privacy/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 `;
 
   // Blog posts
@@ -42,7 +54,8 @@ const generateSitemap = () => {
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>\n`;
+  </url>
+`;
   });
 
   // Videos
@@ -53,7 +66,8 @@ const generateSitemap = () => {
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>\n`;
+  </url>
+`;
   });
 
   xml += `</urlset>`;
@@ -64,7 +78,7 @@ const generateSitemap = () => {
   }
 
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), xml, 'utf8');
-  console.log('sitemap.xml 생성 완료!');
+  console.log('public/sitemap.xml 생성 완료!');
 };
 
 generateSitemap();
