@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 04 Aug 2026 15:14:15 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 04 Aug 2026 15:18:59 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략]]></title>
+    <link>https://seodaeya.github.io/posts/20260805-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260805-1/</guid>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[지난 20여 년간 웹사이트와 블로그 트래픽을 지배해 온 패러다임은 단연 SEO(Search Engine Optimization, 검색엔진 최적화)였습니다. 구글(Google)이나 네이버(Naver) 검색창에 특정 키워드를 입력하면, 검색엔진 로봇이 랭킹 알고리즘에 따라...]]></description>
+  </item>
   <item>
     <title><![CDATA[Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지]]></title>
     <link>https://seodaeya.github.io/posts/20260804-1/</link>

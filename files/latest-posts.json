@@ -1,7 +1,13 @@
 [
   {
+    "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
+    "category": "AI & Intelligence",
+    "file": "posts/20260805-1.md",
+    "date": "20260805"
+  },
+  {
     "title": "Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지",
-    "category": "Dev & Software",
+    "category": "AI & Intelligence",
     "file": "posts/20260804-1.md",
     "date": "20260804"
   },
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260707-1.md",
     "date": "20260707"
-  },
-  {
-    "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
-    "category": "Pet Care",
-    "file": "videos/20260706-1.md",
-    "date": "20260706"
   }
 ]

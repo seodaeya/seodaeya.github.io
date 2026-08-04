@@ -1,6 +1,14 @@
 {
   "AI & Intelligence": [
     {
+      "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
+      "file": "posts/20260805-1.md"
+    },
+    {
+      "title": "Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지",
+      "file": "posts/20260804-1.md"
+    },
+    {
       "title": "중국 문샷 AI의 Kimi 3(K3) 전격 공개: 2.8조 파라미터 오픈웨이트 모델의 기술 스펙과 파장 심층 분석",
       "file": "posts/20260803-1.md"
     },
@@ -30,10 +38,6 @@
     }
   ],
   "Dev & Software": [
-    {
-      "title": "Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지",
-      "file": "posts/20260804-1.md"
-    },
     {
       "title": "깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법",
       "file": "posts/20260707-1.md"
