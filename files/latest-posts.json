@@ -1,5 +1,11 @@
 [
   {
+    "title": "GitHub Pages(github.io) 애드센스 거절 원인과 커스텀 도메인 승인 통과 전략",
+    "category": "Dev & Software",
+    "file": "posts/20260807-1.md",
+    "date": "20260807"
+  },
+  {
     "title": "구글 서치콘솔 사이트맵(sitemap.xml) '마지막으로 읽은 날짜' 과거 고정 및 수집 불일치 해결법",
     "category": "Dev & Software",
     "file": "posts/20260805-2.md",
@@ -52,11 +58,5 @@
     "category": "Lifestyle & Tech",
     "file": "posts/20260715-1.md",
     "date": "20260715"
-  },
-  {
-    "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
-    "category": "AI & Intelligence",
-    "file": "posts/20260713-1.md",
-    "date": "20260713"
   }
 ]

@@ -39,6 +39,10 @@
   ],
   "Dev & Software": [
     {
+      "title": "GitHub Pages(github.io) 애드센스 거절 원인과 커스텀 도메인 승인 통과 전략",
+      "file": "posts/20260807-1.md"
+    },
+    {
       "title": "구글 서치콘솔 사이트맵(sitemap.xml) '마지막으로 읽은 날짜' 과거 고정 및 수집 불일치 해결법",
       "file": "posts/20260805-2.md"
     },
