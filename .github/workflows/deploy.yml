@@ -31,11 +31,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Node.js 환경 설정
+      # 2. Node.js 환경 설정 (최신 LTS 버전에 맞춰 Node.js 22로 업데이트)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       # 3. 의존성 설치
@@ -46,9 +46,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      # 5. GitHub Pages 설정 및 진단
+      # 5. GitHub Pages 설정 및 진단 (v5로 업데이트)
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       # 6. 빌드된 파일 진단 (Diagnostic)
       - name: Show built files
