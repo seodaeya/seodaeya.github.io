@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 06 Aug 2026 15:46:35 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 11 Aug 2026 13:37:41 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[개인정보처리방침 작성법 완벽 가이드: 정의부터 애드센스 승인 및 법적 준수 실전 체크리스트까지]]></title>
+    <link>https://seodaeya.github.io/posts/20260811-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260811-1/</guid>
+    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[개인 기술 블로그나 웹사이트를 운영하는 사람들에게 개인정보처리방침(Privacy Policy)은 과거에 그저 "대기업이나 쇼핑몰이 형식적으로 올리는 복잡한 문서" 정도로 인식되곤 했습니다. 하지만 최근 개인정보 보호법 개정, 유럽연합(EU) GDPR 및 미국 CCPA/...]]></description>
+  </item>
   <item>
     <title><![CDATA[GitHub Pages(github.io) 애드센스 거절 원인과 커스텀 도메인 승인 통과 전략]]></title>
     <link>https://seodaeya.github.io/posts/20260807-1/</link>
