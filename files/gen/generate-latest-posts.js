@@ -31,6 +31,16 @@ const extractDateFromFilename = (filename) => {
 const generateLatestPosts = () => {
     const files = getAllMarkdownFiles(filesDir);
 
+    // Automatic Fail-Safe: Convert any raw **text** in all markdown files to <strong>text</strong>
+    files.forEach(filePath => {
+        let content = fs.readFileSync(filePath, "utf-8");
+        if (content.includes("**")) {
+            const converted = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+            fs.writeFileSync(filePath, converted, "utf-8");
+            console.log(`[Fail-Safe] Converted raw ** to <strong> in ${path.basename(filePath)}`);
+        }
+    });
+
     if (files.length === 0) {
         console.error("Markdown 파일이 없습니다.");
         return;
