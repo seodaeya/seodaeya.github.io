@@ -1,7 +1,7 @@
 {
   "AI & Intelligence": [
     {
-      "title": "구글 Gemini 3.7 Flash 완전 분석: 3.6 대비 진화 포인트, 하이브리드 추론, 토큰 비용 및 경쟁 모델 비교",
+      "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
       "file": "posts/20260815-1.md"
     },
     {
@@ -9,11 +9,11 @@
       "file": "posts/20260805-1.md"
     },
     {
-      "title": "Gemini CLI 완벽 설치 가이드: macOS & Windows 환경별 설정부터 터미널 활용법까지",
+      "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
       "file": "posts/20260804-1.md"
     },
     {
-      "title": "중국 문샷 AI의 Kimi 3(K3) 전격 공개: 2.8조 파라미터 오픈웨이트 모델의 기술 스펙과 파장 심층 분석",
+      "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
       "file": "posts/20260803-1.md"
     },
     {
@@ -37,25 +37,25 @@
       "file": "posts/20250404-2.md"
     },
     {
-      "title": "Anthropic Claude 모델 완전 분석 (Claude 3.5 Sonnet부터 3.7 Sonnet/Thinking까지)",
+      "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
       "file": "posts/20250404-1.md"
     }
   ],
   "Dev & Software": [
     {
-      "title": "기업 개인정보처리방침 완벽 실전 가이드: CPO(개인정보 보호책임자)의 역할과 올바른 이행 마음가짐",
+      "title": "기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐",
       "file": "posts/20260811-1.md"
     },
     {
-      "title": "GitHub Pages(github.io) 애드센스 거절 원인과 커스텀 도메인 승인 통과 전략",
+      "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
       "file": "posts/20260807-1.md"
     },
     {
-      "title": "구글 서치콘솔 사이트맵(sitemap.xml) '마지막으로 읽은 날짜' 과거 고정 및 수집 불일치 해결법",
+      "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
       "file": "posts/20260805-2.md"
     },
     {
-      "title": "깃블로그 댓글 기능(Giscus) 연동 오류 해결 가이드: 'Unable to create discussion' 해결법",
+      "title": "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion",
       "file": "posts/20260707-1.md"
     },
     {
@@ -65,7 +65,7 @@
   ],
   "Hardware & DIY": [
     {
-      "title": "macOS에서 안드로이드 스마트폰 사진·파일 전송법: OpenMTP 설치부터 활용까지 완벽 가이드",
+      "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
       "file": "posts/20260812-1.md"
     },
     {
@@ -89,7 +89,7 @@
       "file": "videos/20260622-2.md"
     },
     {
-      "title": "맥 미니 화면을 아이패드로! 모니터 없이 사이드카/미러링 유지하는 방법 (더미 HDMI 활용 팁)",
+      "title": "맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁",
       "file": "videos/20260622-1.md"
     },
     {

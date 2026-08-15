@@ -10,7 +10,15 @@ export default function SEO({
   date,
   videoId,
 }) {
-  const pageTitle = title.includes('나는 사람이다.') ? title : `${title} | 나는 사람이다.`;
+  const siteSuffix = ' | 나는 사람이다.';
+  let pageTitle = title;
+  if (!title.includes('나는 사람이다.')) {
+    if (title.length + siteSuffix.length <= 60) {
+      pageTitle = `${title}${siteSuffix}`;
+    } else {
+      pageTitle = title;
+    }
+  }
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
   const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
