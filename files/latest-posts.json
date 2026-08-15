@@ -1,5 +1,11 @@
 [
   {
+    "title": "구글 Gemini 3.7 Flash 완전 분석: 3.6 대비 진화 포인트, 하이브리드 추론, 토큰 비용 및 경쟁 모델 비교",
+    "category": "AI & Intelligence",
+    "file": "posts/20260815-1.md",
+    "date": "20260815"
+  },
+  {
     "title": "macOS에서 안드로이드 스마트폰 사진·파일 전송법: OpenMTP 설치부터 활용까지 완벽 가이드",
     "category": "Hardware & DIY",
     "file": "posts/20260812-1.md",
@@ -52,11 +58,5 @@
     "category": "Hardware & DIY",
     "file": "videos/20260803-1.md",
     "date": "20260803"
-  },
-  {
-    "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
-    "category": "AI & Intelligence",
-    "file": "posts/20260723-2.md",
-    "date": "20260723"
   }
 ]

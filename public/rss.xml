@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 12 Aug 2026 14:52:52 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 15 Aug 2026 00:49:38 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[구글 Gemini 3.7 Flash 완전 분석: 3.6 대비 진화 포인트, 하이브리드 추론, 토큰 비용 및 경쟁 모델 비교]]></title>
+    <link>https://seodaeya.github.io/posts/20260815-1/</link>
+    <guid>https://seodaeya.github.io/posts/20260815-1/</guid>
+    <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[구글(Google)이 최신 플래그십 AI 모델인 Gemini 3.7 Flash(제미나이 3.7 플래시)를 공식 공개했습니다. 이전 세대인 Gemini 3.6 Flash가 속도와 출력 토큰 효율화에 집중했다면, 이번 3.7 버전은 복잡한 소프트웨어 엔지니어링, 자율형 A...]]></description>
+  </item>
   <item>
     <title><![CDATA[macOS에서 안드로이드 스마트폰 사진·파일 전송법: OpenMTP 설치부터 활용까지 완벽 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260812-1/</link>
