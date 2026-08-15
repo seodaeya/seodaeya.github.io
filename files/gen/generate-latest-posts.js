@@ -31,13 +31,52 @@ const extractDateFromFilename = (filename) => {
 const generateLatestPosts = () => {
     const files = getAllMarkdownFiles(filesDir);
 
-    // Automatic Fail-Safe: Convert any raw **text** in all markdown files to <strong>text</strong>
+    // Automatic Fail-Safe: Convert any raw **text** to <strong> and unescaped ~ to \~
     files.forEach(filePath => {
         let content = fs.readFileSync(filePath, "utf-8");
+        let modified = false;
+
+        // 1) Bold fail-safe
         if (content.includes("**")) {
-            const converted = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-            fs.writeFileSync(filePath, converted, "utf-8");
+            content = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+            modified = true;
             console.log(`[Fail-Safe] Converted raw ** to <strong> in ${path.basename(filePath)}`);
+        }
+
+        // 2) Tilde strikethrough fail-safe (escape unescaped tildes in body)
+        const parts = content.split('---');
+        if (parts.length >= 3) {
+            const frontmatter = parts[1];
+            const body = parts.slice(2).join('---');
+            const lines = body.split('\n');
+            let inCodeBlock = false;
+            let bodyModified = false;
+
+            const newLines = lines.map(line => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('```') || trimmed.startsWith('~~~')) {
+                    inCodeBlock = !inCodeBlock;
+                    return line;
+                }
+                if (inCodeBlock) return line;
+
+                // Replace unescaped ~ with \~
+                if (/(?<!\\)~/.test(line)) {
+                    bodyModified = true;
+                    return line.replace(/(?<!\\)~/g, '\\~');
+                }
+                return line;
+            });
+
+            if (bodyModified) {
+                content = '---' + frontmatter + '---' + newLines.join('\n');
+                modified = true;
+                console.log(`[Fail-Safe] Escaped unescaped tildes in ${path.basename(filePath)}`);
+            }
+        }
+
+        if (modified) {
+            fs.writeFileSync(filePath, content, "utf-8");
         }
     });
 
