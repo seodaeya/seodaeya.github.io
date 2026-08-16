@@ -276,3 +276,61 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem !important;
   }
 }
+
+
+/* Interactive Term Tooltip Styling for Technical Words */
+.term-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  font-weight: 600;
+  color: #38bdf8;
+  border-bottom: 1.5px dashed #0284c7;
+  transition: all 0.2s ease;
+}
+
+.term-tooltip:hover {
+  color: #7dd3fc;
+  border-bottom-color: #38bdf8;
+}
+
+.term-tooltip .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 260px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f8fafc;
+  text-align: left;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.5;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 189, 248, 0.15);
+  position: absolute;
+  z-index: 100;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+.term-tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+}
+
+.term-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
