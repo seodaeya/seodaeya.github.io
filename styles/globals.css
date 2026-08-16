@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Interactive Term Tooltip Styling for Technical Words */
 .term-tooltip {
   position: relative;
-  display: inline-block;
+  display: inline;
   cursor: help;
   font-weight: 600;
   color: #38bdf8;
@@ -297,40 +297,42 @@ h1, h2, h3, h4, h5, h6 {
 .term-tooltip .tooltip-text {
   visibility: hidden;
   opacity: 0;
-  width: 260px;
-  background: rgba(15, 23, 42, 0.95);
+  width: max-content;
+  max-width: min(290px, 85vw);
+  background: rgba(15, 23, 42, 0.98);
   color: #f8fafc;
   text-align: left;
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   font-size: 0.82rem;
   font-weight: 400;
-  line-height: 1.5;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 189, 248, 0.15);
+  line-height: 1.55;
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 189, 248, 0.2);
   position: absolute;
-  z-index: 100;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 9999;
+  bottom: calc(100% + 8px);
+  left: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   pointer-events: none;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .term-tooltip .tooltip-text::after {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
-  margin-left: -6px;
+  left: 18px;
   border-width: 6px;
   border-style: solid;
-  border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+  border-color: rgba(15, 23, 42, 0.98) transparent transparent transparent;
 }
 
 .term-tooltip:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
