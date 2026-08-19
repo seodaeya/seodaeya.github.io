@@ -1,8 +1,16 @@
-.videoContainer {
-  max-width: 900px;
+.videoWrapper {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
   width: 100%;
+}
+
+.articleBody {
+  flex: 1;
+  max-width: 840px;
+  min-width: 0;
 }
 
 .backLinkArea {
@@ -23,17 +31,6 @@
   color: var(--accent-light);
   transform: translateX(-4px);
   text-decoration: none;
-}
-
-.playerSection {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(138, 43, 226, 0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.playerSection:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(138, 43, 226, 0.2);
 }
 
 .videoHeader {
@@ -65,6 +62,32 @@
 
 .metaSeparator {
   opacity: 0.3;
+}
+
+/* Full Width Responsive 16:9 Video Player */
+.videoContainer {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 24px 0 36px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(138, 43, 226, 0.15);
+  background-color: #000;
+  border: 1px solid var(--border-glass);
+  transition: all 0.3s ease;
+}
+
+.videoContainer:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(138, 43, 226, 0.25);
+  border-color: var(--border-glass-active);
+}
+
+.videoIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 .content {
@@ -101,104 +124,106 @@
   text-decoration: none;
 }
 
-.actionArea {
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-glass);
-  display: flex;
-  justify-content: flex-start;
+/* Premium styled Table for video posts */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 24px;
+  margin-bottom: 36px;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-glass);
 }
 
-.youtubeButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--youtube-red);
-  color: #ffffff;
+.content table th,
+.content table td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.content table th {
+  background-color: rgba(255, 255, 255, 0.02);
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 12px 24px;
-  border-radius: 9999px;
-  min-height: 48px;
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-glass);
 }
 
-.youtubeButton:hover {
-  color: #ffffff;
+.content table td {
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.content table tr:last-child td {
+  border-bottom: none;
+}
+
+.content table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.01);
+  color: var(--text-primary);
+}
+
+/* Prev/Next Navigation Section */
+.prevNextSection {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.navCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-height: 90px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.navCard:hover {
+  border-color: var(--border-glass-active);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+  background-color: var(--bg-tertiary);
   text-decoration: none;
 }
 
-.youtubeIcon {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+.navCardNext {
+  text-align: right;
+  align-items: flex-end;
 }
 
-@media (max-width: 600px) {
-  .videoContainer {
-    padding: 0;
-  }
-
-  .backLinkArea {
-    margin-bottom: 20px;
-  }
-
-  .videoHeader {
-    margin-bottom: 22px;
-  }
-
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .metaInfo {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .metaSeparator {
-    display: none;
-  }
-
-  .content {
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-
-  .actionArea {
-    justify-content: stretch;
-  }
-
-  .youtubeButton {
-    width: 100%;
-    justify-content: center;
-  }
+.navLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-
-/* --- Added SEO / UX Layout & Navigation Styles --- */
-
-/* Layout Wrapper for TOC & Sidebar */
-.postWrapper {
-  display: flex;
-  align-items: flex-start;
-  max-width: 1100px;
-  margin: 0 auto;
+.navTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
 }
 
-.articleBody {
-  flex: 1;
-  max-width: 840px;
-  min-width: 0;
-}
-
-/* Related Posts Section */
-.relatedPostsSection {
+/* Related Videos Section */
+.relatedVideosSection {
   margin-top: 64px;
   padding-top: 48px;
   border-top: 1px solid var(--border-glass);
@@ -215,7 +240,7 @@
   gap: 8px;
 }
 
-.relatedPostsGrid {
+.relatedVideosGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
@@ -287,69 +312,45 @@
   overflow: hidden;
 }
 
-/* Prev/Next Navigation Section */
-.prevNextSection {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+@media (max-width: 600px) {
+  .videoWrapper {
+    padding: 0;
+  }
 
-.navCard {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-glass);
-  border-radius: 14px;
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  min-height: 90px;
-  min-width: 0;
-  overflow: hidden;
-}
+  .backLinkArea {
+    margin-bottom: 20px;
+  }
 
-.navCard:hover {
-  border-color: var(--border-glass-active);
-  transform: translateY(-2px);
-  background-color: var(--bg-tertiary);
-  text-decoration: none;
-}
+  .videoHeader {
+    margin-bottom: 22px;
+  }
 
-.navCardNext {
-  text-align: right;
-  align-items: flex-end;
-}
+  .title {
+    font-size: 1.8rem;
+  }
 
-.navLabel {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-light);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
+  .metaInfo {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
 
-.navTitle {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-}
+  .metaSeparator {
+    display: none;
+  }
 
-@media (max-width: 640px) {
+  .content {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
   .prevNextSection {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 }
 
-/* Scroll margin for TOC anchor navigation (accounts for fixed header) */
+/* Scroll margin for TOC anchor navigation */
 .content h2,
 .content h3 {
   scroll-margin-top: 100px;
