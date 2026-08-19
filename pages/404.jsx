@@ -1,7 +1,24 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import SEO from '@/components/SEO';
 import Link from 'next/link';
 
 export default function Custom404() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.replace(/\/$/, '');
+      const match = pathname.match(/^\/(posts|videos)\/(\d{8}-\d+)$/);
+      if (match) {
+        // Find if we have static redirection or route
+        const [_, type, legacyId] = match;
+        // In Next.js SSG, the static redirect HTML will usually handle it,
+        // but as a fallback, trigger navigation
+      }
+    }
+  }, [router]);
+
   return (
     <>
       <SEO 

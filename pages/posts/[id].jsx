@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import Head from 'next/head';
 import Link from 'next/link';
 import matter from 'gray-matter';
 import { marked } from 'marked';
@@ -14,10 +15,19 @@ const { createPlainExcerpt } = contentUtils;
 
 export async function getStaticPaths() {
   const postsDir = path.join(process.cwd(), '/files/posts');
-  const filenames = fs.readdirSync(postsDir);
-  const paths = filenames.map((filename) => ({
-    params: { id: filename.replace('.md', '') },
-  }));
+  const filenames = fs.readdirSync(postsDir).filter(fn => fn.endsWith('.md'));
+  
+  const paths = [];
+  filenames.forEach((filename) => {
+    const id = filename.replace('.md', '');
+    paths.push({ params: { id } });
+
+    // Legacy short prefix path support (e.g. 20260819-1 -> 20260819-1-ai-alter-framework)
+    const match = id.match(/^(\d{8}-\d+)/);
+    if (match && match[1] !== id) {
+      paths.push({ params: { id: match[1] } });
+    }
+  });
 
   return { paths, fallback: false };
 }
@@ -25,9 +35,35 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const postsDir = path.join(process.cwd(), '/files/posts');
   const videosDir = path.join(process.cwd(), '/files/videos');
-  const filePath = path.join(postsDir, `${params.id}.md`);
+  
+  let targetFilename = `${params.id}.md`;
+  let isRedirect = false;
+  let redirectTo = null;
+
+  // Check if params.id is a legacy short ID (e.g. 20260819-1)
+  if (!fs.existsSync(path.join(postsDir, targetFilename))) {
+    const allFiles = fs.readdirSync(postsDir).filter(fn => fn.endsWith('.md'));
+    const matched = allFiles.find(fn => fn.startsWith(`${params.id}-`));
+    if (matched) {
+      isRedirect = true;
+      redirectTo = `/posts/${matched.replace('.md', '')}`;
+      targetFilename = matched;
+    }
+  }
+
+  const filePath = path.join(postsDir, targetFilename);
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
+
+  if (isRedirect) {
+    return {
+      props: {
+        isRedirect: true,
+        redirectTo,
+        targetTitle: data.title || '',
+      },
+    };
+  }
 
   // 자동 읽기 시간 계산
   const readingTime = Math.max(1, Math.ceil(content.length / 500));
@@ -70,6 +106,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
+      isRedirect: false,
       id: params.id,
       frontmatter: data,
       content: (() => {
@@ -91,7 +128,56 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Post({ id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
+export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
+  if (isRedirect) {
+    return (
+      <>
+        <SEO
+          title={targetTitle || "페이지 이동 중"}
+          url={`https://seodaeya.github.io${redirectTo}`}
+        />
+        <Head>
+          <meta httpEquiv="refresh" content={`0;url=${redirectTo}`} />
+          <link rel="canonical" href={`https://seodaeya.github.io${redirectTo}`} />
+        </Head>
+        <div style={{
+          minHeight: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '40px 20px',
+        }}>
+          <div className="glass-card" style={{ padding: '40px 30px', maxWidth: '500px' }}>
+            <h2 style={{ fontSize: '1.4rem', marginBottom: '16px' }}>페이지 이동 중...</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
+              새로운 최적화 주소로 자동 이동합니다. 잠시만 기다려 주세요.
+            </p>
+            <Link
+              href={redirectTo}
+              style={{
+                display: 'inline-block',
+                padding: '10px 24px',
+                borderRadius: '20px',
+                background: 'var(--accent-gradient)',
+                color: '#fff',
+                fontWeight: 600,
+                textDecoration: 'none',
+              }}
+            >
+              지금 바로 이동하기 →
+            </Link>
+          </div>
+        </div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.location.replace("${redirectTo}");`,
+          }}
+        />
+      </>
+    );
+  }
 
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
