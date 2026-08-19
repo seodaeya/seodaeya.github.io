@@ -1,5 +1,11 @@
 [
   {
+    "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
+    "category": "AI & Intelligence",
+    "file": "posts/20260819-2.md",
+    "date": "20260819"
+  },
+  {
     "title": "AI 시대 압도적 독학의 비밀: 단순 요약을 넘어 지적 스파링 파트너로 활용하는 법",
     "category": "AI & Intelligence",
     "file": "posts/20260819-1.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260804-1.md",
     "date": "20260804"
-  },
-  {
-    "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부",
-    "category": "Hardware & DIY",
-    "file": "videos/20260803-2.md",
-    "date": "20260803"
   }
 ]
