@@ -10,151 +10,151 @@
     },
     {
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
-      "file": "posts/20260817-1.md"
+      "file": "posts/20260817-1-meta-ax-agentic-workflow.md"
     },
     {
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
-      "file": "posts/20260815-1.md"
+      "file": "posts/20260815-1-gemini-3-7-flash-analysis.md"
     },
     {
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
-      "file": "posts/20260805-1.md"
+      "file": "posts/20260805-1-seo-geo-ai-search-strategy.md"
     },
     {
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
-      "file": "posts/20260804-1.md"
+      "file": "posts/20260804-1-gemini-cli-install-guide.md"
     },
     {
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
-      "file": "posts/20260803-1.md"
+      "file": "posts/20260803-1-kimi-k3-moonshot-ai.md"
     },
     {
       "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
-      "file": "posts/20260723-2.md"
+      "file": "posts/20260723-2-gemini-3-6-features-guide.md"
     },
     {
       "title": "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'",
-      "file": "posts/20260723-1.md"
+      "file": "posts/20260723-1-human-in-the-loop-ai-ethics.md"
     },
     {
       "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
-      "file": "posts/20260713-1.md"
+      "file": "posts/20260713-1-gpt-5-6-sol-terra-luna.md"
     },
     {
       "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
-      "file": "posts/20250404-3.md"
+      "file": "posts/20250404-3-cursor-ai-code-editor-guide.md"
     },
     {
       "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-      "file": "posts/20250404-2.md"
+      "file": "posts/20250404-2-cline-autonomous-coding-agent.md"
     },
     {
       "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
-      "file": "posts/20250404-1.md"
+      "file": "posts/20250404-1-anthropic-claude-models-analysis.md"
     }
   ],
   "Dev & Software": [
     {
       "title": "기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐",
-      "file": "posts/20260811-1.md"
+      "file": "posts/20260811-1-privacy-policy-cpo-guide.md"
     },
     {
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
-      "file": "posts/20260807-1.md"
+      "file": "posts/20260807-1-github-pages-adsense-domain.md"
     },
     {
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
-      "file": "posts/20260805-2.md"
+      "file": "posts/20260805-2-gsc-sitemap-lastmod-fix.md"
     },
     {
       "title": "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion",
-      "file": "posts/20260707-1.md"
+      "file": "posts/20260707-1-giscus-discussion-error-fix.md"
     },
     {
       "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
-      "file": "posts/20250427-1.md"
+      "file": "posts/20250427-1-postgresql-install-setup-guide.md"
     }
   ],
   "Hardware & DIY": [
     {
       "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
-      "file": "posts/20260812-1.md"
+      "file": "posts/20260812-1-macos-android-openmtp-guide.md"
     },
     {
       "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부",
-      "file": "videos/20260803-2.md"
+      "file": "videos/20260803-2-sk-magic-ice-maker-cleaning-part2.md"
     },
     {
       "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부",
-      "file": "videos/20260803-1.md"
+      "file": "videos/20260803-1-sk-magic-ice-maker-cleaning-part1.md"
     },
     {
       "title": "싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁",
-      "file": "videos/20260624-2.md"
+      "file": "videos/20260624-2-santafe-tm-afterblow-step2.md"
     },
     {
       "title": "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법",
-      "file": "videos/20260624-1.md"
+      "file": "videos/20260624-1-santafe-tm-afterblow-step1.md"
     },
     {
       "title": "노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝",
-      "file": "videos/20260622-2.md"
+      "file": "videos/20260622-2-laptop-cooling-fan-cleaning.md"
     },
     {
       "title": "맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁",
-      "file": "videos/20260622-1.md"
+      "file": "videos/20260622-1-mac-mini-ipad-sidecar-mirroring.md"
     },
     {
       "title": "레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)",
-      "file": "videos/20260618-1.md"
+      "file": "videos/20260618-1-razer-basilisk-x-disassembly.md"
     },
     {
       "title": "싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기",
-      "file": "videos/20260510-1.md"
+      "file": "videos/20260510-1-santafe-tm-turn-signal-bulb-fix.md"
     },
     {
       "title": "로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 연결 및 사용기",
-      "file": "videos/20230407-1.md"
+      "file": "videos/20230407-1-logitech-m750-flow-mouse-review.md"
     }
   ],
   "Lifestyle & Tech": [
     {
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
-      "file": "posts/20260715-1.md"
+      "file": "posts/20260715-1-dybala-as-roma-contract.md"
     },
     {
       "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
-      "file": "videos/20260628-1.md"
+      "file": "videos/20260628-1-peachtree-highball-cocktail-recipe.md"
     },
     {
       "title": "미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트",
-      "file": "videos/20230428-1.md"
+      "file": "videos/20230428-1-mifa-a90-camping-bluetooth-speaker.md"
     },
     {
       "title": "선유도 구이찌정육식당 제육볶음 + 김치찌개 보글보글 점심 후기",
-      "file": "videos/20230426-1.md"
+      "file": "videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch.md"
     },
     {
       "title": "애플 3-in-1 맥세이프 고속 무선 충전 거치대 추천 및 사용 후기",
-      "file": "videos/20230409-1.md"
+      "file": "videos/20230409-1-apple-3-in-1-magsafe-charging-stand.md"
     },
     {
       "title": "이쁘고 신기한 레트로 블루투스 스피커 디투(Ditoo) 사용 후기",
-      "file": "videos/20230310-1.md"
+      "file": "videos/20230310-1-divoom-ditoo-retro-pixel-speaker.md"
     },
     {
       "title": "당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기",
-      "file": "videos/20230309-1.md"
+      "file": "videos/20230309-1-mammoth-coffee-banana-latte-review.md"
     }
   ],
   "Pet Care": [
     {
       "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
-      "file": "videos/20260706-1.md"
+      "file": "videos/20260706-1-crested-gecko-shedding-guide.md"
     },
     {
       "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
-      "file": "videos/20260602-1.md"
+      "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md"
     }
   ]
 }

@@ -16,7 +16,7 @@ image: "/images/sk_magic_ice_chute_cleaning_thumbnail.jpg"
 
 > 📌 <strong>[SK매직 얼음정수기 토출부 청소 시리즈]</strong>
 > - <strong>1부 (현재 글):</strong> 얼음 토출부 청소 필요성 및 커버 분해, 1차 딥클리닝 팁
-> - <strong>[2부 보러 가기 👉](/videos/20260803-2/):</strong> 2차 헹굼, 수분 완전 건조, 정확한 재결합 및 위생 관리 3가지 팁
+> - <strong>[2부 보러 가기 👉](/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/):</strong> 2차 헹굼, 수분 완전 건조, 정확한 재결합 및 위생 관리 3가지 팁
 
 ---
 
@@ -57,7 +57,7 @@ image: "/images/sk_magic_ice_chute_cleaning_thumbnail.jpg"
 ### 🔗 다음 편(2부) 이어보기
 청소 후 완전 건조, 딸깍 소리 나는 안전한 재결합 방법 및 깨끗한 얼음을 유지하기 위한 3가지 꿀팁은 아래 2부 포스트에서 확인하실 수 있습니다.
 
-* ➡️ <strong>[SK매직 얼음정수기 토출부 셀프 청소 2부 (완전 건조 & 재결합) 보러 가기](/videos/20260803-2/)</strong>
+* ➡️ <strong>[SK매직 얼음정수기 토출부 셀프 청소 2부 (완전 건조 & 재결합) 보러 가기](/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/)</strong>
 
 ---
 

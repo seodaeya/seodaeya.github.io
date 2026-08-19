@@ -9,7 +9,7 @@ image: "/images/afterblow_step2_thumbnail.jpg"
 ## 🔌 싼타페 TM 애프터블로우 DIY 2단계: 순정 블로우모터 전원 커넥터 분리법
 
 💡 이 작업은 조수석 언더커버가 미리 탈거되어 있어야 진행이 가능합니다. 
-👉 <strong>이전 단계 바로가기:</strong> [싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법](/videos/20260624-1)
+👉 <strong>이전 단계 바로가기:</strong> [싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법](/videos/20260624-1-santafe-tm-afterblow-step1)
 
 조수석 언더커버를 성공적으로 분리했다면, 이제 애프터블로우의 중간 브릿지 배선을 연결하기 위해 <strong>블로우모터(Blower Motor)의 순정 전원 커넥터</strong>를 뽑아내야 합니다.
 

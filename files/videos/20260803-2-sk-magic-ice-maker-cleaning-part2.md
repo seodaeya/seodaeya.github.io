@@ -13,7 +13,7 @@ image: "/images/sk_magic_ice_chute_cleaning_part2_thumbnail.jpg"
 이번 2부에서는 세척된 내부 부품의 <strong>2차 헹굼과 잔여 수분 완전 건조, 정확한 재결합 단계</strong>, 그리고 청소 후 더욱 위생적으로 얼음을 이용하기 위한 <strong>3가지 필수 유지 관리 팁</strong>을 마무리하여 전달해 드립니다.
 
 > 📌 <strong>[SK매직 얼음정수기 토출부 청소 시리즈]</strong>
-> - <strong>[1부 보러 가기 👉](/videos/20260803-1/):</strong> 얼음 토출부 청소 필요성 및 커버 분해, 1차 딥클리닝 팁
+> - <strong>[1부 보러 가기 👉](/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/):</strong> 얼음 토출부 청소 필요성 및 커버 분해, 1차 딥클리닝 팁
 > - <strong>2부 (현재 글):</strong> 2차 헹굼, 수분 완전 건조, 정확한 재결합 및 위생 관리 3가지 팁
 
 ---
@@ -46,7 +46,7 @@ image: "/images/sk_magic_ice_chute_cleaning_part2_thumbnail.jpg"
 ### 🔗 이전 편(1부) 다시보기
 토출부 청소가 필요한 이유, 탈거 준비물 및 커버 분해 1차 세척 과정은 아래 1부 포스트에서 확인하실 수 있습니다.
 
-* ⬅️ <strong>[SK매직 얼음정수기 토출부 셀프 청소 1부 (분해 & 1차 클리닝) 보러 가기](/videos/20260803-1/)</strong>
+* ⬅️ <strong>[SK매직 얼음정수기 토출부 셀프 청소 1부 (분해 & 1차 클리닝) 보러 가기](/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/)</strong>
 
 ---
 
