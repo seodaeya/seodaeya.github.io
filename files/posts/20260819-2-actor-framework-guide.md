@@ -7,7 +7,7 @@ image: "/images/actor_framework_ai_learning_thumbnail.jpg"
 
 ## 🚀 왜 방대한 지식을 배우고도 현실에서는 변하는 게 없을까?
 
-이전 글인 <a href="/posts/20260819-1" style="color: #38bdf8; font-weight: 600; text-decoration: underline;">[Part 1: ALTER 프레임워크와 1인 대학 구축법]</a>에서는 산딥 스와디아(Sandeep Swadia)의 강연을 바탕으로 AI를 <strong>5명의 전담 교수진(Advisor, Librarian, Tutor, Editor, Roommate)</strong>으로 세팅하는 시스템을 배웠습니다.
+이전 글인 <a href="/posts/20260819-1-ai-alter-framework" style="color: #38bdf8; font-weight: 600; text-decoration: underline;">[Part 1: ALTER 프레임워크와 1인 대학 구축법]</a>에서는 산딥 스와디아(Sandeep Swadia)의 강연을 바탕으로 AI를 <strong>5명의 전담 교수진(Advisor, Librarian, Tutor, Editor, Roommate)</strong>으로 세팅하는 시스템을 배웠습니다.
 
 하지만 주머니 속에 세계 최고 수준의 교수진(ALTER)을 모셔두었더라도, 정작 학습자가 지식을 <strong>'행동과 비즈니스 성과'</strong>로 연결하지 못한다면 또다시 방대한 정보를 머릿속에 쌓아두기만 하는 <span class="term-tooltip" title="필요 이상의 정보와 아티클을 수집하고 저장하지만 정작 실행하지 않는 상태">'디지털 비만'<span class="tooltip-text">Digital Obesity: 필요 이상의 정보와 아티클을 수집하고 저장하지만 정작 실행하지 않는 상태</span></span> 상태에 머물게 됩니다.
 
@@ -96,5 +96,5 @@ Part 1의 <strong>ALTER 1인 대학(Advisor, Librarian, Tutor, Editor, Roommate)
 ---
 
 ### 🔗 연관 아티클 & 공식 영상 바로가기
-* <strong>Part 1 아티클:</strong> <a href="/posts/20260819-1" style="color: #38bdf8; font-weight: 600;">산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1 ↗)</a>
+* <strong>Part 1 아티클:</strong> <a href="/posts/20260819-1-ai-alter-framework" style="color: #38bdf8; font-weight: 600;">산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1 ↗)</a>
 * <strong>유튜브 공식 영상:</strong> <a href="https://youtu.be/3k6fR5EdLAo" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">How To Become Dangerously Self-Educated with AI - Sandeep Swadia (YouTube ↗)</a>

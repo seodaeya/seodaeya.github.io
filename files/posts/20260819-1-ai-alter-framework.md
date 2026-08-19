@@ -98,5 +98,5 @@ AI를 사용할 때도 마찬가지입니다. 이미 내 안에 굳어진 편향
 ---
 
 ### 🔗 연관 아티클 & 공식 영상 바로가기
-* <strong>Part 2 아티클:</strong> <a href="/posts/20260819-2" style="color: #38bdf8; font-weight: 600;">AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2 ↗)</a>
+* <strong>Part 2 아티클:</strong> <a href="/posts/20260819-2-actor-framework-guide" style="color: #38bdf8; font-weight: 600;">AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2 ↗)</a>
 * <strong>유튜브 공식 영상:</strong> <a href="https://youtu.be/3k6fR5EdLAo" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">How To Become Dangerously Self-Educated with AI - Sandeep Swadia (YouTube ↗)</a>
