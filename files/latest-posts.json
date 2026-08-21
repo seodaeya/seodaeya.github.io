@@ -1,5 +1,11 @@
 [
   {
+    "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
+    "category": "Dev & Software",
+    "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md",
+    "date": "20260822"
+  },
+  {
     "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
     "category": "AI & Intelligence",
     "file": "posts/20260819-2-actor-framework-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260805-1-seo-geo-ai-search-strategy.md",
     "date": "20260805"
-  },
-  {
-    "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
-    "category": "AI & Intelligence",
-    "file": "posts/20260804-1-gemini-cli-install-guide.md",
-    "date": "20260804"
   }
 ]

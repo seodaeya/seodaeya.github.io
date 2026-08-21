@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 19 Aug 2026 15:18:25 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 21 Aug 2026 23:55:44 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드]]></title>
+    <link>https://seodaeya.github.io/posts/20260822-1-github-pages-url-slug-seo-redirection/</link>
+    <guid>https://seodaeya.github.io/posts/20260822-1-github-pages-url-slug-seo-redirection/</guid>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[블로그를 운영하다 보면 누구나 한 번쯤 "URL 주소를 어떻게 설계해야 검색엔진 최적화(SEO)와 방문자 유입에 가장 유리할까?" 라는 고민에 부딪히게 됩니다. 처음에는 단순히 날짜와 번호로 구성된 /posts/20260819 1/ 과 같은 주소를 사용하기 쉽습니다....]]></description>
+  </item>
   <item>
     <title><![CDATA[AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)]]></title>
     <link>https://seodaeya.github.io/posts/20260819-2-actor-framework-guide/</link>
