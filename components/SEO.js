@@ -19,6 +19,7 @@ export default function SEO({
       pageTitle = title;
     }
   }
+  const canonicalUrl = url.endsWith('/') ? url : (url.includes('.') && !url.endsWith('.html') ? url : `${url}/`);
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
   const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
@@ -45,7 +46,7 @@ export default function SEO({
       '@type': 'BlogPosting',
       'mainEntityOfPage': {
         '@type': 'WebPage',
-        '@id': url
+        '@id': canonicalUrl
       },
       'headline': title,
       'description': description,
@@ -120,7 +121,7 @@ export default function SEO({
       <meta name="DC.Creator" content="NaRD" />
       <meta name="DC.Description" content={description} />
       <meta name="DC.Language" content="ko" />
-      <meta name="DC.Identifier" content={url} />
+      <meta name="DC.Identifier" content={canonicalUrl} />
 
       {/* SEO/AI Crawler Directives */}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -136,13 +137,13 @@ export default function SEO({
       <meta name="perplexitybot" content="index, follow" />
 
       {/* Canonical Link */}
-      <link rel="canonical" href={url.endsWith('/') ? url : `${url}/`} />
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="나는 사람이다." />
       <meta property="og:locale" content="ko_KR" />

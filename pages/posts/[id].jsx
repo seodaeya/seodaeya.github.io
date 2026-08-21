@@ -195,7 +195,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         title={frontmatter.title}
         description={excerpt}
         image={frontmatter.image}
-        url={`https://seodaeya.github.io/posts/${id}`}
+        url={`https://seodaeya.github.io/posts/${id}/`}
         type="article"
         date={frontmatter.date}
       />

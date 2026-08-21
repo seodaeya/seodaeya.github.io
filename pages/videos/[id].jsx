@@ -182,7 +182,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
         title={frontmatter.title}
         description={excerpt}
         image={frontmatter.image || (frontmatter.videoId ? `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg` : undefined)}
-        url={`https://seodaeya.github.io/videos/${id}`}
+        url={`https://seodaeya.github.io/videos/${id}/`}
         type="video.other"
         date={frontmatter.date}
       />
