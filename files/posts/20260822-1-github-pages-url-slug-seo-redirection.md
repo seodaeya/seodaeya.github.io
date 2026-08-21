@@ -2,7 +2,7 @@
 title: "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드"
 category: "Dev & Software"
 date: "2026-08-22"
-image: "/na_rd.jpeg"
+image: "/github_pages_url_slug_seo_redirection_thumbnail.jpg"
 ---
 
 블로그를 운영하다 보면 누구나 한 번쯤 <strong>"URL 주소를 어떻게 설계해야 검색엔진 최적화(SEO)와 방문자 유입에 가장 유리할까?"</strong>라는 고민에 부딪히게 됩니다.
