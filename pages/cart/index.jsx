@@ -66,7 +66,8 @@ export default function CartInAll() {
   const [toastMsg, setToastMsg] = useState('');
   const [activeFilter, setActiveFilter] = useState('전체');
   const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+  const [editingId, setEditingId] = useState(null);
+  const [editForm, setEditForm] = useState({ title: '', price: 0, category: '기타', description: '' });
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -112,7 +113,7 @@ export default function CartInAll() {
     }
   };
 
-  // Extract Price numbers from text or metadata
+  // Extract Price numbers from text
   const extractPrice = (text) => {
     if (!text) return 0;
     const match = text.match(/([0-9]{1,3}(,[0-9]{3})+|[0-9]{4,})\s*(원|KRW|₩)?/);
@@ -135,7 +136,6 @@ export default function CartInAll() {
     const mallName = getMallName(targetUrl);
 
     try {
-      // Fetch metadata via Microlink API
       const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
       const data = await res.json();
 
@@ -146,7 +146,6 @@ export default function CartInAll() {
 
       if (data.status === 'success' && data.data) {
         const d = data.data;
-        // Check if bot was blocked (e.g. Coupang Akamai access denied)
         if (d.title && !d.title.includes("Access denied") && !d.title.includes("접근할 수 있는")) {
           title = d.title;
           description = d.description || "";
@@ -156,12 +155,11 @@ export default function CartInAll() {
         }
       }
 
-      // If title is missing (or blocked by bot protection), provide clean auto fallback
       if (!title) {
         const productIdMatch = targetUrl.match(/products\/([0-9]+)/);
         const productId = productIdMatch ? productIdMatch[1] : Date.now().toString().slice(-4);
         title = `[${mallName}] 상품 #${productId}`;
-        description = "쇼핑몰 링크에서 직접 담긴 상품입니다. (클릭하여 수정 가능)";
+        description = "쇼핑몰 링크에서 직접 담긴 상품입니다. (✏️ 수정 버튼으로 변경 가능)";
       }
 
       const newItem = {
@@ -209,7 +207,7 @@ export default function CartInAll() {
     const combined = [...SAMPLE_ITEMS, ...items.filter(i => !i.id.startsWith('sample-'))];
     saveItems(combined);
     setIsGuideOpen(false);
-    showToast("🚀 예시 상품 3개가 장바구니에 추가되었습니다!");
+    showToast("🚀 실제 블로그 글과 연동된 쿠팡 예시 상품 4개가 추가되었습니다!");
   };
 
   // Toggle purchased state
@@ -229,13 +227,22 @@ export default function CartInAll() {
     }
   };
 
-  // Save Edit Item
-  const handleSaveEdit = (e) => {
-    e.preventDefault();
-    if (!editItem) return;
-    const updated = items.map(i => i.id === editItem.id ? editItem : i);
+  // Start In-Place Editing
+  const startEdit = (item) => {
+    setEditingId(item.id);
+    setEditForm({
+      title: item.title,
+      price: item.price || 0,
+      category: item.category || '기타',
+      description: item.description || ''
+    });
+  };
+
+  // Save In-Place Editing
+  const saveEdit = (id) => {
+    const updated = items.map(i => i.id === id ? { ...i, ...editForm } : i);
     saveItems(updated);
-    setEditItem(null);
+    setEditingId(null);
     showToast("✏️ 상품 정보가 수정되었습니다.");
   };
 
@@ -302,12 +309,74 @@ export default function CartInAll() {
           
           <button 
             type="button" 
-            className={styles.guideTriggerBtn}
-            onClick={() => setIsGuideOpen(true)}
+            className={`${styles.guideTriggerBtn} ${isGuideOpen ? styles.guideTriggerBtnActive : ''}`}
+            onClick={() => setIsGuideOpen(!isGuideOpen)}
+            aria-expanded={isGuideOpen}
           >
-            <span>💡</span> 사용법 & 예시 보기
+            <span>💡</span> {isGuideOpen ? '사용 가이드 닫기 ✕' : '사용법 & 예시 보기'}
           </button>
         </header>
+
+        {/* IN-PLACE EXPANDABLE GUIDE & SAMPLE SECTION (Directly below button, 0 scroll jump) */}
+        {isGuideOpen && (
+          <section className={styles.inlineGuideWrapper} aria-label="사용법 및 예시 안내">
+            <div className={styles.inlineGuideHeader}>
+              <h2 className={styles.inlineGuideTitle}>
+                <span>💡</span> 모두모아 장바구니 초간단 사용법
+              </h2>
+              <button 
+                type="button"
+                className={styles.guideTriggerBtn}
+                style={{ fontSize: '0.8rem', padding: '4px 14px' }}
+                onClick={() => setIsGuideOpen(false)}
+              >
+                닫기 ✕
+              </button>
+            </div>
+
+            <div className={styles.inlineGuideGrid}>
+              <div className={styles.guideStepCard}>
+                <div className={styles.guideStepTitle}>1️⃣ 링크 복사 & 붙여넣기</div>
+                <p className={styles.guideStepText}>
+                  쿠팡, 네이버, 알리, 아마존 등에서 사고 싶은 상품 링크(URL)를 복사해 아래 입력창에 넣고 <strong>[➕ 링크로 즉시 담기]</strong>를 누릅니다.
+                </p>
+              </div>
+
+              <div className={styles.guideStepCard}>
+                <div className={styles.guideStepTitle}>2️⃣ 스마트 예산 & 구매 체크</div>
+                <p className={styles.guideStepText}>
+                  물건을 샀다면 <strong>[✅ 구매 완료]</strong> 버튼을 눌러보세요. 구매 예정 금액과 지출한 금액이 실시간으로 자동 계산됩니다.
+                </p>
+              </div>
+
+              <div className={styles.guideStepCard}>
+                <div className={styles.guideStepTitle}>3️⃣ PC 내려받기 & 이어쓰기</div>
+                <p className={styles.guideStepText}>
+                  브라우저 캐시 삭제 시 데이터가 지워지는 것을 방지하기 위해 <strong>[📥 PC로 내려받기]</strong>로 백업해 두고, 언제든 <strong>[📤 파일 업로드]</strong>로 불러올 수 있습니다.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.samplePreviewArea}>
+              <div className={styles.samplePreviewTitle}>
+                <span>🎁</span> 블로그 실제 콘텐츠 연동 예시 상품 4종 미리보기
+              </div>
+              <div className={styles.sampleList}>
+                <div className={styles.samplePill}>🚗 아이트로닉스 싼타페 애프터블로우 (13.5만)</div>
+                <div className={styles.samplePill}>💻 맥미니&아이패드 알루미늄 거치대 (3.2만)</div>
+                <div className={styles.samplePill}>🦎 게코 봄이 판게아 슈퍼푸드 (2.2만)</div>
+                <div className={styles.samplePill}>🖱️ 로지텍 M750 무소음 마우스 (4.9만)</div>
+              </div>
+              <button 
+                type="button"
+                className={styles.sampleLoadButton}
+                onClick={handleLoadSamples}
+              >
+                🚀 위 실제 블로그 예시 상품 4개 바로 담아서 체험하기
+              </button>
+            </div>
+          </section>
+        )}
 
         {/* LocalStorage Security & Warning Notice */}
         <div className={styles.storageWarningBanner}>
@@ -465,7 +534,7 @@ export default function CartInAll() {
               className={styles.guideTriggerBtn}
               onClick={handleLoadSamples}
             >
-              🚀 예시 데이터 3개 담아보기
+              🚀 실제 블로그 예시 4개 담아보기
             </button>
           </div>
         ) : (
@@ -488,176 +557,107 @@ export default function CartInAll() {
                 </div>
 
                 <div className={styles.itemBody}>
-                  <h3 className={styles.itemTitle} title={item.title} onClick={() => setEditItem(item)} style={{ cursor: 'pointer' }}>
-                    {item.title}
-                  </h3>
-                  <div className={styles.itemPrice}>
-                    {item.price ? `${item.price.toLocaleString()}원` : '가격 미지정'}
-                  </div>
-                  {item.description && (
-                    <p className={styles.itemDesc}>
-                      {item.description}
-                    </p>
-                  )}
-
-                  <div className={styles.itemFooter}>
-                    <button 
-                      type="button" 
-                      className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
-                      onClick={() => togglePurchased(item.id)}
-                    >
-                      {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
-                    </button>
-
-                    <div className={styles.cardActionBtns}>
-                      <button 
-                        type="button"
-                        className={styles.linkBtn}
-                        onClick={() => setEditItem(item)}
-                        title="정보 수정"
+                  {editingId === item.id ? (
+                    /* IN-PLACE CARD EDITOR */
+                    <div className={styles.editCardForm}>
+                      <input 
+                        type="text" 
+                        className={styles.editInput}
+                        value={editForm.title}
+                        onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                        placeholder="상품명"
+                      />
+                      <input 
+                        type="number" 
+                        className={styles.editInput}
+                        value={editForm.price || ''}
+                        onChange={(e) => setEditForm({ ...editForm, price: parseInt(e.target.value, 10) || 0 })}
+                        placeholder="가격(원)"
+                      />
+                      <select 
+                        className={styles.editInput}
+                        value={editForm.category}
+                        onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
                       >
-                        ✏️
-                      </button>
-                      {item.linkUrl && item.linkUrl !== '#' && (
-                        <a 
-                          href={item.linkUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className={styles.linkBtn}
-                          title="쇼핑몰 바로가기"
-                        >
-                          쇼핑몰 ↗
-                        </a>
-                      )}
-                      <button 
-                        type="button" 
-                        className={styles.deleteBtn}
-                        onClick={() => handleDeleteItem(item.id)}
-                        aria-label="삭제"
-                      >
-                        ✕
-                      </button>
+                        {CATEGORIES.filter(c => c !== '전체').map(c => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                      <input 
+                        type="text" 
+                        className={styles.editInput}
+                        value={editForm.description}
+                        onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+                        placeholder="메모"
+                      />
+                      <div className={styles.editActionRow}>
+                        <button type="button" className={styles.cancelEditBtn} onClick={() => setEditingId(null)}>
+                          취소
+                        </button>
+                        <button type="button" className={styles.saveEditBtn} onClick={() => saveEdit(item.id)}>
+                          💾 저장
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    /* NORMAL VIEW */
+                    <>
+                      <h3 className={styles.itemTitle} title={item.title} onClick={() => startEdit(item)} style={{ cursor: 'pointer' }}>
+                        {item.title}
+                      </h3>
+                      <div className={styles.itemPrice}>
+                        {item.price ? `${item.price.toLocaleString()}원` : '가격 미지정'}
+                      </div>
+                      {item.description && (
+                        <p className={styles.itemDesc}>
+                          {item.description}
+                        </p>
+                      )}
+
+                      <div className={styles.itemFooter}>
+                        <button 
+                          type="button" 
+                          className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
+                          onClick={() => togglePurchased(item.id)}
+                        >
+                          {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
+                        </button>
+
+                        <div className={styles.cardActionBtns}>
+                          <button 
+                            type="button" 
+                            className={styles.linkBtn}
+                            onClick={() => startEdit(item)}
+                            title="제자리에서 수정하기"
+                          >
+                            ✏️
+                          </button>
+                          {item.linkUrl && item.linkUrl !== '#' && (
+                            <a 
+                              href={item.linkUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className={styles.linkBtn}
+                              title="쇼핑몰 바로가기"
+                            >
+                              쇼핑몰 ↗
+                            </a>
+                          )}
+                          <button 
+                            type="button" 
+                            className={styles.deleteBtn}
+                            onClick={() => handleDeleteItem(item.id)}
+                            aria-label="삭제"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </article>
             ))}
-          </div>
-        )}
-
-        {/* Edit Item Modal */}
-        {editItem && (
-          <div className={styles.modalOverlay} onClick={() => setEditItem(null)}>
-            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-              <button className={styles.closeButton} onClick={() => setEditItem(null)}>✕</button>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: '0 0 16px 0' }}>
-                ✏️ 상품 정보 및 가격 수정
-              </h3>
-              
-              <form onSubmit={handleSaveEdit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>상품명</label>
-                  <input 
-                    type="text" 
-                    className={styles.mainUrlInput}
-                    value={editItem.title}
-                    onChange={(e) => setEditItem({ ...editItem, title: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>가격 (원)</label>
-                  <input 
-                    type="number" 
-                    className={styles.mainUrlInput}
-                    value={editItem.price || ''}
-                    onChange={(e) => setEditItem({ ...editItem, price: parseInt(e.target.value, 10) || 0 })}
-                  />
-                </div>
-                <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>카테고리</label>
-                  <select 
-                    className={styles.mainUrlInput}
-                    value={editItem.category}
-                    onChange={(e) => setEditItem({ ...editItem, category: e.target.value })}
-                  >
-                    {CATEGORIES.filter(c => c !== '전체').map(c => (
-                      <option key={c} value={c}>{c}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>메모</label>
-                  <input 
-                    type="text" 
-                    className={styles.mainUrlInput}
-                    value={editItem.description || ''}
-                    onChange={(e) => setEditItem({ ...editItem, description: e.target.value })}
-                  />
-                </div>
-                <div style={{ textAlign: 'right', marginTop: '10px' }}>
-                  <button type="submit" className={styles.quickAddBtn}>
-                    💾 수정 완료
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
-
-        {/* Interactive Guide & Sample Layer Popup Modal */}
-        {isGuideOpen && (
-          <div className={styles.modalOverlay} onClick={() => setIsGuideOpen(false)}>
-            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-              <button 
-                className={styles.closeButton}
-                onClick={() => setIsGuideOpen(false)}
-                aria-label="닫기"
-              >
-                ✕
-              </button>
-
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span>💡</span> Cart In All 초간단 사용 가이드
-              </h3>
-
-              <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>1️⃣ 링크 복사 후 바로 담기</div>
-                <p className={styles.guideStepText}>
-                  쿠팡, 네이버, 알리, 아마존 등에서 사고 싶은 상품 링크(URL)를 복사해 입력창에 붙여넣고 <strong>[➕ 링크로 즉시 담기]</strong>를 누르면 상품명과 가격이 자동으로 수집되어 장바구니에 쏙 들어갑니다.
-                </p>
-              </div>
-
-              <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>2️⃣ 스마트 예산 & 구매 상태 관리</div>
-                <p className={styles.guideStepText}>
-                  물건을 샀다면 <strong>[✅ 구매 완료]</strong> 버튼을 눌러보세요. 구매 예정 금액과 지출한 금액이 실시간으로 자동 계산됩니다.
-                </p>
-              </div>
-
-              <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>3️⃣ PC 내려받기 & 이어쓰기 (백업/복원)</div>
-                <p className={styles.guideStepText}>
-                  브라우저 캐시 삭제 시 데이터가 지워지는 것을 방지하기 위해 <strong>[📥 PC로 내려받기]</strong>로 백업해 두고, 언제든 <strong>[📤 파일 업로드]</strong>로 불러와서 이어서 사용할 수 있습니다.
-                </p>
-              </div>
-
-              <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid var(--border-glass)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, margin: '0 0 8px 0', color: 'var(--text-primary)' }}>
-                  체험해보기
-                </h4>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '0 0 12px 0' }}>
-                  실제 예시 데이터(자동차 물왁스, 게코 사료, 노트북 거치대)를 바로 담아 테스트해 보세요!
-                </p>
-                <button 
-                  type="button"
-                  className={styles.sampleLoadButton}
-                  onClick={handleLoadSamples}
-                >
-                  🚀 예시 상품 3개 담아서 체험하기
-                </button>
-              </div>
-            </div>
           </div>
         )}
 

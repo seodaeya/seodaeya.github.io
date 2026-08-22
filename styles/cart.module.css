@@ -7,7 +7,7 @@
 
 .cartHeader {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .cartBadge {
@@ -35,7 +35,7 @@
   font-size: 1.05rem;
   color: var(--text-secondary);
   max-width: 620px;
-  margin: 0 auto 18px auto;
+  margin: 0 auto 16px auto;
   line-height: 1.6;
 }
 
@@ -45,7 +45,7 @@
   color: var(--accent-light);
   font-weight: 700;
   font-size: 0.88rem;
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 9999px;
   cursor: pointer;
   display: inline-flex;
@@ -54,11 +54,126 @@
   transition: all 0.25s ease;
 }
 
-.guideTriggerBtn:hover {
+.guideTriggerBtn:hover,
+.guideTriggerBtnActive {
   background: var(--accent-light);
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(138, 43, 226, 0.35);
+}
+
+/* In-Place Expandable Guide Section (Zero Viewport Jump) */
+.inlineGuideWrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass-active);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), 0 0 30px rgba(138, 43, 226, 0.12);
+  animation: expandSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.inlineGuideHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 12px;
+}
+
+.inlineGuideTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inlineGuideGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.guideStepCard {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.guideStepTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin: 0 0 6px 0;
+}
+
+.guideStepText {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.samplePreviewArea {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.samplePreviewTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sampleList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.samplePill {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.sampleLoadButton {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.35);
+  transition: all 0.25s ease;
+}
+
+.sampleLoadButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(138, 43, 226, 0.5);
 }
 
 /* LocalStorage Security & Backup Warning Banner */
@@ -585,6 +700,60 @@
   color: #ffffff;
 }
 
+/* In-Place Item Editor Card */
+.editCardForm {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-primary);
+  border-radius: 14px;
+}
+
+.editInput {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editInput:focus {
+  border-color: var(--accent-light);
+}
+
+.editActionRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.saveEditBtn {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancelEditBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
 .emptyState {
   text-align: center;
   padding: 60px 20px;
@@ -610,104 +779,20 @@
   margin: 0 0 20px 0;
 }
 
-/* Modal Styling */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 20px;
-  animation: fadeIn 0.25s ease-out;
-}
-
-.modalContent {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-glass-active);
-  border-radius: 24px;
-  padding: 32px;
-  max-width: 640px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(138, 43, 226, 0.2);
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.closeButton {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-glass);
-  color: var(--text-secondary);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--text-primary);
-}
-
-.guideStepCard {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-glass);
-  border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 12px;
-}
-
-.guideStepTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent-light);
-  margin: 0 0 4px 0;
-}
-
-.guideStepText {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.sampleLoadButton {
-  background: var(--accent-gradient);
-  color: #ffffff;
-  border: none;
-  font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 12px;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 16px;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+@keyframes expandSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 600px) {
@@ -735,5 +820,8 @@
   .downloadBackupBtn,
   .uploadBackupBtn {
     justify-content: center;
+  }
+  .inlineGuideWrapper {
+    padding: 20px 16px;
   }
 }
