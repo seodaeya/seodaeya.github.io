@@ -14,7 +14,7 @@ const SAMPLE_ITEMS = [
     title: "아이트로닉스 싼타페 TM 애프터블로우 (에어컨 습기 자동 건조기)",
     price: 135000,
     description: "블로그 DIY 글 연동: 시동 끄면 블로우 모터가 자동 회전해 곰팡이 냄새 완벽 예방",
-    linkUrl: "https://link.coupang.com/a/eQAV04gOGq",
+    linkUrl: "https://link.coupang.com/a/eevc9hEAOi",
     imageUrl: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500&q=80",
     category: "가전/DIY",
     mallName: "쿠팡",

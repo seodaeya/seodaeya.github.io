@@ -48,7 +48,7 @@ image: "/images/afterblow_step2_thumbnail.jpg"
 ---
 
 <div class="coupang-box">
-  <a href="https://link.coupang.com/a/eQAV04gOGq" target="_blank" rel="nofollow sponsored noopener noreferrer">
+  <a href="https://link.coupang.com/a/eevc9hEAOi" target="_blank" rel="nofollow sponsored noopener noreferrer">
     공식판매처 현대모비스 최신 애프터블로우 (보증 2년) 보러가기
   </a>
   <p>이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
