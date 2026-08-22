@@ -12,8 +12,15 @@
 </head>
 <body>
     <header>
-        <h1>NaRD's Blog</h1>
-        <nav>
+        <div class="header-container">
+            <h1>NaRD's Blog</h1>
+            <button class="hamburger-menu" id="hamburgerBtn" aria-label="메뉴 토글">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav id="navMenu" class="nav-menu">
             <a href="videos.html">YouTube</a>
             <a href="categories.html">Categories</a>
         </nav>
@@ -23,6 +30,24 @@
         <div id="categories"></div>
     </main>
     <script>
+        // 햄버거 메뉴 토글 기능
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        // 메뉴 항목 클릭 시 메뉴 닫기
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            });
+        });
+
         // JSON 파일에서 데이터 가져오기
         fetch('datas/posts.json')
             .then(response => response.json())
