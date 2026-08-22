@@ -182,6 +182,46 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+
+.githubSponsorButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(234, 76, 137, 0.12);
+  border: 1px solid rgba(234, 76, 137, 0.35);
+  color: #ff69b4;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(234, 76, 137, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.githubSponsorButton:hover {
+  background-color: #ea4aaa;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(234, 76, 137, 0.45);
+  border-color: #ea4aaa;
+  text-decoration: none;
+}
+
+.githubIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.sponsorHeart {
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+}
+
+.githubSponsorButton:hover .sponsorHeart {
+  transform: scale(1.25);
+}
+
 @media (max-width: 600px) {
   .sponsorCard {
     padding: 24px 18px;
