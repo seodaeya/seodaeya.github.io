@@ -218,6 +218,20 @@ export default function CartInAll() {
     saveItems(updated);
   };
 
+  // Clear all purchased items
+  const handleClearPurchased = () => {
+    const purchasedList = items.filter(i => i.isPurchased);
+    if (purchasedList.length === 0) {
+      alert("구매 완료된 상품이 없습니다.");
+      return;
+    }
+    if (confirm(`구매 완료된 ${purchasedList.length}개의 상품을 장바구니에서 모두 삭제하시겠습니까?`)) {
+      const updated = items.filter(i => !i.isPurchased);
+      saveItems(updated);
+      showToast(`🧹 구매 완료된 상품 ${purchasedList.length}개가 깔끔하게 정리되었습니다!`);
+    }
+  };
+
   // Delete item
   const handleDeleteItem = (id) => {
     if (confirm("이 상품을 장바구니에서 삭제하시겠습니까?")) {
