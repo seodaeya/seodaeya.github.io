@@ -34,7 +34,7 @@ export default function Header() {
       <div className={styles.headerContainer}>
         <div className={styles.logoArea}>
           <Link href="/" className={styles.logoLink}>
-            <span className={styles.logoText}>나는 사람이다.</span>
+            <span className={styles.logoText}>여전히, 나는 사람이다.</span>
           </Link>
         </div>
 

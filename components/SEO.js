@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 export default function SEO({
-  title = '나는 사람이다. | 기술과 일상의 기록',
+  title = '여전히, 나는 사람이다. | 기술과 일상의 기록',
   description = '인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기.',
   keywords = 'NaRD, 블로그, 유튜브, 기술, 라이프',
   url = 'https://seodaeya.github.io',
@@ -10,9 +10,9 @@ export default function SEO({
   date,
   videoId,
 }) {
-  const siteSuffix = ' | 나는 사람이다.';
+  const siteSuffix = ' | 여전히, 나는 사람이다.';
   let pageTitle = title;
-  if (!title.includes('나는 사람이다.')) {
+  if (!title.includes('여전히, 나는 사람이다.')) {
     if (title.length + siteSuffix.length <= 60) {
       pageTitle = `${title}${siteSuffix}`;
     } else {
@@ -28,7 +28,7 @@ export default function SEO({
   const baseSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    'name': '나는 사람이다. (NaRD Blog)',
+    'name': '여전히, 나는 사람이다. (NaRD Blog)',
     'url': 'https://seodaeya.github.io',
     'description': 'AI 시대에 남기는 지극히 인간적인 기록들',
     'publisher': {
@@ -145,7 +145,7 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="나는 사람이다." />
+      <meta property="og:site_name" content="여전히, 나는 사람이다." />
       <meta property="og:locale" content="ko_KR" />
 
       {/* Twitter */}

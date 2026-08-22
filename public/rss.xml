@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>나는 사람이다. (NaRD Blog)</title>
+  <title>여전히, 나는 사람이다. (NaRD Blog)</title>
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sat, 22 Aug 2026 00:05:29 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 22 Aug 2026 00:27:28 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드]]></title>

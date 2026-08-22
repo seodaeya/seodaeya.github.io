@@ -5,8 +5,8 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="블로그 소개 | 나는 사람이다."
-        description="'나는 사람이다' 블로그의 소개 및 기술, 라이프스타일, AI 탐구에 대한 이야기입니다."
+        title="블로그 소개 | 여전히, 나는 사람이다."
+        description="'여전히, 나는 사람이다.' 블로그의 소개 및 기술, 라이프스타일, AI 탐구에 대한 이야기입니다."
         url="https://seodaeya.github.io/about"
       />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', color: 'var(--text-main, #e2e8f0)', lineHeight: '1.75' }}>
@@ -17,7 +17,7 @@ export default function About() {
         </p>
 
         <p style={{ marginBottom: '1.2rem' }}>
-          안녕하세요! <strong>'나는 사람이다'</strong>는 빠른 기술의 변화 속에서도 인간 고유의 시선과 경험을 바탕으로 깊이 있는 지식을 기록하는 1인 테크 & 라이프스타일 블로그입니다.
+          안녕하세요! <strong>'여전히, 나는 사람이다.'</strong>는 빠른 기술의 변화 속에서도 인간 고유의 시선과 경험을 바탕으로 깊이 있는 지식을 기록하는 1인 테크 & 라이프스타일 블로그입니다.
         </p>
 
         <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>주요 다루는 주제</h2>
