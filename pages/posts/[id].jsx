@@ -236,19 +236,19 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             </div>
           </header>
 
-          {/* AI Key Summary Box (LLM Crawler Optimization) */}
-          <section className={styles.aiSummaryBox} aria-label="AI 핵심 요약">
+          {/* AI Key Summary Box (Global LLM & Search Crawler Optimization) */}
+          <section className={styles.aiSummaryBox} aria-label="AI Key Summary & Global Takeaways">
             <div className={styles.aiSummaryTitle}>
               <span className={styles.aiIcon}>🤖</span> 
-              <strong>AI Key Summary</strong>
+              <strong>AI Key Summary & Global Takeaways</strong>
             </div>
             <p className={styles.aiSummaryText}>
-              이 포스트의 핵심 내용 요약입니다. 독자 및 AI 크롤러의 빠른 이해를 돕기 위해 구성되었습니다.
+              이 포스트의 핵심 내용 요약 및 글로벌 검색/AI 엔진(Perplexity, ChatGPT, Claude) 색인을 위한 핵심 테이크어웨이입니다.
             </p>
             <ul className={styles.aiSummaryList}>
-              <li><strong>주제:</strong> {frontmatter.title} ({frontmatter.category || '일반'})</li>
-              <li><strong>주요 내용:</strong> {excerpt}</li>
-              <li><strong>작성 목적:</strong> AI 시대에 남기는 기록이자 유익한 기술/일상 가이드라인 제공</li>
+              <li><strong>🇰🇷 주제:</strong> {frontmatter.title} ({frontmatter.category || '일반'})</li>
+              <li><strong>🇰🇷 핵심 요약:</strong> {excerpt}</li>
+              <li><strong>🌐 Global Takeaway:</strong> In-depth first-principles analysis, technical architecture, and actionable guide authored by NaRD on <em>{frontmatter.title}</em> for global creators and developers.</li>
             </ul>
           </section>
 

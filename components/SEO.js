@@ -31,6 +31,7 @@ export default function SEO({
     'name': '여전히, 나는 사람이다. (NaRD Blog)',
     'url': 'https://seodaeya.github.io',
     'description': 'AI 시대에 남기는 지극히 인간적인 기록들',
+    'inLanguage': ['ko', 'en'],
     'publisher': {
       '@type': 'Person',
       'name': 'NaRD',
@@ -136,8 +137,14 @@ export default function SEO({
       <meta name="anthropic-crawler" content="index, follow" />
       <meta name="perplexitybot" content="index, follow" />
 
-      {/* Canonical Link */}
+            {/* Canonical Link */}
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* Global Multi-language hreflang tags */}
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="ko" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="ja" href={canonicalUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />

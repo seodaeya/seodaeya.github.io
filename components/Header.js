@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import styles from '@/styles/layout.module.css';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Header() {
   const router = useRouter();
@@ -101,6 +102,9 @@ export default function Header() {
               </svg>
             )}
           </button>
+
+          {/* Global Language Switcher */}
+          <LanguageSwitcher />
         </nav>
 
         <div className={styles.socialArea}>
