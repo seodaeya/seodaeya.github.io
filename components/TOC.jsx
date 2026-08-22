@@ -33,11 +33,26 @@ export default function TOC({ contentSelector, id }) {
 
       setHeadings(headingList);
 
-      // High-precision scroll position tracker for active heading
+      // High-precision scroll position tracker with Top & Bottom boundary awareness
       const updateActiveHeading = () => {
         if (isClickScrolling.current) return;
 
-        const headerOffset = 120; // 70px sticky header + 50px buffer
+        // 1. Edge Case: Bottom of the page reached (content too short to reach the 130px line)
+        const scrollBottom = window.innerHeight + window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        if (scrollBottom >= documentHeight - 70) {
+          setActiveId(headingElements[headingElements.length - 1].id);
+          return;
+        }
+
+        // 2. Edge Case: Top of the page
+        if (window.scrollY < 80) {
+          setActiveId(headingElements[0].id);
+          return;
+        }
+
+        // 3. Normal Reading Flow: Last heading passing the header offset
+        const headerOffset = 130; // 70px fixed header + 60px viewport reading line
         let currentActive = headingElements[0].id;
 
         for (let i = 0; i < headingElements.length; i++) {
