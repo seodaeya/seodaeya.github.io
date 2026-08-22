@@ -100,13 +100,14 @@ export default function CartInAll() {
   const getMallName = (url) => {
     try {
       const host = new URL(url).hostname;
-      if (host.includes('coupang')) return '쿠팡';
+      if (host.includes('aliexpress')) return 'AliExpress';
       if (host.includes('naver')) return '네이버';
-      if (host.includes('aliexpress')) return '알리';
-      if (host.includes('amazon')) return '아마존';
-      if (host.includes('musinsa')) return '무신사';
       if (host.includes('11st')) return '11번가';
+      if (host.includes('amazon')) return '아마존';
+      if (host.includes('coupang')) return '쿠팡';
+      if (host.includes('musinsa')) return '무신사';
       if (host.includes('gmarket')) return 'G마켓';
+      if (host.includes('auction')) return '옥션';
       return host.replace('www.', '').split('.')[0].toUpperCase();
     } catch (e) {
       return '쇼핑몰';
@@ -123,7 +124,7 @@ export default function CartInAll() {
     return 0;
   };
 
-  // ONE-CLICK SMART URL ADD
+  // ONE-CLICK MULTI-PLATFORM SMART URL PARSER
   const handleQuickAdd = async (e) => {
     e.preventDefault();
     const targetUrl = urlInput.trim();
@@ -135,31 +136,134 @@ export default function CartInAll() {
     setIsLoading(true);
     const mallName = getMallName(targetUrl);
 
+    let title = "";
+    let description = "쇼핑몰 링크에서 직접 담긴 상품입니다.";
+    let imageUrl = "";
+    let price = 0;
+    let category = "기타";
+
     try {
-      const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
-      const data = await res.json();
+      // 1. Fetch via metadata scraper API (Amazon & standard OpenGraph websites)
+      try {
+        const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
+        const data = await res.json();
 
-      let title = "";
-      let description = "";
-      let imageUrl = "";
-      let price = 0;
+        if (data.status === 'success' && data.data) {
+          const d = data.data;
+          const rawTitle = d.title || "";
+          if (rawTitle && !rawTitle.includes("Access denied") && !rawTitle.includes("접근할 수 있는") && !rawTitle.includes("100500") && !rawTitle.includes("110431") && !rawTitle.includes("Sign in")) {
+            title = rawTitle;
+            description = d.description || description;
+            price = extractPrice(rawTitle) || extractPrice(d.description);
+            if (d.image && d.image.url) imageUrl = d.image.url;
+            else if (d.logo && d.logo.url) imageUrl = d.logo.url;
+          }
+        }
+      } catch (fetchErr) {
+        console.warn("API scraper failed, falling back to smart URL engine:", fetchErr);
+      }
 
-      if (data.status === 'success' && data.data) {
-        const d = data.data;
-        if (d.title && !d.title.includes("Access denied") && !d.title.includes("접근할 수 있는")) {
-          title = d.title;
-          description = d.description || "";
-          price = extractPrice(d.title) || extractPrice(d.description);
-          if (d.image && d.image.url) imageUrl = d.image.url;
-          else if (d.logo && d.logo.url) imageUrl = d.logo.url;
+      // 2. MALL-SPECIFIC DEEP PARSING & ALGORITHM
+
+      // 2-A. AliExpress (알리익스프레스: pdp_npi 파라미터 기반 가격/상품 분석)
+      if (mallName === 'AliExpress') {
+        category = "전자기기/IT";
+        try {
+          const parsedUrl = new URL(targetUrl);
+          const pdpNpi = parsedUrl.searchParams.get('pdp_npi') || targetUrl;
+          const decodedNpi = decodeURIComponent(pdpNpi);
+          
+          // pdp_npi format: 6@dis!KRW!₩+6,690!₩+1,000!...
+          const krwMatches = decodedNpi.match(/(?:KRW|₩|%E2%82%A9)[!+]?\s*([0-9,]+)/g);
+          if (krwMatches && krwMatches.length > 0) {
+            const prices = krwMatches.map(m => {
+              const num = m.replace(/[^0-9]/g, '');
+              return parseInt(num, 10);
+            }).filter(n => !isNaN(n) && n > 0);
+            
+            if (prices.length > 1) {
+              price = Math.min(...prices); // 할인 판매가 우선 적용
+            } else if (prices.length === 1) {
+              price = prices[0];
+            }
+          }
+        } catch (e) {
+          console.warn("AliExpress pdp_npi parser error:", e);
+        }
+
+        const aliItemIdMatch = targetUrl.match(/item\/([0-9]+)\.html/);
+        const itemId = aliItemIdMatch ? aliItemIdMatch[1] : "";
+        if (!title || title.length < 5) {
+          title = `[AliExpress] 글로벌 직구 추천 상품 #${itemId}`;
+          description = `알리익스프레스 직구 상품 (할인 판매가 ${price > 0 ? price.toLocaleString() + '원' : '적용'})`;
+        }
+        if (!imageUrl) {
+          imageUrl = "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80";
         }
       }
 
-      if (!title) {
+      // 2-B. Naver Smartstore / Shopping (네이버 스마트스토어)
+      else if (mallName === '네이버') {
+        category = "생필품/식품";
+        const storeMatch = targetUrl.match(/smartstore\.naver\.com\/([^/]+)\/products\/([0-9]+)/);
+        const storeName = storeMatch ? storeMatch[1] : "스마트스토어";
+        const prodId = storeMatch ? storeMatch[2] : "";
+        if (!title || title.length < 5) {
+          title = `[네이버] ${storeName} 스토어 상품 #${prodId}`;
+          description = `네이버 스마트스토어(${storeName}) 추천 상품`;
+        }
+        if (!imageUrl) {
+          imageUrl = "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80";
+        }
+      }
+
+      // 2-C. 11st (11번가)
+      else if (mallName === '11번가') {
+        category = "패션/뷰티";
+        const prodMatch = targetUrl.match(/products\/([0-9]+)/);
+        const prodId = prodMatch ? prodMatch[1] : "";
+        if (!title || title.length < 5) {
+          title = `[11번가] 추천 특가 상품 #${prodId}`;
+          description = "11번가 오픈마켓 상품";
+        }
+        if (!imageUrl) {
+          imageUrl = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80";
+        }
+      }
+
+      // 2-D. Amazon (아마존)
+      else if (mallName === '아마존') {
+        category = "전자기기/IT";
+        const asinMatch = targetUrl.match(/\/dp\/([A-Z0-9]+)/);
+        const asin = asinMatch ? asinMatch[1] : "";
+        const pathTitleMatch = targetUrl.match(/amazon\.com\/([^/]+)\/dp/);
+        const cleanPathTitle = pathTitleMatch ? decodeURIComponent(pathTitleMatch[1]).replace(/-/g, ' ') : "아마존 해외 직구 상품";
+        if (!title || title.length < 5) {
+          title = `[아마존] ${cleanPathTitle} (ASIN: ${asin})`;
+          description = "Amazon 해외 직구 상품";
+        }
+        if (!imageUrl) {
+          imageUrl = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80";
+        }
+      }
+
+      // 2-E. Coupang (쿠팡)
+      else if (mallName === '쿠팡') {
+        category = "가전/DIY";
         const productIdMatch = targetUrl.match(/products\/([0-9]+)/);
         const productId = productIdMatch ? productIdMatch[1] : Date.now().toString().slice(-4);
-        title = `[${mallName}] 상품 #${productId}`;
-        description = "쇼핑몰 링크에서 직접 담긴 상품입니다. (✏️ 수정 버튼으로 변경 가능)";
+        if (!title || title.length < 5) {
+          title = `[쿠팡] 추천 상품 #${productId}`;
+          description = "쿠팡 로켓배송 및 추천 상품 (✏️ 수정 버튼으로 가격/상품명 변경 가능)";
+        }
+        if (!imageUrl) {
+          imageUrl = "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500&q=80";
+        }
+      }
+
+      // Final default fallback
+      if (!title) {
+        title = `[${mallName}] 관심 상품`;
       }
 
       const newItem = {
@@ -169,7 +273,7 @@ export default function CartInAll() {
         description,
         linkUrl: targetUrl,
         imageUrl,
-        category: "전자기기/IT",
+        category,
         mallName,
         isPurchased: false,
         createdAt: new Date().toISOString()
@@ -178,7 +282,7 @@ export default function CartInAll() {
       const updated = [newItem, ...items];
       saveItems(updated);
       setUrlInput('');
-      showToast(`🎉 '[${title}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
+      showToast(`🎉 '[${mallName}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
 
     } catch (err) {
       console.warn("Auto parse failed, creating fallback item", err);
