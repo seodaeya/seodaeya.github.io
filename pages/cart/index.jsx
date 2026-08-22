@@ -39,7 +39,7 @@ const SAMPLE_ITEMS = [
     price: 22000,
     description: "블로그 게코 글 연동: 반려 도마뱀 봄이 탈피 및 영양 공급용 슈퍼푸드 (기호성 최고)",
     linkUrl: "https://link.coupang.com/a/famuz0vibQ",
-    imageUrl: "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=500&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=500&q=80",
     category: "생필품/식품",
     mallName: "쿠팡",
     isPurchased: true,
