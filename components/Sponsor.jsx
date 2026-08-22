@@ -1,8 +1,19 @@
 import { useState } from 'react';
 import styles from '@/styles/sponsor.module.css';
 
+const KAKAOPAY_DIRECT_URL = "https://qr.kakaopay.com/281006011116104911007615";
+
 export default function Sponsor({ title = "따뜻한 커피 한 잔으로 응원하기", desc }) {
   const [isQrOpen, setIsQrOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(KAKAOPAY_DIRECT_URL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <section className={styles.sponsorCard} aria-label="블로그 후원하기">
@@ -53,16 +64,30 @@ export default function Sponsor({ title = "따뜻한 커피 한 잔으로 응원
         </a>
       </div>
 
-      {/* In-Place QR Unfold (Directly below button, 0 scroll needed) */}
+      {/* In-Place QR & Mobile Link Unfold */}
       {isQrOpen && (
         <div className={styles.inlineQrWrapper}>
           <div className={styles.qrBox}>
-            <h4 className={styles.qrTitle}>💛 카카오페이 송금 QR</h4>
+            <h4 className={styles.qrTitle}>💛 카카오페이 간편 송금</h4>
             <p className={styles.qrSubtitle}>
-              카카오톡이나 기본 카메라 앱으로<br />
-              QR 코드를 스캔해 주세요.
+              <strong>스마트폰</strong>에서는 아래 바로가기 버튼을 누르면 카카오페이로 즉시 연결됩니다.
             </p>
 
+            {/* Mobile Direct Deep-link Button */}
+            <a 
+              href={KAKAOPAY_DIRECT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.directMobileButton}
+            >
+              <span>📲</span> 모바일 카카오페이 송금 바로가기
+            </a>
+
+            <div style={{ margin: '8px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              - 또는 PC에서 QR 스캔 -
+            </div>
+
+            {/* QR Code for PC/Desktop */}
             <div className={styles.qrImageFrame}>
               <img 
                 src="/kakaopay-qr.png" 

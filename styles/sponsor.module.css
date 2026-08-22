@@ -211,6 +211,50 @@
   }
 }
 
+
+.directMobileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #fee500;
+  color: #191919;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.directMobileButton:hover {
+  background-color: #ffeb3b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(254, 229, 0, 0.35);
+  text-decoration: none;
+  color: #191919;
+}
+
+.copyLinkButton {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.copyLinkButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
 @media (max-width: 600px) {
   .sponsorCard {
     padding: 24px 16px;
