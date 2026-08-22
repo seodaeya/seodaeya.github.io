@@ -9,21 +9,38 @@ export default function Header() {
   const [theme, setTheme] = useState('dark');
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
 
   // 첫 마운트 시 실제 HTML에 적용된 테마 클래스를 읽어와 동기화
   useEffect(() => {
     const isLight = document.documentElement.classList.contains('light');
     setTheme(isLight ? 'light' : 'dark');
 
-    // 외부 클릭 시 드롭다운 닫기
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsServicesOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
   }, []);
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200); // 200ms buffer prevents flickering when moving mouse down
+  };
 
   const toggleTheme = () => {
     const isLight = document.documentElement.classList.toggle('light');
@@ -31,7 +48,6 @@ export default function Header() {
     setTheme(nextTheme);
     localStorage.setItem('theme', nextTheme);
 
-    // Giscus 댓글 위젯 테마 동기화
     const iframe = document.querySelector('iframe.giscus-frame');
     if (iframe) {
       iframe.contentWindow.postMessage(
@@ -67,12 +83,12 @@ export default function Header() {
             카테고리
           </Link>
 
-          {/* 실험 서비스 드롭다운 메뉴 */}
+          {/* 실험 서비스 드롭다운 메뉴 (호버 브릿지 & 딜레이 닫기 적용) */}
           <div 
             className={styles.navDropdownWrapper}
             ref={dropdownRef}
-            onMouseEnter={() => setIsServicesOpen(true)}
-            onMouseLeave={() => setIsServicesOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <button 
               type="button"
@@ -87,7 +103,11 @@ export default function Header() {
             </button>
 
             {isServicesOpen && (
-              <div className={styles.navDropdownMenu}>
+              <div 
+                className={styles.navDropdownMenu}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Link 
                   href="/cart" 
                   className={styles.dropdownItem}

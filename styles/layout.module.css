@@ -364,6 +364,17 @@
   transform: rotate(180deg);
 }
 
+
+.navDropdownMenu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
 .navDropdownMenu {
   position: absolute;
   top: 100%;
