@@ -675,33 +675,21 @@ export default function CartInAll() {
                       )}
 
                       <div className={styles.itemFooter}>
-                        <div style={{ display: 'flex', gap: '6px' }}>
-                          <button 
-                            type="button" 
-                            className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
-                            onClick={() => togglePurchased(item.id)}
-                            title={item.isPurchased ? '구매 예정으로 다시 변경' : '구매 완료로 표시'}
-                          >
-                            {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
-                          </button>
-                          {item.isPurchased && (
-                            <button 
-                              type="button"
-                              className={styles.cardPurchasedDeleteBtn}
-                              onClick={() => handleDeleteItem(item.id)}
-                              title="구매 완료된 이 상품 삭제"
-                            >
-                              삭제
-                            </button>
-                          )}
-                        </div>
+                        <button 
+                          type="button" 
+                          className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
+                          onClick={() => togglePurchased(item.id)}
+                          title={item.isPurchased ? '구매 예정으로 다시 변경' : '구매 완료로 표시'}
+                        >
+                          {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
+                        </button>
 
                         <div className={styles.cardActionBtns}>
                           <button 
                             type="button" 
                             className={styles.linkBtn}
                             onClick={() => startEdit(item)}
-                            title="제자리에서 수정하기"
+                            title="수정하기"
                           >
                             ✏️
                           </button>
@@ -720,6 +708,7 @@ export default function CartInAll() {
                             type="button" 
                             className={styles.deleteBtn}
                             onClick={() => handleDeleteItem(item.id)}
+                            title="삭제"
                             aria-label="삭제"
                           >
                             ✕
