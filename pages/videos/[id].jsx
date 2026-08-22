@@ -6,6 +6,7 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import SEO from '@/components/SEO';
 import Comments from '@/components/Comments';
+import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import contentUtils from '@/lib/content';
@@ -294,6 +295,9 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
               </div>
             </section>
           )}
+
+          {/* Sponsor KakaoPay Support Box */}
+          <Sponsor />
 
           {/* Giscus Comments widget */}
           <Comments key={id} />

@@ -1,5 +1,6 @@
 import SEO from '@/components/SEO';
 import Link from 'next/link';
+import Sponsor from '@/components/Sponsor';
 
 export default function About() {
   return (
@@ -135,6 +136,12 @@ export default function About() {
             <li style={{ marginBottom: '8px' }}><strong>Lifestyle & Pet Care:</strong> 크레스티드 게코 케어, 홈텐딩 칵테일, 일상의 소소한 발견</li>
           </ul>
         </section>
+
+                {/* Sponsor Support Section */}
+        <Sponsor 
+          title="작은 응원으로 함께해 주세요 ☕" 
+          desc="이 공간의 모든 기록과 나눔은 여러분의 따뜻한 관심으로 계속됩니다. 보내주시는 커피 한 잔의 소중한 후원금은 도메인 유지, DIY 부품 및 실험 장비 구입, 양질의 콘텐츠 연구에 감사히 사용됩니다." 
+        />
 
         {/* Footer Contact / Policy Link */}
         <footer style={{ 
