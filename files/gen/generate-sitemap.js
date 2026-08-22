@@ -33,6 +33,12 @@ const generateSitemap = () => {
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>${siteUrl}/cart/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>${siteUrl}/about/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>

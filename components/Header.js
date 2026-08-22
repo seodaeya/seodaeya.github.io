@@ -53,6 +53,12 @@ export default function Header() {
             카테고리
           </Link>
           <Link 
+            href="/cart" 
+            className={`${styles.navLink} ${router.pathname === '/cart' || router.pathname.startsWith('/cart') ? styles.activeNavLink : ''}`}
+          >
+            장바구니
+          </Link>
+          <Link 
             href="/about" 
             className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
           >
