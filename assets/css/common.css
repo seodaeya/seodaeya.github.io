@@ -1,0 +1,174 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* 헤더 스타일 */
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #0078d7;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* 햄버거 메뉴 버튼 */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #0078d7;
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* 네비게이션 메뉴 */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0078d7;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #005a9c;
+    text-decoration: underline;
+}
+
+/* 공통 링크 스타일 */
+a {
+    color: #0078d7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 공통 목록 스타일 */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .header-container h1 {
+        margin-bottom: 5px;
+    }
+
+    /* 네비게이션 숨김 - 기본 상태 */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 15px;
+        border-top: 2px solid #e0e0e0;
+        margin-top: 15px;
+    }
+
+    /* 네비게이션 표시 - active 상태 */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 10px 0;
+        text-align: center;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .nav-menu a:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+/* 태블릿 이상에서는 항상 메뉴 표시 */
+@media (min-width: 601px) {
+    .hamburger-menu {
+        display: none !important;
+    }
+
+    .nav-menu {
+        display: flex !important;
+    }
+
+    .header-container {
+        justify-content: center;
+    }
+
+    header {
+        text-align: center;
+    }
+}
