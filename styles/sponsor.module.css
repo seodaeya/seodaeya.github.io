@@ -75,113 +75,15 @@
   background-color: #ffeb3b;
 }
 
+.kakaoPayButtonActive {
+  background-color: #e5cd00;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 .kakaoIcon {
   width: 20px;
   height: 20px;
 }
-
-/* Modal Overlay */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 20px;
-  animation: fadeIn 0.25s ease-out;
-}
-
-.modalContent {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-glass-active);
-  border-radius: 24px;
-  padding: 36px 28px 28px 28px;
-  max-width: 380px;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(254, 229, 0, 0.15);
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.closeButton {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-glass);
-  color: var(--text-secondary);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.2s ease;
-}
-
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--text-primary);
-}
-
-.modalTitle {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.modalSubtitle {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.qrContainer {
-  background: #ffffff;
-  padding: 16px;
-  border-radius: 16px;
-  display: inline-block;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.qrImage {
-  width: 200px;
-  height: 200px;
-  display: block;
-  object-fit: contain;
-}
-
-.qrGuide {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.5;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 
 .githubSponsorButton {
   display: inline-flex;
@@ -222,9 +124,96 @@
   transform: scale(1.25);
 }
 
+/* In-Place Expandable QR Container (Zero Viewport Jump) */
+.inlineQrWrapper {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--border-glass-active);
+  animation: expandDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrBox {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass-active);
+  border-radius: 20px;
+  padding: 24px 20px;
+  max-width: 320px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 25px rgba(254, 229, 0, 0.12);
+  position: relative;
+}
+
+.qrTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.qrSubtitle {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.qrImageFrame {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 14px;
+  display: inline-block;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.qrImage {
+  width: 180px;
+  height: 180px;
+  display: block;
+  object-fit: contain;
+}
+
+.qrGuideText {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+  line-height: 1.4;
+}
+
+.qrCloseTextBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qrCloseTextBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+
+@keyframes expandDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 600px) {
   .sponsorCard {
-    padding: 24px 18px;
+    padding: 24px 16px;
     margin: 36px 0 24px 0;
   }
 
@@ -236,17 +225,18 @@
     font-size: 0.88rem;
   }
 
-  .kakaoPayButton {
+  .kakaoPayButton,
+  .githubSponsorButton {
     width: 100%;
     justify-content: center;
   }
 
-  .modalContent {
-    padding: 28px 20px 20px 20px;
+  .qrBox {
+    padding: 20px 16px;
   }
 
   .qrImage {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 }
