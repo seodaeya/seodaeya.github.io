@@ -114,14 +114,36 @@ export default function CartInAll() {
     }
   };
 
-  // Extract Price numbers from text
+  // Safe Price Extractor: Extracts only valid prices accompanied by currency symbols or within realistic bounds
   const extractPrice = (text) => {
-    if (!text) return 0;
-    const match = text.match(/([0-9]{1,3}(,[0-9]{3})+|[0-9]{4,})\s*(원|KRW|₩)?/);
-    if (match) {
-      return parseInt(match[1].replace(/,/g, ''), 10) || 0;
+    if (!text || typeof text !== 'string') return 0;
+    
+    // Prefix pattern: KRW 24,500 or ₩24,500 or $24.50
+    const prefixMatch = text.match(/(?:₩|KRW|\$)\s*([1-9][0-9]{0,2}(?:,[0-9]{3})+|[1-9][0-9]{2,7})/i);
+    if (prefixMatch) {
+      const num = parseInt(prefixMatch[1].replace(/,/g, ''), 10);
+      if (!isNaN(num) && num > 0 && num < 100000000) return num;
     }
+
+    // Suffix pattern: 24,500원 or 24,500 KRW
+    const suffixMatch = text.match(/([1-9][0-9]{0,2}(?:,[0-9]{3})+|[1-9][0-9]{2,7})\s*(?:원|KRW|₩)/i);
+    if (suffixMatch) {
+      const num = parseInt(suffixMatch[1].replace(/,/g, ''), 10);
+      if (!isNaN(num) && num > 0 && num < 100000000) return num;
+    }
+
     return 0;
+  };
+
+  // Detect whether fetched title is useless query parameters or bot error
+  const isGarbageTitle = (title) => {
+    if (!title || typeof title !== 'string') return true;
+    const t = title.trim();
+    if (t.length < 3) return true;
+    if (/^[0-9]{6,}/.test(t)) return true; // Starts with long product ID number
+    if (t.includes('?n_media=') || t.includes('&n_rank=') || t.includes('?pvid=')) return true;
+    if (t.includes('Access denied') || t.includes('접근할 수 있는') || t.includes('Sign in') || t.includes('로봇이 아닙니다')) return true;
+    return false;
   };
 
   // ONE-CLICK MULTI-PLATFORM SMART URL PARSER
@@ -151,12 +173,14 @@ export default function CartInAll() {
         if (data.status === 'success' && data.data) {
           const d = data.data;
           const rawTitle = d.title || "";
-          if (rawTitle && !rawTitle.includes("Access denied") && !rawTitle.includes("접근할 수 있는") && !rawTitle.includes("100500") && !rawTitle.includes("110431") && !rawTitle.includes("Sign in")) {
+          
+          if (!isGarbageTitle(rawTitle)) {
             title = rawTitle;
             description = d.description || description;
             price = extractPrice(rawTitle) || extractPrice(d.description);
-            if (d.image && d.image.url) imageUrl = d.image.url;
-            else if (d.logo && d.logo.url) imageUrl = d.logo.url;
+            if (d.image && d.image.url && !d.image.url.includes('favicon') && !d.image.url.includes('logo')) {
+              imageUrl = d.image.url;
+            }
           }
         }
       } catch (fetchErr) {
@@ -193,8 +217,8 @@ export default function CartInAll() {
 
         const aliItemIdMatch = targetUrl.match(/item\/([0-9]+)\.html/);
         const itemId = aliItemIdMatch ? aliItemIdMatch[1] : "";
-        if (!title || title.length < 5) {
-          title = `[AliExpress] 글로벌 직구 추천 상품 #${itemId}`;
+        if (!title || isGarbageTitle(title)) {
+          title = `[AliExpress] 글로벌 직구 상품 #${itemId}`;
           description = `알리익스프레스 직구 상품 (할인 판매가 ${price > 0 ? price.toLocaleString() + '원' : '적용'})`;
         }
         if (!imageUrl) {
@@ -208,9 +232,9 @@ export default function CartInAll() {
         const storeMatch = targetUrl.match(/smartstore\.naver\.com\/([^/]+)\/products\/([0-9]+)/);
         const storeName = storeMatch ? storeMatch[1] : "스마트스토어";
         const prodId = storeMatch ? storeMatch[2] : "";
-        if (!title || title.length < 5) {
+        if (!title || isGarbageTitle(title)) {
           title = `[네이버] ${storeName} 스토어 상품 #${prodId}`;
-          description = `네이버 스마트스토어(${storeName}) 추천 상품`;
+          description = `네이버 쇼핑(${storeName}) 상품입니다. (✏️ 수정 버튼으로 상품명/금액을 변경할 수 있습니다)`;
         }
         if (!imageUrl) {
           imageUrl = "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80";
@@ -222,9 +246,9 @@ export default function CartInAll() {
         category = "패션/뷰티";
         const prodMatch = targetUrl.match(/products\/([0-9]+)/);
         const prodId = prodMatch ? prodMatch[1] : "";
-        if (!title || title.length < 5) {
+        if (!title || isGarbageTitle(title)) {
           title = `[11번가] 추천 특가 상품 #${prodId}`;
-          description = "11번가 오픈마켓 상품";
+          description = "11번가 오픈마켓 상품 (✏️ 수정 버튼으로 변경 가능)";
         }
         if (!imageUrl) {
           imageUrl = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80";
@@ -238,7 +262,7 @@ export default function CartInAll() {
         const asin = asinMatch ? asinMatch[1] : "";
         const pathTitleMatch = targetUrl.match(/amazon\.com\/([^/]+)\/dp/);
         const cleanPathTitle = pathTitleMatch ? decodeURIComponent(pathTitleMatch[1]).replace(/-/g, ' ') : "아마존 해외 직구 상품";
-        if (!title || title.length < 5) {
+        if (!title || isGarbageTitle(title)) {
           title = `[아마존] ${cleanPathTitle} (ASIN: ${asin})`;
           description = "Amazon 해외 직구 상품";
         }
@@ -252,9 +276,9 @@ export default function CartInAll() {
         category = "가전/DIY";
         const productIdMatch = targetUrl.match(/products\/([0-9]+)/);
         const productId = productIdMatch ? productIdMatch[1] : Date.now().toString().slice(-4);
-        if (!title || title.length < 5) {
+        if (!title || isGarbageTitle(title)) {
           title = `[쿠팡] 추천 상품 #${productId}`;
-          description = "쿠팡 로켓배송 및 추천 상품 (✏️ 수정 버튼으로 가격/상품명 변경 가능)";
+          description = "쿠팡 추천 상품 (✏️ 수정 버튼으로 가격/상품명 변경 가능)";
         }
         if (!imageUrl) {
           imageUrl = "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500&q=80";
