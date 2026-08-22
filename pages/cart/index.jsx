@@ -17,6 +17,7 @@ const SAMPLE_ITEMS = [
     linkUrl: "https://link.coupang.com/a/gpEnV0YNfE",
     imageUrl: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=500&q=80",
     category: "가전/DIY",
+    mallName: "쿠팡",
     isPurchased: false,
     createdAt: new Date().toISOString()
   },
@@ -28,6 +29,7 @@ const SAMPLE_ITEMS = [
     linkUrl: "https://link.coupang.com/a/gpEnV0YNfE",
     imageUrl: "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=500&q=80",
     category: "생필품/식품",
+    mallName: "쿠팡",
     isPurchased: false,
     createdAt: new Date().toISOString()
   },
@@ -39,6 +41,7 @@ const SAMPLE_ITEMS = [
     linkUrl: "https://link.coupang.com/a/gpEnV0YNfE",
     imageUrl: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80",
     category: "전자기기/IT",
+    mallName: "네이버쇼핑",
     isPurchased: true,
     createdAt: new Date().toISOString()
   }
@@ -48,13 +51,10 @@ export default function CartInAll() {
   const [items, setItems] = useState([]);
   const [urlInput, setUrlInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [titleInput, setTitleInput] = useState('');
-  const [priceInput, setPriceInput] = useState('');
-  const [descInput, setDescInput] = useState('');
-  const [categoryInput, setCategoryInput] = useState('전자기기/IT');
-  const [imageInput, setImageInput] = useState('');
+  const [toastMsg, setToastMsg] = useState('');
   const [activeFilter, setActiveFilter] = useState('전체');
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [editItem, setEditItem] = useState(null);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -78,65 +78,118 @@ export default function CartInAll() {
     }
   };
 
-  // URL auto-parser using free Microlink API
-  const handleParseUrl = async () => {
-    if (!urlInput.trim()) {
-      alert("먼저 쇼핑몰 상품 URL 링크를 입력해 주세요!");
-      return;
-    }
-    setIsLoading(true);
+  const showToast = (msg) => {
+    setToastMsg(msg);
+    setTimeout(() => setToastMsg(''), 3500);
+  };
 
+  // Helper to extract Mall Name from URL
+  const getMallName = (url) => {
     try {
-      const targetUrl = urlInput.trim();
-      const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
-      const data = await res.json();
-
-      if (data.status === 'success' && data.data) {
-        const d = data.data;
-        if (d.title) setTitleInput(d.title);
-        if (d.description) setDescInput(d.description);
-        if (d.image && d.image.url) {
-          setImageInput(d.image.url);
-        } else if (d.logo && d.logo.url) {
-          setImageInput(d.logo.url);
-        }
-      }
+      const host = new URL(url).hostname;
+      if (host.includes('coupang')) return '쿠팡';
+      if (host.includes('naver')) return '네이버';
+      if (host.includes('aliexpress')) return '알리';
+      if (host.includes('amazon')) return '아마존';
+      if (host.includes('musinsa')) return '무신사';
+      if (host.includes('11st')) return '11번가';
+      if (host.includes('gmarket')) return 'G마켓';
+      return host.replace('www.', '').split('.')[0].toUpperCase();
     } catch (e) {
-      console.warn("Could not auto-parse URL metadata. Fallback to manual entry.", e);
-    } finally {
-      setIsLoading(false);
+      return '쇼핑몰';
     }
   };
 
-  // Add Item to Cart
-  const handleAddItem = (e) => {
+  // Extract Price numbers from text or metadata
+  const extractPrice = (text) => {
+    if (!text) return 0;
+    const match = text.match(/([0-9]{1,3}(,[0-9]{3})+|[0-9]{4,})\s*(원|KRW|₩)?/);
+    if (match) {
+      return parseInt(match[1].replace(/,/g, ''), 10) || 0;
+    }
+    return 0;
+  };
+
+  // ONE-CLICK SMART URL ADD
+  const handleQuickAdd = async (e) => {
     e.preventDefault();
-    if (!titleInput.trim()) {
-      alert("상품명을 입력해 주세요!");
+    const targetUrl = urlInput.trim();
+    if (!targetUrl) {
+      alert("쇼핑몰 상품 링크(URL)를 입력해 주세요!");
       return;
     }
 
-    const newItem = {
-      id: Date.now().toString(),
-      title: titleInput.trim(),
-      price: parseInt(priceInput, 10) || 0,
-      description: descInput.trim(),
-      linkUrl: urlInput.trim() || '#',
-      imageUrl: imageInput.trim() || '',
-      category: categoryInput,
-      isPurchased: false,
-      createdAt: new Date().toISOString()
-    };
+    setIsLoading(true);
+    const mallName = getMallName(targetUrl);
 
-    const updated = [newItem, ...items];
-    saveItems(updated);
+    try {
+      // Fetch metadata via Microlink API
+      const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
+      const data = await res.json();
 
-    // Reset inputs
-    setUrlInput('');
-    setTitleInput('');
-    setPriceInput('');
-    setDescInput('');
-    setImageInput('');
+      let title = "";
+      let description = "";
+      let imageUrl = "";
+      let price = 0;
+
+      if (data.status === 'success' && data.data) {
+        const d = data.data;
+        // Check if bot was blocked (e.g. Coupang Akamai access denied)
+        if (d.title && !d.title.includes("Access denied") && !d.title.includes("접근할 수 있는")) {
+          title = d.title;
+          description = d.description || "";
+          price = extractPrice(d.title) || extractPrice(d.description);
+          if (d.image && d.image.url) imageUrl = d.image.url;
+          else if (d.logo && d.logo.url) imageUrl = d.logo.url;
+        }
+      }
+
+      // If title is missing (or blocked by bot protection), provide clean auto fallback
+      if (!title) {
+        const productIdMatch = targetUrl.match(/products\/([0-9]+)/);
+        const productId = productIdMatch ? productIdMatch[1] : Date.now().toString().slice(-4);
+        title = `[${mallName}] 상품 #${productId}`;
+        description = "쇼핑몰 링크에서 직접 담긴 상품입니다. (클릭하여 수정 가능)";
+      }
+
+      const newItem = {
+        id: Date.now().toString(),
+        title,
+        price,
+        description,
+        linkUrl: targetUrl,
+        imageUrl,
+        category: "전자기기/IT",
+        mallName,
+        isPurchased: false,
+        createdAt: new Date().toISOString()
+      };
+
+      const updated = [newItem, ...items];
+      saveItems(updated);
+      setUrlInput('');
+      showToast(`🎉 '[${title}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
+
+    } catch (err) {
+      console.warn("Auto parse failed, creating fallback item", err);
+      const fallbackItem = {
+        id: Date.now().toString(),
+        title: `[${mallName}] 관심 상품`,
+        price: 0,
+        description: "쇼핑몰 링크에서 담긴 상품",
+        linkUrl: targetUrl,
+        imageUrl: "",
+        category: "기타",
+        mallName,
+        isPurchased: false,
+        createdAt: new Date().toISOString()
+      };
+      saveItems([fallbackItem, ...items]);
+      setUrlInput('');
+      showToast(`🎉 관심 상품이 장바구니에 담겼습니다!`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Load sample items
@@ -144,6 +197,7 @@ export default function CartInAll() {
     const combined = [...SAMPLE_ITEMS, ...items.filter(i => !i.id.startsWith('sample-'))];
     saveItems(combined);
     setIsGuideOpen(false);
+    showToast("🚀 예시 상품 3개가 장바구니에 추가되었습니다!");
   };
 
   // Toggle purchased state
@@ -159,7 +213,18 @@ export default function CartInAll() {
     if (confirm("이 상품을 장바구니에서 삭제하시겠습니까?")) {
       const updated = items.filter(item => item.id !== id);
       saveItems(updated);
+      showToast("🗑️ 상품이 장바구니에서 삭제되었습니다.");
     }
+  };
+
+  // Save Edit Item
+  const handleSaveEdit = (e) => {
+    e.preventDefault();
+    if (!editItem) return;
+    const updated = items.map(i => i.id === editItem.id ? editItem : i);
+    saveItems(updated);
+    setEditItem(null);
+    showToast("✏️ 상품 정보가 수정되었습니다.");
   };
 
   // Export JSON backup
@@ -171,6 +236,7 @@ export default function CartInAll() {
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
+    showToast("💾 내 장바구니 백업 파일(JSON)을 PC로 내려받았습니다!");
   };
 
   // Import JSON backup
@@ -184,10 +250,10 @@ export default function CartInAll() {
         const imported = JSON.parse(event.target.result);
         if (Array.isArray(imported)) {
           saveItems(imported);
-          alert(`성공적으로 ${imported.length}개의 상품을 불러왔습니다!`);
+          showToast(`📂 성공적으로 ${imported.length}개의 상품을 불러와 이어서 시작합니다!`);
         }
       } catch (err) {
-        alert("올바르지 않은 JSON 백업 파일입니다.");
+        alert("올바르지 않은 JSON 백업 파일 형식입니다.");
       }
     };
     reader.readAsText(file);
@@ -218,19 +284,30 @@ export default function CartInAll() {
           <span className={styles.cartBadge}>ALL-IN-ONE WISHLIST</span>
           <h1 className={styles.cartTitle}>Cart In All (모아담는 장바구니)</h1>
           <p className={styles.cartSubtitle}>
-            쿠팡, 네이버, 알리, 아마존 등 흩어져 있는 쇼핑몰 링크를 한곳에 모아<br />
-            스마트하게 예산을 관리하고 위시리스트를 완성해 보세요.
+            쿠팡, 네이버, 알리, 아마존 등 흩어져 있는 쇼핑몰 링크를 붙여넣으면<br />
+            <strong>링크 하나로 상품 정보와 가격을 한곳에 쏙 모아</strong> 예산을 관리해 줍니다.
           </p>
           
-          {/* Guide & Sample Trigger Button */}
           <button 
             type="button" 
             className={styles.guideTriggerBtn}
             onClick={() => setIsGuideOpen(true)}
           >
-            <span>💡</span> 사용법 및 예시 보기
+            <span>💡</span> 사용법 & 예시 보기
           </button>
         </header>
+
+        {/* LocalStorage Security & Warning Notice */}
+        <div className={styles.storageWarningBanner}>
+          <span className={styles.warningIcon}>🔒</span>
+          <div className={styles.warningContent}>
+            <div className={styles.warningTitle}>브라우저 스토리지(LocalStorage) 보관 안내</div>
+            <p className={styles.warningText}>
+              본 서비스는 개인정보 유출 방지 및 서버비 0원을 위해 별도의 회원가입 없이 <strong>사용자 브라우저의 로컬 스토리지</strong>에만 안전하게 보관됩니다.<br />
+              브라우저 방문 기록이나 캐시를 초기화하면 데이터가 삭제될 수 있으니, 아래 <strong>[💾 내 장바구니 내려받기]</strong> 기능을 통해 주기적으로 백업 파일을 보관해 주세요!
+            </p>
+          </div>
+        </div>
 
         {/* Coupang Partners Support Banner */}
         <section className={styles.coupangBanner} aria-label="쿠팡 파트너스 후원 안내">
@@ -272,120 +349,82 @@ export default function CartInAll() {
           </div>
         </div>
 
-        {/* Redesigned Add Product Form */}
-        <section className={styles.addFormCard}>
-          <div className={styles.formHeader}>
-            <h2 className={styles.formTitle}>
-              <span>✨</span> 새 상품 모아담기
+        {/* ONE-CLICK QUICK PASTE & ADD CARD */}
+        <section className={styles.quickAddCard}>
+          <div className={styles.quickAddHeader}>
+            <h2 className={styles.quickAddTitle}>
+              <span>⚡</span> 쇼핑몰 링크 복사 후 바로 담기
             </h2>
-            <button 
-              type="button" 
-              className={styles.guideTriggerBtn}
-              onClick={() => setIsGuideOpen(true)}
-              style={{ fontSize: '0.8rem', padding: '6px 14px' }}
-            >
-              사용 가이드
-            </button>
+            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+              쿠팡, 네이버, 알리, 아마존 등 상품 링크를 넣고 Enter를 누르세요.
+            </span>
           </div>
 
-          <form onSubmit={handleAddItem} className={styles.formGrid}>
-            
-            {/* Row 1: URL Input with Auto-Parse Button */}
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>쇼핑몰 링크 (쿠팡, 네이버, 알리, 아마존 등)</label>
-              <div className={styles.urlInputWrapper}>
-                <input 
-                  type="url"
-                  placeholder="https://www.coupang.com/vp/products/..."
-                  className={styles.inputField}
-                  value={urlInput}
-                  onChange={(e) => setUrlInput(e.target.value)}
-                />
-                <button 
-                  type="button" 
-                  className={styles.parseButton}
-                  onClick={handleParseUrl}
-                  disabled={isLoading}
-                >
-                  {isLoading ? '가져오는 중...' : '🔍 정보 가져오기'}
-                </button>
-              </div>
-            </div>
-
-            {/* Row 2: Product Name & Estimated Price */}
-            <div className={styles.formRow}>
-              <div className={styles.inputGroup}>
-                <label className={styles.inputLabel}>상품명 (필수) *</label>
-                <input 
-                  type="text" 
-                  placeholder="예: 싼타페 하이브리드 와이퍼 블레이드"
-                  className={styles.inputField}
-                  value={titleInput}
-                  onChange={(e) => setTitleInput(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className={styles.inputGroup}>
-                <label className={styles.inputLabel}>예상 가격 (숫자만, 원)</label>
-                <input 
-                  type="number" 
-                  placeholder="예: 25000"
-                  className={styles.inputField}
-                  value={priceInput}
-                  onChange={(e) => setPriceInput(e.target.value)}
-                />
-              </div>
-            </div>
-
-            {/* Row 3: Category & Image URL */}
-            <div className={styles.formRow}>
-              <div className={styles.inputGroup}>
-                <label className={styles.inputLabel}>카테고리 분류</label>
-                <select 
-                  className={styles.selectField}
-                  value={categoryInput}
-                  onChange={(e) => setCategoryInput(e.target.value)}
-                >
-                  {CATEGORIES.filter(c => c !== '전체').map(c => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className={styles.inputGroup}>
-                <label className={styles.inputLabel}>이미지 썸네일 URL (선택)</label>
-                <input 
-                  type="url" 
-                  placeholder="https://.../image.jpg (자동 입력됨)"
-                  className={styles.inputField}
-                  value={imageInput}
-                  onChange={(e) => setImageInput(e.target.value)}
-                />
-              </div>
-            </div>
-
-            {/* Row 4: Memo & Submit Button */}
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>쇼핑 메모 & 용도</label>
+          <form onSubmit={handleQuickAdd}>
+            <div className={styles.quickInputRow}>
               <input 
-                type="text" 
-                placeholder="예: 가전 정비용, 월급날 구매 예정, 최저가 알림 시 구매"
-                className={styles.inputField}
-                value={descInput}
-                onChange={(e) => setDescInput(e.target.value)}
+                type="url"
+                placeholder="https://www.coupang.com/vp/products/... (쇼핑몰 상품 상세 링크 붙여넣기)"
+                className={styles.mainUrlInput}
+                value={urlInput}
+                onChange={(e) => setUrlInput(e.target.value)}
+                required
               />
-            </div>
-
-            <div style={{ marginTop: '8px', textAlign: 'right' }}>
-              <button type="submit" className={styles.submitBtn}>
-                ➕ 장바구니에 담기
+              <button 
+                type="submit" 
+                className={styles.quickAddBtn}
+                disabled={isLoading}
+              >
+                {isLoading ? '가져오는 중...' : '➕ 링크로 즉시 담기'}
               </button>
             </div>
+            <p className={styles.quickHelpText}>
+              💡 링크를 넣고 담기만 누르면 상품명, 이미지, 가격 정보를 자동으로 스크랩하여 장바구니에 쏙 추가합니다.
+            </p>
           </form>
+
+          {/* Toast Notification */}
+          {toastMsg && (
+            <div className={styles.toastMessage}>
+              <span>✨</span> {toastMsg}
+            </div>
+          )}
         </section>
 
-        {/* Filter Tabs & Backup Tools */}
+        {/* DEDICATED BACKUP & RESTORE TOOLBAR */}
+        <div className={styles.backupBar}>
+          <div>
+            <div className={styles.backupInfoTitle}>
+              <span>💾</span> 내 장바구니 PC 내려받기 & 이어쓰기
+            </div>
+            <p className={styles.backupInfoDesc}>
+              소중한 위시리스트를 JSON 파일로 다운로드하거나, 다른 기기에서 불러와서 계속 사용할 수 있습니다.
+            </p>
+          </div>
+
+          <div className={styles.backupButtons}>
+            <button 
+              type="button" 
+              className={styles.downloadBackupBtn}
+              onClick={handleExportJson}
+              title="내 장바구니를 JSON 파일로 다운로드"
+            >
+              <span>📥</span> PC로 내려받기 (백업)
+            </button>
+            
+            <label className={styles.uploadBackupBtn} title="백업 파일(JSON)을 업로드하여 이어서 사용">
+              <span>📤</span> 파일 업로드 (복원)
+              <input 
+                type="file" 
+                accept=".json" 
+                onChange={handleImportJson} 
+                style={{ display: 'none' }} 
+              />
+            </label>
+          </div>
+        </div>
+
+        {/* Filter Tabs */}
         <div className={styles.toolbar}>
           <div className={styles.filterTabs}>
             {CATEGORIES.map(cat => (
@@ -399,16 +438,6 @@ export default function CartInAll() {
               </button>
             ))}
           </div>
-
-          <div className={styles.backupActions}>
-            <button type="button" className={styles.toolButton} onClick={handleExportJson} title="JSON 파일로 백업">
-              💾 백업하기
-            </button>
-            <label className={styles.toolButton} style={{ display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }} title="JSON 백업 파일 복원">
-              📂 불러오기
-              <input type="file" accept=".json" onChange={handleImportJson} style={{ display: 'none' }} />
-            </label>
-          </div>
         </div>
 
         {/* Item List Grid */}
@@ -417,7 +446,7 @@ export default function CartInAll() {
             <div className={styles.emptyIcon}>🛒</div>
             <h3 className={styles.emptyTitle}>장바구니가 비어 있습니다</h3>
             <p className={styles.emptyDesc}>
-              원하는 쇼핑몰 링크를 넣거나, 아래 예시 데이터를 담아서 테스트해 보세요!
+              원하는 쇼핑몰 링크를 상단에 붙여넣거나, 아래 예시 데이터를 담아서 테스트해 보세요!
             </p>
             <button 
               type="button" 
@@ -441,10 +470,13 @@ export default function CartInAll() {
                     <span className={styles.noImage}>📦</span>
                   )}
                   <span className={styles.categoryTag}>{item.category}</span>
+                  {item.mallName && (
+                    <span className={styles.mallBadge}>{item.mallName}</span>
+                  )}
                 </div>
 
                 <div className={styles.itemBody}>
-                  <h3 className={styles.itemTitle} title={item.title}>
+                  <h3 className={styles.itemTitle} title={item.title} onClick={() => setEditItem(item)} style={{ cursor: 'pointer' }}>
                     {item.title}
                   </h3>
                   <div className={styles.itemPrice}>
@@ -466,12 +498,21 @@ export default function CartInAll() {
                     </button>
 
                     <div className={styles.cardActionBtns}>
+                      <button 
+                        type="button"
+                        className={styles.linkBtn}
+                        onClick={() => setEditItem(item)}
+                        title="정보 수정"
+                      >
+                        ✏️
+                      </button>
                       {item.linkUrl && item.linkUrl !== '#' && (
                         <a 
                           href={item.linkUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className={styles.linkBtn}
+                          title="쇼핑몰 바로가기"
                         >
                           쇼핑몰 ↗
                         </a>
@@ -492,6 +533,66 @@ export default function CartInAll() {
           </div>
         )}
 
+        {/* Edit Item Modal */}
+        {editItem && (
+          <div className={styles.modalOverlay} onClick={() => setEditItem(null)}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.closeButton} onClick={() => setEditItem(null)}>✕</button>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: '0 0 16px 0' }}>
+                ✏️ 상품 정보 및 가격 수정
+              </h3>
+              
+              <form onSubmit={handleSaveEdit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div>
+                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>상품명</label>
+                  <input 
+                    type="text" 
+                    className={styles.mainUrlInput}
+                    value={editItem.title}
+                    onChange={(e) => setEditItem({ ...editItem, title: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>가격 (원)</label>
+                  <input 
+                    type="number" 
+                    className={styles.mainUrlInput}
+                    value={editItem.price || ''}
+                    onChange={(e) => setEditItem({ ...editItem, price: parseInt(e.target.value, 10) || 0 })}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>카테고리</label>
+                  <select 
+                    className={styles.mainUrlInput}
+                    value={editItem.category}
+                    onChange={(e) => setEditItem({ ...editItem, category: e.target.value })}
+                  >
+                    {CATEGORIES.filter(c => c !== '전체').map(c => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>메모</label>
+                  <input 
+                    type="text" 
+                    className={styles.mainUrlInput}
+                    value={editItem.description || ''}
+                    onChange={(e) => setEditItem({ ...editItem, description: e.target.value })}
+                  />
+                </div>
+                <div style={{ textAlign: 'right', marginTop: '10px' }}>
+                  <button type="submit" className={styles.quickAddBtn}>
+                    💾 수정 완료
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
         {/* Interactive Guide & Sample Layer Popup Modal */}
         {isGuideOpen && (
           <div className={styles.modalOverlay} onClick={() => setIsGuideOpen(false)}>
@@ -509,23 +610,23 @@ export default function CartInAll() {
               </h3>
 
               <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>1️⃣ 링크 복사 & 붙여넣기</div>
+                <div className={styles.guideStepTitle}>1️⃣ 링크 복사 후 바로 담기</div>
                 <p className={styles.guideStepText}>
-                  쿠팡, 네이버, 알리, 아마존 등에서 사고 싶은 상품 링크(URL)를 복사해 입력창에 붙여넣습니다.
+                  쿠팡, 네이버, 알리, 아마존 등에서 사고 싶은 상품 링크(URL)를 복사해 입력창에 붙여넣고 <strong>[➕ 링크로 즉시 담기]</strong>를 누르면 상품명과 가격이 자동으로 수집되어 장바구니에 쏙 들어갑니다.
                 </p>
               </div>
 
               <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>2️⃣ 🔍 정보 가져오기 클릭</div>
-                <p className={styles.guideStepText}>
-                  버튼을 누르면 썸네일 이미지와 상품명이 자동으로 채워집니다. 가격이나 메모를 추가하고 <strong>[+ 장바구니에 담기]</strong>를 누르면 끝!
-                </p>
-              </div>
-
-              <div className={styles.guideStepCard}>
-                <div className={styles.guideStepTitle}>3️⃣ 스마트 예산 & 상태 관리</div>
+                <div className={styles.guideStepTitle}>2️⃣ 스마트 예산 & 구매 상태 관리</div>
                 <p className={styles.guideStepText}>
                   물건을 샀다면 <strong>[✅ 구매 완료]</strong> 버튼을 눌러보세요. 구매 예정 금액과 지출한 금액이 실시간으로 자동 계산됩니다.
+                </p>
+              </div>
+
+              <div className={styles.guideStepCard}>
+                <div className={styles.guideStepTitle}>3️⃣ PC 내려받기 & 이어쓰기 (백업/복원)</div>
+                <p className={styles.guideStepText}>
+                  브라우저 캐시 삭제 시 데이터가 지워지는 것을 방지하기 위해 <strong>[📥 PC로 내려받기]</strong>로 백업해 두고, 언제든 <strong>[📤 파일 업로드]</strong>로 불러와서 이어서 사용할 수 있습니다.
                 </p>
               </div>
 
