@@ -35,8 +35,30 @@
   font-size: 1.05rem;
   color: var(--text-secondary);
   max-width: 620px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   line-height: 1.6;
+}
+
+.guideTriggerBtn {
+  background: rgba(138, 43, 226, 0.15);
+  border: 1px solid var(--accent-light);
+  color: var(--accent-light);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.guideTriggerBtn:hover {
+  background: var(--accent-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.35);
 }
 
 /* Coupang Partners Support Box */
@@ -45,7 +67,7 @@
   border: 1px solid rgba(234, 76, 137, 0.25);
   border-radius: 18px;
   padding: 22px 24px;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,7 +159,7 @@
   color: var(--accent-light);
 }
 
-/* Add Item Form Box */
+/* Redesigned Add Item Form */
 .addFormCard {
   background: var(--bg-secondary);
   border: 1px solid var(--border-glass-active);
@@ -151,27 +173,51 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .formTitle {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.urlInputRow {
+.formGrid {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.urlInputWrapper {
+  display: flex;
+  gap: 10px;
 }
 
 .inputField {
-  flex: 1;
-  min-width: 240px;
+  width: 100%;
   background: var(--bg-primary);
   border: 1px solid var(--border-glass);
   border-radius: 12px;
@@ -179,11 +225,43 @@
   color: var(--text-primary);
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 48px;
 }
 
 .inputField:focus {
   border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+}
+
+.selectField {
+  width: 100%;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 0 16px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  height: 48px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+}
+
+.selectField option {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 10px;
+}
+
+.selectField:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
 }
 
 .parseButton {
@@ -191,14 +269,15 @@
   color: #ffffff;
   border: none;
   font-weight: 700;
-  padding: 12px 24px;
+  padding: 0 20px;
   border-radius: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: transform 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
+  height: 48px;
 }
 
 .parseButton:hover {
@@ -206,21 +285,25 @@
   opacity: 0.95;
 }
 
-.manualInputsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+.submitBtn {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 18px rgba(138, 43, 226, 0.35);
+  transition: all 0.25s ease;
 }
 
-.selectField {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-glass);
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-  outline: none;
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5);
 }
 
 /* Category Filter Tabs & Toolbar */
@@ -473,7 +556,111 @@
 .emptyDesc {
   color: var(--text-secondary);
   font-size: 0.92rem;
+  margin: 0 0 20px 0;
+}
+
+/* Layer Popup Modal for Guide & Samples */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modalContent {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass-active);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 640px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(138, 43, 226, 0.2);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+.guideStepCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.guideStepTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin: 0 0 4px 0;
+}
+
+.guideStepText {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
   margin: 0;
+  line-height: 1.5;
+}
+
+.sampleLoadButton {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.sampleLoadButton:hover {
+  opacity: 0.92;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 600px) {
@@ -483,5 +670,15 @@
   }
   .coupangBtn {
     justify-content: center;
+  }
+  .urlInputWrapper {
+    flex-direction: column;
+  }
+  .parseButton {
+    width: 100%;
+    justify-content: center;
+  }
+  .modalContent {
+    padding: 24px 18px;
   }
 }
