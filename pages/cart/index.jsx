@@ -439,8 +439,18 @@ export default function CartInAll() {
             <div className={styles.statValue}>{totalPlanned.toLocaleString()}원</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statLabel}>✅ 구매 완료 금액</div>
+            <div className={styles.statLabel}>✅ 구매 완료 금액 ({items.filter(i => i.isPurchased).length}개)</div>
             <div className={styles.statValue} style={{ color: '#4ade80' }}>{totalPurchased.toLocaleString()}원</div>
+            {items.some(i => i.isPurchased) && (
+              <button 
+                type="button"
+                className={styles.statClearBtn}
+                onClick={handleClearPurchased}
+                title="구매 완료된 모든 상품 일괄 삭제"
+              >
+                🧹 구매완료 일괄 비우기
+              </button>
+            )}
           </div>
         </div>
 
@@ -519,7 +529,7 @@ export default function CartInAll() {
           </div>
         </div>
 
-        {/* Filter Tabs */}
+        {/* Filter Tabs & Bulk Clear Action */}
         <div className={styles.toolbar}>
           <div className={styles.filterTabs}>
             {CATEGORIES.map(cat => (
@@ -533,6 +543,17 @@ export default function CartInAll() {
               </button>
             ))}
           </div>
+
+          {items.some(i => i.isPurchased) && (
+            <button 
+              type="button" 
+              className={styles.clearPurchasedBtn}
+              onClick={handleClearPurchased}
+              title="구매 완료된 모든 상품을 한 번에 삭제"
+            >
+              <span>🧹</span> 구매 완료 상품 비우기 ({items.filter(i => i.isPurchased).length}개)
+            </button>
+          )}
         </div>
 
         {/* Item List Grid */}
@@ -629,13 +650,26 @@ export default function CartInAll() {
                       )}
 
                       <div className={styles.itemFooter}>
-                        <button 
-                          type="button" 
-                          className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
-                          onClick={() => togglePurchased(item.id)}
-                        >
-                          {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
-                        </button>
+                        <div style={{ display: 'flex', gap: '6px' }}>
+                          <button 
+                            type="button" 
+                            className={`${styles.statusBtn} ${item.isPurchased ? styles.statusBtnPurchased : ''}`}
+                            onClick={() => togglePurchased(item.id)}
+                            title={item.isPurchased ? '구매 예정으로 다시 변경' : '구매 완료로 표시'}
+                          >
+                            {item.isPurchased ? '✅ 구매 완료' : '⏳ 구매 예정'}
+                          </button>
+                          {item.isPurchased && (
+                            <button 
+                              type="button"
+                              className={styles.cardPurchasedDeleteBtn}
+                              onClick={() => handleDeleteItem(item.id)}
+                              title="구매 완료된 이 상품 삭제"
+                            >
+                              삭제
+                            </button>
+                          )}
+                        </div>
 
                         <div className={styles.cardActionBtns}>
                           <button 

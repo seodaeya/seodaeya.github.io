@@ -846,3 +846,39 @@
   color: #ffffff;
   border-color: #ef4444;
 }
+
+.statClearBtn {
+  margin-top: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.statClearBtn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.cardPurchasedDeleteBtn {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cardPurchasedDeleteBtn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
