@@ -6,33 +6,156 @@ export default function About() {
     <>
       <SEO 
         title="블로그 소개 | 여전히, 나는 사람이다."
-        description="'여전히, 나는 사람이다.' 블로그의 소개 및 기술, 라이프스타일, AI 탐구에 대한 이야기입니다."
-        url="https://seodaeya.github.io/about"
+        description="완벽하지 않기에 배우고, 실수하기에 도전합니다. AI 시대 속에서도 사람의 온기와 배움의 여정을 기록하는 블로그 이야기."
+        url="https://seodaeya.github.io/about/"
       />
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', color: 'var(--text-main, #e2e8f0)', lineHeight: '1.75' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', borderBottom: '2px solid var(--border-color, #334155)', paddingBottom: '0.5rem' }}>블로그 소개</h1>
+      <div style={{ maxWidth: '820px', margin: '0 auto', padding: '2.5rem 1rem', color: 'var(--text-primary)', lineHeight: '1.85' }}>
         
-        <p style={{ fontSize: '1.1rem', fontWeight: '600', color: '#38bdf8', marginBottom: '1.5rem' }}>
-          인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기.
-        </p>
+        {/* Header Title Area */}
+        <header style={{ marginBottom: '2.5rem', borderBottom: '1px solid var(--border-glass)', paddingBottom: '1.5rem' }}>
+          <span className="category-badge" style={{ marginBottom: '12px' }}>BRAND PHILOSOPHY</span>
+          <h1 style={{ 
+            fontSize: '2.4rem', 
+            fontWeight: '900', 
+            margin: '8px 0 16px 0',
+            letterSpacing: '-0.02em',
+            background: 'var(--accent-gradient)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            여전히, 나는 사람이다.
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', margin: 0, fontWeight: '500' }}>
+            완벽한 알고리즘의 세상 속에서, 서툴지만 뜨겁게 살아가는 인간의 기록
+          </p>
+        </header>
 
-        <p style={{ marginBottom: '1.2rem' }}>
-          안녕하세요! <strong>'여전히, 나는 사람이다.'</strong>는 빠른 기술의 변화 속에서도 인간 고유의 시선과 경험을 바탕으로 깊이 있는 지식을 기록하는 1인 테크 & 라이프스타일 블로그입니다.
-        </p>
+        {/* Emotionally Resonant Opening Statement Box */}
+        <blockquote style={{
+          background: 'var(--bg-secondary)',
+          borderLeft: '4px solid var(--accent-light)',
+          borderTop: '1px solid var(--border-glass)',
+          borderRight: '1px solid var(--border-glass)',
+          borderBottom: '1px solid var(--border-glass)',
+          borderRadius: '0 16px 16px 0',
+          padding: '24px 28px',
+          margin: '0 0 2.5rem 0',
+          fontSize: '1.05rem',
+          fontStyle: 'normal',
+          color: 'var(--text-primary)',
+          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15)'
+        }}>
+          <p style={{ margin: '0 0 12px 0', fontWeight: '700', fontSize: '1.15rem', color: 'var(--accent-light)' }}>
+            "사람이기에 완벽하지 않습니다. 하지만 그렇기에 우리는 배웁니다."
+          </p>
+          <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: '1.75' }}>
+            기계가 단 1초 만에 오류 없는 정답을 쏟아내는 시대입니다.<br />
+            하지만 무엇을 질문할지 고민하고, 실수를 통해 넘어지며, 다시 털고 일어나는 가슴 벅찬 성장은<br />
+            <strong>오직 살아 숨 쉬는 '사람'만이 누릴 수 있는 특권</strong>입니다.
+          </p>
+        </blockquote>
 
-        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>주요 다루는 주제</h2>
-        <ul style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }}>
-          <li><strong>AI & Tech 리서치:</strong> OpenAI GPT-5.6, Google Gemini 3.6, Claude, Agentic Planning 등 첨단 AI 트렌드 및 개발 도구 분석</li>
-          <li><strong>개발 & 시스템 테크:</strong> 정적 웹사이트 구축, Giscus 연동, 스크립트 자동화 및 에러 해결 가이드</li>
-          <li><strong>셀프 DIY & 가전 리뉴얼:</strong> 싼타페 차량 DIY, SK매직 얼음정수기 토출부 세척 등 생활 속 정교한 가전 케어</li>
-          <li><strong>라이프 & 문화:</strong> 칵테일 레시피, 반려 파충류(크레스티드 게코) 케어, 스포츠 스토리</li>
-        </ul>
+        {/* Section 1: Brand Meaning */}
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>🌱</span> 왜 '여전히, 나는 사람이다.'인가요?
+          </h2>
+          <p style={{ marginBottom: '1rem' }}>
+            이 블로그의 글과 코드는 인공지능(AI)이라는 강력한 도구를 적극적으로 활용하여 짓고 다듬어집니다. 
+            그러나 AI를 움직이게 만드는 최초의 호기심, 시행착오를 겪으며 느끼는 당혹감, 그리고 마침내 문제를 해결했을 때 찾아오는 순수한 기쁨은 모두 <strong>한 인간의 심장에서 시작</strong>됩니다.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong>'여전히, 나는 사람이다.'</strong>라는 이름은 기술의 파도에 휩쓸려 나를 잃어버리는 것이 아니라, 
+            인공지능을 가장 든든한 파트너로 삼아 <strong>인간 본연의 따뜻함과 주체적인 사유를 지켜나가겠다는 진솔한 다짐</strong>입니다.
+          </p>
+        </section>
 
-        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>운영 정책</h2>
-        <p style={{ marginBottom: '1.5rem' }}>
-          모든 글은 출처가 명확하며, 직접 실습하거나 경험한 구체적인 사실에 기반하여 작성합니다. 
-          자세한 개인정보 보호 방침은 <Link href="/privacy/" style={{ color: '#38bdf8' }}>개인정보처리방침 페이지</Link>에서 확인하실 수 있습니다.
-        </p>
+        {/* Section 2: Together & Resilience */}
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>🤝</span> '함께함'이 가진 세 가지 다중적 의미
+          </h2>
+          <p style={{ marginBottom: '1.2rem' }}>
+            이 공간에서 이야기하는 '함께'라는 단어는 입체적이고 다정한 세 가지 연결을 의미합니다:
+          </p>
+
+          <div style={{ display: 'grid', gap: '16px', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', marginBottom: '1.5rem' }}>
+            <div className="glass-card" style={{ padding: '20px', borderRadius: '14px' }}>
+              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>👥</div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>독자 여러분과 함께</h3>
+              <p style={{ fontSize: '0.9rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                같은 고민을 하고 같은 질문을 품은 분들에게 작은 디딤돌이 되어주고, 지식을 나누며 함께 성장합니다.
+              </p>
+            </div>
+
+            <div className="glass-card" style={{ padding: '20px', borderRadius: '14px' }}>
+              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🤖</div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>AI 파트너와 함께</h3>
+              <p style={{ fontSize: '0.9rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                인공지능을 차가운 경쟁자가 아닌, 나의 한계를 넓혀주고 함께 탐구하는 든든한 페어 러닝 메이트로 대합니다.
+              </p>
+            </div>
+
+            <div className="glass-card" style={{ padding: '20px', borderRadius: '14px' }}>
+              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🦎</div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>소중한 일상과 함께</h3>
+              <p style={{ fontSize: '0.9rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                차량과 가전을 직접 고치고, 반려 도마뱀 '봄이'를 돌보며 손끝으로 만지는 지극히 현실적인 온기를 품습니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: The Promise */}
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>🚀</span> 꾸준히 공유하고, 기록하며, 앞으로 나아갑니다
+          </h2>
+          <p style={{ marginBottom: '1rem' }}>
+            저는 완성된 결과물만 뽐내는 완벽주의자가 아닙니다. 실패하고 헤맨 과정, 어설프게 시작했던 첫걸음, 그리고 조금씩 나아지는 모든 순간을 가감 없이 투명하게 아카이빙합니다.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            내가 겪은 시행착오의 기록이 누군가의 소중한 몇 시간을 아껴줄 수 있다면, 그리고 <strong>"나도 할 수 있겠구나"</strong>라는 작은 용기가 될 수 있다면 그것으로 충분합니다.
+          </p>
+          <p style={{ margin: 0, fontWeight: '600', color: 'var(--accent-light)' }}>
+            끊임없이 도전하고, 다정하게 함께하며, 지치지 않고 계속해서 배워 나가겠습니다.
+          </p>
+        </section>
+
+        {/* Categories Overview */}
+        <section style={{ marginBottom: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-glass)' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '1rem', color: 'var(--text-primary)' }}>
+            이곳에서 함께 나눌 이야기들
+          </h2>
+          <ul style={{ paddingLeft: '1.2rem', margin: 0, color: 'var(--text-secondary)' }}>
+            <li style={{ marginBottom: '8px' }}><strong>AI & Intelligence:</strong> 프레임워크 설계, LLM 분석, 1인 대학 구축법, 에이전틱 워크플로</li>
+            <li style={{ marginBottom: '8px' }}><strong>Dev & Software:</strong> 정적 웹사이트(Next.js) 구축, SEO 최적화, 개발 에러 트러블슈팅</li>
+            <li style={{ marginBottom: '8px' }}><strong>Hardware & DIY:</strong> 싼타페 차량 자가 정비, 정수기 셀프 분해 세척, 기기 수리</li>
+            <li style={{ marginBottom: '8px' }}><strong>Lifestyle & Pet Care:</strong> 크레스티드 게코 케어, 홈텐딩 칵테일, 일상의 소소한 발견</li>
+          </ul>
+        </section>
+
+        {/* Footer Contact / Policy Link */}
+        <footer style={{ 
+          background: 'var(--bg-secondary)', 
+          padding: '20px 24px', 
+          borderRadius: '14px', 
+          border: '1px solid var(--border-glass)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '12px'
+        }}>
+          <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+            방문해 주신 모든 분들의 따뜻한 여정을 응원합니다.
+          </span>
+          <Link href="/privacy/" style={{ color: 'var(--accent-light)', fontSize: '0.9rem', fontWeight: '600', textDecoration: 'none' }}>
+            개인정보처리방침 확인하기 →
+          </Link>
+        </footer>
+
       </div>
     </>
   );
