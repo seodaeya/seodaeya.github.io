@@ -325,3 +325,94 @@
     padding-right: 12px;
   }
 }
+
+/* Dropdown Menu for 실험 서비스 */
+.navDropdownWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navDropdownTrigger {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.navDropdownTrigger:hover,
+.navDropdownTriggerActive {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.dropdownArrow {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.navDropdownWrapper:hover .dropdownArrow {
+  transform: rotate(180deg);
+}
+
+.navDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass-active);
+  border-radius: 16px;
+  padding: 10px;
+  min-width: 250px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(138, 43, 226, 0.15);
+  z-index: 1500;
+  animation: dropdownFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdownItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+}
+
+.dropdownItemTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdownItemDesc {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

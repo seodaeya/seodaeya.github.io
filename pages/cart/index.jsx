@@ -272,7 +272,7 @@ export default function CartInAll() {
   return (
     <>
       <SEO 
-        title="Cart In All | 만능 장바구니 & 위시리스트"
+        title="모두모아 장바구니 | 실험 서비스"
         description="쿠팡, 네이버쇼핑, 알리 등 여러 쇼핑몰의 상품 링크를 한곳에 모아 관리하는 스마트 만능 장바구니 서비스입니다."
         url="https://seodaeya.github.io/cart/"
       />
@@ -281,8 +281,8 @@ export default function CartInAll() {
         
         {/* Header */}
         <header className={styles.cartHeader}>
-          <span className={styles.cartBadge}>ALL-IN-ONE WISHLIST</span>
-          <h1 className={styles.cartTitle}>Cart In All (모아담는 장바구니)</h1>
+          <span className={styles.cartBadge}>LAB EXPERIMENT</span>
+          <h1 className={styles.cartTitle}>모두모아 장바구니</h1>
           <p className={styles.cartSubtitle}>
             쿠팡, 네이버, 알리, 아마존 등 흩어져 있는 쇼핑몰 링크를 붙여넣으면<br />
             <strong>링크 하나로 상품 정보와 가격을 한곳에 쏙 모아</strong> 예산을 관리해 줍니다.

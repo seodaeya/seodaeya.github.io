@@ -1,17 +1,28 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '@/styles/layout.module.css';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Header() {
   const router = useRouter();
   const [theme, setTheme] = useState('dark');
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   // 첫 마운트 시 실제 HTML에 적용된 테마 클래스를 읽어와 동기화
   useEffect(() => {
     const isLight = document.documentElement.classList.contains('light');
     setTheme(isLight ? 'light' : 'dark');
+
+    // 외부 클릭 시 드롭다운 닫기
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const toggleTheme = () => {
@@ -20,7 +31,7 @@ export default function Header() {
     setTheme(nextTheme);
     localStorage.setItem('theme', nextTheme);
 
-    // Giscus 댓글 위젯 테마 동기화 (Giscus 프레임이 떠있는 경우 테마 강제 변경 메시지 전달)
+    // Giscus 댓글 위젯 테마 동기화
     const iframe = document.querySelector('iframe.giscus-frame');
     if (iframe) {
       iframe.contentWindow.postMessage(
@@ -29,6 +40,8 @@ export default function Header() {
       );
     }
   };
+
+  const isCartActive = router.pathname.startsWith('/cart');
 
   return (
     <header className={styles.header}>
@@ -46,18 +59,63 @@ export default function Header() {
           >
             홈
           </Link>
+
           <Link 
             href="/categories" 
             className={`${styles.navLink} ${router.pathname === '/categories' || router.pathname.startsWith('/categories') ? styles.activeNavLink : ''}`}
           >
             카테고리
           </Link>
-          <Link 
-            href="/cart" 
-            className={`${styles.navLink} ${router.pathname === '/cart' || router.pathname.startsWith('/cart') ? styles.activeNavLink : ''}`}
+
+          {/* 실험 서비스 드롭다운 메뉴 */}
+          <div 
+            className={styles.navDropdownWrapper}
+            ref={dropdownRef}
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
           >
-            장바구니
-          </Link>
+            <button 
+              type="button"
+              className={`${styles.navDropdownTrigger} ${isCartActive ? styles.navDropdownTriggerActive : ''}`}
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              aria-expanded={isServicesOpen}
+            >
+              실험 서비스 🧪
+              <svg className={styles.dropdownArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            {isServicesOpen && (
+              <div className={styles.navDropdownMenu}>
+                <Link 
+                  href="/cart" 
+                  className={styles.dropdownItem}
+                  onClick={() => setIsServicesOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🛒</span> 모두모아 장바구니
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    여러 쇼핑몰 링크를 한곳에 모아 관리하는 위시리스트
+                  </div>
+                </Link>
+
+                <div 
+                  className={styles.dropdownItem}
+                  style={{ opacity: 0.5, cursor: 'default' }}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>✨</span> 새 실험실 도구 준비 중...
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    더 유용한 서비스가 곧 추가됩니다
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
           <Link 
             href="/about" 
             className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
@@ -73,7 +131,6 @@ export default function Header() {
             title={theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'}
           >
             {theme === 'dark' ? (
-              // Moon Icon
               <svg 
                 viewBox="0 0 24 24" 
                 fill="none" 
@@ -86,7 +143,6 @@ export default function Header() {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             ) : (
-              // Sun Icon
               <svg 
                 viewBox="0 0 24 24" 
                 fill="none" 
