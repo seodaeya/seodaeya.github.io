@@ -888,3 +888,31 @@
   background: #ef4444;
   color: #ffffff;
 }
+
+.cartActionGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.clearAllBtn {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.clearAllBtn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}

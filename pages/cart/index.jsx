@@ -218,6 +218,18 @@ export default function CartInAll() {
     saveItems(updated);
   };
 
+  // Clear entire cart
+  const handleClearAll = () => {
+    if (items.length === 0) {
+      alert("장바구니가 이미 비어 있습니다.");
+      return;
+    }
+    if (confirm(`장바구니에 담긴 모든 상품(총 ${items.length}개)을 완전히 비우시겠습니까?\n(필요한 목록은 [내려받기]로 먼저 백업해 두세요!)`)) {
+      saveItems([]);
+      showToast("🗑️ 장바구니의 모든 상품을 비웠습니다.");
+    }
+  };
+
   // Clear all purchased items
   const handleClearPurchased = () => {
     const purchasedList = items.filter(i => i.isPurchased);
@@ -529,7 +541,7 @@ export default function CartInAll() {
           </div>
         </div>
 
-        {/* Filter Tabs & Bulk Clear Action */}
+        {/* Filter Tabs & Bulk Actions (Clear Purchased & Clear All) */}
         <div className={styles.toolbar}>
           <div className={styles.filterTabs}>
             {CATEGORIES.map(cat => (
@@ -544,15 +556,28 @@ export default function CartInAll() {
             ))}
           </div>
 
-          {items.some(i => i.isPurchased) && (
-            <button 
-              type="button" 
-              className={styles.clearPurchasedBtn}
-              onClick={handleClearPurchased}
-              title="구매 완료된 모든 상품을 한 번에 삭제"
-            >
-              <span>🧹</span> 구매 완료 상품 비우기 ({items.filter(i => i.isPurchased).length}개)
-            </button>
+          {items.length > 0 && (
+            <div className={styles.cartActionGroup}>
+              {items.some(i => i.isPurchased) && (
+                <button 
+                  type="button" 
+                  className={styles.clearPurchasedBtn}
+                  onClick={handleClearPurchased}
+                  title="구매 완료된 상품들만 정리"
+                >
+                  <span>🧹</span> 구매완료 비우기 ({items.filter(i => i.isPurchased).length})
+                </button>
+              )}
+
+              <button 
+                type="button" 
+                className={styles.clearAllBtn}
+                onClick={handleClearAll}
+                title="장바구니의 모든 상품을 한 번에 비우기"
+              >
+                <span>🗑️</span> 전체 비우기
+              </button>
+            </div>
           )}
         </div>
 
