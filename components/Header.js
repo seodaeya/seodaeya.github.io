@@ -51,6 +51,12 @@ export default function Header() {
           >
             카테고리
           </Link>
+          <Link 
+            href="/about" 
+            className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
+          >
+            소개
+          </Link>
           
           {/* Theme Toggle Button */}
           <button 

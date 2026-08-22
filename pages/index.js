@@ -113,23 +113,19 @@ export default function Home({ latestPosts, latestVideos }) {
         {/* 1. Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroSubtitleContainer}>
-            <span className={styles.heroSubtitleText}>Human-Centric Blog & YouTube</span>
+            <span className={styles.heroSubtitleText}>Human Warmth & AI Co-Learning</span>
           </div>
           <h1 className={styles.heroTitle}>여전히, 나는 사람이다.</h1>
           <p className={styles.heroTagline}>
-            인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기.
+            완벽하지 않기에 배우고, 실수하기에 도전합니다.<br />
+            AI라는 스마트한 도구 위에서 피어나는 가장 인간다운 생각과 일상의 기록.
           </p>
           <div className={styles.heroActions}>
-            <a 
-              href="https://www.youtube.com/@Na.R.D." 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.primaryButton}
-            >
-              유튜브 채널 구독하기
-            </a>
+            <Link href="/about" className={styles.primaryButton}>
+              블로그 이야기 읽기 ✨
+            </Link>
             <a href="#feed" className={styles.secondaryButton}>
-              최근 콘텐츠 보기
+              최근 콘텐츠 둘러보기 ↓
             </a>
           </div>
         </section>
