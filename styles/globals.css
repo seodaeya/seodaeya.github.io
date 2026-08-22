@@ -48,16 +48,19 @@
 }
 
 /* Base resets & styles */
-html, body {
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
+  overflow-x: clip;
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Smooth theme transitions */
