@@ -1,9 +1,11 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import styles from '@/styles/toc.module.css';
 
 export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
+  const isClickScrolling = useRef(false);
+  const clickTimeoutRef = useRef(null);
 
   useEffect(() => {
     // Reset state when navigating to a different page
@@ -13,44 +15,64 @@ export default function TOC({ contentSelector, id }) {
     // Small delay to ensure DOM is fully rendered after hydration
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
-      if (!container) {
-        console.warn('[TOC] Container not found:', contentSelector);
-        return;
-      }
+      if (!container) return;
 
-      const headingElements = container.querySelectorAll('h2, h3');
-      console.log('[TOC] Found headings:', headingElements.length);
+      const headingElements = Array.from(container.querySelectorAll('h2, h3'));
+      if (headingElements.length === 0) return;
 
-      const headingList = [];
-      headingElements.forEach((el, index) => {
+      const headingList = headingElements.map((el, index) => {
         if (!el.id) {
           el.id = `heading-${index}`;
         }
-        console.log('[TOC] Heading:', el.id, el.textContent?.substring(0, 30));
-        headingList.push({
+        return {
           id: el.id,
           text: el.innerText || el.textContent,
           level: el.tagName.toLowerCase(),
-        });
+        };
       });
 
       setHeadings(headingList);
 
-      // IntersectionObserver for active heading tracking
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-          if (visibleEntries.length > 0) {
-            setActiveId(visibleEntries[0].target.id);
-          }
-        },
-        { rootMargin: '-80px 0px -60% 0px' }
-      );
+      // High-precision scroll position tracker for active heading
+      const updateActiveHeading = () => {
+        if (isClickScrolling.current) return;
 
-      headingElements.forEach((el) => observer.observe(el));
+        const headerOffset = 120; // 70px sticky header + 50px buffer
+        let currentActive = headingElements[0].id;
+
+        for (let i = 0; i < headingElements.length; i++) {
+          const el = headingElements[i];
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset) {
+            currentActive = el.id;
+          } else {
+            break;
+          }
+        }
+
+        setActiveId(currentActive);
+      };
+
+      // Initial active check
+      updateActiveHeading();
+
+      // Optimized scroll listener with requestAnimationFrame
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateActiveHeading();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
 
       return () => {
-        headingElements.forEach((el) => observer.unobserve(el));
+        window.removeEventListener('scroll', onScroll);
+        if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
       };
     }, 100);
 
@@ -61,29 +83,32 @@ export default function TOC({ contentSelector, id }) {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log('[TOC] Click:', headingId);
+    // Lock scroll listener during smooth scrolling to prevent premature active jumping
+    isClickScrolling.current = true;
+    setActiveId(headingId);
 
     const targetElement = document.getElementById(headingId);
-    console.log('[TOC] Target element:', targetElement);
-
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       targetElement.setAttribute('tabindex', '-1');
       targetElement.focus({ preventScroll: true });
-      console.log('[TOC] scrollIntoView called');
-    } else {
-      console.error('[TOC] Element not found for id:', headingId);
     }
 
     window.history.replaceState(null, '', `#${headingId}`);
-    setActiveId(headingId);
+
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 800);
   }, []);
 
   if (headings.length === 0) return null;
 
   return (
     <aside className={styles.tocWrapper} aria-label="Table of Contents">
-      <div className={styles.tocTitle}>목차</div>
+      <div className={styles.tocTitle}>
+        <span>📌</span> 목차
+      </div>
       <nav className={styles.tocNav}>
         <ul className={styles.tocList}>
           {headings.map((h) => (
