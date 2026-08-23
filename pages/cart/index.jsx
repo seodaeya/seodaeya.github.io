@@ -292,40 +292,57 @@ export default function CartInAll() {
 
       // 2. MALL-SPECIFIC DEEP PARSING & ALGORITHM
 
-      // 2-A. AliExpress (알리익스프레스: pdp_npi 파라미터 기반 가격/상품 분석)
+      // 2-A. AliExpress (알리익스프레스: 실시간 직구 상품명/할인가격 자동 수집)
       if (mallName === 'AliExpress') {
-        category = "전자기기/IT";
+        category = "가전/DIY";
         try {
-          const parsedUrl = new URL(targetUrl);
-          const pdpNpi = parsedUrl.searchParams.get('pdp_npi') || targetUrl;
-          const decodedNpi = decodeURIComponent(pdpNpi);
-          
-          // pdp_npi format: 6@dis!KRW!₩+6,690!₩+1,000!...
-          const krwMatches = decodedNpi.match(/(?:KRW|₩|%E2%82%A9)[!+]?\s*([0-9,]+)/g);
-          if (krwMatches && krwMatches.length > 0) {
-            const prices = krwMatches.map(m => {
-              const num = m.replace(/[^0-9]/g, '');
-              return parseInt(num, 10);
-            }).filter(n => !isNaN(n) && n > 0);
-            
-            if (prices.length > 1) {
-              price = Math.min(...prices); // 할인 판매가 우선 적용
-            } else if (prices.length === 1) {
-              price = prices[0];
+          if (COUPANG_LOOKUP_ENDPOINT) {
+            const endpoint = new URL(COUPANG_LOOKUP_ENDPOINT);
+            endpoint.searchParams.set('url', targetUrl);
+            const aliRes = await fetch(endpoint.toString());
+            const aliPayload = await aliRes.json();
+            if (aliPayload && aliPayload.ok && aliPayload.data) {
+              const ad = aliPayload.data;
+              if (ad.title) {
+                title = ad.title;
+                price = ad.price || price;
+                imageUrl = ad.imageUrl || imageUrl;
+                description = "알리익스프레스 글로벌 특가 직구 상품 정보를 확인했습니다.";
+                hasVerifiedProductData = true;
+              }
             }
           }
-        } catch (e) {
-          console.warn("AliExpress pdp_npi parser error:", e);
+        } catch (aliErr) {
+          console.warn("AliExpress worker lookup failed:", aliErr);
         }
 
-        const aliItemIdMatch = targetUrl.match(/item\/([0-9]+)\.html/);
-        const itemId = aliItemIdMatch ? aliItemIdMatch[1] : "";
-        if (!title || isGarbageTitle(title)) {
-          title = `[AliExpress] 글로벌 직구 상품 #${itemId}`;
-          description = `알리익스프레스 직구 상품 (할인 판매가 ${price > 0 ? price.toLocaleString() + '원' : '적용'})`;
-        }
-        if (!imageUrl) {
-          imageUrl = "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80";
+        if (!hasVerifiedProductData) {
+          try {
+            const parsedUrl = new URL(targetUrl);
+            const pdpNpi = parsedUrl.searchParams.get('pdp_npi') || targetUrl;
+            const decodedNpi = decodeURIComponent(pdpNpi);
+            const krwMatches = decodedNpi.match(/(?:KRW|₩|%E2%82%A9)[!+]?\s*([0-9,]+)/g);
+            if (krwMatches && krwMatches.length > 0) {
+              const prices = krwMatches.map(m => parseInt(m.replace(/[^0-9]/g, ''), 10)).filter(n => !isNaN(n) && n > 0);
+              if (prices.length > 1) {
+                price = Math.min(...prices);
+              } else if (prices.length === 1) {
+                price = prices[0];
+              }
+            }
+          } catch (e) {
+            console.warn("AliExpress pdp_npi fallback error:", e);
+          }
+
+          const aliItemIdMatch = targetUrl.match(/item\/([0-9]+)\.html/);
+          const itemId = aliItemIdMatch ? aliItemIdMatch[1] : "";
+          if (!title || isGarbageTitle(title)) {
+            title = `[AliExpress] 글로벌 직구 상품 #${itemId}`;
+            description = `알리익스프레스 직구 상품 (할인 판매가 ${price > 0 ? price.toLocaleString() + '원' : '적용'})`;
+          }
+          if (!imageUrl) {
+            imageUrl = "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80";
+          }
         }
       }
 
