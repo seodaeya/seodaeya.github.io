@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "node files/gen/generate-latest-posts.js && node files/gen/generate-categories.js && node files/gen/generate-sitemap.js && node files/gen/generate-rss.js && next build",
+    "test": "node --test workers/cart-product-lookup/test/helpers.test.mjs",
     "start": "next start",
     "lint": "next lint",
     "export": "next export",

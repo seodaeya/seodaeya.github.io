@@ -43,6 +43,8 @@ jobs:
       # 4. 정적 사이트 빌드
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_COUPANG_LOOKUP_ENDPOINT: ${{ vars.COUPANG_LOOKUP_ENDPOINT }}
 
       # 5. GitHub Pages 환경 설정
       - name: Setup Pages

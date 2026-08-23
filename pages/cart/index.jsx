@@ -4,9 +4,62 @@ import SEO from '@/components/SEO';
 import styles from '@/styles/cart.module.css';
 
 const STORAGE_KEY = "cart_in_all_items";
+const COUPANG_LOOKUP_ENDPOINT = (process.env.NEXT_PUBLIC_COUPANG_LOOKUP_ENDPOINT || '').replace(/\/$/, '');
 
 
 const CATEGORIES = ["전체", "전자기기/IT", "가전/DIY", "패션/뷰티", "생필품/식품", "기타"];
+
+const getCoupangProductId = (url) => {
+  const match = url.match(/\/(?:vp|vm)\/products\/([0-9]+)/i);
+  return match ? match[1] : '';
+};
+
+const getCoupangCategory = (categoryName) => {
+  const name = (categoryName || '').toLowerCase();
+  if (/(식품|음료|생활|반려|주방)/.test(name)) return '생필품/식품';
+  if (/(디지털|컴퓨터|가전|휴대폰)/.test(name)) return '전자기기/IT';
+  if (/(패션|뷰티|의류|화장품)/.test(name)) return '패션/뷰티';
+  if (/(자동차|공구|인테리어|가구)/.test(name)) return '가전/DIY';
+  return '기타';
+};
+
+const createCoupangLookupError = (code, message) => {
+  const error = new Error(message);
+  error.code = code;
+  return error;
+};
+
+const fetchCoupangProduct = async (productUrl) => {
+  if (!COUPANG_LOOKUP_ENDPOINT) {
+    throw createCoupangLookupError(
+      'service_not_configured',
+      '쿠팡 자동 조회 서비스가 아직 연결되지 않았습니다.',
+    );
+  }
+
+  const endpoint = new URL(COUPANG_LOOKUP_ENDPOINT);
+  endpoint.searchParams.set('url', productUrl);
+
+  let response;
+  try {
+    response = await fetch(endpoint.toString());
+  } catch {
+    throw createCoupangLookupError(
+      'network_error',
+      '쿠팡 자동 조회 서비스에 연결하지 못했습니다.',
+    );
+  }
+
+  const payload = await response.json().catch(() => null);
+  if (!response.ok || !payload?.ok || !payload.data) {
+    throw createCoupangLookupError(
+      payload?.code || 'lookup_failed',
+      payload?.message || '쿠팡 상품 정보를 불러오지 못했습니다.',
+    );
+  }
+
+  return payload.data;
+};
 
 const SAMPLE_ITEMS = [
   {
@@ -207,28 +260,34 @@ export default function CartInAll() {
     let imageUrl = "";
     let price = 0;
     let category = "기타";
+    let hasVerifiedProductData = false;
+    let lookupError = null;
 
     try {
-      // 1. Fetch via metadata scraper API (Amazon & standard OpenGraph websites)
-      try {
-        const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
-        const data = await res.json();
+      // 1. Fetch via metadata scraper API for standard OpenGraph websites.
+      // Coupang is excluded: its anti-bot page is returned as fake metadata.
+      if (mallName !== '쿠팡') {
+        try {
+          const res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`);
+          const data = await res.json();
 
-        if (data.status === 'success' && data.data) {
-          const d = data.data;
-          const rawTitle = d.title || "";
-          
-          if (!isGarbageTitle(rawTitle)) {
-            title = rawTitle;
-            description = d.description || description;
-            price = extractPrice(rawTitle) || extractPrice(d.description);
-            if (d.image && d.image.url && !d.image.url.includes('favicon') && !d.image.url.includes('logo')) {
-              imageUrl = d.image.url;
+          if (data.status === 'success' && data.data) {
+            const d = data.data;
+            const rawTitle = d.title || "";
+
+            if (!isGarbageTitle(rawTitle)) {
+              title = rawTitle;
+              description = d.description || description;
+              price = extractPrice(rawTitle) || extractPrice(d.description);
+              hasVerifiedProductData = Boolean(title);
+              if (d.image && d.image.url && !d.image.url.includes('favicon') && !d.image.url.includes('logo')) {
+                imageUrl = d.image.url;
+              }
             }
           }
+        } catch (fetchErr) {
+          console.warn("API scraper failed, falling back to smart URL engine:", fetchErr);
         }
-      } catch (fetchErr) {
-        console.warn("API scraper failed, falling back to smart URL engine:", fetchErr);
       }
 
       // 2. MALL-SPECIFIC DEEP PARSING & ALGORITHM
@@ -317,42 +376,26 @@ export default function CartInAll() {
 
       // 2-E. Coupang (쿠팡)
       else if (mallName === '쿠팡') {
-        category = "생필품/식품";
-        
-        // 1. 단축 링크 (link.coupang.com/a/...) 또는 일반 상품 링크 (coupang.com/vp/products/...)
-        let resolvedUrl = targetUrl;
-        let productId = "";
+        let productId = getCoupangProductId(targetUrl);
 
-        const shortLinkMatch = targetUrl.match(/link\.coupang\.com\/a\/([a-zA-Z0-9_-]+)/);
-        if (shortLinkMatch) {
-          const shortCode = shortLinkMatch[1];
-          try {
-            // Unshorten link
-            const unshortRes = await fetch(`https://unshorten.me/json/${encodeURIComponent(targetUrl)}`);
-            const unshortData = await unshortRes.json();
-            if (unshortData && unshortData.resolved_url) {
-              resolvedUrl = unshortData.resolved_url;
-            }
-          } catch (e) {
-            console.warn("Unshorten failed:", e);
-          }
+        try {
+          const product = await fetchCoupangProduct(targetUrl);
+          productId = product.productId || productId;
+          title = product.title;
+          price = product.price;
+          imageUrl = product.imageUrl;
+          category = getCoupangCategory(product.categoryName);
+          description = "쿠팡 파트너스 API로 상품명과 현재 판매가를 확인했습니다.";
+          hasVerifiedProductData = true;
+        } catch (error) {
+          lookupError = error;
+          console.warn("Coupang product lookup failed:", error);
+          category = "기타";
         }
 
-        const productIdMatch = resolvedUrl.match(/products\/([0-9]+)/);
-        if (productIdMatch) {
-          productId = productIdMatch[1];
-        } else if (shortLinkMatch) {
-          productId = shortLinkMatch[1];
-        } else {
-          productId = Date.now().toString().slice(-4);
-        }
-
-        if (!title || isGarbageTitle(title)) {
-          title = `[쿠팡] 상품 #${productId}`;
-          description = "쿠팡 보안 정책으로 세부 정보가 보호된 상품입니다. (✏️ 수정 버튼으로 가격/이름 입력 가능)";
-        }
-        if (!imageUrl) {
-          imageUrl = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80"; // Clean shopping groceries
+        if (!hasVerifiedProductData) {
+          title = `[쿠팡] ${productId ? `상품 #${productId}` : '관심 상품'}`;
+          description = `${lookupError?.message || '쿠팡 상품 정보를 확인하지 못했습니다.'} (✏️ 수정 버튼으로 상품명과 가격을 입력할 수 있습니다)`;
         }
       }
 
@@ -362,7 +405,7 @@ export default function CartInAll() {
       }
 
       // If user pasted full text with title/price, apply it with high priority!
-      if (sharedTitle && sharedTitle.length > 2 && isGarbageTitle(title)) {
+      if (sharedTitle && sharedTitle.length > 2 && !hasVerifiedProductData) {
         title = `[${mallName}] ${sharedTitle}`;
       }
       if (price === 0 && sharedPrice > 0) {
@@ -394,7 +437,9 @@ export default function CartInAll() {
           category: newItem.category,
           description: newItem.description
         });
-        showToast(`🎉 상품이 담겼습니다! 정확한 금액을 바로 입력해 보세요.`);
+        showToast(lookupError
+          ? `🎉 상품은 담겼습니다. ${lookupError.message}`
+          : `🎉 상품이 담겼습니다! 정확한 금액을 바로 입력해 보세요.`);
       } else {
         showToast(`🎉 '[${mallName}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
       }
@@ -691,7 +736,7 @@ export default function CartInAll() {
               </button>
             </div>
             <p className={styles.quickHelpText}>
-              💡 링크를 넣고 담기만 누르면 상품명, 이미지, 가격 정보를 자동으로 스크랩하여 장바구니에 쏙 추가합니다.
+              💡 쿠팡은 파트너스 API로 상품명·현재 판매가·이미지를 조회하며, 다른 쇼핑몰은 공개 상품 메타데이터를 사용합니다.
             </p>
           </form>
 

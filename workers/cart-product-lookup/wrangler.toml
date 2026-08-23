@@ -1,0 +1,12 @@
+name = "cart-coupang-product-lookup"
+main = "src/index.mjs"
+compatibility_date = "2026-08-23"
+workers_dev = true
+
+# 배포 전에 아래 두 값은 `wrangler secret put`으로 등록합니다.
+# COUPANG_PARTNERS_ACCESS_KEY
+# COUPANG_PARTNERS_SECRET_KEY
+
+# 콤마로 구분한 호출 허용 Origin입니다. 실제 서비스 도메인만 남겨 두세요.
+[vars]
+ALLOWED_ORIGINS = "https://seodaeya.github.io,http://localhost:3000"
