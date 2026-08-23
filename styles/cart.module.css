@@ -212,72 +212,7 @@
   font-size: 0.84rem;
 }
 
-/* Coupang Partners Support Box */
-.coupangBanner {
-  background: linear-gradient(135deg, rgba(234, 76, 137, 0.08), rgba(254, 229, 0, 0.08));
-  border: 1px solid rgba(234, 76, 137, 0.25);
-  border-radius: 18px;
-  padding: 22px 24px;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
 
-.coupangInfo {
-  flex: 1;
-  min-width: 280px;
-}
-
-.coupangTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 6px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.coupangDesc {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.coupangLegal {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-
-.coupangBtn {
-  background: #e61919;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.92rem;
-  padding: 12px 24px;
-  border-radius: 9999px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(230, 25, 25, 0.35);
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.coupangBtn:hover {
-  background: #ff2a2a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(230, 25, 25, 0.5);
-  color: #ffffff;
-  text-decoration: none;
-}
 
 /* Stats / Budget Summary Box */
 .statsGrid {
@@ -802,13 +737,8 @@
 }
 
 @media (max-width: 600px) {
-  .coupangBanner {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .coupangBtn {
-    justify-content: center;
-  }
+  
+  
   .quickInputRow {
     flex-direction: column;
   }

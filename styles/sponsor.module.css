@@ -256,30 +256,9 @@
 }
 
 
-.coupangSponsorButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: rgba(230, 25, 25, 0.12);
-  border: 1px solid rgba(230, 25, 25, 0.35);
-  color: #ff4d4d;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 11px 24px;
-  border-radius: 9999px;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(230, 25, 25, 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.coupangSponsorButton:hover {
-  background-color: #e61919;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(230, 25, 25, 0.45);
-  border-color: #e61919;
-  text-decoration: none;
-}
+
+
 
 @media (max-width: 600px) {
   .sponsorCard {

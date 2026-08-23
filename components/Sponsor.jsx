@@ -63,17 +63,7 @@ export default function Sponsor({ title = "따뜻한 커피 한 잔으로 응원
           GitHub Sponsors
         </a>
 
-        {/* Coupang Partners Sponsor Link */}
-        <a 
-          href="https://link.coupang.com/a/gpEnV0YNfE" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={styles.coupangSponsorButton}
-          aria-label="쿠팡 쇼핑으로 후원하기"
-        >
-          <span>🛍️</span>
-          쿠팡 쇼핑 후원
-        </a>
+
       </div>
 
       {/* In-Place QR & Mobile Link Unfold */}

@@ -3,7 +3,6 @@ import Head from 'next/head';
 import SEO from '@/components/SEO';
 import styles from '@/styles/cart.module.css';
 
-const COUPANG_PARTNERS_URL = "https://link.coupang.com/a/gpEnV0YNfE";
 const STORAGE_KEY = "cart_in_all_items";
 
 const CATEGORIES = ["전체", "전자기기/IT", "가전/DIY", "패션/뷰티", "생필품/식품", "기타"];
@@ -543,30 +542,6 @@ export default function CartInAll() {
             </p>
           </div>
         </div>
-
-        {/* Coupang Partners Support Banner */}
-        <section className={styles.coupangBanner} aria-label="쿠팡 파트너스 후원 안내">
-          <div className={styles.coupangInfo}>
-            <h2 className={styles.coupangTitle}>
-              <span>🛍️</span> 쿠팡에서 쇼핑하고 블로그 후원하기
-            </h2>
-            <p className={styles.coupangDesc}>
-              쿠팡에서 필요한 물품을 구매하실 때 아래 전용 링크를 통해 접속하시면, 
-              <strong> 추가 비용 없이</strong> 블로그의 지식 나눔과 기술 연구에 큰 도움이 됩니다!
-            </p>
-            <p className={styles.coupangLegal}>
-              ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-            </p>
-          </div>
-          <a 
-            href={COUPANG_PARTNERS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.coupangBtn}
-          >
-            <span>🚀</span> 쿠팡 바로가기 & 후원
-          </a>
-        </section>
 
         {/* Stats & Budget Summary */}
         <div className={styles.statsGrid}>
