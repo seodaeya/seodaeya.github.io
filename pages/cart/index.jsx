@@ -329,18 +329,41 @@ export default function CartInAll() {
         }
       }
 
-      // 2-B. Naver Smartstore / Shopping (네이버 스마트스토어)
+      // 2-B. Naver Smartstore / Shopping (네이버 쇼핑 & 스마트스토어)
       else if (mallName === '네이버') {
         category = "생필품/식품";
-        const storeMatch = targetUrl.match(/smartstore\.naver\.com\/([^/]+)\/products\/([0-9]+)/);
-        const storeName = storeMatch ? storeMatch[1] : "스마트스토어";
-        const prodId = storeMatch ? storeMatch[2] : "";
-        if (!title || isGarbageTitle(title)) {
-          title = `[네이버] ${storeName} 스토어 상품 #${prodId}`;
-          description = `네이버 쇼핑(${storeName}) 상품입니다. (✏️ 수정 버튼으로 상품명/금액을 변경할 수 있습니다)`;
+        try {
+          if (COUPANG_LOOKUP_ENDPOINT) {
+            const endpoint = new URL(COUPANG_LOOKUP_ENDPOINT);
+            endpoint.searchParams.set('url', targetUrl);
+            const naverRes = await fetch(endpoint.toString());
+            const naverPayload = await naverRes.json();
+            if (naverPayload && naverPayload.ok && naverPayload.data) {
+              const nd = naverPayload.data;
+              if (nd.title) {
+                title = `[네이버] ${nd.title}`;
+                price = nd.price || price;
+                imageUrl = nd.imageUrl || imageUrl;
+                description = "네이버 쇼핑 공식 상품 정보를 확인했습니다.";
+                hasVerifiedProductData = true;
+              }
+            }
+          }
+        } catch (naverErr) {
+          console.warn("Naver worker lookup failed:", naverErr);
         }
-        if (!imageUrl) {
-          imageUrl = "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80";
+
+        if (!hasVerifiedProductData) {
+          const storeMatch = targetUrl.match(/(?:smartstore|shopping)\.naver\.com\/([^/]+)\/(?:products|window-products)\/([0-9]+)/);
+          const storeName = storeMatch ? storeMatch[1] : "스마트스토어";
+          const prodId = storeMatch ? storeMatch[2] : "";
+          if (!title || isGarbageTitle(title)) {
+            title = `[네이버] ${storeName} 스토어 상품 #${prodId}`;
+            description = `네이버 쇼핑(${storeName}) 상품입니다. (✏️ 수정 버튼으로 상품명/금액을 변경할 수 있습니다)`;
+          }
+          if (!imageUrl) {
+            imageUrl = "https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80";
+          }
         }
       }
 

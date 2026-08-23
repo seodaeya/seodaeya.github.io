@@ -105,6 +105,64 @@ async function getPartnerProduct(productId, env) {
   };
 }
 
+
+async function getNaverProduct(rawUrl) {
+  try {
+    const urlObj = new URL(rawUrl);
+    const cleanUrl = `${urlObj.origin}${urlObj.pathname}`;
+
+    const res = await fetch(cleanUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+        'Accept-Language': 'ko-KR,ko;q=0.9',
+      },
+    });
+
+    const html = await res.text();
+
+    // 1. Title
+    let title = '';
+    const nameMatch = html.match(/"name":\s*"([^"]{3,120})"/);
+    if (nameMatch && !nameMatch[1].includes('택배') && !nameMatch[1].includes('배송')) {
+      title = nameMatch[1];
+    }
+    if (!title) {
+      const ogTitleMatch = html.match(/<meta property="og:title" content="(.*?)"/);
+      if (ogTitleMatch) {
+        title = ogTitleMatch[1].replace(/^이런 상품 어때요\?\s*/i, '').replace(/\s*:\s*네이버\s*(쇼핑|스마트스토어).*$/i, '').trim();
+      }
+    }
+
+    // 2. Price (discounted price or sale price)
+    let price = 0;
+    const discountMatch = html.match(/"discountedSalePrice":\s*([0-9]+)/);
+    if (discountMatch) {
+      price = parseInt(discountMatch[1], 10);
+    } else {
+      const saleMatch = html.match(/"salePrice":\s*([0-9]+)/);
+      if (saleMatch) price = parseInt(saleMatch[1], 10);
+    }
+
+    // 3. Image
+    let imageUrl = '';
+    const ogImgMatch = html.match(/<meta property="og:image" content="(.*?)"/);
+    if (ogImgMatch) imageUrl = ogImgMatch[1];
+
+    if (!title) return null;
+
+    return {
+      title,
+      price,
+      imageUrl,
+      categoryName: '생필품/식품',
+      canonicalUrl: cleanUrl,
+    };
+  } catch (e) {
+    console.error('Naver product parse failed:', e);
+    return null;
+  }
+}
+
 async function readCachedProduct(cacheKey) {
   const response = await caches.default.match(cacheKey);
   return response ? response.json() : null;
@@ -137,7 +195,27 @@ export default {
     }
 
     const requestUrl = new URL(request.url);
-    if (request.method !== 'GET' || requestUrl.pathname !== '/coupang/product') {
+    if (request.method !== 'GET') {
+      return error('method_not_allowed', 'GET 요청만 지원합니다.', 405, headers);
+    }
+
+    const rawUrl = requestUrl.searchParams.get('url')?.trim() || '';
+
+    // Route: Naver Shopping Handler (/naver/product or /coupang/product when URL is naver)
+    if (requestUrl.pathname === '/naver/product' || (requestUrl.pathname === '/coupang/product' && rawUrl.includes('naver.com'))) {
+      if (!rawUrl || !rawUrl.includes('naver.com')) {
+        return error('invalid_naver_url', '네이버 쇼핑 또는 스마트스토어 링크를 입력해 주세요.', 400, headers);
+      }
+
+      const naverData = await getNaverProduct(rawUrl);
+      if (!naverData || !naverData.title) {
+        return error('naver_parse_failed', '네이버 상품 정보를 불러오지 못했습니다.', 404, headers);
+      }
+
+      return json({ ok: true, data: naverData, cached: false }, 200, headers);
+    }
+
+    if (requestUrl.pathname !== '/coupang/product') {
       return error('not_found', '요청한 경로를 찾을 수 없습니다.', 404, headers);
     }
 
@@ -145,7 +223,6 @@ export default {
       return error('service_not_configured', '쿠팡 상품 조회 서비스가 아직 설정되지 않았습니다.', 503, headers);
     }
 
-    const rawUrl = requestUrl.searchParams.get('url')?.trim() || '';
     if (!isCoupangUrl(rawUrl)) {
       return error('invalid_coupang_url', '쿠팡 상품 또는 쿠팡 파트너스 링크만 조회할 수 있습니다.', 400, headers);
     }
