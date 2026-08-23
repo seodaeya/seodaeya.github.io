@@ -4,7 +4,6 @@ import SEO from '@/components/SEO';
 import styles from '@/styles/cart.module.css';
 
 const STORAGE_KEY = "cart_in_all_items";
-const BOOKMARKLET_CODE = "javascript:(function(){try{var t='',p=0,i='',u=window.location.href,h=window.location.hostname,m='쇼핑몰';if(h.indexOf('coupang')>-1)m='쿠팡';else if(h.indexOf('naver')>-1)m='네이버';else if(h.indexOf('aliexpress')>-1)m='AliExpress';else if(h.indexOf('11st')>-1)m='11번가';else if(h.indexOf('amazon')>-1)m='아마존';else if(h.indexOf('musinsa')>-1)m='무신사';var ot=document.querySelector('meta[property=\'og:title\']');if(ot&&ot.content)t=ot.content.trim();if(!t||t.length<3){var h1=document.querySelector('h1, h2.prod-buy-header__title, .product-title, .prod-title');if(h1)t=h1.innerText.trim();}if(!t)t=document.title;t=t.replace(/\\s*-\\s*(쿠팡|네이버|AliExpress|11번가|아마존|무신사).*$/i,'').trim();var oi=document.querySelector('meta[property=\'og:image\']');if(oi&&oi.content)i=oi.content;if(!i){var ie=document.querySelector('.prod-image__detail, .product-image img, #main-image, img.prod-image');if(ie&&ie.src)i=ie.src;}var op=document.querySelector('meta[property=\'product:price:amount\']');if(op&&op.content)p=parseInt(op.content.replace(/[^0-9]/g,''),10)||0;if(!p){var pe=document.querySelector('.total-price strong, .sale-price, .prod-sale-price .total-price, .price_num, span.price');if(pe){var pm=pe.innerText.match(/([0-9,]+)/);if(pm)p=parseInt(pm[1].replace(/,/g,''),10)||0;}}if(!p){var b=document.body.innerText;var bm=b.match(/(?:할인가|판매가|가격|와우할인|특가)?\\s*([1-9][0-9]{0,2}(?:,[0-9]{3})+|[1-9][0-9]{2,6})\\s*(?:원|KRW)/i);if(bm)p=parseInt(bm[1].replace(/,/g,''),10)||0;}var tu='https://seodaeya.github.io/cart/?add_title='+encodeURIComponent(t)+'&add_price='+p+'&add_image='+encodeURIComponent(i)+'&add_url='+encodeURIComponent(u)+'&add_mall='+encodeURIComponent(m);window.open(tu,'_blank');}catch(e){alert('장바구니 담기 실패: '+e.message);}})();";
 
 
 const CATEGORIES = ["전체", "전자기기/IT", "가전/DIY", "패션/뷰티", "생필품/식품", "기타"];
@@ -662,41 +661,7 @@ export default function CartInAll() {
           </div>
         </div>
 
-        {/* 1-CLICK SMART BOOKMARKLET (100% CLIENT-SIDE ZERO-SERVER RESOLUTION) */}
-        <section className={styles.bookmarkletCard} aria-label="1초 스마트 북마클릿 안내">
-          <div className={styles.bookmarkletHeader}>
-            <h2 className={styles.bookmarkletTitle}>
-              <span>🔖</span> 1초 스마트 북마클릿 (서버 없이 모든 쇼핑몰 100% 자동 담기)
-            </h2>
-            <span style={{ fontSize: '0.78rem', color: 'var(--accent-light)', fontWeight: 700 }}>
-              ★ 쿠팡 / 네이버 / 알리 전 쇼핑몰 100% 정확한 가격·이름 수집
-            </span>
-          </div>
-          <p className={styles.bookmarkletDesc}>
-            쿠팡의 봇 차단 방화벽 때문에 가격이 가려질 때, 아래 <strong>[🛒 모두모아 담기]</strong> 버튼을 브라우저 북마크(즐겨찾기) 바로 드래그해 두세요.<br />
-            어떤 쇼핑몰에서든 물건을 보다가 북마크를 <strong>1초 클릭</strong>하면 상품명, 실시간 할인 가격(14,530원), 고화질 사진이 <strong>100% 완벽하게 장바구니에 쏙 담깁니다!</strong>
-          </p>
-          <div className={styles.bookmarkletActionRow}>
-            <a 
-              href={BOOKMARKLET_CODE}
-              className={styles.bookmarkletDragButton}
-              title="이 버튼을 마우스로 끌어서 브라우저 상단 북마크바에 놓으세요!"
-              onClick={(e) => {
-                if (window.location.hostname === 'localhost' || window.location.hostname === 'seodaeya.github.io') {
-                  e.preventDefault();
-                  alert("이 버튼을 마우스로 끌어서 브라우저 상단의 '북마크(즐겨찾기) 바'에 놓아주세요!\n(이후 쿠팡/네이버 상품 페이지에서 클릭하면 1초 만에 자동 수집됩니다)");
-                }
-              }}
-            >
-              <span>🛒</span> 모두모아 담기 (북마크바로 드래그)
-            </a>
-            <div className={styles.bookmarkletGuideHint}>
-              👉 <strong>사용법:</strong> 버튼을 북마크바로 끌어놓기 ➔ 쿠팡/네이버 상품 보다가 북마크 클릭 ➔ 끝!
-            </div>
-          </div>
-        </section>
-
-        {/* ONE-CLICK QUICK PASTE & ADD CARD */}
+{/* ONE-CLICK QUICK PASTE & ADD CARD */}
         <section className={styles.quickAddCard}>
           <div className={styles.quickAddHeader}>
             <h2 className={styles.quickAddTitle}>
