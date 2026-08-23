@@ -272,15 +272,42 @@ export default function CartInAll() {
 
       // 2-E. Coupang (쿠팡)
       else if (mallName === '쿠팡') {
-        category = "가전/DIY";
-        const productIdMatch = targetUrl.match(/products\/([0-9]+)/);
-        const productId = productIdMatch ? productIdMatch[1] : Date.now().toString().slice(-4);
+        category = "생필품/식품";
+        
+        // 1. 단축 링크 (link.coupang.com/a/...) 또는 일반 상품 링크 (coupang.com/vp/products/...)
+        let resolvedUrl = targetUrl;
+        let productId = "";
+
+        const shortLinkMatch = targetUrl.match(/link\.coupang\.com\/a\/([a-zA-Z0-9_-]+)/);
+        if (shortLinkMatch) {
+          const shortCode = shortLinkMatch[1];
+          try {
+            // Unshorten link
+            const unshortRes = await fetch(`https://unshorten.me/json/${encodeURIComponent(targetUrl)}`);
+            const unshortData = await unshortRes.json();
+            if (unshortData && unshortData.resolved_url) {
+              resolvedUrl = unshortData.resolved_url;
+            }
+          } catch (e) {
+            console.warn("Unshorten failed:", e);
+          }
+        }
+
+        const productIdMatch = resolvedUrl.match(/products\/([0-9]+)/);
+        if (productIdMatch) {
+          productId = productIdMatch[1];
+        } else if (shortLinkMatch) {
+          productId = shortLinkMatch[1];
+        } else {
+          productId = Date.now().toString().slice(-4);
+        }
+
         if (!title || isGarbageTitle(title)) {
-          title = `[쿠팡] 추천 상품 #${productId}`;
-          description = "쿠팡 추천 상품 (✏️ 수정 버튼으로 가격/상품명 변경 가능)";
+          title = `[쿠팡] 상품 #${productId}`;
+          description = "쿠팡 보안 정책으로 세부 정보가 보호된 상품입니다. (✏️ 수정 버튼으로 가격/이름 입력 가능)";
         }
         if (!imageUrl) {
-          imageUrl = "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500&q=80";
+          imageUrl = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80"; // Clean shopping groceries
         }
       }
 
@@ -305,7 +332,19 @@ export default function CartInAll() {
       const updated = [newItem, ...items];
       saveItems(updated);
       setUrlInput('');
-      showToast(`🎉 '[${mallName}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
+
+      if (price === 0) {
+        setEditingId(newItem.id);
+        setEditForm({
+          title: newItem.title,
+          price: 0,
+          category: newItem.category,
+          description: newItem.description
+        });
+        showToast(`🎉 상품이 담겼습니다! 정확한 금액을 바로 입력해 보세요.`);
+      } else {
+        showToast(`🎉 '[${mallName}]' 상품이 장바구니에 성공적으로 담겼습니다!`);
+      }
 
     } catch (err) {
       console.warn("Auto parse failed, creating fallback item", err);
