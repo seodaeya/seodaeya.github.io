@@ -65,33 +65,34 @@ async function resolveCoupangUrl(rawUrl) {
 }
 
 async function getPartnerProduct(productId, env) {
+  const accessKey = (env.COUPANG_PARTNERS_ACCESS_KEY || '').trim();
+  const secretKey = (env.COUPANG_PARTNERS_SECRET_KEY || '').trim();
   const path = env.COUPANG_AFFILIATE_SEARCH_PATH || DEFAULT_SEARCH_PATH;
+
   const searchUrl = new URL(`${API_HOST}${path}`);
   searchUrl.searchParams.set('keyword', productId);
-  searchUrl.searchParams.set('limit', '10');
 
   const signedDate = makeCoupangSignedDate();
-  const query = searchUrl.search.slice(1);
-  const signature = await signHmac(
-    env.COUPANG_PARTNERS_SECRET_KEY,
-    `${signedDate}GET${path}${query}`,
-  );
+  const query = searchUrl.search; // '?keyword=...'
+  const message = `${signedDate}GET${path}${query}`;
+  const signature = await signHmac(secretKey, message);
 
   const response = await fetch(searchUrl, {
     headers: {
-      Authorization: `CEA algorithm=HmacSHA256, access-key=${env.COUPANG_PARTNERS_ACCESS_KEY}, signed-date=${signedDate}, signature=${signature}`,
+      'Authorization': `CEA algorithm=HmacSHA256, access-key=${accessKey}, signed-date=${signedDate}, signature=${signature}`,
       'Content-Type': 'application/json;charset=UTF-8',
     },
   });
 
   if (!response.ok) {
-    throw new Error(`Coupang Partners API returned ${response.status}`);
+    const errText = await response.text().catch(() => '');
+    throw new Error(`Coupang Partners API returned ${response.status}: ${errText}`);
   }
 
   const payload = await response.json();
   const product = payload?.data?.productData?.find(
     (item) => String(item.productId) === String(productId),
-  );
+  ) || payload?.data?.productData?.[0];
 
   if (!product) return null;
 
@@ -182,7 +183,7 @@ export default {
       return json({ ok: true, data, cached: false }, 200, headers);
     } catch (cause) {
       console.error('Coupang product lookup failed', cause);
-      return error('provider_error', '쿠팡 상품 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.', 502, headers);
+      return error('provider_error', '쿠팡 상품 정보를 불러오지 못했습니다. (' + cause.message + ')', 502, headers);
     }
   },
 };

@@ -25,5 +25,5 @@ test('extracts and normalizes a product URL without tracking parameters', () => 
 });
 
 test('creates the signed timestamp format expected by the Partner API', () => {
-  assert.equal(makeCoupangSignedDate(new Date('2026-08-24T01:02:03.456Z')), '20260824T010203Z');
+  assert.equal(makeCoupangSignedDate(new Date('2026-08-24T01:02:03.456Z')), '260824T010203Z');
 });

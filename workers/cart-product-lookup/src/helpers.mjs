@@ -43,8 +43,8 @@ export function toCoupangProductUrl(value) {
 export function makeCoupangSignedDate(date = new Date()) {
   return date
     .toISOString()
-    .replace(/[-:]/g, '')
-    .replace(/\.\d{3}/, '');
+    .slice(2, 19)
+    .replace(/[-:]/g, '') + 'Z';
 }
 
 export function normalizeAllowedOrigins(value) {
