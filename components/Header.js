@@ -8,10 +8,12 @@ export default function Header() {
   const router = useRouter();
   const [theme, setTheme] = useState('dark');
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const closeTimeoutRef = useRef(null);
+  const mobileNavRef = useRef(null);
 
-  // 첫 마운트 시 실제 HTML에 적용된 테마 클래스를 읽어와 동기화
+  // 테마 동기화 및 외부 클릭 감지
   useEffect(() => {
     const isLight = document.documentElement.classList.contains('light');
     setTheme(isLight ? 'light' : 'dark');
@@ -20,13 +22,29 @@ export default function Header() {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsServicesOpen(false);
       }
+      if (mobileNavRef.current && !mobileNavRef.current.contains(event.target)) {
+        // 모바일 메뉴 외부 클릭 시 닫기
+        const isHamburger = event.target.closest(`.${styles.hamburgerBtn}`);
+        if (!isHamburger) {
+          setIsMobileMenuOpen(false);
+        }
+      }
     };
+
+    const handleRouteChange = () => {
+      setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
+    router.events?.on('routeChangeStart', handleRouteChange);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      router.events?.off('routeChangeStart', handleRouteChange);
       if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     };
-  }, []);
+  }, [router]);
 
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
@@ -39,7 +57,7 @@ export default function Header() {
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setIsServicesOpen(false);
-    }, 200); // 200ms buffer prevents flickering when moving mouse down
+    }, 200);
   };
 
   const toggleTheme = () => {
@@ -62,13 +80,15 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
+        {/* Logo */}
         <div className={styles.logoArea}>
-          <Link href="/" className={styles.logoLink}>
+          <Link href="/" className={styles.logoLink} onClick={() => setIsMobileMenuOpen(false)}>
             <span className={styles.logoText}>여전히, 나는 사람이다.</span>
           </Link>
         </div>
 
-        <nav className={styles.navLinks}>
+        {/* Desktop Navigation Links */}
+        <nav className={styles.desktopNav}>
           <Link 
             href="/" 
             className={`${styles.navLink} ${router.pathname === '/' ? styles.activeNavLink : ''}`}
@@ -83,7 +103,7 @@ export default function Header() {
             카테고리
           </Link>
 
-          {/* 실험 서비스 드롭다운 메뉴 (호버 브릿지 & 딜레이 닫기 적용) */}
+          {/* 실험 서비스 드롭다운 */}
           <div 
             className={styles.navDropdownWrapper}
             ref={dropdownRef}
@@ -142,7 +162,10 @@ export default function Header() {
           >
             소개
           </Link>
-          
+        </nav>
+
+        {/* Right Action Icons & Controls */}
+        <div className={styles.headerRightArea}>
           {/* Theme Toggle Button */}
           <button 
             onClick={toggleTheme} 
@@ -187,14 +210,13 @@ export default function Header() {
 
           {/* Global Language Switcher */}
           <LanguageSwitcher />
-        </nav>
 
-        <div className={styles.socialArea}>
+          {/* YouTube Button (Desktop) */}
           <a 
             href="https://www.youtube.com/@Na.R.D." 
             target="_blank" 
             rel="noopener noreferrer" 
-            className={styles.socialIconLink}
+            className={styles.desktopYoutubeBtn}
             aria-label="YouTube Channel"
           >
             <svg 
@@ -206,8 +228,87 @@ export default function Header() {
             </svg>
             <span className={styles.socialText}>YouTube</span>
           </a>
+
+          {/* Mobile Hamburger Button */}
+          <button 
+            type="button"
+            className={`${styles.hamburgerBtn} ${isMobileMenuOpen ? styles.hamburgerBtnActive : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="모바일 메뉴 열기/닫기"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+          </button>
         </div>
       </div>
+
+      {/* Mobile Drawer / Overlay Menu */}
+      {isMobileMenuOpen && (
+        <div className={styles.mobileNavOverlay} ref={mobileNavRef}>
+          <nav className={styles.mobileNavContainer}>
+            <Link 
+              href="/" 
+              className={`${styles.mobileNavLink} ${router.pathname === '/' ? styles.activeMobileNavLink : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>🏠</span> 홈
+            </Link>
+
+            <Link 
+              href="/categories" 
+              className={`${styles.mobileNavLink} ${router.pathname === '/categories' || router.pathname.startsWith('/categories') ? styles.activeMobileNavLink : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📂</span> 카테고리
+            </Link>
+
+            {/* Mobile Lab Services Group */}
+            <div className={styles.mobileServiceGroup}>
+              <div className={styles.mobileServiceGroupHeader}>
+                <span>🧪</span> 실험 서비스
+              </div>
+              <div className={styles.mobileServiceList}>
+                <Link 
+                  href="/cart" 
+                  className={`${styles.mobileServiceItem} ${isCartActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>🛒</span> 모두모아 장바구니
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    여러 쇼핑몰 링크를 한곳에 모아 관리하는 위시리스트
+                  </div>
+                </Link>
+              </div>
+            </div>
+
+            <Link 
+              href="/about" 
+              className={`${styles.mobileNavLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeMobileNavLink : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👤</span> 소개 (About)
+            </Link>
+
+            {/* Mobile YouTube Link */}
+            <a 
+              href="https://www.youtube.com/@Na.R.D." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.mobileYoutubeLink}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <svg className={styles.youtubeIcon} viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              YouTube 채널 바로가기
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
