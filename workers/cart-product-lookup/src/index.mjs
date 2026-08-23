@@ -73,8 +73,8 @@ async function getPartnerProduct(productId, env) {
   searchUrl.searchParams.set('keyword', productId);
 
   const signedDate = makeCoupangSignedDate();
-  const query = searchUrl.search; // '?keyword=...'
-  const message = `${signedDate}GET${path}${query}`;
+  const queryString = searchUrl.search.slice(1); // 'keyword=...' (without leading '?')
+  const message = `${signedDate}GET${path}${queryString}`;
   const signature = await signHmac(secretKey, message);
 
   const response = await fetch(searchUrl, {
