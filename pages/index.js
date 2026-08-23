@@ -27,8 +27,8 @@ export async function getStaticProps() {
         category: data.category || 'Tech',
         date: data.date || '',
         file: `posts/${filename}`,
-        excerpt: createPlainExcerpt(content, 100) || '글 내용을 확인해보세요.',
-        excerptHtml: createRichExcerpt(content, 100) || '글 내용을 확인해보세요.',
+        excerpt: createPlainExcerpt(content, 120) || '글 내용을 확인해보세요.',
+        excerptHtml: createRichExcerpt(content, 120) || '글 내용을 확인해보세요.',
       };
     });
   }
@@ -48,8 +48,8 @@ export async function getStaticProps() {
         date: data.date || '',
         file: `videos/${filename}`,
         videoId: data.videoId || null,
-        excerpt: createPlainExcerpt(content, 60) || '유튜브 영상을 감상해 보세요.',
-        excerptHtml: createRichExcerpt(content, 60) || '유튜브 영상을 감상해 보세요.',
+        excerpt: createPlainExcerpt(content, 80) || '유튜브 영상을 감상해 보세요.',
+        excerptHtml: createRichExcerpt(content, 80) || '유튜브 영상을 감상해 보세요.',
       };
     });
   }
@@ -65,15 +65,15 @@ export async function getStaticProps() {
 
   return {
     props: {
-      latestPosts: posts.slice(0, 5),
-      latestVideos: videos.slice(0, 5),
+      allPosts: posts,
+      allVideos: videos,
     },
   };
 }
 
-export default function Home({ latestPosts, latestVideos }) {
+export default function Home({ allPosts = [], allVideos = [] }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const featuredVideo = latestVideos.length > 0 ? latestVideos[0] : null;
+  const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
@@ -88,18 +88,24 @@ export default function Home({ latestPosts, latestVideos }) {
     }
   };
 
-  // 실시간 클라이언트 사이드 검색 필터링
-  const filteredPosts = latestPosts.filter(post => 
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const cleanQuery = searchQuery.trim().toLowerCase();
 
-  const filteredVideos = latestVideos.filter(video => 
-    video.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    video.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    video.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // 검색어가 있을 때는 전체 글(allPosts, allVideos)을 검색, 없을 때는 최신 5개만 노출
+  const displayedPosts = cleanQuery
+    ? allPosts.filter(post => 
+        post.title.toLowerCase().includes(cleanQuery) || 
+        post.excerpt.toLowerCase().includes(cleanQuery) ||
+        post.category.toLowerCase().includes(cleanQuery)
+      )
+    : allPosts.slice(0, 5);
+
+  const displayedVideos = cleanQuery
+    ? allVideos.filter(video => 
+        video.title.toLowerCase().includes(cleanQuery) || 
+        video.excerpt.toLowerCase().includes(cleanQuery) ||
+        video.category.toLowerCase().includes(cleanQuery)
+      )
+    : allVideos.slice(0, 5);
 
   return (
     <>
@@ -135,29 +141,50 @@ export default function Home({ latestPosts, latestVideos }) {
           <div className={styles.searchInputWrapper}>
             <input 
               type="text" 
-              placeholder="검색어를 입력해 주세요 (예: 크레스티드 게코, AI, PostgreSQL)..." 
+              placeholder="검색어를 입력해 주세요 (예: 맥 미니, AI, 크레스티드 게코, DIY)..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={styles.searchInput}
             />
-            {/* Search Glass Icon */}
-            <svg 
-              className={styles.searchIcon} 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              strokeWidth="2.5" 
-              fill="none" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            {searchQuery ? (
+              <button 
+                type="button" 
+                onClick={() => setSearchQuery('')}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: '1.1rem',
+                  padding: '4px'
+                }}
+                aria-label="검색어 지우기"
+              >
+                ✕
+              </button>
+            ) : (
+              <svg 
+                className={styles.searchIcon} 
+                viewBox="0 0 24 24" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            )}
           </div>
         </section>
 
-        {/* 3. Featured YouTube Content Showcase */}
-        {featuredVideo && searchQuery === '' && (
+        {/* 3. Featured YouTube Content Showcase (검색어가 없을 때만 노출) */}
+        {featuredVideo && !cleanQuery && (
           <section className="glass-card">
             <div className={styles.featuredShowcase}>
               <div className="video-wrapper">
@@ -195,7 +222,7 @@ export default function Home({ latestPosts, latestVideos }) {
         )}
 
         {/* 4. Dual Column Feeds */}
-        {filteredPosts.length === 0 && filteredVideos.length === 0 ? (
+        {displayedPosts.length === 0 && displayedVideos.length === 0 ? (
           <div className={styles.noResultsGlobal}>
             <span style={{ fontSize: '2rem', marginBottom: '16px', display: 'block' }}>🔍</span>
             입력하신 검색어 <strong>&quot;{searchQuery}&quot;</strong>에 맞는 콘텐츠가 없습니다.
@@ -203,21 +230,21 @@ export default function Home({ latestPosts, latestVideos }) {
         ) : (
           <section 
             id="feed" 
-            className={`${styles.feedSection} ${(searchQuery && (filteredPosts.length === 0 || filteredVideos.length === 0)) ? styles.singleColumnFeed : ''}`}
+            className={`${styles.feedSection} ${(cleanQuery && (displayedPosts.length === 0 || displayedVideos.length === 0)) ? styles.singleColumnFeed : ''}`}
           >
             {/* Left Column: Blog Posts */}
-            {(!searchQuery || filteredPosts.length > 0) && (
+            {(!cleanQuery || displayedPosts.length > 0) && (
               <div>
                 <div className={styles.columnHeader}>
                   <h2 className={styles.columnTitle}>
-                    <span className={styles.columnIcon}>📝</span> 블로그 글 {searchQuery && `(${filteredPosts.length})`}
+                    <span className={styles.columnIcon}>📝</span> {cleanQuery ? `검색된 블로그 글 (${displayedPosts.length})` : '최근 블로그 글'}
                   </h2>
                   <Link href="/categories" className={styles.viewAllLink}>
                     카테고리 전체보기 →
                   </Link>
                 </div>
                 <div className={styles.feedList}>
-                  {filteredPosts.map((post) => (
+                  {displayedPosts.map((post) => (
                     <Link 
                       key={post.file} 
                       href={`/${post.file.replace('.md', '')}`} 
@@ -239,11 +266,11 @@ export default function Home({ latestPosts, latestVideos }) {
             )}
 
             {/* Right Column: YouTube Videos */}
-            {(!searchQuery || filteredVideos.length > 0) && (
+            {(!cleanQuery || displayedVideos.length > 0) && (
               <div>
                 <div className={styles.columnHeader}>
                   <h2 className={styles.columnTitle}>
-                    <span className={styles.columnIcon}>📺</span> 유튜브 영상 콘텐츠 {searchQuery && `(${filteredVideos.length})`}
+                    <span className={styles.columnIcon}>📺</span> {cleanQuery ? `검색된 영상 콘텐츠 (${displayedVideos.length})` : '최근 영상 콘텐츠'}
                   </h2>
                   <a 
                     href="https://www.youtube.com/@Na.R.D." 
@@ -255,7 +282,7 @@ export default function Home({ latestPosts, latestVideos }) {
                   </a>
                 </div>
                 <div className={styles.feedList}>
-                  {filteredVideos.map((video) => (
+                  {displayedVideos.map((video) => (
                     <Link 
                       key={video.file} 
                       href={`/${video.file.replace('.md', '')}`} 
