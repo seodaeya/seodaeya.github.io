@@ -163,7 +163,7 @@
   ],
   "Tech & Dev": [
     {
-      "title": "[트러블슈팅] 마케팅 광고로 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱 전략과 실무 튜닝",
+      "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
       "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
     },
     {
