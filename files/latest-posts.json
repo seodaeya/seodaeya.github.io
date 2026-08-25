@@ -1,5 +1,17 @@
 [
   {
+    "title": "[트러블슈팅] 마케팅 광고로 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱 전략과 실무 튜닝",
+    "category": "Tech & Dev",
+    "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md",
+    "date": "20260825"
+  },
+  {
+    "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
+    "category": "Tech & Dev",
+    "file": "posts/20260824-1-github-pages-serverless-cart-parser.md",
+    "date": "20260824"
+  },
+  {
     "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
     "category": "Dev & Software",
     "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md",
@@ -46,17 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260807-1-github-pages-adsense-domain.md",
     "date": "20260807"
-  },
-  {
-    "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
-    "category": "Dev & Software",
-    "file": "posts/20260805-2-gsc-sitemap-lastmod-fix.md",
-    "date": "20260805"
-  },
-  {
-    "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
-    "category": "AI & Intelligence",
-    "file": "posts/20260805-1-seo-geo-ai-search-strategy.md",
-    "date": "20260805"
   }
 ]

@@ -5,8 +5,22 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sat, 22 Aug 2026 00:27:28 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 25 Aug 2026 13:22:48 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[[트러블슈팅] 마케팅 광고로 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱 전략과 실무 튜닝]]></title>
+    <link>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</link>
+    <guid>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</guid>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[💥 1. 발단: 마케팅 대박, 그리고 갑작스러운 DB 장애 서비스 인지도 확대와 신규 고객 유치를 위해 대규모 마케팅 프로모션과 광고 집행을 시작했습니다. 광고가 라이브되자마자 평소 대비 수십 배에 달하는 대규모 유입 트래픽 이 메인 홈 화면으로 집중되었습니다. 하지...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기]]></title>
+    <link>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</link>
+    <guid>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</guid>
+    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[🛒 서론: 개발자의 번뜩이는 아이디어에서 시작된 '실험 서비스' 프로젝트 저는 일상 속 불편함을 코드로 해결하는 것을 즐기는 개발자입니다. 평소 온라인 쇼핑을 하다 보면 쿠팡, 네이버 스마트스토어, 알리익스프레스, 11번가, 아마존 등 각기 다른 플랫폼에 관심 상품이...]]></description>
+  </item>
   <item>
     <title><![CDATA[GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260822-1-github-pages-url-slug-seo-redirection/</link>

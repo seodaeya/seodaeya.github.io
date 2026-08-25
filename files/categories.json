@@ -160,5 +160,15 @@
       "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
       "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md"
     }
+  ],
+  "Tech & Dev": [
+    {
+      "title": "[트러블슈팅] 마케팅 광고로 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱 전략과 실무 튜닝",
+      "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
+    },
+    {
+      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
+      "file": "posts/20260824-1-github-pages-serverless-cart-parser.md"
+    }
   ]
 }
