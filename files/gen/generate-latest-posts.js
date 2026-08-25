@@ -76,7 +76,26 @@ const generateLatestPosts = () => {
         }
 
         if (modified) {
-            fs.writeFileSync(filePath, content, "utf-8");
+                    // 3) LaTeX math fail-safe (convert any raw LaTeX formulas to clean markdown)
+        if (content.includes("$$") || /(?<!\\)\$[a-zA-Z0-9\\{]/.test(content)) {
+            let cleaned = content;
+            // Clean $$ block equations
+            cleaned = cleaned.replace(/\$\$\s*\\text\{(.*?)\}\s*\$\$/g, '> <strong>$1</strong>');
+            cleaned = cleaned.replace(/\$\$(.*?)\$\$/g, '> <strong>$1</strong>');
+            // Clean inline LaTeX symbols
+            cleaned = cleaned.replace(/\\text\{(.*?)\}/g, '$1');
+            cleaned = cleaned.replace(/\\times/g, '×');
+            cleaned = cleaned.replace(/\\rightarrow/g, '➔');
+            cleaned = cleaned.replace(/\\mathbf\{(.*?)\}/g, '<strong>$1</strong>');
+            cleaned = cleaned.replace(/\$([^\$]+)\$/g, '$1');
+            
+            if (cleaned !== content) {
+                content = cleaned;
+                modified = true;
+                console.log(`[Fail-Safe] Converted raw LaTeX math to clean markdown in ${path.basename(filePath)}`);
+            }
+        }
+        fs.writeFileSync(filePath, content, "utf-8");
         }
     });
 

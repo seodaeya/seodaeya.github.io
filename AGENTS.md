@@ -14,3 +14,10 @@
 - The automated generator script `files/gen/generate-latest-posts.js` runs automatic regex passes during data generation to:
   1. Convert any raw `**` to `<strong>` tags.
   2. Escape any unescaped `~` into `\~`.
+
+## 4. Mandatory No-Raw-LaTeX / MathJax Rule
+- The blog markdown renderer uses standard `marked` without KaTeX/MathJax support.
+- **NEVER write raw LaTeX math syntax** (e.g. `$$...$$`, `$...$`, `\text{}`, `\times`, `\rightarrow`) in markdown posts (`files/posts/*.md` and `files/videos/*.md`).
+- **ALWAYS use standard markdown and unicode characters**:
+  - Formulas: Blockquotes with bold text (e.g. `> <strong>필요 커넥션 수 = RPS × 처리 시간</strong>`).
+  - Mathematical symbols: Unicode `×`, `÷`, `➔`, `+`, `-`, `=`.

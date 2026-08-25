@@ -43,10 +43,10 @@ tags: ["Spring Boot", "Redis", "Lettuce", "Troubleshooting", "PostgreSQL", "Data
 ### ⚠️ 원인 2: 저스펙 서버 환경과 커넥션 풀(10개)의 물리적 수학적 한계
 동시에 필요한 DB 커넥션의 개수는 <strong>리틀의 법칙(Little's Law)</strong>에 의해 결정됩니다:
 
-$$	ext{필요 커넥션 수} = 	ext{초당 요청 수 (RPS)} 	imes 	ext{요청 1건당 소요 시간 (초)}$$
+> <strong>필요 커넥션 수 = 초당 요청 수 (RPS) × 요청 1건당 DB 소요 시간 (초)</strong>
 
-* <strong>정상 상황</strong>: 초당 100건(RPS) 유입 시 $ightarrow 100 	imes 0.005	ext{초} = 0.5$개 (기본 커넥션 10개로 널널하게 처리)
-* <strong>광고 트래픽 증가</strong>: 초당 3,000건(RPS) 유입 시 $ightarrow 3,000 	imes 0.005	ext{초} = \mathbf{15	ext{개}}$
+* <strong>정상 상황</strong>: 초당 100건(RPS) 유입 시 ➔ `100 × 0.005초 = 0.5개` (기본 커넥션 10개로 널널하게 처리)
+* <strong>광고 트래픽 증가</strong>: 초당 3,000건(RPS) 유입 시 ➔ `3,000 × 0.005초 = 15개` (필요 커넥션 급증)
 * 쿼리가 5ms로 아무리 빨라도, <strong>가진 커넥션(10개)보다 필요한 커넥션(15\~30개)이 많아지는 순간</strong> 대기 큐가 꽉 차며 30초 후 `ConnectionTimeoutException`이 폭발하게 됩니다.
 
 ### ⚠️ 원인 3: 저스펙 CPU의 스레드 락 경합 및 컨텍스트 스위칭 부하
