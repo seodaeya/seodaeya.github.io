@@ -23,35 +23,41 @@ tags: ["Spring Boot", "Redis", "Lettuce", "Troubleshooting", "PostgreSQL", "Data
 
 ```text
 [ 트래픽 증가 시 발생한 연쇄 장애 메커니즘 ]
-1. 유저 동시 유입 ➔ 초당 수만 건의 다중 조회 요청 발생
+1. 유저 동시 유입 ➔ 화면당 3~4개 조회 API가 동시 발송되며 트래픽 수배 증폭
 2. Spring Boot ➔ PostgreSQL 간 HikariCP Connection Pool (기본 10개) 0.1초 만에 완전 고갈
 3. 스레드들이 커넥션을 얻지 못해 무한 대기 (ConnectionTimeoutException 발생)
-4. 복잡한 다중 연산 및 집계 쿼리로 DB CPU 점유율 100% 도달
+4. 저스펙 CPU에서 수백 개 스레드의 커넥션 쟁탈전(컨텍스트 스위칭)으로 CPU 점유율 100% 도달
 5. 메인 화면뿐만 아니라 동일 DB를 공유하는 '결제/주문/로그인' 기능까지 전면 마비! 🚨
 ```
 
 ---
 
-## 🔍 2. 원인 분석: DB 쿼리와 서비스 레이어의 병목 지점
+## 🔍 2. 원인 분석: 빠른 쿼리(5ms)에도 커넥션이 마르는 이유
 
-장애 원인을 정밀 프로파일링(APM)해 본 결과, 데이터베이스 자체의 부하뿐만 아니라 <strong>"DB 쿼리 시간은 짧지만 서비스 레이어에서 시간을 과도하게 잡아먹는 구조적 문제"</strong>가 함께 발견되었습니다.
+단순 조회 위주의 화면이라 별도의 무거운 트랜잭션이 없고 DB SELECT 쿼리 자체는 인덱스를 타고 5ms 만에 빠르게 처리되고 있었습니다. 그럼에도 불구하고 왜 DB 커넥션 풀이 마르고 시스템이 다운되었을까요?
 
-### ⚠️ 병목 1: 불필요한 반복 쿼리 (준 정적 데이터)
-* 상단 배너, 공지사항, 기획전 카테고리는 모든 사용자에게 99.9% 동일하게 보이는 <strong>준(準) 정적 데이터</strong>입니다.
-* 데이터가 거의 바뀌지 않음에도 불구하고, 매 요청마다 디스크 I/O를 일으키며 PostgreSQL로 직접 쿼리를 날리고 있었습니다.
+### ⚠️ 원인 1: 화면 1개당 3\~4개 API 호출로 인한 '트래픽 4배 증폭'
+* 사용자는 1명이 들어왔지만, 브라우저가 화면을 렌더링하기 위해 API 3\~4개를 동시에 호출합니다.
+* 즉, <strong>실제 유입된 유저 수보다 3\~4배나 많은 DB 커넥션 요청이 찰나의 순간에 쏟아지는 증폭 현상</strong>이 발생했습니다.
 
-### ⚠️ 병목 2: DB 쿼리는 짧은데, 서비스 로직에서 시간을 잡아먹는 현상
-실무에서 자주 발생하는 대표적인 서비스 레이어 병목 패턴들입니다:
+### ⚠️ 원인 2: 저스펙 서버 환경과 커넥션 풀(10개)의 물리적 수학적 한계
+동시에 필요한 DB 커넥션의 개수는 <strong>리틀의 법칙(Little's Law)</strong>에 의해 결정됩니다:
 
-1. <strong>대용량 엔티티 순회 및 복잡한 DTO 가공 비용 (CPU 부하)</strong>:
-   - DB에서 원시 데이터를 읽어오는 SELECT 쿼리 자체는 인덱스를 타고 5\~10ms 만에 끝나지만, 서비스 레이어에서 수십\~수백 개의 연관 엔티티(`List<ProductDetail>`, 옵션, 태그)를 루프를 돌며 Java DTO로 변환·조합하고 할인율 및 회원 등급별 혜택을 계산하느라 애플리케이션 CPU를 과도하게 소모했습니다.
-2. <strong>외부 서드파티 API 동기(Sync) 호출 지연 (스레드 블로킹)</strong>:
-   - 상품 기본 정보는 DB에서 빠르게 가져왔지만, 상품별 실시간 배송비 조회나 외부 물류/쿠폰 연동 API를 동기적으로 호출하면서 응답 대기 시간 동안 톰캣(Tomcat) 스레드가 커넥션을 물고 놓아주지 않는 현상이 발생했습니다.
-3. <strong>대량 객체 생성에 따른 GC(Garbage Collection) 지연</strong>:
-   - 매 요청마다 무거운 복합 DTO 객체를 대량으로 생성하고 JSON으로 직렬화하는 과정에서 힙 메모리 압박이 심해져 Stop-The-World(STW) 지연이 누적되었습니다.
+$$	ext{필요 커넥션 수} = 	ext{초당 요청 수 (RPS)} 	imes 	ext{요청 1건당 소요 시간 (초)}$$
+
+* <strong>정상 상황</strong>: 초당 100건(RPS) 유입 시 $ightarrow 100 	imes 0.005	ext{초} = 0.5$개 (기본 커넥션 10개로 널널하게 처리)
+* <strong>광고 트래픽 증가</strong>: 초당 3,000건(RPS) 유입 시 $ightarrow 3,000 	imes 0.005	ext{초} = \mathbf{15	ext{개}}$
+* 쿼리가 5ms로 아무리 빨라도, <strong>가진 커넥션(10개)보다 필요한 커넥션(15\~30개)이 많아지는 순간</strong> 대기 큐가 꽉 차며 30초 후 `ConnectionTimeoutException`이 폭발하게 됩니다.
+
+### ⚠️ 원인 3: 저스펙 CPU의 스레드 락 경합 및 컨텍스트 스위칭 부하
+* Spring Boot(Tomcat)의 기본 스레드 풀은 200개인데, PostgreSQL과 연결된 통로(HikariCP)는 10개뿐이었습니다.
+* CPU 코어가 적은 저스펙 서버 환경에서 200개의 스레드가 10개의 커넥션을 차지하려고 아귀다툼(Lock Contention)을 벌이면서, <strong>CPU가 실제 쿼리 처리가 아닌 스레드 간 전환(Context Switching)에 80% 이상의 자원을 낭비</strong>하여 시스템 전체가 굳어버렸습니다.
+
+### ⚠️ 원인 4: 불필요한 반복 쿼리 (준 정적 데이터)
+* 상단 배너, 공지사항, 기획전 카테고리는 모든 사용자에게 99.9% 동일하게 보이는 <strong>준(準) 정적 데이터</strong>임에도 불구하고, 모든 요청마다 매번 DB 커넥션을 획득하여 쿼리를 날리고 있었습니다.
 
 ### 📐 아키텍처 개선 방향: Look-Aside 캐싱 도입
-데이터베이스 앞단에 초고속 인메모리 저장소인 <strong>Redis</strong>를 배치하고, <strong>Look-Aside (Cache-Aside)</strong> 패턴을 적용하여 DB 도달 트래픽을 차단함과 동시에 <strong>무거운 서비스 레이어 가공 연산 자체를 건너뛰기로</strong> 결정했습니다.
+데이터베이스 앞단에 초고속 인메모리 저장소인 <strong>Redis</strong>를 배치하고, <strong>Look-Aside (Cache-Aside)</strong> 패턴을 적용하여 <strong>DB 커넥션 풀을 아예 건드리지 않고 인메모리에서 0.001초 만에 즉시 반환</strong>하기로 결정했습니다.
 
 ```mermaid
 graph LR
@@ -141,7 +147,7 @@ public class RedisConfig {
 ---
 
 ### 3) 서비스 계층에 `@Cacheable` 적용 (`MainDisplayService.java`)
-Spring의 캐시 추상화 어노테이션을 활용하여, <strong>DB 조회뿐만 아니라 무거운 DTO 변환 및 서비스 가공 로직 전체를 캐싱 결과로 즉시 대체</strong>했습니다.
+Spring의 캐시 추상화 어노테이션을 활용하여, <strong>반복 쿼리 실행을 방지하고 캐시된 결과를 즉시 반환</strong>하도록 구성했습니다.
 
 ```java
 package com.example.service;
@@ -153,19 +159,17 @@ import com.example.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class MainDisplayService {
 
     private final BannerRepository bannerRepository;
     private final ProductRepository productRepository;
 
-    // 배너 조회: 1시간 동안 Redis 인메모리에서 즉각 반환 (DB I/O 및 DTO 변환 연산 발생 안 함)
+    // 배너 조회: 1시간 동안 Redis 인메모리에서 즉각 반환 (DB 커넥션 소모 0)
     @Cacheable(value = "mainBanners", key = "'active'", unless = "#result == null || #result.isEmpty()")
     public List<BannerDto> getActiveBanners() {
         return bannerRepository.findAllActiveBanners()
@@ -174,7 +178,7 @@ public class MainDisplayService {
                 .toList();
     }
 
-    // 인기 상품 TOP 10: 1분간 캐싱되어 서비스 계층의 복잡한 혜택 계산 및 랭킹 정렬 로직 완전 스킵
+    // 인기 상품 TOP 10: 1분간 캐싱되어 초당 수천 번의 랭킹 쿼리로부터 커넥션 풀 보호
     @Cacheable(value = "popularProducts", key = "'top10'", unless = "#result == null || #result.isEmpty()")
     public List<ProductSummaryDto> getPopularProducts() {
         return productRepository.findTop10BySales()
@@ -241,26 +245,27 @@ public class LettuceTuningConfig {
 | <strong>DB CPU 사용률</strong> | <strong>95%\~100% (포화 다운)</strong> | <strong>15%\~20% (극도로 안정)</strong> | <strong>부하 약 80% 감소</strong> |
 | <strong>HikariCP 커넥션 대기</strong> | `ConnectionTimeout` 빈번 발생 | <strong>대기 스레드 0건</strong> | <strong>병목 완벽 해소</strong> |
 | <strong>API 평균 응답 속도</strong> | <strong>850ms \~ 3,000ms+</strong> | <strong>12ms \~ 25ms</strong> | <strong>응답 속도 97% 단축</strong> |
-| <strong>Cache Hit Ratio</strong> | 0% (매번 DB/서비스 직격) | <strong>98.4%</strong> | <strong>대부분 인메모리 처리</strong> |
+| <strong>Cache Hit Ratio</strong> | 0% (매번 DB 직격) | <strong>98.4%</strong> | <strong>대부분 인메모리 처리</strong> |
 
-광고로 인해 많은 사용자가 유입되었음에도, 메인 홈 화면 조회의 <strong>98% 이상이 Redis 인메모리에서 0.01초 만에 응답</strong>되면서 PostgreSQL 데이터베이스는 결제나 회원 가입 같은 실제 쓰기(Write) 트랜잭션 처리에만 온전히 리소스를 집중할 수 있게 되었습니다.
+광고로 인해 많은 사용자가 유입되었음에도, 메인 홈 화면 조회의 <strong>98% 이상이 Redis 인메모리에서 0.01초 만에 응답</strong>되면서 한정된 커넥션 풀(10개)을 전혀 점유하지 않고도 수천 건의 동시 요청을 가볍게 통과시킬 수 있게 되었습니다.
 
 ---
 
 ## 💡 5. 12세 청소년도 쉽게 이해하는 비유 (ELI12)
 
-> <strong>"손님이 올 때마다 주방장(서비스 로직)이 복잡한 요리(DTO 가공)를 처음부터 다시 만들던 것을, 완성된 도시락(Redis 캐시)으로 해결한 것입니다!"</strong>
+> <strong>"아무리 1초 만에 표를 끊어주는 초고속 매표원(5ms 빠른 쿼리)이라도, 매표 창구가 10개(커넥션 풀)밖에 없는데 손님이 2,000명 몰려오면 놀이공원 입구가 마비되는 것과 똑같습니다!"</strong>
 >
-> - 예전에는 손님이 많이 오면 재료 창고(PostgreSQL)도 붐비고 주방장도 요리하느라 쓰러졌습니다.
-> - 이제는 똑똑한 조수(Lettuce)가 미리 완성된 인기 도시락을 <strong>선반(Redis)</strong>에 올려두고 손님에게 바로 건네주니, 주방장도 창고도 여유롭고 손님도 기다리지 않게 되었습니다!
+> - <strong>Lettuce + Redis 캐싱이 마법인 이유</strong>: 
+>   - 10개뿐인 매표소(DB 커넥션)로 손님을 보내지 않고, <strong>입구에 무인 발권기(Redis 캐시)를 설치해 모든 손님이 0.001초 만에 표를 뽑아가게 만든 것</strong>입니다.
+>   - 저스펙 서버라도 커넥션을 전혀 쓰지 않고 수만 명의 손님을 막힘없이 통과시키게 되었습니다!
 
 ---
 
 ## 🎯 6. 마치며: 배운 점과 다음 스텝
 
 ### 💡 실무 교훈
-1. <strong>캐싱은 DB뿐만 아니라 서비스 계층의 연산 비용도 줄여준다</strong>:
-   - 캐싱은 단순히 SQL 쿼리 수를 줄이는 것에 그치지 않고, 매 요청마다 반복되던 <strong>무거운 DTO 변환, 객체 할당(GC 압박), 비즈니스 가공 연산 전체를 건너뛰게 해주는 강력한 최적화 수단</strong>입니다.
+1. <strong>쿼리가 빨라도 커넥션 풀의 물리적 한계(RPS 증폭)는 피할 수 없다</strong>:
+   - 화면당 다중 API 호출로 인한 트래픽 증폭 환경에서는 아무리 단순 SELECT 쿼리라도 커넥션 풀 고갈을 피하기 어려우며, 인메모리 캐싱을 통해 <strong>DB 진입 자체를 차단하는 것이 가장 확실한 해법</strong>입니다.
 2. <strong>Lettuce의 비동기 커넥션 공유 특성</strong>:
    - 커넥션 풀을 무작정 늘리지 않고도 단일 커넥션의 Netty 이벤트 루프를 통해 많은 동시 요청을 가볍게 소화할 수 있었습니다.
 
