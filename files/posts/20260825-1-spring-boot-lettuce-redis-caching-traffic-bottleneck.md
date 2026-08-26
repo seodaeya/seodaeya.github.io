@@ -6,6 +6,8 @@ image: "/images/lettuce_redis_caching_db_bottleneck_thumbnail.png"
 tags: ["Spring Boot", "Redis", "Lettuce", "Troubleshooting", "PostgreSQL", "Database", "Performance Tuning", "Backend Architecture"]
 ---
 
+> 💡 <strong>안내</strong>: 본 포스팅은 실무에서 겪은 백엔드 트러블슈팅 경험과 학습 내용을 바탕으로, 기술적 이해와 설명의 명확성을 돕기 위해 <strong>실제 내용에 일부 가상의 시나리오와 설정을 덧붙여 각색·재구성</strong>한 글입니다.
+
 ## 💥 1. 발단: 마케팅 광고, 그리고 갑작스러운 DB 장애
 
 서비스 활성화를 위해 마케팅 프로모션과 광고를 시작했습니다. 광고가 시작되자 평소보다 <strong>더 많은 유입 트래픽</strong>이 메인 홈 화면으로 집중되었습니다.

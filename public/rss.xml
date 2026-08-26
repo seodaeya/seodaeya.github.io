@@ -5,14 +5,14 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 25 Aug 2026 14:14:10 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 26 Aug 2026 12:55:45 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱]]></title>
     <link>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</link>
     <guid>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</guid>
     <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💥 1. 발단: 마케팅 광고, 그리고 갑작스러운 DB 장애 서비스 활성화를 위해 마케팅 프로모션과 광고를 시작했습니다. 광고가 시작되자 평소보다 더 많은 유입 트래픽 이 메인 홈 화면으로 집중되었습니다. 하지만 유입 트래픽이 늘어나자 백엔드 모니터링 대시보드에 경고등...]]></description>
+    <description><![CDATA[💡 안내 : 본 포스팅은 실무에서 겪은 백엔드 트러블슈팅 경험과 학습 내용을 바탕으로, 기술적 이해와 설명의 명확성을 돕기 위해 실제 내용에 일부 가상의 시나리오와 설정을 덧붙여 각색·재구성 한 글입니다. 💥 1. 발단: 마케팅 광고, 그리고 갑작스러운 DB 장애...]]></description>
   </item>
   <item>
     <title><![CDATA[정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기]]></title>
