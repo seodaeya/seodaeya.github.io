@@ -5,28 +5,28 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 26 Aug 2026 15:43:16 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 26 Aug 2026 16:37:30 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심]]></title>
     <link>https://seodaeya.github.io/posts/20260827-1-ecommerce-ontology-ai-search-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260827-1-ecommerce-ontology-ai-search-guide/</guid>
     <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🌐 1. 온톨로지(Ontology)란 무엇인가? 본질적 정의와 지식 그래프와의 차이 온톨로지(Ontology) 는 원래 철학에서 "존재하는 것들의 본질과 실재를 탐구하는 존재론(存在論)"을 뜻하는 단어였습니다. 하지만 현대 컴퓨터 과학과 데이터 엔지니어링 분야에서는...]]></description>
+    <description><![CDATA[온톨로지(Ontology) 는 원래 철학에서 "존재하는 것들의 본질과 실재를 탐구하는 존재론(存在論)"을 뜻하는 단어였습니다. 하지만 현대 컴퓨터 과학과 데이터 엔지니어링 분야에서는 실용적인 '비즈니스 의미 모델이자 업무 규칙표' 로 사용됩니다. 실무에서 가장 많이 혼...]]></description>
   </item>
   <item>
     <title><![CDATA[[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱]]></title>
     <link>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</link>
     <guid>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</guid>
     <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💡 안내 : 본 포스팅은 실무에서 겪은 백엔드 트러블슈팅 경험과 학습 내용을 바탕으로, 기술적 이해와 설명의 명확성을 돕기 위해 실제 내용에 일부 가상의 시나리오와 설정을 덧붙여 각색·재구성 한 글입니다. 💥 1. 발단: 마케팅 광고, 그리고 갑작스러운 DB 장애...]]></description>
+    <description><![CDATA[💡 안내 : 본 포스팅은 실무에서 겪은 백엔드 트러블슈팅 경험과 학습 내용을 바탕으로, 기술적 이해와 설명의 명확성을 돕기 위해 실제 내용에 일부 가상의 시나리오와 설정을 덧붙여 각색·재구성 한 글입니다. 서비스 활성화를 위해 마케팅 프로모션과 광고를 시작했습니다....]]></description>
   </item>
   <item>
     <title><![CDATA[정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기]]></title>
     <link>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</link>
     <guid>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</guid>
     <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🛒 서론: 개발자의 번뜩이는 아이디어에서 시작된 '실험 서비스' 프로젝트 저는 일상 속 불편함을 코드로 해결하는 것을 즐기는 개발자입니다. 평소 온라인 쇼핑을 하다 보면 쿠팡, 네이버 스마트스토어, 알리익스프레스, 11번가, 아마존 등 각기 다른 플랫폼에 관심 상품이...]]></description>
+    <description><![CDATA[저는 일상 속 불편함을 코드로 해결하는 것을 즐기는 개발자입니다. 평소 온라인 쇼핑을 하다 보면 쿠팡, 네이버 스마트스토어, 알리익스프레스, 11번가, 아마존 등 각기 다른 플랫폼에 관심 상품이 뿔뿔이 흩어져 있어 "이 장바구니들을 한곳에 싹 모아서 실시간 가격과 예산...]]></description>
   </item>
   <item>
     <title><![CDATA[GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드]]></title>
@@ -40,259 +40,259 @@
     <link>https://seodaeya.github.io/posts/20260819-2-actor-framework-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260819-2-actor-framework-guide/</guid>
     <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚀 왜 방대한 지식을 배우고도 현실에서는 변하는 게 없을까? 이전 글인 [Part 1: ALTER 프레임워크와 1인 대학 구축법] 에서는 산딥 스와디아(Sandeep Swadia)의 강연을 바탕으로 AI를 5명의 전담 교수진(Advisor, Librarian, Tut...]]></description>
+    <description><![CDATA[이전 글인 [Part 1: ALTER 프레임워크와 1인 대학 구축법] 에서는 산딥 스와디아(Sandeep Swadia)의 강연을 바탕으로 AI를 5명의 전담 교수진(Advisor, Librarian, Tutor, Editor, Roommate) 으로 세팅하는 시스템을...]]></description>
   </item>
   <item>
     <title><![CDATA[산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)]]></title>
     <link>https://seodaeya.github.io/posts/20260819-1-ai-alter-framework/</link>
     <guid>https://seodaeya.github.io/posts/20260819-1-ai-alter-framework/</guid>
     <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[📱 인스타그램을 보는 주머니 속에 '수백억 원짜리 대학'이 들어있다 MIT 출신의 전직 수도승이자 실리콘밸리 테크 기업 CEO인 산딥 스와디아(Sandeep Swadia)는 유튜브 강연(How To Become Dangerously Self Educated with...]]></description>
+    <description><![CDATA[MIT 출신의 전직 수도승이자 실리콘밸리 테크 기업 CEO인 산딥 스와디아(Sandeep Swadia)는 유튜브 강연(How To Become Dangerously Self Educated with AI) 에서 매우 충격적인 현장의 이야기를 들려줍니다. 얼마 전 미국...]]></description>
   </item>
   <item>
     <title><![CDATA[메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질]]></title>
     <link>https://seodaeya.github.io/posts/20260817-1-meta-ax-agentic-workflow/</link>
     <guid>https://seodaeya.github.io/posts/20260817-1-meta-ax-agentic-workflow/</guid>
     <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚀 왜 AI 도입 기업의 95%는 실패하고 5%만 성공하는가? 최근 글로벌 IT 업계와 엔터프라이즈 시장의 가장 뜨거운 화두는 단연 AX (Agentic Transformation, 에이전틱 전환)입니다. 수많은 기업들이 "우리도 AI 네이티브 조직으로 전환하겠다"며...]]></description>
+    <description><![CDATA[최근 글로벌 IT 업계와 엔터프라이즈 시장의 가장 뜨거운 화두는 단연 AX (Agentic Transformation, 에이전틱 전환)입니다. 수많은 기업들이 "우리도 AI 네이티브 조직으로 전환하겠다"며 사내에 ChatGPT나 Claude 같은 생성형 AI 툴을 전사...]]></description>
   </item>
   <item>
     <title><![CDATA[구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교]]></title>
     <link>https://seodaeya.github.io/posts/20260815-1-gemini-3-7-flash-analysis/</link>
     <guid>https://seodaeya.github.io/posts/20260815-1-gemini-3-7-flash-analysis/</guid>
     <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚀 AI 에이전트의 차세대 주력 엔진, 구글 Gemini 3.7 Flash의 전격 등장 구글(Google)이 최신 플래그십 AI 모델인 Gemini 3.7 Flash(제미나이 3.7 플래시) 를 공식 공개했습니다. 이전 세대인 Gemini 3.6 Flash가 속도와...]]></description>
+    <description><![CDATA[구글(Google)이 최신 플래그십 AI 모델인 Gemini 3.7 Flash(제미나이 3.7 플래시) 를 공식 공개했습니다. 이전 세대인 Gemini 3.6 Flash가 속도와 출력 토큰 효율화에 집중했다면, 이번 3.7 버전은 복잡한 소프트웨어 엔지니어링, 자율형...]]></description>
   </item>
   <item>
     <title><![CDATA[macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260812-1-macos-android-openmtp-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260812-1-macos-android-openmtp-guide/</guid>
     <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💻 맥(Mac)과 안드로이드(Android) 사이의 파일 전송 잔혹사 맥북(MacBook)이나 맥 미니(Mac mini) 등 macOS 생태계에서 삼성 갤럭시(Galaxy)를 포함한 안드로이드 스마트폰을 연결해 사진이나 고화질 동영상 파일, 음악 등을 옮기려고 할 때...]]></description>
+    <description><![CDATA[맥북(MacBook)이나 맥 미니(Mac mini) 등 macOS 생태계에서 삼성 갤럭시(Galaxy)를 포함한 안드로이드 스마트폰을 연결해 사진이나 고화질 동영상 파일, 음악 등을 옮기려고 할 때 커다란 벽에 부딪히게 됩니다. 애플과 안드로이드의 서로 다른 파일 시스...]]></description>
   </item>
   <item>
     <title><![CDATA[기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐]]></title>
     <link>https://seodaeya.github.io/posts/20260811-1-privacy-policy-cpo-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260811-1-privacy-policy-cpo-guide/</guid>
     <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🏢 빅데이터·AI 시대, 기업의 데이터 자산과 개인정보 보호의 중요성 현대 비즈니스 환경에서 데이터는 기업의 가장 강력한 성장 동력이자 핵심 자산입니다. 하지만 고객의 이름, 연락처, 행태 정보, 결제 데이터 등 수많은 개인정보가 기업 내부 시스템을 거쳐 처리되는 만...]]></description>
+    <description><![CDATA[현대 비즈니스 환경에서 데이터는 기업의 가장 강력한 성장 동력이자 핵심 자산입니다. 하지만 고객의 이름, 연락처, 행태 정보, 결제 데이터 등 수많은 개인정보가 기업 내부 시스템을 거쳐 처리되는 만큼, 이에 따른 법적 책무와 보안 리스크 역시 그 어느 때보다 막중해졌습...]]></description>
   </item>
   <item>
     <title><![CDATA[GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략]]></title>
     <link>https://seodaeya.github.io/posts/20260807-1-github-pages-adsense-domain/</link>
     <guid>https://seodaeya.github.io/posts/20260807-1-github-pages-adsense-domain/</guid>
     <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💻 깃허브 블로그(github.io), 왜 애드센스 심사에서 계속 거절될까? 개발자나 테크 에디터들이 자신만의 기술 블로그를 구축할 때 가장 선호하는 플랫폼 중 하나는 단연 GitHub Pages(github.io) 입니다. 무료 호스팅, Markdown 기반 작성,...]]></description>
+    <description><![CDATA[개발자나 테크 에디터들이 자신만의 기술 블로그를 구축할 때 가장 선호하는 플랫폼 중 하나는 단연 GitHub Pages(github.io) 입니다. 무료 호스팅, Markdown 기반 작성, 개발자 친화적인 버전 관리 등 수많은 장점이 있기 때문입니다. 하지만 블로그가...]]></description>
   </item>
   <item>
     <title><![CDATA[구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법]]></title>
     <link>https://seodaeya.github.io/posts/20260805-2-gsc-sitemap-lastmod-fix/</link>
     <guid>https://seodaeya.github.io/posts/20260805-2-gsc-sitemap-lastmod-fix/</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚨 제출일은 오늘인데, '마지막으로 읽은 날짜'는 왜 몇 년 전으로 멈춰 있을까? 웹사이트나 블로그를 운영하면서 구글 서치콘솔(Google Search Console, 이하 GSC)에 sitemap.xml 을 등록했을 때 많은 운영자들이 당황하는 대표적인 현상이 있습...]]></description>
+    <description><![CDATA[웹사이트나 블로그를 운영하면서 구글 서치콘솔(Google Search Console, 이하 GSC)에 sitemap.xml 을 등록했을 때 많은 운영자들이 당황하는 대표적인 현상이 있습니다. 새로운 글을 수십 개 작성하고 사이트맵을 새로 생성하여 서치콘솔의 [Sitem...]]></description>
   </item>
   <item>
     <title><![CDATA[SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략]]></title>
     <link>https://seodaeya.github.io/posts/20260805-1-seo-geo-ai-search-strategy/</link>
     <guid>https://seodaeya.github.io/posts/20260805-1-seo-geo-ai-search-strategy/</guid>
     <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🔍 검색의 패러다임이 바뀐다: 키워드 검색에서 AI 답변 검색으로 지난 20여 년간 웹사이트와 블로그 트래픽을 지배해 온 패러다임은 단연 SEO(Search Engine Optimization, 검색엔진 최적화) 였습니다. 구글(Google)이나 네이버(Naver)...]]></description>
+    <description><![CDATA[지난 20여 년간 웹사이트와 블로그 트래픽을 지배해 온 패러다임은 단연 SEO(Search Engine Optimization, 검색엔진 최적화) 였습니다. 구글(Google)이나 네이버(Naver) 검색창에 특정 키워드를 입력하면, 검색엔진 로봇이 랭킹 알고리즘에 따...]]></description>
   </item>
   <item>
     <title><![CDATA[Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법]]></title>
     <link>https://seodaeya.github.io/posts/20260804-1-gemini-cli-install-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260804-1-gemini-cli-install-guide/</guid>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💻 브라우저를 벗어나 터미널에서 구글 Gemini를 다루는 방법 개발자나 시스템 관리자가 복잡한 코드를 분석하거나 텍스트 데이터를 처리할 때, 웹 브라우저를 열고 카피 앤 페이스트(Copy & Paste)를 반복하는 과정은 작업 흐름을 끊는 커다란 요소입니다. 구글(...]]></description>
+    <description><![CDATA[개발자나 시스템 관리자가 복잡한 코드를 분석하거나 텍스트 데이터를 처리할 때, 웹 브라우저를 열고 카피 앤 페이스트(Copy & Paste)를 반복하는 과정은 작업 흐름을 끊는 커다란 요소입니다. 구글(Google)이 제공하는 공식 Gemini CLI(Command L...]]></description>
   </item>
   <item>
     <title><![CDATA[SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부]]></title>
     <link>https://seodaeya.github.io/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/</link>
     <guid>https://seodaeya.github.io/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/</guid>
     <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[✨ 얼음 토출부 딥클리닝 2부: 완전 건조와 결합, 완벽 위생 관리법 지난 1부에서는 SK매직 올인원 얼음정수기(WPU I210) 의 얼음 토출부 커버 탈거 및 칫솔/물티슈를 활용한 1차 세척 과정을 다루었습니다. 이번 2부에서는 세척된 내부 부품의 2차 헹굼과 잔여...]]></description>
+    <description><![CDATA[지난 1부에서는 SK매직 올인원 얼음정수기(WPU I210) 의 얼음 토출부 커버 탈거 및 칫솔/물티슈를 활용한 1차 세척 과정을 다루었습니다. 이번 2부에서는 세척된 내부 부품의 2차 헹굼과 잔여 수분 완전 건조, 정확한 재결합 단계 , 그리고 청소 후 더욱 위생적으...]]></description>
   </item>
   <item>
     <title><![CDATA[SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부]]></title>
     <link>https://seodaeya.github.io/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/</link>
     <guid>https://seodaeya.github.io/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/</guid>
     <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🧊 방치하기 쉬운 얼음 정수기 토출부, 위생 상태 점검해보셨나요? 무더운 여름철 일상에서 가장 자주 사용하는 가전제품을 꼽으라면 단연 얼음 정수기 일 것입니다. 시원한 얼음물이나 아이스 아메리카노를 마실 때 매일 이용하지만, 정작 얼음이 쏟아져 나오는 '얼음 토출부'...]]></description>
+    <description><![CDATA[무더운 여름철 일상에서 가장 자주 사용하는 가전제품을 꼽으라면 단연 얼음 정수기 일 것입니다. 시원한 얼음물이나 아이스 아메리카노를 마실 때 매일 이용하지만, 정작 얼음이 쏟아져 나오는 '얼음 토출부' 안쪽 을 유심히 들여다보신 적은 많지 않으실 텐데요. 매달 방문 케...]]></description>
   </item>
   <item>
     <title><![CDATA[중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석]]></title>
     <link>https://seodaeya.github.io/posts/20260803-1-kimi-k3-moonshot-ai/</link>
     <guid>https://seodaeya.github.io/posts/20260803-1-kimi-k3-moonshot-ai/</guid>
     <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🌐 중국 AI 생태계의 판도를 바꾼 문샷 AI(Moonshot AI)와 Kimi 3 글로벌 인공지능(AI) 시장에서 OpenAI의 GPT 5.6, Google의 Gemini 3.6 등 미국 빅테크 기업들의 주도권 경쟁이 치열하게 전개되는 가운데, 중국의 대표적인 AI...]]></description>
+    <description><![CDATA[글로벌 인공지능(AI) 시장에서 OpenAI의 GPT 5.6, Google의 Gemini 3.6 등 미국 빅테크 기업들의 주도권 경쟁이 치열하게 전개되는 가운데, 중국의 대표적인 AI 스타트업 문샷 AI(Moonshot AI) 가 최신 플래그십 AI 모델인 Kimi 3...]]></description>
   </item>
   <item>
     <title><![CDATA[구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막]]></title>
     <link>https://seodaeya.github.io/posts/20260723-2-gemini-3-6-features-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260723-2-gemini-3-6-features-guide/</guid>
     <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[⚡ 구글 Gemini 3.6 공식 발표: AI 에이전트의 새로운 기준 구글이 최신 AI 모델 라인업인 Gemini 3.6 시리즈 를 공식 발표했습니다. 이번 업데이트는 개발자와 기업들이 AI 기반 애플리케이션을 구축할 때 마주치는 효율성, 속도, 비용 문제 를 획기적으...]]></description>
+    <description><![CDATA[구글이 최신 AI 모델 라인업인 Gemini 3.6 시리즈 를 공식 발표했습니다. 이번 업데이트는 개발자와 기업들이 AI 기반 애플리케이션을 구축할 때 마주치는 효율성, 속도, 비용 문제 를 획기적으로 개선하는 데 초점을 맞추었습니다. Gemini 3.6은 단순한 벤치...]]></description>
   </item>
   <item>
     <title><![CDATA[AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프']]></title>
     <link>https://seodaeya.github.io/posts/20260723-1-human-in-the-loop-ai-ethics/</link>
     <guid>https://seodaeya.github.io/posts/20260723-1-human-in-the-loop-ai-ethics/</guid>
     <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🤖 AI가 대신 결정해 주는 세상, 우리는 무엇을 고민하고 있을까 "오늘 저녁은 무엇을 먹을까?" "이번 주말에는 어떤 영화를 볼까?" 불과 몇 년 전만 해도 우리는 이런 일상의 소소한 질문들을 스스로 던지고 고민했습니다. 하지만 요즘은 다릅니다. 알고리즘과 인공지능...]]></description>
+    <description><![CDATA["오늘 저녁은 무엇을 먹을까?" "이번 주말에는 어떤 영화를 볼까?" 불과 몇 년 전만 해도 우리는 이런 일상의 소소한 질문들을 스스로 던지고 고민했습니다. 하지만 요즘은 다릅니다. 알고리즘과 인공지능(AI)이 나의 과거 취향을 먼저 파악해 선택지를 제안하고, 심지어...]]></description>
   </item>
   <item>
     <title><![CDATA[디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유]]></title>
     <link>https://seodaeya.github.io/posts/20260715-1-dybala-as-roma-contract/</link>
     <guid>https://seodaeya.github.io/posts/20260715-1-dybala-as-roma-contract/</guid>
     <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[⚽ 의리와 낭만의 아이콘, 파울로 디발라의 로마 잔류기 유럽 축구 이적 시장에서 돈과 명예를 쫓아 수많은 선수가 이동하는 가운데, 가슴을 울리는 따뜻한 재계약 소식이 들려왔습니다. 바로 AS 로마의 에이스 파울로 디발라(Paulo Dybala) 가 팀과의 극적인 계약...]]></description>
+    <description><![CDATA[유럽 축구 이적 시장에서 돈과 명예를 쫓아 수많은 선수가 이동하는 가운데, 가슴을 울리는 따뜻한 재계약 소식이 들려왔습니다. 바로 AS 로마의 에이스 파울로 디발라(Paulo Dybala) 가 팀과의 극적인 계약 연장에 합의했다는 소식입니다. 디발라는 이번 계약 과정에...]]></description>
   </item>
   <item>
     <title><![CDATA[GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까]]></title>
     <link>https://seodaeya.github.io/posts/20260713-1-gpt-5-6-sol-terra-luna/</link>
     <guid>https://seodaeya.github.io/posts/20260713-1-gpt-5-6-sol-terra-luna/</guid>
     <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[GPT 5.6, 이름부터 조금 달라졌다 OpenAI가 7월 9일 공개한 GPT 5.6 은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, Sol , Terra , Luna 가 함께 나왔다. 처음 보면 이름이 조금 낯설다. 예전처럼 숫자가 올...]]></description>
+    <description><![CDATA[OpenAI가 7월 9일 공개한 GPT 5.6 은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, Sol , Terra , Luna 가 함께 나왔다. 처음 보면 이름이 조금 낯설다. 예전처럼 숫자가 올라간 새 모델 하나를 고르는 방식이 아니...]]></description>
   </item>
   <item>
     <title><![CDATA[깃블로그 댓글 Giscus 오류 해결: Unable to create discussion]]></title>
     <link>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</link>
     <guid>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</guid>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💬 Giscus 댓글 기능과 마주한 연동 오류 깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 Giscus 입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이...]]></description>
+    <description><![CDATA[깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 Giscus 입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이스 없이 깔끔하게 댓글을 관리할 수 있는 강력한...]]></description>
   </item>
   <item>
     <title><![CDATA[크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법]]></title>
     <link>https://seodaeya.github.io/videos/20260706-1-crested-gecko-shedding-guide/</link>
     <guid>https://seodaeya.github.io/videos/20260706-1-crested-gecko-shedding-guide/</guid>
     <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🦎 크레스티드 게코의 건강 지표, '탈피'에 대한 모든 것 반려 파충류로 큰 사랑을 받고 있는 크레스티드 게코(Crested Gecko) 를 키우다 보면 온몸의 허물을 하얗게 벗어내는 신비로운 현상인 '탈피(Shedding)' 를 마주하게 됩니다. 탈피는 도마뱀이 성...]]></description>
+    <description><![CDATA[반려 파충류로 큰 사랑을 받고 있는 크레스티드 게코(Crested Gecko) 를 키우다 보면 온몸의 허물을 하얗게 벗어내는 신비로운 현상인 '탈피(Shedding)' 를 마주하게 됩니다. 탈피는 도마뱀이 성장하고 피부 건강을 유지하기 위해 거쳐야 하는 자연스럽고 필수...]]></description>
   </item>
   <item>
     <title><![CDATA[집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피]]></title>
     <link>https://seodaeya.github.io/videos/20260628-1-peachtree-highball-cocktail-recipe/</link>
     <guid>https://seodaeya.github.io/videos/20260628-1-peachtree-highball-cocktail-recipe/</guid>
     <pubDate>Sun, 28 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🍹 무더위를 날려버릴 청량한 한 잔, 비치(피치) 하이볼 만들기 집에서도 마치 휴양지 해변에 온 듯한 낭만적인 분위기를 낼 수 있는 비치 하이볼(피치 하이볼) 제조 방법을 소개합니다. 달콤하고 향긋한 복숭아 향의 피치트리(Peachtree) 리큐르와 푸른 바다 빛깔을...]]></description>
+    <description><![CDATA[집에서도 마치 휴양지 해변에 온 듯한 낭만적인 분위기를 낼 수 있는 비치 하이볼(피치 하이볼) 제조 방법을 소개합니다. 달콤하고 향긋한 복숭아 향의 피치트리(Peachtree) 리큐르와 푸른 바다 빛깔을 내주는 블루 큐라소(Blue Curacao) 시럽을 활용해 시각과...]]></description>
   </item>
   <item>
     <title><![CDATA[싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁]]></title>
     <link>https://seodaeya.github.io/videos/20260624-2-santafe-tm-afterblow-step2/</link>
     <guid>https://seodaeya.github.io/videos/20260624-2-santafe-tm-afterblow-step2/</guid>
     <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🔌 싼타페 TM 애프터블로우 DIY 2단계: 순정 블로우모터 전원 커넥터 분리법 💡 이 작업은 조수석 언더커버가 미리 탈거되어 있어야 진행이 가능합니다. 👉 이전 단계 바로가기: 싼타페 TM 애프터블로우 설치 1단계 조수석 언더커버 셀프 탈거 방법 조수석 언더커버...]]></description>
+    <description><![CDATA[💡 이 작업은 조수석 언더커버가 미리 탈거되어 있어야 진행이 가능합니다. 👉 이전 단계 바로가기: 싼타페 TM 애프터블로우 설치 1단계 조수석 언더커버 셀프 탈거 방법 조수석 언더커버를 성공적으로 분리했다면, 이제 애프터블로우의 중간 브릿지 배선을 연결하기 위해 블...]]></description>
   </item>
   <item>
     <title><![CDATA[싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법]]></title>
     <link>https://seodaeya.github.io/videos/20260624-1-santafe-tm-afterblow-step1/</link>
     <guid>https://seodaeya.github.io/videos/20260624-1-santafe-tm-afterblow-step1/</guid>
     <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚗 차량 에어컨 냄새 예방을 위한 싼타페 TM 애프터블로우 DIY (1단계) 무더운 여름철 차량 에어컨을 가동한 후 시동을 끄면 에바포레이터(증발기)에 남은 차가운 결로 현상으로 인해 곰팡이와 세균이 번식하며 고약한 식초/걸레 냄새가 발생합니다. 이를 근본적으로 예방...]]></description>
+    <description><![CDATA[무더운 여름철 차량 에어컨을 가동한 후 시동을 끄면 에바포레이터(증발기)에 남은 차가운 결로 현상으로 인해 곰팡이와 세균이 번식하며 고약한 식초/걸레 냄새가 발생합니다. 이를 근본적으로 예방하기 위해 자체 리튬인산철 배터리로 시동 후 블로우 팬을 10\ 15분간 자동...]]></description>
   </item>
   <item>
     <title><![CDATA[노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝]]></title>
     <link>https://seodaeya.github.io/videos/20260622-2-laptop-cooling-fan-cleaning/</link>
     <guid>https://seodaeya.github.io/videos/20260622-2-laptop-cooling-fan-cleaning/</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🌬️ 5년 동안 방치된 게이밍 노트북, 붓과 입김만으로 쿨링 성능 부활시키기 구매 후 5년 동안 단 한 번도 내부 청소를 하지 않았던 레노버 리전(Lenovo Legion) 게이밍 노트북 의 발열과 굉음 팬 소음을 해결하기 위해 직접 하판을 열고 셀프 쿨링 팬 클리닝...]]></description>
+    <description><![CDATA[구매 후 5년 동안 단 한 번도 내부 청소를 하지 않았던 레노버 리전(Lenovo Legion) 게이밍 노트북 의 발열과 굉음 팬 소음을 해결하기 위해 직접 하판을 열고 셀프 쿨링 팬 클리닝 에 도전했습니다. 노트북 내부 쿨링 팬과 히트싱크 통풍구에 먼지가 두껍게 쌓이...]]></description>
   </item>
   <item>
     <title><![CDATA[맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁]]></title>
     <link>https://seodaeya.github.io/videos/20260622-1-mac-mini-ipad-sidecar-mirroring/</link>
     <guid>https://seodaeya.github.io/videos/20260622-1-mac-mini-ipad-sidecar-mirroring/</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🖥️ 모니터 없는 맥 미니(Mac Mini), 아이패드를 모니터로 쓰기 애플의 맥 미니(Mac Mini) 는 가성비와 성능이 뛰어난 콤팩트 데스크톱 컴퓨터입니다. 많은 유저들이 맥 미니를 가방에 넣고 다니며 아이패드를 휴대용 모니터( 사이드카 및 미러링 )로 활용해...]]></description>
+    <description><![CDATA[애플의 맥 미니(Mac Mini) 는 가성비와 성능이 뛰어난 콤팩트 데스크톱 컴퓨터입니다. 많은 유저들이 맥 미니를 가방에 넣고 다니며 아이패드를 휴대용 모니터( 사이드카 및 미러링 )로 활용해 카페나 외부에서 작업하고 싶어 합니다. 하지만 치명적인 문제가 있습니다....]]></description>
   </item>
   <item>
     <title><![CDATA[레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)]]></title>
     <link>https://seodaeya.github.io/videos/20260618-1-razer-basilisk-x-disassembly/</link>
     <guid>https://seodaeya.github.io/videos/20260618-1-razer-basilisk-x-disassembly/</guid>
     <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🖱 멀쩡한 마우스를 분해해 버린 허탈한 자가 수리 후기 게이밍 마우스로 오랜 기간 가성비 끝판왕 자리를 지키고 있는 레이저 바실리스크 X 하이퍼스피드(Razer Basilisk X Hyperspeed) . 얼마 전 노트북과 마우스가 올려져 있던 간이 테이블을 옮기다가...]]></description>
+    <description><![CDATA[게이밍 마우스로 오랜 기간 가성비 끝판왕 자리를 지키고 있는 레이저 바실리스크 X 하이퍼스피드(Razer Basilisk X Hyperspeed) . 얼마 전 노트북과 마우스가 올려져 있던 간이 테이블을 옮기다가 그만 마우스가 바닥으로 뚝 떨어지는 사고가 발생했습니다....]]></description>
   </item>
   <item>
     <title><![CDATA[봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)]]></title>
     <link>https://seodaeya.github.io/videos/20260602-1-crested-gecko-bomi-charcoalman/</link>
     <guid>https://seodaeya.github.io/videos/20260602-1-crested-gecko-bomi-charcoalman/</guid>
     <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[🦎 우리 집 봄이에게 새로운 가족이 생겼습니다! 원래 혼자 조용히 단독 사육장 안에서 평화롭게 지내던 우리 집 귀염둥이 크레스티드 게코(Crested Gecko) 암컷 '봄이' 에게 드디어 든든하고 멋진 남자친구가 생겼습니다. 새롭게 우리 집 식구가 된 수컷 도마뱀의...]]></description>
+    <description><![CDATA[원래 혼자 조용히 단독 사육장 안에서 평화롭게 지내던 우리 집 귀염둥이 크레스티드 게코(Crested Gecko) 암컷 '봄이' 에게 드디어 든든하고 멋진 남자친구가 생겼습니다. 새롭게 우리 집 식구가 된 수컷 도마뱀의 이름은 바로 '챠콜맨' 입니다! 이름 그대로 매력...]]></description>
   </item>
   <item>
     <title><![CDATA[싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기]]></title>
     <link>https://seodaeya.github.io/videos/20260510-1-santafe-tm-turn-signal-bulb-fix/</link>
     <guid>https://seodaeya.github.io/videos/20260510-1-santafe-tm-turn-signal-bulb-fix/</guid>
     <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[계기판에 처음 보는 경고가 떴다 외출하려고 시동을 걸었는데 계기판에 방향지시등을 점검하라는 경고가 떠 있었습니다. 처음엔 당연히 당황했습니다. 약속 시간도 있었고, "이거 바로 정비소 가야 하나?", "운전해도 되는 건가?" 하는 생각이 먼저 들더라고요. 그래도 일단...]]></description>
+    <description><![CDATA[외출하려고 시동을 걸었는데 계기판에 방향지시등을 점검하라는 경고가 떠 있었습니다. 처음엔 당연히 당황했습니다. 약속 시간도 있었고, "이거 바로 정비소 가야 하나?", "운전해도 되는 건가?" 하는 생각이 먼저 들더라고요. 그래도 일단 밖으로 나가 방향지시등을 켜 보니...]]></description>
   </item>
   <item>
     <title><![CDATA[PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)]]></title>
     <link>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</link>
     <guid>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</guid>
     <pubDate>Sun, 27 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[🐘 PostgreSQL 개요 PostgreSQL(포스트그레스큐엘) 은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON...]]></description>
+    <description><![CDATA[PostgreSQL(포스트그레스큐엘) 은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON 데이터 처리, GIS 지리 정...]]></description>
   </item>
   <item>
     <title><![CDATA[AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20250404-3-cursor-ai-code-editor-guide/</link>
     <guid>https://seodaeya.github.io/posts/20250404-3-cursor-ai-code-editor-guide/</guid>
     <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[🚀 코딩 에디터의 새로운 패러다임, Cursor 최근 개발 생태계에서 가장 뜨거운 관심을 받고 있는 Cursor(커서) 는 단순한 플러그인 형태를 넘어 에디터 자체에 AI 인공지능을 내장한 VS Code 포크 기반의 AI 특화 코드 에디터 입니다. 기존의 에디터들이...]]></description>
+    <description><![CDATA[최근 개발 생태계에서 가장 뜨거운 관심을 받고 있는 Cursor(커서) 는 단순한 플러그인 형태를 넘어 에디터 자체에 AI 인공지능을 내장한 VS Code 포크 기반의 AI 특화 코드 에디터 입니다. 기존의 에디터들이 코드를 제안하는 데 그쳤다면, Cursor는 프로젝...]]></description>
   </item>
   <item>
     <title><![CDATA[VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석]]></title>
     <link>https://seodaeya.github.io/posts/20250404-2-cline-autonomous-coding-agent/</link>
     <guid>https://seodaeya.github.io/posts/20250404-2-cline-autonomous-coding-agent/</guid>
     <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[🤖 자율형 AI 코딩 에이전트 Cline의 등장 기존의 GitHub Copilot이나 ChatGPT가 단순히 코드 조각을 제안하고 사용자가 복사 붙여넣기 하도록 돕는 '채팅 보조자(Chat Assistant)' 였다면, Cline(클라인, 구 Devins) 은 개발자...]]></description>
+    <description><![CDATA[기존의 GitHub Copilot이나 ChatGPT가 단순히 코드 조각을 제안하고 사용자가 복사 붙여넣기 하도록 돕는 '채팅 보조자(Chat Assistant)' 였다면, Cline(클라인, 구 Devins) 은 개발자의 터미널 명령 실행, 파일 읽기/쓰기, 디렉터리...]]></description>
   </item>
   <item>
     <title><![CDATA[Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지]]></title>
     <link>https://seodaeya.github.io/posts/20250404-1-anthropic-claude-models-analysis/</link>
     <guid>https://seodaeya.github.io/posts/20250404-1-anthropic-claude-models-analysis/</guid>
     <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[🔍 Anthropic Claude란 무엇인가? Claude(클로드) 는 OpenAI 출신의 핵심 연구원들이 설립한 Anthropic(앤트로픽) 사에서 개발한 차세대 대형 언어 모델(LLM) 패밀리입니다. 단순한 텍스트 생성을 넘어 고도의 논리적 추론, 코드 분석 및...]]></description>
+    <description><![CDATA[Claude(클로드) 는 OpenAI 출신의 핵심 연구원들이 설립한 Anthropic(앤트로픽) 사에서 개발한 차세대 대형 언어 모델(LLM) 패밀리입니다. 단순한 텍스트 생성을 넘어 고도의 논리적 추론, 코드 분석 및 작성, 방대한 문서 해석 분야에서 업계 최고 수준...]]></description>
   </item>
   <item>
     <title><![CDATA[미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트]]></title>
     <link>https://seodaeya.github.io/videos/20230428-1-mifa-a90-camping-bluetooth-speaker/</link>
     <guid>https://seodaeya.github.io/videos/20230428-1-mifa-a90-camping-bluetooth-speaker/</guid>
     <pubDate>Fri, 28 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[🏕️ 캠핑장의 밤을 뒤흔드는 압도적 중저음, 미파(MiFA) A90 스피커 야외 차박, 오토캠핑, 페스티벌 등 아웃도어 액티비티를 즐기시는 분들에게 가성비 끝판왕으로 널리 알려진 대용량 포터블 스피커 미파 A90 (MiFA A90) 의 상세 음질 테스트 및 실사용 리...]]></description>
+    <description><![CDATA[야외 차박, 오토캠핑, 페스티벌 등 아웃도어 액티비티를 즐기시는 분들에게 가성비 끝판왕으로 널리 알려진 대용량 포터블 스피커 미파 A90 (MiFA A90) 의 상세 음질 테스트 및 실사용 리뷰입니다. 미파 A90은 5\ 6만 원대의 믿기지 않는 가격에 60W 고출력...]]></description>
   </item>
   <item>
     <title><![CDATA[선유도 구이찌정육식당 제육볶음 + 김치찌개 보글보글 점심 후기]]></title>
     <link>https://seodaeya.github.io/videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch/</link>
     <guid>https://seodaeya.github.io/videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch/</guid>
     <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[🥘 선유도역 직장인들의 점심 성지, '구이찌정육식당' 서울 영등포구 선유도역 인근에 위치한 '구이찌정육식당' 은 점심시간마다 든든한 한 끼를 해결하려는 주변 직장인들로 늘 문전성시를 이루는 숨겨진 맛집입니다. 저녁에는 소고기와 돼지구이를 전문으로 판매하는 정육식당이지...]]></description>
+    <description><![CDATA[서울 영등포구 선유도역 인근에 위치한 '구이찌정육식당' 은 점심시간마다 든든한 한 끼를 해결하려는 주변 직장인들로 늘 문전성시를 이루는 숨겨진 맛집입니다. 저녁에는 소고기와 돼지구이를 전문으로 판매하는 정육식당이지만, 점심에는 제육볶음이나 오징어볶음에 찌개(김치찌개 또...]]></description>
   </item>
   <item>
     <title><![CDATA[애플 3-in-1 맥세이프 고속 무선 충전 거치대 추천 및 사용 후기]]></title>
     <link>https://seodaeya.github.io/videos/20230409-1-apple-3-in-1-magsafe-charging-stand/</link>
     <guid>https://seodaeya.github.io/videos/20230409-1-apple-3-in-1-magsafe-charging-stand/</guid>
     <pubDate>Sun, 09 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[🔌 책상 위 복잡한 선을 단번에 정리하는 3 in 1 맥세이프 충전 거치대 아이폰(iPhone), 애플워치(Apple Watch), 에어팟(AirPods)을 매일 사용하는 애플 생태계 유저들의 가장 큰 스트레스는 침대 옆 협탁이나 데스크 위에 어지럽게 얽혀 있는 3개...]]></description>
+    <description><![CDATA[아이폰(iPhone), 애플워치(Apple Watch), 에어팟(AirPods)을 매일 사용하는 애플 생태계 유저들의 가장 큰 스트레스는 침대 옆 협탁이나 데스크 위에 어지럽게 얽혀 있는 3개의 충전 케이블입니다. 이러한 선 정리 지옥을 단 하나의 깔끔한 전원선으로 종...]]></description>
   </item>
   <item>
     <title><![CDATA[로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 연결 및 사용기]]></title>
     <link>https://seodaeya.github.io/videos/20230407-1-logitech-m750-flow-mouse-review/</link>
     <guid>https://seodaeya.github.io/videos/20230407-1-logitech-m750-flow-mouse-review/</guid>
     <pubDate>Fri, 07 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[🖱️ 윈도우와 맥을 자유자재로 넘나드는 마우스, 로지텍 FLOW 실전 활용기 데스크톱 PC와 맥북, 혹은 사무용 윈도우 랩톱과 개인용 아이맥 등 2대 이상의 컴퓨터를 책상에 올려두고 멀티태스킹을 하는 사용자들에게 최고의 생산성 도구는 바로 로지텍 시그니처 플러스 M7...]]></description>
+    <description><![CDATA[데스크톱 PC와 맥북, 혹은 사무용 윈도우 랩톱과 개인용 아이맥 등 2대 이상의 컴퓨터를 책상에 올려두고 멀티태스킹을 하는 사용자들에게 최고의 생산성 도구는 바로 로지텍 시그니처 플러스 M750 (Logitech Signature Plus M750) 무소음 마우스입니다...]]></description>
   </item>
   <item>
     <title><![CDATA[이쁘고 신기한 레트로 블루투스 스피커 디투(Ditoo) 사용 후기]]></title>
     <link>https://seodaeya.github.io/videos/20230310-1-divoom-ditoo-retro-pixel-speaker/</link>
     <guid>https://seodaeya.github.io/videos/20230310-1-divoom-ditoo-retro-pixel-speaker/</guid>
     <pubDate>Fri, 10 Mar 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[⌨️ 레트로 PC를 닮은 감성 테크 토이, 디붐 디투(Divoom Ditoo) 방 인테리어 효과를 극대화하고 눈과 귀를 동시에 사로잡는 레트로 픽셀 아트 블루투스 스피커 디붐 디투(Divoom Ditoo) 솔직 사용 후기입니다. 디붐 디투는 1980년대 클래식 데스크톱...]]></description>
+    <description><![CDATA[방 인테리어 효과를 극대화하고 눈과 귀를 동시에 사로잡는 레트로 픽셀 아트 블루투스 스피커 디붐 디투(Divoom Ditoo) 솔직 사용 후기입니다. 디붐 디투는 1980년대 클래식 데스크톱 매킨토시 컴퓨터의 외형을 손바닥만 한 미니어처 크기로 재현하고, 기계식 키보드...]]></description>
   </item>
   <item>
     <title><![CDATA[당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기]]></title>
     <link>https://seodaeya.github.io/videos/20230309-1-mammoth-coffee-banana-latte-review/</link>
     <guid>https://seodaeya.github.io/videos/20230309-1-mammoth-coffee-banana-latte-review/</guid>
     <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[🍌 당산역 메머드 익스프레스에서 맛보는 시그니처 바나나 커피 바쁜 직장인들과 학생들의 가성비 천국, 메머드커피(Mammoth Coffee Express) 당산역점 에서 독특한 시그니처 메뉴인 '바나나 달달 커피' 를 직접 주문해 마셔보았습니다. 메머드커피는 저렴한 가...]]></description>
+    <description><![CDATA[바쁜 직장인들과 학생들의 가성비 천국, 메머드커피(Mammoth Coffee Express) 당산역점 에서 독특한 시그니처 메뉴인 '바나나 달달 커피' 를 직접 주문해 마셔보았습니다. 메머드커피는 저렴한 가격에 대용량 음료를 제공하여 인기가 매우 높은 테이크아웃 전문...]]></description>
   </item>
 </channel>
 </rss>

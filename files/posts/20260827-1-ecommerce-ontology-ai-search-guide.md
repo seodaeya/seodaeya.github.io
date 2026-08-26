@@ -2,6 +2,7 @@
 category: "Tech & Dev"
 title: "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심"
 date: "2026-08-27"
+excerpt: "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다."
 image: "/images/ecommerce_ontology_ai_search_thumbnail.png"
 tags: ["Ontology", "E-Commerce", "Knowledge Graph", "AI Search", "Digital Twin", "GraphRAG", "Neo4j", "Data Modeling"]
 ---
@@ -284,7 +285,7 @@ tags: ["Ontology", "E-Commerce", "Knowledge Graph", "AI Search", "Digital Twin",
 | <strong>검색 방식</strong> | 의미적 유사도 거리 계산 (코사인 유사도) | <strong>엄격한 관계 및 규칙 기반 연역 추론</strong> |
 | <strong>강점</strong> | 감성적, 모호한 자연어 분위기 탐색 | <strong>100% 사실 기반의 정확한 규격 및 호환성 일치</strong> |
 | <strong>치명적 약점</strong> | <strong>규격/수치/호환성에서 환각(오추천) 발생</strong> | 비정형 감성 쿼리(예: '힙한 감성') 해석 한계 |
-| <strong>실무 최적 솔루션</strong> | <strong>하이브리드 GraphRAG: 벡터 검색으로 1차 의도 파악 ➔ 온톨로지 그래프로 100% 호환성 검증!</strong> |
+| <strong>실무 최적 솔루션</strong> | <strong>벡터 검색으로 1차 의도/감성 파악</strong> | <strong>온톨로지 그래프로 100% 규격/호환성 검증 (GraphRAG)</strong> |
 
 ---
 
@@ -302,12 +303,16 @@ MATCH (capsule)-[:HAS_TRAIT]->(trait:Trait {name: '디카페인'})
 RETURN capsule.name AS 추천상품, capsule.price AS 가격, spec.name AS 규격
 ```
 
-### 💻 쿼리 2: 맥북 16인치 노트북을 위한 100W 이상 고속충전기 번들 찾기
+### 💻 쿼리 2: 맥북 16인치 노트북을 위한 100W 이상 고속충전기 번들 찾기 (포트 규격 일치 검증)
 ```cypher
+// 1. 맥북의 충전 전력 요구 스펙 및 포트 규격 조회
 MATCH (laptop:Product {name: '맥북 프로 16인치'})-[:REQUIRES_POWER]->(req:PowerSpec)
+MATCH (laptop)-[:USES_PORT]->(port:PortSpec)
+// 2. 해당 포트(Type-C)를 지원하면서 100W 이상 출력을 제공하는 충전기 매칭
 MATCH (charger:Product)-[:SUPPORTS_POWER]->(out:PowerSpec)
+MATCH (charger)-[:HAS_PORT]->(port)
 WHERE out.wattage >= req.min_wattage
-RETURN charger.name AS 고속충전기, out.wattage AS 출력스펙
+RETURN laptop.name AS 대상노트북, charger.name AS 호환충전기, out.wattage AS 출력스펙, port.name AS 포트규격
 ```
 
 ---

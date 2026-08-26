@@ -125,7 +125,7 @@ export async function getStaticProps({ params }) {
         };
         return marked(content, { renderer });
       })(),
-      excerpt: createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',
+      excerpt: data.excerpt || createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',
       readingTime,
       prevPost,
       nextPost,
