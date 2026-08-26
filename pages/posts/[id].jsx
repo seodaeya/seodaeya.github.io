@@ -10,7 +10,10 @@ import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import contentUtils from '@/lib/content';
+import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 import styles from '@/styles/post.module.css';
+
 
 const { createPlainExcerpt } = contentUtils;
 
@@ -67,7 +70,9 @@ export async function getStaticProps({ params }) {
   }
 
   // 자동 읽기 시간 계산
-  const readingTime = Math.max(1, Math.ceil(content.length / 500));
+    // Calculate accurate human reading time on clean text (excluding SVG/HTML/code blocks)
+  const cleanBodyText = content.replace(/<svg[\s\S]*?<\/svg>/gi, ' ').replace(/```[\s\S]*?```/g, ' ').replace(/<[^>]+>/g, ' ').trim();
+  const readingTime = Math.max(1, Math.ceil(cleanBodyText.length / 450));
 
   // Helper to read posts list for related/prev/next links
   const readDir = (dir, type) => {
@@ -130,6 +135,54 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
+  useEffect(() => {
+    // Auto-render Mermaid diagrams if present
+    const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
+    if (mermaidBlocks.length > 0) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+      script.async = true;
+      script.onload = () => {
+        window.mermaid?.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          themeVariables: {
+            background: '#ffffff',
+            primaryColor: '#fef3c7',
+            primaryTextColor: '#1e293b',
+            primaryBorderColor: '#f59e0b',
+            lineColor: '#64748b',
+            secondaryColor: '#fce7e7',
+            tertiaryColor: '#d1fae5',
+            edgeLabelBackground: '#ffffff',
+            clusterBkg: '#f8fafc',
+            clusterBorder: '#cbd5e1',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            fontSize: '13px'
+          },
+          flowchart: {
+            curve: 'basis',
+            padding: 16,
+            nodeSpacing: 40,
+            rankSpacing: 40,
+            htmlLabels: true
+          }
+        });
+        mermaidBlocks.forEach((block) => {
+          const pre = block.parentElement;
+          const codeText = block.textContent;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.style.textAlign = 'center';
+          div.style.margin = '20px 0';
+          div.innerHTML = codeText;
+          pre.parentNode.replaceChild(div, pre);
+        });
+        window.mermaid?.run();
+      };
+      document.head.appendChild(script);
+    }
+  }, [id, content]);
   if (isRedirect) {
     return (
       <>
@@ -258,6 +311,8 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: content }}
           />
+
+
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>

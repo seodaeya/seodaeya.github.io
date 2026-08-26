@@ -163,6 +163,10 @@
   ],
   "Tech & Dev": [
     {
+      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
+      "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md"
+    },
+    {
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
       "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
     },
