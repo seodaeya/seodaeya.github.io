@@ -17,6 +17,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+# Suppress runner transition warning cleanly
+env:
+  ACTIONS_RUNNER_FORCE_NODE24: true
+
 jobs:
   build-and-deploy:
     environment:
@@ -29,7 +33,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Node.js 22 LTS 환경 설정
+      # 2. 가장 검증된 Node.js 22 Active LTS 환경 설정 (프로젝트 안전성 최우선)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
