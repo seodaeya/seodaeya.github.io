@@ -143,6 +143,7 @@ export async function getStaticProps({ params }) {
 export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
   const [readingProgress, setReadingProgress] = useState(0);
   const [copiedUrl, setCopiedUrl] = useState(false);
+  const [copiedInsta, setCopiedInsta] = useState(false);
 
   useEffect(() => {
     // 1. Reading Progress Tracker
@@ -314,6 +315,48 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
     }
   };
 
+  const handleKakaoShare = async () => {
+    const shareUrl = window.location.href;
+    const shareTitle = frontmatter.title || '블로그 포스트';
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: excerpt,
+          url: shareUrl,
+        });
+        return;
+      } catch (err) {
+        // User cancelled or fallback
+      }
+    }
+    // Web fallback for Kakao
+    window.open(`https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(shareUrl)}`, '_blank', 'width=450,height=600');
+  };
+
+  const handleInstagramShare = async () => {
+    const shareUrl = window.location.href;
+    const shareTitle = frontmatter.title || '블로그 포스트';
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          url: shareUrl,
+        });
+        return;
+      } catch (err) {
+        // User cancelled or fallback
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopiedInsta(true);
+      setTimeout(() => setCopiedInsta(false), 3000);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     try {
@@ -403,34 +446,59 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             dangerouslySetInnerHTML={{ __html: content }}
           />
 
-          {/* Social Share & Link Copy Bar */}
+          {/* Social Share & Link Copy Bar (SNS 인기 순위 배치) */}
           <section className={styles.shareSection} aria-label="글 공유하기">
             <div className={styles.shareLabel}>
               <span>📢</span> <strong>이 글 공유하기</strong>
             </div>
             <div className={styles.shareButtons}>
+              {/* 1. 카카오톡 */}
               <button 
                 type="button" 
-                className={styles.shareBtn} 
+                className={`${styles.shareBtn} ${styles.shareBtnKakao}`} 
+                onClick={handleKakaoShare}
+                aria-label="카카오톡으로 공유하기"
+              >
+                <span>💬</span> 카카오톡
+              </button>
+
+              {/* 2. 링크 복사 */}
+              <button 
+                type="button" 
+                className={`${styles.shareBtn} ${styles.shareBtnCopy}`} 
                 onClick={handleCopyUrl}
                 aria-label="URL 링크 복사"
               >
-                <span>{copiedUrl ? '✅' : '🔗'}</span> {copiedUrl ? '링크가 복사되었습니다!' : '링크 복사'}
+                <span>{copiedUrl ? '✅' : '🔗'}</span> {copiedUrl ? '링크 복사 완료!' : '링크 복사'}
               </button>
+
+              {/* 3. 인스타그램 */}
+              <button 
+                type="button" 
+                className={`${styles.shareBtn} ${styles.shareBtnInstagram}`} 
+                onClick={handleInstagramShare}
+                aria-label="인스타그램으로 공유하기"
+              >
+                <span>📷</span> {copiedInsta ? '스토리 링크 복사됨!' : '인스타그램'}
+              </button>
+
+              {/* 4. X(트위터) */}
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title || '')}&url=${encodeURIComponent(`https://seodaeya.github.io/posts/${id}/`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.shareBtn}
+                className={`${styles.shareBtn} ${styles.shareBtnX}`}
                 aria-label="X(트위터)로 공유"
               >
-                <span>🐦</span> X(트위터)
+                <span>𝕏</span> X(트위터)
               </a>
+
+              {/* 5. Threads */}
               <a
                 href={`https://service.threads.net/share?text=${encodeURIComponent(`${frontmatter.title || ''} https://seodaeya.github.io/posts/${id}/`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.shareBtn}
+                className={`${styles.shareBtn} ${styles.shareBtnThreads}`}
                 aria-label="Threads로 공유"
               >
                 <span>🧵</span> Threads

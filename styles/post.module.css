@@ -630,22 +630,78 @@
 .shareBtn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 10px;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 12px;
   border: 1px solid var(--border-glass);
   background: var(--bg-tertiary);
   color: var(--text-primary);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none !important;
   transition: all 0.2s ease;
+  user-select: none;
 }
 
 .shareBtn:hover {
-  border-color: var(--accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* 💬 1. 카카오톡 */
+.shareBtnKakao {
+  background: #FEE500;
+  color: #191919;
+  border-color: #FEE500;
+  font-weight: 700;
+}
+.shareBtnKakao:hover {
+  background: #fada0a;
+  color: #000000;
+  border-color: #fada0a;
+}
+
+/* 🔗 2. 링크 복사 */
+.shareBtnCopy {
+  background: var(--bg-tertiary);
+  border-color: var(--border-glass-active);
+}
+.shareBtnCopy:hover {
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+/* 📷 3. 인스타그램 */
+.shareBtnInstagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #ffffff !important;
+  border: none;
+  font-weight: 600;
+}
+.shareBtnInstagram:hover {
+  opacity: 0.95;
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.35);
+}
+
+/* 🐦 4. X(트위터) */
+.shareBtnX {
+  background: #000000;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.shareBtnX:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 🧵 5. Threads */
+.shareBtnThreads {
+  background: var(--bg-secondary);
+  border-color: var(--border-glass-active);
+  color: var(--text-primary);
+}
+.shareBtnThreads:hover {
+  border-color: var(--accent-light);
   color: var(--accent-light);
 }
 
