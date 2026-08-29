@@ -215,9 +215,10 @@
   margin: 0;
 }
 
-/* Premium styled Responsive Table with Mobile Horizontal Scroll */
+/* Premium Responsive Table with Sticky First Column (틀 고정) */
 .content table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
   max-width: 100%;
   margin: 28px 0 36px 0;
@@ -236,27 +237,47 @@
   text-align: left;
   font-size: 0.95rem;
   line-height: 1.6;
-  min-width: 150px;
+  min-width: 160px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.content table th:first-child,
-.content table td:first-child {
-  min-width: 120px;
-  font-weight: 600;
-  white-space: nowrap;
+:root.light .content table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .content table th {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--bg-secondary);
   font-weight: 700;
   color: var(--text-primary);
   border-bottom: 1.5px solid var(--border-glass-active);
   letter-spacing: -0.01em;
 }
 
-.content table td {
-  color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+/* ⭐️ 1열 좌측 틀 고정 (Sticky Left Column) */
+.content table th:first-child,
+.content table td:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 120px;
+  max-width: 150px;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: var(--bg-secondary);
+  border-right: 1.5px solid var(--border-glass-active);
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.18);
+}
+
+:root.light .content table th:first-child,
+:root.light .content table td:first-child {
+  background-color: var(--bg-secondary);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.04);
+}
+
+.content table th:first-child {
+  z-index: 3; /* 좌측 상단 모서리 우선순위 */
 }
 
 .content table tr:last-child td {
@@ -267,13 +288,8 @@
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-.content table tr:last-child td {
-  border-bottom: none;
-}
-
-.content table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.01);
-  color: var(--text-primary);
+.content table tr:hover td:first-child {
+  background-color: var(--bg-tertiary);
 }
 
 @media (max-width: 600px) {
