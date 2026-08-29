@@ -28,8 +28,8 @@ export default function Categories({ categories }) {
   return (
     <>
       <SEO 
-        title="카테고리별 콘텐츠"
-        description="전체 카테고리별 블로그 포스트 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다."
+        title="카테고리별 아티클 & 영상"
+        description="전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다."
         url="https://seodaeya.github.io/categories"
       />
 
@@ -87,7 +87,7 @@ export default function Categories({ categories }) {
                           <span 
                             className={`${styles.typeBadge} ${videoType ? styles.videoBadge : styles.blogBadge}`}
                           >
-                            {videoType ? 'YOUTUBE 📺' : 'BLOG 📝'}
+                            {videoType ? '🎬 영상' : '📝 아티클'}
                           </span>
                         </div>
                         <h3 className={styles.cardTitle}>

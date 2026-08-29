@@ -87,6 +87,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
   const [searchQuery, setSearchQuery] = useState('');
   const [visiblePostCount, setVisiblePostCount] = useState(6);
   const [visibleVideoCount, setVisibleVideoCount] = useState(6);
+  const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
@@ -197,61 +198,93 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
           </div>
         </section>
 
-                        {/* 2.5. Live Popular Posts Billboard / Leaderboard (검색어가 없을 때만 노출) */}
-        {!cleanQuery && trendingPosts && trendingPosts.length > 0 && (
-          <section className={styles.leaderboardSection} aria-label="실시간 인기 아티클 랭킹 보드">
-            <div className={styles.leaderboardHeader}>
-              <h2 className={styles.leaderboardTitle}>
-                <span>🏆</span> <strong>실시간 인기 아티클 랭킹 보드</strong>
-              </h2>
-              <span className={styles.liveTag}>
-                <span className={styles.liveDot} /> LIVE 00:00 KST
-              </span>
-            </div>
-            <div className={styles.leaderboardList}>
-              {trendingPosts.map((post, idx) => {
-                const getRankDisplay = (rank) => {
-                  if (rank === 1) return '🥇 1';
-                  if (rank === 2) return '🥈 2';
-                  if (rank === 3) return '🥉 3';
-                  return rank;
-                };
+                                {/* 2.5. Compact 1-Line Live Leaderboard Billboard (1위 노출 + 호버/클릭 시 1~5위 확장) */}
+        {!cleanQuery && trendingPosts && trendingPosts.length > 0 && (() => {
+          const rank1 = trendingPosts[0];
+          const remainingRanks = trendingPosts.slice(1);
 
-                const getChangeClass = (change) => {
-                  if (change === 'up') return styles.changeUp;
-                  if (change === 'down') return styles.changeDown;
-                  if (change === 'new') return styles.changeNew;
-                  return styles.changeSame;
-                };
+          const getRankDisplay = (rank) => {
+            if (rank === 1) return '🥇 1';
+            if (rank === 2) return '🥈 2';
+            if (rank === 3) return '🥉 3';
+            return rank;
+          };
 
-                return (
-                  <Link key={idx} href={post.url} className={styles.leaderboardItem}>
-                    <div className={styles.rankBadgeArea}>
-                      <span className={`${styles.rankNumber} ${idx === 0 ? styles.rank1 : idx === 1 ? styles.rank2 : idx === 2 ? styles.rank3 : ''}`}>
-                        {getRankDisplay(post.rank || idx + 1)}
-                      </span>
-                      <span className={`${styles.changePill} ${getChangeClass(post.change)}`}>
-                        {post.changeText || '-'}
-                      </span>
-                    </div>
+          const getChangeClass = (change) => {
+            if (change === 'up') return styles.changeUp;
+            if (change === 'down') return styles.changeDown;
+            if (change === 'new') return styles.changeNew;
+            return styles.changeSame;
+          };
 
-                    <div className={styles.leaderboardContent}>
-                      <div className={styles.leaderboardItemHeader}>
+          return (
+            <section 
+              className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
+              aria-label="실시간 인기 아티클 랭킹 전광판"
+            >
+              {/* Top 1-Line Compact Bar */}
+              <div className={styles.leaderboardTopBar}>
+                <span className={styles.leaderboardLabel}>
+                  <span className={styles.liveDot} /> 🏆 실시간 인기 아티클 1위
+                </span>
+
+                <Link href={rank1.url} className={styles.leaderboardRank1Item}>
+                  <div className={styles.rankBadgeArea}>
+                    <span className={`${styles.rankNumber} ${styles.rank1}`}>
+                      🥇 1
+                    </span>
+                    <span className={`${styles.changePill} ${getChangeClass(rank1.change)}`}>
+                      {rank1.changeText || '-'}
+                    </span>
+                  </div>
+
+                  <div className={styles.leaderboardContent}>
+                    {rank1.badge && (
+                      <span className={styles.leaderboardTag}>{rank1.badge}</span>
+                    )}
+                    <h3 className={styles.leaderboardItemTitle}>{rank1.title}</h3>
+                  </div>
+                </Link>
+
+                <button 
+                  type="button" 
+                  className={styles.expandToggleBtn}
+                  onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
+                  aria-label="인기 아티클 순위 전체보기 토글"
+                >
+                  <span>{isLeaderboardOpen ? '접기' : '1~5위'}</span>
+                  <span className={`${styles.expandArrow} ${isLeaderboardOpen ? styles.expandArrowRotated : ''}`}>▼</span>
+                </button>
+              </div>
+
+              {/* 2위 ~ 5위 확장 영역 (PC 호버 또는 모바일/버튼 클릭 시 노출) */}
+              <div className={`${styles.leaderboardExpandable} ${isLeaderboardOpen ? styles.leaderboardExpandableActive : ''}`}>
+                {remainingRanks.map((post, idx) => {
+                  const currentRank = idx + 2;
+                  return (
+                    <Link key={idx} href={post.url} className={styles.leaderboardItem}>
+                      <div className={styles.rankBadgeArea}>
+                        <span className={`${styles.rankNumber} ${currentRank === 2 ? styles.rank2 : currentRank === 3 ? styles.rank3 : ''}`}>
+                          {getRankDisplay(post.rank || currentRank)}
+                        </span>
+                        <span className={`${styles.changePill} ${getChangeClass(post.change)}`}>
+                          {post.changeText || '-'}
+                        </span>
+                      </div>
+
+                      <div className={styles.leaderboardContent}>
                         {post.badge && (
                           <span className={styles.leaderboardTag}>{post.badge}</span>
                         )}
-                        <h3 className={styles.leaderboardItemTitle}>{post.title}</h3>
+                        <h4 className={styles.leaderboardItemTitle}>{post.title}</h4>
                       </div>
-                      {post.desc && (
-                        <p className={styles.leaderboardItemDesc}>{post.desc}</p>
-                      )}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </section>
-        )}
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* 3. Featured YouTube Content Showcase (검색어가 없을 때만 노출) */}
         {featuredVideo && !cleanQuery && (

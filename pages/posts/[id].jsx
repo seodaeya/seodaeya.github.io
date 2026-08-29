@@ -317,7 +317,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
 
   const handleKakaoShare = async () => {
     const shareUrl = window.location.href;
-    const shareTitle = frontmatter.title || '블로그 포스트';
+    const shareTitle = frontmatter.title || '아티클';
     if (navigator.share) {
       try {
         await navigator.share({
@@ -336,7 +336,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
 
   const handleInstagramShare = async () => {
     const shareUrl = window.location.href;
-    const shareTitle = frontmatter.title || '블로그 포스트';
+    const shareTitle = frontmatter.title || '아티클';
     if (navigator.share) {
       try {
         await navigator.share({
@@ -430,7 +430,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
               <strong>AI Key Summary & Global Takeaways</strong>
             </div>
             <p className={styles.aiSummaryText}>
-              이 포스트의 핵심 내용 요약 및 글로벌 검색/AI 엔진(Perplexity, ChatGPT, Claude) 색인을 위한 핵심 테이크어웨이입니다.
+              이 아티클의 핵심 내용 요약 및 글로벌 검색/AI 엔진(Perplexity, ChatGPT, Claude) 색인을 위한 핵심 테이크어웨이입니다.
             </p>
             <ul className={styles.aiSummaryList}>
               <li><strong>🇰🇷 주제:</strong> {frontmatter.title} ({frontmatter.category || '일반'})</li>
@@ -449,7 +449,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
           {/* Social Share & Link Copy Bar (SNS 인기 순위 배치) */}
           <section className={styles.shareSection} aria-label="글 공유하기">
             <div className={styles.shareLabel}>
-              <span>📢</span> <strong>이 글 공유하기</strong>
+              <span>📢</span> <strong>이 아티클 공유하기</strong>
             </div>
             <div className={styles.shareButtons}>
               {/* 1. 카카오톡 */}
@@ -512,7 +512,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
           <div className={styles.prevNextSection}>
             {prevPost ? (
               <Link href={`/${prevPost.type}/${prevPost.id}`} className={styles.navCard}>
-                <span className={styles.navLabel}>← 이전 글</span>
+                <span className={styles.navLabel}>← 이전 아티클</span>
                 <span className={styles.navTitle}>{prevPost.title}</span>
               </Link>
             ) : (
@@ -520,7 +520,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             )}
             {nextPost ? (
               <Link href={`/${nextPost.type}/${nextPost.id}`} className={`${styles.navCard} ${styles.navCardNext}`}>
-                <span className={styles.navLabel}>다음 글 →</span>
+                <span className={styles.navLabel}>다음 아티클 →</span>
                 <span className={styles.navTitle}>{nextPost.title}</span>
               </Link>
             ) : (
