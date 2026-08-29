@@ -736,24 +736,36 @@
   text-overflow: ellipsis;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .leaderboardSection {
-    padding: 10px 14px;
-    margin: 14px 0 10px 0;
+    padding: 12px 14px;
+    margin: 12px 0 10px 0;
     border-radius: 14px;
+  }
+  .leaderboardTopBar {
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .leaderboardLabel {
     font-size: 0.75rem;
     padding: 3px 8px;
+    margin-right: auto;
   }
-  .leaderboardItemTitle {
-    font-size: 0.84rem;
+  .expandToggleBtn {
+    padding: 4px 10px;
+    font-size: 0.75rem;
   }
-  .leaderboardTag {
-    display: none;
+  .leaderboardRank1Item {
+    width: 100%;
+    padding: 6px 10px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-glass);
+    border-radius: 10px;
+    gap: 8px;
   }
   .rankBadgeArea {
-    gap: 4px;
+    gap: 6px;
+    min-width: auto;
   }
   .rankNumber {
     font-size: 0.95rem;
@@ -761,11 +773,26 @@
   }
   .changePill {
     font-size: 0.65rem;
-    padding: 1px 4px;
-    min-width: 32px;
+    padding: 2px 5px;
+    min-width: 34px;
   }
-  .expandToggleBtn {
-    padding: 4px 8px;
-    font-size: 0.72rem;
+  .leaderboardContent {
+    gap: 6px;
+  }
+  .leaderboardTag {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+  }
+  .leaderboardItemTitle {
+    font-size: 0.86rem;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.35;
+  }
+  .leaderboardItem {
+    padding: 8px 10px;
+    gap: 8px;
   }
 }
