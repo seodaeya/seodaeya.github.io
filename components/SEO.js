@@ -109,6 +109,28 @@ export default function SEO({
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086"
         crossOrigin="anonymous"
       />
+
+      {/* Google Analytics 4 (GA4) Tag */}
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+        </>
+      )}
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
