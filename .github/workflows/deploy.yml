@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  schedule:
+    # ⭐️ 매일 한국 시간 00:00(자정 / UTC 15:00)에 통계 갱신 및 자동 배포 실행
+    - cron: '0 15 * * *'
   workflow_dispatch:
 
 # Grant necessary permissions for GitHub Pages OIDC deployment
