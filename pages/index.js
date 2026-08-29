@@ -198,17 +198,10 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
           </div>
         </section>
 
-                                {/* 2.5. Compact 1-Line Live Leaderboard Billboard (1위 노출 + 호버/클릭 시 1~5위 확장) */}
+        {/* 2.5. Bulletproof Live Leaderboard (헤더 + 1위 카드 + 2~5위 서랍) */}
         {!cleanQuery && trendingPosts && trendingPosts.length > 0 && (() => {
           const rank1 = trendingPosts[0];
           const remainingRanks = trendingPosts.slice(1);
-
-          const getRankDisplay = (rank) => {
-            if (rank === 1) return '🥇 1';
-            if (rank === 2) return '🥈 2';
-            if (rank === 3) return '🥉 3';
-            return rank;
-          };
 
           const getChangeClass = (change) => {
             if (change === 'up') return styles.changeUp;
@@ -220,64 +213,58 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
           return (
             <section 
               className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
-              aria-label="실시간 인기 아티클 랭킹 전광판"
+              aria-label="실시간 인기 아티클 랭킹"
             >
-              {/* Top 1-Line Compact Bar */}
-              <div className={styles.leaderboardTopBar}>
-                <span className={styles.leaderboardLabel}>
-                  <span className={styles.liveDot} /> 🏆 실시간 인기 아티클 1위
-                </span>
-
-                <Link href={rank1.url} className={styles.leaderboardRank1Item}>
-                  <div className={styles.rankBadgeArea}>
-                    <span className={`${styles.rankNumber} ${styles.rank1}`}>
-                      🥇 1
-                    </span>
-                    <span className={`${styles.changePill} ${getChangeClass(rank1.change)}`}>
-                      {rank1.changeText || '-'}
-                    </span>
-                  </div>
-
-                  <div className={styles.leaderboardContent}>
-                    {rank1.badge && (
-                      <span className={styles.leaderboardTag}>{rank1.badge}</span>
-                    )}
-                    <h3 className={styles.leaderboardItemTitle}>{rank1.title}</h3>
-                  </div>
-                </Link>
+              {/* Header Row: LIVE Badge (Left) + Toggle Button (Right) */}
+              <div className={styles.leaderboardHeaderRow}>
+                <div className={styles.leaderboardLiveBadge}>
+                  <span className={styles.liveDot} />
+                  <span>🏆 실시간 인기 아티클</span>
+                </div>
 
                 <button 
                   type="button" 
                   className={styles.expandToggleBtn}
                   onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
-                  aria-label="인기 아티클 순위 전체보기 토글"
+                  aria-label="인기 아티클 1~5위 전체보기 토글"
                 >
-                  <span>{isLeaderboardOpen ? '접기' : '1~5위'}</span>
-                  <span className={`${styles.expandArrow} ${isLeaderboardOpen ? styles.expandArrowRotated : ''}`}>▼</span>
+                  <span>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
                 </button>
               </div>
 
-              {/* 2위 ~ 5위 확장 영역 (PC 호버 또는 모바일/버튼 클릭 시 노출) */}
+              {/* 1st Place Hero Card */}
+              <Link href={rank1.url} className={styles.leaderboardRank1Card}>
+                <div className={styles.rankBadgeGroup}>
+                  <span className={styles.rank1Badge}>🥇 1위</span>
+                  <span className={`${styles.changePill} ${getChangeClass(rank1.change)}`}>
+                    {rank1.changeText || '-'}
+                  </span>
+                  {rank1.badge && (
+                    <span className={styles.leaderboardTag}>{rank1.badge}</span>
+                  )}
+                </div>
+                <h3 className={styles.leaderboardTitleText}>{rank1.title}</h3>
+              </Link>
+
+              {/* 2위 ~ 5위 확장 서랍 (PC 호버 또는 토글 클릭 시 노출) */}
               <div className={`${styles.leaderboardExpandable} ${isLeaderboardOpen ? styles.leaderboardExpandableActive : ''}`}>
                 {remainingRanks.map((post, idx) => {
                   const currentRank = idx + 2;
+                  const rankBadgeClass = currentRank === 2 ? styles.rank2Badge : currentRank === 3 ? styles.rank3Badge : styles.rankNormalBadge;
+                  const rankLabel = currentRank === 2 ? '🥈 2위' : currentRank === 3 ? '🥉 3위' : `${currentRank}위`;
+
                   return (
                     <Link key={idx} href={post.url} className={styles.leaderboardItem}>
-                      <div className={styles.rankBadgeArea}>
-                        <span className={`${styles.rankNumber} ${currentRank === 2 ? styles.rank2 : currentRank === 3 ? styles.rank3 : ''}`}>
-                          {getRankDisplay(post.rank || currentRank)}
-                        </span>
+                      <div className={styles.rankBadgeGroup}>
+                        <span className={rankBadgeClass}>{rankLabel}</span>
                         <span className={`${styles.changePill} ${getChangeClass(post.change)}`}>
                           {post.changeText || '-'}
                         </span>
-                      </div>
-
-                      <div className={styles.leaderboardContent}>
                         {post.badge && (
                           <span className={styles.leaderboardTag}>{post.badge}</span>
                         )}
-                        <h4 className={styles.leaderboardItemTitle}>{post.title}</h4>
                       </div>
+                      <h4 className={styles.leaderboardItemTitleText}>{post.title}</h4>
                     </Link>
                   );
                 })}
