@@ -185,6 +185,48 @@ export default function Home({ allPosts = [], allVideos = [] }) {
           </div>
         </section>
 
+                {/* 2.5. Curated Flagship Articles Showcase (검색어가 없을 때만 노출) */}
+        {!cleanQuery && (
+          <section className={styles.topPicksSection} aria-label="추천 인기글">
+            <div className={styles.topPicksHeader}>
+              <h2 className={styles.topPicksTitle}>
+                <span>🔥</span> <strong>추천 인기글(Curated Top Picks)</strong>
+              </h2>
+            </div>
+            <div className={styles.topPicksGrid}>
+              <Link href="/posts/20260827-1-ecommerce-ontology-ai-search-guide" className={styles.topPickCard}>
+                <div>
+                  <span className={styles.topPickBadge}>🔥 인기 아키텍처 · Tech & Dev</span>
+                  <h3 className={styles.topPickCardTitle}>온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심</h3>
+                </div>
+                <p className={styles.topPickCardDesc}>
+                  지식 그래프와의 본질적 차이부터 시맨틱 추론, 4단계 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처 완벽 가이드.
+                </p>
+              </Link>
+
+              <Link href="/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck" className={styles.topPickCard}>
+                <div>
+                  <span className={styles.topPickBadge}>⚡️ 실전 트러블슈팅 · Backend</span>
+                  <h3 className={styles.topPickCardTitle}>Spring Boot Lettuce Redis 캐싱 도입 후 DB 커넥션 풀 고갈과 504 타임아웃 해결기</h3>
+                </div>
+                <p className={styles.topPickCardDesc}>
+                  Redis 캐시 웜업, 스탬피드 방지, HikariCP 커넥션 풀 최적화로 동시 접속 대란을 극복한 3단계 실전 전략.
+                </p>
+              </Link>
+
+              <Link href="/posts/20260815-1-gemini-3-7-flash-analysis" className={styles.topPickCard}>
+                <div>
+                  <span className={styles.topPickBadge}>🤖 AI 모델 분석 · AI & ML</span>
+                  <h3 className={styles.topPickCardTitle}>Google Gemini 3.7 Flash 모델 분석: 생각 시간(Thinking Budget) 제어와 하이브리드 추론</h3>
+                </div>
+                <p className={styles.topPickCardDesc}>
+                  동적 추론 토큰 제어로 비용과 성능의 균형을 완성한 차세대 멀티모달 AI의 기술적 특징 분석.
+                </p>
+              </Link>
+            </div>
+          </section>
+        )}
+
         {/* 3. Featured YouTube Content Showcase (검색어가 없을 때만 노출) */}
         {featuredVideo && !cleanQuery && (
           <section className="glass-card">

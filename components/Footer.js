@@ -41,6 +41,11 @@ export default function Footer() {
                 GitHub
               </a>
             </li>
+            <li>
+              <a href="/rss.xml" target="_blank" rel="noopener noreferrer" style={{ color: '#f59e0b', fontWeight: 600 }}>
+                📡 RSS 피드 구독
+              </a>
+            </li>
           </ul>
         </div>
       </div>

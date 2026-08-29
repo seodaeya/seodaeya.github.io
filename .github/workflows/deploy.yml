@@ -71,3 +71,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # 9. 검색엔진 실시간 자동 핑 (IndexNow: Bing, Naver, Yandex, Perplexity)
+      - name: Submit to IndexNow
+        run: node files/gen/submit-indexnow.js
+        continue-on-error: true
