@@ -1,23 +1,57 @@
 [
   {
-    "badge": "🔥 인기 아키텍처",
+    "rank": 1,
+    "change": "same",
+    "changeText": "-",
+    "badge": "온톨로지 · AI 검색",
+    "category": "Tech & Dev",
     "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
+    "desc": "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다.",
     "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
-    "desc": "지식 그래프와의 본질적 차이부터 시맨틱 추론, 4단계 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처 완벽 가이드.",
-    "tag": "Tech & Dev"
+    "date": "2026-08-27"
   },
   {
-    "badge": "⚡️ 실전 트러블슈팅",
-    "title": "Spring Boot Lettuce Redis 캐싱 도입 후 DB 커넥션 풀 고갈과 504 타임아웃 해결기",
+    "rank": 2,
+    "change": "same",
+    "changeText": "-",
+    "badge": "Spring Boot · Redis",
+    "category": "Tech & Dev",
+    "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
+    "desc": "Redis 캐싱을 도입했음에도 초당 수천 건의 트래픽에서 PostgreSQL 커넥션 풀 고갈과 504 타임아웃이 발생한 원인과 3단계 극복 과정을 상세히 분석합니다.",
     "url": "/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck",
-    "desc": "Redis 캐시 웜업, 스탬피드 방지, HikariCP 커넥션 풀 최적화로 동시 접속 대란을 극복한 3단계 실전 전략.",
-    "tag": "Backend"
+    "date": "2026-08-25"
   },
   {
-    "badge": "🤖 AI 모델 분석",
-    "title": "Google Gemini 3.7 Flash 모델 분석: 생각 시간(Thinking Budget) 제어와 하이브리드 추론",
+    "rank": 3,
+    "change": "same",
+    "changeText": "-",
+    "badge": "Gemini 3.7 · AI",
+    "category": "AI & Intelligence",
+    "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
+    "desc": "Google의 하이브리드 추론 모델 Gemini 3.7 Flash의 생각 시간 제어(Thinking Budget) 메커니즘과 코딩 벤치마크 성과를 분석합니다.",
     "url": "/posts/20260815-1-gemini-3-7-flash-analysis",
-    "desc": "동적 추론 토큰 제어로 비용과 성능의 균형을 완성한 차세대 멀티모달 AI의 기술적 특징 분석.",
-    "tag": "AI & ML"
+    "date": "2026-08-15"
+  },
+  {
+    "rank": 4,
+    "change": "same",
+    "changeText": "-",
+    "badge": "자율 코딩 · Cline",
+    "category": "AI & Intelligence",
+    "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
+    "desc": "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다.",
+    "url": "/posts/20250404-2-cline-autonomous-coding-agent",
+    "date": "2025-04-04"
+  },
+  {
+    "rank": 5,
+    "change": "same",
+    "changeText": "-",
+    "badge": "PostgreSQL · DB",
+    "category": "Dev & Software",
+    "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
+    "desc": "macOS 환경에서 Homebrew를 이용한 PostgreSQL 데이터베이스 설치부터 사용자 계정 생성, pgAdmin 연동 및 보안 설정까지 단계별로 안내합니다.",
+    "url": "/posts/20250427-1-postgresql-install-setup-guide",
+    "date": "2025-04-27"
   }
 ]

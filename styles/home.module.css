@@ -490,83 +490,224 @@
   background: rgba(0, 0, 0, 0.02);
 }
 
-/* Curated Flagship Top Picks Showcase */
-.topPicksSection {
-  margin: 36px 0 28px 0;
-}
-
-.topPicksHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.topPicksTitle {
-  font-size: 1.35rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-}
-
-.topPicksGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.topPickCard {
+/* 🏆 Live Popular Posts Billboard / Leaderboard */
+.leaderboardSection {
+  margin: 32px 0 24px 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
-  text-decoration: none !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
 
-.topPickCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-light);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25), 0 0 15px hsla(263, 85%, 65%, 0.2);
+.leaderboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.topPickBadge {
-  font-size: 0.75rem;
+.leaderboardTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.liveTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: #f59e0b;
-  letter-spacing: 0.03em;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
 }
 
-.topPickCardTitle {
-  font-size: 1.05rem;
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.leaderboardList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leaderboardItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.leaderboardItem:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-light);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(138, 43, 226, 0.15);
+}
+
+.rankBadgeArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 105px;
+  flex-shrink: 0;
+}
+
+.rankNumber {
+  font-family: var(--font-headings);
+  font-size: 1.15rem;
+  font-weight: 800;
+  width: 30px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.rank1 { color: #fbbf24; }
+.rank2 { color: #cbd5e1; }
+.rank3 { color: #d97706; }
+
+.changePill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  min-width: 46px;
+  text-align: center;
+}
+
+.changeUp {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.changeDown {
+  background: rgba(244, 63, 94, 0.15);
+  color: #f43f5e;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.changeNew {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.changeSame {
+  background: rgba(100, 116, 139, 0.12);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+.leaderboardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.leaderboardItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.leaderboardTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.leaderboardItemTitle {
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.45;
   margin: 0;
-}
-
-.topPickCardDesc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
 }
 
-@media (max-width: 900px) {
-  .topPicksGrid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+.leaderboardItem:hover .leaderboardItemTitle {
+  color: var(--accent-light);
+}
+
+.leaderboardItemDesc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .leaderboardSection {
+    padding: 18px 16px;
+    margin: 24px 0 16px 0;
+  }
+  .leaderboardItem {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .rankBadgeArea {
+    min-width: 82px;
+    gap: 6px;
+  }
+  .rankNumber {
+    font-size: 1rem;
+    width: 22px;
+  }
+  .changePill {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    min-width: 38px;
+  }
+  .leaderboardItemTitle {
+    font-size: 0.88rem;
+  }
+  .leaderboardItemDesc {
+    display: none;
   }
 }

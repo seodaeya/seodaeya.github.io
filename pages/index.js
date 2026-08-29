@@ -197,24 +197,58 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
           </div>
         </section>
 
-                {/* 2.5. Curated Flagship / Trending Posts Showcase (검색어가 없을 때만 노출) */}
+                        {/* 2.5. Live Popular Posts Billboard / Leaderboard (검색어가 없을 때만 노출) */}
         {!cleanQuery && trendingPosts && trendingPosts.length > 0 && (
-          <section className={styles.topPicksSection} aria-label="추천 인기글">
-            <div className={styles.topPicksHeader}>
-              <h2 className={styles.topPicksTitle}>
-                <span>🔥</span> <strong>추천 인기글 (Curated Top Picks)</strong>
+          <section className={styles.leaderboardSection} aria-label="실시간 인기 아티클 랭킹 보드">
+            <div className={styles.leaderboardHeader}>
+              <h2 className={styles.leaderboardTitle}>
+                <span>🏆</span> <strong>실시간 인기 아티클 랭킹 보드</strong>
               </h2>
+              <span className={styles.liveTag}>
+                <span className={styles.liveDot} /> LIVE 00:00 KST
+              </span>
             </div>
-            <div className={styles.topPicksGrid}>
-              {trendingPosts.map((post, idx) => (
-                <Link key={idx} href={post.url} className={styles.topPickCard}>
-                  <div>
-                    <span className={styles.topPickBadge}>{post.badge} · {post.tag}</span>
-                    <h3 className={styles.topPickCardTitle}>{post.title}</h3>
-                  </div>
-                  <p className={styles.topPickCardDesc}>{post.desc}</p>
-                </Link>
-              ))}
+            <div className={styles.leaderboardList}>
+              {trendingPosts.map((post, idx) => {
+                const getRankDisplay = (rank) => {
+                  if (rank === 1) return '🥇 1';
+                  if (rank === 2) return '🥈 2';
+                  if (rank === 3) return '🥉 3';
+                  return rank;
+                };
+
+                const getChangeClass = (change) => {
+                  if (change === 'up') return styles.changeUp;
+                  if (change === 'down') return styles.changeDown;
+                  if (change === 'new') return styles.changeNew;
+                  return styles.changeSame;
+                };
+
+                return (
+                  <Link key={idx} href={post.url} className={styles.leaderboardItem}>
+                    <div className={styles.rankBadgeArea}>
+                      <span className={`${styles.rankNumber} ${idx === 0 ? styles.rank1 : idx === 1 ? styles.rank2 : idx === 2 ? styles.rank3 : ''}`}>
+                        {getRankDisplay(post.rank || idx + 1)}
+                      </span>
+                      <span className={`${styles.changePill} ${getChangeClass(post.change)}`}>
+                        {post.changeText || '-'}
+                      </span>
+                    </div>
+
+                    <div className={styles.leaderboardContent}>
+                      <div className={styles.leaderboardItemHeader}>
+                        {post.badge && (
+                          <span className={styles.leaderboardTag}>{post.badge}</span>
+                        )}
+                        <h3 className={styles.leaderboardItemTitle}>{post.title}</h3>
+                      </div>
+                      {post.desc && (
+                        <p className={styles.leaderboardItemDesc}>{post.desc}</p>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
         )}
