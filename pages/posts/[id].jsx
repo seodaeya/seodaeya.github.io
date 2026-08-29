@@ -123,6 +123,12 @@ export async function getStaticProps({ params }) {
           const id = 'heading-' + (headingIndex++);
           return '<h' + depth + ' id="' + id + '">' + text + '</h' + depth + '>';
         };
+        // Wrap table in an isolated viewport container that preserves horizontal scroll position across vertical scrolling
+        const origTable = renderer.table.bind(renderer);
+        renderer.table = function(header, body) {
+          const tableHtml = origTable(header, body);
+          return '<div class="table-responsive-wrapper">' + tableHtml + '</div>';
+        };
         return marked(content, { renderer });
       })(),
       excerpt: data.excerpt || createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',
@@ -148,6 +154,17 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // 1.5. Wrap any remaining tables into isolated scroll containers
+    const rawTables = document.querySelectorAll('#post-content table');
+    rawTables.forEach((table) => {
+      if (!table.parentElement.classList.contains('table-responsive-wrapper') && !table.parentElement.classList.contains(styles.tableResponsiveWrapper)) {
+        const wrapper = document.createElement('div');
+        wrapper.className = styles.tableResponsiveWrapper || 'table-responsive-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      }
+    });
 
     // 2. Auto-inject 1-Click Copy Buttons into code blocks
     const preBlocks = document.querySelectorAll('#post-content pre');

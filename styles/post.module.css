@@ -215,18 +215,36 @@
   margin: 0;
 }
 
-/* Premium Responsive Table: Desktop 100% Full Stretch & Mobile Sticky Scroll */
-.content table {
-  border-collapse: separate;
-  border-spacing: 0;
+/* Premium Responsive Table: Isolated Viewport Container (가로 스크롤 위치 영구 보존) */
+.tableResponsiveWrapper,
+.content :global(.table-responsive-wrapper) {
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 28px 0 36px 0;
-  background-color: var(--bg-secondary);
   border-radius: 14px;
   border: 1px solid var(--border-glass);
+  background-color: var(--bg-secondary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  overscroll-behavior-x: contain;
 }
 
+.tableResponsiveWrapper table,
+.content :global(.table-responsive-wrapper) table,
+.content table {
+  width: 100%;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-collapse: collapse;
+  display: table !important;
+}
+
+.tableResponsiveWrapper th,
+.tableResponsiveWrapper td,
+.content :global(.table-responsive-wrapper) th,
+.content :global(.table-responsive-wrapper) td,
 .content table th,
 .content table td {
   padding: 16px 20px;
@@ -234,85 +252,71 @@
   font-size: 0.95rem;
   line-height: 1.6;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 140px;
 }
 
+:root.light .tableResponsiveWrapper td,
+:root.light .content :global(.table-responsive-wrapper) td,
 :root.light .content table td {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.tableResponsiveWrapper th,
+.content :global(.table-responsive-wrapper) th,
 .content table th {
-  background-color: var(--bg-secondary);
+  background-color: rgba(255, 255, 255, 0.03);
   font-weight: 700;
   color: var(--text-primary);
   border-bottom: 1.5px solid var(--border-glass-active);
   letter-spacing: -0.01em;
 }
 
-/* 🖥️ PC/데스크톱: 100% 꽉 채우는 유려한 균등 분할 레이아웃 (오른쪽 빈 여백 0%) */
-@media (min-width: 769px) {
-  .content table {
-    display: table;
-    width: 100%;
-    table-layout: auto;
-  }
-  .content table th:first-child,
-  .content table td:first-child {
-    font-weight: 600;
-    width: 18%;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  :root.light .content table th:first-child,
-  :root.light .content table td:first-child {
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
-  }
+.tableResponsiveWrapper th:first-child,
+.tableResponsiveWrapper td:first-child,
+.content :global(.table-responsive-wrapper) th:first-child,
+.content :global(.table-responsive-wrapper) td:first-child,
+.content table th:first-child,
+.content table td:first-child {
+  font-weight: 600;
+  min-width: 110px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 📱 모바일/태블릿: 1열 좌측 틀 고정 (Sticky Column) + 부드러운 가로 스크롤 */
-@media (max-width: 768px) {
-  .content table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .content table th,
-  .content table td {
-    min-width: 150px;
-  }
-  .content table th:first-child,
-  .content table td:first-child {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    min-width: 110px;
-    max-width: 140px;
-    font-weight: 600;
-    white-space: nowrap;
-    background-color: var(--bg-secondary);
-    border-right: 1.5px solid var(--border-glass-active);
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.18);
-  }
-  :root.light .content table th:first-child,
-  :root.light .content table td:first-child {
-    background-color: var(--bg-secondary);
-    border-right: 1.5px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.04);
-  }
-  .content table th:first-child {
-    z-index: 3;
-  }
+:root.light .tableResponsiveWrapper th:first-child,
+:root.light .content :global(.table-responsive-wrapper) th:first-child,
+:root.light .content table th:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.tableResponsiveWrapper tr:last-child td,
+.content :global(.table-responsive-wrapper) tr:last-child td,
 .content table tr:last-child td {
   border-bottom: none;
 }
 
+.tableResponsiveWrapper tr:hover td,
+.content :global(.table-responsive-wrapper) tr:hover td,
 .content table tr:hover td {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-.content table tr:hover td:first-child {
-  background-color: var(--bg-tertiary);
+/* 🖥️ PC/데스크톱(769px 이상): 100% 꽉 채운 균등 분할 */
+@media (min-width: 769px) {
+  .tableResponsiveWrapper table,
+  .content :global(.table-responsive-wrapper) table,
+  .content table {
+    width: 100%;
+    table-layout: auto;
+  }
+}
+
+/* 📱 모바일/태블릿(768px 이하): 편안한 최소 너비 보장 및 가로 스크롤 위치 보존 */
+@media (max-width: 768px) {
+  .tableResponsiveWrapper table,
+  .content :global(.table-responsive-wrapper) table,
+  .content table {
+    min-width: 580px;
+  }
 }
 
 @media (max-width: 600px) {
