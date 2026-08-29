@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'"
 date: "2026-07-23"
 image: "/images/ai_human_hybrid_decision_thumbnail.png"
+tags: ["AI Ethics", "Human in the loop", "HITL", "AI Governance", "Philosophy"]
+excerpt: "생성형 AI 시대에 인간의 개입과 통제(Human-in-the-loop)가 왜 필수적인지, 윤리적 거버넌스와 공존의 철학적 기준을 고찰합니다."
 ---
-
 ## 🤖 AI가 대신 결정해 주는 세상, 우리는 무엇을 고민하고 있을까
 
 "오늘 저녁은 무엇을 먹을까?"  

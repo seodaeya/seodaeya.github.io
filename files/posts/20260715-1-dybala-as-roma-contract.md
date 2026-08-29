@@ -3,8 +3,9 @@ category: "Lifestyle & Tech"
 title: "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유"
 date: "2026-07-15"
 image: "/images/dybala_roma_contract_thumbnail.jpg"
+tags: ["Football", "AS Roma", "Dybala", "Serie A", "Sports"]
+excerpt: "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다."
 ---
-
 ## ⚽ 의리와 낭만의 아이콘, 파울로 디발라의 로마 잔류기
 
 유럽 축구 이적 시장에서 돈과 명예를 쫓아 수많은 선수가 이동하는 가운데, 가슴을 울리는 따뜻한 재계약 소식이 들려왔습니다. 바로 AS 로마의 에이스 <strong>파울로 디발라(Paulo Dybala)</strong>가 팀과의 극적인 계약 연장에 합의했다는 소식입니다. 

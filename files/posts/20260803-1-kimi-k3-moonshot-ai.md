@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석"
 date: "2026-08-03"
 image: "/images/kimi_3_ai_model_thumbnail.jpg"
+tags: ["Kimi", "Moonshot AI", "Long Context", "LLM", "AI Search"]
+excerpt: "초대용량 문서 분석과 장문 추론에 특화된 Moonshot AI의 Kimi 모델 아키텍처와 글로벌 AI 검색 시장에서의 차별화 강점을 분석합니다."
 ---
-
 ## 🌐 중국 AI 생태계의 판도를 바꾼 문샷 AI(Moonshot AI)와 Kimi 3
 
 글로벌 인공지능(AI) 시장에서 OpenAI의 GPT-5.6, Google의 Gemini 3.6 등 미국 빅테크 기업들의 주도권 경쟁이 치열하게 전개되는 가운데, 중국의 대표적인 AI 스타트업 <strong>문샷 AI(Moonshot AI)</strong>가 최신 플래그십 AI 모델인 <strong>Kimi 3(K3)</strong>를 전격 공개하며 글로벌 테크 업계에 커다란 충격을 주고 있습니다.

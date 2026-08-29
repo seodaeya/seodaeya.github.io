@@ -91,3 +91,113 @@
     display: none;
   }
 }
+
+/* Mobile Floating TOC Styles */
+.mobileTocFab {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--accent-light);
+  color: var(--text-primary);
+  border-radius: 30px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 12px hsla(263, 85%, 65%, 0.3);
+  z-index: 90;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.mobileTocFabText {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.mobileTocFab:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 16px hsla(263, 85%, 65%, 0.5);
+}
+
+.mobileTocOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.mobileTocDrawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 75vh;
+  background: var(--bg-secondary);
+  border-top: 1.5px solid var(--border-glass-active);
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 36px;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobileTocHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 16px;
+}
+
+.mobileTocCloseBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileTocNav {
+  overflow-y: auto;
+  padding-right: 8px;
+  max-height: calc(75vh - 90px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (max-width: 1080px) {
+  .tocWrapper {
+    display: none;
+  }
+  .mobileTocFab {
+    display: flex;
+  }
+  .mobileTocOverlay {
+    display: block;
+  }
+}

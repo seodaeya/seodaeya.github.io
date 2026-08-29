@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드"
 date: "2025-04-04"
 image: "/images/cursor_guide_thumbnail.jpg"
+tags: ["Cursor", "AI Editor", "Composer", "VS Code", "Productivity"]
+excerpt: "AI 네이티브 코드 에디터 Cursor의 강력한 Composer 다중 파일 편집과 실시간 컨텍스트 인덱싱 기능을 활용한 생산성 극대화 가이드입니다."
 ---
-
 ## 🚀 코딩 에디터의 새로운 패러다임, Cursor
 
 최근 개발 생태계에서 가장 뜨거운 관심을 받고 있는 <strong>Cursor(커서)</strong>는 단순한 플러그인 형태를 넘어 에디터 자체에 AI 인공지능을 내장한 <strong>VS Code 포크 기반의 AI 특화 코드 에디터</strong>입니다.

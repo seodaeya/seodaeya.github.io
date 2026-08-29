@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략"
 date: "2026-08-05"
 image: "/images/seo_geo_search_optimization_thumbnail.jpg"
+tags: ["SEO", "GEO", "Generative Engine Optimization", "AI Search", "Search Visibility"]
+excerpt: "전통적인 검색엔진 최적화(SEO)를 넘어 ChatGPT, Perplexity 등 생성형 AI 검색 엔진에 인용되는 최신 GEO 전략을 다룹니다."
 ---
-
 ## 🔍 검색의 패러다임이 바뀐다: 키워드 검색에서 AI 답변 검색으로
 
 지난 20여 년간 웹사이트와 블로그 트래픽을 지배해 온 패러다임은 단연 <strong>SEO(Search Engine Optimization, 검색엔진 최적화)</strong>였습니다. 구글(Google)이나 네이버(Naver) 검색창에 특정 키워드를 입력하면, 검색엔진 로봇이 랭킹 알고리즘에 따라 상위 10개 웹페이지 링크를 나열해주고 사용자가 그중 하나를 클릭하는 방식이었습니다.

@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지"
 date: "2025-04-04"
 image: "/images/claude_analysis_thumbnail.jpg"
+tags: ["Claude", "Anthropic", "LLM", "AI Model", "Opus", "Sonnet", "Haiku"]
+excerpt: "Anthropic의 대표 AI 모델인 Claude 3.5 Sonnet, Opus, Haiku의 아키텍처별 특징과 벤치마크 성능, 개발 및 실무 활용 가이드를 심층 분석합니다."
 ---
-
 ## 🔍 Anthropic Claude란 무엇인가?
 
 <strong>Claude(클로드)</strong>는 OpenAI 출신의 핵심 연구원들이 설립한 <strong>Anthropic(앤트로픽)</strong> 사에서 개발한 차세대 대형 언어 모델(LLM) 패밀리입니다. 단순한 텍스트 생성을 넘어 고도의 논리적 추론, 코드 분석 및 작성, 방대한 문서 해석 분야에서 업계 최고 수준의 성능을 발휘하고 있습니다. 특히 개발자들 사이에서 "가장 코딩을 잘하는 AI"로 평가받으며 현대 소프트웨어 개발 환경의 필수 도구로 자리잡았습니다.

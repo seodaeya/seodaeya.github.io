@@ -73,6 +73,8 @@ export async function getStaticProps() {
 
 export default function Home({ allPosts = [], allVideos = [] }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [visiblePostCount, setVisiblePostCount] = useState(6);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(6);
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
@@ -90,14 +92,14 @@ export default function Home({ allPosts = [], allVideos = [] }) {
 
   const cleanQuery = searchQuery.trim().toLowerCase();
 
-  // 검색어가 있을 때는 전체 글(allPosts, allVideos)을 검색, 없을 때는 최신 5개만 노출
+  // 검색어가 있을 때는 전체 검색 결과, 없을 때는 단계별 더보기 지원
   const displayedPosts = cleanQuery
     ? allPosts.filter(post => 
         post.title.toLowerCase().includes(cleanQuery) || 
         post.excerpt.toLowerCase().includes(cleanQuery) ||
         post.category.toLowerCase().includes(cleanQuery)
       )
-    : allPosts.slice(0, 5);
+    : allPosts.slice(0, visiblePostCount);
 
   const displayedVideos = cleanQuery
     ? allVideos.filter(video => 
@@ -105,7 +107,7 @@ export default function Home({ allPosts = [], allVideos = [] }) {
         video.excerpt.toLowerCase().includes(cleanQuery) ||
         video.category.toLowerCase().includes(cleanQuery)
       )
-    : allVideos.slice(0, 5);
+    : allVideos.slice(0, visibleVideoCount);
 
   return (
     <>
@@ -262,6 +264,15 @@ export default function Home({ allPosts = [], allVideos = [] }) {
                     </Link>
                   ))}
                 </div>
+                {!cleanQuery && visiblePostCount < allPosts.length && (
+                  <button
+                    type="button"
+                    className={styles.loadMoreBtn}
+                    onClick={() => setVisiblePostCount(prev => prev + 6)}
+                  >
+                    <span>↓</span> 블로그 글 더보기 ({displayedPosts.length}/{allPosts.length})
+                  </button>
+                )}
               </div>
             )}
 
@@ -321,6 +332,15 @@ export default function Home({ allPosts = [], allVideos = [] }) {
                     </Link>
                   ))}
                 </div>
+                {!cleanQuery && visibleVideoCount < allVideos.length && (
+                  <button
+                    type="button"
+                    className={styles.loadMoreBtn}
+                    onClick={() => setVisibleVideoCount(prev => prev + 6)}
+                  >
+                    <span>↓</span> 영상 콘텐츠 더보기 ({displayedVideos.length}/{allVideos.length})
+                  </button>
+                )}
               </div>
             )}
           </section>

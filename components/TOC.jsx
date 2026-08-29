@@ -4,6 +4,7 @@ import styles from '@/styles/toc.module.css';
 export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
 
@@ -101,6 +102,7 @@ export default function TOC({ contentSelector, id }) {
     // Lock scroll listener during smooth scrolling to prevent premature active jumping
     isClickScrolling.current = true;
     setActiveId(headingId);
+    setIsMobileOpen(false);
 
     const targetElement = document.getElementById(headingId);
     if (targetElement) {
@@ -120,27 +122,80 @@ export default function TOC({ contentSelector, id }) {
   if (headings.length === 0) return null;
 
   return (
-    <aside className={styles.tocWrapper} aria-label="Table of Contents">
-      <div className={styles.tocTitle}>
-        <span>📌</span> 목차
-      </div>
-      <nav className={styles.tocNav}>
-        <ul className={styles.tocList}>
-          {headings.map((h) => (
-            <li 
-              key={h.id} 
-              className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
-            >
-              <a 
-                href={`#${h.id}`} 
-                onClick={(e) => handleClick(e, h.id)}
+    <>
+      {/* Desktop Sticky Sidebar TOC */}
+      <aside className={styles.tocWrapper} aria-label="Table of Contents">
+        <div className={styles.tocTitle}>
+          <span>📌</span> 목차
+        </div>
+        <nav className={styles.tocNav}>
+          <ul className={styles.tocList}>
+            {headings.map((h) => (
+              <li 
+                key={h.id} 
+                className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
               >
-                {h.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </aside>
+                <a 
+                  href={`#${h.id}`} 
+                  onClick={(e) => handleClick(e, h.id)}
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      {/* Mobile Floating TOC Trigger Button */}
+      <button 
+        type="button" 
+        className={styles.mobileTocFab}
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        aria-label="모바일 목차 열기/닫기"
+        aria-expanded={isMobileOpen}
+      >
+        <span>{isMobileOpen ? '✕' : '📑'}</span>
+        <span className={styles.mobileTocFabText}>목차</span>
+      </button>
+
+      {/* Mobile Floating TOC Drawer Modal */}
+      {isMobileOpen && (
+        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileOpen(false)}>
+          <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.mobileTocHeader}>
+              <div className={styles.tocTitle} style={{ margin: 0 }}>
+                <span>📌</span> <strong>글 목차</strong>
+              </div>
+              <button 
+                type="button" 
+                className={styles.mobileTocCloseBtn}
+                onClick={() => setIsMobileOpen(false)}
+                aria-label="닫기"
+              >
+                ✕
+              </button>
+            </div>
+            <nav className={styles.mobileTocNav}>
+              <ul className={styles.tocList}>
+                {headings.map((h) => (
+                  <li 
+                    key={h.id} 
+                    className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
+                  >
+                    <a 
+                      href={`#${h.id}`} 
+                      onClick={(e) => handleClick(e, h.id)}
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

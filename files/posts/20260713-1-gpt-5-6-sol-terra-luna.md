@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까"
 date: "2026-07-13"
 image: "/images/gpt_5_6_thumbnail.jpg"
+tags: ["AI Future", "Crypto", "Market Analysis", "Tech Trends"]
+excerpt: "차세대 GPT 모델의 진화 방향과 크립토 시장의 구조적 변화 및 리스크 관리 전략을 테크와 경제의 융합 관점에서 살펴봅니다."
 ---
-
 ## GPT-5.6, 이름부터 조금 달라졌다
 
 OpenAI가 7월 9일 공개한 <strong>GPT-5.6</strong>은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, <strong>Sol</strong>, <strong>Terra</strong>, <strong>Luna</strong>가 함께 나왔다.

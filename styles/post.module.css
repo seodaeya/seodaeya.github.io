@@ -215,19 +215,19 @@
   margin: 0;
 }
 
-/* Premium styled Table */
+/* Premium styled Responsive Table with Mobile Horizontal Scroll */
 .content table {
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
-  margin-top: 24px;
-  margin-bottom: 36px;
+  margin: 28px 0 36px 0;
   background-color: var(--bg-secondary);
-  border-radius: 12px;
+  border-radius: 14px;
   display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .content table th,
@@ -235,18 +235,36 @@
   padding: 14px 18px;
   text-align: left;
   font-size: 0.95rem;
+  line-height: 1.6;
+  min-width: 150px;
+}
+
+.content table th:first-child,
+.content table td:first-child {
+  min-width: 120px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .content table th {
-  background-color: rgba(255, 255, 255, 0.02);
-  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.04);
+  font-weight: 700;
   color: var(--text-primary);
-  border-bottom: 1px solid var(--border-glass);
+  border-bottom: 1.5px solid var(--border-glass-active);
+  letter-spacing: -0.01em;
 }
 
 .content table td {
   color: var(--text-secondary);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.content table tr:last-child td {
+  border-bottom: none;
+}
+
+.content table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .content table tr:last-child td {
@@ -476,7 +494,126 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
+  max-width: 100%;
+}
+
+/* 1. Reading Progress Bar (Fixed at top) */
+.readingProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: var(--accent-gradient);
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px hsla(263, 85%, 65%, 0.5);
+}
+
+/* 2. Code Block Copy Button Container & Button */
+.codeBlockWrapper {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 28px;
+}
+
+.codeBlockWrapper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.copyCodeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--border-glass-active);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  z-index: 5;
+  user-select: none;
+}
+
+.copyCodeBtn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.copyCodeBtnCopied {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+}
+
+/* 3. Social Share Bar */
+.shareSection {
+  margin: 36px 0;
+  padding: 20px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shareLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shareButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shareBtn:hover {
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: var(--accent-light);
+}
+
+@media (max-width: 768px) {
+  .prevNextSection {
+    grid-template-columns: 1fr;
+  }
+  .shareSection {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {

@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석"
 date: "2025-04-04"
 image: "/images/cline_guide_thumbnail.jpg"
+tags: ["Cline", "AI Coding", "VS Code", "Autonomous Agent", "DevTools"]
+excerpt: "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다."
 ---
-
 ## 🤖 자율형 AI 코딩 에이전트 Cline의 등장
 
 기존의 GitHub Copilot이나 ChatGPT가 단순히 코드 조각을 제안하고 사용자가 복사-붙여넣기 하도록 돕는 <strong>'채팅 보조자(Chat Assistant)'</strong>였다면, <strong>Cline(클라인, 구 Devins)</strong>은 개발자의 터미널 명령 실행, 파일 읽기/쓰기, 디렉터리 분석을 직접 제어하여 주도적으로 작업을 완료하는 <strong>'자율형 에이전트(Autonomous Agent)'</strong>입니다. 

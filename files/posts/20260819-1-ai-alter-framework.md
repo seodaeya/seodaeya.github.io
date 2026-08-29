@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)"
 date: "2026-08-19"
 image: "/images/dangerously_self_educated_ai_thumbnail.jpg"
+tags: ["AI Framework", "Software Design", "Agentic Architecture", "Clean Code"]
+excerpt: "변화하는 비즈니스 요구사항과 AI 에이전트의 불확실성을 유연하게 결합하는 차세대 소프트웨어 아키텍처 프레임워크의 개념을 고찰합니다."
 ---
-
 ## 📱 인스타그램을 보는 주머니 속에 '수백억 원짜리 대학'이 들어있다
 
 MIT 출신의 전직 수도승이자 실리콘밸리 테크 기업 CEO인 산딥 스와디아(Sandeep Swadia)는 <a href="https://youtu.be/3k6fR5EdLAo" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600; text-decoration: underline;">유튜브 강연(How To Become Dangerously Self-Educated with AI)</a>에서 매우 충격적인 현장의 이야기를 들려줍니다.

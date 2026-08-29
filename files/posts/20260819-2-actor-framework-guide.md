@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)"
 date: "2026-08-19"
 image: "/images/actor_framework_ai_learning_thumbnail.jpg"
+tags: ["Actor Model", "Concurrency", "Distributed Systems", "Backend", "Architecture"]
+excerpt: "동시성 문제와 메시지 전달 기반의 안전한 상태 관리를 보장하는 액터 모델(Actor Model)의 핵심 원리와 분산 시스템 적용 패턴을 다룹니다."
 ---
-
 ## 🚀 왜 방대한 지식을 배우고도 현실에서는 변하는 게 없을까?
 
 이전 글인 <a href="/posts/20260819-1-ai-alter-framework" style="color: #38bdf8; font-weight: 600; text-decoration: underline;">[Part 1: ALTER 프레임워크와 1인 대학 구축법]</a>에서는 산딥 스와디아(Sandeep Swadia)의 강연을 바탕으로 AI를 <strong>5명의 전담 교수진(Advisor, Librarian, Tutor, Editor, Roommate)</strong>으로 세팅하는 시스템을 배웠습니다.

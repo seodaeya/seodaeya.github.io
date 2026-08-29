@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교"
 date: "2026-08-15"
 image: "/images/gemini_3_7_flash_analysis_thumbnail.jpg"
+tags: ["Gemini 3.7", "Flash", "Hybrid Reasoning", "Google DeepMind", "LLM"]
+excerpt: "Google의 하이브리드 추론 모델 Gemini 3.7 Flash의 생각 시간 제어(Thinking Budget) 메커니즘과 코딩 벤치마크 성과를 분석합니다."
 ---
-
 ## 🚀 AI 에이전트의 차세대 주력 엔진, 구글 Gemini 3.7 Flash의 전격 등장
 
 구글(Google)이 최신 플래그십 AI 모델인 <strong>Gemini 3.7 Flash(제미나이 3.7 플래시)</strong>를 공식 공개했습니다. 이전 세대인 Gemini 3.6 Flash가 속도와 출력 토큰 효율화에 집중했다면, 이번 3.7 버전은 <strong>복잡한 소프트웨어 엔지니어링, 자율형 AI 에이전트(Agentic Workflows), 그리고 다단계 하이브리드 추론(Thinking)</strong> 능력을 극대화한 '실전 주력(Workhorse)' 모델로 완전히 진화했습니다.

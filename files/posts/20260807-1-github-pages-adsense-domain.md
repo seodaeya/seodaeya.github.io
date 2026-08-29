@@ -3,8 +3,9 @@ category: "Dev & Software"
 title: "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략"
 date: "2026-08-07"
 image: "/images/github_pages_adsense_domain_guide_thumbnail.jpg"
+tags: ["AdSense", "GitHub Pages", "Custom Domain", "Blogging", "Monetization"]
+excerpt: "GitHub Pages 정적 블로그에서 구글 애드센스 승인을 통과하기 위한 도메인 연결, ads.txt 설정, 개인정보처리방침 구비 팁을 공유합니다."
 ---
-
 ## 💻 깃허브 블로그(github.io), 왜 애드센스 심사에서 계속 거절될까?
 
 개발자나 테크 에디터들이 자신만의 기술 블로그를 구축할 때 가장 선호하는 플랫폼 중 하나는 단연 <strong>GitHub Pages(github.io)</strong>입니다. 무료 호스팅, Markdown 기반 작성, 개발자 친화적인 버전 관리 등 수많은 장점이 있기 때문입니다.

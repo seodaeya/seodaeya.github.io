@@ -3,8 +3,9 @@ category: "Dev & Software"
 title: "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion"
 date: "2026-07-07"
 image: "/images/giscus_guide_thumbnail.jpg"
+tags: ["Giscus", "GitHub Discussions", "Next.js", "Blog", "Troubleshooting"]
+excerpt: "GitHub Pages 블로그에서 Giscus 댓글 위젯 연동 시 발생하는 저장소 권한 및 Discussions 카테고리 매핑 오류의 원인과 완전한 해결책을 정리합니다."
 ---
-
 ## 💬 Giscus 댓글 기능과 마주한 연동 오류
 
 깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 <strong>Giscus</strong>입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이스 없이 깔끔하게 댓글을 관리할 수 있는 강력한 오픈소스 도구입니다.

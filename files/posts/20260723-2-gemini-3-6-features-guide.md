@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막"
 date: "2026-07-23"
 image: "/images/gemini_3_6_guide_thumbnail.png"
+tags: ["Gemini", "Google AI", "Multimodal", "Long Context", "AI Benchmark"]
+excerpt: "Google의 차세대 멀티모달 AI 모델 Gemini의 혁신적인 초장문 컨텍스트 윈도우 처리 능력과 실무 개발 적용 팁을 상세히 해설합니다."
 ---
-
 ## ⚡ 구글 Gemini 3.6 공식 발표: AI 에이전트의 새로운 기준
 
 구글이 최신 AI 모델 라인업인 <strong>Gemini 3.6 시리즈</strong>를 공식 발표했습니다. 

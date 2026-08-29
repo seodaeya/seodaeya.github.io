@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법"
 date: "2026-08-04"
 image: "/images/gemini_cli_install_guide_thumbnail.jpg"
+tags: ["Gemini CLI", "Terminal", "Developer Tools", "Google Cloud", "Automation"]
+excerpt: "터미널에서 직접 Google Gemini API를 호출하여 텍스트 요약, 코드 리뷰, 파일 분석을 자동화하는 Gemini CLI 설치 및 활용법입니다."
 ---
-
 ## 💻 브라우저를 벗어나 터미널에서 구글 Gemini를 다루는 방법
 
 개발자나 시스템 관리자가 복잡한 코드를 분석하거나 텍스트 데이터를 처리할 때, 웹 브라우저를 열고 카피 앤 페이스트(Copy & Paste)를 반복하는 과정은 작업 흐름을 끊는 커다란 요소입니다. 구글(Google)이 제공하는 공식 <strong>Gemini CLI(Command Line Interface)</strong>를 활용하면, 브라우저를 켜지 않고도 <strong>내 커맨드라인 터미널 환경에서 곧바로 인공지능과 대화하고 코드를 요약·리팩토링</strong>할 수 있습니다.

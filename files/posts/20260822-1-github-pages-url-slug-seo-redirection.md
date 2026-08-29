@@ -3,8 +3,9 @@ title: "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 �
 category: "Dev & Software"
 date: "2026-08-22"
 image: "/github_pages_url_slug_seo_redirection_thumbnail.jpg"
+tags: ["SEO", "Redirection", "URL Slug", "Next.js", "GitHub Pages"]
+excerpt: "GitHub Pages 정적 호스팅 환경에서 검색 엔진 순위(PageRank) 손실 없이 한글/영문 URL 슬러그를 301 리디렉션하는 기술적 구현 방안입니다."
 ---
-
 블로그를 운영하다 보면 누구나 한 번쯤 <strong>"URL 주소를 어떻게 설계해야 검색엔진 최적화(SEO)와 방문자 유입에 가장 유리할까?"</strong>라는 고민에 부딪히게 됩니다.
 
 처음에는 단순히 날짜와 번호로 구성된 <code>/posts/20260819-1/</code>과 같은 주소를 사용하기 쉽습니다. 관리가 편하고 파일 정렬이 깔끔하기 때문입니다. 하지만 블로그의 규모가 커지고 네이버 서치어드바이저, 구글 서치콘솔, 빙(Bing)과 같은 검색 로봇이 문서를 색인하기 시작하면, 단순한 숫자 나열형 URL은 <strong>검색 키워드 가중치 상실</strong>과 <strong>클릭률(CTR) 저하</strong>라는 치명적인 한계에 직면하게 됩니다.

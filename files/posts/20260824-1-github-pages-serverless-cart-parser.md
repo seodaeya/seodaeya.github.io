@@ -4,8 +4,8 @@ title: "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 �
 date: "2026-08-24"
 image: "/images/github_pages_serverless_cart_thumbnail.jpg"
 tags: ["GitHub Pages", "Next.js", "Serverless", "Cloudflare Workers", "Coupang Partners API", "Web Security", "Architecture"]
+excerpt: "서버리스 환경에서 쇼핑몰 상품 URL만으로 메타데이터와 최저가 이미지를 자동 추출하여 통합 장바구니를 구축하는 파서 개발기입니다."
 ---
-
 ## 🛒 서론: 개발자의 번뜩이는 아이디어에서 시작된 '실험 서비스' 프로젝트
 
 저는 일상 속 불편함을 코드로 해결하는 것을 즐기는 개발자입니다. 평소 온라인 쇼핑을 하다 보면 쿠팡, 네이버 스마트스토어, 알리익스프레스, 11번가, 아마존 등 각기 다른 플랫폼에 관심 상품이 뿔뿔이 흩어져 있어 <strong>"이 장바구니들을 한곳에 싹 모아서 실시간 가격과 예산을 한눈에 비교할 수 있다면 얼마나 편할까?"</strong>라는 아이디어가 예전부터 머릿속에 맴돌았습니다.

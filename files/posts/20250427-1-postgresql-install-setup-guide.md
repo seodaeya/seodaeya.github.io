@@ -3,8 +3,9 @@ category: "Dev & Software"
 title: "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)"
 date: "2025-04-27"
 image: "/images/postgresql_guide_thumbnail.jpg"
+tags: ["PostgreSQL", "Database", "macOS", "Homebrew", "Backend"]
+excerpt: "macOS 환경에서 Homebrew를 이용한 PostgreSQL 데이터베이스 설치부터 사용자 계정 생성, pgAdmin 연동 및 보안 설정까지 단계별로 안내합니다."
 ---
-
 ## 🐘 PostgreSQL 개요
 
 <strong>PostgreSQL(포스트그레스큐엘)</strong>은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON 데이터 처리, GIS 지리 정보 지원 등) 덕분에 스타트업부터 대기업까지 널리 사랑받고 있습니다.

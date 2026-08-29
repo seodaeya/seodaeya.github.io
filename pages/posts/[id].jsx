@@ -11,7 +11,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import contentUtils from '@/lib/content';
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '@/styles/post.module.css';
 
 
@@ -135,7 +135,58 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [copiedUrl, setCopiedUrl] = useState(false);
+
   useEffect(() => {
+    // 1. Reading Progress Tracker
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (windowHeight > 0) {
+        setReadingProgress((totalScroll / windowHeight) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // 2. Auto-inject 1-Click Copy Buttons into code blocks
+    const preBlocks = document.querySelectorAll('#post-content pre');
+    preBlocks.forEach((pre) => {
+      if (
+        pre.closest('.mermaid') || 
+        pre.querySelector('.language-mermaid') || 
+        pre.parentElement.classList.contains(styles.codeBlockWrapper)
+      ) {
+        return;
+      }
+      const wrapper = document.createElement('div');
+      wrapper.className = styles.codeBlockWrapper;
+      
+      const copyBtn = document.createElement('button');
+      copyBtn.type = 'button';
+      copyBtn.className = styles.copyCodeBtn;
+      copyBtn.innerHTML = '<span>📋</span> 복사';
+      copyBtn.setAttribute('aria-label', '코드 복사');
+      
+      copyBtn.onclick = async () => {
+        try {
+          const codeText = pre.querySelector('code')?.innerText || pre.innerText;
+          await navigator.clipboard.writeText(codeText);
+          copyBtn.innerHTML = '<span>✅</span> 복사됨';
+          copyBtn.classList.add(styles.copyCodeBtnCopied);
+          setTimeout(() => {
+            copyBtn.innerHTML = '<span>📋</span> 복사';
+            copyBtn.classList.remove(styles.copyCodeBtnCopied);
+          }, 2000);
+        } catch (err) {
+          copyBtn.innerHTML = '<span>❌</span> 실패';
+        }
+      };
+      
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+      wrapper.appendChild(copyBtn);
+    });
     // Auto-render Mermaid diagrams if present
     const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
     if (mermaidBlocks.length > 0) {
@@ -182,6 +233,9 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
       };
       document.head.appendChild(script);
     }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [id, content]);
   if (isRedirect) {
     return (
@@ -233,6 +287,16 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
     );
   }
 
+  const handleCopyUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopiedUrl(true);
+      setTimeout(() => setCopiedUrl(false), 2500);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     try {
@@ -252,6 +316,16 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         url={`https://seodaeya.github.io/posts/${id}/`}
         type="article"
         date={frontmatter.date}
+      />
+
+      {/* Reading Progress Bar (Fixed Top) */}
+      <div 
+        className={styles.readingProgressBar} 
+        style={{ width: `${readingProgress}%` }} 
+        role="progressbar"
+        aria-valuenow={Math.round(readingProgress)}
+        aria-valuemin="0"
+        aria-valuemax="100"
       />
 
       <div className={styles.postWrapper}>
@@ -311,6 +385,41 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: content }}
           />
+
+          {/* Social Share & Link Copy Bar */}
+          <section className={styles.shareSection} aria-label="글 공유하기">
+            <div className={styles.shareLabel}>
+              <span>📢</span> <strong>이 글 공유하기</strong>
+            </div>
+            <div className={styles.shareButtons}>
+              <button 
+                type="button" 
+                className={styles.shareBtn} 
+                onClick={handleCopyUrl}
+                aria-label="URL 링크 복사"
+              >
+                <span>{copiedUrl ? '✅' : '🔗'}</span> {copiedUrl ? '링크가 복사되었습니다!' : '링크 복사'}
+              </button>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title || '')}&url=${encodeURIComponent(`https://seodaeya.github.io/posts/${id}/`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.shareBtn}
+                aria-label="X(트위터)로 공유"
+              >
+                <span>🐦</span> X(트위터)
+              </a>
+              <a
+                href={`https://service.threads.net/share?text=${encodeURIComponent(`${frontmatter.title || ''} https://seodaeya.github.io/posts/${id}/`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.shareBtn}
+                aria-label="Threads로 공유"
+              >
+                <span>🧵</span> Threads
+              </a>
+            </div>
+          </section>
 
 
 

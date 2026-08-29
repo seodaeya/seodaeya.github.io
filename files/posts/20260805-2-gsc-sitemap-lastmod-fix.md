@@ -3,8 +3,9 @@ category: "Dev & Software"
 title: "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법"
 date: "2026-08-05"
 image: "/images/gsc_sitemap_lastmod_fix_thumbnail.jpg"
+tags: ["Google Search Console", "Sitemap", "Lastmod", "SEO", "Webmaster"]
+excerpt: "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있는 lastmod 날짜 형식 오류와 크롤링 누락 문제를 해결하는 sitemap.xml 자동화 구축법입니다."
 ---
-
 ## 🚨 제출일은 오늘인데, '마지막으로 읽은 날짜'는 왜 몇 년 전으로 멈춰 있을까?
 
 웹사이트나 블로그를 운영하면서 구글 서치콘솔(Google Search Console, 이하 GSC)에 `sitemap.xml`을 등록했을 때 많은 운영자들이 당황하는 대표적인 현상이 있습니다.

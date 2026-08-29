@@ -3,8 +3,9 @@ category: "Hardware & DIY"
 title: "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드"
 date: "2026-08-12"
 image: "/images/mac_android_openmtp_guide_thumbnail.jpg"
+tags: ["macOS", "Android", "OpenMTP", "File Transfer", "Productivity"]
+excerpt: "Mac과 안드로이드 기기 간의 대용량 파일 전송을 고속 USB 연결로 쾌적하게 해결해주는 오픈소스 툴 OpenMTP 설정 및 활용기입니다."
 ---
-
 ## 💻 맥(Mac)과 안드로이드(Android) 사이의 파일 전송 잔혹사
 
 맥북(MacBook)이나 맥 미니(Mac mini) 등 macOS 생태계에서 삼성 갤럭시(Galaxy)를 포함한 안드로이드 스마트폰을 연결해 사진이나 고화질 동영상 파일, 음악 등을 옮기려고 할 때 커다란 벽에 부딪히게 됩니다. 애플과 안드로이드의 서로 다른 파일 시스템 규격 때문입니다.

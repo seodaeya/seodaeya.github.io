@@ -3,8 +3,9 @@ category: "AI & Intelligence"
 title: "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질"
 date: "2026-08-17"
 image: "/images/meta_techlead_real_ax_guide_thumbnail.jpg"
+tags: ["Agentic AI", "Meta", "Workflow", "Automation", "Software Architecture"]
+excerpt: "단일 프롬프트 처리를 넘어 다중 에이전트 협업으로 복잡한 소프트웨어 개발 작업을 자동화하는 에이전틱 워크플로우 아키텍처를 소개합니다."
 ---
-
 ## 🚀 왜 AI 도입 기업의 95%는 실패하고 5%만 성공하는가?
 
 최근 글로벌 IT 업계와 엔터프라이즈 시장의 가장 뜨거운 화두는 단연 <span class="term-tooltip" title="Agentic Transformation: 사람이 하던 기존 워크플로와 조직 시스템을 에이전트 중심으로 전면 재설계하는 과정">AX<span class="tooltip-text">Agentic Transformation: 사람이 하던 기존 워크플로와 조직 시스템을 에이전트 중심으로 전면 재설계하는 과정</span></span>(Agentic Transformation, 에이전틱 전환)입니다. 수많은 기업들이 "우리도 AI 네이티브 조직으로 전환하겠다"며 사내에 ChatGPT나 Claude 같은 생성형 AI 툴을 전사 배포하고 프롬프트 교육을 진행하고 있습니다.
