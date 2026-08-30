@@ -611,9 +611,9 @@
   top: calc(100% + 10px);
   left: 0;
   z-index: 1500;
-  min-width: 270px;
-  max-width: 330px;
-  background: rgba(15, 23, 42, 0.96);
+  width: max-content;
+  max-width: min(320px, calc(100vw - 60px));
+  background: rgba(15, 23, 42, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-glass-active);
@@ -624,6 +624,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  box-sizing: border-box;
 }
 
 .infoTooltipBox::before {
@@ -632,7 +633,7 @@
   bottom: 100%;
   left: 12px;
   border: 6px solid transparent;
-  border-bottom-color: rgba(15, 23, 42, 0.96);
+  border-bottom-color: rgba(15, 23, 42, 0.98);
 }
 
 @keyframes tooltipFade {
@@ -655,6 +656,8 @@
   line-height: 1.5;
   margin: 0;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .infoTooltipFooter {
@@ -668,10 +671,24 @@
   align-items: center;
   gap: 6px;
   margin-top: 2px;
+  flex-wrap: wrap;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .infoTooltipFooter strong {
   color: #34d399;
+}
+
+@media (max-width: 640px) {
+  .infoTooltipBox {
+    left: -10px;
+    max-width: min(300px, calc(100vw - 50px));
+    padding: 12px 14px;
+  }
+  .infoTooltipBox::before {
+    left: 20px;
+  }
 }
 
 /* 2. 1st Place Hero Card */

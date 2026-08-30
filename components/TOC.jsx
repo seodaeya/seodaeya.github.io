@@ -5,15 +5,16 @@ export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isFloatingVisible, setIsFloatingVisible] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
+  const scrollPauseTimerRef = useRef(null);
 
   useEffect(() => {
-    // Reset state when navigating to a different page
     setHeadings([]);
     setActiveId('');
+    setIsFloatingVisible(false);
 
-    // Small delay to ensure DOM is fully rendered after hydration
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
       if (!container) return;
@@ -34,26 +35,27 @@ export default function TOC({ contentSelector, id }) {
 
       setHeadings(headingList);
 
-      // High-precision scroll position tracker with Top & Bottom boundary awareness
-      const updateActiveHeading = () => {
+      const updateTocState = () => {
         if (isClickScrolling.current) return;
 
-        // 1. Edge Case: Bottom of the page reached (content too short to reach the 130px line)
-        const scrollBottom = window.innerHeight + window.scrollY;
-        const documentHeight = document.documentElement.scrollHeight;
-        if (scrollBottom >= documentHeight - 70) {
-          setActiveId(headingElements[headingElements.length - 1].id);
-          return;
+        const scrollY = window.scrollY;
+        const postContent = document.querySelector(contentSelector);
+        
+        // Check if user is inside the article content area (hide at top and hide when reaching comments/footer)
+        if (postContent) {
+          const rect = postContent.getBoundingClientRect();
+          const isInsideArticle = scrollY > 250 && rect.bottom > 180;
+          
+          if (!isInsideArticle) {
+            setIsFloatingVisible(false);
+          } else {
+            // User is actively reading article: show floating indicator when scroll pauses
+            setIsFloatingVisible(true);
+          }
         }
 
-        // 2. Edge Case: Top of the page
-        if (window.scrollY < 80) {
-          setActiveId(headingElements[0].id);
-          return;
-        }
-
-        // 3. Normal Reading Flow: Last heading passing the header offset
-        const headerOffset = 130; // 70px fixed header + 60px viewport reading line
+        // Active heading tracking
+        const headerOffset = 130;
         let currentActive = headingElements[0].id;
 
         for (let i = 0; i < headingElements.length; i++) {
@@ -69,19 +71,19 @@ export default function TOC({ contentSelector, id }) {
         setActiveId(currentActive);
       };
 
-      // Initial active check
-      updateActiveHeading();
+      updateTocState();
 
-      // Optimized scroll listener with requestAnimationFrame
-      let ticking = false;
+      // Scroll listener with pause-reveal intelligence
       const onScroll = () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateActiveHeading();
-            ticking = false;
-          });
-          ticking = true;
-        }
+        // While actively scrolling, keep tab subtle / fade slightly
+        if (scrollPauseTimerRef.current) clearTimeout(scrollPauseTimerRef.current);
+        
+        updateTocState();
+
+        // Reveal fully when user pauses for 350ms
+        scrollPauseTimerRef.current = setTimeout(() => {
+          updateTocState();
+        }, 350);
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -89,6 +91,7 @@ export default function TOC({ contentSelector, id }) {
       return () => {
         window.removeEventListener('scroll', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+        if (scrollPauseTimerRef.current) clearTimeout(scrollPauseTimerRef.current);
       };
     }, 100);
 
@@ -99,7 +102,6 @@ export default function TOC({ contentSelector, id }) {
     e.preventDefault();
     e.stopPropagation();
 
-    // Lock scroll listener during smooth scrolling to prevent premature active jumping
     isClickScrolling.current = true;
     setActiveId(headingId);
     setIsMobileOpen(false);
@@ -147,16 +149,16 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Floating TOC Trigger Button */}
+      {/* Mobile Smart Floating Side Tab (우측 가장자리 슬림 탭: 본문 및 댓글 간섭 0%) */}
       <button 
         type="button" 
-        className={styles.mobileTocFab}
+        className={`${styles.mobileSideTab} ${isFloatingVisible ? styles.mobileSideTabVisible : ''}`}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        aria-label="모바일 목차 열기/닫기"
+        aria-label="모바일 스마트 목차 열기/닫기"
         aria-expanded={isMobileOpen}
       >
-        <span>{isMobileOpen ? '✕' : '📑'}</span>
-        <span className={styles.mobileTocFabText}>목차</span>
+        <span className={styles.mobileSideIcon}>📑</span>
+        <span className={styles.mobileSideText}>목차</span>
       </button>
 
       {/* Mobile Floating TOC Drawer Modal */}
@@ -165,7 +167,7 @@ export default function TOC({ contentSelector, id }) {
           <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
             <div className={styles.mobileTocHeader}>
               <div className={styles.tocTitle} style={{ margin: 0 }}>
-                <span>📌</span> <strong>글 목차</strong>
+                <span>📌</span> <strong>아티클 목차</strong>
               </div>
               <button 
                 type="button" 
