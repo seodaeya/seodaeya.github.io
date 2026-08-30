@@ -299,14 +299,19 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   )}
                 </div>
 
-                <button 
-                  type="button" 
-                  className={styles.expandToggleBtn}
-                  onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
-                  aria-label="인기 아티클 1~5위 전체보기 토글"
-                >
-                  <span>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
-                </button>
+                <div className={styles.leaderboardBtnGroup}>
+                  <button 
+                    type="button" 
+                    className={styles.expandToggleBtn}
+                    onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
+                    aria-label="인기 아티클 1~5위 전체보기 토글"
+                  >
+                    <span>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
+                  </button>
+                  <Link href="/ranking" className={styles.viewAllRankingsBtn}>
+                    전체 순위 →
+                  </Link>
+                </div>
               </div>
 
               {/* 1st Place Hero Card */}

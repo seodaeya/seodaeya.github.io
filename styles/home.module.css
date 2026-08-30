@@ -938,3 +938,27 @@
     min-width: 34px;
   }
 }
+.leaderboardBtnGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viewAllRankingsBtn {
+  background: rgba(138, 43, 226, 0.12);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: var(--accent-light);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 9999px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.viewAllRankingsBtn:hover {
+  background: var(--accent-light);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.4);
+}

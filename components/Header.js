@@ -103,6 +103,13 @@ export default function Header() {
             카테고리
           </Link>
 
+          <Link 
+            href="/ranking" 
+            className={`${styles.navLink} ${router.pathname === '/ranking' || router.pathname.startsWith('/ranking') ? styles.activeNavLink : ''}`}
+          >
+            랭킹 🏆
+          </Link>
+
           {/* 실험 서비스 드롭다운 */}
           <div 
             className={styles.navDropdownWrapper}
@@ -282,6 +289,14 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>📂</span> 카테고리
+            </Link>
+
+            <Link 
+              href="/ranking" 
+              className={`${styles.mobileNavLink} ${router.pathname === '/ranking' || router.pathname.startsWith('/ranking') ? styles.activeMobileNavLink : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>🏆</span> 실시간 랭킹
             </Link>
 
             {/* Mobile Lab Services Group */}

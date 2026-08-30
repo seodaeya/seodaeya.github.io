@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 30 Aug 2026 12:30:47 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 30 Aug 2026 12:55:45 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드]]></title>
+    <link>https://seodaeya.github.io/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/</guid>
+    <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[긴 기술 아티클 (Article) 을 읽을 때 독자가 가장 답답함을 느끼는 순간은 "내가 지금 전체 내용 중 어디를 읽고 있는지, 다음 주제는 무엇인지" 를 놓쳤을 때입니다. 웹사이트의 목차(Table of Contents, TOC) 는 독자에게 글의 전체 지도를 제공...]]></description>
+  </item>
   <item>
     <title><![CDATA[온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심]]></title>
     <link>https://seodaeya.github.io/posts/20260827-1-ecommerce-ontology-ai-search-guide/</link>

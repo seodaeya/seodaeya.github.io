@@ -1,5 +1,11 @@
 [
   {
+    "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
+    "category": "Dev & Software",
+    "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md",
+    "date": "20260830"
+  },
+  {
     "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
     "category": "Tech & Dev",
     "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md",
@@ -52,11 +58,5 @@
     "category": "Hardware & DIY",
     "file": "posts/20260812-1-macos-android-openmtp-guide.md",
     "date": "20260812"
-  },
-  {
-    "title": "기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐",
-    "category": "Dev & Software",
-    "file": "posts/20260811-1-privacy-policy-cpo-guide.md",
-    "date": "20260811"
   }
 ]

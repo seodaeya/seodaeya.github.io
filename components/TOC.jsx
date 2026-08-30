@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '@/styles/toc.module.css';
 
@@ -6,11 +6,16 @@ export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isPillVisible, setIsPillVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const isClickScrolling = useRef(false);
+  const clickTimeoutRef = useRef(null);
+
   useEffect(() => {
     setMounted(true);
     setHeadings([]);
     setActiveId('');
+    setIsPillVisible(true);
 
     const container = document.querySelector(contentSelector);
     if (!container) return undefined;
@@ -32,9 +37,6 @@ export default function TOC({ contentSelector, id }) {
     setHeadings(headingList);
     setActiveId(headingList[0].id);
 
-    // Compare against a fixed viewport line. Look up each element by ID for
-    // every update because React can replace dangerouslySetInnerHTML nodes
-    // during hydration, making a saved element reference report a zero rect.
     const activationOffset = 120;
     let animationFrameId = null;
     const updateActiveHeading = () => {
@@ -61,15 +63,30 @@ export default function TOC({ contentSelector, id }) {
     };
 
     updateActiveHeading();
-    window.addEventListener('scroll', scheduleActiveHeadingUpdate, { passive: true });
+
+    // 스크롤 중에는 숨겼다가, 스크롤이 멈춘 후 2초 뒤에 다시 노출
+    let scrollHideTimer = null;
+    const handleScroll = () => {
+      scheduleActiveHeadingUpdate();
+
+      setIsPillVisible(false);
+      if (scrollHideTimer) clearTimeout(scrollHideTimer);
+      scrollHideTimer = setTimeout(() => {
+        setIsPillVisible(true);
+      }, 2000);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', scheduleActiveHeadingUpdate, { passive: true });
     window.addEventListener('load', scheduleActiveHeadingUpdate);
 
     return () => {
-      window.removeEventListener('scroll', scheduleActiveHeadingUpdate);
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', scheduleActiveHeadingUpdate);
       window.removeEventListener('load', scheduleActiveHeadingUpdate);
       if (animationFrameId !== null) window.cancelAnimationFrame(animationFrameId);
+      if (scrollHideTimer !== null) clearTimeout(scrollHideTimer);
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
     };
   }, [contentSelector, id]);
 
@@ -77,6 +94,7 @@ export default function TOC({ contentSelector, id }) {
     e.preventDefault();
     e.stopPropagation();
 
+    isClickScrolling.current = true;
     setActiveId(headingId);
     setIsMobileOpen(false);
 
@@ -89,6 +107,10 @@ export default function TOC({ contentSelector, id }) {
 
     window.history.replaceState(null, '', `#${headingId}`);
 
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 800);
   }, []);
 
   if (headings.length === 0) return null;
@@ -97,13 +119,12 @@ export default function TOC({ contentSelector, id }) {
   const displayIdx = currentIdx >= 0 ? currentIdx + 1 : 1;
   const progressText = `${displayIdx}/${headings.length}`;
 
-  // Portal directly to document.body so CSS containment or parent overflow can NEVER trap the fixed button/drawer
   const mobilePortalUI = mounted && createPortal(
     <>
-      {/* Mobile Floating TOC Banner Button (항상 브라우저 화면 뷰포트에 100% 고정되어 글을 읽는 내내 따라다님) */}
+      {/* Mobile Floating TOC Banner Button (스크롤 중 자동 숨김 -> 멈춘 후 2초 뒤 등장) */}
       <button 
         type="button" 
-        className={styles.mobileFloatingPill}
+        className={`${styles.mobileFloatingPill} ${!isPillVisible && !isMobileOpen ? styles.mobileFloatingPillHidden : ''}`}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         aria-label="모바일 아티클 목차 열기"
         aria-expanded={isMobileOpen}
