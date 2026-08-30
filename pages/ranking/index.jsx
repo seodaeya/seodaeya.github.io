@@ -39,6 +39,7 @@ export async function getStaticProps() {
 export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isShowAll, setIsShowAll] = useState(false);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -65,13 +66,25 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
   }, [allRankings, selectedCategory, searchQuery]);
 
   const top3 = allRankings.slice(0, 3);
-  const remainingList = filteredRankings;
+  
+  // 기본은 10위까지 노출, 더보기 토글 시 전체 노출 (검색이나 카테고리 필터링 시에는 전체 일치 항목 노출)
+  const isDefaultView = selectedCategory === '전체' && !searchQuery;
+  const displayedList = isDefaultView && !isShowAll 
+    ? filteredRankings.slice(0, 10) 
+    : filteredRankings;
 
   const getChangeClass = (change) => {
     if (change === 'up') return styles.changeUp;
     if (change === 'down') return styles.changeDown;
     if (change === 'new') return styles.changeNew;
     return styles.changeSame;
+  };
+
+  const getAriaLabel = (item) => {
+    if (item.change === 'up') return `${item.changeText.replace('▲', '').trim()}계단 상승`;
+    if (item.change === 'down') return `${item.changeText.replace('▼', '').trim()}계단 하락`;
+    if (item.change === 'new') return '신규 진입';
+    return '순위 변동 없음';
   };
 
   return (
@@ -96,7 +109,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
           </div>
           <h1 className={styles.heroTitle}>🏆 실시간 인기 아티클 랭킹</h1>
           <p className={styles.heroSubtitle}>
-            구글 애널리틱스 4(GA4)의 실제 독자 페이지뷰와 알고리즘 가중치를 결합하여 매일 집계되는 블로그 전체 기술 아티클 순위표입니다.
+            Google Analytics 4(GA4)의 실제 독자 페이지뷰와 최신 아티클 신선도 가중치를 결합하여 매일 집계되는 블로그 전체 기술 아티클 종합 순위표입니다.
           </p>
         </section>
 
@@ -115,7 +128,10 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   <span className={`${styles.podiumRankBadge} ${styles.rank1Color}`}>
                     🥇 1위
                   </span>
-                  <span className={`${styles.changePill} ${getChangeClass(top3[0].change)}`}>
+                  <span 
+                    className={`${styles.changePill} ${getChangeClass(top3[0].change)}`}
+                    aria-label={getAriaLabel(top3[0])}
+                  >
                     {top3[0].changeText || '-'}
                   </span>
                 </div>
@@ -126,7 +142,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   {top3[0].views ? (
                     <span className={styles.viewsBadge}>🔥 {top3[0].views} Views</span>
                   ) : (
-                    <span>{top3[0].date}</span>
+                    <span className={styles.viewsPendingBadge}>집계 중</span>
                   )}
                 </div>
               </Link>
@@ -137,7 +153,10 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   <span className={`${styles.podiumRankBadge} ${styles.rank2Color}`}>
                     🥈 2위
                   </span>
-                  <span className={`${styles.changePill} ${getChangeClass(top3[1].change)}`}>
+                  <span 
+                    className={`${styles.changePill} ${getChangeClass(top3[1].change)}`}
+                    aria-label={getAriaLabel(top3[1])}
+                  >
                     {top3[1].changeText || '-'}
                   </span>
                 </div>
@@ -148,7 +167,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   {top3[1].views ? (
                     <span className={styles.viewsBadge}>🔥 {top3[1].views} Views</span>
                   ) : (
-                    <span>{top3[1].date}</span>
+                    <span className={styles.viewsPendingBadge}>집계 중</span>
                   )}
                 </div>
               </Link>
@@ -159,7 +178,10 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   <span className={`${styles.podiumRankBadge} ${styles.rank3Color}`}>
                     🥉 3위
                   </span>
-                  <span className={`${styles.changePill} ${getChangeClass(top3[2].change)}`}>
+                  <span 
+                    className={`${styles.changePill} ${getChangeClass(top3[2].change)}`}
+                    aria-label={getAriaLabel(top3[2])}
+                  >
                     {top3[2].changeText || '-'}
                   </span>
                 </div>
@@ -170,7 +192,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   {top3[2].views ? (
                     <span className={styles.viewsBadge}>🔥 {top3[2].views} Views</span>
                   ) : (
-                    <span>{top3[2].date}</span>
+                    <span className={styles.viewsPendingBadge}>집계 중</span>
                   )}
                 </div>
               </Link>
@@ -211,14 +233,17 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
 
           {/* Full Rankings List */}
           <div className={styles.rankingsList}>
-            {remainingList.length > 0 ? (
-              remainingList.map((item) => (
+            {displayedList.length > 0 ? (
+              displayedList.map((item) => (
                 <Link key={item.rank} href={item.url} className={styles.rankingRow}>
                   <div className={styles.rowLeft}>
                     <span className={styles.rankNumBadge}>
                       {item.rank === 1 ? '🥇 1' : item.rank === 2 ? '🥈 2' : item.rank === 3 ? '🥉 3' : `${item.rank}위`}
                     </span>
-                    <span className={`${styles.changePill} ${getChangeClass(item.change)}`}>
+                    <span 
+                      className={`${styles.changePill} ${getChangeClass(item.change)}`}
+                      aria-label={getAriaLabel(item)}
+                    >
                       {item.changeText || '-'}
                     </span>
                     <div className={styles.rowTitleGroup}>
@@ -231,8 +256,10 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
                   </div>
 
                   <div className={styles.rowRight}>
-                    {item.views && (
+                    {item.views ? (
                       <span className={styles.viewsBadge}>🔥 {item.views} Views</span>
+                    ) : (
+                      <span className={styles.viewsPendingBadge}>집계 중</span>
                     )}
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6"></polyline>
@@ -246,6 +273,19 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
               </div>
             )}
           </div>
+
+          {/* Show More / Show Less Toggle Button for default top 10 view */}
+          {isDefaultView && filteredRankings.length > 10 && (
+            <div className={styles.showMoreContainer}>
+              <button 
+                type="button" 
+                className={styles.showMoreRankingsBtn}
+                onClick={() => setIsShowAll(!isShowAll)}
+              >
+                <span>{isShowAll ? '▲ 상위 10위만 보기' : `▼ 11위 ~ ${filteredRankings.length}위 전체 보기`}</span>
+              </button>
+            </div>
+          )}
         </section>
       </div>
     </>

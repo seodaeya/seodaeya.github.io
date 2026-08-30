@@ -495,3 +495,44 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
+
+.viewsPendingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.showMoreContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.showMoreRankingsBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass-active);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.showMoreRankingsBtn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.25);
+}
