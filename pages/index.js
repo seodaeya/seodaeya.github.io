@@ -299,21 +299,14 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   )}
                 </div>
 
-                <div className={styles.leaderboardBtnGroup}>
-                  <button 
-                    type="button" 
-                    className={styles.expandToggleBtn}
-                    onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
-                    aria-label="인기 아티클 1~5위 전체보기 토글"
-                  >
-                    <span className={styles.desktopToggleText}>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
-                    <span className={styles.mobileToggleText}>{isLeaderboardOpen ? '접기 ▲' : '1~5위 ▼'}</span>
-                  </button>
-                  <Link href="/ranking" className={styles.viewAllRankingsBtn}>
-                    <span className={styles.desktopToggleText}>전체 순위 →</span>
-                    <span className={styles.mobileToggleText}>전체 🏆</span>
-                  </Link>
-                </div>
+                <button 
+                  type="button" 
+                  className={styles.expandToggleBtn}
+                  onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
+                  aria-label="인기 아티클 1~5위 전체보기 토글"
+                >
+                  <span>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
+                </button>
               </div>
 
               {/* 1st Place Hero Card */}
@@ -352,6 +345,10 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     </Link>
                   );
                 })}
+                {/* 2~5위 하단 전체 랭킹 종합 순위 바로가기 버튼 */}
+                <Link href="/ranking" className={styles.leaderboardViewAllCta}>
+                  <span>🏆</span> <strong>실시간 전체 랭킹 종합 순위표 보러가기 →</strong>
+                </Link>
               </div>
             </section>
           );

@@ -1000,3 +1000,31 @@
 .mobileToggleText {
   display: none;
 }
+
+/* Drawer Bottom Full Ranking CTA */
+.leaderboardViewAllCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(138, 43, 226, 0.12);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: var(--accent-light);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.leaderboardViewAllCta:hover {
+  background: var(--accent-light);
+  color: #ffffff;
+  border-color: var(--accent-light);
+  box-shadow: 0 4px 18px rgba(138, 43, 226, 0.35);
+  transform: translateY(-1px);
+}
