@@ -63,14 +63,19 @@ export async function getStaticProps() {
   posts.sort(sortDate);
   videos.sort(sortDate);
 
-  // Read trending / curated flagship posts
+  // Read trending / curated flagship posts with metadata
   const trendingPath = path.join(process.cwd(), 'files/trending-posts.json');
-  let trendingPosts = [];
+  let trendingData = { updatedAt: '매일 00:00 KST 기준', posts: [] };
   if (fs.existsSync(trendingPath)) {
     try {
-      trendingPosts = JSON.parse(fs.readFileSync(trendingPath, 'utf8'));
+      const parsed = JSON.parse(fs.readFileSync(trendingPath, 'utf8'));
+      if (Array.isArray(parsed)) {
+        trendingData = { updatedAt: '매일 00:00 KST 기준', posts: parsed };
+      } else {
+        trendingData = parsed;
+      }
     } catch (e) {
-      trendingPosts = [];
+      trendingData = { updatedAt: '매일 00:00 KST 기준', posts: [] };
     }
   }
 
@@ -78,16 +83,19 @@ export async function getStaticProps() {
     props: {
       allPosts: posts,
       allVideos: videos,
-      trendingPosts,
+      trendingData,
     },
   };
 }
 
-export default function Home({ allPosts = [], allVideos = [], trendingPosts = [] }) {
+export default function Home({ allPosts = [], allVideos = [], trendingData = { updatedAt: '', posts: [] } }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [visiblePostCount, setVisiblePostCount] = useState(6);
   const [visibleVideoCount, setVisibleVideoCount] = useState(6);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const trendingPosts = trendingData?.posts || [];
+  const trendingUpdatedAt = trendingData?.updatedAt || '매일 00:00 KST 기준';
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
@@ -215,10 +223,42 @@ export default function Home({ allPosts = [], allVideos = [], trendingPosts = []
               className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
               aria-label="실시간 인기 아티클 랭킹"
             >
-              {/* Header Row: LIVE Badge (Left) + Toggle Button (Right) */}
+              {/* Header Row: LIVE Badge with Info Tooltip (Left) + Toggle Button (Right) */}
               <div className={styles.leaderboardHeaderRow}>
                 <div className={styles.leaderboardLiveBadge}>
                   <span className={styles.liveDot} />
+
+                  {/* i Tooltip Trigger */}
+                  <div className={styles.infoTooltipWrapper}>
+                    <button
+                      type="button"
+                      className={styles.infoTooltipBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsInfoTooltipOpen(!isInfoTooltipOpen);
+                      }}
+                      aria-label="실시간 랭킹 집계 기준 안내 툴팁"
+                      title="집계 기준 시점 안내"
+                    >
+                      i
+                    </button>
+
+                    {/* Tooltip Popover Box */}
+                    {isInfoTooltipOpen && (
+                      <div className={styles.infoTooltipBox} role="tooltip">
+                        <div className={styles.infoTooltipHeader}>
+                          <span>ℹ️</span> <strong>인기 랭킹 집계 기준</strong>
+                        </div>
+                        <p className={styles.infoTooltipText}>
+                          매일 한국 시간 00:00(자정)에 블로그 아티클의 최신 발행일, 아키텍처 중요도 및 독자 관심도 가중치를 자동 계산하여 순위가 역동적으로 갱신됩니다.
+                        </p>
+                        <div className={styles.infoTooltipFooter}>
+                          <span>📅 기준 시점:</span> <strong>{trendingUpdatedAt}</strong>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
                   <span>🏆 실시간 인기 아티클</span>
                 </div>
 

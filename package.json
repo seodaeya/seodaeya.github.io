@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "node files/gen/generate-latest-posts.js && node files/gen/generate-categories.js && node files/gen/generate-sitemap.js && node files/gen/generate-rss.js && next build",
+    "build": "node files/gen/generate-latest-posts.js && node files/gen/generate-trending-posts.js && node files/gen/generate-categories.js && node files/gen/generate-sitemap.js && node files/gen/generate-rss.js && next build",
     "test": "node --test workers/cart-product-lookup/test/helpers.test.mjs",
     "start": "next start",
     "lint": "next lint",
@@ -12,6 +12,7 @@
     "indexnow": "node files/gen/submit-indexnow.js"
   },
   "dependencies": {
+    "@google-analytics/data": "^7.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^15.0.8",
     "mermaid": "^11.17.2",

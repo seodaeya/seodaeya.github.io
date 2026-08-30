@@ -52,6 +52,8 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_COUPANG_LOOKUP_ENDPOINT: ${{ vars.COUPANG_LOOKUP_ENDPOINT }}
+          GA_SERVICE_ACCOUNT_KEY: ${{ secrets.GA_SERVICE_ACCOUNT_KEY }}
+          GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
 
       # 5. GitHub Pages 환경 설정
       - name: Setup Pages
