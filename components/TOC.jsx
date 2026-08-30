@@ -5,16 +5,12 @@ export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [isFooterReached, setIsFooterReached] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
-  const scrollTimerRef = useRef(null);
 
   useEffect(() => {
     setHeadings([]);
     setActiveId('');
-    setIsFooterReached(false);
 
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
@@ -39,18 +35,7 @@ export default function TOC({ contentSelector, id }) {
       const updateScrollTracking = () => {
         if (isClickScrolling.current) return;
 
-        const postContent = document.querySelector(contentSelector);
-        if (postContent) {
-          const rect = postContent.getBoundingClientRect();
-          // Hide only when user has completely scrolled past the article into the comment/footer area
-          if (rect.bottom < 100) {
-            setIsFooterReached(true);
-          } else {
-            setIsFooterReached(false);
-          }
-        }
-
-        // Active heading tracking
+        // High precision active heading tracker
         const headerOffset = 140;
         let currentActive = headingElements[0].id;
 
@@ -70,13 +55,7 @@ export default function TOC({ contentSelector, id }) {
       updateScrollTracking();
 
       const onScroll = () => {
-        setIsScrolling(true);
         updateScrollTracking();
-
-        if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
-        scrollTimerRef.current = setTimeout(() => {
-          setIsScrolling(false);
-        }, 400);
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -84,7 +63,6 @@ export default function TOC({ contentSelector, id }) {
       return () => {
         window.removeEventListener('scroll', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-        if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
       };
     }, 100);
 
@@ -116,6 +94,9 @@ export default function TOC({ contentSelector, id }) {
 
   if (headings.length === 0) return null;
 
+  const currentIdx = headings.findIndex(h => h.id === activeId);
+  const progressText = `${currentIdx >= 0 ? currentIdx + 1 : 1}/${headings.length}`;
+
   return (
     <>
       {/* Desktop Sticky Sidebar TOC */}
@@ -142,19 +123,17 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Sleek Floating TOC Pill (우측 하단 플로팅 배너: 따라다니며 스크롤 시 반투명, 댓글 도달 시 자동 숨김) */}
+      {/* Mobile Floating TOC Banner Pill (모바일 화면 항상 선명하게 플로팅 노출) */}
       <button 
         type="button" 
-        className={`${styles.mobileFloatingPill} ${isScrolling ? styles.mobileFloatingPillScrolling : ''} ${isFooterReached ? styles.mobileFloatingPillHidden : ''}`}
+        className={styles.mobileFloatingPill}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         aria-label="모바일 아티클 목차 열기"
         aria-expanded={isMobileOpen}
       >
         <span className={styles.pillIcon}>📑</span>
         <span className={styles.pillText}>목차</span>
-        <span className={styles.pillProgressBadge}>
-          {headings.findIndex(h => h.id === activeId) + 1}/{headings.length}
-        </span>
+        <span className={styles.pillProgressBadge}>{progressText}</span>
       </button>
 
       {/* Mobile Floating TOC Drawer Modal */}

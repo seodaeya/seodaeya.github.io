@@ -92,70 +92,51 @@
   }
 }
 
-/* Mobile Sleek Floating TOC Pill (글을 읽을 때 옆에 예쁘게 따라다니는 플로팅 배너) */
+/* Mobile Floating TOC Pill Banner (모바일 화면 우측 하단 선명한 플로팅 배너) */
 .mobileFloatingPill {
   display: none;
   position: fixed;
-  right: 18px;
-  bottom: 88px;
-  background: rgba(15, 23, 42, 0.88);
+  right: 20px;
+  bottom: 24px;
+  background: rgba(15, 23, 42, 0.94);
   border: 1.5px solid var(--accent-light);
   color: var(--text-primary);
   border-radius: 9999px;
-  padding: 8px 14px;
-  font-size: 0.82rem;
+  padding: 10px 16px;
+  font-size: 0.85rem;
   font-weight: 800;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(138, 43, 226, 0.3);
-  z-index: 95;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 16px rgba(138, 43, 226, 0.35);
+  z-index: 1000;
   cursor: pointer;
   align-items: center;
-  gap: 7px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
-  opacity: 0.95;
-  transform: translateY(0) scale(1);
 }
 
-/* 스크롤을 내릴 때: 본문 읽기에 방해되지 않도록 부드럽게 반투명화 */
-.mobileFloatingPillScrolling {
-  opacity: 0.45;
-  transform: translateY(0) scale(0.95);
-}
-
-/* 댓글/푸터 영역에 도달했을 때: 댓글 작성 버튼을 가리지 않도록 100% 자동 숨김 */
-.mobileFloatingPillHidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transform: translateY(20px) scale(0.8) !important;
-}
-
-.mobileFloatingPill:hover,
 .mobileFloatingPill:active {
-  opacity: 1 !important;
-  transform: translateY(-2px) scale(1.04) !important;
-  background: var(--bg-tertiary);
-  border-color: var(--accent-light);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
+  transform: scale(0.96);
 }
 
 .pillIcon {
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .pillText {
   color: var(--text-primary);
   font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .pillProgressBadge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--accent-light);
-  background: rgba(138, 43, 226, 0.18);
-  border: 1px solid rgba(138, 43, 226, 0.35);
-  padding: 2px 7px;
+  color: #c084fc;
+  background: rgba(138, 43, 226, 0.25);
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  padding: 2px 8px;
   border-radius: 9999px;
   margin-left: 2px;
 }
@@ -168,9 +149,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
   animation: fadeIn 0.2s ease-out forwards;
 }
 
@@ -184,7 +165,7 @@
   border-top: 1.5px solid var(--border-glass-active);
   border-radius: 24px 24px 0 0;
   padding: 24px 20px 36px;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -203,7 +184,7 @@
   background: none;
   border: none;
   color: var(--text-secondary);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   cursor: pointer;
   padding: 6px;
   display: flex;

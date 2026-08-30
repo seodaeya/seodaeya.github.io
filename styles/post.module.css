@@ -598,127 +598,124 @@
   color: #10b981;
 }
 
-/* 3. Social Share Bar */
+/* 3. Social Share Bar (Unified High-End Tech Magazine Layout) */
 .shareSection {
-  margin: 36px 0;
-  padding: 20px 24px;
+  margin: 40px 0 32px 0;
+  padding: 22px 24px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
+  border-radius: 18px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .shareLabel {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 800;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: -0.01em;
 }
 
 .shareButtons {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 10px;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .shareBtn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 15px;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
   border-radius: 12px;
   border: 1px solid var(--border-glass);
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 700;
   cursor: pointer;
   text-decoration: none !important;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
+  box-sizing: border-box;
 }
 
 .shareBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-/* 💬 1. 카카오톡 */
-.shareBtnKakao {
-  background: #FEE500;
-  color: #191919;
-  border-color: #FEE500;
-  font-weight: 700;
-}
-.shareBtnKakao:hover {
-  background: #fada0a;
-  color: #000000;
-  border-color: #fada0a;
-}
-
-/* 🔗 2. 링크 복사 */
-.shareBtnCopy {
   background: var(--bg-tertiary);
-  border-color: var(--border-glass-active);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
+
+/* 1. 카카오톡 */
+.shareBtnKakao:hover {
+  border-color: #FEE500;
+  color: #FEE500;
+  box-shadow: 0 6px 18px rgba(254, 229, 0, 0.25);
+}
+.shareBtnKakao svg {
+  color: #FEE500;
+}
+
+/* 2. 링크 복사 */
 .shareBtnCopy:hover {
-  border-color: var(--accent-light);
-  color: var(--accent-light);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+}
+.shareBtnCopy svg {
+  color: #34d399;
 }
 
-/* 📷 3. 인스타그램 */
-.shareBtnInstagram {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: #ffffff !important;
-  border: none;
-  font-weight: 600;
-}
+/* 3. 인스타그램 */
 .shareBtnInstagram:hover {
-  opacity: 0.95;
-  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.35);
+  border-color: #e1306c;
+  color: #e1306c;
+  box-shadow: 0 6px 18px rgba(225, 48, 108, 0.25);
+}
+.shareBtnInstagram svg {
+  color: #f77737;
 }
 
-/* 🐦 4. X(트위터) */
-.shareBtnX {
-  background: #000000;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.2);
-}
+/* 4. X(트위터) */
 .shareBtnX:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
 }
 
-/* 🧵 5. Threads */
-.shareBtnThreads {
-  background: var(--bg-secondary);
-  border-color: var(--border-glass-active);
-  color: var(--text-primary);
-}
+/* 5. Threads */
 .shareBtnThreads:hover {
-  border-color: var(--accent-light);
-  color: var(--accent-light);
+  border-color: #c084fc;
+  color: #c084fc;
+  box-shadow: 0 6px 18px rgba(192, 132, 252, 0.25);
 }
-
-@media (max-width: 768px) {
-  .prevNextSection {
-    grid-template-columns: 1fr;
-  }
-  .shareSection {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.shareBtnThreads svg {
+  color: #c084fc;
 }
 
 @media (max-width: 640px) {
-  .prevNextSection {
-    grid-template-columns: 1fr;
+  .shareSection {
+    padding: 16px 18px;
+    border-radius: 16px;
     gap: 12px;
+  }
+  .shareButtons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .shareBtn:last-child {
+    grid-column: span 2;
+  }
+  .shareBtn {
+    padding: 9px 12px;
+    font-size: 0.8rem;
   }
 }
 
