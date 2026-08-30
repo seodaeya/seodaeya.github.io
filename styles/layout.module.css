@@ -593,14 +593,17 @@
   .desktopYoutubeBtn {
     display: none;
   }
+  .desktopRssBtn {
+    display: none;
+  }
   .hamburgerBtn {
     display: flex;
   }
   .headerContainer {
-    padding: 0 16px;
+    padding: 0 20px;
   }
   .logoText {
-    font-size: 1.2rem;
+    font-size: 1.18rem;
   }
   .footerContainer {
     grid-template-columns: 1fr;
@@ -613,12 +616,12 @@
 
 @media (max-width: 480px) {
   .headerContainer {
-    padding: 0 12px;
+    padding: 0 18px;
   }
   .logoText {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
   .headerRightArea {
-    gap: 8px;
+    gap: 10px;
   }
 }

@@ -1,18 +1,19 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import styles from '@/styles/toc.module.css';
 
 export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isCommentsVisible, setIsCommentsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
 
   useEffect(() => {
+    setMounted(true);
     setHeadings([]);
     setActiveId('');
-    setIsCommentsVisible(false);
 
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
@@ -33,24 +34,14 @@ export default function TOC({ contentSelector, id }) {
       });
 
       setHeadings(headingList);
+      if (headingList.length > 0) {
+        setActiveId(headingList[0].id);
+      }
 
-      const updateScrollTracking = () => {
+      const updateActiveHeading = () => {
         if (isClickScrolling.current) return;
 
-        // Auto-hide when user scrolls down to comments or footer area
-        const postContent = document.querySelector(contentSelector);
-        if (postContent) {
-          const rect = postContent.getBoundingClientRect();
-          // Hide when the main article body has completely scrolled out of the top half
-          if (rect.bottom < 150) {
-            setIsCommentsVisible(true);
-          } else {
-            setIsCommentsVisible(false);
-          }
-        }
-
-        // High precision active heading tracker
-        const headerOffset = 140;
+        const headerOffset = 120;
         let currentActive = headingElements[0].id;
 
         for (let i = 0; i < headingElements.length; i++) {
@@ -66,10 +57,10 @@ export default function TOC({ contentSelector, id }) {
         setActiveId(currentActive);
       };
 
-      updateScrollTracking();
+      updateActiveHeading();
 
       const onScroll = () => {
-        updateScrollTracking();
+        updateActiveHeading();
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -78,7 +69,7 @@ export default function TOC({ contentSelector, id }) {
         window.removeEventListener('scroll', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
       };
-    }, 100);
+    }, 120);
 
     return () => clearTimeout(timer);
   }, [contentSelector, id]);
@@ -109,7 +100,47 @@ export default function TOC({ contentSelector, id }) {
   if (headings.length === 0) return null;
 
   const currentIdx = headings.findIndex(h => h.id === activeId);
-  const progressText = `${currentIdx >= 0 ? currentIdx + 1 : 1}/${headings.length}`;
+  const displayIdx = currentIdx >= 0 ? currentIdx + 1 : 1;
+  const progressText = `${displayIdx}/${headings.length}`;
+
+  const mobileDrawerMarkup = mounted && isMobileOpen && createPortal(
+    <div className={styles.mobileTocOverlay} onClick={() => setIsMobileOpen(false)}>
+      <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.drawerHandleBar} />
+        <div className={styles.mobileTocHeader}>
+          <div className={styles.mobileTocHeaderTitle}>
+            <span>📌</span> <strong>아티클 목차 ({headings.length}개 챕터)</strong>
+          </div>
+          <button 
+            type="button" 
+            className={styles.mobileTocCloseBtn}
+            onClick={() => setIsMobileOpen(false)}
+            aria-label="닫기"
+          >
+            ✕
+          </button>
+        </div>
+        <nav className={styles.mobileTocNav}>
+          <ul className={styles.tocList}>
+            {headings.map((h, index) => (
+              <li 
+                key={h.id} 
+                className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
+              >
+                <a 
+                  href={`#${h.id}`} 
+                  onClick={(e) => handleClick(e, h.id)}
+                >
+                  <span className={styles.headingNum}>{index + 1}.</span> {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>,
+    document.body
+  );
 
   return (
     <>
@@ -137,10 +168,10 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Floating TOC Banner Pill (우측 중앙 플로팅 배너: 댓글 영역 100% 간섭 차단 및 자동 숨김) */}
+      {/* Mobile Floating TOC Banner Button (화면 우측 하단 80px 높이, 엄지 손가락 위치에 상시 플로팅) */}
       <button 
         type="button" 
-        className={`${styles.mobileFloatingPill} ${isCommentsVisible ? styles.mobileFloatingPillHidden : ''}`}
+        className={styles.mobileFloatingPill}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         aria-label="모바일 아티클 목차 열기"
         aria-expanded={isMobileOpen}
@@ -150,43 +181,8 @@ export default function TOC({ contentSelector, id }) {
         <span className={styles.pillProgressBadge}>{progressText}</span>
       </button>
 
-      {/* Mobile Floating TOC Drawer Modal */}
-      {isMobileOpen && (
-        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileOpen(false)}>
-          <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.mobileTocHeader}>
-              <div className={styles.tocTitle} style={{ margin: 0 }}>
-                <span>📌</span> <strong>아티클 목차</strong>
-              </div>
-              <button 
-                type="button" 
-                className={styles.mobileTocCloseBtn}
-                onClick={() => setIsMobileOpen(false)}
-                aria-label="닫기"
-              >
-                ✕
-              </button>
-            </div>
-            <nav className={styles.mobileTocNav}>
-              <ul className={styles.tocList}>
-                {headings.map((h) => (
-                  <li 
-                    key={h.id} 
-                    className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
-                  >
-                    <a 
-                      href={`#${h.id}`} 
-                      onClick={(e) => handleClick(e, h.id)}
-                    >
-                      {h.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
-      )}
+      {/* Portal-Mounted Mobile Drawer */}
+      {mobileDrawerMarkup}
     </>
   );
 }
