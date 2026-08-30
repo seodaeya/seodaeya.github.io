@@ -66,7 +66,7 @@ async function fetchRealGA4RankingsWithRetry(maxRetries = 3) {
 
       const [response] = await analyticsDataClient.runReport({
         property: `properties/${propertyId}`,
-        dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+        dateRanges: [{ startDate: '365daysAgo', endDate: 'today' }],
         dimensions: [{ name: 'pagePath' }],
         metrics: [{ name: 'screenPageViews' }],
         dimensionFilter: {
@@ -82,7 +82,7 @@ async function fetchRealGA4RankingsWithRetry(maxRetries = 3) {
       });
 
       if (!response.rows || response.rows.length === 0) {
-        console.log('ℹ️ [GA4] Returned 0 rows for /posts/ in last 30 days. Using fallback.');
+        console.log('ℹ️ [GA4] Returned 0 rows for /posts/ in last 365 days. Using fallback.');
         return null;
       }
 

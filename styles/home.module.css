@@ -906,7 +906,7 @@
   min-width: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 860px) {
   .desktopToggleText {
     display: none;
   }
@@ -914,12 +914,13 @@
     display: inline;
   }
   .leaderboardSection {
-    padding: 12px 12px;
+    padding: 12px 14px;
     border-radius: 16px;
     gap: 8px;
   }
   .leaderboardHeaderRow {
-    gap: 6px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
   .leaderboardLivePill {
     padding: 4px 8px 4px 6px;
@@ -929,16 +930,16 @@
     font-size: 0.75rem;
   }
   .leaderboardBtnGroup {
-    gap: 5px;
+    gap: 6px;
   }
   .expandToggleBtn {
     font-size: 0.72rem;
-    padding: 4px 7px;
+    padding: 4px 8px;
     border-radius: 6px;
   }
   .viewAllRankingsBtn {
     font-size: 0.72rem;
-    padding: 4px 7px;
+    padding: 4px 8px;
     border-radius: 6px;
   }
   .leaderboardRank1Card,

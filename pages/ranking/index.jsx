@@ -101,7 +101,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
           <div className={styles.heroTopRow}>
             <div className={styles.liveStatusPill}>
               <span className={styles.liveDot} />
-              <span>{isRealGA ? 'GA4 실측 라이브 연동' : 'LIVE 인기 순위'}</span>
+              <span>{isRealGA ? 'GA4 실측 연동 (최근 1년 기준)' : 'LIVE 인기 순위 (최근 1년 기준)'}</span>
             </div>
             <div className={styles.updateTimeBadge}>
               🕒 기준 시점: <strong>{updatedAt}</strong>
@@ -109,7 +109,7 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
           </div>
           <h1 className={styles.heroTitle}>🏆 실시간 인기 아티클 랭킹</h1>
           <p className={styles.heroSubtitle}>
-            Google Analytics 4(GA4)의 실제 독자 페이지뷰와 최신 아티클 신선도 가중치를 결합하여 매일 집계되는 블로그 전체 기술 아티클 종합 순위표입니다.
+            Google Analytics 4(GA4)의 최근 1년간(365일) 실제 독자 페이지뷰와 최신 아티클 신선도 가중치를 결합하여 매일 자정(00:00 KST) 집계되는 블로그 전체 기술 아티클 종합 순위표입니다.
           </p>
         </section>
 

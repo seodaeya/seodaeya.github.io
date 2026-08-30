@@ -289,7 +289,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                         <strong>실시간 인기 순위 집계 안내</strong>
                       </div>
                       <p className={styles.infoTooltipText}>
-                        매일 자정(00:00 KST) 블로그 아티클의 페이지뷰와 독자 관심도를 자동 분석하여 순위가 갱신됩니다.
+                        최근 1년간(365일) 블로그 아티클의 GA4 실측 페이지뷰와 독자 관심도를 자동 분석하여 매일 자정(00:00 KST) 순위가 갱신됩니다.
                       </p>
                       <div className={styles.infoTooltipFooter}>
                         <span className={styles.footerDot} />
