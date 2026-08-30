@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import styles from '@/styles/toc.module.css';
 
 export default function TOC({ contentSelector, id }) {
@@ -7,6 +8,7 @@ export default function TOC({ contentSelector, id }) {
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isPillVisible, setIsPillVisible] = useState(true);
+  const [isArticleEnded, setIsArticleEnded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
@@ -16,6 +18,7 @@ export default function TOC({ contentSelector, id }) {
     setHeadings([]);
     setActiveId('');
     setIsPillVisible(true);
+    setIsArticleEnded(false);
 
     const container = document.querySelector(contentSelector);
     if (!container) return undefined;
@@ -54,6 +57,14 @@ export default function TOC({ contentSelector, id }) {
       }
 
       setActiveId((current) => (current === active ? current : active));
+
+      // 마지막 개요(소제목) 위치를 통과했는지 감지
+      const lastHeading = headingList[headingList.length - 1];
+      const lastEl = document.getElementById(lastHeading.id);
+      if (lastEl) {
+        const lastRect = lastEl.getBoundingClientRect();
+        setIsArticleEnded(lastRect.top <= activationOffset);
+      }
     };
 
     const scheduleActiveHeadingUpdate = () => {
@@ -121,18 +132,26 @@ export default function TOC({ contentSelector, id }) {
 
   const mobilePortalUI = mounted && createPortal(
     <>
-      {/* Mobile Floating TOC Banner Button (스크롤 중 자동 숨김 -> 멈춘 후 2초 뒤 등장) */}
-      <button 
-        type="button" 
-        className={`${styles.mobileFloatingPill} ${!isPillVisible && !isMobileOpen ? styles.mobileFloatingPillHidden : ''}`}
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        aria-label="모바일 아티클 목차 열기"
-        aria-expanded={isMobileOpen}
-      >
-        <span className={styles.pillIcon}>📑</span>
-        <span className={styles.pillText}>목차</span>
-        <span className={styles.pillProgressBadge}>{progressText}</span>
-      </button>
+      {/* Mobile Floating Button Group (홈으로 + 목차) */}
+      <div className={`${styles.mobileFloatingButtonGroup} ${!isPillVisible && !isMobileOpen ? styles.mobileFloatingPillHidden : ''}`}>
+        {isArticleEnded && (
+          <Link href="/" className={styles.mobileHomePill} aria-label="홈으로 돌아가기">
+            <span className={styles.pillIcon}>🏠</span>
+            <span className={styles.pillText}>홈으로</span>
+          </Link>
+        )}
+        <button 
+          type="button" 
+          className={styles.mobileFloatingPill}
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          aria-label="모바일 아티클 목차 열기"
+          aria-expanded={isMobileOpen}
+        >
+          <span className={styles.pillIcon}>📑</span>
+          <span className={styles.pillText}>목차</span>
+          <span className={styles.pillProgressBadge}>{progressText}</span>
+        </button>
+      </div>
 
       {/* Mobile Floating TOC Drawer Modal */}
       {isMobileOpen && (
@@ -202,7 +221,7 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Render Mobile Floating Pill and Drawer into document.body */}
+      {/* Render Mobile Floating Group into document.body */}
       {mobilePortalUI}
     </>
   );
