@@ -52,6 +52,7 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_COUPANG_LOOKUP_ENDPOINT: ${{ vars.COUPANG_LOOKUP_ENDPOINT }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: 'G-QEKBH49RMK'
           GA_SERVICE_ACCOUNT_KEY: ${{ secrets.GA_SERVICE_ACCOUNT_KEY }}
           GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
 
