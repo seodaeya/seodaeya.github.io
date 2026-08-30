@@ -41,7 +41,7 @@ export default function TOC({ contentSelector, id }) {
       const updateActiveHeading = () => {
         if (isClickScrolling.current) return;
 
-        const headerOffset = 120;
+        const headerOffset = 150;
         let currentActive = headingElements[0].id;
 
         for (let i = 0; i < headingElements.length; i++) {
@@ -69,7 +69,7 @@ export default function TOC({ contentSelector, id }) {
         window.removeEventListener('scroll', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
       };
-    }, 120);
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [contentSelector, id]);
@@ -103,42 +103,61 @@ export default function TOC({ contentSelector, id }) {
   const displayIdx = currentIdx >= 0 ? currentIdx + 1 : 1;
   const progressText = `${displayIdx}/${headings.length}`;
 
-  const mobileDrawerMarkup = mounted && isMobileOpen && createPortal(
-    <div className={styles.mobileTocOverlay} onClick={() => setIsMobileOpen(false)}>
-      <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.drawerHandleBar} />
-        <div className={styles.mobileTocHeader}>
-          <div className={styles.mobileTocHeaderTitle}>
-            <span>📌</span> <strong>아티클 목차 ({headings.length}개 챕터)</strong>
-          </div>
-          <button 
-            type="button" 
-            className={styles.mobileTocCloseBtn}
-            onClick={() => setIsMobileOpen(false)}
-            aria-label="닫기"
-          >
-            ✕
-          </button>
-        </div>
-        <nav className={styles.mobileTocNav}>
-          <ul className={styles.tocList}>
-            {headings.map((h, index) => (
-              <li 
-                key={h.id} 
-                className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
+  // Portal directly to document.body so CSS containment or parent overflow can NEVER trap the fixed button/drawer
+  const mobilePortalUI = mounted && createPortal(
+    <>
+      {/* Mobile Floating TOC Banner Button (항상 브라우저 화면 뷰포트에 100% 고정되어 글을 읽는 내내 따라다님) */}
+      <button 
+        type="button" 
+        className={styles.mobileFloatingPill}
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        aria-label="모바일 아티클 목차 열기"
+        aria-expanded={isMobileOpen}
+      >
+        <span className={styles.pillIcon}>📑</span>
+        <span className={styles.pillText}>목차</span>
+        <span className={styles.pillProgressBadge}>{progressText}</span>
+      </button>
+
+      {/* Mobile Floating TOC Drawer Modal */}
+      {isMobileOpen && (
+        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileOpen(false)}>
+          <div className={styles.mobileTocDrawer} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.drawerHandleBar} />
+            <div className={styles.mobileTocHeader}>
+              <div className={styles.mobileTocHeaderTitle}>
+                <span>📌</span> <strong>아티클 목차 ({headings.length}개 챕터)</strong>
+              </div>
+              <button 
+                type="button" 
+                className={styles.mobileTocCloseBtn}
+                onClick={() => setIsMobileOpen(false)}
+                aria-label="닫기"
               >
-                <a 
-                  href={`#${h.id}`} 
-                  onClick={(e) => handleClick(e, h.id)}
-                >
-                  <span className={styles.headingNum}>{index + 1}.</span> {h.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </div>,
+                ✕
+              </button>
+            </div>
+            <nav className={styles.mobileTocNav}>
+              <ul className={styles.tocList}>
+                {headings.map((h, index) => (
+                  <li 
+                    key={h.id} 
+                    className={`${styles.tocItem} ${h.level === 'h3' ? styles.tocSubItem : ''} ${activeId === h.id ? styles.active : ''}`}
+                  >
+                    <a 
+                      href={`#${h.id}`} 
+                      onClick={(e) => handleClick(e, h.id)}
+                    >
+                      <span className={styles.headingNum}>{index + 1}.</span> {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
+    </>,
     document.body
   );
 
@@ -168,21 +187,8 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Floating TOC Banner Button (화면 우측 하단 80px 높이, 엄지 손가락 위치에 상시 플로팅) */}
-      <button 
-        type="button" 
-        className={styles.mobileFloatingPill}
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        aria-label="모바일 아티클 목차 열기"
-        aria-expanded={isMobileOpen}
-      >
-        <span className={styles.pillIcon}>📑</span>
-        <span className={styles.pillText}>목차</span>
-        <span className={styles.pillProgressBadge}>{progressText}</span>
-      </button>
-
-      {/* Portal-Mounted Mobile Drawer */}
-      {mobileDrawerMarkup}
+      {/* Render Mobile Floating Pill and Drawer into document.body */}
+      {mobilePortalUI}
     </>
   );
 }
