@@ -2,7 +2,7 @@
 category: "Tech & Dev"
 title: "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱"
 date: "2026-08-25"
-image: "/images/lettuce_redis_caching_db_bottleneck_thumbnail.png"
+image: "/images/lettuce_redis_caching_db_bottleneck_thumbnail.jpg"
 tags: ["Spring Boot", "Redis", "Lettuce", "Troubleshooting", "PostgreSQL", "Database", "Performance Tuning", "Backend Architecture"]
 excerpt: "Redis 캐싱을 도입했음에도 초당 수천 건의 트래픽에서 PostgreSQL 커넥션 풀 고갈과 504 타임아웃이 발생한 원인과 3단계 극복 과정을 상세히 분석합니다."
 ---

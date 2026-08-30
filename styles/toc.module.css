@@ -92,59 +92,72 @@
   }
 }
 
-/* Mobile Smart Floating Side Tab (우측 가장자리 슬림 탭: 본문 및 댓글 완벽 간섭 차단) */
-.mobileSideTab {
+/* Mobile Sleek Floating TOC Pill (글을 읽을 때 옆에 예쁘게 따라다니는 플로팅 배너) */
+.mobileFloatingPill {
   display: none;
   position: fixed;
-  right: 0;
-  top: 45%;
-  transform: translateY(-50%) translateX(100%);
-  background: var(--bg-secondary);
+  right: 18px;
+  bottom: 88px;
+  background: rgba(15, 23, 42, 0.88);
   border: 1.5px solid var(--accent-light);
-  border-right: none;
   color: var(--text-primary);
-  border-radius: 20px 0 0 20px;
-  padding: 8px 10px 8px 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.35), 0 0 12px hsla(263, 85%, 65%, 0.25);
+  border-radius: 9999px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(138, 43, 226, 0.3);
   z-index: 95;
   cursor: pointer;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color 0.2s ease;
-  opacity: 0;
-  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+  opacity: 0.95;
+  transform: translateY(0) scale(1);
 }
 
-.mobileSideTabVisible {
-  transform: translateY(-50%) translateX(0);
-  opacity: 0.92;
-  pointer-events: auto;
+/* 스크롤을 내릴 때: 본문 읽기에 방해되지 않도록 부드럽게 반투명화 */
+.mobileFloatingPillScrolling {
+  opacity: 0.45;
+  transform: translateY(0) scale(0.95);
 }
 
-.mobileSideTab:hover,
-.mobileSideTab:active {
-  opacity: 1;
+/* 댓글/푸터 영역에 도달했을 때: 댓글 작성 버튼을 가리지 않도록 100% 자동 숨김 */
+.mobileFloatingPillHidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(20px) scale(0.8) !important;
+}
+
+.mobileFloatingPill:hover,
+.mobileFloatingPill:active {
+  opacity: 1 !important;
+  transform: translateY(-2px) scale(1.04) !important;
   background: var(--bg-tertiary);
-  transform: translateY(-50%) translateX(-3px);
-  box-shadow: -6px 6px 25px rgba(0, 0, 0, 0.45), 0 0 16px hsla(263, 85%, 65%, 0.45);
+  border-color: var(--accent-light);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
 }
 
-.mobileSideIcon {
+.pillIcon {
   font-size: 0.95rem;
 }
 
-.mobileSideText {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  letter-spacing: 2px;
-  font-size: 0.72rem;
+.pillText {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.pillProgressBadge {
+  font-size: 0.7rem;
   font-weight: 800;
   color: var(--accent-light);
+  background: rgba(138, 43, 226, 0.18);
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  padding: 2px 7px;
+  border-radius: 9999px;
+  margin-left: 2px;
 }
 
 /* Mobile Floating TOC Drawer Modal */
@@ -218,7 +231,7 @@
   .tocWrapper {
     display: none;
   }
-  .mobileSideTab {
+  .mobileFloatingPill {
     display: flex;
   }
   .mobileTocOverlay {

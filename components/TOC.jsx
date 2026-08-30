@@ -5,15 +5,16 @@ export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isFloatingVisible, setIsFloatingVisible] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [isFooterReached, setIsFooterReached] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
-  const scrollPauseTimerRef = useRef(null);
+  const scrollTimerRef = useRef(null);
 
   useEffect(() => {
     setHeadings([]);
     setActiveId('');
-    setIsFloatingVisible(false);
+    setIsFooterReached(false);
 
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
@@ -35,27 +36,22 @@ export default function TOC({ contentSelector, id }) {
 
       setHeadings(headingList);
 
-      const updateTocState = () => {
+      const updateScrollTracking = () => {
         if (isClickScrolling.current) return;
 
-        const scrollY = window.scrollY;
         const postContent = document.querySelector(contentSelector);
-        
-        // Check if user is inside the article content area (hide at top and hide when reaching comments/footer)
         if (postContent) {
           const rect = postContent.getBoundingClientRect();
-          const isInsideArticle = scrollY > 250 && rect.bottom > 180;
-          
-          if (!isInsideArticle) {
-            setIsFloatingVisible(false);
+          // Hide only when user has completely scrolled past the article into the comment/footer area
+          if (rect.bottom < 100) {
+            setIsFooterReached(true);
           } else {
-            // User is actively reading article: show floating indicator when scroll pauses
-            setIsFloatingVisible(true);
+            setIsFooterReached(false);
           }
         }
 
         // Active heading tracking
-        const headerOffset = 130;
+        const headerOffset = 140;
         let currentActive = headingElements[0].id;
 
         for (let i = 0; i < headingElements.length; i++) {
@@ -71,19 +67,16 @@ export default function TOC({ contentSelector, id }) {
         setActiveId(currentActive);
       };
 
-      updateTocState();
+      updateScrollTracking();
 
-      // Scroll listener with pause-reveal intelligence
       const onScroll = () => {
-        // While actively scrolling, keep tab subtle / fade slightly
-        if (scrollPauseTimerRef.current) clearTimeout(scrollPauseTimerRef.current);
-        
-        updateTocState();
+        setIsScrolling(true);
+        updateScrollTracking();
 
-        // Reveal fully when user pauses for 350ms
-        scrollPauseTimerRef.current = setTimeout(() => {
-          updateTocState();
-        }, 350);
+        if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+        scrollTimerRef.current = setTimeout(() => {
+          setIsScrolling(false);
+        }, 400);
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -91,7 +84,7 @@ export default function TOC({ contentSelector, id }) {
       return () => {
         window.removeEventListener('scroll', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-        if (scrollPauseTimerRef.current) clearTimeout(scrollPauseTimerRef.current);
+        if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
       };
     }, 100);
 
@@ -149,16 +142,19 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Smart Floating Side Tab (우측 가장자리 슬림 탭: 본문 및 댓글 간섭 0%) */}
+      {/* Mobile Sleek Floating TOC Pill (우측 하단 플로팅 배너: 따라다니며 스크롤 시 반투명, 댓글 도달 시 자동 숨김) */}
       <button 
         type="button" 
-        className={`${styles.mobileSideTab} ${isFloatingVisible ? styles.mobileSideTabVisible : ''}`}
+        className={`${styles.mobileFloatingPill} ${isScrolling ? styles.mobileFloatingPillScrolling : ''} ${isFooterReached ? styles.mobileFloatingPillHidden : ''}`}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        aria-label="모바일 스마트 목차 열기/닫기"
+        aria-label="모바일 아티클 목차 열기"
         aria-expanded={isMobileOpen}
       >
-        <span className={styles.mobileSideIcon}>📑</span>
-        <span className={styles.mobileSideText}>목차</span>
+        <span className={styles.pillIcon}>📑</span>
+        <span className={styles.pillText}>목차</span>
+        <span className={styles.pillProgressBadge}>
+          {headings.findIndex(h => h.id === activeId) + 1}/{headings.length}
+        </span>
       </button>
 
       {/* Mobile Floating TOC Drawer Modal */}
