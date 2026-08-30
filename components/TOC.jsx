@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '@/styles/toc.module.css';
 
@@ -7,79 +7,76 @@ export default function TOC({ contentSelector, id }) {
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const isClickScrolling = useRef(false);
-  const clickTimeoutRef = useRef(null);
-
   useEffect(() => {
     setMounted(true);
     setHeadings([]);
     setActiveId('');
 
-    const timer = setTimeout(() => {
-      const container = document.querySelector(contentSelector);
-      if (!container) return;
+    const container = document.querySelector(contentSelector);
+    if (!container) return undefined;
 
-      const headingElements = Array.from(container.querySelectorAll('h2, h3'));
-      if (headingElements.length === 0) return;
+    const headingElements = Array.from(container.querySelectorAll('h2, h3'));
+    if (headingElements.length === 0) return undefined;
 
-      const headingList = headingElements.map((el, index) => {
-        if (!el.id) {
-          el.id = `heading-${index}`;
+    const headingList = headingElements.map((el, index) => {
+      if (!el.id) {
+        el.id = `heading-${index}`;
+      }
+      return {
+        id: el.id,
+        text: el.innerText || el.textContent,
+        level: el.tagName.toLowerCase(),
+      };
+    });
+
+    setHeadings(headingList);
+    setActiveId(headingList[0].id);
+
+    // Compare against a fixed viewport line. Look up each element by ID for
+    // every update because React can replace dangerouslySetInnerHTML nodes
+    // during hydration, making a saved element reference report a zero rect.
+    const activationOffset = 120;
+    let animationFrameId = null;
+    const updateActiveHeading = () => {
+      animationFrameId = null;
+      let active = headingList[0].id;
+
+      for (const heading of headingList) {
+        const el = document.getElementById(heading.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= activationOffset) {
+          active = heading.id;
+        } else {
+          break;
         }
-        return {
-          id: el.id,
-          text: el.innerText || el.textContent,
-          level: el.tagName.toLowerCase(),
-        };
-      });
+      }
 
-      setHeadings(headingList);
-      setActiveId(headingList[0].id);
+      setActiveId((current) => (current === active ? current : active));
+    };
 
-      // Infallible scroll position calculation using document offsetTop
-      const updateActiveHeading = () => {
-        if (isClickScrolling.current) return;
+    const scheduleActiveHeadingUpdate = () => {
+      if (animationFrameId === null) {
+        animationFrameId = window.requestAnimationFrame(updateActiveHeading);
+      }
+    };
 
-        const scrollPosition = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0) + 160;
+    updateActiveHeading();
+    window.addEventListener('scroll', scheduleActiveHeadingUpdate, { passive: true });
+    window.addEventListener('resize', scheduleActiveHeadingUpdate, { passive: true });
+    window.addEventListener('load', scheduleActiveHeadingUpdate);
 
-        let active = headingElements[0].id;
-        for (let i = 0; i < headingElements.length; i++) {
-          const el = headingElements[i];
-          const top = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
-          if (scrollPosition >= top) {
-            active = el.id;
-          } else {
-            break;
-          }
-        }
-
-        setActiveId(active);
-      };
-
-      updateActiveHeading();
-
-      const onScroll = () => {
-        updateActiveHeading();
-      };
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll, { passive: true });
-
-      return () => {
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onScroll);
-        if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-      };
-    }, 150);
-
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener('scroll', scheduleActiveHeadingUpdate);
+      window.removeEventListener('resize', scheduleActiveHeadingUpdate);
+      window.removeEventListener('load', scheduleActiveHeadingUpdate);
+      if (animationFrameId !== null) window.cancelAnimationFrame(animationFrameId);
+    };
   }, [contentSelector, id]);
 
   const handleClick = useCallback((e, headingId) => {
     e.preventDefault();
     e.stopPropagation();
 
-    isClickScrolling.current = true;
     setActiveId(headingId);
     setIsMobileOpen(false);
 
@@ -92,10 +89,6 @@ export default function TOC({ contentSelector, id }) {
 
     window.history.replaceState(null, '', `#${headingId}`);
 
-    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-    clickTimeoutRef.current = setTimeout(() => {
-      isClickScrolling.current = false;
-    }, 1000);
   }, []);
 
   if (headings.length === 0) return null;
