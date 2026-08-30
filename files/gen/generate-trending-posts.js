@@ -6,14 +6,16 @@ const matter = require('gray-matter');
 const trendingPostsPath = path.join(__dirname, '../trending-posts.json');
 const postsDir = path.join(__dirname, '../posts');
 
-// Helper to get Korean Date string
+// Helper to get Korean Date string with exact live time
 const getKstDisplayDate = (dateObj = new Date()) => {
   const utc = dateObj.getTime() + (dateObj.getTimezoneOffset() * 60000);
   const kstTime = new Date(utc + (9 * 60 * 60000));
   const year = kstTime.getFullYear();
   const month = kstTime.getMonth() + 1;
   const day = kstTime.getDate();
-  return `${year}년 ${month}월 ${day}일 00:00 KST`;
+  const hours = String(kstTime.getHours()).padStart(2, '0');
+  const minutes = String(kstTime.getMinutes()).padStart(2, '0');
+  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes} KST`;
 };
 
 // 1. Read existing previous trending posts to compare rank changes
@@ -51,11 +53,11 @@ async function fetchRealGA4Rankings() {
     }
 
     const analyticsDataClient = new BetaAnalyticsDataClient({ credentials });
-    console.log(`📊 Fetching real GA4 7-day pageview statistics for Property ID: ${propertyId}...`);
+    console.log(`📊 Fetching real GA4 pageview statistics for Property ID: ${propertyId}...`);
 
     const [response] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
-      dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
       dimensions: [{ name: 'pagePath' }],
       metrics: [{ name: 'screenPageViews' }],
       dimensionFilter: {
@@ -67,7 +69,7 @@ async function fetchRealGA4Rankings() {
           },
         },
       },
-      limit: 10,
+      limit: 15,
     });
 
     if (!response.rows || response.rows.length === 0) {
