@@ -92,36 +92,46 @@
   }
 }
 
-/* Mobile Floating TOC Pill Banner (모바일 화면 우측 하단 선명한 플로팅 배너) */
+/* Mobile Floating TOC Pill Banner (우측 중앙 플로팅: 엄지 손가락 최적 높이 + 댓글창 간섭 원천 차단) */
 .mobileFloatingPill {
   display: none;
   position: fixed;
-  right: 20px;
-  bottom: 24px;
-  background: rgba(15, 23, 42, 0.94);
+  right: 14px;
+  top: 55%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.92);
   border: 1.5px solid var(--accent-light);
   color: var(--text-primary);
   border-radius: 9999px;
-  padding: 10px 16px;
-  font-size: 0.85rem;
+  padding: 9px 15px;
+  font-size: 0.82rem;
   font-weight: 800;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 16px rgba(138, 43, 226, 0.35);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45), 0 0 16px rgba(138, 43, 226, 0.3);
   z-index: 1000;
   cursor: pointer;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+  opacity: 0.92;
 }
 
 .mobileFloatingPill:active {
-  transform: scale(0.96);
+  transform: translateY(-50%) scale(0.95);
+  opacity: 1;
+}
+
+/* 댓글/푸터 영역 진입 시 100% 자동 숨김 */
+.mobileFloatingPillHidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-50%) translateX(30px) scale(0.8) !important;
 }
 
 .pillIcon {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .pillText {
@@ -131,12 +141,12 @@
 }
 
 .pillProgressBadge {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
   color: #c084fc;
   background: rgba(138, 43, 226, 0.25);
   border: 1px solid rgba(192, 132, 252, 0.4);
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 9999px;
   margin-left: 2px;
 }

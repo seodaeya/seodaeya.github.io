@@ -5,12 +5,14 @@ export default function TOC({ contentSelector, id }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isCommentsVisible, setIsCommentsVisible] = useState(false);
   const isClickScrolling = useRef(false);
   const clickTimeoutRef = useRef(null);
 
   useEffect(() => {
     setHeadings([]);
     setActiveId('');
+    setIsCommentsVisible(false);
 
     const timer = setTimeout(() => {
       const container = document.querySelector(contentSelector);
@@ -34,6 +36,18 @@ export default function TOC({ contentSelector, id }) {
 
       const updateScrollTracking = () => {
         if (isClickScrolling.current) return;
+
+        // Auto-hide when user scrolls down to comments or footer area
+        const postContent = document.querySelector(contentSelector);
+        if (postContent) {
+          const rect = postContent.getBoundingClientRect();
+          // Hide when the main article body has completely scrolled out of the top half
+          if (rect.bottom < 150) {
+            setIsCommentsVisible(true);
+          } else {
+            setIsCommentsVisible(false);
+          }
+        }
 
         // High precision active heading tracker
         const headerOffset = 140;
@@ -123,10 +137,10 @@ export default function TOC({ contentSelector, id }) {
         </nav>
       </aside>
 
-      {/* Mobile Floating TOC Banner Pill (모바일 화면 항상 선명하게 플로팅 노출) */}
+      {/* Mobile Floating TOC Banner Pill (우측 중앙 플로팅 배너: 댓글 영역 100% 간섭 차단 및 자동 숨김) */}
       <button 
         type="button" 
-        className={styles.mobileFloatingPill}
+        className={`${styles.mobileFloatingPill} ${isCommentsVisible ? styles.mobileFloatingPillHidden : ''}`}
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         aria-label="모바일 아티클 목차 열기"
         aria-expanded={isMobileOpen}
