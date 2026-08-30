@@ -2,7 +2,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SEO from '@/components/SEO';
 import contentUtils from '@/lib/content';
 import styles from '@/styles/home.module.css';
@@ -94,6 +94,34 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
   const [visibleVideoCount, setVisibleVideoCount] = useState(6);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const tooltipRef = useRef(null);
+
+  // Click outside to close info tooltip
+  useEffect(() => {
+    if (!isInfoTooltipOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+        setIsInfoTooltipOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsInfoTooltipOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside, { passive: true });
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isInfoTooltipOpen]);
   const trendingPosts = trendingData?.posts || [];
   const trendingUpdatedAt = trendingData?.updatedAt || '매일 00:00 KST 기준';
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
@@ -223,43 +251,52 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
               className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
               aria-label="실시간 인기 아티클 랭킹"
             >
-              {/* Header Row: LIVE Badge with Info Tooltip (Left) + Toggle Button (Right) */}
+              {/* Header Row: Unified Minimalist Live Pill + Toggle Button */}
               <div className={styles.leaderboardHeaderRow}>
-                <div className={styles.leaderboardLiveBadge}>
-                  <span className={styles.liveDot} />
+                <div className={styles.leaderboardPillWrapper} ref={tooltipRef}>
+                  <button
+                    type="button"
+                    className={`${styles.leaderboardLivePill} ${isInfoTooltipOpen ? styles.leaderboardLivePillActive : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsInfoTooltipOpen(!isInfoTooltipOpen);
+                    }}
+                    aria-label="실시간 인기 순위 안내 툴팁 열기"
+                    aria-expanded={isInfoTooltipOpen}
+                  >
+                    <span className={styles.livePulseContainer}>
+                      <span className={styles.livePulseDot} />
+                    </span>
+                    <span className={styles.liveBadgeTitle}>실시간 인기 아티클</span>
+                    <span className={styles.liveInfoTrigger} title="집계 기준 안내">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                      </svg>
+                    </span>
+                  </button>
 
-                  {/* i Tooltip Trigger */}
-                  <div className={styles.infoTooltipWrapper}>
-                    <button
-                      type="button"
-                      className={styles.infoTooltipBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsInfoTooltipOpen(!isInfoTooltipOpen);
-                      }}
-                      aria-label="실시간 랭킹 집계 기준 안내 툴팁"
-                      title="집계 기준 시점 안내"
-                    >
-                      i
-                    </button>
-
-                    {/* Tooltip Popover Box */}
-                    {isInfoTooltipOpen && (
-                      <div className={styles.infoTooltipBox} role="tooltip">
-                        <div className={styles.infoTooltipHeader}>
-                          <span>ℹ️</span> <strong>인기 랭킹 집계 기준</strong>
-                        </div>
-                        <p className={styles.infoTooltipText}>
-                          매일 한국 시간 00:00(자정)에 블로그 아티클의 최신 발행일, 아키텍처 중요도 및 독자 관심도 가중치를 자동 계산하여 순위가 역동적으로 갱신됩니다.
-                        </p>
-                        <div className={styles.infoTooltipFooter}>
-                          <span>📅 기준 시점:</span> <strong>{trendingUpdatedAt}</strong>
-                        </div>
+                  {/* Tooltip Popover Box with Crisp Border Arrow */}
+                  {isInfoTooltipOpen && (
+                    <div className={styles.infoTooltipBox} role="tooltip" onClick={(e) => e.stopPropagation()}>
+                      <div className={styles.infoTooltipHeader}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"/>
+                          <line x1="12" y1="16" x2="12" y2="12"/>
+                          <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <strong>실시간 인기 순위 집계 안내</strong>
                       </div>
-                    )}
-                  </div>
-
-                  <span>🏆 실시간 인기 아티클</span>
+                      <p className={styles.infoTooltipText}>
+                        매일 자정(00:00 KST) 블로그 아티클의 페이지뷰와 독자 관심도를 자동 분석하여 순위가 갱신됩니다.
+                      </p>
+                      <div className={styles.infoTooltipFooter}>
+                        <span className={styles.footerDot} />
+                        <span>기준 시점:</span> <strong>{trendingUpdatedAt}</strong>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <button 
