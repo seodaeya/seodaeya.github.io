@@ -306,10 +306,12 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     onClick={() => setIsLeaderboardOpen(!isLeaderboardOpen)}
                     aria-label="인기 아티클 1~5위 전체보기 토글"
                   >
-                    <span>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
+                    <span className={styles.desktopToggleText}>{isLeaderboardOpen ? '접기 ▲' : '1~5위 순위보기 ▼'}</span>
+                    <span className={styles.mobileToggleText}>{isLeaderboardOpen ? '접기 ▲' : '1~5위 ▼'}</span>
                   </button>
                   <Link href="/ranking" className={styles.viewAllRankingsBtn}>
-                    전체 순위 →
+                    <span className={styles.desktopToggleText}>전체 순위 →</span>
+                    <span className={styles.mobileToggleText}>전체 🏆</span>
                   </Link>
                 </div>
               </div>

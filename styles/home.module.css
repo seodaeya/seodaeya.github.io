@@ -907,10 +907,39 @@
 }
 
 @media (max-width: 640px) {
+  .desktopToggleText {
+    display: none;
+  }
+  .mobileToggleText {
+    display: inline;
+  }
   .leaderboardSection {
-    padding: 12px 14px;
+    padding: 12px 12px;
     border-radius: 16px;
     gap: 8px;
+  }
+  .leaderboardHeaderRow {
+    gap: 6px;
+  }
+  .leaderboardLivePill {
+    padding: 4px 8px 4px 6px;
+    gap: 5px;
+  }
+  .liveBadgeTitle {
+    font-size: 0.75rem;
+  }
+  .leaderboardBtnGroup {
+    gap: 5px;
+  }
+  .expandToggleBtn {
+    font-size: 0.72rem;
+    padding: 4px 7px;
+    border-radius: 6px;
+  }
+  .viewAllRankingsBtn {
+    font-size: 0.72rem;
+    padding: 4px 7px;
+    border-radius: 6px;
   }
   .leaderboardRank1Card,
   .leaderboardItem {
@@ -961,4 +990,12 @@
   background: var(--accent-light);
   color: #ffffff;
   box-shadow: 0 0 12px rgba(138, 43, 226, 0.4);
+}
+
+.desktopToggleText {
+  display: inline;
+}
+
+.mobileToggleText {
+  display: none;
 }
