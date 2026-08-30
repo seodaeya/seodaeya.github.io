@@ -34,27 +34,26 @@ export default function TOC({ contentSelector, id }) {
       });
 
       setHeadings(headingList);
-      if (headingList.length > 0) {
-        setActiveId(headingList[0].id);
-      }
+      setActiveId(headingList[0].id);
 
+      // Infallible scroll position calculation using document offsetTop
       const updateActiveHeading = () => {
         if (isClickScrolling.current) return;
 
-        const headerOffset = 150;
-        let currentActive = headingElements[0].id;
+        const scrollPosition = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0) + 160;
 
+        let active = headingElements[0].id;
         for (let i = 0; i < headingElements.length; i++) {
           const el = headingElements[i];
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= headerOffset) {
-            currentActive = el.id;
+          const top = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
+          if (scrollPosition >= top) {
+            active = el.id;
           } else {
             break;
           }
         }
 
-        setActiveId(currentActive);
+        setActiveId(active);
       };
 
       updateActiveHeading();
@@ -64,9 +63,11 @@ export default function TOC({ contentSelector, id }) {
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
 
       return () => {
         window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
         if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
       };
     }, 150);
@@ -94,7 +95,7 @@ export default function TOC({ contentSelector, id }) {
     if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
     clickTimeoutRef.current = setTimeout(() => {
       isClickScrolling.current = false;
-    }, 800);
+    }, 1000);
   }, []);
 
   if (headings.length === 0) return null;
