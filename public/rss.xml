@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 01 Sep 2026 13:35:57 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 01 Sep 2026 14:13:28 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고]]></title>
+    <link>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</guid>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[과거에 GitHub은 프로그래머들만의 전유물이었습니다. 하지만 생성형 AI와 AI 에이전트(Agent)가 일상화된 지금, GitHub은 전 세계 인류가 만들어낸 가장 방대한 '무료 지식과 인프라의 보물창고' 로 진화했습니다. ChatGPT, Claude, Cursor...]]></description>
+  </item>
   <item>
     <title><![CDATA[Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/</link>

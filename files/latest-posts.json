@@ -1,5 +1,11 @@
 [
   {
+    "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+    "category": "Dev & Software",
+    "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md",
+    "date": "20260901"
+  },
+  {
     "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
     "category": "Dev & Software",
     "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260815-1-gemini-3-7-flash-analysis.md",
     "date": "20260815"
-  },
-  {
-    "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
-    "category": "Hardware & DIY",
-    "file": "posts/20260812-1-macos-android-openmtp-guide.md",
-    "date": "20260812"
   }
 ]

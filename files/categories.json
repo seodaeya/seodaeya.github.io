@@ -55,6 +55,10 @@
   ],
   "Dev & Software": [
     {
+      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+      "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md"
+    },
+    {
       "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
       "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md"
     },

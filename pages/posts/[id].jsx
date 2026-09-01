@@ -530,7 +530,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
                     <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
                   </svg>
                 )}
-                <span>{copiedUrl ? '아티클 링크 복사 완료!' : 'URL 링크 복사하기'}</span>
+                <span>{copiedUrl ? '복사 완료!' : '링크 복사'}</span>
               </button>
             </div>
           </section>

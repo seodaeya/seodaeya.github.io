@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 9월 1일 22:35 KST",
+  "updatedAt": "2026년 9월 1일 23:13 KST",
   "isRealGA": false,
   "posts": [
     {
@@ -19,6 +19,19 @@
       "rank": 2,
       "change": "same",
       "changeText": "-",
+      "badge": "GitHub · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
+      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
+      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
+      "date": "2026-09-01",
+      "views": null
+    },
+    {
+      "rank": 3,
+      "change": "same",
+      "changeText": "-",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -29,7 +42,7 @@
       "views": null
     },
     {
-      "rank": 3,
+      "rank": 4,
       "change": "same",
       "changeText": "-",
       "badge": "Next.js · Dev",
@@ -42,7 +55,7 @@
       "views": null
     },
     {
-      "rank": 4,
+      "rank": 5,
       "change": "same",
       "changeText": "-",
       "badge": "GitHub Pages · Tech",
@@ -52,19 +65,6 @@
       "image": "/images/github_pages_serverless_cart_thumbnail.jpg",
       "url": "/posts/20260824-1-github-pages-serverless-cart-parser",
       "date": "2026-08-24",
-      "views": null
-    },
-    {
-      "rank": 5,
-      "change": "same",
-      "changeText": "-",
-      "badge": "SEO · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
-      "desc": "GitHub Pages 정적 호스팅 환경에서 검색 엔진 순위(PageRank) 손실 없이 한글/영문 URL 슬러그를 301 리디렉션하는 기술적 구현 방안입니다.",
-      "image": "/github_pages_url_slug_seo_redirection_thumbnail.jpg",
-      "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
-      "date": "2026-08-22",
       "views": null
     }
   ],
@@ -86,6 +86,19 @@
       "rank": 2,
       "change": "same",
       "changeText": "-",
+      "badge": "GitHub · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
+      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
+      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
+      "date": "2026-09-01",
+      "views": null
+    },
+    {
+      "rank": 3,
+      "change": "same",
+      "changeText": "-",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -96,7 +109,7 @@
       "views": null
     },
     {
-      "rank": 3,
+      "rank": 4,
       "change": "same",
       "changeText": "-",
       "badge": "Next.js · Dev",
@@ -109,7 +122,7 @@
       "views": null
     },
     {
-      "rank": 4,
+      "rank": 5,
       "change": "same",
       "changeText": "-",
       "badge": "GitHub Pages · Tech",
@@ -122,7 +135,7 @@
       "views": null
     },
     {
-      "rank": 5,
+      "rank": 6,
       "change": "same",
       "changeText": "-",
       "badge": "SEO · Dev",
@@ -135,7 +148,7 @@
       "views": null
     },
     {
-      "rank": 6,
+      "rank": 7,
       "change": "same",
       "changeText": "-",
       "badge": "AI Framework · AI",
@@ -148,9 +161,9 @@
       "views": null
     },
     {
-      "rank": 7,
-      "change": "up",
-      "changeText": "▲ 2",
+      "rank": 8,
+      "change": "same",
+      "changeText": "-",
       "badge": "Agentic AI · AI",
       "category": "AI & Intelligence",
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
@@ -161,9 +174,9 @@
       "views": null
     },
     {
-      "rank": 8,
-      "change": "down",
-      "changeText": "▼ 1",
+      "rank": 9,
+      "change": "same",
+      "changeText": "-",
       "badge": "Actor Model · AI",
       "category": "AI & Intelligence",
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
@@ -174,9 +187,9 @@
       "views": null
     },
     {
-      "rank": 9,
-      "change": "down",
-      "changeText": "▼ 1",
+      "rank": 10,
+      "change": "same",
+      "changeText": "-",
       "badge": "Gemini 3.7 · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
@@ -187,7 +200,7 @@
       "views": null
     },
     {
-      "rank": 10,
+      "rank": 11,
       "change": "same",
       "changeText": "-",
       "badge": "macOS · Hardware",
@@ -200,7 +213,7 @@
       "views": null
     },
     {
-      "rank": 11,
+      "rank": 12,
       "change": "same",
       "changeText": "-",
       "badge": "Privacy Policy · Dev",
@@ -213,9 +226,9 @@
       "views": null
     },
     {
-      "rank": 12,
-      "change": "up",
-      "changeText": "▲ 2",
+      "rank": 13,
+      "change": "same",
+      "changeText": "-",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -226,7 +239,7 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "same",
       "changeText": "-",
       "badge": "Google Search Console · Dev",
@@ -239,9 +252,9 @@
       "views": null
     },
     {
-      "rank": 14,
-      "change": "down",
-      "changeText": "▼ 2",
+      "rank": 15,
+      "change": "same",
+      "changeText": "-",
       "badge": "AdSense · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
@@ -252,9 +265,9 @@
       "views": null
     },
     {
-      "rank": 15,
-      "change": "up",
-      "changeText": "▲ 1",
+      "rank": 16,
+      "change": "same",
+      "changeText": "-",
       "badge": "SEO · AI",
       "category": "AI & Intelligence",
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
@@ -265,9 +278,9 @@
       "views": null
     },
     {
-      "rank": 16,
-      "change": "down",
-      "changeText": "▼ 1",
+      "rank": 17,
+      "change": "same",
+      "changeText": "-",
       "badge": "Kimi · AI",
       "category": "AI & Intelligence",
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
@@ -278,9 +291,9 @@
       "views": null
     },
     {
-      "rank": 17,
-      "change": "up",
-      "changeText": "▲ 1",
+      "rank": 18,
+      "change": "same",
+      "changeText": "-",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
       "title": "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'",
@@ -291,9 +304,9 @@
       "views": null
     },
     {
-      "rank": 18,
-      "change": "down",
-      "changeText": "▼ 1",
+      "rank": 19,
+      "change": "same",
+      "changeText": "-",
       "badge": "Gemini · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
@@ -304,7 +317,7 @@
       "views": null
     },
     {
-      "rank": 19,
+      "rank": 20,
       "change": "same",
       "changeText": "-",
       "badge": "Football · Lifestyle",
@@ -317,7 +330,7 @@
       "views": null
     },
     {
-      "rank": 20,
+      "rank": 21,
       "change": "same",
       "changeText": "-",
       "badge": "AI Future · AI",
@@ -330,7 +343,7 @@
       "views": null
     },
     {
-      "rank": 21,
+      "rank": 22,
       "change": "same",
       "changeText": "-",
       "badge": "Giscus · Dev",
@@ -343,9 +356,9 @@
       "views": null
     },
     {
-      "rank": 22,
-      "change": "up",
-      "changeText": "▲ 2",
+      "rank": 23,
+      "change": "same",
+      "changeText": "-",
       "badge": "Cline · AI",
       "category": "AI & Intelligence",
       "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
@@ -356,7 +369,7 @@
       "views": null
     },
     {
-      "rank": 23,
+      "rank": 24,
       "change": "same",
       "changeText": "-",
       "badge": "Claude · AI",
@@ -369,9 +382,9 @@
       "views": null
     },
     {
-      "rank": 24,
-      "change": "down",
-      "changeText": "▼ 2",
+      "rank": 25,
+      "change": "same",
+      "changeText": "-",
       "badge": "PostgreSQL · Dev",
       "category": "Dev & Software",
       "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
@@ -382,7 +395,7 @@
       "views": null
     },
     {
-      "rank": 25,
+      "rank": 26,
       "change": "same",
       "changeText": "-",
       "badge": "Cursor · AI",
