@@ -1,3 +1,4 @@
+/* 1. Desktop Sticky Sidebar TOC */
 .tocWrapper {
   position: -webkit-sticky;
   position: sticky;
@@ -72,7 +73,6 @@
   margin-left: -10px;
 }
 
-/* Slim modern scrollbar for long TOC lists */
 .tocWrapper::-webkit-scrollbar {
   width: 4px;
 }
@@ -86,13 +86,7 @@
   background: var(--accent-light);
 }
 
-@media (max-width: 1080px) {
-  .tocWrapper {
-    display: none;
-  }
-}
-
-/* Mobile Floating Button Group (화면 우측 하단 플로팅 컨트롤) */
+/* 2. Mobile Floating Button Group (화면 우측 하단 플로팅 컨트롤) */
 .mobileFloatingButtonGroup {
   display: none;
   position: fixed;
@@ -161,6 +155,119 @@
 .mobileFloatingPill:active {
   transform: scale(0.95);
   background: var(--bg-tertiary);
+}
+
+.pillIcon {
+  font-size: 1rem;
+}
+
+.pillText {
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pillProgressBadge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #c084fc;
+  background: rgba(138, 43, 226, 0.25);
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  margin-left: 2px;
+}
+
+/* 3. Mobile Floating TOC Drawer Modal (Mounted to body via createPortal) */
+.mobileTocOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99999;
+  animation: fadeIn 0.2s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.mobileTocDrawer {
+  position: relative;
+  width: 100%;
+  max-height: 75vh;
+  background: var(--bg-secondary);
+  border-top: 1.5px solid var(--border-glass-active);
+  border-radius: 24px 24px 0 0;
+  padding: 12px 20px 36px 20px;
+  box-shadow: 0 -12px 45px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drawerHandleBar {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  margin: 6px auto 14px auto;
+}
+
+.mobileTocHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 14px;
+}
+
+.mobileTocHeaderTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileTocCloseBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.mobileTocCloseBtn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.mobileTocNav {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 6px;
+  max-height: calc(75vh - 100px);
+}
+
+.headingNum {
+  color: var(--accent-light);
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 @keyframes slideInHomeBtn {
