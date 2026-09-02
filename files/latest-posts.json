@@ -1,5 +1,11 @@
 [
   {
+    "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
+    "category": "Economy & Investment",
+    "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md",
+    "date": "20260902"
+  },
+  {
     "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
     "category": "Dev & Software",
     "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260817-1-meta-ax-agentic-workflow.md",
     "date": "20260817"
-  },
-  {
-    "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
-    "category": "AI & Intelligence",
-    "file": "posts/20260815-1-gemini-3-7-flash-analysis.md",
-    "date": "20260815"
   }
 ]

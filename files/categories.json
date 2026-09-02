@@ -182,5 +182,11 @@
       "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
       "file": "posts/20260824-1-github-pages-serverless-cart-parser.md"
     }
+  ],
+  "Economy & Investment": [
+    {
+      "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
+      "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md"
+    }
   ]
 }

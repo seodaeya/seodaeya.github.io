@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 9월 1일 23:13 KST",
+  "updatedAt": "2026년 9월 2일 22:27 KST",
   "isRealGA": false,
   "posts": [
     {
@@ -30,8 +30,21 @@
     },
     {
       "rank": 3,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
+      "badge": "Investment · Economy",
+      "category": "Economy & Investment",
+      "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
+      "desc": "미국 빅테크 주식 적립식 투자가 만능이라는 믿음에 던지는 냉철한 경고. 1970년대 스태그플레이션과 2000년대 잃어버린 10년이 증명한 끈적한 인플레이션 국면의 자산 배분 전략과 4대 기능별 올웨더 포트폴리오를 심층 분석합니다.",
+      "image": "/images/us_stock_70years_inflation_portfolio_thumbnail.jpg",
+      "url": "/posts/20260902-1-us-stock-70years-inflation-portfolio-strategy",
+      "date": "2026-09-02",
+      "views": null
+    },
+    {
+      "rank": 4,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -42,7 +55,7 @@
       "views": null
     },
     {
-      "rank": 4,
+      "rank": 5,
       "change": "same",
       "changeText": "-",
       "badge": "Next.js · Dev",
@@ -52,19 +65,6 @@
       "image": "/images/nextjs_mobile_toc_troubleshooting_thumbnail.jpg",
       "url": "/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide",
       "date": "2026-08-30",
-      "views": null
-    },
-    {
-      "rank": 5,
-      "change": "same",
-      "changeText": "-",
-      "badge": "GitHub Pages · Tech",
-      "category": "Tech & Dev",
-      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
-      "desc": "서버리스 환경에서 쇼핑몰 상품 URL만으로 메타데이터와 최저가 이미지를 자동 추출하여 통합 장바구니를 구축하는 파서 개발기입니다.",
-      "image": "/images/github_pages_serverless_cart_thumbnail.jpg",
-      "url": "/posts/20260824-1-github-pages-serverless-cart-parser",
-      "date": "2026-08-24",
       "views": null
     }
   ],
@@ -97,8 +97,21 @@
     },
     {
       "rank": 3,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
+      "badge": "Investment · Economy",
+      "category": "Economy & Investment",
+      "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
+      "desc": "미국 빅테크 주식 적립식 투자가 만능이라는 믿음에 던지는 냉철한 경고. 1970년대 스태그플레이션과 2000년대 잃어버린 10년이 증명한 끈적한 인플레이션 국면의 자산 배분 전략과 4대 기능별 올웨더 포트폴리오를 심층 분석합니다.",
+      "image": "/images/us_stock_70years_inflation_portfolio_thumbnail.jpg",
+      "url": "/posts/20260902-1-us-stock-70years-inflation-portfolio-strategy",
+      "date": "2026-09-02",
+      "views": null
+    },
+    {
+      "rank": 4,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -109,7 +122,7 @@
       "views": null
     },
     {
-      "rank": 4,
+      "rank": 5,
       "change": "same",
       "changeText": "-",
       "badge": "Next.js · Dev",
@@ -122,7 +135,7 @@
       "views": null
     },
     {
-      "rank": 5,
+      "rank": 6,
       "change": "same",
       "changeText": "-",
       "badge": "GitHub Pages · Tech",
@@ -135,7 +148,7 @@
       "views": null
     },
     {
-      "rank": 6,
+      "rank": 7,
       "change": "same",
       "changeText": "-",
       "badge": "SEO · Dev",
@@ -145,19 +158,6 @@
       "image": "/github_pages_url_slug_seo_redirection_thumbnail.jpg",
       "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
       "date": "2026-08-22",
-      "views": null
-    },
-    {
-      "rank": 7,
-      "change": "same",
-      "changeText": "-",
-      "badge": "AI Framework · AI",
-      "category": "AI & Intelligence",
-      "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
-      "desc": "변화하는 비즈니스 요구사항과 AI 에이전트의 불확실성을 유연하게 결합하는 차세대 소프트웨어 아키텍처 프레임워크의 개념을 고찰합니다.",
-      "image": "/images/dangerously_self_educated_ai_thumbnail.jpg",
-      "url": "/posts/20260819-1-ai-alter-framework",
-      "date": "2026-08-19",
       "views": null
     },
     {
@@ -190,6 +190,19 @@
       "rank": 10,
       "change": "same",
       "changeText": "-",
+      "badge": "AI Framework · AI",
+      "category": "AI & Intelligence",
+      "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
+      "desc": "변화하는 비즈니스 요구사항과 AI 에이전트의 불확실성을 유연하게 결합하는 차세대 소프트웨어 아키텍처 프레임워크의 개념을 고찰합니다.",
+      "image": "/images/dangerously_self_educated_ai_thumbnail.jpg",
+      "url": "/posts/20260819-1-ai-alter-framework",
+      "date": "2026-08-19",
+      "views": null
+    },
+    {
+      "rank": 11,
+      "change": "same",
+      "changeText": "-",
       "badge": "Gemini 3.7 · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
@@ -200,7 +213,7 @@
       "views": null
     },
     {
-      "rank": 11,
+      "rank": 12,
       "change": "same",
       "changeText": "-",
       "badge": "macOS · Hardware",
@@ -213,7 +226,7 @@
       "views": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "change": "same",
       "changeText": "-",
       "badge": "Privacy Policy · Dev",
@@ -226,7 +239,7 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "same",
       "changeText": "-",
       "badge": "Gemini CLI · AI",
@@ -236,19 +249,6 @@
       "image": "/images/gemini_cli_install_guide_thumbnail.jpg",
       "url": "/posts/20260804-1-gemini-cli-install-guide",
       "date": "2026-08-04",
-      "views": null
-    },
-    {
-      "rank": 14,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Google Search Console · Dev",
-      "category": "Dev & Software",
-      "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
-      "desc": "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있는 lastmod 날짜 형식 오류와 크롤링 누락 문제를 해결하는 sitemap.xml 자동화 구축법입니다.",
-      "image": "/images/gsc_sitemap_lastmod_fix_thumbnail.jpg",
-      "url": "/posts/20260805-2-gsc-sitemap-lastmod-fix",
-      "date": "2026-08-05",
       "views": null
     },
     {
@@ -281,6 +281,19 @@
       "rank": 17,
       "change": "same",
       "changeText": "-",
+      "badge": "Google Search Console · Dev",
+      "category": "Dev & Software",
+      "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
+      "desc": "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있는 lastmod 날짜 형식 오류와 크롤링 누락 문제를 해결하는 sitemap.xml 자동화 구축법입니다.",
+      "image": "/images/gsc_sitemap_lastmod_fix_thumbnail.jpg",
+      "url": "/posts/20260805-2-gsc-sitemap-lastmod-fix",
+      "date": "2026-08-05",
+      "views": null
+    },
+    {
+      "rank": 18,
+      "change": "same",
+      "changeText": "-",
       "badge": "Kimi · AI",
       "category": "AI & Intelligence",
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
@@ -291,7 +304,7 @@
       "views": null
     },
     {
-      "rank": 18,
+      "rank": 19,
       "change": "same",
       "changeText": "-",
       "badge": "AI Ethics · AI",
@@ -304,7 +317,7 @@
       "views": null
     },
     {
-      "rank": 19,
+      "rank": 20,
       "change": "same",
       "changeText": "-",
       "badge": "Gemini · AI",
@@ -314,19 +327,6 @@
       "image": "/images/gemini_3_6_guide_thumbnail.png",
       "url": "/posts/20260723-2-gemini-3-6-features-guide",
       "date": "2026-07-23",
-      "views": null
-    },
-    {
-      "rank": 20,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Football · Lifestyle",
-      "category": "Lifestyle & Tech",
-      "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
-      "desc": "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다.",
-      "image": "/images/dybala_roma_contract_thumbnail.jpg",
-      "url": "/posts/20260715-1-dybala-as-roma-contract",
-      "date": "2026-07-15",
       "views": null
     },
     {
@@ -346,6 +346,19 @@
       "rank": 22,
       "change": "same",
       "changeText": "-",
+      "badge": "Football · Lifestyle",
+      "category": "Lifestyle & Tech",
+      "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
+      "desc": "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다.",
+      "image": "/images/dybala_roma_contract_thumbnail.jpg",
+      "url": "/posts/20260715-1-dybala-as-roma-contract",
+      "date": "2026-07-15",
+      "views": null
+    },
+    {
+      "rank": 23,
+      "change": "same",
+      "changeText": "-",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion",
@@ -356,33 +369,7 @@
       "views": null
     },
     {
-      "rank": 23,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Cline · AI",
-      "category": "AI & Intelligence",
-      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-      "desc": "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다.",
-      "image": "/images/cline_guide_thumbnail.jpg",
-      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
-      "date": "2025-04-04",
-      "views": null
-    },
-    {
       "rank": 24,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Claude · AI",
-      "category": "AI & Intelligence",
-      "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
-      "desc": "Anthropic의 대표 AI 모델인 Claude 3.5 Sonnet, Opus, Haiku의 아키텍처별 특징과 벤치마크 성능, 개발 및 실무 활용 가이드를 심층 분석합니다.",
-      "image": "/images/claude_analysis_thumbnail.jpg",
-      "url": "/posts/20250404-1-anthropic-claude-models-analysis",
-      "date": "2025-04-04",
-      "views": null
-    },
-    {
-      "rank": 25,
       "change": "same",
       "changeText": "-",
       "badge": "PostgreSQL · Dev",
@@ -395,6 +382,19 @@
       "views": null
     },
     {
+      "rank": 25,
+      "change": "same",
+      "changeText": "-",
+      "badge": "Cline · AI",
+      "category": "AI & Intelligence",
+      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
+      "desc": "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다.",
+      "image": "/images/cline_guide_thumbnail.jpg",
+      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
+      "date": "2025-04-04",
+      "views": null
+    },
+    {
       "rank": 26,
       "change": "same",
       "changeText": "-",
@@ -404,6 +404,19 @@
       "desc": "AI 네이티브 코드 에디터 Cursor의 강력한 Composer 다중 파일 편집과 실시간 컨텍스트 인덱싱 기능을 활용한 생산성 극대화 가이드입니다.",
       "image": "/images/cursor_guide_thumbnail.jpg",
       "url": "/posts/20250404-3-cursor-ai-code-editor-guide",
+      "date": "2025-04-04",
+      "views": null
+    },
+    {
+      "rank": 27,
+      "change": "same",
+      "changeText": "-",
+      "badge": "Claude · AI",
+      "category": "AI & Intelligence",
+      "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
+      "desc": "Anthropic의 대표 AI 모델인 Claude 3.5 Sonnet, Opus, Haiku의 아키텍처별 특징과 벤치마크 성능, 개발 및 실무 활용 가이드를 심층 분석합니다.",
+      "image": "/images/claude_analysis_thumbnail.jpg",
+      "url": "/posts/20250404-1-anthropic-claude-models-analysis",
       "date": "2025-04-04",
       "views": null
     }
