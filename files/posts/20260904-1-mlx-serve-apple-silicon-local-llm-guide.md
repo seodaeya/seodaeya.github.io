@@ -19,26 +19,87 @@ Apple Silicon(M1, M2, M3, M4, M5 및 차세대 아키텍처) Mac을 사용하는
 
 <strong>mlx-serve</strong>는 최신 시스템 프로그래밍 언어인 <strong>Zig</strong>로 작성된 초경량·초고속 <strong>Apple Silicon 네이티브 AI 추론 서버</strong>입니다. 파이썬 의존성 없이 단독 바이너리로 실행되며, Apple 공식 MLX C++ 라이브러리와 내장 `libllama`를 결합하여 <strong>MLX 모델과 GGUF 모델을 하나의 통합 API 계층으로 서비스</strong>합니다.
 
-```text
-                  [ Apple Silicon (Metal 하드웨어 가속) ]
-                                    │
-                 ┌──────────────────┴──────────────────┐
-                 │                                     │
-           [ Apple MLX-C ]                      [ libllama / ds4 ]
-                 │                                     │
-          HuggingFace MLX 가중치                 GGUF / DeepSeek V4
-                 │                                     │
-                 └──────────────────┬──────────────────┘
-                                    │
-                        [ mlx-serve (Zig 엔진) ]
-                                    │
-       ┌────────────────────────────┼────────────────────────────┐
-       │                            │                            │
-[ OpenAI 호환 API ]        [ Anthropic 호환 API ]       [ Ollama 호환 API ]
- (`/v1/chat/completions`)     (`/v1/messages`)            (`/api/chat`, `/api/generate`)
-       │                            │                            │
-   Cursor / VS Code            Claude Code             Raycast / Obsidian / WebUI
-```
+<div style="width: 100%; display: flex; justify-content: center; margin: 32px 0; overflow-x: auto;">
+<svg viewBox="0 0 840 510" style="width: 100%; max-width: 840px; height: auto; display: block; font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
+    </marker>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <!-- ================= CONNECTING LINES ================= -->
+  <!-- 1. Top to Layer 2 -->
+  <path d="M 420 74 L 420 95 M 240 95 L 600 95 M 240 95 L 240 115 M 600 95 L 600 115" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linejoin="round" />
+  <line x1="240" y1="110" x2="240" y2="115" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="600" y1="110" x2="600" y2="115" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- 2. Layer 2 to Central Zig Core -->
+  <path d="M 240 177 L 240 202 M 600 177 L 600 202 M 240 202 L 600 202 M 420 202 L 420 225" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linejoin="round" />
+  <line x1="420" y1="220" x2="420" y2="225" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- 3. Central Zig Core to 3 APIs -->
+  <path d="M 420 291 L 420 314 M 150 314 L 690 314 M 150 314 L 150 335 M 420 314 L 420 335 M 690 314 L 690 335" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linejoin="round" />
+  <line x1="150" y1="330" x2="150" y2="335" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="420" y1="330" x2="420" y2="335" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="690" y1="330" x2="690" y2="335" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- 4. APIs to Clients -->
+  <line x1="150" y1="399" x2="150" y2="433" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="420" y1="399" x2="420" y2="433" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+  <line x1="690" y1="399" x2="690" y2="433" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)" />
+
+  <!-- ================= CARDS LAYER ================= -->
+  <!-- Top: Apple Silicon -->
+  <rect x="255" y="18" width="330" height="56" rx="14" ry="14" fill="#e0effe" stroke="#7dd3fc" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="420" y="42" text-anchor="middle" fill="#0369a1" font-size="14.5" font-weight="700">Apple Silicon (Metal 하드웨어 가속)</text>
+  <text x="420" y="60" text-anchor="middle" fill="#0284c7" font-size="11.5" font-weight="500">M1 \~ M5 &amp; Unified Memory Architecture</text>
+
+  <!-- Layer 2 Left: Apple MLX-C -->
+  <rect x="110" y="117" width="260" height="60" rx="14" ry="14" fill="#e8f7f0" stroke="#a7f3d0" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="240" y="142" text-anchor="middle" fill="#065f46" font-size="14" font-weight="700">Apple MLX-C</text>
+  <text x="240" y="161" text-anchor="middle" fill="#047857" font-size="11.5" font-weight="500">HuggingFace MLX 네이티브 가중치</text>
+
+  <!-- Layer 2 Right: libllama / ds4 -->
+  <rect x="470" y="117" width="260" height="60" rx="14" ry="14" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="600" y="142" text-anchor="middle" fill="#92400e" font-size="14" font-weight="700">libllama / antirez ds4</text>
+  <text x="600" y="161" text-anchor="middle" fill="#b45309" font-size="11.5" font-weight="500">GGUF 포맷 &amp; DeepSeek V4 Flash</text>
+
+  <!-- Layer 3: Central Core (mlx-serve) -->
+  <rect x="235" y="227" width="370" height="64" rx="14" ry="14" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.6" filter="url(#soft-shadow)" />
+  <text x="420" y="253" text-anchor="middle" fill="#5b21b6" font-size="15.5" font-weight="800">mlx-serve (Zig 네이티브 엔진)</text>
+  <text x="420" y="274" text-anchor="middle" fill="#6d28d9" font-size="12" font-weight="500">No Python · Zero-Copy 통합 메모리 · 투기적 디코딩</text>
+
+  <!-- Layer 4 Left: OpenAI API -->
+  <rect x="30" y="337" width="240" height="62" rx="14" ry="14" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="150" y="361" text-anchor="middle" fill="#0284c7" font-size="13.5" font-weight="700">OpenAI 호환 API</text>
+  <text x="150" y="381" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="500">/v1/chat/completions · /v1/responses</text>
+
+  <!-- Layer 4 Center: Anthropic API -->
+  <rect x="300" y="337" width="240" height="62" rx="14" ry="14" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="420" y="361" text-anchor="middle" fill="#be185d" font-size="13.5" font-weight="700">Anthropic 호환 API</text>
+  <text x="420" y="381" text-anchor="middle" fill="#9d174d" font-size="11" font-weight="500">/v1/messages (Extended Thinking)</text>
+
+  <!-- Layer 4 Right: Ollama API -->
+  <rect x="570" y="337" width="240" height="62" rx="14" ry="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#soft-shadow)" />
+  <text x="690" y="361" text-anchor="middle" fill="#334155" font-size="13.5" font-weight="700">Ollama 호환 API</text>
+  <text x="690" y="381" text-anchor="middle" fill="#475569" font-size="11" font-weight="500">/api/chat · /api/generate (Port 11234)</text>
+
+  <!-- Layer 5 Left: Clients -->
+  <rect x="45" y="435" width="210" height="48" rx="12" ry="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4" filter="url(#soft-shadow)" />
+  <text x="150" y="464" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600">Cursor · VS Code · Python SDK</text>
+
+  <!-- Layer 5 Center: Claude Code -->
+  <rect x="315" y="435" width="210" height="48" rx="12" ry="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4" filter="url(#soft-shadow)" />
+  <text x="420" y="464" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600">Anthropic Claude Code</text>
+
+  <!-- Layer 5 Right: Raycast/Obsidian -->
+  <rect x="585" y="435" width="210" height="48" rx="12" ry="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.4" filter="url(#soft-shadow)" />
+  <text x="690" y="464" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="600">Raycast · Obsidian · Open WebUI</text>
+</svg>
+</div>
 
 ---
 

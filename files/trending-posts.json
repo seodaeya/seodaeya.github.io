@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026년 9월 4일 01:20 KST",
+  "updatedAt": "2026년 9월 4일 01:26 KST",
   "isRealGA": false,
   "posts": [
     {
       "rank": 1,
-      "change": "up",
-      "changeText": "▲ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "MLX · AI",
       "category": "AI & Intelligence",
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
@@ -17,8 +17,8 @@
     },
     {
       "rank": 2,
-      "change": "down",
-      "changeText": "▼ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Ontology · Tech",
       "category": "Tech & Dev",
       "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
@@ -71,8 +71,8 @@
   "allPosts": [
     {
       "rank": 1,
-      "change": "up",
-      "changeText": "▲ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "MLX · AI",
       "category": "AI & Intelligence",
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
@@ -84,8 +84,8 @@
     },
     {
       "rank": 2,
-      "change": "down",
-      "changeText": "▼ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Ontology · Tech",
       "category": "Tech & Dev",
       "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
