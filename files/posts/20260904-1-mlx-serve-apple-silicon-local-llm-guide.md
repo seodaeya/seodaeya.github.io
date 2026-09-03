@@ -9,7 +9,7 @@ tags: ["MLX", "MLXServe", "AppleSilicon", "LocalLLM", "LMStudio", "Ollama", "Cla
 
 ## 🌐 1. Apple Silicon을 위한 새로운 최강자: mlx-serve란 무엇인가?
 
-Apple Silicon(M1, M2, M3, M4, M5) Mac을 사용하는 AI 개발자와 엔지니어들에게 <strong>로컬 LLM(대형 언어 모델)</strong> 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인 파이썬(Python) 기반 MLX 도구들은 몇 가지 아쉬운 한계가 있었습니다:
+Apple Silicon(M1, M2, M3, M4, M5부터 최신 M6까지) Mac을 사용하는 AI 개발자와 엔지니어들에게 <strong>로컬 LLM(대형 언어 모델)</strong> 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인 파이썬(Python) 기반 MLX 도구들은 몇 가지 아쉬운 한계가 있었습니다:
 
 * 무거운 <strong>일렉트론(Electron)</strong> 기반 GUI로 인한 메모리 및 백그라운드 자원 낭비
 * 복잡한 <strong>Python 가상환경(venv, pip)</strong>과 C++ 빌드 의존성 관리의 번거로움
@@ -26,7 +26,7 @@ Apple Silicon(M1, M2, M3, M4, M5) Mac을 사용하는 AI 개발자와 엔지니�
 ### 🚀 1) 압도적인 추론 속도 (LM Studio 대비 최대 +145% 가속)
 * <strong>지연 시간 없는 초고속 프리필(Prefill)</strong>: 입력 프롬프트를 처리하는 속도가 LM Studio 대비 평균 <strong>+36%\~117%</strong> 더 빠릅니다.
 * <strong>투기적 디코딩(Speculative Decoding) & MTP 헤드 지원</strong>: Qwen, Gemma 등의 모델에서 다중 토큰 예측(MTP) 헤드를 네이티브로 로드하여, 동일한 가중치 파일에서도 <strong>디코딩 속도가 최대 +145% 향상</strong>됩니다.
-* <strong>KV-캐시 양자화(4-bit, 8-bit, TurboQuant)</strong>: 긴 문맥(Long Context) 대화 시 메모리 점유율을 획기적으로 낮추어 M4 Mac의 통합 메모리를 극한까지 효율적으로 활용합니다.
+* <strong>KV-캐시 양자화(4-bit, 8-bit, TurboQuant)</strong>: 긴 문맥(Long Context) 대화 시 메모리 점유율을 획기적으로 낮추어 Apple Silicon(M4, M5, M6) Mac의 통합 메모리를 극한까지 효율적으로 활용합니다.
 
 ---
 

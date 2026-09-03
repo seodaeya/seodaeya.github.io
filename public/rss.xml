@@ -5,14 +5,14 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 03 Sep 2026 15:58:49 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 16:03:50 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/</guid>
     <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Apple Silicon(M1, M2, M3, M4, M5) Mac을 사용하는 AI 개발자와 엔지니어들에게 로컬 LLM(대형 언어 모델) 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인 파이썬(Python...]]></description>
+    <description><![CDATA[Apple Silicon(M1, M2, M3, M4, M5부터 최신 M6까지) Mac을 사용하는 AI 개발자와 엔지니어들에게 로컬 LLM(대형 언어 모델) 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인...]]></description>
   </item>
   <item>
     <title><![CDATA["미국 주식은 무조건 우상향?" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오]]></title>
