@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 9월 2일 22:27 KST",
+  "updatedAt": "2026년 9월 4일 00:58 KST",
   "isRealGA": false,
   "posts": [
     {
@@ -17,21 +17,21 @@
     },
     {
       "rank": 2,
-      "change": "same",
-      "changeText": "-",
-      "badge": "GitHub · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
-      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
-      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
-      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
-      "date": "2026-09-01",
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "MLX · AI",
+      "category": "AI & Intelligence",
+      "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
+      "desc": "Apple Silicon Mac에 최적화된 초고속 Zig 네이티브 로컬 LLM 서버 mlx-serve(MLX Core)의 핵심 아키텍처, LM Studio 대비 성능 비교, Homebrew 및 DMG 설치법, Claude Code와 OpenAI API 연동 활용법을 심층 분석합니다.",
+      "image": "/images/mlx_serve_apple_silicon_local_llm_guide_thumbnail.jpg",
+      "url": "/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide",
+      "date": "2026-09-04",
       "views": null
     },
     {
       "rank": 3,
-      "change": "up",
-      "changeText": "▲ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Investment · Economy",
       "category": "Economy & Investment",
       "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
@@ -43,8 +43,8 @@
     },
     {
       "rank": 4,
-      "change": "down",
-      "changeText": "▼ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -56,15 +56,15 @@
     },
     {
       "rank": 5,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Next.js · Dev",
+      "change": "down",
+      "changeText": "▼ 3",
+      "badge": "GitHub · Dev",
       "category": "Dev & Software",
-      "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
-      "desc": "Next.js 환경에서 데스크톱 사이드바와 모바일 플로팅 바텀시트 목차(TOC)를 구축하며 겪은 CSS 부모 트랩, Hydration 유령 노드(20/20 버그), 2초 스마트 자동 숨김 UX 최적화 과정을 상세히 기록합니다.",
-      "image": "/images/nextjs_mobile_toc_troubleshooting_thumbnail.jpg",
-      "url": "/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide",
-      "date": "2026-08-30",
+      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
+      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
+      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
+      "date": "2026-09-01",
       "views": null
     }
   ],
@@ -84,21 +84,21 @@
     },
     {
       "rank": 2,
-      "change": "same",
-      "changeText": "-",
-      "badge": "GitHub · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
-      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
-      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
-      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
-      "date": "2026-09-01",
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "MLX · AI",
+      "category": "AI & Intelligence",
+      "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
+      "desc": "Apple Silicon Mac에 최적화된 초고속 Zig 네이티브 로컬 LLM 서버 mlx-serve(MLX Core)의 핵심 아키텍처, LM Studio 대비 성능 비교, Homebrew 및 DMG 설치법, Claude Code와 OpenAI API 연동 활용법을 심층 분석합니다.",
+      "image": "/images/mlx_serve_apple_silicon_local_llm_guide_thumbnail.jpg",
+      "url": "/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide",
+      "date": "2026-09-04",
       "views": null
     },
     {
       "rank": 3,
-      "change": "up",
-      "changeText": "▲ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Investment · Economy",
       "category": "Economy & Investment",
       "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
@@ -110,8 +110,8 @@
     },
     {
       "rank": 4,
-      "change": "down",
-      "changeText": "▼ 1",
+      "change": "same",
+      "changeText": "-",
       "badge": "Spring Boot · Tech",
       "category": "Tech & Dev",
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
@@ -123,8 +123,21 @@
     },
     {
       "rank": 5,
-      "change": "same",
-      "changeText": "-",
+      "change": "down",
+      "changeText": "▼ 3",
+      "badge": "GitHub · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
+      "desc": "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다.",
+      "image": "/images/github_top_starred_repositories_guide_thumbnail.jpg",
+      "url": "/posts/20260901-1-github-top-starred-repositories-ranking-guide",
+      "date": "2026-09-01",
+      "views": null
+    },
+    {
+      "rank": 6,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Next.js · Dev",
       "category": "Dev & Software",
       "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
@@ -135,9 +148,9 @@
       "views": null
     },
     {
-      "rank": 6,
-      "change": "same",
-      "changeText": "-",
+      "rank": 7,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "GitHub Pages · Tech",
       "category": "Tech & Dev",
       "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
@@ -148,9 +161,9 @@
       "views": null
     },
     {
-      "rank": 7,
-      "change": "same",
-      "changeText": "-",
+      "rank": 8,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "SEO · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
@@ -158,19 +171,6 @@
       "image": "/github_pages_url_slug_seo_redirection_thumbnail.jpg",
       "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
       "date": "2026-08-22",
-      "views": null
-    },
-    {
-      "rank": 8,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Agentic AI · AI",
-      "category": "AI & Intelligence",
-      "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
-      "desc": "단일 프롬프트 처리를 넘어 다중 에이전트 협업으로 복잡한 소프트웨어 개발 작업을 자동화하는 에이전틱 워크플로우 아키텍처를 소개합니다.",
-      "image": "/images/meta_techlead_real_ax_guide_thumbnail.jpg",
-      "url": "/posts/20260817-1-meta-ax-agentic-workflow",
-      "date": "2026-08-17",
       "views": null
     },
     {
@@ -214,8 +214,21 @@
     },
     {
       "rank": 12,
-      "change": "same",
-      "changeText": "-",
+      "change": "down",
+      "changeText": "▼ 4",
+      "badge": "Agentic AI · AI",
+      "category": "AI & Intelligence",
+      "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
+      "desc": "단일 프롬프트 처리를 넘어 다중 에이전트 협업으로 복잡한 소프트웨어 개발 작업을 자동화하는 에이전틱 워크플로우 아키텍처를 소개합니다.",
+      "image": "/images/meta_techlead_real_ax_guide_thumbnail.jpg",
+      "url": "/posts/20260817-1-meta-ax-agentic-workflow",
+      "date": "2026-08-17",
+      "views": null
+    },
+    {
+      "rank": 13,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "macOS · Hardware",
       "category": "Hardware & DIY",
       "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
@@ -226,9 +239,9 @@
       "views": null
     },
     {
-      "rank": 13,
-      "change": "same",
-      "changeText": "-",
+      "rank": 14,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Privacy Policy · Dev",
       "category": "Dev & Software",
       "title": "기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐",
@@ -239,9 +252,9 @@
       "views": null
     },
     {
-      "rank": 14,
-      "change": "same",
-      "changeText": "-",
+      "rank": 15,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -252,35 +265,9 @@
       "views": null
     },
     {
-      "rank": 15,
-      "change": "same",
-      "changeText": "-",
-      "badge": "AdSense · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
-      "desc": "GitHub Pages 정적 블로그에서 구글 애드센스 승인을 통과하기 위한 도메인 연결, ads.txt 설정, 개인정보처리방침 구비 팁을 공유합니다.",
-      "image": "/images/github_pages_adsense_domain_guide_thumbnail.jpg",
-      "url": "/posts/20260807-1-github-pages-adsense-domain",
-      "date": "2026-08-07",
-      "views": null
-    },
-    {
       "rank": 16,
-      "change": "same",
-      "changeText": "-",
-      "badge": "SEO · AI",
-      "category": "AI & Intelligence",
-      "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
-      "desc": "전통적인 검색엔진 최적화(SEO)를 넘어 ChatGPT, Perplexity 등 생성형 AI 검색 엔진에 인용되는 최신 GEO 전략을 다룹니다.",
-      "image": "/images/seo_geo_search_optimization_thumbnail.jpg",
-      "url": "/posts/20260805-1-seo-geo-ai-search-strategy",
-      "date": "2026-08-05",
-      "views": null
-    },
-    {
-      "rank": 17,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
       "badge": "Google Search Console · Dev",
       "category": "Dev & Software",
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
@@ -288,6 +275,19 @@
       "image": "/images/gsc_sitemap_lastmod_fix_thumbnail.jpg",
       "url": "/posts/20260805-2-gsc-sitemap-lastmod-fix",
       "date": "2026-08-05",
+      "views": null
+    },
+    {
+      "rank": 17,
+      "change": "down",
+      "changeText": "▼ 2",
+      "badge": "AdSense · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
+      "desc": "GitHub Pages 정적 블로그에서 구글 애드센스 승인을 통과하기 위한 도메인 연결, ads.txt 설정, 개인정보처리방침 구비 팁을 공유합니다.",
+      "image": "/images/github_pages_adsense_domain_guide_thumbnail.jpg",
+      "url": "/posts/20260807-1-github-pages-adsense-domain",
+      "date": "2026-08-07",
       "views": null
     },
     {
@@ -305,8 +305,21 @@
     },
     {
       "rank": 19,
-      "change": "same",
-      "changeText": "-",
+      "change": "down",
+      "changeText": "▼ 3",
+      "badge": "SEO · AI",
+      "category": "AI & Intelligence",
+      "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
+      "desc": "전통적인 검색엔진 최적화(SEO)를 넘어 ChatGPT, Perplexity 등 생성형 AI 검색 엔진에 인용되는 최신 GEO 전략을 다룹니다.",
+      "image": "/images/seo_geo_search_optimization_thumbnail.jpg",
+      "url": "/posts/20260805-1-seo-geo-ai-search-strategy",
+      "date": "2026-08-05",
+      "views": null
+    },
+    {
+      "rank": 20,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
       "title": "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'",
@@ -317,9 +330,9 @@
       "views": null
     },
     {
-      "rank": 20,
-      "change": "same",
-      "changeText": "-",
+      "rank": 21,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Gemini · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
@@ -330,9 +343,9 @@
       "views": null
     },
     {
-      "rank": 21,
-      "change": "same",
-      "changeText": "-",
+      "rank": 22,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "AI Future · AI",
       "category": "AI & Intelligence",
       "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
@@ -343,9 +356,9 @@
       "views": null
     },
     {
-      "rank": 22,
-      "change": "same",
-      "changeText": "-",
+      "rank": 23,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Football · Lifestyle",
       "category": "Lifestyle & Tech",
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
@@ -356,9 +369,9 @@
       "views": null
     },
     {
-      "rank": 23,
-      "change": "same",
-      "changeText": "-",
+      "rank": 24,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion",
@@ -369,9 +382,9 @@
       "views": null
     },
     {
-      "rank": 24,
-      "change": "same",
-      "changeText": "-",
+      "rank": 25,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "PostgreSQL · Dev",
       "category": "Dev & Software",
       "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
@@ -379,19 +392,6 @@
       "image": "/images/postgresql_guide_thumbnail.jpg",
       "url": "/posts/20250427-1-postgresql-install-setup-guide",
       "date": "2025-04-27",
-      "views": null
-    },
-    {
-      "rank": 25,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Cline · AI",
-      "category": "AI & Intelligence",
-      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-      "desc": "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다.",
-      "image": "/images/cline_guide_thumbnail.jpg",
-      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
-      "date": "2025-04-04",
       "views": null
     },
     {
@@ -417,6 +417,19 @@
       "desc": "Anthropic의 대표 AI 모델인 Claude 3.5 Sonnet, Opus, Haiku의 아키텍처별 특징과 벤치마크 성능, 개발 및 실무 활용 가이드를 심층 분석합니다.",
       "image": "/images/claude_analysis_thumbnail.jpg",
       "url": "/posts/20250404-1-anthropic-claude-models-analysis",
+      "date": "2025-04-04",
+      "views": null
+    },
+    {
+      "rank": 28,
+      "change": "down",
+      "changeText": "▼ 3",
+      "badge": "Cline · AI",
+      "category": "AI & Intelligence",
+      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
+      "desc": "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다.",
+      "image": "/images/cline_guide_thumbnail.jpg",
+      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
       "date": "2025-04-04",
       "views": null
     }

@@ -1,5 +1,11 @@
 [
   {
+    "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
+    "category": "AI & Intelligence",
+    "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md",
+    "date": "20260904"
+  },
+  {
     "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
     "category": "Economy & Investment",
     "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260819-1-ai-alter-framework.md",
     "date": "20260819"
-  },
-  {
-    "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
-    "category": "AI & Intelligence",
-    "file": "posts/20260817-1-meta-ax-agentic-workflow.md",
-    "date": "20260817"
   }
 ]
