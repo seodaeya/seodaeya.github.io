@@ -67,7 +67,21 @@ mlx-serve는 로컬에 단 하나의 서버(`http://localhost:11234`)를 띄우�
 
 ---
 
-## 📥 3. 다운로드 및 설치 방법
+
+---
+
+## 💻 3. 내 Mac에 딱 맞는 RAM 용량별 추천 모델 가이드
+
+Mac은 CPU와 GPU가 메모리를 공유하는 <strong>통합 메모리(Unified Memory)</strong> 구조이지만, macOS 시스템 기본 점유(약 4\~6GB)를 고려하여 <strong>가용 메모리에 맞는 모델을 선택해야 스왑(Swap) 지연 없이 쾌적하게 구동</strong>할 수 있습니다:
+
+| Mac 통합 메모리 (RAM) | 실질 AI 가용 메모리 | 추천 LLM 모델 크기 및 양자화 | 추천 미디어/추가 도구 |
+| :---: | :---: | :--- | :--- |
+| <strong>8GB \~ 16GB</strong> (M1/M2/M3 기본형) | 약 4GB \~ 11GB | • `Gemma 4 2B / 4B` (4-bit/8-bit)<br>• `Llama 3.2 3B`<br>• `Qwen 2.5 7B` (4-bit) | 경량 텍스트 코딩 및 일상 챗봇 |
+| <strong>24GB</strong> (Mac mini M4 표준형) | 약 17GB \~ 19GB | • `Qwen 2.5 Coder 14B` (4-bit)<br>• `Gemma 4 9B` (8-bit)<br>• `Mistral 7B` (8-bit) | • `Qwen3-TTS` (음성 복제)<br>• 경량 비전(Vision) 분석 |
+| <strong>36GB \~ 48GB</strong> (M3/M4 Pro) | 약 28GB \~ 40GB | • `Qwen 2.5 32B` (4-bit)<br>• `DeepSeek Coder 33B`<br>• `Llama 3.1 8B` (16-bit Full) | • `FLUX.2` / `Krea-2-Turbo` (이미지 생성)<br>• MCP 에이전트 도구 풀가동 |
+| <strong>64GB \~ 96GB+</strong> (M-Max / M-Ultra) | 약 52GB \~ 85GB+ | • `Llama 3.3 70B` (4-bit)<br>• `Qwen 2.5 72B` (4-bit)<br>• `DeepSeek V4 Flash` (96GB+ 추천) | • `LTX-Video 2.3` (로컬 동영상 생성)<br>• 고화질 3D 모델 생성 |
+
+## 📥 4. 다운로드 및 설치 방법
 
 mlx-serve는 직관적인 <strong>GUI 메뉴바 앱(MLX Core)</strong>과 터미널용 <strong>CLI 서버</strong> 두 가지 방식으로 설치할 수 있습니다.
 
@@ -98,7 +112,7 @@ mlx-serve --version
 
 ---
 
-## 🛠️ 4. 실전 활용 방법 가이드
+## 🛠️ 5. 실전 활용 방법 가이드
 
 ### 1) CLI 명령어 하나로 모델 다운로드 및 즉시 실행
 원하는 모델명을 지정하여 `run` 명령을 입력하면, 모델 다운로드부터 로컬 API 서빙 및 대화형 챗봇 터미널까지 한 번에 시작됩니다:
@@ -156,7 +170,7 @@ print(response.choices[0].message.content)
 
 ---
 
-## 💡 5. 12세 청소년도 쉽게 이해하는 직관적 비유 (ELI12)
+## 💡 6. 12세 청소년도 쉽게 이해하는 직관적 비유 (ELI12)
 
 > <strong>"무거운 덤프트럭(파이썬+일렉트론) vs 맞춤형 티타늄 스포츠카(Zig+Metal)"</strong>
 > 
@@ -166,7 +180,7 @@ print(response.choices[0].message.content)
 
 ---
 
-## 🎯 6. 요약 및 결론
+## 🎯 7. 요약 및 결론
 
 <strong>mlx-serve</strong>는 Apple Silicon 생태계에서 로컬 LLM을 다루는 방식을 완전히 한 단계 끌어올린 혁신적인 소프트웨어입니다.
 
