@@ -1,24 +1,11 @@
 {
-  "updatedAt": "2026년 9월 4일 01:11 KST",
+  "updatedAt": "2026년 9월 4일 01:20 KST",
   "isRealGA": false,
   "posts": [
     {
       "rank": 1,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Ontology · Tech",
-      "category": "Tech & Dev",
-      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
-      "desc": "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다.",
-      "image": "/images/ecommerce_ontology_ai_search_thumbnail.png",
-      "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
-      "date": "2026-08-27",
-      "views": null
-    },
-    {
-      "rank": 2,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
       "badge": "MLX · AI",
       "category": "AI & Intelligence",
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
@@ -26,6 +13,19 @@
       "image": "/images/mlx_serve_apple_silicon_local_llm_guide_thumbnail.jpg",
       "url": "/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide",
       "date": "2026-09-04",
+      "views": null
+    },
+    {
+      "rank": 2,
+      "change": "down",
+      "changeText": "▼ 1",
+      "badge": "Ontology · Tech",
+      "category": "Tech & Dev",
+      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
+      "desc": "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다.",
+      "image": "/images/ecommerce_ontology_ai_search_thumbnail.png",
+      "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
+      "date": "2026-08-27",
       "views": null
     },
     {
@@ -71,21 +71,8 @@
   "allPosts": [
     {
       "rank": 1,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Ontology · Tech",
-      "category": "Tech & Dev",
-      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
-      "desc": "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다.",
-      "image": "/images/ecommerce_ontology_ai_search_thumbnail.png",
-      "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
-      "date": "2026-08-27",
-      "views": null
-    },
-    {
-      "rank": 2,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
       "badge": "MLX · AI",
       "category": "AI & Intelligence",
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
@@ -93,6 +80,19 @@
       "image": "/images/mlx_serve_apple_silicon_local_llm_guide_thumbnail.jpg",
       "url": "/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide",
       "date": "2026-09-04",
+      "views": null
+    },
+    {
+      "rank": 2,
+      "change": "down",
+      "changeText": "▼ 1",
+      "badge": "Ontology · Tech",
+      "category": "Tech & Dev",
+      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
+      "desc": "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다.",
+      "image": "/images/ecommerce_ontology_ai_search_thumbnail.png",
+      "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
+      "date": "2026-08-27",
       "views": null
     },
     {

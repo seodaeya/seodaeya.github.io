@@ -9,7 +9,7 @@ tags: ["MLX", "MLXServe", "AppleSilicon", "LocalLLM", "LMStudio", "Ollama", "Cla
 
 ## 🌐 1. Apple Silicon을 위한 새로운 최강자: mlx-serve란 무엇인가?
 
-Apple Silicon(M1, M2, M3, M4, M5부터 최신 M6까지) Mac을 사용하는 AI 개발자와 엔지니어들에게 <strong>로컬 LLM(대형 언어 모델)</strong> 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인 파이썬(Python) 기반 MLX 도구들은 몇 가지 아쉬운 한계가 있었습니다:
+Apple Silicon(M1, M2, M3, M4, M5 및 차세대 아키텍처) Mac을 사용하는 AI 개발자와 엔지니어들에게 <strong>로컬 LLM(대형 언어 모델)</strong> 구동은 더 이상 낯선 영역이 아닙니다. 하지만 지금까지 널리 사용되던 LM Studio나 Ollama, 일반적인 파이썬(Python) 기반 MLX 도구들은 몇 가지 아쉬운 한계가 있었습니다:
 
 * 무거운 <strong>일렉트론(Electron)</strong> 기반 GUI로 인한 메모리 및 백그라운드 자원 낭비
 * 복잡한 <strong>Python 가상환경(venv, pip)</strong>과 C++ 빌드 의존성 관리의 번거로움
@@ -17,7 +17,28 @@ Apple Silicon(M1, M2, M3, M4, M5부터 최신 M6까지) Mac을 사용하는 AI �
 
 이러한 문제를 완전히 해결하기 위해 등장한 오픈소스 프로젝트가 바로 <strong>[mlx-serve (mlxserve.com)](https://mlxserve.com/)</strong>입니다.
 
-<strong>mlx-serve</strong>는 최신 시스템 프로그래밍 언어인 <strong>Zig</strong>로 작성된 초경량·초고속 <strong>Apple Silicon 네이티브 AI 추론 서버</strong>입니다. 파이썬 의존성 없이 단일 바이너리로 구동되며, Apple의 공식 MLX 프레임워크와 GGUF 모델을 Metal 하드웨어 레벨에서 직접 연산하여 <strong>LM Studio와 Ollama를 뛰어넘는 압도적인 추론 성능</strong>을 제공합니다.
+<strong>mlx-serve</strong>는 최신 시스템 프로그래밍 언어인 <strong>Zig</strong>로 작성된 초경량·초고속 <strong>Apple Silicon 네이티브 AI 추론 서버</strong>입니다. 파이썬 의존성 없이 단독 바이너리로 실행되며, Apple 공식 MLX C++ 라이브러리와 내장 `libllama`를 결합하여 <strong>MLX 모델과 GGUF 모델을 하나의 통합 API 계층으로 서비스</strong>합니다.
+
+```text
+                  [ Apple Silicon (Metal 하드웨어 가속) ]
+                                    │
+                 ┌──────────────────┴──────────────────┐
+                 │                                     │
+           [ Apple MLX-C ]                      [ libllama / ds4 ]
+                 │                                     │
+          HuggingFace MLX 가중치                 GGUF / DeepSeek V4
+                 │                                     │
+                 └──────────────────┬──────────────────┘
+                                    │
+                        [ mlx-serve (Zig 엔진) ]
+                                    │
+       ┌────────────────────────────┼────────────────────────────┐
+       │                            │                            │
+[ OpenAI 호환 API ]        [ Anthropic 호환 API ]       [ Ollama 호환 API ]
+ (`/v1/chat/completions`)     (`/v1/messages`)            (`/api/chat`, `/api/generate`)
+       │                            │                            │
+   Cursor / VS Code            Claude Code             Raycast / Obsidian / WebUI
+```
 
 ---
 
@@ -44,7 +65,7 @@ mlx-serve는 로컬에 단 하나의 서버(`http://localhost:11234`)를 띄우�
 [ mlx-serve의 완벽한 멀티 API 호환 아키텍처 ]
 
 • OpenAI 호환 엔드포인트    : `/v1/chat/completions`, `/v1/models`, `/v1/responses` (WebSocket 지원)
-• Anthropic 호환 엔드포인트 : `/v1/messages` (Claude Code와 100% 네이티브 호환, Extended Thinking 지원)
+• Anthropic 호환 엔드포인트 : `/v1/messages` (Claude Code와 즉시 연동 가능한 Extended Thinking 및 Tool Calling 완벽 지원)
 • Ollama 완벽 드롭인 대체   : `/api/chat`, `/api/generate`, `/api/tags`, `/api/embed` (포트만 11234로 교체)
 ```
 
@@ -166,7 +187,7 @@ print(response.choices[0].message.content)
 ---
 
 ### 4) Raycast, Obsidian, Open WebUI에서 Ollama 대체하기
-기존에 Ollama(`http://localhost:11434`)를 사용하던 앱(Raycast AI, Obsidian 스마트 프롬프트, Open WebUI, Enchanted 등)의 설정에서 <strong>포트 번호만 `11234`로 변경</strong>해 주면, 아무런 플러그인 교체 없이 훨씬 더 빠른 Metal 가속 추론 성능을 누릴 수 있습니다!
+기존에 Ollama(`http://localhost:11434`)를 사용하던 앱(Raycast AI, Obsidian 스마트 프롬프트, Open WebUI, Enchanted 등)의 설정에서 <strong>포트 번호만 `11234`로 변경</strong>해 주면, 별도의 플러그인 교체 없이도 대부분의 기능이 즉시 정상 작동합니다!
 
 ---
 
@@ -185,7 +206,7 @@ print(response.choices[0].message.content)
 <strong>mlx-serve</strong>는 Apple Silicon 생태계에서 로컬 LLM을 다루는 방식을 완전히 한 단계 끌어올린 혁신적인 소프트웨어입니다.
 
 * <strong>가장 빠른 속도</strong>: LM Studio 대비 최대 +145% 가속 및 투기적 디코딩
-* <strong>완벽한 자유도</strong>: Python 없는 Zig 단일 바이너리, MIT 오픈소스, 100% 프라이버시
+* <strong>완벽한 자유도</strong>: Python 없는 Zig 단일 바이너리, MIT 오픈소스, 클라우드 전송 없는 로컬 추론 프라이버시
 * <strong>극강의 연결성</strong>: OpenAI, Anthropic(Claude Code), Ollama, MCP 표준 API 완벽 지원
 
 MacBook이나 Mac Studio, Mac mini에서 로컬 AI 모델을 가볍고 쾌적하게 활용하고 싶다면, 지금 바로 <strong>[mlxserve.com](https://mlxserve.com/)</strong>을 통해 차원이 다른 온디바이스 AI의 성능을 경험해 보시기를 강력히 추천합니다!
