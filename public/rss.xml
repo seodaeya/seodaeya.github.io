@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 03 Sep 2026 16:37:26 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 10 Sep 2026 16:51:11 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법]]></title>
+    <link>https://seodaeya.github.io/posts/20260911-1-na-min-ae-reading-method-literacy-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20260911-1-na-min-ae-reading-method-literacy-guide/</guid>
+    <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[한 해에 수십 권의 책을 읽고 독서대에 신간을 쌓아두지만, 몇 주만 지나면 "내가 이 책에서 무엇을 배웠지?", "기억에 남는 핵심 내용이 뭐였더라?" 하며 허탈함을 느껴본 적이 누구나 있을 것입니다. 정보가 넘쳐나고 숏폼과 영상 미디어가 범람하는 시대에 '긴 호흡의...]]></description>
+  </item>
   <item>
     <title><![CDATA[Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/</link>
