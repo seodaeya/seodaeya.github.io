@@ -59,6 +59,10 @@
   ],
   "Dev & Software": [
     {
+      "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
+      "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md"
+    },
+    {
       "title": "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고",
       "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md"
     },

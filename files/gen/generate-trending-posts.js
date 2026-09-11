@@ -1,48 +1,47 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const matter = require('gray-matter');
 
 const postsDir = path.join(process.cwd(), 'files/posts');
 const outputFile = path.join(process.cwd(), 'files/trending-posts.json');
+const baselineFile = path.join(process.cwd(), 'files/monthly-baseline-ranking.json');
 
-// 한국 시간 기준 현재 포맷팅 (YYYY년 M월 D일 HH:mm KST)
-function getKstDisplayDate() {
+// 한국 시간 기준 날짜 및 월간 메타데이터 계산 (KST, UTC+9)
+function getKstInfo() {
   const now = new Date();
   const kstOffset = 9 * 60; // KST is UTC+9
   const localOffset = now.getTimezoneOffset();
   const kstTime = new Date(now.getTime() + (kstOffset + localOffset) * 60000);
 
   const year = kstTime.getFullYear();
-  const month = kstTime.getMonth() + 1;
+  const monthNum = kstTime.getMonth() + 1;
+  const month = String(monthNum).padStart(2, '0');
   const day = kstTime.getDate();
   const hours = String(kstTime.getHours()).padStart(2, '0');
   const minutes = String(kstTime.getMinutes()).padStart(2, '0');
 
-  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes} KST`;
+  const monthKey = `${year}-${month}`;
+  const baselineDateStr = `${year}년 ${monthNum}월 1일 기준`;
+  const updatedAtStr = `${year}년 ${monthNum}월 ${day}일 ${hours}:${minutes} KST`;
+
+  return {
+    year,
+    monthNum,
+    month: monthKey,
+    day,
+    baselineDateStr,
+    updatedAtStr,
+    kstTime
+  };
 }
 
-// 이전 랭킹 히스토리 읽기 (순위 변동 계산용)
-let previousRankingMap = {};
-if (fs.existsSync(outputFile)) {
-  try {
-    const prevData = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
-    const prevList = prevData.allPosts || prevData.posts || (Array.isArray(prevData) ? prevData : []);
-    prevList.forEach((item, idx) => {
-      previousRankingMap[item.url] = idx + 1;
-    });
-  } catch (e) {
-    previousRankingMap = {};
-  }
-}
-
-// 1. GA4 실시간 / 누적 페이지뷰 조회 (Exponential Backoff 재시도 포함)
+// 1. GA4 실시간 / 누적 페이지뷰 조회 (GitHub Actions 환경 등)
 async function fetchRealGA4RankingsWithRetry(maxRetries = 3) {
   const propertyId = process.env.GA_PROPERTY_ID;
   const serviceAccountKey = process.env.GA_SERVICE_ACCOUNT_KEY;
 
   if (!propertyId || !serviceAccountKey) {
-    console.log('ℹ️ [GA4] GA_SERVICE_ACCOUNT_KEY or GA_PROPERTY_ID not provided. Using intelligent hybrid fallback.');
+    console.log('ℹ️ [GA4] GA_SERVICE_ACCOUNT_KEY or GA_PROPERTY_ID not provided. Using preserved monthly baseline / fallback data.');
     return null;
   }
 
@@ -120,15 +119,14 @@ async function fetchRealGA4RankingsWithRetry(maxRetries = 3) {
     }
   }
 
-  console.error('❌ [GA4 API] All retry attempts exhausted. Falling back to curated data.');
+  console.error('❌ [GA4 API] All retry attempts exhausted. Falling back to preserved data.');
   return null;
 }
 
-// 2. 전체 블로그 아티클 파일 목록 읽기 및 지능형 순위 계산
+// 2. 전체 블로그 아티클 파일 목록 읽기 (결정론적 신선도 및 본문 점수)
 function getAllPostsWithScores() {
   if (!fs.existsSync(postsDir)) return [];
   const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
-  const todayStr = new Date().toISOString().split('T')[0];
 
   return files.map(filename => {
     const slug = filename.replace('.md', '');
@@ -139,61 +137,163 @@ function getAllPostsWithScores() {
     const postDate = data.date ? new Date(data.date).getTime() : 0;
     const daysOld = Math.max(0, Math.floor((Date.now() - postDate) / (1000 * 60 * 60 * 24)));
     
-    // 신선도 점수 (최신 글일수록 가중치) + 글 분량 가중치
-    const freshnessScore = Math.max(10, 100 - daysOld * 1.5);
-    const contentWeight = Math.min(30, Math.floor(content.length / 500));
-    
-    // 일일 미세 변동 해시 (실측 조회수를 뒤집지 않는 1~5점 수준의 미세 타이브레이커)
-    const hash = crypto.createHash('md5').update(`${todayStr}-${slug}`).digest('hex');
-    const tieBreaker = (parseInt(hash.substring(0, 4), 16) % 5);
-
-    const baseScore = freshnessScore + contentWeight + tieBreaker;
+    // 신선도 점수 (최신 글일수록 가중치) + 글 분량 가중치 (인위적 난수 해시 배제)
+    const freshnessScore = Math.max(1, 100 - daysOld * 1.2);
+    const contentWeight = Math.min(20, Math.floor(content.length / 500));
+    const baseScore = freshnessScore + contentWeight;
 
     return {
       slug,
       title: data.title || slug,
       category: data.category || 'Tech & Dev',
       date: data.date || '',
+      postDate,
       daysOld,
       image: data.image || '',
       tags: data.tags || [],
       excerpt: data.excerpt || content.slice(0, 120).replace(/[#*`]/g, '').trim(),
       baseScore
     };
-  }).sort((a, b) => b.baseScore - a.baseScore);
+  });
+}
+
+// 3. 기존 보존된 조회수 맵 읽기 (로컬 빌드 시 GA 실측 조회수 유실 방지)
+function getPreservedViewsMap() {
+  const viewsMap = {};
+  
+  // 1순위: 월간 기준 파일에 저장된 조회수
+  if (fs.existsSync(baselineFile)) {
+    try {
+      const baselineData = JSON.parse(fs.readFileSync(baselineFile, 'utf8'));
+      if (Array.isArray(baselineData.posts)) {
+        baselineData.posts.forEach(p => {
+          if (p.views && p.url) {
+            const slug = p.url.replace('/posts/', '');
+            viewsMap[slug] = p.views;
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
+  // 2순위: 기존 trending-posts.json 파일에 저장된 조회수 보완
+  if (fs.existsSync(outputFile)) {
+    try {
+      const prevTrending = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+      const list = prevTrending.allPosts || prevTrending.posts || [];
+      list.forEach(p => {
+        if (p.views && p.url) {
+          const slug = p.url.replace('/posts/', '');
+          if (!viewsMap[slug]) {
+            viewsMap[slug] = p.views;
+          }
+        }
+      });
+    } catch (e) {}
+  }
+
+  return viewsMap;
 }
 
 async function main() {
+  const kstInfo = getKstInfo();
   const realGA = await fetchRealGA4RankingsWithRetry();
   const allCandidatePosts = getAllPostsWithScores();
   const isRealGA = Boolean(realGA && realGA.length > 0);
 
-  // GA4 실측 조회수가 있는 글을 최우선으로 매핑
+  // GA4 실측 조회수가 있으면 최우선 적용, 없으면 기존 보존된 실측 조회수 유지
   const gaViewsMap = {};
   if (realGA) {
     realGA.forEach(item => {
       gaViewsMap[item.slug] = item.views;
     });
+  } else {
+    const preserved = getPreservedViewsMap();
+    Object.assign(gaViewsMap, preserved);
   }
 
-  // 전체 아티클에 대해 GA4 실측 조회수(1회당 1000점) + 신선도/기본 스코어 산출
+  // 전체 아티클 정렬: 조회수 절대 우선(100,000점) + 발행일 최신순(postDate) + baseScore
   const scoredPosts = allCandidatePosts.map(post => {
     const views = gaViewsMap[post.slug] || 0;
-    const totalScore = (views * 1000) + post.baseScore;
+    // 결정론적 스코어: 조회수가 1회라도 있으면 100,000점 단위로 최우선 정렬
+    const totalScore = (views * 100000) + post.baseScore;
     return {
       ...post,
       views: views > 0 ? views : null,
       totalScore
     };
-  }).sort((a, b) => b.totalScore - a.totalScore);
+  }).sort((a, b) => {
+    if (b.totalScore !== a.totalScore) {
+      return b.totalScore - a.totalScore;
+    }
+    // 동점 시 최신 발행일 우선
+    return b.postDate - a.postDate;
+  });
 
-  // 1위부터 끝까지 순위 및 변동폭(▲, ▼, NEW, -) 계산
-  const hasPreviousHistory = Object.keys(previousRankingMap).length > 0;
+  // 4. 월간 기준 순위표(Monthly Baseline) 로드 및 자동 갱신 로직
+  // 매월 1일이거나 기준 파일이 없거나, 기준 파일의 월이 현재 월과 다를 경우 새로운 월간 기준 생성
+  let monthlyBaselineMap = {};
+  let baselineDateStr = kstInfo.baselineDateStr;
+  let isNewBaselineCreated = false;
 
+  if (fs.existsSync(baselineFile)) {
+    try {
+      const existingBaseline = JSON.parse(fs.readFileSync(baselineFile, 'utf8'));
+      // 동일한 월의 기준표가 유효한 경우 기존 기준 맵 사용 (매월 1일 당일이 아닌 경우)
+      if (existingBaseline.month === kstInfo.month && kstInfo.day !== 1) {
+        monthlyBaselineMap = existingBaseline.rankings || {};
+        if (existingBaseline.baselineDate) {
+          baselineDateStr = existingBaseline.baselineDate.includes('기준') 
+            ? existingBaseline.baselineDate 
+            : `${existingBaseline.baselineDate} 기준`;
+        }
+      } else {
+        // 매월 1일이 되었거나 월이 바뀐 경우: 새로운 월간 기준 생성
+        isNewBaselineCreated = true;
+      }
+    } catch (e) {
+      isNewBaselineCreated = true;
+    }
+  } else {
+    isNewBaselineCreated = true;
+  }
+
+  // 새로운 월간 기준 생성 및 파일 기록
+  if (isNewBaselineCreated) {
+    const newBaselineMap = {};
+    const baselinePosts = scoredPosts.map((item, idx) => {
+      const rank = idx + 1;
+      const url = `/posts/${item.slug}`;
+      newBaselineMap[url] = rank;
+      return {
+        rank,
+        title: item.title,
+        url,
+        category: item.category,
+        views: item.views
+      };
+    });
+
+    const newBaselineData = {
+      month: kstInfo.month,
+      baselineDate: `${kstInfo.year}년 ${kstInfo.monthNum}월 1일`,
+      description: `${kstInfo.year}년 ${kstInfo.monthNum}월 월간 기준 순위표 (매월 1일 기준)`,
+      createdAt: new Date().toISOString(),
+      rankings: newBaselineMap,
+      posts: baselinePosts
+    };
+
+    fs.writeFileSync(baselineFile, JSON.stringify(newBaselineData, null, 2), 'utf8');
+    monthlyBaselineMap = newBaselineMap;
+    baselineDateStr = `${kstInfo.year}년 ${kstInfo.monthNum}월 1일 기준`;
+    console.log(`📌 [Monthly Baseline] Established new baseline ranking for ${kstInfo.month} (Total: ${baselinePosts.length} posts).`);
+  }
+
+  // 5. 월간 기준 순위 대비 일일 변동폭(▲, ▼, -, NEW) 계산
   const allRankedList = scoredPosts.map((item, currentIdx) => {
     const currentRank = currentIdx + 1;
     const postUrl = `/posts/${item.slug}`;
-    const prevRank = previousRankingMap[postUrl];
+    const prevRank = monthlyBaselineMap[postUrl];
     let change = 'same';
     let changeText = '-';
 
@@ -209,8 +309,8 @@ async function main() {
         changeText = '-';
       }
     } else {
-      // 이전 기록에 없는 경우: 최근 14일 이내 신규 발행 글만 'NEW'로 표시하고, 나머지는 '-'로 표시하여 신뢰도 유지
-      if (item.daysOld <= 14) {
+      // 월초 기준표에 없던 신규 글: 최근 30일(또는 신규 발행) 글은 'NEW'로 표시
+      if (item.daysOld <= 30) {
         change = 'new';
         changeText = 'NEW';
       } else {
@@ -240,7 +340,7 @@ async function main() {
 
   // 최종 랭킹 결과 콘솔 로깅
   console.log(`======================================================================`);
-  console.log(`🏆 [Leaderboard] Final Generated Rankings (Total: ${allRankedList.length} articles, Real GA: ${isRealGA})`);
+  console.log(`🏆 [Monthly Leaderboard] ${kstInfo.month} Rankings (${baselineDateStr}, Real GA: ${isRealGA || Boolean(allRankedList[0]?.views)})`);
   console.log(`======================================================================`);
   allRankedList.slice(0, 10).forEach((item) => {
     const rankStr = `#${String(item.rank).padStart(2, '0')}`;
@@ -250,14 +350,14 @@ async function main() {
     console.log(`${rankStr} [${changeStr}]  ${viewsStr}  ${titleSnippet}`);
   });
   if (allRankedList.length > 10) {
-    console.log(`... and ${allRankedList.length - 10} more articles ranked in full leaderboard.`);
+    console.log(`... and ${allRankedList.length - 10} more articles ranked in full monthly leaderboard.`);
   }
-  console.log(`======================================================================
-`);
+  console.log(`======================================================================\n`);
 
   const outputData = {
-    updatedAt: getKstDisplayDate(),
-    isRealGA,
+    updatedAt: kstInfo.updatedAtStr,
+    baselineDate: baselineDateStr,
+    isRealGA: isRealGA || Boolean(allRankedList[0]?.views),
     posts: allRankedList.slice(0, 5), // 홈 전광판용 상위 5개
     allPosts: allRankedList // 전체 랭킹 페이지용 전체 목록
   };

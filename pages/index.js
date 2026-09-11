@@ -124,6 +124,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
   }, [isInfoTooltipOpen]);
   const trendingPosts = trendingData?.posts || [];
   const trendingUpdatedAt = trendingData?.updatedAt || '매일 00:00 KST 기준';
+  const trendingBaselineDate = trendingData?.baselineDate || '매월 1일 기준';
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
@@ -249,7 +250,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
           return (
             <section 
               className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
-              aria-label="실시간 인기 아티클 랭킹"
+              aria-label="월간 인기 아티클 랭킹"
             >
               {/* Header Row: Unified Minimalist Live Pill + Toggle Button */}
               <div className={styles.leaderboardHeaderRow}>
@@ -261,13 +262,13 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                       e.stopPropagation();
                       setIsInfoTooltipOpen(!isInfoTooltipOpen);
                     }}
-                    aria-label="실시간 인기 순위 안내 툴팁 열기"
+                    aria-label="월간 인기 순위 안내 툴팁 열기"
                     aria-expanded={isInfoTooltipOpen}
                   >
                     <span className={styles.livePulseContainer}>
                       <span className={styles.livePulseDot} />
                     </span>
-                    <span className={styles.liveBadgeTitle}>실시간 인기 아티클</span>
+                    <span className={styles.liveBadgeTitle}>월간 인기 아티클</span>
                     <span className={styles.liveInfoTrigger} title="집계 기준 안내">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"/>
@@ -286,14 +287,14 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                           <line x1="12" y1="16" x2="12" y2="12"/>
                           <line x1="12" y1="8" x2="12.01" y2="8"/>
                         </svg>
-                        <strong>실시간 인기 순위 집계 안내</strong>
+                        <strong>월간 인기 순위 집계 안내</strong>
                       </div>
                       <p className={styles.infoTooltipText}>
-                        최근 1년간(365일) 블로그 아티클의 GA4 실측 페이지뷰와 독자 관심도를 자동 분석하여 매일 자정(00:00 KST) 순위가 갱신됩니다.
+                        매월 1일 기준 순위표를 바탕으로 한 달간 GA4 실측 페이지뷰와 독자 관심도의 일일 변화를 감지하여 매일 자정(00:00 KST) 순위가 갱신됩니다.
                       </p>
                       <div className={styles.infoTooltipFooter}>
                         <span className={styles.footerDot} />
-                        <span>기준 시점:</span> <strong>{trendingUpdatedAt}</strong>
+                        <span>월간 기준:</span> <strong>{trendingBaselineDate} (매일 갱신)</strong>
                       </div>
                     </div>
                   )}

@@ -30,13 +30,14 @@ export async function getStaticProps() {
   return {
     props: {
       updatedAt: trendingData.updatedAt || '매일 00:00 KST 기준',
+      baselineDate: trendingData.baselineDate || '매월 1일 기준',
       isRealGA: trendingData.isRealGA || false,
       allRankings,
     },
   };
 }
 
-export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
+export default function RankingPage({ updatedAt, baselineDate, isRealGA, allRankings = [] }) {
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [searchQuery, setSearchQuery] = useState('');
   const [isShowAll, setIsShowAll] = useState(false);
@@ -81,17 +82,17 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
   };
 
   const getAriaLabel = (item) => {
-    if (item.change === 'up') return `${item.changeText.replace('▲', '').trim()}계단 상승`;
-    if (item.change === 'down') return `${item.changeText.replace('▼', '').trim()}계단 하락`;
-    if (item.change === 'new') return '신규 진입';
-    return '순위 변동 없음';
+    if (item.change === 'up') return `월초 대비 ${item.changeText.replace('▲', '').trim()}계단 상승`;
+    if (item.change === 'down') return `월초 대비 ${item.changeText.replace('▼', '').trim()}계단 하락`;
+    if (item.change === 'new') return '이번 달 신규 진입';
+    return '월초 순위 유지';
   };
 
   return (
     <>
       <SEO 
-        title="실시간 인기 아티클 랭킹 | 서대야 블로그"
-        description="구글 애널리틱스(GA4) 실측 데이터와 독자 반응을 기반으로 집계된 기술 아티클 실시간 종합 인기 순위입니다."
+        title="월간 인기 아티클 랭킹 | 서대야 블로그"
+        description="매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 페이지뷰 변화를 감지하여 반영하는 월간 종합 순위표입니다."
         url="https://seodaeya.github.io/ranking"
       />
 
@@ -101,15 +102,15 @@ export default function RankingPage({ updatedAt, isRealGA, allRankings = [] }) {
           <div className={styles.heroTopRow}>
             <div className={styles.liveStatusPill}>
               <span className={styles.liveDot} />
-              <span>{isRealGA ? 'GA4 실측 연동 (최근 1년 기준)' : 'LIVE 인기 순위 (최근 1년 기준)'}</span>
+              <span>{isRealGA ? 'GA4 실측 연동 (월간 랭킹)' : '월간 인기 순위 (최근 1년 실측 기준)'}</span>
             </div>
             <div className={styles.updateTimeBadge}>
-              🕒 기준 시점: <strong>{updatedAt}</strong>
+              🕒 월간 기준: <strong>{baselineDate}</strong> (갱신: {updatedAt})
             </div>
           </div>
-          <h1 className={styles.heroTitle}>🏆 실시간 인기 아티클 랭킹</h1>
+          <h1 className={styles.heroTitle}>🏆 월간 인기 아티클 랭킹</h1>
           <p className={styles.heroSubtitle}>
-            Google Analytics 4(GA4)의 최근 1년간(365일) 실제 독자 페이지뷰와 최신 아티클 신선도 가중치를 결합하여 매일 자정(00:00 KST) 집계되는 블로그 전체 기술 아티클 종합 순위표입니다.
+            Google Analytics 4(GA4)의 실제 독자 페이지뷰를 기반으로 매월 1일 기준 순위표를 수립하고, 일일 독자 반응의 변화를 감지하여 매일 자정(00:00 KST) 갱신되는 월간 종합 순위표입니다.
           </p>
         </section>
 

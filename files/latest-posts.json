@@ -1,5 +1,11 @@
 [
   {
+    "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
+    "category": "Dev & Software",
+    "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
+    "date": "20260911"
+  },
+  {
     "title": "책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법",
     "category": "Lifestyle & Tech",
     "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md",
     "date": "20260822"
-  },
-  {
-    "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
-    "category": "AI & Intelligence",
-    "file": "posts/20260819-2-actor-framework-guide.md",
-    "date": "20260819"
   }
 ]
