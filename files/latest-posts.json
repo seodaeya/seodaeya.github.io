@@ -1,5 +1,11 @@
 [
   {
+    "title": "\"중간 관리자는 사라진다\": 잭 도시와 세쿼이아가 밝힌 AI 중심 조직 모델 'From Hierarchy to Intelligence'",
+    "category": "AI & Intelligence",
+    "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md",
+    "date": "20260917"
+  },
+  {
     "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
     "category": "Dev & Software",
     "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
@@ -52,11 +58,5 @@
     "category": "Tech & Dev",
     "file": "posts/20260824-1-github-pages-serverless-cart-parser.md",
     "date": "20260824"
-  },
-  {
-    "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
-    "category": "Dev & Software",
-    "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md",
-    "date": "20260822"
   }
 ]

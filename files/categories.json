@@ -1,6 +1,10 @@
 {
   "AI & Intelligence": [
     {
+      "title": "\"중간 관리자는 사라진다\": 잭 도시와 세쿼이아가 밝힌 AI 중심 조직 모델 'From Hierarchy to Intelligence'",
+      "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md"
+    },
+    {
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
       "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md"
     },

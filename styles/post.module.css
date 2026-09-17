@@ -725,3 +725,30 @@
 .content h3 {
   scroll-margin-top: 100px;
 }
+
+/* Mermaid Diagram Styling with high contrast and responsive card container */
+.content :global(.mermaid) {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 32px 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  overflow-x: auto;
+  text-align: center;
+}
+
+.content :global(.mermaid) * {
+  color: #0f172a;
+}
+
+.content :global(.mermaid span),
+.content :global(.mermaid p),
+.content :global(.mermaid div),
+.content :global(.mermaid .nodeLabel),
+.content :global(.mermaid .edgeLabel),
+.content :global(.mermaid .cluster-label) {
+  color: #0f172a !important;
+  font-weight: 600;
+}
+

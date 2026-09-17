@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Fri, 11 Sep 2026 14:28:34 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 17 Sep 2026 14:29:02 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA["중간 관리자는 사라진다": 잭 도시와 세쿼이아가 밝힌 AI 중심 조직 모델 'From Hierarchy to Intelligence']]></title>
+    <link>https://seodaeya.github.io/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence/</link>
+    <guid>https://seodaeya.github.io/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence/</guid>
+    <pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[2026년 초, 글로벌 핀테크 공룡 기업 블록(Block, 구 Square) 은 글로벌 테크 업계 전체를 충격에 빠뜨린 결정을 발표했습니다. 회사의 분기 실적과 총이익이 견고한 성장세를 유지하고 있음에도 불구하고, 전체 임직원의 40%에 달하는 4,000명 이상의 인력...]]></description>
+  </item>
   <item>
     <title><![CDATA[서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기]]></title>
     <link>https://seodaeya.github.io/posts/20260911-2-github-actions-cron-monthly-ranking-system/</link>

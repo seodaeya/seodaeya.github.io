@@ -11,8 +11,47 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import contentUtils from '@/lib/content';
 import dynamic from 'next/dynamic';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '@/styles/post.module.css';
+
+const PostContent = React.memo(function PostContent({ content }) {
+  return (
+    <div
+      id="post-content"
+      className={styles.content}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  );
+});
+
+function ReadingProgressBar() {
+  const [readingProgress, setReadingProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (windowHeight > 0) {
+        setReadingProgress((totalScroll / windowHeight) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <div 
+      className={styles.readingProgressBar} 
+      style={{ width: `${readingProgress}%` }} 
+      role="progressbar"
+      aria-valuenow={Math.round(readingProgress)}
+      aria-valuemin="0"
+      aria-valuemax="100"
+    />
+  );
+}
 
 
 const { createPlainExcerpt } = contentUtils;
@@ -141,22 +180,11 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
-  const [readingProgress, setReadingProgress] = useState(0);
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [copiedInsta, setCopiedInsta] = useState(false);
 
   useEffect(() => {
-    // 1. Reading Progress Tracker
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      if (windowHeight > 0) {
-        setReadingProgress((totalScroll / windowHeight) * 100);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // 1.5. Wrap any remaining tables into isolated scroll containers
+    // 1. Wrap any remaining tables into isolated scroll containers
     const rawTables = document.querySelectorAll('#post-content table');
     rawTables.forEach((table) => {
       if (!table.parentElement.classList.contains('table-responsive-wrapper') && !table.parentElement.classList.contains(styles.tableResponsiveWrapper)) {
@@ -205,13 +233,11 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
       wrapper.appendChild(pre);
       wrapper.appendChild(copyBtn);
     });
-    // Auto-render Mermaid diagrams if present
+
+    // 3. Auto-render Mermaid diagrams if present
     const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
     if (mermaidBlocks.length > 0) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
-      script.async = true;
-      script.onload = () => {
+      const renderMermaid = () => {
         window.mermaid?.initialize({
           startOnLoad: false,
           theme: 'base',
@@ -237,7 +263,8 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             htmlLabels: true
           }
         });
-        mermaidBlocks.forEach((block) => {
+        const currentBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
+        currentBlocks.forEach((block) => {
           const pre = block.parentElement;
           const codeText = block.textContent;
           const div = document.createElement('div');
@@ -249,11 +276,22 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         });
         window.mermaid?.run();
       };
-      document.head.appendChild(script);
+
+      if (window.mermaid) {
+        renderMermaid();
+      } else {
+        let script = document.querySelector('script[src*="mermaid"]');
+        if (!script) {
+          script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+          script.async = true;
+          script.onload = renderMermaid;
+          document.head.appendChild(script);
+        } else {
+          script.addEventListener('load', renderMermaid);
+        }
+      }
     }
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, [id, content]);
   if (isRedirect) {
     return (
@@ -379,14 +417,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
       />
 
       {/* Reading Progress Bar (Fixed Top) */}
-      <div 
-        className={styles.readingProgressBar} 
-        style={{ width: `${readingProgress}%` }} 
-        role="progressbar"
-        aria-valuenow={Math.round(readingProgress)}
-        aria-valuemin="0"
-        aria-valuemax="100"
-      />
+      <ReadingProgressBar />
 
       <div className={styles.postWrapper}>
         <article className={styles.articleBody}>
@@ -440,11 +471,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
           </section>
 
           {/* Post Content */}
-          <div
-            id="post-content"
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <PostContent content={content} />
 
           {/* Social Share Bar: 100% Official Brand Vector SVGs */}
           <section className={styles.shareSection} aria-label="이 아티클 공유하기">
