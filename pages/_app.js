@@ -20,6 +20,14 @@ export default function App({ Component, pageProps }) {
     };
 
     const handleComplete = (url) => {
+      // GA4 SPA Pageview 자동 전송 (Next.js 클라이언트 사이드 라우트 변경 감지)
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-QEKBH49RMK';
+        window.gtag('config', gaId, {
+          page_path: url,
+        });
+      }
+
       if (url.includes('#')) return;
 
       window.scrollTo(0, 0);
@@ -94,12 +102,6 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* Google AdSense Integration */}
-        <script 
-          async 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086"
-          crossOrigin="anonymous"
-        />
         {/* 테마 감지 인라인 스크립트 (FOUC 방지) */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* Microsoft Clarity Tracking Code */}

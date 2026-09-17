@@ -61,6 +61,25 @@ const fetchCoupangProduct = async (productUrl) => {
   return payload.data;
 };
 
+// Security: Prevent DOM XSS via malicious URL schemas (javascript:, data:, vbscript:)
+function sanitizeSafeUrl(rawUrl, fallback = '#') {
+  if (!rawUrl || typeof rawUrl !== 'string') return fallback;
+  const trimmed = rawUrl.trim();
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  return fallback;
+}
+
+function sanitizeSafeImageUrl(rawUrl, fallback = '') {
+  if (!rawUrl || typeof rawUrl !== 'string') return fallback;
+  const trimmed = rawUrl.trim();
+  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/')) {
+    return trimmed;
+  }
+  return fallback;
+}
+
 const SAMPLE_ITEMS = [
   {
     id: "sample-1",
@@ -138,20 +157,24 @@ export default function CartInAll() {
     // Check if opened via 1-Click Bookmarklet
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
-      const addTitle = params.get('add_title');
-      const addUrl = params.get('add_url');
+      const rawAddTitle = params.get('add_title');
+      const rawAddUrl = params.get('add_url');
       const addPrice = parseInt(params.get('add_price'), 10) || 0;
-      const addImage = params.get('add_image') || '';
+      const rawAddImage = params.get('add_image') || '';
       const addMall = params.get('add_mall') || '쇼핑몰';
 
-      if (addTitle || addUrl) {
+      const safeAddUrl = sanitizeSafeUrl(rawAddUrl, '');
+      const safeAddImage = sanitizeSafeImageUrl(rawAddImage, '');
+      const addTitle = (rawAddTitle || '').trim();
+
+      if (addTitle || safeAddUrl) {
         const newItem = {
           id: Date.now().toString(),
           title: addTitle || `[${addMall}] 관심 상품`,
           price: addPrice,
           description: "1초 스마트 북마클릿으로 자동 담긴 상품입니다.",
-          linkUrl: addUrl || '#',
-          imageUrl: addImage || '',
+          linkUrl: safeAddUrl || '#',
+          imageUrl: safeAddImage || '',
           category: "생필품/식품",
           mallName: addMall,
           isPurchased: false,
@@ -457,8 +480,8 @@ export default function CartInAll() {
         title,
         price,
         description,
-        linkUrl: targetUrl,
-        imageUrl,
+        linkUrl: sanitizeSafeUrl(targetUrl, '#'),
+        imageUrl: sanitizeSafeImageUrl(imageUrl, ''),
         category,
         mallName,
         isPurchased: false,
@@ -491,7 +514,7 @@ export default function CartInAll() {
         title: `[${mallName}] 관심 상품`,
         price: 0,
         description: "쇼핑몰 링크에서 담긴 상품",
-        linkUrl: targetUrl,
+        linkUrl: sanitizeSafeUrl(targetUrl, '#'),
         imageUrl: "",
         category: "기타",
         mallName,
@@ -885,8 +908,13 @@ export default function CartInAll() {
                 className={`${styles.itemCard} ${item.isPurchased ? styles.itemCardPurchased : ''}`}
               >
                 <div className={styles.imageWrapper}>
-                  {item.imageUrl ? (
-                    <img src={item.imageUrl} alt={item.title} className={styles.itemImage} />
+                  {item.imageUrl && sanitizeSafeImageUrl(item.imageUrl) ? (
+                    <img 
+                      src={sanitizeSafeImageUrl(item.imageUrl)} 
+                      alt={item.title} 
+                      className={styles.itemImage} 
+                      loading="lazy"
+                    />
                   ) : (
                     <span className={styles.noImage}>📦</span>
                   )}
@@ -973,9 +1001,9 @@ export default function CartInAll() {
                           >
                             ✏️
                           </button>
-                          {item.linkUrl && item.linkUrl !== '#' && (
+                          {item.linkUrl && sanitizeSafeUrl(item.linkUrl, '#') !== '#' && (
                             <a 
-                              href={item.linkUrl} 
+                              href={sanitizeSafeUrl(item.linkUrl, '#')} 
                               target="_blank" 
                               rel="noopener noreferrer" 
                               className={styles.linkBtn}

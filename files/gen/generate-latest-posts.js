@@ -75,27 +75,47 @@ const generateLatestPosts = () => {
             }
         }
 
-        if (modified) {
-                    // 3) LaTeX math fail-safe (convert any raw LaTeX formulas to clean markdown)
-        if (content.includes("$$") || /(?<!\\)\$[a-zA-Z0-9\\{]/.test(content)) {
-            let cleaned = content;
-            // Clean $$ block equations
-            cleaned = cleaned.replace(/\$\$\s*\\text\{(.*?)\}\s*\$\$/g, '> <strong>$1</strong>');
-            cleaned = cleaned.replace(/\$\$(.*?)\$\$/g, '> <strong>$1</strong>');
-            // Clean inline LaTeX symbols
-            cleaned = cleaned.replace(/\\text\{(.*?)\}/g, '$1');
-            cleaned = cleaned.replace(/\\times/g, '×');
-            cleaned = cleaned.replace(/\\rightarrow/g, '➔');
-            cleaned = cleaned.replace(/\\mathbf\{(.*?)\}/g, '<strong>$1</strong>');
-            cleaned = cleaned.replace(/\$([^\$]+)\$/g, '$1');
-            
-            if (cleaned !== content) {
-                content = cleaned;
-                modified = true;
-                console.log(`[Fail-Safe] Converted raw LaTeX math to clean markdown in ${path.basename(filePath)}`);
+        // 3) LaTeX math fail-safe: Clean $$ block equations outside code blocks
+        if (content.includes("$$")) {
+            const parts = content.split('---');
+            if (parts.length >= 3) {
+                const frontmatter = parts[1];
+                const body = parts.slice(2).join('---');
+                const lines = body.split('\n');
+                let inCodeBlock = false;
+                let mathModified = false;
+
+                const newLines = lines.map(line => {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('```') || trimmed.startsWith('~~~')) {
+                        inCodeBlock = !inCodeBlock;
+                        return line;
+                    }
+                    if (inCodeBlock) return line;
+
+                    if (line.includes("$$")) {
+                        mathModified = true;
+                        let cleanedLine = line.replace(/\$\$\s*\\text\{(.*?)\}\s*\$\$/g, '> <strong>$1</strong>');
+                        cleanedLine = cleanedLine.replace(/\$\$(.*?)\$\$/g, '> <strong>$1</strong>');
+                        cleanedLine = cleanedLine.replace(/\\text\{(.*?)\}/g, '$1');
+                        cleanedLine = cleanedLine.replace(/\\times/g, '×');
+                        cleanedLine = cleanedLine.replace(/\\rightarrow/g, '➔');
+                        cleanedLine = cleanedLine.replace(/\\mathbf\{(.*?)\}/g, '<strong>$1</strong>');
+                        return cleanedLine;
+                    }
+                    return line;
+                });
+
+                if (mathModified) {
+                    content = '---' + frontmatter + '---' + newLines.join('\n');
+                    modified = true;
+                    console.log(`[Fail-Safe] Converted raw LaTeX math block to clean markdown in ${path.basename(filePath)}`);
+                }
             }
         }
-        fs.writeFileSync(filePath, content, "utf-8");
+
+        if (modified) {
+            fs.writeFileSync(filePath, content, "utf-8");
         }
     });
 

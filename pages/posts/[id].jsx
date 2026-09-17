@@ -285,6 +285,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
           script = document.createElement('script');
           script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
           script.async = true;
+          script.crossOrigin = 'anonymous';
           script.onload = renderMermaid;
           document.head.appendChild(script);
         } else {

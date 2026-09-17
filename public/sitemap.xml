@@ -20,6 +20,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://seodaeya.github.io/ranking/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://seodaeya.github.io/about/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
