@@ -1,6 +1,6 @@
 ---
 category: "AI & Intelligence"
-title: "\"중간 관리자는 사라진다\": 잭 도시와 세쿼이아가 밝힌 AI 중심 조직 모델 'From Hierarchy to Intelligence'"
+title: "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석"
 date: "2026-09-17"
 image: "/images/block_jack_dorsey_ai_organization_guide_thumbnail.jpg"
 tags: ["Jack Dorsey", "Block", "AI Agents", "Sequoia Capital", "World Model", "Future of Work", "Management"]

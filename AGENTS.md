@@ -21,3 +21,14 @@
 - **ALWAYS use standard markdown and unicode characters**:
   - Formulas: Blockquotes with bold text (e.g. `> <strong>필요 커넥션 수 = RPS × 처리 시간</strong>`).
   - Mathematical symbols: Unicode `×`, `÷`, `➔`, `+`, `-`, `=`.
+
+## 5. Mandatory SEO/GEO Title Length Rule (Max 44 Characters)
+- **NEVER write post titles exceeding 44 characters** in markdown frontmatter (`files/posts/*.md` and `files/videos/*.md`).
+- **Root Cause & Calculation**:
+  - The site suffix is ` | 여전히, 나는 사람이다.` (**16 characters**).
+  - Search engines (Google SERP, Naver, Bing) and SEO/GEO inspection tools enforce a strict **60-character limit** (approx. 580~600px).
+  - If a title exceeds 44 characters (`44 + 16 > 60`), the final `<title>` tag exceeds the 60-character threshold, causing search result snippet truncation (`...`) and triggering the error: `❌ 오류: 너무 긴 제목` (Too Long Title).
+- **Golden Standard**:
+  - Keep raw post titles concise and impact-driven within **32 ~ 42 characters** (optimal: **35 ~ 38 characters**).
+  - Prioritize 3~4 core search keywords (`인물/기업`, `핵심 주제`, `분석/가이드`) while pruning redundant English subtitles.
+

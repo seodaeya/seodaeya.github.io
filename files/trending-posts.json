@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 9월 17일 23:29 KST",
+  "updatedAt": "2026년 9월 17일 23:40 KST",
   "baselineDate": "2026년 9월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -206,7 +206,7 @@
       "changeText": "NEW",
       "badge": "Jack Dorsey · AI",
       "category": "AI & Intelligence",
-      "title": "\"중간 관리자는 사라진다\": 잭 도시와 세쿼이아가 밝힌 AI 중심 조직 모델 'From Hierarchy to Intelligence'",
+      "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
       "desc": "트위터 창업자 잭 도시가 이끄는 블록(Block)이 실적 호조에도 직원 40%를 감원하고 AI 에이전트 기반의 4대 레이어 조직으로 탈바꿈한 이유와 '계층에서 지능으로' 매니페스토의 핵심을 심층 분석합니다.",
       "image": "/images/block_jack_dorsey_ai_organization_guide_thumbnail.jpg",
       "url": "/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence",

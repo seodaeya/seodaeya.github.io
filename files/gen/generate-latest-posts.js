@@ -124,8 +124,13 @@ const generateLatestPosts = () => {
         // 경로 구분자를 Unix-style (/)로 표준화
         const relativePath = path.relative(filesDir, file.filePath).split(path.sep).join('/');
 
+        const postTitle = data.title || path.basename(file.filePath, ".md");
+        if (postTitle.length > 60) {
+            console.warn(`⚠️ [SEO Alert] Title exceeds 60 chars (${postTitle.length} chars) in ${file.filename}: "${postTitle}"`);
+        }
+
         return {
-            title: data.title || path.basename(file.filePath, ".md"),
+            title: postTitle,
             category: data.category || "Uncategorized",
             file: relativePath,
             date: file.date
