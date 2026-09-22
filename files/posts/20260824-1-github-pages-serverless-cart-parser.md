@@ -1,5 +1,5 @@
 ---
-category: "Tech & Dev"
+category: "Dev & Software"
 title: "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기"
 date: "2026-08-24"
 image: "/images/github_pages_serverless_cart_thumbnail.jpg"

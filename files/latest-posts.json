@@ -25,7 +25,7 @@
   },
   {
     "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
-    "category": "Economy & Investment",
+    "category": "Lifestyle & Tech",
     "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md",
     "date": "20260902"
   },
@@ -43,19 +43,19 @@
   },
   {
     "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
-    "category": "Tech & Dev",
+    "category": "Dev & Software",
     "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md",
     "date": "20260827"
   },
   {
     "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
-    "category": "Tech & Dev",
+    "category": "Dev & Software",
     "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md",
     "date": "20260825"
   },
   {
     "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
-    "category": "Tech & Dev",
+    "category": "Dev & Software",
     "file": "posts/20260824-1-github-pages-serverless-cart-parser.md",
     "date": "20260824"
   }

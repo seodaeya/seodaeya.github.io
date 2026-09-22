@@ -1,5 +1,5 @@
 ---
-category: "Tech & Dev"
+category: "Dev & Software"
 title: "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심"
 date: "2026-08-27"
 excerpt: "온톨로지(Ontology)의 본질적 개념부터 지식 그래프와의 차이점, 이커머스 시맨틱 검색과 AI 추천 시스템의 실무 구축 파이프라인 및 GraphRAG 하이브리드 아키텍처를 심층 분석합니다."

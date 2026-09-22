@@ -131,10 +131,16 @@ export default function About() {
           </h2>
           <ul style={{ paddingLeft: '1.2rem', margin: 0, color: 'var(--text-secondary)' }}>
             <li style={{ marginBottom: '8px' }}><strong>AI & Intelligence:</strong> 프레임워크 설계, LLM 분석, 1인 대학 구축법, 에이전틱 워크플로</li>
-            <li style={{ marginBottom: '8px' }}><strong>Dev & Software:</strong> 정적 웹사이트(Next.js) 구축, SEO 최적화, 개발 에러 트러블슈팅</li>
+            <li style={{ marginBottom: '8px' }}><strong>Dev & Software:</strong> 정적 웹사이트(Next.js) 구축, SEO 최적화, 백엔드/인프라 트러블슈팅</li>
             <li style={{ marginBottom: '8px' }}><strong>Hardware & DIY:</strong> 싼타페 차량 자가 정비, 정수기 셀프 분해 세척, 기기 수리</li>
-            <li style={{ marginBottom: '8px' }}><strong>Lifestyle & Pet Care:</strong> 크레스티드 게코 케어, 홈텐딩 칵테일, 일상의 소소한 발견</li>
+            <li style={{ marginBottom: '8px' }}><strong>Lifestyle & Tech:</strong> 경제/자산 배분 인사이트, 도마뱀 케어, 일상과 기술의 조화로운 탐색</li>
           </ul>
+          <div style={{ marginTop: '16px', fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+            <strong>📩 공식 문의 및 기술 협업:</strong>{' '}
+            <a href="mailto:seodaeya@gmail.com" style={{ color: 'var(--accent-light)', textDecoration: 'underline' }}>
+              seodaeya@gmail.com
+            </a>
+          </div>
         </section>
 
                 {/* Sponsor Support Section */}

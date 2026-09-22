@@ -1,5 +1,5 @@
 ---
-category: "Tech & Dev"
+category: "Dev & Software"
 title: "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱"
 date: "2026-08-25"
 image: "/images/lettuce_redis_caching_db_bottleneck_thumbnail.jpg"

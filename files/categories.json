@@ -75,6 +75,18 @@
       "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md"
     },
     {
+      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
+      "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md"
+    },
+    {
+      "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
+      "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
+    },
+    {
+      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
+      "file": "posts/20260824-1-github-pages-serverless-cart-parser.md"
+    },
+    {
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
       "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md"
     },
@@ -147,12 +159,24 @@
       "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md"
     },
     {
+      "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
+      "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md"
+    },
+    {
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
       "file": "posts/20260715-1-dybala-as-roma-contract.md"
     },
     {
+      "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
+      "file": "videos/20260706-1-crested-gecko-shedding-guide.md"
+    },
+    {
       "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
       "file": "videos/20260628-1-peachtree-highball-cocktail-recipe.md"
+    },
+    {
+      "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
+      "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md"
     },
     {
       "title": "미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트",
@@ -173,36 +197,6 @@
     {
       "title": "당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기",
       "file": "videos/20230309-1-mammoth-coffee-banana-latte-review.md"
-    }
-  ],
-  "Pet Care": [
-    {
-      "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
-      "file": "videos/20260706-1-crested-gecko-shedding-guide.md"
-    },
-    {
-      "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
-      "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md"
-    }
-  ],
-  "Tech & Dev": [
-    {
-      "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
-      "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md"
-    },
-    {
-      "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
-      "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
-    },
-    {
-      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
-      "file": "posts/20260824-1-github-pages-serverless-cart-parser.md"
-    }
-  ],
-  "Economy & Investment": [
-    {
-      "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
-      "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md"
     }
   ]
 }

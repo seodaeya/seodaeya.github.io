@@ -35,6 +35,7 @@ export default function Privacy() {
           본 블로그 운영 방식이나 개인정보 관련 문의사항은 아래 GitHub 저장소를 통해 문의하실 수 있습니다.
         </p>
         <ul style={{ marginLeft: '1.5rem', marginBottom: '1rem' }}>
+          <li>이메일: <a href="mailto:seodaeya@gmail.com" style={{ color: '#38bdf8' }}>seodaeya@gmail.com</a></li>
           <li>GitHub: <a href="https://github.com/seodaeya" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8' }}>https://github.com/seodaeya</a></li>
         </ul>
 
