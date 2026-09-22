@@ -11,14 +11,17 @@ export default function SEO({
   videoId,
 }) {
   const siteSuffix = ' | 여전히, 나는 사람이다.';
-  let pageTitle = title;
-  if (!title.includes('여전히, 나는 사람이다.')) {
-    if (title.length + siteSuffix.length <= 60) {
-      pageTitle = `${title}${siteSuffix}`;
-    } else {
-      pageTitle = title;
-    }
+  let pageTitle = (!title.includes('여전히, 나는 사람이다.') && title.length + siteSuffix.length <= 60)
+    ? `${title}${siteSuffix}`
+    : title;
+
+  // Bing/Google SERP: 최대 65자 초과 시 공통 말줄임 처리
+  if (pageTitle.length > 65) {
+    pageTitle = `${pageTitle.slice(0, 62)}...`;
   }
+
+  // Bing/Google SEO: Ensure description is between 25 and 160 characters
+  const safeDescription = description && description.length > 158 ? `${description.slice(0, 155)}...` : description;
   const canonicalUrl = url.endsWith('/') ? url : (url.includes('.') && !url.endsWith('.html') ? url : `${url}/`);
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
@@ -49,8 +52,8 @@ export default function SEO({
         '@type': 'WebPage',
         '@id': canonicalUrl
       },
-      'headline': title,
-      'description': description,
+      'headline': pageTitle,
+      'description': safeDescription,
       'image': ogImage,
       'datePublished': date ? new Date(date).toISOString() : new Date().toISOString(),
       'author': {
@@ -78,8 +81,8 @@ export default function SEO({
     specificSchema = {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
-      'name': title,
-      'description': description,
+      'name': pageTitle,
+      'description': safeDescription,
       'thumbnailUrl': thumbnailList,
       'uploadDate': date ? new Date(date).toISOString() : new Date().toISOString(),
       'embedUrl': `https://www.youtube.com/embed/${videoId}`,
@@ -126,7 +129,7 @@ export default function SEO({
           </>
         );
       })()}
-      <meta name="description" content={description} />
+      <meta name="description" content={safeDescription} />
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charSet="UTF-8" />
@@ -137,7 +140,7 @@ export default function SEO({
       {/* Dublin Core Metadata for Global Search Engines */}
       <meta name="DC.Title" content={pageTitle} />
       <meta name="DC.Creator" content="NaRD" />
-      <meta name="DC.Description" content={description} />
+      <meta name="DC.Description" content={safeDescription} />
       <meta name="DC.Language" content="ko" />
       <meta name="DC.Identifier" content={canonicalUrl} />
 
@@ -166,7 +169,7 @@ export default function SEO({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
       <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={safeDescription} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="여전히, 나는 사람이다." />
@@ -175,7 +178,7 @@ export default function SEO({
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={safeDescription} />
       <meta name="twitter:image" content={ogImage} />
       <meta name="twitter:creator" content="@Na.R.D." />
 

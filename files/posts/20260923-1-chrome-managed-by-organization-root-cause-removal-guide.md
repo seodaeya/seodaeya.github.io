@@ -1,8 +1,8 @@
 ---
 category: "Dev & Software"
-title: "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리·정책(Policy) 분석부터 악성 확장 프로그램 추적까지 (Windows & Mac)"
+title: "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)"
 date: "2026-09-23"
-excerpt: "개인 PC 크롬 브라우저에 갑자기 나타난 '조직에서 관리(Managed by your organization)' 알림의 발생 원리(GPO, MDM, 보안 소프트웨어, 악성 확장 프로그램)를 chrome://policy로 정밀 진단하고, Windows 레지스트리와 macOS 프로파일을 안전하게 초기화하는 실전 가이드입니다."
+excerpt: "개인 PC 크롬에 나타난 '조직에서 관리' 알림 원인을 chrome://policy로 진단하고, Windows 레지스트리와 macOS 프로파일을 안전하게 초기화하여 악성 확장 프로그램을 삭제하는 완벽 가이드입니다."
 image: "/images/chrome_managed_by_organization_removal_guide_thumbnail.jpg"
 tags: ["Chrome", "GoogleChrome", "BrowserSecurity", "Regedit", "Windows", "MacOS", "GroupPolicy", "Troubleshooting"]
 ---
