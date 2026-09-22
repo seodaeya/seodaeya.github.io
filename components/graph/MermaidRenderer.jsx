@@ -1,41 +1,32 @@
 import React, { useEffect, useRef, useState, useId } from 'react';
 
-let isMermaidInitialized = false;
-
-function ensureMermaidInit() {
-  if (typeof window === 'undefined') return;
-  if (!isMermaidInitialized) {
-    import('mermaid').then((mermaidModule) => {
-      const mermaid = mermaidModule.default || mermaidModule;
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: 'base',
-        themeVariables: {
-          background: '#ffffff',
-          primaryColor: '#fef3c7',
-          primaryTextColor: '#1e293b',
-          primaryBorderColor: '#f59e0b',
-          lineColor: '#64748b',
-          secondaryColor: '#fce7e7',
-          tertiaryColor: '#d1fae5',
-          edgeLabelBackground: '#ffffff',
-          clusterBkg: '#f8fafc',
-          clusterBorder: '#cbd5e1',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontSize: '13px'
-        },
-        flowchart: {
-          curve: 'basis',
-          padding: 16,
-          nodeSpacing: 40,
-          rankSpacing: 40,
-          htmlLabels: true
-        },
-        securityLevel: 'loose'
-      });
-      isMermaidInitialized = true;
-    });
-  }
+function initMermaid(mermaid) {
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: {
+      background: '#ffffff',
+      primaryColor: '#fef3c7',
+      primaryTextColor: '#1e293b',
+      primaryBorderColor: '#f59e0b',
+      lineColor: '#64748b',
+      secondaryColor: '#fce7e7',
+      tertiaryColor: '#d1fae5',
+      edgeLabelBackground: '#ffffff',
+      clusterBkg: '#f8fafc',
+      clusterBorder: '#cbd5e1',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      fontSize: '13px'
+    },
+    flowchart: {
+      curve: 'step',
+      padding: 16,
+      nodeSpacing: 40,
+      rankSpacing: 40,
+      htmlLabels: true
+    },
+    securityLevel: 'loose'
+  });
 }
 
 export default function MermaidRenderer({ chart, className = '' }) {
@@ -56,10 +47,15 @@ export default function MermaidRenderer({ chart, className = '' }) {
         const mermaidModule = await import('mermaid');
         const mermaid = mermaidModule.default || mermaidModule;
 
-        ensureMermaidInit();
+        initMermaid(mermaid);
+
+        // Enforce orthogonal step routing if chart has not explicitly declared a curve
+        const formattedChart = chart.trim().startsWith('%%{init:')
+          ? chart
+          : `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${chart}`;
 
         const containerId = `mermaid-container-${uid}`;
-        const { svg } = await mermaid.render(containerId, chart);
+        const { svg } = await mermaid.render(containerId, formattedChart);
 
         if (!cancelled && containerRef.current) {
           containerRef.current.innerHTML = svg;

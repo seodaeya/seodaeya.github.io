@@ -1,5 +1,11 @@
 [
   {
+    "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
+    "category": "AI & Intelligence",
+    "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md",
+    "date": "20260923"
+  },
+  {
     "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
     "category": "Dev & Software",
     "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md",
     "date": "20260827"
-  },
-  {
-    "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
-    "category": "Dev & Software",
-    "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md",
-    "date": "20260825"
   }
 ]

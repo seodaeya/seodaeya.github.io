@@ -1,6 +1,10 @@
 {
   "AI & Intelligence": [
     {
+      "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
+      "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md"
+    },
+    {
       "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
       "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md"
     },

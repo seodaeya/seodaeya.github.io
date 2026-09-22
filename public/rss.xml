@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 22 Sep 2026 14:58:25 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 17:44:57 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복]]></title>
+    <link>https://seodaeya.github.io/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide/</guid>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[생성형 AI(ChatGPT, Claude, Gemini)와 대화할 때 최신 테크 커뮤니티와 글로벌 직장인들 사이에서 가장 뜨겁게 회자되는 마법의 키워드가 있습니다. 바로 ELI5 입니다. 항목 핵심 내용 : : 풀이 Explain Like I'm 5 (영미권 인터넷 신...]]></description>
+  </item>
   <item>
     <title><![CDATA[크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)]]></title>
     <link>https://seodaeya.github.io/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</link>

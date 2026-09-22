@@ -15,13 +15,10 @@ tags: ["Chrome", "GoogleChrome", "BrowserSecurity", "Regedit", "Windows", "MacOS
 
 > <strong>"누군가 내 브라우저를 실시간으로 도청하거나 방문 기록, 비밀번호를 훔쳐보고 있는 것은 아닐까?"</strong>
 
-```text
-[ 크롬 조직 관리 알림에 대한 흔한 오해와 실체 ]
-
-• 오해: 누군가 화면을 실시간으로 녹화하거나 키보드 입력을 전송받고 있다.
-• 실체: 크롬의 '엔터프라이즈 정책 엔진(Chrome Enterprise Policy Engine)'이 
-        운영체제 레지스트리나 시스템 프로파일을 통해 활성화된 상태다.
-```
+| 구분 | 상세 내용 |
+| :--- | :--- |
+| <strong>흔한 오해</strong> | 누군가 내 PC 화면을 실시간으로 녹화하거나 키보드 입력을 도청하고 있다. |
+| <strong>실제 실체</strong> | 크롬의 <strong>엔터프라이즈 정책 엔진(Chrome Enterprise Policy Engine)</strong>이 OS 레지스트리나 프로파일을 통해 활성화된 상태다. |
 
 ### 1) 브라우저가 '조직 관리' 상태가 되면 무엇이 가능한가?
 크롬의 엔터프라이즈 정책 기능은 본래 기업 전산팀이 수천 대의 업무용 PC를 중앙 통제하기 위해 설계된 강력한 관리 도구입니다. 관리 정책이 활성화되면 관리자(또는 정책을 주입한 프로그램)는 다음과 같은 제어 권한을 행사할 수 있습니다:
@@ -65,14 +62,25 @@ tags: ["Chrome", "GoogleChrome", "BrowserSecurity", "Regedit", "Windows", "MacOS
 
 개인 PC에 기업 관리 정책이 심어지는 경로는 크게 4가지로 분류됩니다.
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│             크롬 '조직에서 관리' 발생 4대 경로              │
-└─────────────────────────────────────────────────────────────┘
-  ├─ [유형 1] 학교 / 직장 Microsoft 365(Azure AD) 계정 연동   ──► Windows MDM 정책 자동 동기화
-  ├─ [유형 2] 백신 / 보안 소프트웨어의 웹 실시간 감시 기능      ──► 보안 모듈 주입 (Avast, V3 등)
-  ├─ [유형 3] P2P / 크랙 소프트웨어 동반 브라우저 하이재커      ──► 악성 확장 프로그램 강제 등록
-  └─ [유형 4] 삭제된 구버전 소프트웨어의 레지스트리 잔여물       ──► Policies 키 찌꺼기 잔존
+```mermaid
+graph TD
+    Root["🚨 크롬 조직에서 관리 발생 4대 경로"]
+    
+    C1["🏫 [유형 1] 학교·직장 MS 365 계정 연동<br/>Windows MDM 정책 자동 동기화"]
+    C2["🛡️ [유형 2] 백신 소프트웨어 실시간 감시<br/>안전 탐색 보호 모듈 주입 (Avast, V3 등)"]
+    C3["⚠️ [유형 3] 애드웨어 및 브라우저 하이재커<br/>악성 확장 프로그램 강제 등록 (ExtensionInstallForcelist)"]
+    C4["🧹 [유형 4] 삭제된 소프트웨어 잔여물<br/>과거에 지운 프로그램의 Policies 레지스트리 잔존"]
+
+    Root --> C1
+    Root --> C2
+    Root --> C3
+    Root --> C4
+
+    style Root fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style C1 fill:#ffffff,stroke:#64748b,stroke-width:1px
+    style C2 fill:#ffffff,stroke:#64748b,stroke-width:1px
+    style C3 fill:#fee2e2,stroke:#ef4444,stroke-width:2px
+    style C4 fill:#ffffff,stroke:#64748b,stroke-width:1px
 ```
 
 ### 유형 1: 학교·직장 Microsoft 계정(Office 365) 연동 (가장 흔함)
@@ -186,11 +194,8 @@ sudo rm -rf "/Library/Preferences/com.google.Chrome.plist"
 ### 2) 우측 상단 메뉴 상태 확인
 더보기 메뉴(`⋮`)를 열었을 때, 최하단에 있던 <strong>"조직에서 관리" 문구가 완전히 사라졌는지 확인</strong>합니다.
 
-```text
-[ 정상 복구 완료 확인 ]
-크롬 주소창에 chrome://management 입력
-➔ 결과: "이 브라우저는 조직에서 관리하지 않습니다." 확인 완료!
-```
+> <strong>✅ 정상 복구 완료 확인 기준</strong>  
+> 크롬 주소창에 `chrome://management` 입력 ➔ `"이 브라우저는 조직에서 관리하지 않습니다."` 메시지 확인 완료!
 
 ### 3) 잠식된 확장 프로그램 영구 제거
 1. 주소창에 `chrome://extensions`를 입력합니다.

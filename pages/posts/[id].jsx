@@ -256,7 +256,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             fontSize: '13px'
           },
           flowchart: {
-            curve: 'basis',
+            curve: 'step',
             padding: 16,
             nodeSpacing: 40,
             rankSpacing: 40,
@@ -266,7 +266,10 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         const currentBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
         currentBlocks.forEach((block) => {
           const pre = block.parentElement;
-          const codeText = block.textContent;
+          let codeText = block.textContent.trim();
+          if (!codeText.startsWith('%%{init:')) {
+            codeText = `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${codeText}`;
+          }
           const div = document.createElement('div');
           div.className = 'mermaid';
           div.style.textAlign = 'center';
