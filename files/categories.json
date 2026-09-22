@@ -63,6 +63,10 @@
   ],
   "Dev & Software": [
     {
+      "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리·정책(Policy) 분석부터 악성 확장 프로그램 추적까지 (Windows & Mac)",
+      "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md"
+    },
+    {
       "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
       "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md"
     },

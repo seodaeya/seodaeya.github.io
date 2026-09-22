@@ -1,5 +1,11 @@
 [
   {
+    "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리·정책(Policy) 분석부터 악성 확장 프로그램 추적까지 (Windows & Mac)",
+    "category": "Dev & Software",
+    "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md",
+    "date": "20260923"
+  },
+  {
     "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
     "category": "AI & Intelligence",
     "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md",
     "date": "20260825"
-  },
-  {
-    "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
-    "category": "Dev & Software",
-    "file": "posts/20260824-1-github-pages-serverless-cart-parser.md",
-    "date": "20260824"
   }
 ]

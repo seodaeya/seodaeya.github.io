@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 22 Sep 2026 14:11:30 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 14:41:07 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리·정책(Policy) 분석부터 악성 확장 프로그램 추적까지 (Windows & Mac)]]></title>
+    <link>https://seodaeya.github.io/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</guid>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[구글 크롬(Chrome) 브라우저를 사용하다가 우측 상단 더보기 메뉴(점 세 개 ⋮ )를 눌렀을 때, 최하단에 "조직에서 관리(Managed by your organization)" 라는 문구가 떠 있는 것을 보고 깜짝 놀란 경험이 한 번쯤 있을 것입니다. 회사나 학교...]]></description>
+  </item>
   <item>
     <title><![CDATA["중간 관리자는 사라진다": 잭 도시와 블록의 AI 조직 모델 분석]]></title>
     <link>https://seodaeya.github.io/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence/</link>
