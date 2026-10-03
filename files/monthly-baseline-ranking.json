@@ -1,8 +1,8 @@
 {
-  "month": "2026-09",
-  "baselineDate": "2026년 9월 1일",
-  "description": "2026년 9월 월간 기준 순위표 (매월 1일 기준)",
-  "createdAt": "2026-09-11T23:15:00+09:00",
+  "month": "2026-10",
+  "baselineDate": "2026년 10월 1일",
+  "description": "2026년 10월 월간 기준 순위표 (매월 1일 기준)",
+  "createdAt": "2026-10-03T05:50:32.930Z",
   "rankings": {
     "/posts/20260827-1-ecommerce-ontology-ai-search-guide": 1,
     "/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide": 2,
@@ -14,32 +14,37 @@
     "/posts/20250427-1-postgresql-install-setup-guide": 8,
     "/posts/20260902-1-us-stock-70years-inflation-portfolio-strategy": 9,
     "/posts/20260911-1-na-min-ae-reading-method-literacy-guide": 10,
-    "/posts/20260824-1-github-pages-serverless-cart-parser": 11,
-    "/posts/20260822-1-github-pages-url-slug-seo-redirection": 12,
-    "/posts/20260819-2-actor-framework-guide": 13,
-    "/posts/20260817-1-meta-ax-agentic-workflow": 14,
-    "/posts/20260819-1-ai-alter-framework": 15,
-    "/posts/20260815-1-gemini-3-7-flash-analysis": 16,
-    "/posts/20260807-1-github-pages-adsense-domain": 17,
-    "/posts/20260804-1-gemini-cli-install-guide": 18,
-    "/posts/20260805-1-seo-geo-ai-search-strategy": 19,
-    "/posts/20260805-2-gsc-sitemap-lastmod-fix": 20,
-    "/posts/20260803-1-kimi-k3-moonshot-ai": 21,
-    "/posts/20260723-2-gemini-3-6-features-guide": 22,
-    "/posts/20260723-1-human-in-the-loop-ai-ethics": 23,
-    "/posts/20260713-1-gpt-5-6-sol-terra-luna": 24,
-    "/posts/20260715-1-dybala-as-roma-contract": 25,
-    "/posts/20250404-1-anthropic-claude-models-analysis": 26,
-    "/posts/20250404-3-cursor-ai-code-editor-guide": 27,
-    "/posts/20260707-1-giscus-discussion-error-fix": 28,
-    "/posts/20250404-2-cline-autonomous-coding-agent": 29
+    "/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide": 11,
+    "/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide": 12,
+    "/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide": 13,
+    "/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence": 14,
+    "/posts/20260911-2-github-actions-cron-monthly-ranking-system": 15,
+    "/posts/20260824-1-github-pages-serverless-cart-parser": 16,
+    "/posts/20260822-1-github-pages-url-slug-seo-redirection": 17,
+    "/posts/20260819-2-actor-framework-guide": 18,
+    "/posts/20260819-1-ai-alter-framework": 19,
+    "/posts/20260817-1-meta-ax-agentic-workflow": 20,
+    "/posts/20260815-1-gemini-3-7-flash-analysis": 21,
+    "/posts/20260807-1-github-pages-adsense-domain": 22,
+    "/posts/20260804-1-gemini-cli-install-guide": 23,
+    "/posts/20260805-1-seo-geo-ai-search-strategy": 24,
+    "/posts/20260805-2-gsc-sitemap-lastmod-fix": 25,
+    "/posts/20260803-1-kimi-k3-moonshot-ai": 26,
+    "/posts/20260723-1-human-in-the-loop-ai-ethics": 27,
+    "/posts/20260723-2-gemini-3-6-features-guide": 28,
+    "/posts/20260715-1-dybala-as-roma-contract": 29,
+    "/posts/20260713-1-gpt-5-6-sol-terra-luna": 30,
+    "/posts/20250404-1-anthropic-claude-models-analysis": 31,
+    "/posts/20250404-2-cline-autonomous-coding-agent": 32,
+    "/posts/20260707-1-giscus-discussion-error-fix": 33,
+    "/posts/20250404-3-cursor-ai-code-editor-guide": 34
   },
   "posts": [
     {
       "rank": 1,
       "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
       "url": "/posts/20260827-1-ecommerce-ontology-ai-search-guide",
-      "category": "Tech & Dev",
+      "category": "Dev & Software",
       "views": 26
     },
     {
@@ -81,7 +86,7 @@
       "rank": 7,
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
       "url": "/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck",
-      "category": "Tech & Dev",
+      "category": "Dev & Software",
       "views": 3
     },
     {
@@ -107,134 +112,169 @@
     },
     {
       "rank": 11,
-      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
-      "url": "/posts/20260824-1-github-pages-serverless-cart-parser",
-      "category": "Tech & Dev",
+      "title": "크로셀 C-Flip 접이식 키보드 Esc 단독 입력 매핑 완벽 해결기: ₩ 지옥 탈출부터 백틱(`)·물결(~) 보존까지 (macOS)",
+      "url": "/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide",
+      "category": "Hardware & DIY",
       "views": null
     },
     {
       "rank": 12,
+      "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
+      "url": "/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide",
+      "category": "AI & Intelligence",
+      "views": null
+    },
+    {
+      "rank": 13,
+      "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
+      "url": "/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide",
+      "category": "Dev & Software",
+      "views": null
+    },
+    {
+      "rank": 14,
+      "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
+      "url": "/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence",
+      "category": "AI & Intelligence",
+      "views": null
+    },
+    {
+      "rank": 15,
+      "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
+      "url": "/posts/20260911-2-github-actions-cron-monthly-ranking-system",
+      "category": "Dev & Software",
+      "views": null
+    },
+    {
+      "rank": 16,
+      "title": "정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기",
+      "url": "/posts/20260824-1-github-pages-serverless-cart-parser",
+      "category": "Dev & Software",
+      "views": null
+    },
+    {
+      "rank": 17,
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
       "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
       "category": "Dev & Software",
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 18,
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
       "url": "/posts/20260819-2-actor-framework-guide",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 14,
-      "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
-      "url": "/posts/20260817-1-meta-ax-agentic-workflow",
-      "category": "AI & Intelligence",
-      "views": null
-    },
-    {
-      "rank": 15,
+      "rank": 19,
       "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
       "url": "/posts/20260819-1-ai-alter-framework",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 16,
+      "rank": 20,
+      "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
+      "url": "/posts/20260817-1-meta-ax-agentic-workflow",
+      "category": "AI & Intelligence",
+      "views": null
+    },
+    {
+      "rank": 21,
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
       "url": "/posts/20260815-1-gemini-3-7-flash-analysis",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 17,
+      "rank": 22,
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
       "url": "/posts/20260807-1-github-pages-adsense-domain",
       "category": "Dev & Software",
       "views": null
     },
     {
-      "rank": 18,
+      "rank": 23,
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
       "url": "/posts/20260804-1-gemini-cli-install-guide",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 19,
+      "rank": 24,
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
       "url": "/posts/20260805-1-seo-geo-ai-search-strategy",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 20,
+      "rank": 25,
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
       "url": "/posts/20260805-2-gsc-sitemap-lastmod-fix",
       "category": "Dev & Software",
       "views": null
     },
     {
-      "rank": 21,
+      "rank": 26,
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
       "url": "/posts/20260803-1-kimi-k3-moonshot-ai",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 22,
-      "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
-      "url": "/posts/20260723-2-gemini-3-6-features-guide",
-      "category": "AI & Intelligence",
-      "views": null
-    },
-    {
-      "rank": 23,
+      "rank": 27,
       "title": "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'",
       "url": "/posts/20260723-1-human-in-the-loop-ai-ethics",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 24,
-      "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
-      "url": "/posts/20260713-1-gpt-5-6-sol-terra-luna",
+      "rank": 28,
+      "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
+      "url": "/posts/20260723-2-gemini-3-6-features-guide",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 25,
+      "rank": 29,
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
       "url": "/posts/20260715-1-dybala-as-roma-contract",
       "category": "Lifestyle & Tech",
       "views": null
     },
     {
-      "rank": 26,
+      "rank": 30,
+      "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
+      "url": "/posts/20260713-1-gpt-5-6-sol-terra-luna",
+      "category": "AI & Intelligence",
+      "views": null
+    },
+    {
+      "rank": 31,
       "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
       "url": "/posts/20250404-1-anthropic-claude-models-analysis",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 27,
-      "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
-      "url": "/posts/20250404-3-cursor-ai-code-editor-guide",
+      "rank": 32,
+      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
+      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
       "category": "AI & Intelligence",
       "views": null
     },
     {
-      "rank": 28,
+      "rank": 33,
       "title": "깃블로그 댓글 Giscus 오류 해결: Unable to create discussion",
       "url": "/posts/20260707-1-giscus-discussion-error-fix",
       "category": "Dev & Software",
       "views": null
     },
     {
-      "rank": 29,
-      "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-      "url": "/posts/20250404-2-cline-autonomous-coding-agent",
+      "rank": 34,
+      "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
+      "url": "/posts/20250404-3-cursor-ai-code-editor-guide",
       "category": "AI & Intelligence",
       "views": null
     }

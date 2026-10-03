@@ -50,6 +50,7 @@ const generateLatestPosts = () => {
             const body = parts.slice(2).join('---');
             const lines = body.split('\n');
             let inCodeBlock = false;
+            let inSvg = false;
             let bodyModified = false;
 
             const newLines = lines.map(line => {
@@ -58,7 +59,12 @@ const generateLatestPosts = () => {
                     inCodeBlock = !inCodeBlock;
                     return line;
                 }
-                if (inCodeBlock) return line;
+                if (trimmed.includes('<svg')) inSvg = true;
+                if (trimmed.includes('</svg>')) {
+                    inSvg = false;
+                    return line;
+                }
+                if (inCodeBlock || inSvg) return line;
 
                 // Replace unescaped ~ with \~
                 if (/(?<!\\)~/.test(line)) {

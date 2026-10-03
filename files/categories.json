@@ -121,6 +121,10 @@
   ],
   "Hardware & DIY": [
     {
+      "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
+      "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md"
+    },
+    {
       "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
       "file": "posts/20260812-1-macos-android-openmtp-guide.md"
     },
