@@ -168,6 +168,13 @@ export async function getStaticProps({ params }) {
           const tableHtml = origTable(header, body);
           return '<div class="table-responsive-wrapper">' + tableHtml + '</div>';
         };
+
+        // Clean accidental GitHub-style alert tags like [!NOTE], [!TIP], [!CAUTION] from blockquotes
+        const origBlockquote = renderer.blockquote.bind(renderer);
+        renderer.blockquote = function({ tokens }) {
+          const html = origBlockquote({ tokens });
+          return html.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(<br\s*\/?>)?/gi, '');
+        };
         return marked(content, { renderer });
       })(),
       excerpt: data.excerpt || createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',

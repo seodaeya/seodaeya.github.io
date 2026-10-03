@@ -20,8 +20,7 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 | <strong>하드웨어 펌웨어 지원</strong> | <strong>Fn Lock(고정) 영구 메모리 없음</strong> (전원 재연결 시 초기화) | 하드웨어 레벨 키 고정 전환 지원 |
 | <strong>체감 피로도</strong> | 터미널 명령 취소, 검색창 닫기마다 작업 흐름 중단 | 1초 미만 즉각 반응 및 몰입 유지 |
 
-> [!TIP]
-> <strong>💡 범용 적용 안내</strong><br />
+> 💡 <strong>범용 적용 안내</strong><br />
 > 본 포스트는 크로셀 C-Flip Retro 접이식 키보드를 실전 트러블슈팅 사례로 다루지만, 상단 1열에 독립된 Esc 키가 없고 백틱/물결 키와 합쳐져 있는 <strong>미니 60% 키보드, HHKB 계열, 포커 배열, 타사 접이식 블루투스 키보드(B.O.W 등)</strong>를 macOS에서 사용하는 유저에게도 100% 동일하게 적용되는 범용 가이드입니다.
 
 미니 배열 특성상 상단 1열에 별도의 독립된 Esc 행이 존재하지 않고 물결/백틱(`\~ / \``)과 한 키로 병합되어 있는데, 하드웨어 펌웨어에 이를 Esc로 영구 고정해 주는 <strong>Fn Lock 메모리 토글</strong>이 탑재되어 있지 않기 때문입니다. 결국 macOS 소프트웨어 레벨에서 키 신호를 가로채어 재배치(Remapping)해야만 이 문제를 근본적으로 해결할 수 있습니다.
@@ -57,7 +56,7 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 
 </div>
 
-> [!IMPORTANT]
+> 📌 <strong>중요 확인사항 (키보드 규격 설정)</strong><br />
 > <strong>드라이버 확장 프로그램(Driver Extension)</strong> 승인 직후, 맥 화면에 '키보드 설정 지원(Keyboard Setup Assistant)' 창이 나타납니다. 이때 C-Flip 키보드의 지시에 따라 시프트 옆 키를 누른 뒤 반드시 <strong>ANSI(미국 표준 101/104키)</strong>를 선택해야 키 배치가 꼬이지 않습니다.
 
 ---
@@ -289,8 +288,8 @@ From key: grave_accent_and_tilde (`)  -->  To key: escape
 
 키보드 리매퍼는 시스템의 최하단에서 하드웨어 스캔코드를 가로채는 매우 높은 수준의 보안 권한을 요구합니다. 안전한 사용을 위해 아래 두 가지 원칙을 지켜야 합니다:
 
-> [!CAUTION]
-> 1. <strong>공식 배포처 검증</strong>: Karabiner-Elements는 반드시 개발사 공식 웹사이트([pqrs.org](https://pqrs.org/osx/karabiner/))나 공식 GitHub 저장소([pqrs-org/Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements))에서만 다운로드해야 합니다.
+> ⚠️ <strong>보안 베스트 프랙티스 (Security Best Practices)</strong><br />
+> 1. <strong>공식 배포처 검증</strong>: Karabiner-Elements는 반드시 개발사 공식 웹사이트([pqrs.org](https://pqrs.org/osx/karabiner/))나 공식 GitHub 저장소([pqrs-org/Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements))에서만 다운로드해야 합니다.<br />
 > 2. <strong>출처 불명의 외부 JSON 주의</strong>: 온라인 커뮤니티나 신뢰할 수 없는 웹페이지에서 배포하는 정체불명의 `karabiner.json` 설정 파일은 키 신호 가로채기나 악성 단축키 매핑 위험이 있으므로, 본 가이드에서 제공하는 공식 저장소 검증 규칙 또는 표준 스니펫만 사용하시기 바랍니다.
 
 ---
