@@ -5,6 +5,7 @@ date: "2026-07-23"
 image: "/images/gemini_3_6_guide_thumbnail.png"
 tags: ["Gemini", "Google AI", "Multimodal", "Long Context", "AI Benchmark"]
 excerpt: "Google의 차세대 멀티모달 AI 모델 Gemini의 혁신적인 초장문 컨텍스트 윈도우 처리 능력과 실무 개발 적용 팁을 상세히 해설합니다."
+noindex: true
 ---
 ## ⚡ 구글 Gemini 3.6 공식 발표: AI 에이전트의 새로운 기준
 

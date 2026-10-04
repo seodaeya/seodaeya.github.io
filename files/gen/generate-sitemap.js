@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const matter = require('gray-matter');
 
 const siteUrl = 'https://seodaeya.github.io';
 const publicDir = path.join(process.cwd(), 'public');
@@ -8,7 +9,16 @@ const videosDir = path.join(process.cwd(), 'files/videos');
 
 const getFiles = (dir) => {
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+  // noindex: true frontmatter pages are excluded from the sitemap
+  return fs.readdirSync(dir).filter(file => {
+    if (!file.endsWith('.md')) return false;
+    try {
+      const { data } = matter(fs.readFileSync(path.join(dir, file), 'utf8'));
+      return data.noindex !== true;
+    } catch (e) {
+      return true;
+    }
+  });
 };
 
 const generateSitemap = () => {

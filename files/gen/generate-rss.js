@@ -18,6 +18,9 @@ const getFiles = (dir) => {
     const isVideo = dir.includes('videos');
     const route = isVideo ? `videos/${filename.replace('.md', '')}` : `posts/${filename.replace('.md', '')}`;
 
+    // noindex pages stay readable but are excluded from the RSS feed
+    if (data.noindex === true) return null;
+
     return {
       title: data.title || filename.replace('.md', ''),
       description: createPlainExcerpt(content, 150),
@@ -25,7 +28,7 @@ const getFiles = (dir) => {
       date: data.date ? new Date(data.date).toUTCString() : new Date().toUTCString(),
       rawDate: data.date || ''
     };
-  });
+  }).filter(Boolean);
 };
 
 const generateRSS = () => {

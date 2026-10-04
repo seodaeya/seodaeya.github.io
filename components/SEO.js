@@ -9,6 +9,7 @@ export default function SEO({
   image = '/na_rd.jpeg', // 기본 프로필 이미지 경로
   date,
   videoId,
+  noindex = false,
 }) {
   const siteSuffix = ' | 여전히, 나는 사람이다.';
   let pageTitle = (!title.includes('여전히, 나는 사람이다.') && title.length + siteSuffix.length <= 60)
@@ -144,13 +145,13 @@ export default function SEO({
       <meta name="DC.Language" content="ko" />
       <meta name="DC.Identifier" content={canonicalUrl} />
 
-      {/* SEO/AI Crawler Directives */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="bingbot" content="index, follow, max-image-preview:large" />
-      <meta name="duckduckbot" content="index, follow" />
-      <meta name="slurp" content="index, follow" />
-      <meta name="yandex" content="index, follow" />
+      {/* SEO/AI Crawler Directives (noindex pages opt out of indexing) */}
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+      <meta name="duckduckbot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="slurp" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="yandex" content={noindex ? "noindex, follow" : "index, follow"} />
       {/* Explicit instructions for AI Search Engines & LLM agents */}
       <meta name="ai-crawlers" content="index, follow" />
       <meta name="gptbot" content="index, follow" />

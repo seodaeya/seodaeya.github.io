@@ -186,6 +186,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
         url={`https://seodaeya.github.io/videos/${id}/`}
         type="video.other"
         date={frontmatter.date}
+        noindex={frontmatter.noindex === true}
       />
 
       <div className={styles.videoWrapper}>

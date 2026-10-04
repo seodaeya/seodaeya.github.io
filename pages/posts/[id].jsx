@@ -425,6 +425,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         url={`https://seodaeya.github.io/posts/${id}/`}
         type="article"
         date={frontmatter.date}
+        noindex={frontmatter.noindex === true}
       />
 
       {/* Reading Progress Bar (Fixed Top) */}
