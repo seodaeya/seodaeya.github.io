@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 04 Oct 2026 18:14:55 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 19:36:50 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지]]></title>
+    <link>https://seodaeya.github.io/posts/20261005-1-aside-ai-browser-mac-install-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261005-1-aside-ai-browser-mac-install-guide/</guid>
+    <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Aside 는 macOS와 Windows에서 동작하는 AI 브라우저입니다. 제작사는 Y Combinator 출신의 Aside Computer Inc.이며, 핵심은 브라우저 에이전트(Browser Agent) 입니다. 사용자가 시키는 대로 웹사이트를 직접 열고, 로그인하...]]></description>
+  </item>
   <item>
     <title><![CDATA[OpenCode 무료 활용법: Muse Spark 설치부터 실전까지]]></title>
     <link>https://seodaeya.github.io/posts/20261004-1-opencode-muse-spark-free-setup-guide/</link>
