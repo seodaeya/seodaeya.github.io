@@ -63,8 +63,8 @@ export default function About() {
             <span>🌱</span> 왜 '여전히, 나는 사람이다.'인가요?
           </h2>
           <p style={{ marginBottom: '1rem' }}>
-            이 블로그의 글과 코드는 인공지능(AI)이라는 강력한 도구를 적극적으로 활용하여 짓고 다듬어집니다. 
-            그러나 AI를 움직이게 만드는 최초의 호기심, 시행착오를 겪으며 느끼는 당혹감, 그리고 마침내 문제를 해결했을 때 찾아오는 순수한 기쁨은 모두 <strong>한 인간의 심장에서 시작</strong>됩니다.
+            이 블로그의 글과 코드는 인공지능(AI)을 초안 파트너로 활용하되, 모든 내용은 운영자가 직접 실행·검증하고 최종 책임을 지고 발행합니다.
+            최초의 호기심, 시행착오를 겪으며 느끼는 당혹감, 그리고 마침내 문제를 해결했을 때 찾아오는 순수한 기쁨은 모두 <strong>한 인간의 심장에서 시작</strong>됩니다.
           </p>
           <p style={{ marginBottom: '1rem' }}>
             <strong>'여전히, 나는 사람이다.'</strong>라는 이름은 기술의 파도에 휩쓸려 나를 잃어버리는 것이 아니라, 
@@ -141,6 +141,37 @@ export default function About() {
               seodaeya@gmail.com
             </a>
           </div>
+        </section>
+
+        {/* Operator Identity */}
+        <section style={{ marginBottom: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-glass)' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '1rem', color: 'var(--text-primary)' }}>
+            운영자 소개
+          </h2>
+          <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+            <strong>NaRD</strong> — 직접 부딪히며 배우는 것을 기록하는 개발자이자 메이커입니다.
+            이 블로그의 모든 글은 AI 초안을 출발점으로 하되, 실제 실행·실측·검증을 거친 뒤에만 발행됩니다.
+            코드와 설정은 공개 저장소에서 확인할 수 있습니다.
+          </p>
+          <ul style={{ paddingLeft: '1.2rem', margin: 0, color: 'var(--text-secondary)' }}>
+            <li style={{ marginBottom: '8px' }}><strong>GitHub:</strong>{' '}
+              <a href="https://github.com/seodaeya" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline' }}>
+                github.com/seodaeya
+              </a>{' '}
+              (블로그 소스코드 및 실험 기록 공개)
+            </li>
+            <li style={{ marginBottom: '8px' }}><strong>YouTube:</strong>{' '}
+              <a href="https://www.youtube.com/@Na.R.D." target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline' }}>
+                @Na.R.D.
+              </a>{' '}
+              (영상 아카이브 연동)
+            </li>
+            <li style={{ marginBottom: '8px' }}><strong>Email:</strong>{' '}
+              <a href="mailto:seodaeya@gmail.com" style={{ color: 'var(--accent-light)', textDecoration: 'underline' }}>
+                seodaeya@gmail.com
+              </a>
+            </li>
+          </ul>
         </section>
 
                 {/* Sponsor Support Section */}

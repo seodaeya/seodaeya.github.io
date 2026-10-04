@@ -7,6 +7,9 @@ image: "/images/us_stock_70years_inflation_portfolio_thumbnail.jpg"
 tags: ["Investment", "AssetAllocation", "Inflation", "USStocks", "Portfolio", "AllWeather", "Stagflation", "PersonalFinance"]
 ---
 
+> ⚠️ <strong>면책 고지 (Disclaimer)</strong><br />
+> 이 글은 일반적인 정보 제공을 목적으로 하며, <strong>투자 권유나 재정적 조언이 아닙니다.</strong> 모든 투자 판단과 책임은 본인에게 있으며, 필요시 공인된 금융 전문가와 상담하시기 바랍니다.
+
 ## 🌐 \"미국 주식은 무조건 우상향한다?\" 10년의 환상과 70년의 역사적 진실
 
 최근 몇 년간 전 세계 자본 시장과 개인 투자자들 사이를 지배해 온 확고한 믿음이 있습니다. 바로 <strong>"미국 대표 지수(S&P 500)나 매그니피센트 7(M7) 빅테크 주식을 매달 적립식으로 사 모으면 결국 무조건 이긴다"</strong>는 명제입니다.
