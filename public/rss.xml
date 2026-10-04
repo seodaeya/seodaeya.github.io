@@ -5,7 +5,7 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 04 Oct 2026 17:29:54 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 18:00:04 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[OpenCode 무료 활용법: Muse Spark 설치부터 실전까지]]></title>
@@ -232,7 +232,7 @@
     <description><![CDATA[OpenAI가 7월 9일 공개한 GPT 5.6 은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, Sol , Terra , Luna 가 함께 나왔다. 처음 보면 이름이 조금 낯설다. 예전처럼 숫자가 올라간 새 모델 하나를 고르는 방식이 아니...]]></description>
   </item>
   <item>
-    <title><![CDATA[깃블로그 댓글 Giscus 오류 해결: Unable to create discussion]]></title>
+    <title><![CDATA[Giscus 댓글 오류 해결: discussion 생성 실패 탈출기]]></title>
     <link>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</link>
     <guid>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</guid>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
