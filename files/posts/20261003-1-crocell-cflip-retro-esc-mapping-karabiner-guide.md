@@ -11,6 +11,11 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 
 카페나 출장지에서 가볍게 코딩과 문서 작업을 하기 위해 한 번 접히는 반접이식(폴딩형) 블루투스 키보드인 <strong>크로셀 C-Flip Retro</strong>를 선택하는 맥(Mac) 사용자들이 많습니다. 레트로한 타자기 감성의 조약돌 키캡과 주머니에 들어가는 압도적인 휴대성까지, 외형만 보면 미니멀 워크스페이스의 완성작처럼 보입니다.
 
+<div style="margin: 28px 0; text-align: center;">
+  <img src="/images/crocell_cflip_retro_folded_hardware.png" alt="크로셀 C-Flip Retro 접이식 블루투스 키보드 외형" style="max-width: 580px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ 반접이식(폴딩형) 힌지 구조와 레트로 원형 키캡이 탑재된 크로셀 C-Flip Retro 실물</p>
+</div>
+
 하지만 맥북과 블루투스로 페어링하고 에디터(VS Code, Vim, 터미널)나 웹 브라우저를 켜는 순간, 예상치 못한 <strong>'생산성의 재앙'</strong>이 시작됩니다.
 
 | 항목 | 크로셀 C-Flip Retro 현상 | 정상적인 개발/작업 기대 동작 |
@@ -59,6 +64,11 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 > 📌 <strong>중요 확인사항 (키보드 규격 설정)</strong><br />
 > <strong>드라이버 확장 프로그램(Driver Extension)</strong> 승인 직후, 맥 화면에 '키보드 설정 지원(Keyboard Setup Assistant)' 창이 나타납니다. 이때 C-Flip 키보드의 지시에 따라 시프트 옆 키를 누른 뒤 반드시 <strong>ANSI(미국 표준 101/104키)</strong>를 선택해야 키 배치가 꼬이지 않습니다.
 
+<div style="margin: 28px 0; text-align: center;">
+  <img src="/images/karabiner_ansi_keyboard_selection.jpg" alt="macOS 키보드 설정 지원에서 ANSI(미국 표준 101/104키) 선택" style="max-width: 540px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ macOS 키보드 설정 지원 창에서 가상 HID 키보드를 ANSI(미국 표준 101/104키)로 지정하는 화면</p>
+</div>
+
 ---
 
 ## ⚙️ 4. 3단계: 가장 먼저 확인할 1순위 함정, 'Modify events' 토글
@@ -69,6 +79,17 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 2. 좌측 사이드바에서 <strong>Devices</strong> 메뉴로 이동합니다.
 3. 연결된 키보드 목록 중 <strong>`C-Flip Retro (No manufacturer name)`</strong> 장치를 찾습니다.
 4. 해당 장치명 바로 우측(또는 하단)에 위치한 <strong>`Modify events` 스위치를 클릭하여 활성화(파란색)</strong>로 전환합니다.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 28px 0;">
+  <div style="text-align: center; background: var(--bg-card, #27272a); padding: 12px; border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.4);">
+    <img src="/images/karabiner_modify_events_disabled_bug.jpg" alt="Modify events 스위치가 비활성화된 문제 화면" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p style="margin-top: 8px; font-size: 12.5px; font-weight: 600; color: #f87171;">❌ 문제 상황: Modify events 꺼짐 (키 매핑 무시됨)</p>
+  </div>
+  <div style="text-align: center; background: var(--bg-card, #27272a); padding: 12px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.4);">
+    <img src="/images/karabiner_modify_events_enabled_fix.jpg" alt="Modify events 스위치를 켠 해결 화면" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p style="margin-top: 8px; font-size: 12.5px; font-weight: 600; color: #34d399;">✅ 해결 방법: C-Flip Retro의 Modify events 켬 (매핑 정상 적용)</p>
+  </div>
+</div>
 
 이 스위치가 꺼져 있으면 Karabiner는 해당 장치의 입력을 수정 대상에서 제외하므로, 키보드 신호가 여과 없이 맥 운영체제로 그대로 전달되어 계속 원화(`₩`)가 찍히게 됩니다.
 
@@ -239,9 +260,19 @@ From key: grave_accent_and_tilde (`)  -->  To key: escape
      > <strong>Change grave accent (backtick) to escape, option grave accent to grave accent</strong>
    - 우측 파란색 <strong>`Import`</strong> 버튼을 클릭하고 브라우저의 'Karabiner-Elements 열기' 확인창에서 <strong>[열기/허용]</strong>을 누릅니다.
 
+<div style="margin: 28px 0; text-align: center;">
+  <img src="/images/karabiner_complex_modifications_search.jpg" alt="Karabiner 복합 규칙 공식 웹사이트 검색 화면" style="max-width: 640px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ 복합 규칙 허브(ke-complex-modifications)에서 'escape grave' 검색 및 공식 규칙 확인</p>
+</div>
+
 4. <strong>규칙 활성화(Enable)</strong>:
    - Karabiner로 돌아오면 가져온 규칙 목록이 표시됩니다.
    - 해당 규칙 우측의 <strong>`Enable`</strong> 버튼을 누르면 활성 규칙 목록으로 등록됩니다.
+
+<div style="margin: 28px 0; text-align: center;">
+  <img src="/images/karabiner_enable_escape_grave_rule.jpg" alt="Karabiner-Elements 규칙 Import 확인 창" style="max-width: 540px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ Karabiner-Elements으로 돌아와서 enable</p>
+</div>
 
 5. <strong>[필수] Simple Modifications 기존 규칙 삭제 (충돌 방지)</strong>:
    - 4단계에서 임시로 등록해 두었던 `grave_accent_and_tilde -> escape` 단순 규칙이 남아있다면 <strong>`Remove`</strong> 버튼을 눌러 반드시 삭제합니다.

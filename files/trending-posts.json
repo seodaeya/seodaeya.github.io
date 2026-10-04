@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 4일 01:55 KST",
+  "updatedAt": "2026년 10월 4일 23:24 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -436,21 +436,8 @@
     },
     {
       "rank": 29,
-      "change": "same",
-      "changeText": "-",
-      "badge": "Football · Lifestyle",
-      "category": "Lifestyle & Tech",
-      "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
-      "desc": "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다.",
-      "image": "/images/dybala_roma_contract_thumbnail.jpg",
-      "url": "/posts/20260715-1-dybala-as-roma-contract",
-      "date": "2026-07-15",
-      "views": null
-    },
-    {
-      "rank": 30,
-      "change": "same",
-      "changeText": "-",
+      "change": "up",
+      "changeText": "▲ 1",
       "badge": "AI Future · AI",
       "category": "AI & Intelligence",
       "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
@@ -458,6 +445,19 @@
       "image": "/images/gpt_5_6_thumbnail.jpg",
       "url": "/posts/20260713-1-gpt-5-6-sol-terra-luna",
       "date": "2026-07-13",
+      "views": null
+    },
+    {
+      "rank": 30,
+      "change": "down",
+      "changeText": "▼ 1",
+      "badge": "Football · Lifestyle",
+      "category": "Lifestyle & Tech",
+      "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
+      "desc": "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다.",
+      "image": "/images/dybala_roma_contract_thumbnail.jpg",
+      "url": "/posts/20260715-1-dybala-as-roma-contract",
+      "date": "2026-07-15",
       "views": null
     },
     {
