@@ -1,5 +1,11 @@
 [
   {
+    "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
+    "category": "AI & Intelligence",
+    "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md",
+    "date": "20261004"
+  },
+  {
     "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
     "category": "Hardware & DIY",
     "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md",
     "date": "20260901"
-  },
-  {
-    "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
-    "category": "Dev & Software",
-    "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md",
-    "date": "20260830"
   }
 ]

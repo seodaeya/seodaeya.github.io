@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 04 Oct 2026 14:24:26 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 17:29:54 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[OpenCode 무료 활용법: Muse Spark 설치부터 실전까지]]></title>
+    <link>https://seodaeya.github.io/posts/20261004-1-opencode-muse-spark-free-setup-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261004-1-opencode-muse-spark-free-setup-guide/</guid>
+    <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[매달 20달러씩 나가는 구독료 때문에 AI 코딩 도구를 망설였다면, OpenCode + OpenCode Zen 무료 모델 조합이 현실적인 대안입니다. OpenCode 는 터미널에서 동작하는 오픈소스 AI 코딩 에이전트입니다. VS Code 플러그인처럼 에디터에 종속되지...]]></description>
+  </item>
   <item>
     <title><![CDATA[크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)]]></title>
     <link>https://seodaeya.github.io/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide/</link>

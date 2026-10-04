@@ -1,6 +1,10 @@
 {
   "AI & Intelligence": [
     {
+      "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
+      "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md"
+    },
+    {
       "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
       "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md"
     },
