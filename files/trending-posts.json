@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 5일 04:36 KST",
+  "updatedAt": "2026년 10월 5일 05:03 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -215,19 +215,6 @@
     },
     {
       "rank": 12,
-      "change": "down",
-      "changeText": "▼ 1",
-      "badge": "Crocell · Hardware",
-      "category": "Hardware & DIY",
-      "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
-      "desc": "휴대용 접이식 키보드 크로셀 C-Flip Retro를 Mac에서 쓸 때 누를 때마다 찍히는 원화(₩) 기호로 고통받으셨나요? Karabiner-Elements를 활용한 최신 macOS 권한 점검, Modify events 활성화, 그리고 백틱(`)과 물결(~)까지 완벽하게 살려내는 복합 매핑 실전 가이드를 정리합니다.",
-      "image": "/images/crocell_cflip_retro_esc_mapping_karabiner_thumbnail.jpg",
-      "url": "/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide",
-      "date": "2026-10-03",
-      "views": null
-    },
-    {
-      "rank": 13,
       "change": "new",
       "changeText": "NEW",
       "badge": "Aside · AI",
@@ -237,6 +224,19 @@
       "image": "/images/aside-ai-browser-mac-install-guide_thumbnail.jpg",
       "url": "/posts/20261005-1-aside-ai-browser-mac-install-guide",
       "date": "2026-10-05",
+      "views": null
+    },
+    {
+      "rank": 13,
+      "change": "down",
+      "changeText": "▼ 2",
+      "badge": "Crocell · Hardware",
+      "category": "Hardware & DIY",
+      "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
+      "desc": "휴대용 접이식 키보드 크로셀 C-Flip Retro를 Mac에서 쓸 때 누를 때마다 찍히는 원화(₩) 기호로 고통받으셨나요? Karabiner-Elements를 활용한 최신 macOS 권한 점검, Modify events 활성화, 그리고 백틱(`)과 물결(~)까지 완벽하게 살려내는 복합 매핑 실전 가이드를 정리합니다.",
+      "image": "/images/crocell_cflip_retro_esc_mapping_karabiner_thumbnail.jpg",
+      "url": "/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide",
+      "date": "2026-10-03",
       "views": null
     },
     {
