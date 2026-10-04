@@ -9,7 +9,7 @@ excerpt: "Mac에서 AI 브라우저 Aside를 다운로드해 설치하고, 키�
 
 ## 🌐 1. Aside란: 웹사이트에 대신 로그인하는 AI 브라우저
 
-<strong>Aside</strong>는 macOS와 Windows에서 동작하는 AI 브라우저입니다. 제작사는 Y Combinator 출신의 Aside Computer Inc.이며, 핵심은 <strong>브라우저 에이전트(Browser Agent)</strong>입니다. 사용자가 시키는 대로 웹사이트를 직접 열고, 로그인하고, 자료를 찾고, 스프레드시트를 정리하는 방식입니다.
+<strong>Aside</strong>는 macOS와 Windows에서 동작하는 AI 브라우저입니다. 제작사는 Y Combinator 출신의 Aside Computer Inc.이며, 단순한 텍스트 챗봇이 아닌 <strong>브라우저 에이전트(Browser Agent)</strong>를 핵심으로 내세우고 있습니다. 사용자의 자연어 지시에 따라 웹사이트를 직접 탐색하고, 로그인하고, 폼 입력과 자료 정리를 대신 수행하는 방식입니다.
 
 기존 브라우저에 AI 확장을 끼우는 방식과 무엇이 다른지 아래 표로 정리했습니다.
 
@@ -17,16 +17,16 @@ excerpt: "Mac에서 AI 브라우저 Aside를 다운로드해 설치하고, 키�
 | :--- | :--- | :--- |
 | <strong>동작 방식</strong> | 읽고 요약하는 보조 | <strong>로그인·클릭·입력까지 대신 수행</strong> |
 | <strong>자격증명</strong> | 사이트마다 직접 로그인 | <strong>Vault에 보관 후 에이전트가 대행</strong> |
-| <strong>모델</strong> | 확장 제공사 종속 | <strong>내장 플랜 또는 기존 구독 재활용</strong> |
+| <strong>모델</strong> | 확장 제공사 종속 | <strong>내장 플랜 또는 기존 구독(ChatGPT, Claude) 재활용</strong> |
 | <strong>자동화</strong> | 수동 반복 | <strong>루틴 예약·원격 조종(Pro) 지원</strong> |
 
-이 글은 필자가 Mac에 Aside를 직접 설치하면서 거친 온보딩 전 과정을 시간 순으로 기록한 것입니다. 모든 화면은 실제 설치 캡처입니다.
+이 글은 필자가 Mac에 Aside를 직접 설치하면서 거친 온보딩 전 과정을 시간 순으로 기록한 것입니다.
 
 ---
 
 ## 💾 2. Mac 설치 3단계: dmg부터 실행까지
 
-공식 다운로드 페이지(<strong>aside.com/download</strong>)에 접속하면 운영체제에 맞는 설치 파일이 자동으로 내려받기 시작합니다. Mac용은 <strong>Aside.dmg</strong>입니다. 내려받기가 시작되지 않으면 페이지의 수동 다운로드 링크를 누르면 됩니다.
+공식 다운로드 페이지(<strong>aside.com/download</strong>)에 접속하면 운영체제에 맞는 설치 파일이 자동으로 내려받기 시작합니다. Mac용은 약 350MB 용량의 <strong>Aside.dmg</strong>입니다. 내려받기가 시작되지 않으면 페이지의 수동 다운로드 링크를 누르면 됩니다.
 
 1. <strong>다운로드 폴더에서 Aside.dmg를 엽니다.</strong>
 2. <strong>Aside 아이콘을 Applications 폴더로 드래그합니다.</strong>
@@ -49,14 +49,17 @@ excerpt: "Mac에서 AI 브라우저 Aside를 다운로드해 설치하고, 키�
 
 당황할 수 있지만 정상 동작입니다. Aside와 Arc가 모두 Chromium 기반이라, 기존 브라우저에 저장된 <strong>비밀번호·쿠키·로그인 세션</strong>을 가져오려면 macOS 키체인 승인이 필요합니다.
 
+> 💡 <strong>왜 'Arc Safe Storage'인가요?</strong><br />
+> Aside는 설치 직후 시스템에 존재하는 기존 Chromium 기반 브라우저를 자동 감지하여 북마크와 세션을 마이그레이션합니다. 필자의 Mac에는 Arc 브라우저가 설치되어 있어 "Arc Safe Storage"가 요청되었으며, Google Chrome 사용자는 <strong>"Chrome Safe Storage"</strong>, Brave 사용자는 <strong>"Brave Safe Storage"</strong>로 표시되니 안심하고 진행하셔도 됩니다.
+
 | 선택지 | 의미 | 권장 |
 | :--- | :--- | :--- |
-| <strong>Allow</strong> | 이번 한 번만 허용 | <strong>권장 (최소 권한)</strong> |
+| <strong>Allow</strong> | 이번 한 번만 허용 | <strong>권장 (최소 권한 원칙)</strong> |
 | <strong>Always Allow</strong> | 이후에도 묻지 않고 허용 | 비권장 |
 | <strong>Deny</strong> | 가져오기 건너뛰기 | 새 출발 시 선택 |
 
-> 💡 <strong>보안 체크</strong><br />
-> 설치 파일이 공식 경로에서 받은 dmg인지 먼저 확인하세요. 입력하는 것은 시스템 비밀번호가 아니라 <strong>로그인 키체인 비밀번호</strong>(보통 동일)입니다. Arc 데이터를 안 쓴다면 Deny 후 수동 로그인도 괜찮습니다.
+> 📌 <strong>보안 체크포인트</strong><br />
+> 설치 파일이 공식 경로에서 받은 dmg인지 먼저 확인하세요. 입력하는 것은 시스템 root 비밀번호가 아니라 <strong>로그인 키체인 비밀번호</strong>(일반적으로 Mac 로그인 암호와 동일)입니다. 기존 브라우저 데이터를 연동하고 싶지 않다면 Deny 후 개별 웹사이트에서 수동 로그인해도 무방합니다.
 
 ---
 
@@ -70,9 +73,9 @@ excerpt: "Mac에서 AI 브라우저 Aside를 다운로드해 설치하고, 키�
 </div>
 
 * <strong>Import credentials to Aside Vault:</strong> 자격증명을 E2E 암호화 Vault에 넣는 방식입니다. 가장 매끄럽게 동작하며, 화면의 Stripe 데모처럼 에이전트가 사이트에 직접 로그인해 대시보드를 읽어 오는 것이 이 모드 기준입니다.
-* <strong>Connect my password manager:</strong> 기존 1Password·Bitwarden 등을 연결하는 방식입니다. 다만 화면에도 적혀 있듯 일부 로그인이 막힐 수 있습니다.
+* <strong>Connect my password manager:</strong> 기존 1Password·Bitwarden 등을 연결하는 방식입니다. 다만 외부 매니저 API 연동 한계로 일부 로그인 단계에서 수동 개입이 필요할 수 있습니다.
 
-핵심 설계는 <strong>"자격증명은 로컬에만 두고 AI 모델에게는 숨긴다"</strong>는 것입니다. 에이전트가 대신 로그인하되, 평문 비밀번호가 모델에 노출되지 않는 구조라는 주장이며, 보안 섹션(7절)에서 검증 관점을 다룹니다.
+핵심 설계는 <strong>"자격증명은 로컬에만 두고 AI 모델에게는 숨긴다"</strong>는 점입니다. 온보딩 화면의 문구 그대로, 에이전트가 대신 로그인하되 비밀번호를 모델에 노출하지 않는 구조를 표방합니다. 다만 "E2E 암호화"의 실제 구현은 외부에서 검증할 수 없으므로, 보안 섹션(9절)의 검증 관점과 함께 읽어 주세요.
 
 ---
 
@@ -126,6 +129,11 @@ excerpt: "Mac에서 AI 브라우저 Aside를 다운로드해 설치하고, 키�
 
 여기에 <strong>Final confirm</strong> 토글을 켜면 최종 실행 전 한 번 더 확정 프롬프트가 뜹니다. <strong>Guard + Final confirm 켬</strong>으로 시작해 에이전트 행동반경을 익히고, 믿을 만한 반복 작업에만 Full access를 주는 순서가 안전합니다. 결제·삭제 같은 비가역 동작이 있다면 이중 안전장치는 필수입니다.
 
+### 💡 실전 생산성을 높이는 3가지 핵심 기능
+1. <strong>단축키 호출:</strong> <strong>Cmd+E</strong>로 에이전트 명령창(Ask Aside), <strong>Cmd+Shift+E</strong>로 새 작업을 즉시 띄울 수 있습니다(공식 문서 기준). 새 탭을 열지 않고 현재 페이지 컨텍스트를 유지한 채 지시할 수 있습니다.
+2. <strong>Task Transcript (작업 기록 검수):</strong> 에이전트가 만든·바꾼 파일은 작업 상세 페이지에 표시되고, 일반 작업의 대화 기록은 작업 폴더에 저장됩니다. 에이전트가 어떤 경로로 결론에 이르렀는지 사후에 되짚어볼 수 있습니다.
+3. <strong>Routines (정기 예약 자동화):</strong> "매일 오전 9시 경쟁사 가격 변동 확인", "주요 테크 뉴스 3줄 요약" 같은 반복 웹 서핑을 Free 플랜에서도 최대 3개까지 예약해 둘 수 있습니다.
+
 ---
 
 ## 🔬 8. 실측: AI 브라우저 평가 기사 3건 비교표 만들기
@@ -141,7 +149,7 @@ AI 브라우저 2026년 평가 기사 3건을 찾아 비교표로 정리해줘
   <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ 첫 질의: 한국어 질문에 한국어로 기능 목록을 답변 (북마크 Chrome 가져오기 완료 상태)</p>
 </div>
 
-에이전트는 <strong>21초</strong> 만에 작업을 마쳤습니다. 사용 모델은 <strong>GPT-6 Luna Low</strong> 등급으로, Free 플랜 크레딧 부담이 적은 설정입니다.
+에이전트는 <strong>21초</strong> 만에 작업을 마쳤습니다. 사용 모델은 <strong>GPT-6 Luna Low</strong> 등급으로, 단순 검색·요약 작업에 맞는 저부담 설정이라 Free 플랜 크레딧으로 충분히 감당되는 구간입니다.
 
 <div style="margin: 28px 0; text-align: center;">
   <img src="/images/aside_mac_setup_06_research.jpg" alt="AI 브라우저 평가 기사 3건 비교표를 21초 만에 생성한 에이전트 실행 결과" style="max-width: 680px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
