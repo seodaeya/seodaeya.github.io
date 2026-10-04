@@ -5,6 +5,7 @@ date: "2025-04-04"
 image: "/images/claude_analysis_thumbnail.jpg"
 tags: ["Claude", "Anthropic", "LLM", "AI Model", "Opus", "Sonnet", "Haiku"]
 excerpt: "Anthropic의 대표 AI 모델인 Claude 3.5 Sonnet, Opus, Haiku의 아키텍처별 특징과 벤치마크 성능, 개발 및 실무 활용 가이드를 심층 분석합니다."
+noindex: true
 ---
 ## 🔍 Anthropic Claude란 무엇인가?
 

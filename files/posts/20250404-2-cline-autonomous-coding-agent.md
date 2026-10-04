@@ -5,6 +5,7 @@ date: "2025-04-04"
 image: "/images/cline_guide_thumbnail.jpg"
 tags: ["Cline", "AI Coding", "VS Code", "Autonomous Agent", "DevTools"]
 excerpt: "VS Code 환경에서 자율적으로 파일 탐색, 코드 작성, 터미널 명령을 수행하는 자율 코딩 에이전트 Cline의 핵심 기능과 실전 활용법을 소개합니다."
+noindex: true
 ---
 ## 🤖 자율형 AI 코딩 에이전트 Cline의 등장
 

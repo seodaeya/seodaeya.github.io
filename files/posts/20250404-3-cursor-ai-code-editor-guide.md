@@ -5,6 +5,7 @@ date: "2025-04-04"
 image: "/images/cursor_guide_thumbnail.jpg"
 tags: ["Cursor", "AI Editor", "Composer", "VS Code", "Productivity"]
 excerpt: "AI 네이티브 코드 에디터 Cursor의 강력한 Composer 다중 파일 편집과 실시간 컨텍스트 인덱싱 기능을 활용한 생산성 극대화 가이드입니다."
+noindex: true
 ---
 ## 🚀 코딩 에디터의 새로운 패러다임, Cursor
 

@@ -5,7 +5,7 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 04 Oct 2026 18:08:20 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 18:09:16 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[OpenCode 무료 활용법: Muse Spark 설치부터 실전까지]]></title>
@@ -300,27 +300,6 @@
     <guid>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</guid>
     <pubDate>Sun, 27 Apr 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[PostgreSQL(포스트그레스큐엘) 은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON 데이터 처리, GIS 지리 정...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드]]></title>
-    <link>https://seodaeya.github.io/posts/20250404-3-cursor-ai-code-editor-guide/</link>
-    <guid>https://seodaeya.github.io/posts/20250404-3-cursor-ai-code-editor-guide/</guid>
-    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[최근 개발 생태계에서 가장 뜨거운 관심을 받고 있는 Cursor(커서) 는 단순한 플러그인 형태를 넘어 에디터 자체에 AI 인공지능을 내장한 VS Code 포크 기반의 AI 특화 코드 에디터 입니다. 기존의 에디터들이 코드를 제안하는 데 그쳤다면, Cursor는 프로젝...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석]]></title>
-    <link>https://seodaeya.github.io/posts/20250404-2-cline-autonomous-coding-agent/</link>
-    <guid>https://seodaeya.github.io/posts/20250404-2-cline-autonomous-coding-agent/</guid>
-    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[기존의 GitHub Copilot이나 ChatGPT가 단순히 코드 조각을 제안하고 사용자가 복사 붙여넣기 하도록 돕는 '채팅 보조자(Chat Assistant)' 였다면, Cline(클라인, 구 Devins) 은 개발자의 터미널 명령 실행, 파일 읽기/쓰기, 디렉터리...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지]]></title>
-    <link>https://seodaeya.github.io/posts/20250404-1-anthropic-claude-models-analysis/</link>
-    <guid>https://seodaeya.github.io/posts/20250404-1-anthropic-claude-models-analysis/</guid>
-    <pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate>
-    <description><![CDATA[Claude(클로드) 는 OpenAI 출신의 핵심 연구원들이 설립한 Anthropic(앤트로픽) 사에서 개발한 차세대 대형 언어 모델(LLM) 패밀리입니다. 단순한 텍스트 생성을 넘어 고도의 논리적 추론, 코드 분석 및 작성, 방대한 문서 해석 분야에서 업계 최고 수준...]]></description>
   </item>
   <item>
     <title><![CDATA[미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트]]></title>

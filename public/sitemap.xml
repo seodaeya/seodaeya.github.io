@@ -38,24 +38,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://seodaeya.github.io/posts/20250404-1-anthropic-claude-models-analysis/</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20250404-2-cline-autonomous-coding-agent/</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20250404-3-cursor-ai-code-editor-guide/</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
