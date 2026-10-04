@@ -5,6 +5,7 @@ date: "2026-07-15"
 image: "/images/dybala_roma_contract_thumbnail.jpg"
 tags: ["Football", "AS Roma", "Dybala", "Serie A", "Sports"]
 excerpt: "파울로 디발라의 AS 로마 잔류와 전술적 가치, 세리에 A 리그 내 영향력을 축구 전술 및 스포츠 비즈니스 관점에서 조명합니다."
+noindex: true
 ---
 ## ⚽ 의리와 낭만의 아이콘, 파울로 디발라의 로마 잔류기
 
