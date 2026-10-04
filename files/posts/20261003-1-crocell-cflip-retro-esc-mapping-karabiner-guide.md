@@ -12,7 +12,7 @@ tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "Esc
 카페나 출장지에서 가볍게 코딩과 문서 작업을 하기 위해 한 번 접히는 반접이식(폴딩형) 블루투스 키보드인 <strong>크로셀 C-Flip Retro</strong>를 선택하는 맥(Mac) 사용자들이 많습니다. 레트로한 타자기 감성의 조약돌 키캡과 주머니에 들어가는 압도적인 휴대성까지, 외형만 보면 미니멀 워크스페이스의 완성작처럼 보입니다.
 
 <div style="margin: 28px 0; text-align: center;">
-  <img src="/images/crocell_cflip_retro_folded_hardware.png" alt="크로셀 C-Flip Retro 접이식 블루투스 키보드 외형" style="max-width: 580px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
+  <img src="/images/crocell_cflip_retro_folded_hardware.jpeg" alt="크로셀 C-Flip Retro 접이식 블루투스 키보드 외형" style="max-width: 580px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);" />
   <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #a1a1aa);">▲ 반접이식(폴딩형) 힌지 구조와 레트로 원형 키캡이 탑재된 크로셀 C-Flip Retro 실물</p>
 </div>
 
