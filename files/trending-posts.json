@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 5일 03:03 KST",
+  "updatedAt": "2026년 10월 5일 03:08 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -427,7 +427,7 @@
       "changeText": "▼ 1",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
-      "title": "AI가 모든 것을 결정하는 시대, 인간에게 남겨진 진짜 질문과 '휴먼 인 더 루프'",
+      "title": "AI 결정 시대에 인간에게 남은 질문: 휴먼 인 더 루프",
       "desc": "생성형 AI 시대에 인간의 개입과 통제(Human-in-the-loop)가 왜 필수적인지, 윤리적 거버넌스와 공존의 철학적 기준을 고찰합니다.",
       "image": "/images/ai_human_hybrid_decision_thumbnail.png",
       "url": "/posts/20260723-1-human-in-the-loop-ai-ethics",
