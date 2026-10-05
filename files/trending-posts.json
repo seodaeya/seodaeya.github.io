@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 5일 21:27 KST",
+  "updatedAt": "2026년 10월 5일 21:35 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "Parenting · Lifestyle",
+      "category": "Lifestyle & Tech",
+      "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
+      "desc": "밤낮없이 공부해도 쫓기며 사는 아이들. 스케줄을 더 채우는 대신 비워내는 여유로운 교육 5원칙과 부모의 실천 체크리스트를 정리합니다.",
+      "image": "/images/leisurely-child-education-guide_thumbnail.jpg",
+      "url": "/posts/20261005-2-leisurely-child-education-guide",
+      "date": "2026-10-05",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "OpenCode · AI",
       "category": "AI & Intelligence",
       "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
@@ -214,7 +227,7 @@
       "views": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "change": "new",
       "changeText": "NEW",
       "badge": "Aside · AI",
@@ -227,9 +240,9 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "down",
-      "changeText": "▼ 2",
+      "changeText": "▼ 3",
       "badge": "Crocell · Hardware",
       "category": "Hardware & DIY",
       "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
@@ -237,19 +250,6 @@
       "image": "/images/crocell_cflip_retro_esc_mapping_karabiner_thumbnail.jpg",
       "url": "/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide",
       "date": "2026-10-03",
-      "views": null
-    },
-    {
-      "rank": 14,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "Parenting · Lifestyle",
-      "category": "Lifestyle & Tech",
-      "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
-      "desc": "밤낮없이 공부해도 쫓기며 사는 아이들. 스케줄을 더 채우는 대신 비워내는 여유로운 교육 5원칙과 부모의 실천 체크리스트를 정리합니다.",
-      "image": "/images/leisurely-child-education-guide_thumbnail.jpg",
-      "url": "/posts/20261005-2-leisurely-child-education-guide",
-      "date": "2026-10-05",
       "views": null
     },
     {
