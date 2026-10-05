@@ -1,5 +1,11 @@
 [
   {
+    "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
+    "category": "Lifestyle & Tech",
+    "file": "posts/20261005-2-leisurely-child-education-guide.md",
+    "date": "20261005"
+  },
+  {
     "title": "AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지",
     "category": "AI & Intelligence",
     "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md",
     "date": "20260904"
-  },
-  {
-    "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
-    "category": "Lifestyle & Tech",
-    "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md",
-    "date": "20260902"
   }
 ]
