@@ -40,16 +40,13 @@ excerpt: "밤낮없이 공부해도 쫓기며 사는 아이들. 스케줄을 더
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.2" />
     </filter>
   </defs>
-
   <rect x="15" y="15" width="810" height="420" rx="16" fill="#12161f" stroke="#2d3748" stroke-width="1.5" />
-
   <g transform="translate(35, 48)">
     <text x="0" y="0" font-size="16" font-weight="700" fill="#f8fafc" letter-spacing="-0.3px">
       🔄 쫓기는 악순환 vs 여유로운 자기주도 선순환 모델
     </text>
     <line x1="-5" y1="16" x2="775" y2="16" stroke="#2d3748" stroke-width="1" />
   </g>
-
   <!-- Left: Vicious Cycle -->
   <g transform="translate(45, 90)" filter="url(#card-shadow)">
     <rect width="360" height="315" rx="12" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.5" />
@@ -57,32 +54,27 @@ excerpt: "밤낮없이 공부해도 쫓기며 사는 아이들. 스케줄을 더
     <text x="180" y="27" font-size="14" font-weight="700" fill="#f87171" text-anchor="middle">
       ❌ 쫓기는 악순환 (불안 기반 주입)
     </text>
-
     <g transform="translate(20, 65)">
       <circle cx="12" cy="12" r="12" fill="#ef4444" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#fca5a5" text-anchor="middle">1</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">스케줄 과밀화 (학원 3개+숙제)</text>
     </g>
-
     <g transform="translate(20, 125)">
       <circle cx="12" cy="12" r="12" fill="#ef4444" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#fca5a5" text-anchor="middle">2</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">수면 부족 &amp; 뇌 여백(DMN) 차단</text>
     </g>
-
     <g transform="translate(20, 185)">
       <circle cx="12" cy="12" r="12" fill="#ef4444" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#fca5a5" text-anchor="middle">3</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">수동적 번아웃 &amp; 학습 무기력</text>
     </g>
-
     <g transform="translate(20, 245)">
       <circle cx="12" cy="12" r="12" fill="#ef4444" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">4</text>
       <text x="36" y="17" font-size="13" font-weight="700" fill="#ef4444">부모 불안 증폭 ➔ 학원 추가 (재순환)</text>
     </g>
   </g>
-
   <!-- Right: Virtuous Cycle -->
   <g transform="translate(435, 90)" filter="url(#card-shadow)">
     <rect width="360" height="315" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5" />
@@ -90,25 +82,21 @@ excerpt: "밤낮없이 공부해도 쫓기며 사는 아이들. 스케줄을 더
     <text x="180" y="27" font-size="14" font-weight="700" fill="#34d399" text-anchor="middle">
       ✅ 여유로운 선순환 (자율성 기반 몰입)
     </text>
-
     <g transform="translate(20, 65)">
       <circle cx="12" cy="12" r="12" fill="#10b981" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#6ee7b7" text-anchor="middle">1</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">스케줄에서 '빈 시간' 먼저 고정</text>
     </g>
-
     <g transform="translate(20, 125)">
       <circle cx="12" cy="12" r="12" fill="#10b981" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#6ee7b7" text-anchor="middle">2</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">심심함에서 싹트는 내적 호기심</text>
     </g>
-
     <g transform="translate(20, 185)">
       <circle cx="12" cy="12" r="12" fill="#10b981" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#6ee7b7" text-anchor="middle">3</text>
       <text x="36" y="17" font-size="13" font-weight="600" fill="#f1f5f9">스스로 선택한 1가지 깊은 몰입</text>
     </g>
-
     <g transform="translate(20, 245)">
       <circle cx="12" cy="12" r="12" fill="#10b981" opacity="0.3" />
       <text x="12" y="17" font-size="11" font-weight="700" fill="#10b981" text-anchor="middle">4</text>
