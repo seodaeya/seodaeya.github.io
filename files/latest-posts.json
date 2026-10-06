@@ -42,7 +42,7 @@
     "date": "20260917"
   },
   {
-    "title": "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기",
+    "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
     "category": "Dev & Software",
     "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
     "date": "20260911"

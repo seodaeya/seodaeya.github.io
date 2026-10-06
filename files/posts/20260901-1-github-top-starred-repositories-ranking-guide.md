@@ -1,6 +1,6 @@
 ---
 category: "Dev & Software"
-title: "GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고"
+title: "GitHub 스타 랭킹 TOP 10: 전 세계 오픈소스 보물창고"
 date: "2026-09-01"
 excerpt: "ChatGPT와 생성형 AI 시대, 개발자뿐만 아니라 기획자, 1인 창업가, 비전공자까지 모두가 알아두면 비즈니스와 업무 생산성을 극대화할 수 있는 전 세계 GitHub 스타 랭킹 TOP 10 오픈소스 저장소를 심층 분석합니다."
 image: "/images/github_top_starred_repositories_guide_thumbnail.jpg"

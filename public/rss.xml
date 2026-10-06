@@ -5,7 +5,7 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Mon, 05 Oct 2026 13:12:30 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 15:12:48 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙]]></title>
@@ -57,7 +57,7 @@
     <description><![CDATA[2026년 초, 글로벌 핀테크 공룡 기업 블록(Block, 구 Square) 은 글로벌 테크 업계 전체를 충격에 빠뜨린 결정을 발표했습니다. 회사의 분기 실적과 총이익이 견고한 성장세를 유지하고 있음에도 불구하고, 전체 임직원의 40%에 달하는 4,000명 이상의 인력...]]></description>
   </item>
   <item>
-    <title><![CDATA[서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기]]></title>
+    <title><![CDATA[DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기]]></title>
     <link>https://seodaeya.github.io/posts/20260911-2-github-actions-cron-monthly-ranking-system/</link>
     <guid>https://seodaeya.github.io/posts/20260911-2-github-actions-cron-monthly-ranking-system/</guid>
     <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
@@ -85,7 +85,7 @@
     <description><![CDATA[⚠️ 면책 고지 (Disclaimer) 이 글은 일반적인 정보 제공을 목적으로 하며, 투자 권유나 재정적 조언이 아닙니다. 모든 투자 판단과 책임은 본인에게 있으며, 필요시 공인된 금융 전문가와 상담하시기 바랍니다. 최근 몇 년간 전 세계 자본 시장과 개인 투자자들 사...]]></description>
   </item>
   <item>
-    <title><![CDATA[GitHub 스타(Star) 랭킹 TOP 10 완벽 분석: AI 시대, 비전공자도 알아야 할 전 세계 오픈소스 보물창고]]></title>
+    <title><![CDATA[GitHub 스타 랭킹 TOP 10: 전 세계 오픈소스 보물창고]]></title>
     <link>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</link>
     <guid>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</guid>
     <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
@@ -113,7 +113,7 @@
     <description><![CDATA[💡 안내 : 본 포스팅은 실무에서 겪은 백엔드 트러블슈팅 경험과 학습 내용을 바탕으로, 기술적 이해와 설명의 명확성을 돕기 위해 실제 내용에 일부 가상의 시나리오와 설정을 덧붙여 각색·재구성 한 글입니다. 서비스 활성화를 위해 마케팅 프로모션과 광고를 시작했습니다....]]></description>
   </item>
   <item>
-    <title><![CDATA[정적 깃허브 블로그에서 쿠팡 봇 방어벽 뚫고 쇼핑몰 만능 장바구니 만들기: 서버리스 보안 아키텍처와 파트너스 API 연동기]]></title>
+    <title><![CDATA[GitHub Pages 쿠팡 봇 뚫는 서버리스 장바구니 만들기]]></title>
     <link>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</link>
     <guid>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</guid>
     <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>

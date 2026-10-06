@@ -1,6 +1,6 @@
 ---
 category: "Dev & Software"
-title: "서버·DB 없이 매일 자정 순위가 갱신되는 비결: GitHub Actions 크론과 월간 앵커 순위표 구축기"
+title: "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기"
 date: "2026-09-11"
 image: "/images/github_actions_cron_monthly_ranking_guide_thumbnail.jpg"
 tags: ["GitHub Actions", "Next.js", "Cron", "GA4", "Ranking", "Automation", "Troubleshooting"]
