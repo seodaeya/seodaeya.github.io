@@ -9,6 +9,9 @@ import Comments from '@/components/Comments';
 import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
+import SeriesNav from '@/components/SeriesNav';
+import BookmarkButton from '@/components/BookmarkButton';
+import FontSizeControl from '@/components/FontSizeControl';
 import contentUtils from '@/lib/content';
 import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
@@ -144,6 +147,43 @@ export async function getStaticProps({ params }) {
   
   const prevPost = currentIndex !== -1 && currentIndex < allContent.length - 1 ? allContent[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allContent[currentIndex - 1] : null;
+
+  // 시리즈 연재 네비게이션: 같은 series frontmatter를 가진 글들을 날짜순으로 묶는다
+  let seriesNav = null;
+  if (data.series) {
+    const seriesPosts = fs.readdirSync(postsDir)
+      .filter(fn => fn.endsWith('.md'))
+      .map(filename => {
+        const fc = fs.readFileSync(path.join(postsDir, filename), 'utf-8');
+        const { data: d } = matter(fc);
+        return { id: filename.replace('.md', ''), title: d.title || '', date: d.date || '', series: d.series || '' };
+      })
+      .filter(item => item.series === data.series)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    if (seriesPosts.length > 1) {
+      seriesNav = {
+        title: data.seriesTitle || data.series,
+        posts: seriesPosts.map(({ id, title }) => ({ id, title })),
+      };
+    }
+  }
+
+  // 조회수 뱃지: 빌드 시점 GA4 집계(trending 우선, 월간 기준표 폴백)에서 매칭
+  let views = null;
+  try {
+    const resolvedId = targetFilename.replace('.md', '');
+    const want = `/posts/${resolvedId}`;
+    const candidates = [
+      path.join(process.cwd(), 'files/trending-posts.json'),
+      path.join(process.cwd(), 'files/monthly-baseline-ranking.json'),
+    ];
+    for (const p of candidates) {
+      if (!fs.existsSync(p)) continue;
+      const data = JSON.parse(fs.readFileSync(p, 'utf8'));
+      const hit = (data.posts || []).find(x => x.url === want);
+      if (hit && typeof hit.views === 'number') { views = hit.views; break; }
+    }
+  } catch (e) {}
   
   const relatedPosts = allContent
     .filter(item => item.category === data.category && !(item.id === params.id && item.type === 'posts'))
@@ -182,11 +222,15 @@ export async function getStaticProps({ params }) {
       prevPost,
       nextPost,
       relatedPosts,
+      seriesNav,
+      views,
+      canonicalId: targetFilename.replace('.md', ''),
     },
   };
 }
 
-export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts }) {
+export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts, seriesNav, views, canonicalId }) {
+  const postId = canonicalId || id;
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [copiedInsta, setCopiedInsta] = useState(false);
 
@@ -463,6 +507,17 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
               <span className={styles.metaItem}>작성자: NaRD</span>
               <span className={styles.metaSeparator}>|</span>
               <span className={styles.metaItem}>⏱️ 읽는 시간: 약 {readingTime}분</span>
+              {views != null && (
+                <>
+                  <span className={styles.metaSeparator}>|</span>
+                  <span className={styles.metaItem}>👁️ 조회수: 약 {views.toLocaleString()}회</span>
+                </>
+              )}
+            </div>
+            {/* 독서 도구: 북마크 저장 + 글꼴 크기 조절 (로컬 저장, 로그인 불필요) */}
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '14px', flexWrap: 'wrap' }}>
+              <BookmarkButton id={postId} title={frontmatter.title} />
+              <FontSizeControl />
             </div>
           </header>
 
@@ -484,6 +539,11 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
 
           {/* Post Content */}
           <PostContent content={content} />
+
+          {/* 시리즈 연재 네비게이션 */}
+          {seriesNav && (
+            <SeriesNav title={seriesNav.title} posts={seriesNav.posts} currentId={postId} />
+          )}
 
           {/* Social Share Bar: 100% Official Brand Vector SVGs */}
           <section className={styles.shareSection} aria-label="이 아티클 공유하기">

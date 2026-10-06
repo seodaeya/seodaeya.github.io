@@ -5,6 +5,8 @@ date: "2026-08-19"
 image: "/images/dangerously_self_educated_ai_thumbnail.jpg"
 tags: ["AI Framework", "Software Design", "Agentic Architecture", "Clean Code"]
 excerpt: "변화하는 비즈니스 요구사항과 AI 에이전트의 불확실성을 유연하게 결합하는 차세대 소프트웨어 아키텍처 프레임워크의 개념을 고찰합니다."
+series: "ai-self-study"
+seriesTitle: "AI 시대 독학법"
 ---
 ## 📱 인스타그램을 보는 주머니 속에 '수백억 원짜리 대학'이 들어있다
 

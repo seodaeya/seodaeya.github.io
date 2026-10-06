@@ -169,6 +169,13 @@ export default function Header() {
           >
             소개
           </Link>
+
+          <Link 
+            href="/bookmarks" 
+            className={`${styles.navLink} ${router.pathname === '/bookmarks' ? styles.activeNavLink : ''}`}
+          >
+            북마크 🔖
+          </Link>
         </nav>
 
         {/* Right Action Icons & Controls */}
@@ -326,6 +333,14 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>👤</span> 소개 (About)
+            </Link>
+
+            <Link 
+              href="/bookmarks" 
+              className={`${styles.mobileNavLink} ${router.pathname === '/bookmarks' ? styles.activeMobileNavLink : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>🔖</span> 북마크
             </Link>
 
                         {/* Mobile RSS Feed Link */}

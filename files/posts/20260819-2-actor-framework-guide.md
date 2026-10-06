@@ -5,6 +5,8 @@ date: "2026-08-19"
 image: "/images/actor_framework_ai_learning_thumbnail.jpg"
 tags: ["Actor Model", "Concurrency", "Distributed Systems", "Backend", "Architecture"]
 excerpt: "동시성 문제와 메시지 전달 기반의 안전한 상태 관리를 보장하는 액터 모델(Actor Model)의 핵심 원리와 분산 시스템 적용 패턴을 다룹니다."
+series: "ai-self-study"
+seriesTitle: "AI 시대 독학법"
 ---
 ## 🚀 왜 방대한 지식을 배우고도 현실에서는 변하는 게 없을까?
 
