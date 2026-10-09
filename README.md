@@ -33,19 +33,29 @@
 * **Cloudflare Workers 서버리스 백엔드 (`workers/cart-product-lookup`)**: 쿠팡 파트너스 API의 복잡한 HMAC-SHA256 암호화 서명을 엣지 환경에서 안전하게 처리하며, 단축 URL 리다이렉트를 실시간 추적합니다.
 * **보안 및 클라이언트 저장소**: `javascript:` 등 악성 스키마를 사전 차단하는 URL Sanitizer가 적용되어 있으며, LocalStorage를 통해 로그인 없이 영구 저장됩니다.
 
-### 3. 📝 심층 아티클 엔지니어링 뷰어 (`/posts/[id]`)
+### 3. 🚂 단어기차 단어 게임 (`/word-train`)
+* **유아부터 성인까지 단계별 단어 맞추기**: 한글·영어, 4단계 난이도, 단어 맞추기·타자 게임 2종 모드.
+* **무료 AI 출제 + 내장 단어 폴백**: Pollinations 무료 API로 단어를 묶음 생성하고, 실패 시 144개 내장 단어장으로 즉시 대체합니다.
+* **기차 여행 테마 규칙**: 제한시간 경과 시 하트 -1, 정답 시 100점 만점 정답률 반영, 하트 단어 적중 시 하트 +1(최대 3개).
+* **점수 공유**: Web Share·클립보드 복사, 단계별 최고기록 로컬 저장.
+
+### 4. 📝 심층 아티클 엔지니어링 뷰어 (`/posts/[id]`)
 * **인터랙티브 다이어그램 (Mermaid SVG)**: 아키텍처 및 순서도를 Mermaid 코드로 작성하면 클라이언트에서 선명한 벡터 SVG로 자동 렌더링합니다. (다크모드 고대비 스타일 및 스크롤 롤백 방지 `React.memo` 최적화 적용)
 * **3D 온톨로지 지식 그래프 (`OntologyGraph3D`)**: Three.js를 활용하여 기술 개념 및 키워드 간의 연결 고리를 인터랙티브 3D 노드 그래프로 시각화합니다.
+* **시리즈 연재 네비게이션 (`SeriesNav`)**: `series` frontmatter로 묶은 연작을 날짜순 Part 목록 + 이전/다음 편 버튼으로 연결합니다.
+* **GA4 조회수 뱃지**: 빌드 시점 집계(trending 우선·월간 기준 폴백)에서 매칭된 글에만 조회수를 표시합니다.
+* **북마크 & 글꼴 크기 조절**: LocalStorage 기반 나중에 읽기 저장(`/bookmarks` 목록 페이지)과 본문 A-/보통/A+ 조절을 로그인 없이 제공합니다.
 * **반응형 목차(TOC) & 스크롤스파이**: 본문 제목(`H2`, `H3`)을 자동 추출하여 현재 읽고 있는 섹션을 하이라이트하며, 모바일 하단 플로팅 드로어로 제공됩니다.
 * **독서 진행률 프로그레스 바**: 스크롤 위치에 따라 최상단 얇은 게이지 바가 실시간으로 독서 완료율을 표시합니다.
 * **원클릭 코드 복사 & 반응형 테이블**: 모든 코드 블록에 복사 버튼이 자동 주입되며, 모바일에서 긴 테이블이 레이아웃을 깨뜨리지 않도록 가로 스크롤 컨테이너로 감쌉니다.
 * **Giscus 댓글 연동**: GitHub Discussions API 기반의 무서버 댓글 시스템으로, 블로그 테마(다크/라이트)에 맞춰 자동 전환됩니다.
 
-### 4. 🔍 검색엔진(SEO) & 생성형 AI(GEO/AEO) 최적화
+### 5. 🔍 검색엔진(SEO) & 생성형 AI(GEO/AEO) 최적화
 * **JSON-LD 구조화 데이터**: `BlogPosting`, `VideoObject`, `WebSite`, `Person` 스키마를 완벽 제공하여 검색엔진 리치 스니펫을 지원합니다.
 * **AI Key Summary & Global Takeaways**: 포스트 상단에 핵심 요약 박스를 배치하여 Perplexity, ChatGPT, Claude 등 최신 AI 검색 크롤러의 핵심 인용 확률을 극대화했습니다.
 * **IndexNow 실시간 핑**: 새 글 배포 시 Bing, Naver, Yandex 검색엔진에 즉시 URL을 핑하여 수 분 내 조기 색인을 유도합니다.
 * **엄격한 SEO 제목 최적화**: 구글 SERP 잘림 및 진단 툴 에러를 방지하기 위해 프론트매터 제목을 44자 이내(사이트 접미사 결합 시 60자 이내)로 자동 관리하는 규칙 및 빌드 타임 검증기를 탑재했습니다.
+* **frontmatter `noindex` 지원**: 얇거나 구버전 글에 `noindex: true` 한 줄을 넣으면 검색 색인·사이트맵·RSS에서 제외됩니다 (글 자체는 열람 가능).
 * **공식 광고 및 크롤러 인증**: 구글 애드센스 공인 판매자 파일(`public/ads.txt`), `Mediapartners-Google` 허용 `robots.txt`, `_document.js` 메타 태그 최상단 고정이 완료되어 있습니다.
 
 ---
@@ -60,6 +70,9 @@ seodaeya.github.io
 ├── components/                   # 재사용 React 컴포넌트
 │   ├── Breadcrumbs.jsx           # 상단 경로 빵부스러기 네비게이션
 │   ├── Comments.js               # Giscus 댓글 시스템 연동
+│   ├── BookmarkButton.jsx        # LocalStorage 북마크 토글 버튼
+│   ├── FontSizeControl.jsx       # 본문 글꼴 크기 조절 (로컬 저장)
+│   ├── SeriesNav.jsx             # 시리즈 연재 네비게이션 박스
 │   ├── Footer.js                 # 사이트 하단 정보 및 RSS/채널 링크
 │   ├── Header.js                 # 글래스모피즘 상단 네비게이션 & 테마 토글
 │   ├── Layout.js                 # 페이지 공통 셸 레이아웃
@@ -90,6 +103,8 @@ seodaeya.github.io
 │   ├── about.jsx                 # 브랜드 철학 및 운영자 소개 페이지
 │   ├── privacy.jsx               # 개인정보처리방침 (쿠키, 애드센스 고지)
 │   ├── cart/                     # 모두모아 장바구니 (CartInAll) 서비스
+│   ├── word-train.jsx            # 단어기차 게임 (한글·영어 단어 맞추기 + 타자 게임)
+│   ├── bookmarks.jsx             # 북마크 목록 페이지 (로컬 저장)
 │   ├── categories/               # 카테고리별 글 & 영상 모아보기
 │   ├── ranking/                  # 전체 실시간 랭킹 종합 순위표 페이지
 │   ├── posts/                    # 블로그 아티클 상세 뷰어 ([id].jsx)
@@ -106,7 +121,11 @@ seodaeya.github.io
 │   ├── home.module.css           # 메인 페이지 및 카드 스타일
 │   ├── post.module.css           # 포스트 본문, Mermaid, AI 요약 박스 스타일
 │   ├── cart.module.css           # 장바구니 인터페이스 스타일
+│   ├── game.module.css           # 단어기차 게임 스타일
 │   └── ranking.module.css        # 랭킹 순위표 및 배지 스타일
+├── lib/                          # 공용 유틸리티
+│   ├── content.js                # 발췌문 생성 (SVG/코드 제외 클린 텍스트)
+│   └── word-train-words.js       # 단어기차 단어장 (단계별 한영 + 무료 AI 묶음 출제)
 ├── workers/                      # Cloudflare Workers 백엔드
 │   └── cart-product-lookup/      # 쿠팡 파트너스 HMAC 서명 및 상품 조회 마이크로서비스
 ├── AGENTS.md                     # AI 에이전트 마크다운 포맷팅 및 SEO 영구 규칙서
