@@ -1,0 +1,377 @@
+.gameWrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem 1rem;
+}
+
+.sky {
+  height: 64px;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0b1026 0%, #1b2a4a 100%);
+  border: 1px solid var(--border-glass);
+  position: relative;
+  overflow: hidden;
+}
+
+.trainTrack {
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--text-muted) 0 12px, transparent 12px 24px);
+  opacity: 0.6;
+}
+
+.train {
+  position: absolute;
+  bottom: -2px;
+  font-size: 1.8rem;
+  transform: translateX(-50%);
+  transition: left 0.1s linear;
+}
+
+.panel {
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 12px 0;
+  color: var(--text-primary);
+}
+
+.desc {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.optRow {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.optLabel {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.optBtn,
+.optActive {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.optActive {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.aiToggle {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.startBtn {
+  padding: 12px 36px;
+  border-radius: 24px;
+  border: none;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hearts {
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.score {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.timerBar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-glass);
+}
+
+.timerFill {
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.1s linear;
+}
+
+.wordCard {
+  padding: 28px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  margin-bottom: 20px;
+}
+
+.heartBadge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 14px;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.5);
+  color: #fb7185;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.hint {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.wordLen {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.aiBadge {
+  margin-top: 8px;
+  color: var(--accent-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.submitBtn {
+  padding: 12px 24px;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.feedbackOk,
+.feedbackNo {
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.feedbackOk {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+}
+
+.feedbackNo {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+.meta {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.blanks {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.blank,
+.blankHit {
+  width: 44px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.blank {
+  border: 1px dashed var(--border-glass);
+  color: var(--text-muted);
+  background: transparent;
+}
+
+.blankHit {
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.guessed {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.ping {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.fallZone {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.fallItem {
+  padding: 14px 16px 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+}
+
+.fallTop {
+  position: relative;
+  height: 22px;
+  margin-bottom: 4px;
+  border-bottom: 2px dashed var(--border-glass);
+}
+
+.trainMini {
+  position: absolute;
+  bottom: -4px;
+  font-size: 1.1rem;
+  transform: translateX(-50%);
+  transition: left 0.1s linear;
+}
+
+.fallWord {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.heartMini {
+  color: #fb7185;
+}
+
+.hintMini {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.fallBar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.fallFill {
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.1s linear;
+}
+
+.comboBadge {
+  padding: 4px 12px;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.flashMsg {
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: var(--accent-light);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.finalScore {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 8px 0 16px 0;
+}
+
+.btnRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.shareBtn {
+  padding: 12px 24px;
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 800;
+  cursor: pointer;
+}

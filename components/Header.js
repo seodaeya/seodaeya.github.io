@@ -148,17 +148,18 @@ export default function Header() {
                   </div>
                 </Link>
 
-                <div 
+                <Link
+                  href="/word-train"
                   className={styles.dropdownItem}
-                  style={{ opacity: 0.5, cursor: 'default' }}
+                  onClick={() => setIsServicesOpen(false)}
                 >
                   <div className={styles.dropdownItemTitle}>
-                    <span>✨</span> 새 실험실 도구 준비 중...
+                    <span>🚂</span> 단어기차
                   </div>
                   <div className={styles.dropdownItemDesc}>
-                    더 유용한 서비스가 곧 추가됩니다
+                    유아부터 성인까지 한글·영어 단어 맞추기 게임
                   </div>
-                </div>
+                </Link>
               </div>
             )}
           </div>
@@ -322,6 +323,18 @@ export default function Header() {
                   </div>
                   <div className={styles.mobileServiceDesc}>
                     여러 쇼핑몰 링크를 한곳에 모아 관리하는 위시리스트
+                  </div>
+                </Link>
+                <Link 
+                  href="/word-train" 
+                  className={styles.mobileServiceItem}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>🚂</span> 단어기차
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    유아부터 성인까지 한글·영어 단어 맞추기 게임
                   </div>
                 </Link>
               </div>

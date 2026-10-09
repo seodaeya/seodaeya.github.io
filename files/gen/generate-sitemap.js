@@ -55,6 +55,12 @@ const generateSitemap = () => {
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>${siteUrl}/word-train/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>${siteUrl}/about/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
