@@ -1,5 +1,11 @@
 [
   {
+    "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
+    "category": "AI & Intelligence",
+    "file": "posts/20261013-1-rea-reverse-engineering-guide.md",
+    "date": "20261013"
+  },
+  {
     "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
     "category": "Lifestyle & Tech",
     "file": "posts/20261005-2-leisurely-child-education-guide.md",
@@ -52,11 +58,5 @@
     "category": "Lifestyle & Tech",
     "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md",
     "date": "20260911"
-  },
-  {
-    "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
-    "category": "AI & Intelligence",
-    "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md",
-    "date": "20260904"
   }
 ]

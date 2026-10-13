@@ -1,6 +1,10 @@
 {
   "AI & Intelligence": [
     {
+      "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
+      "file": "posts/20261013-1-rea-reverse-engineering-guide.md"
+    },
+    {
       "title": "AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지",
       "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md"
     },
