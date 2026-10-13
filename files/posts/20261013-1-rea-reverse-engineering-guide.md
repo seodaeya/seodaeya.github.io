@@ -3,34 +3,125 @@ category: "AI & Intelligence"
 title: "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지"
 date: "2026-10-13"
 image: "/images/rea-reverse-engineering-guide_thumbnail.jpg"
-tags: ["REA", "ReverseEngineering", "CodingAgent", "MCP", "OpenCode"]
-excerpt: "코딩 에이전트에게 분석 도구를 쥐여주는 REA. 설치법부터 공룡 게임 속도 규칙과 계산기 % 버튼 해부 예제까지 정리합니다."
+tags: ["REA", "ReverseEngineering", "CodingAgent", "MCP", "OpenCode", "CleanRoom"]
+excerpt: "코딩 에이전트에게 리버스엔지니어링의 눈을 쥐여주는 REA(Reverse Engineer Anything). 설치법부터 공룡 게임 속도 규칙·계산기 % 분기 복원, OpenCode·Cursor MCP 연결 및 클린룸 재구현 원칙까지 총정리합니다."
 ---
 
-## 🔍 1. REA란: 에이전트에게 분석 도구를 쥐여주기
+## 🔍 1. REA란: 에이전트에게 분석의 눈을 쥐여주기
 
-<strong>REA(Reverse Engineer Anything)</strong>는 코딩 에이전트가 프로그램을 조사하고 동작을 설명할 수 있도록 분석 도구를 제공하는 오픈소스 프로젝트입니다(MIT 라이선스). 한 줄로 말하면 <strong>에이전트용 리버스엔지니어링 도구 상자</strong>입니다.
+<strong>REA(Reverse Engineer Anything)</strong>는 코딩 에이전트가 프로그램을 조사하고 동작을 설명할 수 있도록 분석 도구를 제공하는 오픈소스 프로젝트입니다(GitHub: <code>morluto/rea</code>, MIT 라이선스). 한 줄로 정의하면 <strong>에이전트용 리버스엔지니어링 도구 상자</strong>입니다.
 
-구조는 단순합니다. <strong>REA가 제공하는 것</strong>과 <strong>에이전트가 하는 것</strong>이 명확히 나뉩니다.
+전통적인 리버스엔지니어링은 진입 장벽이 매우 높았습니다. 개발자가 Ghidra, IDA Pro, x64dbg 같은 전문 분석기를 직접 다루며 수천 줄의 어셈블리 명령어를 한 줄씩 읽고, 제어 흐름 그래프(Control Flow Graph)를 머릿속에서 재조립해야 했습니다.
 
-| 구분 | 내용 |
-| :--- | :--- |
-| <strong>REA가 제공</strong> | 명령어(어셈블리), 디컴파일된 코드, 함수 호출 관계 |
-| <strong>에이전트가 수행</strong> | 어떤 분기가 적용되는지, 무엇을 계산하는지, 어떻게 다시 만드는지 설명 |
+REA는 이 패러다임을 완전히 바꿉니다. <strong>코딩 에이전트(Claude Code, Cursor, OpenCode, Windsurf 등)가 두뇌(해석 및 추론)</strong>를 맡고, <strong>REA가 눈과 손(디컴파일 및 호출 관계 추출)</strong>을 맡습니다.
 
-즉 REA는 눈(분석 도구)이고, 에이전트는 머리(해석)입니다. 패키지 실체는 <strong>rea-agents</strong>(npm 기준 6.x대)이며, 터미널 CLI와 MCP 서버 두 얼굴을 가졌습니다. MCP 서버라는 점이 중요한데, 이 블로그에서 다룬 OpenCode처럼 <strong>MCP를 지원하는 에이전트라면 그대로 붙일 수 있다</strong>는 뜻이기 때문입니다.
+<div style="margin: 32px 0; display: flex; justify-content: center; width: 100%;">
+<svg viewBox="0 0 840 330" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 840px; height: auto; font-family: -apple-system, BlinkMacSystemFont, Pretendard, sans-serif;">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowIndigo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#818cf8" />
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+  </defs>
+  <!-- Container -->
+  <rect width="840" height="330" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
+  <!-- Title Badge -->
+  <rect x="25" y="16" width="230" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+  <text x="140" y="33" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">REA &amp; Coding Agent Architecture</text>
+  <!-- Node 1: User -->
+  <g transform="translate(35, 105)" filter="url(#shadow)">
+    <rect width="180" height="135" rx="10" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2" />
+    <rect x="12" y="14" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.2" />
+    <text x="26" y="33" font-size="16" text-anchor="middle">👤</text>
+    <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">사용자 (Developer)</text>
+    <text x="16" y="65" fill="#94a3b8" font-size="12">1. 자연어 분석 지시</text>
+    <text x="16" y="85" fill="#94a3b8" font-size="12">2. 분석 계획 검토/승인</text>
+    <text x="16" y="105" fill="#34d399" font-size="12" font-weight="600">➔ 최종 결과 검증 및 사용</text>
+  </g>
+  <!-- Node 2: Coding Agent -->
+  <g transform="translate(290, 45)" filter="url(#shadow)">
+    <rect width="250" height="115" rx="10" fill="url(#cardBg)" stroke="#818cf8" stroke-width="1.5" />
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#818cf8" fill-opacity="0.2" />
+    <text x="26" y="31" font-size="16" text-anchor="middle">🧠</text>
+    <text x="48" y="31" fill="#ffffff" font-size="14" font-weight="700">코딩 에이전트 (Brain)</text>
+    <text x="16" y="60" fill="#c7d2fe" font-size="12" font-weight="600">OpenCode · Cursor · Claude Code</text>
+    <text x="16" y="80" fill="#94a3b8" font-size="11.5">• 분석 계획 수립 &amp; 문맥 이해</text>
+    <text x="16" y="98" fill="#94a3b8" font-size="11.5">• 동작 규칙 복원 &amp; 클린룸 재작성</text>
+  </g>
+  <!-- Node 3: REA MCP Engine -->
+  <g transform="translate(290, 185)" filter="url(#shadow)">
+    <rect width="250" height="115" rx="10" fill="url(#cardBg)" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.2" />
+    <text x="26" y="31" font-size="16" text-anchor="middle">🛠️</text>
+    <text x="48" y="31" fill="#ffffff" font-size="14" font-weight="700">REA 엔진 (Eyes &amp; Hands)</text>
+    <text x="16" y="60" fill="#7dd3fc" font-size="12" font-weight="600">rea-agents (MCP Server / CLI)</text>
+    <text x="16" y="80" fill="#94a3b8" font-size="11.5">• 디컴파일러/AST 분석 브릿지</text>
+    <text x="16" y="98" fill="#94a3b8" font-size="11.5">• 어셈블리·호출 그래프·문자열 추출</text>
+  </g>
+  <!-- Node 4: Target -->
+  <g transform="translate(620, 105)" filter="url(#shadow)">
+    <rect width="185" height="135" rx="10" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2" />
+    <rect x="12" y="14" width="28" height="28" rx="6" fill="#34d399" fill-opacity="0.2" />
+    <text x="26" y="33" font-size="16" text-anchor="middle">🎯</text>
+    <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">분석 대상 (Target)</text>
+    <text x="16" y="65" fill="#94a3b8" font-size="12">• C/C++, Rust, Go 실행파일</text>
+    <text x="16" y="85" fill="#94a3b8" font-size="12">• Electron / JS ASAR 아카이브</text>
+    <text x="16" y="105" fill="#94a3b8" font-size="12">• 브라우저 런타임 활동</text>
+  </g>
+  <!-- Connection: User -> Agent -->
+  <path d="M 215 140 Q 250 110 286 100" fill="none" stroke="#818cf8" stroke-width="1.8" marker-end="url(#arrowIndigo)" />
+  <text x="230" y="115" fill="#818cf8" font-size="10.5" font-weight="600">요청</text>
+  <!-- Connection: Agent <-> REA -->
+  <path d="M 400 160 L 400 180" fill="none" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan)" />
+  <path d="M 430 180 L 430 160" fill="none" stroke="#818cf8" stroke-width="1.8" marker-end="url(#arrowIndigo)" />
+  <text x="438" y="173" fill="#94a3b8" font-size="10">MCP</text>
+  <!-- Connection: REA -> Target -->
+  <path d="M 540 220 Q 580 200 616 185" fill="none" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan)" />
+  <text x="560" y="218" fill="#38bdf8" font-size="10.5" font-weight="600">추적/파싱</text>
+  <!-- Connection: Target -> REA -->
+  <path d="M 620 200 Q 580 230 544 240" fill="none" stroke="#34d399" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowEmerald)" />
+  <text x="575" y="240" fill="#34d399" font-size="10">바이트코드</text>
+</svg>
+</div>
+
+구조적 역할 분담은 아래 표와 같이 명확합니다.
+
+| 구분 | 주체 | 제공 및 수행하는 핵심 역할 |
+| :--- | :--- | :--- |
+| <strong>도구 (Eyes & Hands)</strong> | <strong>REA</strong> (<code>rea-agents</code>) | 디컴파일러 브릿지, 어셈블리/바이트코드 추출, 함수 호출 그래프(XREFs) 및 심볼 매핑 |
+| <strong>지능 (Brain)</strong> | <strong>코딩 에이전트</strong> | 조건 분기 추론, 데이터 연산 메커니즘 해석, 클린룸 명세서 및 신규 코드 작성 |
+| <strong>통제 (Control)</strong> | <strong>사용자 (Developer)</strong> | 분석 범위 지정, 변경 계획 승인(Permission), 재구현 결과 검증 |
+
+REA의 실체는 npm 패키지인 <strong>rea-agents</strong>(6.x대)이며, 터미널 CLI와 <strong>Model Context Protocol(MCP)</strong> 서버 인터페이스를 동시에 갖추고 있습니다. 즉, MCP를 지원하는 코딩 에이전트라면 별도의 플러그인 개발 없이 곧바로 붙여서 사용할 수 있습니다.
 
 ---
 
-## ⚙️ 2. 설치: 프롬프트 한 줄과 승인 한 번
+## ⚙️ 2. 설치 및 준비: 사전 요구사항과 자동 감지 설정
 
-공식 설치법은 에이전트에게 아래 취지의 프롬프트를 붙여넣는 것입니다.
+### 2-1. 사전 요구사항 (Prerequisites)
+* <strong>Node.js:</strong> v18.0.0 이상 (v20+ 권장, npx 환경)
+* <strong>(선택) Ghidra / Java 런타임:</strong> C/C++, Rust, Go 등 네이티브 기계어 바이너리를 심층 디컴파일할 경우 백엔드로 Ghidra 환경이 연동될 수 있습니다. (JS, Electron, 웹 앱 분석은 Node.js만으로 즉시 동작)
+
+### 2-2. 대화형 자동 설치
+공식적으로 권장되는 설치 방법은 사용 중인 코딩 에이전트의 프롬프트 창에 아래 명령을 전달하는 것입니다.
 
 ```text
 npx rea-agents@latest setup을 사용해 REA를 설치하고
-이 코딩 에이전트에 연결해 줘.
-먼저 설정 변경 계획을 보여 주고 내 승인을 받은 뒤 실행해 줘.
-마지막으로 설치를 확인해 줘.
+이 코딩 에이전트에 MCP 도구로 연결해 줘.
+먼저 설정 파일 변경 계획을 보여 주고 내 승인을 받은 뒤 실행해 줘.
+마지막으로 설치 완료 여부를 확인해 줘.
 ```
 
 터미널에서 직접 실행할 수도 있습니다.
@@ -39,72 +130,88 @@ npx rea-agents@latest setup을 사용해 REA를 설치하고
 npx rea-agents@latest setup
 ```
 
-흐름의 핵심은 <strong>설정 변경 계획을 먼저 보여주고 승인받은 뒤 실행</strong>한다는 점입니다. 에이전트가 에이전트 환경을 손대는 작업이므로, 이 블로그에서 강조한 <strong>permission.bash = ask</strong> 원칙과 정확히 같은 방향입니다. 설치 후에는 에이전트를 다시 시작해야 연결이 반영됩니다.
+`setup` 스크립트를 실행하면 시스템에 설치된 코딩 도구(Claude Code, Cursor, OpenCode, Windsurf, Claude Desktop 등)를 자동으로 감지하고, 해당 도구의 설정 파일(예: `opencode.json`, `.cursor/mcp.json` 등)에 REA MCP 서버를 등록할지 대화형으로 묻습니다.
+
+핵심은 <strong>설정 변경 계획을 사전에 확인하고 승인받은 뒤 실행</strong>하는 흐름입니다. 에이전트가 로컬 환경 설정을 변경하는 작업이므로, 보안상 <strong>permission.bash = ask</strong> 원칙을 철저히 유지해야 안전합니다. 설정 반영 후에는 코딩 에이전트를 재시작하면 REA 도구가 활성화됩니다.
 
 ---
 
-## 🦕 3. 예제 해부 1: 공룡 게임은 왜 점점 빨라질까
+## 🦕 3. 예제 해부 1: 크롬 공룡 게임 가속 알고리즘 복원
 
-공식 사이트의 첫 예제는 크롬 공룡 게임의 가속 규칙 복원입니다. 목표는 <strong>"얼마나 빨리 시작하고, 얼마나 증가하고, 어디서 멈추는가"</strong>를 알아내 조정 가능한 속도로 다시 만드는 것입니다.
+공식 사이트의 대표적인 실습 예제는 크롬 오프라인 공룡 러너(Chrome Dino Runner) 게임의 가속 규칙 복원입니다. 목표는 <strong>"게임이 어떤 속도로 시작하고, 매 프레임 얼마나 증가하며, 어디서 가속이 멈추는가"</strong>를 코드로 복원하는 것입니다.
 
-REA가 게임 스크립트에서 읽어낸 핵심은 아래 한 줄이었습니다.
+REA를 연결한 코딩 에이전트에게 공룡 게임 스크립트 분석을 요청하면, REA는 난독화된 번들에서 러너 클래스의 틱 업데이트 함수를 찾아내 아래 핵심 로직을 추출합니다.
 
-```js
+```javascript
+// REA가 디컴파일하여 추출한 속도 업데이트 분기
 if (this.currentSpeed < this.config.MAX_SPEED) {
   this.currentSpeed += this.config.ACCELERATION;
 }
 ```
 
-복원된 규칙은 <strong>속도 6에서 시작해 업데이트마다 0.001씩 더하고, 상한 13에서 멈춘다</strong>는 것입니다. 에이전트는 이 규칙을 읽어 속도 슬라이더가 달린 작은 버전을 새로 만들고, 사용자는 원래 가속을 체험한 뒤 자기 페이스를 고릅니다.
+에이전트는 이 코드를 바탕으로 설정 객체(`config`)의 원본 상수 값을 역추적해 복원해 냅니다.
 
-이 예제가 보여주는 REA의 역할 분담은 아래 3단계입니다.
+* <strong>시작 속도 (Initial Speed):</strong> <code>6.0</code>
+* <strong>프레임당 가속도 (Acceleration):</strong> <code>0.001</code>
+* <strong>최대 속도 상한 (Max Speed):</strong> <code>13.0</code>
 
-1. <strong>REA:</strong> 실행 중인 게임의 스크립트와 설정을 읽어 에이전트에 반환합니다.
-2. <strong>에이전트:</strong> 규칙을 다시 쓰고 속도 조절 컨트롤을 추가합니다.
-3. <strong>사용자:</strong> 속도를 바꿔가며 직접 플레이합니다.
+에이전트는 단순히 이 숫자를 알려주는 데서 멈추지 않고, 슬라이더로 시작 속도와 가속도를 자유롭게 조절할 수 있는 <strong>독립적인 웹 미니게임 컴포넌트를 클린룸 방식으로 새롭게 구현</strong>해 사용자에게 제공합니다.
 
 ---
 
-## 🧮 4. 예제 해부 2: 계산기 200 + 10%는 왜 220일까
+## 🧮 4. 예제 해부 2: Windows 계산기 200 + 10%는 왜 220일까
 
-두 번째 예제는 Windows 계산기의 <strong>% 버튼</strong>입니다. <strong>200 + 10%를 누르면 왜 220이 나오는가</strong>를 설치된 앱을 직접 검사해 복원합니다.
+두 번째 실전 예제는 Windows 계산기 애플리케이션의 <strong>% (퍼센트) 연산자 분기 해부</strong>입니다. 일반인에게는 단순해 보이는 `%` 버튼이지만, 실제 계산기 앱에서는 직전 연산자가 무엇이냐에 따라 동작이 극적으로 갈립니다.
 
-REA가 % 핸들러에서 읽어낸 규칙은 연산자별로 갈립니다.
+> <strong>"200 + 10%를 누르면 왜 20이 아니라 220이 계산되는가?"</strong>
 
-```js
-if (operation == multiply || operation == divide) {
+REA를 통해 계산기 이벤트 핸들러를 추적한 결과, 에이전트가 복원해낸 규칙은 아래와 같은 분기 구조였습니다.
+
+```javascript
+// 계산기 퍼센트 연산자 핸들러의 분기 메커니즘
+if (operation === multiply || operation === divide) {
+  // 곱셈(*) 또는 나눗셈(/) 뒤에 %가 오는 경우: 단순 비율 변환
   percent = current / 100;
 } else {
-  percent = current * previous / 100;
+  // 덧셈(+) 또는 뺄셈(-) 뒤에 %가 오는 경우: 기준값의 백분율로 환산
+  percent = (current * previous) / 100;
 }
 ```
 
-풀어서 쓰면 아래와 같습니다.
+* <strong>덧셈·뺄셈 케이스:</strong> 기준값(200)의 10%인 <code>20</code>을 구한 뒤, 원래 연산에 적용 ➔ <code>200 + 20 = 220</code>
+* <strong>곱셈·나눗셈 케이스:</strong> 10%를 단순 백분율 <code>0.1</code>로 변환 ➔ <code>200 × 0.1 = 20</code>
 
-* <strong>덧셈·뺄셈 뒤의 %:</strong> 첫 번째 숫자의 백분율을 가져옵니다. <strong>10% of 200 = 20 ➔ 200 + 20 = 220</strong>
-* <strong>곱셈·나눗셈 뒤의 %:</strong> 10%를 0.1로 바꿉니다. <strong>200 × 0.1 = 20</strong>
-
-에이전트는 두 경로를 모두 확인한 뒤, 같은 규칙으로 동작하는 작은 계산기를 다시 만듭니다. 어셈블리를 직접 읽는 대신 <strong>일상적인 말로 질문하면 된다</strong>는 것이 REA 방식의 요지입니다.
+바이너리 속에 숨겨진 미묘한 비즈니스 로직 분기를 어셈블리를 한 줄도 모르는 개발자라도 <strong>"이 버튼의 연산 규칙이 어떻게 구현되어 있어?"</strong>라는 자연어 질문 하나로 온전히 파악할 수 있는 것입니다.
 
 ---
 
-## 🗂️ 5. 분석 분야 3종: 어디에 쓸 수 있나
+## 🗂️ 5. 분석 분야 3종과 실무 3대 활용 시나리오
 
-공식은 분석 대상을 아래 3가지로 나눠 가이드를 제공합니다.
+REA 공식 문서는 분석 대상을 아래 3개 분야로 분류하여 제공합니다.
 
-| 분야 | 대상 | 하는 일 |
+| 분석 분야 | 주요 대상 | REA와 에이전트가 수행하는 작업 |
 | :--- | :--- | :--- |
-| <strong>기계 코드 프로그램</strong> | 실행 파일·라이브러리 | 함수·문자열·참조·호출 관계 검사 |
-| <strong>JavaScript·Electron</strong> | 앱 폴더·ASAR 아카이브 | 모듈·경로·기본 종속성 매핑 |
-| <strong>브라우저·런타임 활동</strong> | 선택한 브라우저·프로세스 | 활동 캡처 후 여러 실행 결과 비교 |
+| <strong>기계 코드 (Native Binary)</strong> | C/C++, Rust, Go 실행파일 및 DLL/.so 라이브러리 | 심볼·함수 프롤로그 분석, 교차 참조(XREFs), 문자열 인덱싱, 호출 그래프 가시화 |
+| <strong>JavaScript & Electron</strong> | Electron 앱(`app.asar`), 패키징된 Node.js 도구, 웹 번들 | ASAR 아카이브 압축 해제, Webpack 번들 디맹글링(De-mangling), 모듈 간 의존성 매핑 |
+| <strong>브라우저 & 런타임 활동</strong> | Chromium 브라우저 프로세스, 로컬 런타임 | DOM 상호작용 추적, 네트워크 페이로드 직렬화 해체, 여러 실행 시나리오 결과 비교 |
 
-시작용으로는 작은 앱 하나를 정해 추적하고, 입력 하나를 바꿔보는 <strong>첫 조사(first investigation) 가이드</strong>가 준비되어 있습니다. 거창한 대상부터 잡지 말고 계산기·메모장급 작은 프로그램으로 REA-에이전트 호흡을 먼저 익히는 것이 순서입니다.
+### 💡 실무 개발에서의 3대 활용 시나리오
+
+1. <strong>문서 없는 사내 레거시 시스템 규격 복원:</strong>
+   - 소스코드가 유실되었거나 주석/문서가 전무한 오래된 바이너리/패키지에서 핵심 데이터 처리 알고리즘 및 직렬화 포맷을 역공학해 최신 언어로 마이그레이션.
+2. <strong>비공개 내부 API 프로토콜 역추적:</strong>
+   - 네트워크 패킷만으로는 암호화되거나 압축되어 알 수 없는 클라이언트 측 요청 페이로드 생성 로직 및 서명(Signature) 알고리즘 분석.
+3. <strong>서드파티 라이브러리 의존성 및 보안 감사:</strong>
+   - 블랙박스 형태로 제공되는 외부 SDK나 Electron 앱이 백그라운드에서 어떤 시스템 리소스와 레지스트리에 접근하는지 투명하게 추적.
 
 ---
 
-## 🔌 6. OpenCode와 붙이기: MCP 한 줄이면 된다
+## 🔌 6. 에이전트 연결: OpenCode, Cursor, Claude Code 설정
 
-이 블로그 독자에게 가장 실용적인 포인트입니다. REA의 실체가 <strong>MCP 서버</strong>이므로, MCP를 지원하는 코딩 에이전트라면 설정에 서버를 등록하는 것만으로 연결됩니다. 이 블로그에서 Tavily 검색을 붙일 때 쓴 것과 같은 방식입니다.
+REA는 표준 <strong>Model Context Protocol(MCP)</strong> 서버로 구현되어 있으므로, 사용 중인 도구의 설정 파일에 등록하기만 하면 즉시 연동됩니다.
+
+### 6-1. OpenCode (`opencode.json`)
+OpenCode 환경에서는 프로젝트 루트의 설정 파일 또는 글로벌 설정에 아래와 같이 추가합니다.
 
 ```json
 {
@@ -119,45 +226,92 @@ if (operation == multiply || operation == divide) {
 }
 ```
 
-위 설정은 개념 예시이며, 정확한 실행 인자와 환경변수는 <strong>공식 시작 가이드(get-started)</strong>에서 사용 중인 버전에 맞춰 확인하세요. 연결 후에는 프롬프트에 REA 사용을 명시하면 됩니다.
+### 6-2. Cursor (`.cursor/mcp.json`)
+Cursor를 사용 중인 경우 워크스페이스 또는 글로벌 MCP 설정에 등록합니다.
+
+```json
+{
+  "mcpServers": {
+    "rea": {
+      "command": "npx",
+      "args": ["-y", "rea-agents@latest"]
+    }
+  }
+}
+```
+
+### 6-3. Claude Desktop / Claude Code
+Claude Desktop의 경우 <code>claude_desktop_config.json</code>의 <code>mcpServers</code> 항목에 동일하게 지정합니다.
+
+```json
+{
+  "mcpServers": {
+    "rea": {
+      "command": "npx",
+      "args": ["-y", "rea-agents@latest"]
+    }
+  }
+}
+```
+
+### 6-4. 실전 프롬프트 템플릿
+연결 후에는 아래 2단계 프롬프트를 활용하여 체계적으로 분석을 지시합니다.
 
 ```text
-REA를 사용해 이 계산기 앱의 % 버튼 규칙을 복원해 줘.
-먼저 분석 계획을 보여 주고 승인 후에 실행해 줘.
+[1단계: 계획 수립 및 조사]
+REA 도구를 사용해 './target_app'의 계산 로직을 분석해 줘.
+실제 분석 도구를 실행하기 전에 어떤 파일과 함수를 조사할 것인지 계획을 먼저 설명하고 내 승인을 받아 줘.
+
+[2단계: 클린룸 재구현]
+분석된 분기 규칙을 명세서(Specification) 형태로 정리해 주고,
+기존 코드를 복사하지 않고 TypeScript 독립 모듈로 동일하게 동작하는 코드를 새로 작성해 줘.
 ```
 
 ---
 
-## ⚖️ 7. 합법·윤리 범위: 어디까지가 허용선인가
+## ⚖️ 7. 합법·윤리적 가이드라인: 클린룸(Clean-Room) 리버스엔지니어링 원칙
 
-리버스엔지니어링 도구 글이므로 선을 분명히 합니다.
+리버스엔지니어링은 강력한 도구인 만큼 법적·윤리적 경계선(Clean-Room)을 명확히 인지하고 사용해야 합니다.
 
-* <strong>해도 되는 것:</strong> 본인 소유 소프트웨어의 학습·호환성·보안 점검 목적 분석, 오픈소스 예제(공룡 게임·계산기) 복원 실습.
-* <strong>하면 안 되는 것:</strong> 타인 저작물의 무단 복제·재배포, 라이선스·DRM 우회, 악성코드 제작·유포에 악용하기.
-* <strong>애매하면:</strong> 해당 소프트웨어의 이용약관과 각국 법령을 먼저 확인하고, 의심스러우면 공식 커뮤니티(Discord)·FAQ에 묻는 것이 안전합니다.
+<div style="margin: 24px 0; padding: 20px 24px; border-radius: 10px; background: rgba(56, 189, 248, 0.08); border-left: 4px solid #38bdf8;">
+  <strong style="color: #38bdf8; font-size: 16px;">🛡️ 클린룸 리버스엔지니어링(Clean-Room Reverse Engineering) 원칙</strong>
+  <p style="margin-top: 8px; margin-bottom: 0; line-height: 1.6; color: var(--text-primary, #e2e8f0); font-size: 14.5px;">
+    저작권법은 ‘표현(Code)’을 보호하며 ‘기능적 아이디어와 사양(Specification)’은 보호하지 않습니다. 원본 코드를 그대로 복사·붙여넣기하는 행위는 지적재산권 침해에 해당하지만, <strong>REA를 통해 동작 규칙과 사양서만 추출한 뒤 코딩 에이전트가 순수 새 코드로 다시 구현하는 방식</strong>은 전통적인 산업 표준 클린룸 엔지니어링의 정당한 활용 범주에 속합니다.
+  </p>
+</div>
 
-도구는 중립적이지만 책임은 사용자에게 있습니다. 이 블로그의 AI 활용 원칙(<strong>AI는 빨리 만들고 사람은 끝까지 책임진다</strong>)이 여기에도 그대로 적용됩니다.
-
----
-
-## ❓ 자주 묻는 질문
-
-<strong>Q1. 코딩 지식이 없어도 쓸 수 있나요?</strong><br />
-A. 일상적인 말로 질문하면 에이전트가 분석과 설명을 맡으므로, 코드를 직접 읽을 줄 몰라도 시작할 수 있습니다. 다만 결과를 검증하려면 기본 개념(함수·호출·분기)을 알아두는 것이 좋습니다.
-
-<strong>Q2. Windows 전용인가요?</strong><br />
-A. 아닙니다. 계산기 예제가 Windows 앱일 뿐, 기계 코드·JavaScript·브라우저 분석은 플랫폼을 가리지 않습니다. Node.js가 있으면 설치가 시작됩니다.
-
-<strong>Q3. 기존 디컴파일러와 무엇이 다른가요?</strong><br />
-A. 기존 도구가 코드를 보여주는 데서 끝난다면, REA는 <strong>에이전트가 코드를 해석·설명·재구성까지 이어가게</strong> 만드는 것이 차이입니다.
+* <strong>합법적으로 권장되는 영역:</strong>
+  * 상호 운용성(Interoperability) 확보를 위한 파일 포맷 및 통신 규격 분석
+  * 자체 개발 소프트웨어의 유실된 레거시 소스 복원 및 마이그레이션
+  * 소프트웨어 취약점 분석 및 보안 감사(Security Auditing)
+* <strong>절대 금지되는 영역:</strong>
+  * 저작권 기술적 보호조치(DRM) 무단 우회 및 크랙(Crack) 제작
+  * 상용 소프트웨어의 핵심 독점 코드를 무단 복제하여 상업적 복제품 출시
+  * 악성코드 제작, 침투 테스트 허가를 받지 않은 외부 시스템 리버스엔지니어링
 
 ---
 
-## 🎯 8. 총평: 분석의 눈을 에이전트에게
+## ❓ 자주 묻는 질문 (FAQ)
 
-REA의 가치는 기술 자체보다 <strong>작업 분담의 명확함</strong>에 있습니다. 도구는 읽고, 에이전트는 해석하고, 사람은 승인하고 검증합니다. 공룡 게임 속도 규칙 한 줄을 복원하는 데 어셈블리를 배울 필요가 없어졌다는 점이 이 도구의 전부이자 핵심입니다.
+<strong>Q1. 어셈블리어를 몰라도 정말 사용할 수 있나요?</strong><br />
+A. 네, 가능합니다. REA가 추출한 로우 레벨 바이트코드와 분기 흐름을 코딩 에이전트의 LLM이 고수준(High-level) 의사코드나 JavaScript/TypeScript 코드로 번역하고 설명해 주기 때문입니다. 다만 도출된 결과의 정확성을 검증하기 위해 함수의 호출 구조나 기본 논리 연산에 대한 이해는 갖추는 것이 좋습니다.
 
-관심이 생겼다면 작은 앱 하나로 첫 조사를 돌려보세요. 30분이면 REA-에이전트 호흡이 손에 익습니다.
+<strong>Q2. Windows 전용인가요? Mac이나 Linux에서도 동작하나요?</strong><br />
+A. 공식 계산기 예제가 Windows 앱이었을 뿐, REA 자체는 Node.js 기반으로 구동되며 macOS와 Linux를 완벽히 지원합니다. 특히 Electron 및 웹 앱, Linux ELF 바이너리 분석도 플랫폼 제약 없이 수행할 수 있습니다.
+
+<strong>Q3. Ghidra나 IDA Pro가 반드시 설치되어 있어야 하나요?</strong><br />
+A. 아닙니다. JavaScript, TypeScript, 웹 번들, Electron ASAR 아카이브 분석은 Node.js 환경만으로 즉시 구동됩니다. 네이티브 C/C++ 컴파일 바이너리의 심층 분석이 필요할 때만 백엔드 디컴파일러 환경이 보조적으로 요구됩니다.
+
+<strong>Q4. 난독화(Obfuscation)되어 변수명이 a, b, c로 바뀐 코드도 풀 수 있나요?</strong><br />
+A. 에이전트가 가장 뛰어난 능력을 발휘하는 영역입니다. REA가 난독화된 추상 구문 트리(AST)를 제공하면, LLM 에이전트가 함수의 입출력 파라미터와 호출 관계를 맥락적으로 추론하여 의미 있는 변수명과 함수명으로 디맹글링(De-mangling)해 복원해 줍니다.
+
+---
+
+## 🎯 8. 총평: 블랙박스를 화이트박스로 바꾸는 힘
+
+REA의 진정한 가치는 복잡한 분석 도구의 설치나 조작법을 외울 필요 없이, <strong>"도구는 읽고, 에이전트는 해석하며, 개발자는 승인하고 검증한다"</strong>는 명확한 협업 구조를 만든 데 있습니다.
+
+수십 년간 소수 보안 전문가의 전유물이었던 리버스엔지니어링이 이제는 모든 개발자가 레거시 코드를 이해하고 닫힌 시스템의 원리를 배우는 일상적인 엔지니어링 도구로 내려왔습니다. 관심이 있다면 계산기나 작은 오픈소스 유틸리티 하나로 첫 조사를 시작해 보세요.
 
 ---
 

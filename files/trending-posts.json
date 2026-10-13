@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 13일 22:49 KST",
+  "updatedAt": "2026년 10월 13일 23:11 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "REA · AI",
+      "category": "AI & Intelligence",
+      "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
+      "desc": "코딩 에이전트에게 리버스엔지니어링의 눈을 쥐여주는 REA(Reverse Engineer Anything). 설치법부터 공룡 게임 속도 규칙·계산기 % 분기 복원, OpenCode·Cursor MCP 연결 및 클린룸 재구현 원칙까지 총정리합니다.",
+      "image": "/images/rea-reverse-engineering-guide_thumbnail.jpg",
+      "url": "/posts/20261013-1-rea-reverse-engineering-guide",
+      "date": "2026-10-13",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "Parenting · Lifestyle",
       "category": "Lifestyle & Tech",
       "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
@@ -211,19 +224,6 @@
       "image": "/images/leisurely-child-education-guide_thumbnail.jpg",
       "url": "/posts/20261005-2-leisurely-child-education-guide",
       "date": "2026-10-05",
-      "views": null
-    },
-    {
-      "rank": 12,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "REA · AI",
-      "category": "AI & Intelligence",
-      "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
-      "desc": "코딩 에이전트에게 분석 도구를 쥐여주는 REA. 설치법부터 공룡 게임 속도 규칙과 계산기 % 버튼 해부 예제까지 정리합니다.",
-      "image": "/images/rea-reverse-engineering-guide_thumbnail.jpg",
-      "url": "/posts/20261013-1-rea-reverse-engineering-guide",
-      "date": "2026-10-13",
       "views": null
     },
     {
