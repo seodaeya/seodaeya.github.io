@@ -178,6 +178,12 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
 1. <strong>Gemini 앱:</strong> 출시 보도 기준 Google AI Pro(월 19.99달러)·Ultra 구독자가 앱에서 사용합니다. 단, API 요금 문서에는 별도 구독 등급 체계가 명시되어 있어 앱과 API의 이용 조건은 분리해서 확인하세요.
 2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다. API 문서상 Free 티어·Google AI Pro 플랜에서는 Argon을 쓸 수 없고, 유료 등급이 필요합니다.
 
+> 💡 <strong>구글 공식 발표의 실무 성과 (발표 인용)</strong><br />
+> 공식 발표가 앞세운 현장 기록 세 가지입니다. 출시 보도용 수치이므로 참고용으로 보세요.<br />
+> * <strong>C/C++ ➔ Rust 이식:</strong> re2·libgav1 같은 핵심 라이브러리부터 Fuchsia Zircon 커널 80만 줄 이상까지 에이전트가 이식 중입니다.<br />
+> * <strong>데이터센터 메모리 절감:</strong> 함대 프로파일링 데이터를 자율 분석해 배포 후 300TiB 이상, 총 500TiB\~1PiB 절감을 예상합니다.<br />
+> * <strong>벤치마크:</strong> DeepSWE v1.1 77.9%, LVBench(장편 영상 이해) 91.7%로 자체 최고를 주장합니다.
+
 일부 외신 보도에 따르면 사내 10만 명 규모의 엔지니어가 Antigravity 환경을 통해 Argon을 실무에 투입했고, 4주간 에이전트 기반 코드 PR 제출량이 35% 늘고 배포 후 롤백 비율은 30% 감소했다고 합니다. 다만 구글 공식 발표에서 확인한 표현은 "수천 명" 수준이므로, 수치는 보도 인용으로만 참고하고 내 실무 파이프라인에서 소규모 파일럿으로 먼저 검증하세요.
 
 ---
@@ -212,11 +218,16 @@ interaction = client.interactions.create(
 )
 
 # 3. 완료까지 대기 후 각 model_output 단계 합치기
+# 3. 완료까지 대기 후 각 model_output 단계 합치기
 while interaction.status in ("in_progress", "queued"):
     time.sleep(5)
     interaction = client.interactions.get(id=interaction.id)
 
-print(interaction.output_text[:500])
+# 단일 output_text 참조 또는 각 model_output 청크 병합
+full_output = getattr(interaction, "output_text", "") or "".join(
+    step.text for step in interaction.outputs if step.type == "model_output"
+)
+print(full_output[:500])
 ```
 
 주의할 점 두 가지입니다. 첫째, 일반 <strong>generate_content 호출의 출력 상한은 65,536 토큰</strong>이므로 100만 토큰 출력은 위와 같은 background + interactions 방식이 필요합니다. 둘째, Argon의 지원 파라미터는 공식 문서 기준으로 확인하세요.
@@ -273,6 +284,8 @@ A. 코드 리팩토링이나 취약점 점검처럼 <strong>외부 채점자(CI/
 ## 🎯 8. 총평: 구글이 전면에 복귀했다
 
 지난 수개월간 프론티어 AI 경쟁에서 숨을 고르던 구글이 Argon을 통해 가장 현실적이고 강력한 무기로 전면에 복귀했습니다. 100만 토큰 출력, 파격적인 캐싱 단가($0.10/M), 장시간 추론 설계는 철저히 엔터프라이즈 실무 엔지니어링을 정조준하고 있습니다.
+
+필자 관점에서는 64K 출력 끊김 하나가 기대됩니다. 레거시 코드 리팩토링처럼 맥락이 긴 작업을 맡길 때 중간에 끊기면 앞뒤를 꿰매는 비용이 매번 들었기 때문입니다. background 실행으로 그 꿰매기가 사라진다면, 에이전트에게 맡길 수 있는 일의 단위가 달라집니다.
 
 하지만 발표 자료의 벤치마크 1등 수치보다 중요한 것은 <strong>내 업무 파이프라인에서의 실질적인 재현율</strong>입니다. 결제를 확대하기 전, 가장 까다로운 실무 태스크 2\~3개를 골라 30분간 직접 비교 테스트해 보시기 바랍니다.
 
