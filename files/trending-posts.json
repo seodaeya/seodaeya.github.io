@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 14일 21:59 KST",
+  "updatedAt": "2026년 10월 14일 22:21 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "Gemini · AI",
+      "category": "AI & Intelligence",
+      "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
+      "desc": "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도입 가격, 사용법과 경쟁 모델 비교를 실용 관점에서 정리합니다.",
+      "image": "/images/gemini_4_argon_analysis_thumbnail.jpg",
+      "url": "/posts/20261014-1-gemini-4-argon-analysis-guide",
+      "date": "2026-10-14",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "REA · AI",
       "category": "AI & Intelligence",
       "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
@@ -214,7 +227,7 @@
       "views": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "change": "new",
       "changeText": "NEW",
       "badge": "Parenting · Lifestyle",
@@ -224,19 +237,6 @@
       "image": "/images/leisurely-child-education-guide_thumbnail.jpg",
       "url": "/posts/20261005-2-leisurely-child-education-guide",
       "date": "2026-10-05",
-      "views": null
-    },
-    {
-      "rank": 13,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "Gemini · AI",
-      "category": "AI & Intelligence",
-      "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
-      "desc": "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도입 가격, 사용법과 경쟁 모델 비교를 실용 관점에서 정리합니다.",
-      "image": "/images/gemini_4_argon_analysis_thumbnail.jpg",
-      "url": "/posts/20261014-1-gemini-4-argon-analysis-guide",
-      "date": "2026-10-14",
       "views": null
     },
     {
