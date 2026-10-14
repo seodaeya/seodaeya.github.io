@@ -173,10 +173,15 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
 
 ## 🖥️ 4. 써보려면: 앱 구독 vs API 연동
 
-현재 Argon을 사용하는 경로는 앱과 API로 나뉘며, 이용 조건이 다릅니다.
+현재 Argon을 사용하는 경로는 앱/웹 구독과 개발자 API로 나뉘며, 이용 조건이 다릅니다.
 
-1. <strong>Gemini 앱:</strong> 출시 보도 기준 Google AI Pro(월 19.99달러)·Ultra 구독자가 앱에서 사용합니다. 단, API 요금 문서에는 별도 구독 등급 체계가 명시되어 있어 앱과 API의 이용 조건은 분리해서 확인하세요.
-2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다. API 문서상 Free 티어·Google AI Pro 플랜에서는 Argon을 쓸 수 없고, 유료 등급이 필요합니다.
+1. <strong>웹/앱 서비스 (Ultra 구독자 전용):</strong> 초기 보도에서는 일반 Google AI Pro(월 19.99달러)에도 포함된다고 알려졌으나, <strong>실제 서비스 UI 확인 결과 Gemini 4 Argon은 현재 최상위 Ultra 플랜 구독자 전용(available to Ultra plan subscribers)</strong>으로 제한되어 있습니다. 일반 Pro 계정에서는 선택 창에서 ‘Unavailable’로 비활성화됩니다.
+2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다. API 문서상 Free 티어·Google AI Pro 플랜에서는 Argon을 쓸 수 없고, 유료 종량제 등급(Pay-as-you-go)이 필요합니다.
+
+<div style="margin: 24px 0; text-align: center;">
+  <img src="/images/gemini_4_argon_ultra_plan_notice.png" alt="Gemini 4 Argon 선택 시 표시되는 Ultra 플랜 전용 알림 툴팁 (Gemini 4 Argon is currently available to Ultra plan subscribers)" style="max-width: 520px; width: 100%; border-radius: 10px; border: 1px solid #30363d; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #94a3b8);">▲ 모델 선택 메뉴에서 Gemini 4 Argon이 비활성화(Unavailable)되고, Ultra 플랜 구독자 전용으로 한정 제공됨을 안내하는 실제 화면</p>
+</div>
 
 > 💡 <strong>구글 공식 발표의 실무 성과 (발표 인용)</strong><br />
 > 공식 발표가 앞세운 현장 기록 세 가지입니다. 출시 보도용 수치이므로 참고용으로 보세요.<br />
@@ -217,7 +222,6 @@ interaction = client.interactions.create(
     },
 )
 
-# 3. 완료까지 대기 후 각 model_output 단계 합치기
 # 3. 완료까지 대기 후 각 model_output 단계 합치기
 while interaction.status in ("in_progress", "queued"):
     time.sleep(5)
@@ -270,8 +274,8 @@ Google Cloud나 Workspace 인프라에 이미 깊게 연결된 기업이라면 A
 
 ## ❓ 자주 묻는 질문
 
-<strong>Q1. 완전 무료로 써볼 수 있는 방법이 있나요?</strong><br />
-A. 현재 완전 무료 티어는 제공되지 않습니다. 웹 앱 사용자는 Google AI Pro(월 19.99달러) 이상의 구독이 필요하며, API는 100만 토큰당 입력 2달러, 출력 10달러의 도입 가격으로 종량 과금됩니다. 단, 신규 가입 시 제공되는 크레딧으로 초기 테스트는 가능합니다.
+<strong>Q1. 완전 무료나 일반 Pro 플랜으로 써볼 수 있나요?</strong><br />
+A. 불가능합니다. 무료 티어는 물론 일반 Google AI Pro(월 19.99달러) 플랜에서도 비활성화(Unavailable) 상태이며, 웹 서비스에서는 <strong>최상위 Ultra 플랜 구독자</strong>에게만 한정 제공됩니다. 따라서 소규모 테스트나 개발 목적인 경우, 웹 구독을 업그레이드하기보다 Google AI Studio나 Vertex AI의 종량제 API(입력 $2 / 출력 $10)를 활용해 필요한 만큼만 호출해 보는 것이 훨씬 경제적입니다.
 
 <strong>Q2. 기존 Gemini 3.x 모델들과 체감상 가장 큰 차이는 무엇인가요?</strong><br />
 A. <strong>통합 1,048,576 토큰 한도와 장시간 추론 안정성</strong>입니다. 기존 모델은 긴 코드를 작성하다 중간에 끊기거나 앞부분의 맥락을 잊는 현상이 잦았지만, Argon은 background 실행으로 대규모 프로젝트 전체를 일관된 맥락 속에서 이어서 뽑아냅니다.
@@ -293,4 +297,4 @@ A. 코드 리팩토링이나 취약점 점검처럼 <strong>외부 채점자(CI/
 
 ### 🔗 연관 아티클 & 공식 링크 바로가기
 * <strong>구글 공식 발표:</strong> <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">Gemini 4 Argon: our next era of frontier intelligence (공식 ↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20260815-1-gemini-3-7-flash-analysis" style="color: #38bdf8; font-weight: 600;">구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260815-1-gemini-3-7-flash-analysis/" style="color: #38bdf8; font-weight: 600;">구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교 (↗)</a>
