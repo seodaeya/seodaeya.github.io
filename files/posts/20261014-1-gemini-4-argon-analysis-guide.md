@@ -14,14 +14,14 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
 구글이 내세운 방향은 분명합니다. 단순 챗봇 대화가 아니라 <strong>소프트웨어 공학, 기업의 복합 지식 업무(법무·금융), 사이버보안 취약점 방어</strong> 같은 길고 복잡한 실무 워크플로입니다. 에이전트에게 복잡한 목표를 맡기고 수십 분에서 수 시간 동안 자율 실행하도록 두는 <strong>장시간 추론(Long-Horizon Reasoning)</strong>이 핵심 설계 목표입니다.
 
 <div style="margin: 32px 0; display: flex; justify-content: center; width: 100%;">
-<svg viewBox="0 0 840 340" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 840px; height: auto; font-family: -apple-system, BlinkMacSystemFont, Pretendard, sans-serif;">
+<svg viewBox="0 0 1000 350" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 860px; height: auto; font-family: -apple-system, BlinkMacSystemFont, Pretendard, sans-serif;">
   <defs>
     <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#161b22" />
       <stop offset="100%" stop-color="#0d1117" />
     </linearGradient>
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.35" />
     </filter>
     <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
@@ -35,28 +35,36 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
     </marker>
+    <marker id="arrowAmberLeft" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 10 1 L 0 5 L 10 9 z" fill="#fbbf24" />
+    </marker>
   </defs>
-  <!-- Background Container -->
-  <rect width="840" height="340" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
+
+  <!-- Container -->
+  <rect width="1000" height="350" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
+
   <!-- Title Badge -->
   <rect x="25" y="16" width="310" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
   <text x="180" y="33" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Gemini 4 Argon Long-Horizon Agent Architecture</text>
+
   <!-- Node 1: Task Spec & Prompt Cache -->
-  <g transform="translate(25, 75)" filter="url(#shadow)">
-    <rect width="175" height="235" rx="10" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2" />
+  <g transform="translate(25, 65)" filter="url(#shadow)">
+    <rect width="165" height="255" rx="10" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2" />
     <rect x="12" y="14" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.2" />
     <text x="26" y="33" font-size="16" text-anchor="middle">🎯</text>
-    <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">작업 &amp; 컨텍스트</text>
-    <text x="16" y="65" fill="#38bdf8" font-size="11.5" font-weight="600">Implicit Caching (적중 시 $0.10)</text>
-    <text x="16" y="88" fill="#94a3b8" font-size="11.5">• 대규모 소스코드 베이스</text>
-    <text x="16" y="108" fill="#94a3b8" font-size="11.5">• 방대한 법률/금융 문서</text>
-    <text x="16" y="128" fill="#94a3b8" font-size="11.5">• 보안 취약점 점검 명세</text>
-    <text x="16" y="158" fill="#34d399" font-size="11.5" font-weight="600">➔ 적중 시 95% 할인</text>
-    <text x="16" y="178" fill="#94a3b8" font-size="11">• 반복 호출 시 TCO 극소화</text>
+    <text x="48" y="33" fill="#ffffff" font-size="13.5" font-weight="700">작업 &amp; 컨텍스트</text>
+    <text x="14" y="68" fill="#38bdf8" font-size="11" font-weight="600">Implicit Caching ($0.10)</text>
+    <text x="14" y="93" fill="#94a3b8" font-size="11">• 대규모 소스코드 베이스</text>
+    <text x="14" y="115" fill="#94a3b8" font-size="11">• 방대한 법률/금융 문서</text>
+    <text x="14" y="137" fill="#94a3b8" font-size="11">• 보안 취약점 점검 명세</text>
+    <text x="14" y="170" fill="#34d399" font-size="11" font-weight="600">➔ 적중 시 95% 할인</text>
+    <text x="14" y="193" fill="#94a3b8" font-size="11">• 반복 호출 시 TCO 극소화</text>
+    <text x="14" y="213" fill="#94a3b8" font-size="11">• 1M 토큰 통합 컨텍스트</text>
   </g>
+
   <!-- Node 2: Gemini 4 Argon Frontier Engine -->
-  <g transform="translate(225, 55)" filter="url(#shadow)">
-    <rect width="235" height="255" rx="10" fill="url(#cardBg)" stroke="#38bdf8" stroke-width="1.8" />
+  <g transform="translate(225, 65)" filter="url(#shadow)">
+    <rect width="230" height="255" rx="10" fill="url(#cardBg)" stroke="#38bdf8" stroke-width="1.8" />
     <rect x="12" y="14" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.2" />
     <text x="26" y="33" font-size="16" text-anchor="middle">🧠</text>
     <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">Gemini 4 Argon Core</text>
@@ -69,9 +77,10 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="28" y="192" fill="#94a3b8" font-size="11">세션 메모리 &amp; 상태 유지</text>
     <text x="16" y="222" fill="#38bdf8" font-size="11.5" font-weight="600">➔ 스트리밍 청크 무중단 생성</text>
   </g>
+
   <!-- Node 3: Execution Sandbox -->
-  <g transform="translate(485, 55)" filter="url(#shadow)">
-    <rect width="165" height="115" rx="10" fill="url(#cardBg)" stroke="#818cf8" stroke-width="1.4" />
+  <g transform="translate(545, 65)" filter="url(#shadow)">
+    <rect width="175" height="115" rx="10" fill="url(#cardBg)" stroke="#818cf8" stroke-width="1.4" />
     <rect x="12" y="12" width="26" height="26" rx="6" fill="#818cf8" fill-opacity="0.2" />
     <text x="25" y="30" font-size="15" text-anchor="middle">⚙️</text>
     <text x="45" y="30" fill="#ffffff" font-size="13" font-weight="700">실행 샌드박스</text>
@@ -79,9 +88,10 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="14" y="78" fill="#94a3b8" font-size="11">• 코드 빌드 &amp; 실행</text>
     <text x="14" y="96" fill="#94a3b8" font-size="11">• 도구 / API 자율 호출</text>
   </g>
+
   <!-- Node 4: External Grader -->
-  <g transform="translate(485, 195)" filter="url(#shadow)">
-    <rect width="165" height="115" rx="10" fill="url(#cardBg)" stroke="#fbbf24" stroke-width="1.4" />
+  <g transform="translate(545, 205)" filter="url(#shadow)">
+    <rect width="175" height="115" rx="10" fill="url(#cardBg)" stroke="#fbbf24" stroke-width="1.4" />
     <rect x="12" y="12" width="26" height="26" rx="6" fill="#fbbf24" fill-opacity="0.2" />
     <text x="25" y="30" font-size="15" text-anchor="middle">🛡️</text>
     <text x="45" y="30" fill="#ffffff" font-size="13" font-weight="700">외부 채점자 (Grader)</text>
@@ -89,31 +99,44 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="14" y="78" fill="#94a3b8" font-size="11">• 테스트 러너 &amp; Linter</text>
     <text x="14" y="96" fill="#34d399" font-size="11" font-weight="600">• 자가 합리화 편향 차단</text>
   </g>
+
   <!-- Node 5: Deliverable -->
-  <g transform="translate(675, 105)" filter="url(#shadow)">
-    <rect width="140" height="155" rx="10" fill="url(#cardBg)" stroke="#34d399" stroke-width="1.4" />
-    <rect x="12" y="12" width="26" height="26" rx="6" fill="#34d399" fill-opacity="0.2" />
-    <text x="25" y="30" font-size="15" text-anchor="middle">📦</text>
-    <text x="45" y="30" fill="#ffffff" font-size="13" font-weight="700">검증된 산출물</text>
-    <text x="14" y="58" fill="#a7f3d0" font-size="11" font-weight="600">Production Ready</text>
-    <text x="14" y="80" fill="#94a3b8" font-size="11">• 풀스택 웹 앱</text>
-    <text x="14" y="100" fill="#94a3b8" font-size="11">• 거대 벡터 그래픽</text>
-    <text x="14" y="120" fill="#94a3b8" font-size="11">• 보안 패치 완성</text>
+  <g transform="translate(805, 65)" filter="url(#shadow)">
+    <rect width="170" height="255" rx="10" fill="url(#cardBg)" stroke="#34d399" stroke-width="1.6" />
+    <rect x="12" y="14" width="28" height="28" rx="6" fill="#34d399" fill-opacity="0.2" />
+    <text x="26" y="33" font-size="16" text-anchor="middle">📦</text>
+    <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">검증된 산출물</text>
+    <text x="14" y="65" fill="#a7f3d0" font-size="11.5" font-weight="600">Production Ready</text>
+    <text x="14" y="95" fill="#94a3b8" font-size="11.5">• 풀스택 웹 서비스</text>
+    <text x="14" y="120" fill="#94a3b8" font-size="11.5">• 방대한 벡터 그래픽</text>
+    <text x="14" y="145" fill="#94a3b8" font-size="11.5">• 자동화 보안 패치</text>
+    <text x="14" y="170" fill="#94a3b8" font-size="11.5">• 커널 C-to-Rust 이식</text>
+    <rect x="12" y="195" width="146" height="42" rx="6" fill="rgba(52, 211, 153, 0.12)" stroke="#34d399" stroke-width="1" />
+    <text x="85" y="213" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">100% 독립 검증</text>
+    <text x="85" y="228" fill="#a7f3d0" font-size="10" text-anchor="middle">배포 즉시 사용 가능</text>
   </g>
+
   <!-- Connections -->
-  <!-- User -> Argon -->
-  <path d="M 200 170 L 225 170" fill="none" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan)" />
-  <!-- Argon -> Sandbox -->
-  <path d="M 460 110 L 485 110" fill="none" stroke="#818cf8" stroke-width="1.8" marker-end="url(#arrowIndigo)" />
-  <!-- Sandbox -> Grader -->
-  <path d="M 567 170 L 567 195" fill="none" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#arrowAmber)" />
-  <text x="575" y="186" fill="#fbbf24" font-size="10" font-weight="600">검증 의뢰</text>
-  <!-- Grader -> Argon (Feedback Loop) -->
-  <path d="M 485 245 Q 470 245 460 230" fill="none" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrowAmber)" />
-  <text x="445" y="260" fill="#fbbf24" font-size="10" font-weight="600">피드백 루프</text>
-  <!-- Grader -> Deliverable (Verified) -->
-  <path d="M 650 240 Q 662 210 675 185" fill="none" stroke="#34d399" stroke-width="1.8" marker-end="url(#arrowEmerald)" />
-  <text x="642" y="180" fill="#34d399" font-size="10.5" font-weight="700">검증 통과</text>
+  <!-- 1. Task -> Core -->
+  <path d="M 190 185 L 223 185" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+  <!-- 2. Core -> Sandbox -->
+  <path d="M 455 120 L 543 120" fill="none" stroke="#818cf8" stroke-width="2" marker-end="url(#arrowIndigo)" />
+
+  <!-- 3. Sandbox -> Grader -->
+  <path d="M 632 180 L 632 203" fill="none" stroke="#fbbf24" stroke-width="1.8" marker-end="url(#arrowAmber)" />
+  <rect x="592" y="181" width="80" height="20" rx="10" fill="#161b22" stroke="#fbbf24" stroke-width="1" />
+  <text x="632" y="195" fill="#fbbf24" font-size="10.5" font-weight="700" text-anchor="middle">검증 의뢰</text>
+
+  <!-- 4. Grader -> Core (Feedback Loop) -->
+  <path d="M 545 262 L 460 262" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowAmberLeft)" />
+  <rect x="466" y="252" width="68" height="20" rx="10" fill="#161b22" stroke="#fbbf24" stroke-width="1" />
+  <text x="500" y="266" fill="#fbbf24" font-size="10.5" font-weight="700" text-anchor="middle">피드백 루프</text>
+
+  <!-- 5. Grader -> Deliverable (Verified Pass) -->
+  <path d="M 720 262 L 803 262" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <rect x="732" y="252" width="62" height="20" rx="10" fill="#161b22" stroke="#34d399" stroke-width="1.2" />
+  <text x="763" y="266" fill="#34d399" font-size="10.5" font-weight="700" text-anchor="middle">검증 통과</text>
 </svg>
 </div>
 
