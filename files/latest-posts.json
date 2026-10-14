@@ -1,5 +1,11 @@
 [
   {
+    "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
+    "category": "AI & Intelligence",
+    "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md",
+    "date": "20261014"
+  },
+  {
     "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
     "category": "AI & Intelligence",
     "file": "posts/20261013-1-rea-reverse-engineering-guide.md",
@@ -51,12 +57,6 @@
     "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
     "category": "Dev & Software",
     "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
-    "date": "20260911"
-  },
-  {
-    "title": "책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법",
-    "category": "Lifestyle & Tech",
-    "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md",
     "date": "20260911"
   }
 ]

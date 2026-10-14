@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 13 Oct 2026 14:11:43 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 12:59:21 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격]]></title>
+    <link>https://seodaeya.github.io/posts/20261014-1-gemini-4-argon-analysis-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261014-1-gemini-4-argon-analysis-guide/</guid>
+    <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[구글이 차세대 프론티어 모델 Gemini 4 Argon 을 공개했습니다. 2026년 9월 30일 신뢰할 수 있는 사이버 방어 조직 대상의 Fairwind 프로그램으로 먼저 선보인 뒤, 10월 중순부터 Gemini 앱 유료 구독자와 개발자에게 넓게 풀렸습니다. 2025년...]]></description>
+  </item>
   <item>
     <title><![CDATA[코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지]]></title>
     <link>https://seodaeya.github.io/posts/20261013-1-rea-reverse-engineering-guide/</link>

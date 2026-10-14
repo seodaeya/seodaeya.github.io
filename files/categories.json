@@ -1,6 +1,10 @@
 {
   "AI & Intelligence": [
     {
+      "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
+      "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md"
+    },
+    {
       "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
       "file": "posts/20261013-1-rea-reverse-engineering-guide.md"
     },
