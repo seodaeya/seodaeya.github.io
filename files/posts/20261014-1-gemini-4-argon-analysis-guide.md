@@ -41,21 +41,19 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
   <!-- Title Badge -->
   <rect x="25" y="16" width="310" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
   <text x="180" y="33" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Gemini 4 Argon Long-Horizon Agent Architecture</text>
-  
   <!-- Node 1: Task Spec & Prompt Cache -->
   <g transform="translate(25, 75)" filter="url(#shadow)">
     <rect width="175" height="235" rx="10" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2" />
     <rect x="12" y="14" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.2" />
     <text x="26" y="33" font-size="16" text-anchor="middle">🎯</text>
     <text x="48" y="33" fill="#ffffff" font-size="14" font-weight="700">작업 &amp; 컨텍스트</text>
-    <text x="16" y="65" fill="#38bdf8" font-size="11.5" font-weight="600">Prompt Caching ($0.10)</text>
+    <text x="16" y="65" fill="#38bdf8" font-size="11.5" font-weight="600">Implicit Caching (적중 시 $0.10)</text>
     <text x="16" y="88" fill="#94a3b8" font-size="11.5">• 대규모 소스코드 베이스</text>
     <text x="16" y="108" fill="#94a3b8" font-size="11.5">• 방대한 법률/금융 문서</text>
     <text x="16" y="128" fill="#94a3b8" font-size="11.5">• 보안 취약점 점검 명세</text>
-    <text x="16" y="158" fill="#34d399" font-size="11.5" font-weight="600">➔ 95% 캐싱 입력 할인</text>
+    <text x="16" y="158" fill="#34d399" font-size="11.5" font-weight="600">➔ 적중 시 95% 할인</text>
     <text x="16" y="178" fill="#94a3b8" font-size="11">• 반복 호출 시 TCO 극소화</text>
   </g>
-
   <!-- Node 2: Gemini 4 Argon Frontier Engine -->
   <g transform="translate(225, 55)" filter="url(#shadow)">
     <rect width="235" height="255" rx="10" fill="url(#cardBg)" stroke="#38bdf8" stroke-width="1.8" />
@@ -66,12 +64,11 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="16" y="90" fill="#94a3b8" font-size="11.5" font-weight="600">• 동적 추론 노력도 조절</text>
     <text x="28" y="108" fill="#c7d2fe" font-size="11">low · medium · high</text>
     <text x="16" y="132" fill="#94a3b8" font-size="11.5" font-weight="600">• 단일 응답 100만 토큰</text>
-    <text x="28" y="150" fill="#94a3b8" font-size="11">Continuation Token 루프</text>
+    <text x="28" y="150" fill="#94a3b8" font-size="11">64K 홉 background 루프</text>
     <text x="16" y="174" fill="#94a3b8" font-size="11.5" font-weight="600">• Long-Horizon CoT</text>
     <text x="28" y="192" fill="#94a3b8" font-size="11">세션 메모리 &amp; 상태 유지</text>
     <text x="16" y="222" fill="#38bdf8" font-size="11.5" font-weight="600">➔ 스트리밍 청크 무중단 생성</text>
   </g>
-
   <!-- Node 3: Execution Sandbox -->
   <g transform="translate(485, 55)" filter="url(#shadow)">
     <rect width="165" height="115" rx="10" fill="url(#cardBg)" stroke="#818cf8" stroke-width="1.4" />
@@ -82,7 +79,6 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="14" y="78" fill="#94a3b8" font-size="11">• 코드 빌드 &amp; 실행</text>
     <text x="14" y="96" fill="#94a3b8" font-size="11">• 도구 / API 자율 호출</text>
   </g>
-
   <!-- Node 4: External Grader -->
   <g transform="translate(485, 195)" filter="url(#shadow)">
     <rect width="165" height="115" rx="10" fill="url(#cardBg)" stroke="#fbbf24" stroke-width="1.4" />
@@ -93,7 +89,6 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="14" y="78" fill="#94a3b8" font-size="11">• 테스트 러너 &amp; Linter</text>
     <text x="14" y="96" fill="#34d399" font-size="11" font-weight="600">• 자가 합리화 편향 차단</text>
   </g>
-
   <!-- Node 5: Deliverable -->
   <g transform="translate(675, 105)" filter="url(#shadow)">
     <rect width="140" height="155" rx="10" fill="url(#cardBg)" stroke="#34d399" stroke-width="1.4" />
@@ -105,7 +100,6 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
     <text x="14" y="100" fill="#94a3b8" font-size="11">• 거대 벡터 그래픽</text>
     <text x="14" y="120" fill="#94a3b8" font-size="11">• 보안 패치 완성</text>
   </g>
-
   <!-- Connections -->
   <!-- User -> Argon -->
   <path d="M 200 170 L 225 170" fill="none" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan)" />
@@ -131,23 +125,25 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
 
 | 항목 | 기존 프론티어 세대 | <strong>Gemini 4 Argon</strong> |
 | :--- | :--- | :--- |
-| <strong>단일 응답 출력 한도</strong> | 6만 4천 토큰 | <strong>100만 토큰</strong> |
-| <strong>출력 연속성 프로토콜</strong> | 응답 절단 시 재호출 | <strong>continuation 토큰으로 서버 세션 무중단 유지</strong> |
-| <strong>인풋 컨텍스트 윈도우</strong> | 200만 토큰 | <strong>200만 토큰 (초대형 입력) + 100만 토큰 (초대형 출력)</strong> |
+| <strong>통합 한도 (입력+사고+출력)</strong> | 모델별 상이 | <strong>1,048,576 토큰 (통합)</strong> |
+| <strong>단일 응답 출력</strong> | 6만 4천 토큰 상한 | <strong>65,536 토큰 (동기 기본) / 최대 1,048,576 (long decode)</strong> |
+| <strong>이어쓰기</strong> | 끊기면 재생성 | <strong>background 실행이 64K 홉 단위로 이어 만들고 합치기</strong> |
 | <strong>실무 적용 예시</strong> | 짧은 코드 스니펫·모듈 단위 생성 | <strong>웹 서비스 전체 코드베이스 통째 재구축, 수만 줄 벡터 그래픽</strong> |
 
-### 💡 Continuation Token 프로토콜의 기술적 의의
-기존 LLM 환경에서 긴 출력을 만들지 못한 이유는 단순히 모델의 추론 능력 때문만은 아닙니다. HTTP 연결 타임아웃, 어텐션 KV 캐시의 메모리 급증, 네트워크 지연 중단 문제가 복합적으로 얽혀 있었습니다.
+주의할 점은 100만 토큰이 입력과 별개인 보너스가 아니라 <strong>입력·사고·출력을 합친 통합 한도</strong>라는 것입니다. 입력이 크면 출력에 쓸 수 있는 나머지가 줄어듭니다. 일반 동기 요청의 출력 상한은 65,536 토큰이며, 그 이상은 background 실행으로 풀어야 합니다.
 
-Argon은 <strong>Continuation Token</strong> 메커니즘을 API 프로토콜 레벨에서 공식 지원합니다. 모델이 100만 토큰 규모의 방대한 코드를 뿜어내는 과정에서 네트워크 순단이나 타임아웃이 발생해도, 마지막 응답에 포함된 Continuation Token을 헤더에 실어 재전송하면 <strong>서버에 보존된 추론 상태를 그대로 이어받아</strong> 첫 글자부터 다시 시작하지 않고 매끄럽게 이어서 생성합니다.
+### 💡 이어쓰기의 실제 방식
+공식 문서 기준, 긴 출력은 <strong>background 실행</strong>으로 처리됩니다. 서버가 최대 64K 토큰 단위 홉(hop)으로 출력을 이어 만들고, 완료 후 각 <strong>model_output</strong> 단계를 합치는 구조입니다. 클라이언트는 진행 상태를 조회하다 끝나면 합치기만 하면 됩니다.
 
 ---
 
 ## 💳 3. 가격: 도입 한정 파격가와 실무 비용 시뮬레이션
 
-구글이 제시한 도입 API 가격은 아래와 같습니다.
+구글이 제시한 도입 API 가격은 아래와 같습니다. 도입가는 <strong>2026년 11월 30일까지</strong>이며, 12월 1일부터는 입력 4달러·출력 20달러로 바뀝니다.
 
-> <strong>입력 100만 토큰당 2달러 ➔ 출력 100만 토큰당 10달러 ➔ 캐시 입력 95% 할인(0.10달러)</strong>
+> <strong>입력 100만 토큰당 2달러 ➔ 출력 100만 토큰당 10달러 ➔ 캐시 입력 95% 할인(0.10달러, 암시적 캐싱 적중 시)</strong>
+
+캐시 할인은 한 가지 조건이 있습니다. Argon이 지원하는 것은 <strong>명시적 캐시 생성이 아니라 암시적 캐싱</strong>입니다. 즉 반복 입력이 무조건 캐시되는 것이 아니라, 적중 조건을 만족할 때만 할인이 적용됩니다. 아래 시뮬레이션의 캐시 수치는 <strong>100% 적중 가정</strong>이며, 실제 적중률에 따라 달라집니다.
 
 경쟁 프론티어 모델과 나란히 두면 위치가 명확해집니다.
 
@@ -158,13 +154,15 @@ Argon은 <strong>Continuation Token</strong> 메커니즘을 API 프로토콜 �
 | Grok 4.7 | 2달러 | 6달러 |
 | GPT-6 Astra | 10달러 | 50달러 |
 
+경쟁 모델 단가는 출시 보도 기준이며 수시로 바뀔 수 있습니다. 계약 전에는 각 공식 요금 페이지를 확인하세요.
+
 캐시 입력 할인은 Argon만 공식 확인분(95% 할인, 0.10달러)을 표기합니다. 경쟁 모델의 캐시 조건은 발표 시점 기준 미확인이므로 아래 시뮬레이션에서는 기본가로만 계산했습니다.
 
 ### 📊 실전 워크로드 비용 시뮬레이션
 "대규모 프로젝트 레포지토리(입력 50만 토큰)를 10회 반복 분석하며 리팩토링 코드(출력 10만 토큰/회)를 누적 생성하는 에이전틱 작업"을 기준으로 계산해 보았습니다.
 
 * <strong>Gemini 4 Argon (캐시 미적용):</strong> 입력(50만 × 2달러 × 10회) + 출력(10만 × 10달러 × 10회) = 10달러 + 10달러 = <strong>20.00달러</strong>
-* <strong>Gemini 4 Argon (프롬프트 캐싱 적용):</strong> 최초 입력 1.00달러 + 캐시 9회(50만 × 0.10달러 × 9 = 0.45달러) + 출력 10달러 = <strong>11.45달러 (약 43% 추가 절감)</strong>
+* <strong>Gemini 4 Argon (암시적 캐싱 100% 적중 가정):</strong> 최초 입력 1.00달러 + 캐시 9회(50만 × 0.10달러 × 9 = 0.45달러) + 출력 10달러 = <strong>11.45달러 (약 43% 추가 절감)</strong>
 * <strong>Claude Opus 5.5 (기본가):</strong> 입력(50만 × 4달러 × 10회) + 출력(10만 × 20달러 × 10회) = 20달러 + 20달러 = <strong>40.00달러</strong>
 * <strong>Grok 4.7 (기본가):</strong> 입력(50만 × 2달러 × 10회) + 출력(10만 × 6달러 × 10회) = 10달러 + 6달러 = <strong>16.00달러</strong>
 * <strong>GPT-6 Astra (기본가):</strong> 입력(50만 × 10달러 × 10회) + 출력(10만 × 50달러 × 10회) = 50달러 + 50달러 = <strong>100.00달러</strong>
@@ -175,12 +173,12 @@ Argon은 <strong>Continuation Token</strong> 메커니즘을 API 프로토콜 �
 
 ## 🖥️ 4. 써보려면: 앱 구독 vs API 연동
 
-현재 Argon을 사용하는 경로는 크게 두 갈래입니다.
+현재 Argon을 사용하는 경로는 앱과 API로 나뉘며, 이용 조건이 다릅니다.
 
-1. <strong>Gemini 앱:</strong> Google AI Pro(월 19.99달러) 및 Ultra 구독자가 웹 브라우저나 모바일 앱 환경에서 모델 선택 옵션으로 즉시 사용합니다.
-2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다.
+1. <strong>Gemini 앱:</strong> 출시 보도 기준 Google AI Pro(월 19.99달러)·Ultra 구독자가 앱에서 사용합니다. 단, API 요금 문서에는 별도 구독 등급 체계가 명시되어 있어 앱과 API의 이용 조건은 분리해서 확인하세요.
+2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다. API 문서상 Free 티어·Google AI Pro 플랜에서는 Argon을 쓸 수 없고, 유료 등급이 필요합니다.
 
-구글 내부 발표에 따르면, 이미 사내 10만 명 이상의 엔지니어가 Antigravity 환경을 통해 Argon을 실무에 투입하고 있으며, 4주간 에이전트 기반 코드 PR 제출량이 35% 늘고 배포 후 롤백 비율은 30% 감소했다고 발표했습니다. 자사 홍보 수치인 만큼 맹신하기보다는 내 실무 파이프라인에서 실제 재현되는지 소규모 파일럿으로 먼저 검증해야 합니다.
+일부 외신 보도에 따르면 사내 10만 명 규모의 엔지니어가 Antigravity 환경을 통해 Argon을 실무에 투입했고, 4주간 에이전트 기반 코드 PR 제출량이 35% 늘고 배포 후 롤백 비율은 30% 감소했다고 합니다. 다만 구글 공식 발표에서 확인한 표현은 "수천 명" 수준이므로, 수치는 보도 인용으로만 참고하고 내 실무 파이프라인에서 소규모 파일럿으로 먼저 검증하세요.
 
 ---
 
@@ -193,35 +191,35 @@ Argon에는 작업 난이도별로 사고 깊이를 조절하는 공식 파라�
 * <strong>high:</strong> 장시간 자율 에이전트 작업, 수학적 증명, 대규모 아키텍처 재설계, 커널/보안 취약점 탐지 등 깊은 추론 체인이 필수적인 작업에 사용합니다.
 
 ### 💻 Python Google GenAI SDK 실전 호출 예제
-아래는 최신 <code>google-genai</code> SDK를 사용하여 추론 노력도를 <code>high</code>로 지정하고 단일 응답 100만 토큰 출력을 요청하는 표준 코드입니다.
+아래는 공식 개발자 가이드의 호출 형태입니다. 64K를 넘는 긴 출력은 <strong>background 실행</strong>으로 요청하고, 진행 상태를 조회하다 끝나면 각 단계의 텍스트를 합칩니다.
 
 ```python
+import time
 from google import genai
-from google.genai import types
 
 # 1. 클라이언트 초기화 (GEMINI_API_KEY 환경변수 자동 참조)
 client = genai.Client()
 
-# 2. 추론 깊이 및 100만 토큰 출력 구성
-#    필드명은 공식 개발자 문서 기준이며 SDK 버전에 따라 다를 수 있다
-config = types.GenerateContentConfig(
-    thinking_config=types.ThinkingConfig(
-        thinking_level="high"  # "low", "medium", "high"
-    ),
-    max_output_tokens=1000000,
-    temperature=0.2,  # 결정론적 코딩 작업 시 낮은 값 권장
-)
-
-# 3. 초대형 코드베이스 생성 요청
-response = client.models.generate_content(
+# 2. background 실행으로 장문 생성 요청 (공식 예제 형태)
+interaction = client.interactions.create(
     model="gemini-4-argon",
-    contents="분산 트랜잭션을 처리하는 사가(Saga) 패턴 기반 결제 시스템 전체 소스코드를 작성해줘.",
-    config=config,
+    input="분산 트랜잭션을 처리하는 사가(Saga) 패턴 기반 결제 시스템 전체 소스코드를 작성해줘.",
+    background=True,
+    generation_config={
+        "max_output_tokens": 262144,
+        "thinking_level": "high",  # "low" | "medium" | "high"
+    },
 )
 
-print(f"생성 완료 토큰 수: {response.usage_metadata.candidates_token_count}")
-print(response.text[:500])
+# 3. 완료까지 대기 후 각 model_output 단계 합치기
+while interaction.status in ("in_progress", "queued"):
+    time.sleep(5)
+    interaction = client.interactions.get(id=interaction.id)
+
+print(interaction.output_text[:500])
 ```
+
+주의할 점 두 가지입니다. 첫째, 일반 <strong>generate_content 호출의 출력 상한은 65,536 토큰</strong>이므로 100만 토큰 출력은 위와 같은 background + interactions 방식이 필요합니다. 둘째, Argon의 지원 파라미터는 공식 문서 기준으로 확인하세요.
 
 ### 🛡️ 장시간 에이전트의 핵심: 외부 채점자(External Grader) 패턴
 에이전트에게 30분\~1시간 이상의 긴 자율 권한을 부여할 때 가장 흔히 겪는 실패는 <strong>자가 합리화(Sycophancy)</strong>입니다. 에이전트에게 "코드가 잘 작동하는지 스스로 확인하라"고 맡기면 오류가 발생해도 그럴듯한 이유를 대며 성공했다고 보고를 끝내버립니다.
@@ -251,7 +249,7 @@ Google Cloud나 Workspace 인프라에 이미 깊게 연결된 기업이라면 A
 | 비교 항목 | Gemini 3.x 세대 (Flash / Pro) | <strong>Gemini 4 Argon</strong> |
 | :--- | :--- | :--- |
 | <strong>설계 목표</strong> | 빠른 속도와 저렴한 비용의 에이전트 대중화 | <strong>수 시간 단위의 어렵고 복잡한 실무 엔지니어링 정복</strong> |
-| <strong>출력 한도</strong> | 8k \~ 64k 토큰 | <strong>단일 응답 100만 토큰 (Continuation Token 지원)</strong> |
+| <strong>출력 한도</strong> | 8k \~ 64k 토큰 | <strong>65,536 토큰 (동기 기본) / 최대 1,048,576 (long decode)</strong> |
 | <strong>추론 조절</strong> | 모델 파라미터별 고정 성향 | <strong>low / medium / high API 명시 제어</strong> |
 | <strong>주요 타깃</strong> | 일반 대화, 검색 보조, 단위 스크립트 작성 | <strong>풀스택 시스템 리팩토링, 엔터프라이즈 감사, 사이버 방어</strong> |
 
@@ -265,7 +263,7 @@ Google Cloud나 Workspace 인프라에 이미 깊게 연결된 기업이라면 A
 A. 현재 완전 무료 티어는 제공되지 않습니다. 웹 앱 사용자는 Google AI Pro(월 19.99달러) 이상의 구독이 필요하며, API는 100만 토큰당 입력 2달러, 출력 10달러의 도입 가격으로 종량 과금됩니다. 단, 신규 가입 시 제공되는 크레딧으로 초기 테스트는 가능합니다.
 
 <strong>Q2. 기존 Gemini 3.x 모델들과 체감상 가장 큰 차이는 무엇인가요?</strong><br />
-A. <strong>단일 응답 100만 토큰 생성</strong>과 <strong>장시간 추론 안정성</strong>입니다. 기존 모델은 긴 코드를 작성하다 중간에 끊기거나 앞부분의 맥락을 잊는 현상이 잦았지만, Argon은 Continuation Token 기반으로 대규모 프로젝트 전체를 일관된 맥락 속에서 한 번에 뽑아냅니다.
+A. <strong>통합 1,048,576 토큰 한도와 장시간 추론 안정성</strong>입니다. 기존 모델은 긴 코드를 작성하다 중간에 끊기거나 앞부분의 맥락을 잊는 현상이 잦았지만, Argon은 background 실행으로 대규모 프로젝트 전체를 일관된 맥락 속에서 이어서 뽑아냅니다.
 
 <strong>Q3. 지금 바로 사내 프로덕션에 도입해도 안전한가요?</strong><br />
 A. 코드 리팩토링이나 취약점 점검처럼 <strong>외부 채점자(CI/테스트)가 검증 가능한 영역</strong>부터 단계적으로 도입하는 것을 권장합니다. 에이전트의 자가 평가에 전적으로 의존하는 배포 파이프라인은 위험할 수 있습니다.
