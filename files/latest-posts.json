@@ -1,5 +1,11 @@
 [
   {
+    "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
+    "category": "AI & Intelligence",
+    "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md",
+    "date": "20261016"
+  },
+  {
     "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
     "category": "AI & Intelligence",
     "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md",
     "date": "20260917"
-  },
-  {
-    "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
-    "category": "Dev & Software",
-    "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
-    "date": "20260911"
   }
 ]
