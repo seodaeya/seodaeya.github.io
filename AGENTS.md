@@ -32,3 +32,14 @@
   - Keep raw post titles concise and impact-driven within **32 ~ 42 characters** (optimal: **35 ~ 38 characters**).
   - Prioritize 3~4 core search keywords (`인물/기업`, `핵심 주제`, `분석/가이드`) while pruning redundant English subtitles.
 
+## 6. Mandatory Sitemap.xml <lastmod> & Git History Architecture Rule
+- **NEVER use shallow clone (`fetch-depth: 1`) in GitHub Actions workflows** (`.github/workflows/*.yml`).
+  - **Root Cause & SEO Impact**:
+    - `files/gen/generate-sitemap.js` extracts accurate page modification dates using `git log -1 --format="%cs"`.
+    - If `actions/checkout` runs with shallow clone (`fetch-depth: 1`), git history for unmodified files is empty. This previously caused all static pages (`/about/`, `/word-train/`, etc.) to fall back to the CI build execution date ("today").
+    - Googlebot penalizes sitemaps where all URLs have identical, fake "today" timestamps as spammy/untrustworthy, ignoring `<lastmod>` entirely and failing to re-crawl updated posts.
+  - **Golden Standard**:
+    1. In `.github/workflows/deploy.yml`, always specify `with: fetch-depth: 0` for `actions/checkout@v4`.
+    2. In `generate-sitemap.js`, always evaluate `Math.max(gitDate, frontmatterDate)` for posts and videos, and pass stable historical fallback dates (never "today") for static core pages.
+    3. Refer to [`docs/sitemap-lastmod-architecture.md`](docs/sitemap-lastmod-architecture.md) for full architecture rationale.
+
