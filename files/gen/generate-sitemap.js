@@ -42,6 +42,7 @@ const getGitLastMod = (relFilePath, fallbackDate) => {
 const getContentEntries = (dir) => {
   if (!fs.existsSync(dir)) return [];
   const entries = [];
+  const relDir = path.relative(process.cwd(), dir);
   for (const file of fs.readdirSync(dir)) {
     if (!file.endsWith('.md')) continue;
     try {
@@ -49,7 +50,10 @@ const getContentEntries = (dir) => {
       const { data } = matter(fs.readFileSync(fullPath, 'utf8'));
       // noindex: true frontmatter pages are strictly excluded from sitemap.xml
       if (data.noindex === true) continue;
-      const lastmod = normalizeDateStr(data.updated || data.lastmod || data.date, file);
+      const frontmatterDate = normalizeDateStr(data.updated || data.lastmod || data.date, file);
+      const relFilePath = path.join(relDir, file);
+      const gitDate = getGitLastMod(relFilePath, frontmatterDate);
+      const lastmod = gitDate > frontmatterDate ? gitDate : frontmatterDate;
       entries.push({
         id: file.replace('.md', ''),
         lastmod,
@@ -70,10 +74,10 @@ const generateSitemap = () => {
     { loc: `${siteUrl}/`, lastmod: latestContentDate, changefreq: 'daily', priority: '1.0' },
     { loc: `${siteUrl}/categories/`, lastmod: latestContentDate, changefreq: 'weekly', priority: '0.8' },
     { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate, changefreq: 'daily', priority: '0.8' },
-    { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', latestContentDate), changefreq: 'weekly', priority: '0.8' },
-    { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', latestContentDate), changefreq: 'monthly', priority: '0.7' },
-    { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', latestContentDate), changefreq: 'monthly', priority: '0.8' },
-    { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', latestContentDate), changefreq: 'monthly', priority: '0.5' },
+    { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18'), changefreq: 'weekly', priority: '0.8' },
+    { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09'), changefreq: 'monthly', priority: '0.7' },
+    { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05'), changefreq: 'monthly', priority: '0.8' },
+    { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01'), changefreq: 'monthly', priority: '0.5' },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
