@@ -92,7 +92,7 @@ export async function getStaticProps({ params }) {
     const matched = allFiles.find(fn => fn.startsWith(`${params.id}-`));
     if (matched) {
       isRedirect = true;
-      redirectTo = `/posts/${matched.replace('.md', '')}`;
+      redirectTo = `/posts/${matched.replace('.md', '')}/`;
       targetFilename = matched;
     }
   }
@@ -354,10 +354,10 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         <SEO
           title={targetTitle || "페이지 이동 중"}
           url={`https://seodaeya.github.io${redirectTo}`}
+          noindex={true}
         />
         <Head>
           <meta httpEquiv="refresh" content={`0;url=${redirectTo}`} />
-          <link rel="canonical" href={`https://seodaeya.github.io${redirectTo}`} />
         </Head>
         <div style={{
           minHeight: '60vh',

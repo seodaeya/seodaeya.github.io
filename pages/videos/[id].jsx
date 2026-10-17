@@ -47,7 +47,7 @@ export async function getStaticProps({ params }) {
     const matched = allFiles.find(fn => fn.startsWith(`${params.id}-`));
     if (matched) {
       isRedirect = true;
-      redirectTo = `/videos/${matched.replace('.md', '')}`;
+      redirectTo = `/videos/${matched.replace('.md', '')}/`;
       targetFilename = matched;
     }
   }
@@ -123,10 +123,10 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
         <SEO
           title={targetTitle || "페이지 이동 중"}
           url={`https://seodaeya.github.io${redirectTo}`}
+          noindex={true}
         />
         <Head>
           <meta httpEquiv="refresh" content={`0;url=${redirectTo}`} />
-          <link rel="canonical" href={`https://seodaeya.github.io${redirectTo}`} />
         </Head>
         <div style={{
           minHeight: '60vh',
@@ -186,6 +186,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
         url={`https://seodaeya.github.io/videos/${id}/`}
         type="video.other"
         date={frontmatter.date}
+        videoId={frontmatter.videoId}
         noindex={frontmatter.noindex === true}
       />
 

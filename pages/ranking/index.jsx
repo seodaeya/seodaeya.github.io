@@ -93,7 +93,7 @@ export default function RankingPage({ updatedAt, baselineDate, isRealGA, allRank
       <SEO 
         title="월간 인기 아티클 랭킹 | 서대야 블로그"
         description="매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 페이지뷰 변화를 감지하여 반영하는 월간 종합 순위표입니다."
-        url="https://seodaeya.github.io/ranking"
+        url="https://seodaeya.github.io/ranking/"
       />
 
       <div className={styles.rankingPage}>

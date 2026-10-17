@@ -30,7 +30,7 @@ export default function Categories({ categories }) {
       <SEO 
         title="카테고리별 아티클 & 영상"
         description="전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다."
-        url="https://seodaeya.github.io/categories"
+        url="https://seodaeya.github.io/categories/"
       />
 
       <div className={styles.categoriesPage}>

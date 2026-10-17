@@ -24,7 +24,8 @@ export default function Custom404() {
       <SEO 
         title="404 - 페이지를 찾을 수 없습니다"
         description="요청하신 페이지를 찾을 수 없거나 삭제되었습니다. 올바른 주소인지 확인해 주시기 바랍니다."
-        url="https://seodaeya.github.io/404"
+        url="https://seodaeya.github.io/404/"
+        noindex={true}
       />
       <div style={{
         display: 'flex',

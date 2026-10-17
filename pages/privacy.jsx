@@ -6,7 +6,7 @@ export default function Privacy() {
       <SEO 
         title="개인정보처리방침 | 여전히, 나는 사람이다."
         description="'여전히, 나는 사람이다.' 블로그의 개인정보처리방침, 제3자 서비스(구글 애드센스, MS Clarity) 쿠키 이용 안내입니다."
-        url="https://seodaeya.github.io/privacy"
+        url="https://seodaeya.github.io/privacy/"
       />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', color: 'var(--text-main, #e2e8f0)', lineHeight: '1.75' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', borderBottom: '2px solid var(--border-color, #334155)', paddingBottom: '0.5rem' }}>개인정보처리방침</h1>

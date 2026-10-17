@@ -23,7 +23,17 @@ export default function SEO({
 
   // Bing/Google SEO: Ensure description is between 25 and 160 characters
   const safeDescription = description && description.length > 158 ? `${description.slice(0, 155)}...` : description;
-  const canonicalUrl = url.endsWith('/') ? url : (url.includes('.') && !url.endsWith('.html') ? url : `${url}/`);
+
+  // Next.js trailingSlash: true 환경과 100% 일치하도록 정규화 (도메인 내 '.' 때문에 슬래시가 누락되던 버그 수정)
+  const normalizeCanonicalUrl = (rawUrl) => {
+    if (!rawUrl) return 'https://seodaeya.github.io/';
+    const [base] = rawUrl.split(/[?#]/);
+    const pathPart = base.replace(/^https?:\/\/[^/]+/, '');
+    const lastSegment = pathPart.split('/').filter(Boolean).pop() || '';
+    const hasFileExt = /\.[a-zA-Z0-9]+$/.test(lastSegment) && !lastSegment.endsWith('.html');
+    return base.endsWith('/') || hasFileExt ? base : `${base}/`;
+  };
+  const canonicalUrl = normalizeCanonicalUrl(url);
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
   const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
@@ -33,9 +43,9 @@ export default function SEO({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': '여전히, 나는 사람이다. (NaRD Blog)',
-    'url': 'https://seodaeya.github.io',
+    'url': 'https://seodaeya.github.io/',
     'description': 'AI 시대에 남기는 지극히 인간적인 기록들',
-    'inLanguage': ['ko', 'en'],
+    'inLanguage': 'ko',
     'publisher': {
       '@type': 'Person',
       'name': 'NaRD',
@@ -71,7 +81,7 @@ export default function SEO({
         }
       }
     };
-  } else if (type === 'video' && videoId) {
+  } else if ((type === 'video' || type === 'video.other') && videoId) {
     const thumbnailList = [
       `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
       `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
@@ -153,19 +163,17 @@ export default function SEO({
       <meta name="slurp" content={noindex ? "noindex, follow" : "index, follow"} />
       <meta name="yandex" content={noindex ? "noindex, follow" : "index, follow"} />
       {/* Explicit instructions for AI Search Engines & LLM agents */}
-      <meta name="ai-crawlers" content="index, follow" />
-      <meta name="gptbot" content="index, follow" />
-      <meta name="anthropic-crawler" content="index, follow" />
-      <meta name="perplexitybot" content="index, follow" />
+      <meta name="ai-crawlers" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="gptbot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="anthropic-crawler" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="perplexitybot" content={noindex ? "noindex, follow" : "index, follow"} />
 
-            {/* Canonical Link */}
+      {/* Canonical Link */}
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Global Multi-language hreflang tags */}
+      {/* Language hreflang tags (ko & x-default only to prevent single-URL multi-language conflict) */}
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
       <link rel="alternate" hrefLang="ko" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="ja" href={canonicalUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />

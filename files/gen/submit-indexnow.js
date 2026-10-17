@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const matter = require('gray-matter');
 
 const host = 'seodaeya.github.io';
 const apiKey = 'd757d9f030cc4789bb023a4b38e3ccf4';
@@ -11,20 +12,35 @@ const videosDir = path.join(__dirname, '../videos');
 
 const getFiles = (dir) => {
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+  return fs.readdirSync(dir).filter(file => {
+    if (!file.endsWith('.md')) return false;
+    try {
+      const { data } = matter(fs.readFileSync(path.join(dir, file), 'utf8'));
+      return data.noindex !== true;
+    } catch (e) {
+      return true;
+    }
+  });
 };
 
 const getUrls = () => {
-  const urls = [`https://${host}/`, `https://${host}/categories`];
+  const urls = [
+    `https://${host}/`,
+    `https://${host}/categories/`,
+    `https://${host}/ranking/`,
+    `https://${host}/cart/`,
+    `https://${host}/word-train/`,
+    `https://${host}/about/`,
+  ];
   
   const posts = getFiles(postsDir);
   posts.forEach(file => {
-    urls.push(`https://${host}/posts/${file.replace('.md', '')}`);
+    urls.push(`https://${host}/posts/${file.replace('.md', '')}/`);
   });
   
   const videos = getFiles(videosDir);
   videos.forEach(file => {
-    urls.push(`https://${host}/videos/${file.replace('.md', '')}`);
+    urls.push(`https://${host}/videos/${file.replace('.md', '')}/`);
   });
   
   return urls;

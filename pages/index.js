@@ -142,14 +142,14 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
 
   const cleanQuery = searchQuery.trim().toLowerCase();
 
-  // 검색어가 있을 때는 전체 검색 결과, 없을 때는 단계별 더보기 지원
+  // 검색어가 있을 때는 전체 검색 결과, 없을 때는 정적 HTML 내 전체 크롤링 링크 보장을 위해 전체 목록을 DOM에 유지하고 CSS로 단계별 노출 제어
   const displayedPosts = cleanQuery
     ? allPosts.filter(post => 
         post.title.toLowerCase().includes(cleanQuery) || 
         post.excerpt.toLowerCase().includes(cleanQuery) ||
         post.category.toLowerCase().includes(cleanQuery)
       )
-    : allPosts.slice(0, visiblePostCount);
+    : allPosts;
 
   const displayedVideos = cleanQuery
     ? allVideos.filter(video => 
@@ -157,14 +157,14 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
         video.excerpt.toLowerCase().includes(cleanQuery) ||
         video.category.toLowerCase().includes(cleanQuery)
       )
-    : allVideos.slice(0, visibleVideoCount);
+    : allVideos;
 
   return (
     <>
       <SEO 
         title="여전히, 나는 사람이다. | 기술과 일상의 기록"
         description="인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기. IT 기기 리뷰, 개발 경험, 일상의 팁을 나눕니다."
-        url="https://seodaeya.github.io"
+        url="https://seodaeya.github.io/"
       />
 
       <div className={styles.homeContainer}>
@@ -416,11 +416,12 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   </Link>
                 </div>
                 <div className={styles.feedList}>
-                  {displayedPosts.map((post) => (
+                  {displayedPosts.map((post, idx) => (
                     <Link 
                       key={post.file} 
                       href={`/${post.file.replace('.md', '')}`} 
                       className={styles.miniCard}
+                      style={!cleanQuery && idx >= visiblePostCount ? { display: 'none' } : undefined}
                     >
                       <div className={styles.miniCardHeader}>
                         <span className="category-badge">{post.category}</span>
@@ -440,7 +441,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     className={styles.loadMoreBtn}
                     onClick={() => setVisiblePostCount(prev => prev + 6)}
                   >
-                    <span>↓</span> 블로그 글 더보기 ({displayedPosts.length}/{allPosts.length})
+                    <span>↓</span> 블로그 글 더보기 ({Math.min(visiblePostCount, allPosts.length)}/{allPosts.length})
                   </button>
                 )}
               </div>
@@ -463,11 +464,12 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   </a>
                 </div>
                 <div className={styles.feedList}>
-                  {displayedVideos.map((video) => (
+                  {displayedVideos.map((video, idx) => (
                     <Link 
                       key={video.file} 
                       href={`/${video.file.replace('.md', '')}`} 
                       className={`${styles.miniCard} ${styles.videoMiniCard}`}
+                      style={!cleanQuery && idx >= visibleVideoCount ? { display: 'none' } : undefined}
                     >
                       <div className={styles.videoCardGrid}>
                         <div className={styles.videoThumbnailWrapper}>
@@ -508,7 +510,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     className={styles.loadMoreBtn}
                     onClick={() => setVisibleVideoCount(prev => prev + 6)}
                   >
-                    <span>↓</span> 영상 콘텐츠 더보기 ({displayedVideos.length}/{allVideos.length})
+                    <span>↓</span> 영상 콘텐츠 더보기 ({Math.min(visibleVideoCount, allVideos.length)}/{allVideos.length})
                   </button>
                 )}
               </div>
