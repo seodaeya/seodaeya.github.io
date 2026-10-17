@@ -78,6 +78,25 @@ function verifySEO() {
     if (/<link\s+rel="alternate"\s+hrefLang="(en|ja)"/i.test(html)) {
       errors.push(`[Hreflang 다국어 자기참조 충돌] ${relPath}: 단일 한국어 URL에 en/ja hreflang이 중복 선언되어 있습니다.`);
     }
+
+    // Bing/Google 필수 SEO/GEO 태그 검증 (Title, Meta Description, Meta Language)
+    const titleMatches = [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)];
+    if (titleMatches.length === 0 || !titleMatches[0][1].trim()) {
+      errors.push(`[Title 태그 누락] ${relPath}: <title> 태그가 없거나 비어 있습니다.`);
+    } else if (titleMatches.length > 1) {
+      errors.push(`[Title 태그 중복] ${relPath}: <title> 태그가 ${titleMatches.length}개 중복 선언되었습니다.`);
+    }
+
+    const descMatches = [...html.matchAll(/<meta\s+name="description"\s+content="([^"]*)"/gi)];
+    if (descMatches.length === 0 || !descMatches[0][1].trim()) {
+      errors.push(`[Meta Description 누락] ${relPath}: <meta name="description"> 태그가 없거나 비어 있습니다.`);
+    } else if (descMatches.length > 1) {
+      errors.push(`[Meta Description 중복] ${relPath}: <meta name="description"> 태그가 ${descMatches.length}개 중복 선언되었습니다.`);
+    }
+
+    if (!/<meta\s+http-equiv="content-language"\s+content="ko"/i.test(html)) {
+      errors.push(`[메타 언어 태그 누락] ${relPath}: Bing SEO/GEO 필수 <meta http-equiv="content-language" content="ko"> 태그가 없습니다.`);
+    }
   }
 
   // 2. Sitemap.xml 무결성 검사 (noindex 포함 여부, Trailing Slash, Lastmod 일괄 덮어쓰기 방지)

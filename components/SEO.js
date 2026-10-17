@@ -105,48 +105,44 @@ export default function SEO({
     };
   }
 
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-QEKBH49RMK';
+
   return (
     <Head>
-      {/* Basic HTML Meta Tags */}
+      {/* Basic HTML Meta Tags (Placed at top of <head> for crawler priority) */}
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta httpEquiv="content-language" content="ko" />
+      <meta name="language" content="ko" />
       <title>{pageTitle}</title>
-      <meta name="thumbnail" content={ogImage} />
-
-      {/* Naver Search Advisor Verification */}
-      <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
-      {/* Google Search Console Verification */}
-      <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
-
-      {/* Google Analytics 4 (GA4) Tracking Tag */}
-      {(() => {
-        const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-QEKBH49RMK';
-        return (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${gaId}', {
-                    page_path: window.location.pathname,
-                  });
-                `,
-              }}
-            />
-          </>
-        );
-      })()}
       <meta name="description" content={safeDescription} />
       <meta name="keywords" content={keywords} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta charSet="UTF-8" />
+      <meta name="thumbnail" content={ogImage} />
       <meta name="author" content="NaRD" />
       <meta name="distribution" content="global" />
       <meta name="rating" content="general" />
+
+      {/* Naver Search Advisor & Google Search Console Verification */}
+      <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
+      <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
+
+      {/* Google Analytics 4 (GA4) Tracking Tag */}
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gaId}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
 
       {/* Dublin Core Metadata for Global Search Engines */}
       <meta name="DC.Title" content={pageTitle} />
