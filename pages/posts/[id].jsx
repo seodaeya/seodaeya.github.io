@@ -219,7 +219,17 @@ export async function getStaticProps({ params }) {
         };
         return marked(content, { renderer });
       })(),
-      excerpt: data.excerpt || createPlainExcerpt(content, 150) || '글 내용을 확인해보세요.',
+      excerpt: (() => {
+        const base = (data.excerpt || '').trim();
+        if (base.length >= 125 && base.length <= 158) return base;
+        const bodyPlain = (createPlainExcerpt(content, 300) || '').replace(/\.\.\.$/, '').trim();
+        let combined = base ? `${base} ${bodyPlain}` : bodyPlain;
+        combined = combined.replace(/\s+/g, ' ').trim();
+        if (combined.length > 155) {
+          combined = `${combined.slice(0, 152).trim()}...`;
+        }
+        return combined || '글 내용을 확인해보세요.';
+      })(),
       readingTime,
       prevPost,
       nextPost,

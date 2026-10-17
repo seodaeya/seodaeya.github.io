@@ -92,6 +92,17 @@ function verifySEO() {
       errors.push(`[Meta Description 누락] ${relPath}: <meta name="description"> 태그가 없거나 비어 있습니다.`);
     } else if (descMatches.length > 1) {
       errors.push(`[Meta Description 중복] ${relPath}: <meta name="description"> 태그가 ${descMatches.length}개 중복 선언되었습니다.`);
+    } else {
+      const decodedDesc = descMatches[0][1]
+        .replace(/&quot;/g, '"')
+        .replace(/&#x27;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&')
+        .trim();
+      if (decodedDesc.length < 120 || decodedDesc.length > 160) {
+        errors.push(`[Meta Description 길이 부적합] ${relPath}: 현재 ${decodedDesc.length}자 (Bing/Google 권장: 120~160자)`);
+      }
     }
 
     if (!/<meta\s+http-equiv="content-language"\s+content="ko"/i.test(html)) {

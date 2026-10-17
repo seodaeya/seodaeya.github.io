@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 export default function SEO({
   title = '여전히, 나는 사람이다. | 기술과 일상의 기록',
-  description = '인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기.',
+  description = '인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 가이드, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 나눕니다.',
   keywords = 'NaRD, 블로그, 유튜브, 기술, 라이프',
   url = 'https://seodaeya.github.io',
   type = 'website',
@@ -21,9 +21,6 @@ export default function SEO({
     pageTitle = `${pageTitle.slice(0, 62)}...`;
   }
 
-  // Bing/Google SEO: Ensure description is between 25 and 160 characters
-  const safeDescription = description && description.length > 158 ? `${description.slice(0, 155)}...` : description;
-
   // Next.js trailingSlash: true 환경과 100% 일치하도록 정규화 (도메인 내 '.' 때문에 슬래시가 누락되던 버그 수정)
   const normalizeCanonicalUrl = (rawUrl) => {
     if (!rawUrl) return 'https://seodaeya.github.io/';
@@ -34,6 +31,42 @@ export default function SEO({
     return base.endsWith('/') || hasFileExt ? base : `${base}/`;
   };
   const canonicalUrl = normalizeCanonicalUrl(url);
+
+  // Core page dedicated 135~155 char descriptions (preserves git history of static page files)
+  const coreDescriptions = {
+    'https://seodaeya.github.io/':
+      '인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 가이드, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 나눕니다.',
+    'https://seodaeya.github.io/categories/':
+      '전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다. AI & Intelligence, 개발 트러블슈팅, 클라우드 인프라, IT 기기 리뷰, DIY 가이드 등 관심 분야별 콘텐츠를 빠르게 탐색해 보세요.',
+    'https://seodaeya.github.io/ranking/':
+      '매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 Google Analytics 4(GA4) 실시간 페이지뷰 변화를 감지하여 매일 자정 자동 갱신하는 월간 인기 아티클 종합 순위표(Monthly Leaderboard)입니다.',
+    'https://seodaeya.github.io/cart/':
+      '쿠팡, 네이버 스마트스토어, 알리익스프레스 등 여러 온라인 쇼핑몰의 상품 링크를 한곳에 모아 가격과 이미지를 비교하고 카테고리별로 깔끔하게 관리하는 서버리스 기반 스마트 만능 장바구니 실험실 웹 서비스입니다.',
+    'https://seodaeya.github.io/word-train/':
+      '기차 여행 테마의 인터랙티브 단어 맞추기 웹 게임입니다. 유아부터 성인까지 단계별 난이도에 맞춰 한글·영어 필수 어휘와 힌트를 추리하며 어휘력과 두뇌 회전을 키우고, 최종 점수를 친구들과 간편하게 공유해 보세요.',
+    'https://seodaeya.github.io/about/':
+      '완벽하지 않기에 배우고, 실수하기에 끊임없이 도전합니다. 생성형 AI 시대 속에서도 사람이 직접 부딪히며 얻은 소프트웨어 엔지니어링 인사이트와 일상의 온기, 그리고 성장의 여정을 진솔하게 기록하는 NaRD 블로그 소개 페이지입니다.',
+    'https://seodaeya.github.io/privacy/':
+      "'여전히, 나는 사람이다.' 블로그의 공식 개인정보처리방침 안내 페이지입니다. 방문자 개인정보 보호 원칙, Google Analytics 4·구글 애드센스·Microsoft Clarity 등 제3자 쿠키 활용 및 옵트아웃 방법을 명시합니다.",
+    'https://seodaeya.github.io/bookmarks/':
+      '나중에 다시 읽기 위해 저장한 북마크 아티클 목록과 내 관심 태그·주제 유사도 분석을 기반으로 맞춤형 연관 기술 아티클 및 영상을 추천해 주는 개인화 큐레이션 서재 페이지입니다.',
+  };
+
+  // Bing/Google SEO: Ensure description is between 120 and 158 characters
+  const buildSafeDescription = (rawDesc) => {
+    let base = (coreDescriptions[canonicalUrl] || rawDesc || '').replace(/\s+/g, ' ').trim();
+    if (base.length < 120) {
+      const cleanTitle = pageTitle.replace(siteSuffix, '').trim();
+      const suffix = `'여전히, 나는 사람이다.' 테크 블로그에서 '${cleanTitle}' 주제의 핵심 원리, 실전 가이드 및 상세 인사이트를 확인해 보세요.`;
+      base = base ? `${base} ${suffix}` : suffix;
+      base = base.replace(/\s+/g, ' ').trim();
+    }
+    if (base.length > 158) {
+      return `${base.slice(0, 155).trim()}...`;
+    }
+    return base;
+  };
+  const safeDescription = buildSafeDescription(description);
   const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
   const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
