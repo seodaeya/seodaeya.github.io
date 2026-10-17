@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 16일 22:53 KST",
+  "updatedAt": "2026년 10월 17일 09:44 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "OpenCode · AI",
+      "category": "AI & Intelligence",
+      "title": "OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안",
+      "desc": "OpenCode에서 Muse Spark 1.3 Contributor Free 모델이 완전히 종료되었습니다. Model unavailable 에러의 진실과 유료 과금 함정, 그리고 2가지 현실적 대안을 정리합니다.",
+      "image": "/images/opencode_muse_spark_model_config_thumbnail.jpg",
+      "url": "/posts/20261017-1-opencode-muse-spark-free-model-configuration-guide",
+      "date": "2026-10-17",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "AIModel · AI",
       "category": "AI & Intelligence",
       "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
@@ -214,7 +227,7 @@
       "views": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "change": "new",
       "changeText": "NEW",
       "badge": "Gemini · AI",
@@ -227,7 +240,7 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "new",
       "changeText": "NEW",
       "badge": "REA · AI",
@@ -240,7 +253,7 @@
       "views": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "change": "new",
       "changeText": "NEW",
       "badge": "Parenting · Lifestyle",
@@ -253,7 +266,7 @@
       "views": null
     },
     {
-      "rank": 15,
+      "rank": 16,
       "change": "new",
       "changeText": "NEW",
       "badge": "OpenCode · AI",
@@ -266,7 +279,7 @@
       "views": null
     },
     {
-      "rank": 16,
+      "rank": 17,
       "change": "new",
       "changeText": "NEW",
       "badge": "Aside · AI",
@@ -279,9 +292,9 @@
       "views": null
     },
     {
-      "rank": 17,
+      "rank": 18,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Crocell · Hardware",
       "category": "Hardware & DIY",
       "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
@@ -292,9 +305,9 @@
       "views": null
     },
     {
-      "rank": 18,
+      "rank": 19,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "ELI5 · AI",
       "category": "AI & Intelligence",
       "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
@@ -305,9 +318,9 @@
       "views": null
     },
     {
-      "rank": 19,
+      "rank": 20,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Chrome · Dev",
       "category": "Dev & Software",
       "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
@@ -318,9 +331,9 @@
       "views": null
     },
     {
-      "rank": 20,
+      "rank": 21,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Jack Dorsey · AI",
       "category": "AI & Intelligence",
       "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
@@ -331,9 +344,9 @@
       "views": null
     },
     {
-      "rank": 21,
+      "rank": 22,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "GitHub Actions · Dev",
       "category": "Dev & Software",
       "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
@@ -344,9 +357,9 @@
       "views": null
     },
     {
-      "rank": 22,
+      "rank": 23,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "GitHub Pages · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 쿠팡 봇 뚫는 서버리스 장바구니 만들기",
@@ -357,9 +370,9 @@
       "views": null
     },
     {
-      "rank": 23,
+      "rank": 24,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "SEO · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
@@ -370,9 +383,9 @@
       "views": null
     },
     {
-      "rank": 24,
+      "rank": 25,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Actor Model · AI",
       "category": "AI & Intelligence",
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
@@ -383,9 +396,9 @@
       "views": null
     },
     {
-      "rank": 25,
+      "rank": 26,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "AI Framework · AI",
       "category": "AI & Intelligence",
       "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
@@ -396,9 +409,9 @@
       "views": null
     },
     {
-      "rank": 26,
+      "rank": 27,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Agentic AI · AI",
       "category": "AI & Intelligence",
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
@@ -409,9 +422,9 @@
       "views": null
     },
     {
-      "rank": 27,
+      "rank": 28,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Gemini 3.7 · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
@@ -422,9 +435,9 @@
       "views": null
     },
     {
-      "rank": 28,
+      "rank": 29,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "AdSense · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
@@ -435,9 +448,9 @@
       "views": null
     },
     {
-      "rank": 29,
+      "rank": 30,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -448,9 +461,9 @@
       "views": null
     },
     {
-      "rank": 30,
+      "rank": 31,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "SEO · AI",
       "category": "AI & Intelligence",
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
@@ -461,9 +474,9 @@
       "views": null
     },
     {
-      "rank": 31,
+      "rank": 32,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Google Search Console · Dev",
       "category": "Dev & Software",
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
@@ -474,9 +487,9 @@
       "views": null
     },
     {
-      "rank": 32,
+      "rank": 33,
       "change": "down",
-      "changeText": "▼ 6",
+      "changeText": "▼ 7",
       "badge": "Kimi · AI",
       "category": "AI & Intelligence",
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
@@ -487,9 +500,9 @@
       "views": null
     },
     {
-      "rank": 33,
-      "change": "same",
-      "changeText": "-",
+      "rank": 34,
+      "change": "down",
+      "changeText": "▼ 1",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "Giscus 댓글 오류 해결: discussion 생성 실패 탈출기",
@@ -500,9 +513,9 @@
       "views": null
     },
     {
-      "rank": 34,
+      "rank": 35,
       "change": "down",
-      "changeText": "▼ 7",
+      "changeText": "▼ 8",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
       "title": "AI 결정 시대에 인간에게 남은 질문: 휴먼 인 더 루프",
@@ -513,9 +526,9 @@
       "views": null
     },
     {
-      "rank": 35,
+      "rank": 36,
       "change": "down",
-      "changeText": "▼ 5",
+      "changeText": "▼ 6",
       "badge": "AI Future · AI",
       "category": "AI & Intelligence",
       "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
@@ -526,9 +539,9 @@
       "views": null
     },
     {
-      "rank": 36,
+      "rank": 37,
       "change": "down",
-      "changeText": "▼ 5",
+      "changeText": "▼ 6",
       "badge": "Claude · AI",
       "category": "AI & Intelligence",
       "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
@@ -539,9 +552,9 @@
       "views": null
     },
     {
-      "rank": 37,
+      "rank": 38,
       "change": "down",
-      "changeText": "▼ 5",
+      "changeText": "▼ 6",
       "badge": "Cline · AI",
       "category": "AI & Intelligence",
       "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
@@ -552,9 +565,9 @@
       "views": null
     },
     {
-      "rank": 38,
+      "rank": 39,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Football · Lifestyle",
       "category": "Lifestyle & Tech",
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
@@ -565,9 +578,9 @@
       "views": null
     },
     {
-      "rank": 39,
+      "rank": 40,
       "change": "down",
-      "changeText": "▼ 5",
+      "changeText": "▼ 6",
       "badge": "Cursor · AI",
       "category": "AI & Intelligence",
       "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
@@ -578,9 +591,9 @@
       "views": null
     },
     {
-      "rank": 40,
+      "rank": 41,
       "change": "down",
-      "changeText": "▼ 12",
+      "changeText": "▼ 13",
       "badge": "Gemini · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",

@@ -7,6 +7,8 @@ tags: ["OpenCode", "MuseSpark", "FreeAI", "CodingAgent", "SetupGuide"]
 excerpt: "유료 API 결제 없이 OpenCode와 Muse Spark 1.3 Contributor Free 모델로 코딩 에이전트를 시작하는 설치부터 초기 설정, 블로그 글쓰기 실전 활용까지 정리합니다."
 ---
 
+> ⚠️ <strong>업데이트 (2026-10-17)</strong>: 이 글에서 소개한 <strong>Muse Spark 1.3 Contributor Free 무료 모델은 현재 사용할 수 없습니다</strong>(실측 시 `Model unavailable` 반환, 무료 엔드포인트 종료·유료 모델만 잔존). 설치·설정 방법 자체는 그대로 유효하지만, 무료로 이어가려면 모델을 교체해야 합니다. 현재 무료 모델 9종과 유료 전환 비용은 [OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안](/posts/20261017-1-opencode-muse-spark-free-model-configuration-guide/)에서 정리했습니다.
+
 ## 💸 1. 왜 유료 결제 없이 코딩 에이전트를 쓸 수 있을까?
 
 매달 20달러씩 나가는 구독료 때문에 AI 코딩 도구를 망설였다면, <strong>OpenCode + OpenCode Zen 무료 모델</strong> 조합이 현실적인 대안입니다.

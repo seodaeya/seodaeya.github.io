@@ -1,5 +1,11 @@
 [
   {
+    "title": "OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안",
+    "category": "AI & Intelligence",
+    "file": "posts/20261017-1-opencode-muse-spark-free-model-configuration-guide.md",
+    "date": "20261017"
+  },
+  {
     "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
     "category": "AI & Intelligence",
     "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md",
     "date": "20260923"
-  },
-  {
-    "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
-    "category": "AI & Intelligence",
-    "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md",
-    "date": "20260917"
   }
 ]

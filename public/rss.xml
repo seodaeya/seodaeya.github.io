@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Fri, 16 Oct 2026 13:53:53 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 17 Oct 2026 00:44:56 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안]]></title>
+    <link>https://seodaeya.github.io/posts/20261017-1-opencode-muse-spark-free-model-configuration-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261017-1-opencode-muse-spark-free-model-configuration-guide/</guid>
+    <pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[지난 10월 초, OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 글을 통해 오픈소스 터미널 AI 코딩 에이전트인 OpenCode 와 Meta의 Muse Spark 1.3 Contributor Free 조합으로 월 20달러 구독료 없이 무료로 코딩...]]></description>
+  </item>
   <item>
     <title><![CDATA[AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지]]></title>
     <link>https://seodaeya.github.io/posts/20261016-1-ai-model-version-evolution-architecture-guide/</link>
@@ -47,7 +54,7 @@
     <link>https://seodaeya.github.io/posts/20261004-1-opencode-muse-spark-free-setup-guide/</link>
     <guid>https://seodaeya.github.io/posts/20261004-1-opencode-muse-spark-free-setup-guide/</guid>
     <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[매달 20달러씩 나가는 구독료 때문에 AI 코딩 도구를 망설였다면, OpenCode + OpenCode Zen 무료 모델 조합이 현실적인 대안입니다. OpenCode 는 터미널에서 동작하는 오픈소스 AI 코딩 에이전트입니다. VS Code 플러그인처럼 에디터에 종속되지...]]></description>
+    <description><![CDATA[⚠️ 업데이트 (2026 10 17) : 이 글에서 소개한 Muse Spark 1.3 Contributor Free 무료 모델은 현재 사용할 수 없습니다 (실측 시 Model unavailable 반환, 무료 엔드포인트 종료·유료 모델만 잔존). 설치·설정 방법 자체는...]]></description>
   </item>
   <item>
     <title><![CDATA[크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)]]></title>
