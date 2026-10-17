@@ -37,7 +37,7 @@
   - **Root Cause & SEO Impact**:
     - `files/gen/generate-sitemap.js` extracts accurate page modification dates using `git log -1 --format="%cs"`.
     - If `actions/checkout` runs with shallow clone (`fetch-depth: 1`), git history for unmodified files is empty. This previously caused all static pages (`/about/`, `/word-train/`, etc.) to fall back to the CI build execution date ("today").
-    - Googlebot penalizes sitemaps where all URLs have identical, fake "today" timestamps as spammy/untrustworthy, ignoring `<lastmod>` entirely and failing to re-crawl updated posts.
+    - Per Google Search Central documentation ("Google uses the <lastmod> value if it's consistently and verifiably accurate"), Googlebot ignores the <lastmod> signal when it is not verifiably accurate or uniformly overwritten to build dates, leading to missed re-crawling of genuinely updated content.
   - **Golden Standard**:
     1. In `.github/workflows/deploy.yml`, always specify `with: fetch-depth: 0` for `actions/checkout@v4`.
     2. In `generate-sitemap.js`, always evaluate `Math.max(gitDate, frontmatterDate)` for posts and videos, and pass stable historical fallback dates (never "today") for static core pages.

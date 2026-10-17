@@ -71,13 +71,13 @@ const generateSitemap = () => {
   const latestContentDate = allDates.length > 0 ? allDates[allDates.length - 1] : new Date().toISOString().split('T')[0];
 
   const corePages = [
-    { loc: `${siteUrl}/`, lastmod: latestContentDate, changefreq: 'daily', priority: '1.0' },
-    { loc: `${siteUrl}/categories/`, lastmod: latestContentDate, changefreq: 'weekly', priority: '0.8' },
-    { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate, changefreq: 'daily', priority: '0.8' },
-    { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18'), changefreq: 'weekly', priority: '0.8' },
-    { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09'), changefreq: 'monthly', priority: '0.7' },
-    { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05'), changefreq: 'monthly', priority: '0.8' },
-    { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01'), changefreq: 'monthly', priority: '0.5' },
+    { loc: `${siteUrl}/`, lastmod: latestContentDate },
+    { loc: `${siteUrl}/categories/`, lastmod: latestContentDate },
+    { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate },
+    { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18') },
+    { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09') },
+    { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05') },
+    { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01') },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -89,8 +89,6 @@ const generateSitemap = () => {
     xml += `  <url>
     <loc>${page.loc}</loc>
     <lastmod>${page.lastmod}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
   </url>
 `;
   });
@@ -100,8 +98,6 @@ const generateSitemap = () => {
     xml += `  <url>
     <loc>${siteUrl}/posts/${id}/</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 `;
   });
@@ -111,8 +107,6 @@ const generateSitemap = () => {
     xml += `  <url>
     <loc>${siteUrl}/videos/${id}/</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 `;
   });

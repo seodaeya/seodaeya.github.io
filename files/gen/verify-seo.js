@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const siteUrl = 'https://seodaeya.github.io';
 const outDir = path.join(process.cwd(), 'out');
@@ -128,6 +129,14 @@ function verifySEO() {
     if (urlBlocks.length > 10 && lastmodSet.size === 1) {
       errors.push(`[Sitemap lastmod 전체 동일 날짜 오염] 사이트맵 내 ${urlBlocks.length}개 URL의 <lastmod>가 모두 단일 날짜(${[...lastmodSet][0]})로 고정되어 있습니다.`);
     }
+
+    // Git shallow clone 탐지: CI 환경에서 fetch-depth: 0 누락 시 원천 차단
+    try {
+      const historyCount = Number(execSync('git rev-list --count HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim());
+      if (historyCount < 50) {
+        errors.push(`[Git 히스토리 부족] 커밋 ${historyCount}개만 존재(shallow clone 의심). CI checkout 시 fetch-depth: 0 설정이 누락되어 sitemap lastmod가 오염될 수 있습니다.`);
+      }
+    } catch (e) {}
 
     // 3. 고아 페이지(Orphan Page) 검증: 메인(/) 및 카테고리(/categories/) 정적 HTML에서 모든 색인 대상 글로 내부 링크가 연결되어 있는지 확인
     const indexHtml = fs.readFileSync(path.join(outDir, 'index.html'), 'utf8');

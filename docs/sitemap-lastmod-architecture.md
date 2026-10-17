@@ -6,32 +6,33 @@
 
 ## 1. 배경 및 문제 상황 (Background & Symptoms)
 
-### 1) 관측된 문제 현상
-* GitHub Pages에 배포된 `sitemap.xml`을 열어보았을 때, 실제 내용이 변경되지 않은 정적 페이지(`/about/`, `/word-train/`, `/cart/` 등)를 포함한 사이트맵 내 거의 모든 URL의 `<lastmod>`가 배포 실행일(오늘 날짜)로 찍히는 현상이 발생했습니다.
-* 반면 최근 수정된 마크다운 포스트(예: 레이아웃 개선이 반영된 Gemini 글 등)는 frontmatter의 과거 작성일(`2026-10-14`)로 고정되어 재크롤링 신호가 검색엔진에 전달되지 않았습니다.
+* GitHub Pages에 배포된 라이브 `sitemap.xml`을 확인했을 때, 실제 내용 변경이 없는 정적 페이지(`/about/`, `/word-train/`, `/cart/` 등)를 포함한 다수의 코어 URL의 `<lastmod>`가 배포 실행일(오늘 날짜)로 찍히는 현상이 발생했습니다.
+* 반면 최근 내용 및 레이아웃을 보강한 마크다운 포스트는 frontmatter의 과거 작성일로 고정되어 재크롤링 신호가 검색엔진에 전달되지 못했습니다.
 
-### 2) Googlebot의 페널티 (Untrustworthy Lastmod)
-* **Google Search Central 공식 가이드라인**:
-  Googlebot은 대규모 사이트를 효율적으로 크롤링하기 위해 사이트맵의 `<lastmod>` 태그를 신뢰하고 우선순위 지표로 사용합니다.
-* **불신(Ignored) 페널티**:
-  그러나 실제 콘텐츠 수정 없이 배포 시마다 모든 URL의 `<lastmod>`를 "오늘"로 일괄 갱신하는 사이트맵을 감지하면, Googlebot 알고리즘은 이를 **"조작되거나 신뢰할 수 없는 날짜(Untrustworthy / Spammy lastmod)"**로 분류하고 **해당 도메인의 `<lastmod>` 신호를 영구적으로 무시**합니다.
-* **직결되는 피해**:
-  - 실제로 내용이 대폭 보강된 글이 재색인되지 못함.
-  - 불필요한 변경 없는 페이지에 크롤러가 헛걸음하면서 한정된 크롤링 예산(Crawl Budget)이 낭비되어 신규 포스트의 색인이 지연·누락됨.
+---
+
+## 2. Googlebot 동작 원리와 영향 (Googlebot Behavior & Impact)
+
+* **Google Search Central 공식 문서 (Build and submit a sitemap)**:
+  > *"Google uses the `<lastmod>` value if it's consistently and verifiably ... accurate."*
+* **실제 영향**:
+  - Google은 `<lastmod>` 값이 지속적이고 검증 가능하게 정확할 때만 이를 크롤링 신호로 활용합니다.
+  - 실제 콘텐츠 변경이 없음에도 배포할 때마다 날짜를 일괄 갱신하면, Googlebot은 해당 사이트맵의 `<lastmod>` 신호를 신뢰하지 않고 **사용하지 않습니다(ignored)**.
+  - 결과적으로 실제 본문이 수정된 글의 변경 사항이 크롤러에 제때 감지되지 못해 재색인이 지연되거나 누락되는 원인이 됩니다.
+  - 또한 Google 공식 문서에 따르면 `<priority>`와 `<changefreq>` 값은 Googlebot에 의해 완전히 무시됩니다(*"Google ignores `<priority>` and `<changefreq>` values"*). 따라서 사이트맵은 정확한 `<loc>`과 검증 가능한 `<lastmod>` 중심으로 단순하고 명확하게 유지해야 합니다.
 
 ---
 
 ## 3. 근본 원인 분석 (Root Causes)
 
 ### 원인 ① GitHub Actions의 Shallow Clone (`fetch-depth: 1`)
-* `.github/workflows/deploy.yml`에서 소스 코드를 가져올 때 `actions/checkout@v4`를 옵션 없이 사용했습니다.
-* `actions/checkout`의 기본 동작은 커밋 딱 1개만 가져오는 **Shallow clone(fetch-depth 1)**입니다.
-* GitHub Actions 러너에서 `git log -1 --format="%cs" -- "pages/about.jsx"` 명령이 실행될 때, 해당 파일이 최근 커밋에서 수정되지 않았다면 git 이력이 비어있으므로 빈 문자열을 반환합니다.
-* 그 결과 `files/gen/generate-sitemap.js`의 `getGitLastMod()` 함수가 fallback 값으로 넘겨받은 `latestContentDate`(오늘 날짜)를 채택하여 모든 정적 페이지가 배포 당일 날짜로 오염되었습니다.
+* `.github/workflows/deploy.yml`의 `actions/checkout@v4` 기본 동작은 최신 커밋 1개만 내려받는 **Shallow clone(fetch-depth 1)**입니다.
+* GitHub Actions 러너에서 `git log -1 --format="%cs" -- "pages/about.jsx"` 실행 시, 해당 파일이 직전 커밋에 포함되지 않았으면 Git 히스토리가 비어있어 빈 문자열을 반환합니다.
+* 그 결과 `files/gen/generate-sitemap.js`의 `getGitLastMod()` 함수가 fallback 값(`latestContentDate`, 즉 오늘 날짜)을 채택하여 모든 정적 페이지가 배포 당일 날짜로 오염되었습니다.
 
 ### 원인 ② 마크다운 글의 Git 커밋일 미반영
 * `generate-sitemap.js`의 `getContentEntries()`는 마크다운 파일의 frontmatter(`data.updated || data.lastmod || data.date`)만 읽었습니다.
-* 개발자가 본문을 수정하고 버그를 고쳐 Git에 커밋하더라도, frontmatter의 날짜를 수동으로 타이핑하여 수정하지 않으면 영원히 과거 날짜로 고정되어 검색엔진이 변경 사항을 인지할 수 없었습니다.
+* 글 본문을 수정하고 커밋하더라도, frontmatter 날짜를 수동으로 타이핑하여 수정하지 않으면 영원히 과거 날짜로 고정되었습니다.
 
 ---
 
@@ -62,7 +63,7 @@ flowchart TD
         Aggregate --> HubPages["홈(/), 카테고리(/categories/), 랭킹(/ranking/)에 반영"]
     end
 
-    StaticDate --> Output["public/sitemap.xml"]
+    StaticDate --> Output["public/sitemap.xml (loc, lastmod)"]
     UseGit --> Output
     UseFM --> Output
     HubPages --> Output
@@ -89,16 +90,16 @@ flowchart TD
    const gitDate = getGitLastMod(relFilePath, frontmatterDate);
    const lastmod = gitDate > frontmatterDate ? gitDate : frontmatterDate;
    ```
-2. **정적 페이지 안전한 Fallback 지정**:
+2. **정적 페이지 안전한 Fallback 지정 & 무의미한 태그 제거**:
    ```javascript
    const corePages = [
-     { loc: `${siteUrl}/`, lastmod: latestContentDate, changefreq: 'daily', priority: '1.0' },
-     { loc: `${siteUrl}/categories/`, lastmod: latestContentDate, changefreq: 'weekly', priority: '0.8' },
-     { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate, changefreq: 'daily', priority: '0.8' },
-     { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18'), changefreq: 'weekly', priority: '0.8' },
-     { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09'), changefreq: 'monthly', priority: '0.7' },
-     { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05'), changefreq: 'monthly', priority: '0.8' },
-     { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01'), changefreq: 'monthly', priority: '0.5' },
+     { loc: `${siteUrl}/`, lastmod: latestContentDate },
+     { loc: `${siteUrl}/categories/`, lastmod: latestContentDate },
+     { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate },
+     { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18') },
+     { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09') },
+     { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05') },
+     { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01') },
    ];
    ```
 
@@ -106,12 +107,15 @@ flowchart TD
 
 ## 6. 검증 및 유지보수 수칙 (Guardrails)
 
-1. **`verify-seo.js` 오염 방지 가드레일**:
-   - `files/gen/verify-seo.js`에는 사이트맵 내 URL이 10개 이상인데 모든 `lastmod`가 단일 날짜로 통일될 경우 빌드를 즉시 중단시키는 가드레일이 작동합니다:
+1. **Shallow Clone 탐지 가드레일 (`files/gen/verify-seo.js`)**:
+   - CI에서 누군가 `fetch-depth`를 지우거나 얕은 복제가 발생할 경우 빌드를 즉시 중단시킵니다:
      ```javascript
-     if (urlBlocks.length > 10 && lastmodSet.size === 1) {
-       errors.push(`[Sitemap lastmod 전체 동일 날짜 오염] 사이트맵 내 URL의 <lastmod>가 모두 단일 날짜로 고정되어 있습니다.`);
+     const historyCount = Number(execSync('git rev-list --count HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim());
+     if (historyCount < 50) {
+       errors.push(`[Git 히스토리 부족] 커밋 ${historyCount}개만 존재(shallow clone 의심). CI checkout 시 fetch-depth: 0 설정이 누락되어 sitemap lastmod가 오염될 수 있습니다.`);
      }
      ```
-2. **신규 정적 페이지 추가 시**:
-   - `pages/`에 새로운 정적 라우트를 추가할 경우, `generate-sitemap.js`의 `corePages` 목록에 등록하고 fallback 날짜로 오늘 날짜가 아닌 안정적인 초기 커밋 날짜를 전달해야 합니다.
+2. **Lastmod 단일 날짜 오염 방지 가드레일**:
+   - 사이트맵 내 URL이 10개 이상인데 모든 `lastmod`가 단일 날짜로 통일될 경우 빌드를 차단합니다.
+3. **신규 정적 페이지 추가 시**:
+   - `pages/`에 새로운 정적 라우트를 추가할 경우, `generate-sitemap.js`의 `corePages` 목록에 등록하고 fallback 날짜로 오늘 날짜가 아닌 안정적인 초기 커밋 날짜를 전달합니다.
