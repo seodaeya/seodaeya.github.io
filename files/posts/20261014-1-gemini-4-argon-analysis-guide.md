@@ -198,12 +198,17 @@ excerpt: "구글 프론티어 모델 Gemini 4 Argon의 100만 토큰 출력, 도
 
 현재 Argon을 사용하는 경로는 앱/웹 구독과 개발자 API로 나뉘며, 이용 조건이 다릅니다.
 
-1. <strong>웹/앱 서비스 (Ultra 구독자 전용):</strong> 초기 보도에서는 일반 Google AI Pro(월 19.99달러)에도 포함된다고 알려졌으나, <strong>실제 서비스 UI 확인 결과 Gemini 4 Argon은 현재 최상위 Ultra 플랜 구독자 전용(available to Ultra plan subscribers)</strong>으로 제한되어 있습니다. 일반 Pro 계정에서는 선택 창에서 ‘Unavailable’로 비활성화됩니다.
+1. <strong>웹/앱 서비스:</strong> 모델 선택 화면에서는 <strong>Ultra 플랜 구독자 전용</strong>으로 안내되지만(아래 첫 번째 화면), 사용량 화면에서는 <strong>유료 Pro 플랜에도 Argon 쿼터가 별도로 부여</strong>된다고 안내합니다. Ultra 플랜은 더 큰 Gemini 쿼터 버킷의 일부로 <strong>더 높은 Argon 쿼터</strong>를 받습니다. 두 화면의 표시 위치와 기준 시점이 다르므로, 실제 사용 가능 여부는 <strong>내 계정의 모델 선택 메뉴와 사용량 화면을 함께 확인</strong>하는 것이 정확합니다. 참고로 <strong>Gemini 4 Argon Weekly Limit</strong> 게이지가 따로 잡혀 있어, Pro는 주간 한도가 빡빡하고 많이 쓸수록 Ultra가 유리한 구조입니다.
 2. <strong>API & AI Studio:</strong> 개발자는 Google AI Studio 또는 Vertex AI 콘솔에서 API 키를 발급받아 프로젝트에 연동합니다. API 문서상 Free 티어·Google AI Pro 플랜에서는 Argon을 쓸 수 없고, 유료 종량제 등급(Pay-as-you-go)이 필요합니다.
 
 <div style="margin: 24px 0; text-align: center;">
   <img src="/images/gemini_4_argon_ultra_plan_notice.png" alt="Gemini 4 Argon 선택 시 표시되는 Ultra 플랜 전용 알림 툴팁 (Gemini 4 Argon is currently available to Ultra plan subscribers)" style="max-width: 520px; width: 100%; border-radius: 10px; border: 1px solid #30363d; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);" />
-  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #94a3b8);">▲ 모델 선택 메뉴에서 Gemini 4 Argon이 비활성화(Unavailable)되고, Ultra 플랜 구독자 전용으로 한정 제공됨을 안내하는 실제 화면</p>
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #94a3b8);">▲ (모델 선택 화면) Gemini 4 Argon이 비활성화(Unavailable)되고 Ultra 플랜 구독자 전용으로 안내되는 실제 화면</p>
+</div>
+
+<div style="margin: 24px 0; text-align: center;">
+  <img src="/images/gemini_4_argon_pro_quota_update.png" alt="Gemini 사용량 화면: 유료 Pro 플랜은 Argon 쿼터가 별도이고 Ultra 플랜은 더 큰 Gemini 쿼터 버킷 안에서 더 높은 Argon 쿼터를 제공한다는 안내와 Gemini 4 Argon Weekly Limit 게이지" style="max-width: 100%; width: 100%; border-radius: 10px; border: 1px solid #30363d; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);" />
+  <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary, #94a3b8);">▲ (10월 17일 사용량 화면) "For paid Pro plans, Argon quota is separate. Higher Argon quota (included as part of the larger Gemini quota bucket) is available on Ultra plans." — 하단에 <strong>Gemini 4 Argon Weekly Limit</strong> 게이지가 별도로 표시됩니다.</p>
 </div>
 
 > 💡 <strong>구글 공식 발표의 실무 성과 (발표 인용)</strong><br />
@@ -298,7 +303,7 @@ Google Cloud나 Workspace 인프라에 이미 깊게 연결된 기업이라면 A
 ## ❓ 자주 묻는 질문
 
 <strong>Q1. 완전 무료나 일반 Pro 플랜으로 써볼 수 있나요?</strong><br />
-A. 불가능합니다. 무료 티어는 물론 일반 Google AI Pro(월 19.99달러) 플랜에서도 비활성화(Unavailable) 상태이며, 웹 서비스에서는 <strong>최상위 Ultra 플랜 구독자</strong>에게만 한정 제공됩니다. 따라서 소규모 테스트나 개발 목적인 경우, 웹 구독을 업그레이드하기보다 Google AI Studio나 Vertex AI의 종량제 API(입력 $2 / 출력 $10)를 활용해 필요한 만큼만 호출해 보는 것이 훨씬 경제적입니다.
+A. 무료 티어에서는 쓸 수 없습니다. 유료 Pro 플랜은 사용량 화면 기준 <strong>Argon 쿼터가 별도로 부여</strong>되지만 <strong>주간 한도(Weekly Limit)</strong>가 따로 잡혀 있고, 모델 선택 화면에서는 <strong>Ultra 플랜 전용</strong>으로 안내되는 등 화면마다 안내가 다릅니다. 따라서 내 계정의 모델 선택 메뉴와 사용량 화면을 <strong>함께 확인</strong>하는 것이 가장 정확합니다. 소규모 테스트나 개발 목적이라면 웹 구독을 업그레이드하기보다 Google AI Studio나 Vertex AI의 종량제 API(입력 $2 / 출력 $10)를 활용해 필요한 만큼만 호출해 보는 것이 훨씬 경제적입니다.
 
 <strong>Q2. 기존 Gemini 3.x 모델들과 체감상 가장 큰 차이는 무엇인가요?</strong><br />
 A. <strong>통합 1,048,576 토큰 한도와 장시간 추론 안정성</strong>입니다. 기존 모델은 긴 코드를 작성하다 중간에 끊기거나 앞부분의 맥락을 잊는 현상이 잦았지만, Argon은 background 실행으로 대규모 프로젝트 전체를 일관된 맥락 속에서 이어서 뽑아냅니다.
