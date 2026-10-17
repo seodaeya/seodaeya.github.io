@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { useState, useEffect, useRef } from 'react';
 import SEO from '@/components/SEO';
 import contentUtils from '@/lib/content';
+import { useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import styles from '@/styles/home.module.css';
 
 const { createPlainExcerpt, createRichExcerpt } = contentUtils;
@@ -95,6 +96,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const tooltipRef = useRef(null);
+  const readSet = useReadPostsSet();
 
   // Click outside to close info tooltip
   useEffect(() => {
@@ -424,7 +426,12 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                       style={!cleanQuery && idx >= visiblePostCount ? { display: 'none' } : undefined}
                     >
                       <div className={styles.miniCardHeader}>
-                        <span className="category-badge">{post.category}</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span className="category-badge">{post.category}</span>
+                          {isContentRead(post.file, readSet) && (
+                            <span className="read-badge">✓ 읽음</span>
+                          )}
+                        </div>
                         <span className={styles.cardMeta}>{formatDate(post.date)}</span>
                       </div>
                       <h3 className={styles.cardTitle}>{post.title}</h3>
@@ -492,10 +499,15 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                           )}
                         </div>
                         <div className={styles.videoCardInfo}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span className="category-badge" style={{ padding: '2px 8px', fontSize: '0.7rem' }}>
-                              {video.category}
-                            </span>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                              <span className="category-badge" style={{ padding: '2px 8px', fontSize: '0.7rem' }}>
+                                {video.category}
+                              </span>
+                              {isContentRead(video.file, readSet) && (
+                                <span className="read-badge">✓ 읽음</span>
+                              )}
+                            </div>
                             <span className={styles.cardMeta}>{formatDate(video.date)}</span>
                           </div>
                           <h3 className={styles.cardTitle} style={{ fontSize: '1rem' }}>{video.title}</h3>

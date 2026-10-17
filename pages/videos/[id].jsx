@@ -9,6 +9,8 @@ import Comments from '@/components/Comments';
 import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
+import SmartRandomWidget from '@/components/SmartRandomWidget';
+import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
 import styles from '@/styles/video.module.css';
 
@@ -117,6 +119,9 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Video({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, prevVideo, nextVideo, relatedVideos }) {
+  useTrackReading(isRedirect ? null : `videos/${id}`);
+  const readSet = useReadPostsSet();
+
   if (isRedirect) {
     return (
       <>
@@ -287,7 +292,12 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
                       </div>
                     )}
                     <div className={styles.relatedCardMeta}>
-                      <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{video.category}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{video.category}</span>
+                        {isContentRead(`${video.type}/${video.id}`, readSet) && (
+                          <span className="read-badge">✓ 읽음</span>
+                        )}
+                      </div>
                       <span>{formatDate(video.date)}</span>
                     </div>
                     <h4 className={styles.relatedCardTitle}>{video.title}</h4>
@@ -297,6 +307,9 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
               </div>
             </section>
           )}
+
+          {/* Smart Random Recommendation Card */}
+          <SmartRandomWidget variant="card" currentKey={`videos/${id}`} />
 
           {/* Sponsor KakaoPay Support Box */}
           <Sponsor />

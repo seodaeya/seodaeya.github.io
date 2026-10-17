@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import styles from '@/styles/layout.module.css';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import SmartRandomWidget from '@/components/SmartRandomWidget';
 
 export default function Header() {
   const router = useRouter();
@@ -45,6 +46,18 @@ export default function Header() {
       if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     };
   }, [router]);
+
+  // 모바일 메뉴 오픈 시 배경 페이지 스크롤 잠금
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
@@ -181,6 +194,9 @@ export default function Header() {
 
         {/* Right Action Icons & Controls */}
         <div className={styles.headerRightArea}>
+          {/* Smart Random Explore Button (PC: Capsule / MO: Icon) */}
+          <SmartRandomWidget variant="header" />
+
           {/* Theme Toggle Button */}
           <button 
             onClick={toggleTheme} 
@@ -355,6 +371,11 @@ export default function Header() {
             >
               <span>🔖</span> 북마크
             </Link>
+
+            <SmartRandomWidget
+              variant="mobile-menu"
+              onNavigate={() => setIsMobileMenuOpen(false)}
+            />
 
                         {/* Mobile RSS Feed Link */}
             <a 

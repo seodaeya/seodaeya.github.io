@@ -76,7 +76,7 @@
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
 }
 
 .navLink {
@@ -225,7 +225,7 @@
 .headerRightArea {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -243,6 +243,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   outline: none;
+  flex-shrink: 0;
 }
 
 :root.light .themeToggleBtn {
@@ -271,21 +272,22 @@
   transform: rotate(30deg);
 }
 
-/* RSS Feed Button (Desktop) */
+/* RSS Feed Button (Desktop) - Uniform 38x38 Circle */
 .desktopRssBtn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0;
   background: rgba(245, 158, 11, 0.1);
   border: 1px solid rgba(245, 158, 11, 0.25);
-  padding: 7px 13px;
-  border-radius: 9999px;
   color: #f59e0b;
-  font-weight: 600;
-  font-size: 0.85rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .desktopRssBtn:hover {
@@ -297,26 +299,27 @@
 }
 
 .rssIcon {
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
 }
 
-/* YouTube Button (Desktop) */
+/* YouTube Button (Desktop) - Uniform 38x38 Circle */
 .desktopYoutubeBtn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0;
   background: rgba(255, 99, 71, 0.1);
   border: 1px solid rgba(255, 0, 0, 0.2);
-  padding: 7px 14px;
-  border-radius: 9999px;
   color: var(--youtube-red);
-  font-weight: 600;
-  font-size: 0.85rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .desktopYoutubeBtn:hover {
@@ -328,9 +331,13 @@
 }
 
 .youtubeIcon {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
+}
+
+.socialText {
+  display: none;
 }
 
 /* Mobile Hamburger Button */
@@ -387,6 +394,11 @@
   top: 70px;
   left: 0;
   right: 0;
+  max-height: calc(100vh - 70px);
+  max-height: calc(100dvh - 70px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-glass-active);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(138, 43, 226, 0.15);
@@ -399,10 +411,10 @@
 .mobileNavContainer {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px 24px 28px 24px;
+  padding: 18px 20px calc(28px + env(safe-area-inset-bottom, 0px)) 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .mobileNavLink {
@@ -585,8 +597,213 @@
   font-size: 0.8rem;
 }
 
+/* Smart Random Header Button (PC: Capsule / MO: 38x38 Circle) */
+.randomHeaderWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.randomHeaderBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(138, 43, 226, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: var(--text-primary);
+  padding: 7px 13px;
+  height: 38px;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.light .randomHeaderBtn {
+  background: rgba(138, 43, 226, 0.08);
+  border-color: rgba(138, 43, 226, 0.28);
+}
+
+.randomHeaderBtn:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(138, 43, 226, 0.4);
+  transform: translateY(-1px);
+}
+
+.randomHeaderText {
+  line-height: 1;
+}
+
+.randomDiceIcon {
+  display: inline-block;
+  font-size: 0.98rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.randomHeaderBtn:hover .randomDiceIcon {
+  transform: rotate(18deg) scale(1.08);
+}
+
+.randomDiceSpin {
+  animation: diceSpin 0.28s linear infinite;
+}
+
+@keyframes diceSpin {
+  from { transform: rotate(0deg) scale(1.1); }
+  to { transform: rotate(360deg) scale(1.1); }
+}
+
+/* Header Custom Instant Tooltip */
+.randomHeaderTooltip {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 280px;
+  padding: 13px 15px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass-active);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(138, 43, 226, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+  z-index: 1600;
+  text-align: left;
+  white-space: normal;
+}
+
+:root.light .randomHeaderTooltip {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.randomHeaderWrapper:hover .randomHeaderTooltip,
+.randomHeaderWrapper:focus-within .randomHeaderTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.randomTooltipTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.randomTooltipDesc {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+}
+
+.randomTooltipFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.randomTooltipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  flex-shrink: 0;
+}
+
+.mobileRandomGroup {
+  width: 100%;
+}
+
+.mobileRandomBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  font-size: 1.02rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.16), rgba(6, 182, 212, 0.14));
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.mobileRandomBtn:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.mobileRandomTopRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.mobileRandomSubDesc {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding-left: 26px;
+}
+
+.mobileRandomBtn:hover .mobileRandomSubDesc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mobileRandomCount {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
 /* Media Queries */
-@media (max-width: 860px) {
+@media (max-width: 1140px) {
+  .desktopRssBtn,
+  .desktopYoutubeBtn {
+    display: none;
+  }
+  .desktopNav {
+    gap: 13px;
+  }
+  .navLink {
+    font-size: 0.88rem;
+  }
+  .logoText {
+    font-size: 1.3rem;
+  }
+  .randomHeaderBtn {
+    padding: 6px 11px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 980px) {
   .desktopNav {
     display: none;
   }
@@ -596,6 +813,18 @@
   .desktopRssBtn {
     display: none;
   }
+  .randomHeaderBtn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  .randomHeaderText {
+    display: none;
+  }
+  .randomHeaderTooltip {
+    display: none;
+  }
   .hamburgerBtn {
     display: flex;
   }
@@ -603,7 +832,7 @@
     padding: 0 20px;
   }
   .logoText {
-    font-size: 1.18rem;
+    font-size: 1.2rem;
   }
   .footerContainer {
     grid-template-columns: 1fr;
@@ -616,12 +845,12 @@
 
 @media (max-width: 480px) {
   .headerContainer {
-    padding: 0 18px;
+    padding: 0 16px;
   }
   .logoText {
     font-size: 1.08rem;
   }
   .headerRightArea {
-    gap: 10px;
+    gap: 6px;
   }
 }

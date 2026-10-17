@@ -1,238 +1,588 @@
 {
   "AI & Intelligence": [
     {
+      "title": "OpenCode Muse Spark 1.3 무료 완전 종료: 과금 함정과 대안 2가지",
+      "file": "posts/20261017-1-opencode-muse-spark-free-model-configuration-guide.md",
+      "tags": [
+        "OpenCode",
+        "MuseSpark",
+        "MetaAI",
+        "FreeAI",
+        "CodingAgent",
+        "dev.meta.ai"
+      ]
+    },
+    {
       "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
-      "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md"
+      "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md",
+      "tags": [
+        "AIModel",
+        "LLM",
+        "MoE",
+        "ReasoningAI",
+        "AgenticWorkflow",
+        "LocalLLM",
+        "ContextWindow",
+        "Multimodal"
+      ]
     },
     {
       "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
-      "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md"
+      "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md",
+      "tags": [
+        "Gemini",
+        "Google AI",
+        "Argon",
+        "LLM",
+        "Pricing",
+        "CodingAgent"
+      ]
     },
     {
       "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
-      "file": "posts/20261013-1-rea-reverse-engineering-guide.md"
+      "file": "posts/20261013-1-rea-reverse-engineering-guide.md",
+      "tags": [
+        "REA",
+        "ReverseEngineering",
+        "CodingAgent",
+        "MCP",
+        "OpenCode",
+        "CleanRoom"
+      ]
     },
     {
       "title": "AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지",
-      "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md"
+      "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md",
+      "tags": [
+        "Aside",
+        "AIBrowser",
+        "Mac",
+        "BrowserAgent",
+        "SetupGuide"
+      ]
     },
     {
       "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
-      "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md"
+      "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md",
+      "tags": [
+        "OpenCode",
+        "MuseSpark",
+        "FreeAI",
+        "CodingAgent",
+        "SetupGuide"
+      ]
     },
     {
       "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
-      "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md"
+      "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md",
+      "tags": [
+        "ELI5",
+        "AIPrompt",
+        "PromptEngineering",
+        "FeynmanTechnique",
+        "ChatGPT",
+        "Claude",
+        "LearningMethod",
+        "Productivity"
+      ]
     },
     {
       "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
-      "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md"
+      "file": "posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence.md",
+      "tags": [
+        "Jack Dorsey",
+        "Block",
+        "AI Agents",
+        "Sequoia Capital",
+        "World Model",
+        "Future of Work",
+        "Management"
+      ]
     },
     {
       "title": "Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복: 특징, 설치법, 실전 활용 가이드",
-      "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md"
+      "file": "posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide.md",
+      "tags": [
+        "MLX",
+        "MLXServe",
+        "AppleSilicon",
+        "LocalLLM",
+        "LMStudio",
+        "Ollama",
+        "ClaudeCode",
+        "OpenAIAPI",
+        "Zig",
+        "MacAI"
+      ]
     },
     {
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
-      "file": "posts/20260819-2-actor-framework-guide.md"
+      "file": "posts/20260819-2-actor-framework-guide.md",
+      "tags": [
+        "Actor Model",
+        "Concurrency",
+        "Distributed Systems",
+        "Backend",
+        "Architecture"
+      ]
     },
     {
       "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
-      "file": "posts/20260819-1-ai-alter-framework.md"
+      "file": "posts/20260819-1-ai-alter-framework.md",
+      "tags": [
+        "AI Framework",
+        "Software Design",
+        "Agentic Architecture",
+        "Clean Code"
+      ]
     },
     {
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
-      "file": "posts/20260817-1-meta-ax-agentic-workflow.md"
+      "file": "posts/20260817-1-meta-ax-agentic-workflow.md",
+      "tags": [
+        "Agentic AI",
+        "Meta",
+        "Workflow",
+        "Automation",
+        "Software Architecture"
+      ]
     },
     {
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
-      "file": "posts/20260815-1-gemini-3-7-flash-analysis.md"
+      "file": "posts/20260815-1-gemini-3-7-flash-analysis.md",
+      "tags": [
+        "Gemini 3.7",
+        "Flash",
+        "Hybrid Reasoning",
+        "Google DeepMind",
+        "LLM"
+      ]
     },
     {
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
-      "file": "posts/20260805-1-seo-geo-ai-search-strategy.md"
+      "file": "posts/20260805-1-seo-geo-ai-search-strategy.md",
+      "tags": [
+        "SEO",
+        "GEO",
+        "Generative Engine Optimization",
+        "AI Search",
+        "Search Visibility"
+      ]
     },
     {
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
-      "file": "posts/20260804-1-gemini-cli-install-guide.md"
+      "file": "posts/20260804-1-gemini-cli-install-guide.md",
+      "tags": [
+        "Gemini CLI",
+        "Terminal",
+        "Developer Tools",
+        "Google Cloud",
+        "Automation"
+      ]
     },
     {
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",
-      "file": "posts/20260803-1-kimi-k3-moonshot-ai.md"
+      "file": "posts/20260803-1-kimi-k3-moonshot-ai.md",
+      "tags": [
+        "Kimi",
+        "Moonshot AI",
+        "Long Context",
+        "LLM",
+        "AI Search"
+      ]
     },
     {
       "title": "구글 Gemini 3.6 완벽 정리: 더 똑똑하고 빠르며 저렴해진 AI 에이전트 시대의 개막",
-      "file": "posts/20260723-2-gemini-3-6-features-guide.md"
+      "file": "posts/20260723-2-gemini-3-6-features-guide.md",
+      "tags": [
+        "Gemini",
+        "Google AI",
+        "Multimodal",
+        "Long Context",
+        "AI Benchmark"
+      ]
     },
     {
       "title": "AI 결정 시대에 인간에게 남은 질문: 휴먼 인 더 루프",
-      "file": "posts/20260723-1-human-in-the-loop-ai-ethics.md"
+      "file": "posts/20260723-1-human-in-the-loop-ai-ethics.md",
+      "tags": [
+        "AI Ethics",
+        "Human in the loop",
+        "HITL",
+        "AI Governance",
+        "Philosophy"
+      ]
     },
     {
       "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
-      "file": "posts/20260713-1-gpt-5-6-sol-terra-luna.md"
+      "file": "posts/20260713-1-gpt-5-6-sol-terra-luna.md",
+      "tags": [
+        "AI Future",
+        "Crypto",
+        "Market Analysis",
+        "Tech Trends"
+      ]
     },
     {
       "title": "AI 기반 코드 에디터 Cursor(커서) 기능 분석 및 200% 활용 가이드",
-      "file": "posts/20250404-3-cursor-ai-code-editor-guide.md"
+      "file": "posts/20250404-3-cursor-ai-code-editor-guide.md",
+      "tags": [
+        "Cursor",
+        "AI Editor",
+        "Composer",
+        "VS Code",
+        "Productivity"
+      ]
     },
     {
       "title": "VS Code 기반의 자율형 AI 코딩 에이전트, Cline(클라인) 사용법 및 분석",
-      "file": "posts/20250404-2-cline-autonomous-coding-agent.md"
+      "file": "posts/20250404-2-cline-autonomous-coding-agent.md",
+      "tags": [
+        "Cline",
+        "AI Coding",
+        "VS Code",
+        "Autonomous Agent",
+        "DevTools"
+      ]
     },
     {
       "title": "Anthropic Claude 모델 분석: Claude 3.5 Sonnet부터 Thinking까지",
-      "file": "posts/20250404-1-anthropic-claude-models-analysis.md"
+      "file": "posts/20250404-1-anthropic-claude-models-analysis.md",
+      "tags": [
+        "Claude",
+        "Anthropic",
+        "LLM",
+        "AI Model",
+        "Opus",
+        "Sonnet",
+        "Haiku"
+      ]
     }
   ],
   "Dev & Software": [
     {
       "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
-      "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md"
+      "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md",
+      "tags": [
+        "Chrome",
+        "GoogleChrome",
+        "BrowserSecurity",
+        "Regedit",
+        "Windows",
+        "MacOS",
+        "GroupPolicy",
+        "Troubleshooting"
+      ]
     },
     {
       "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
-      "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md"
+      "file": "posts/20260911-2-github-actions-cron-monthly-ranking-system.md",
+      "tags": [
+        "GitHub Actions",
+        "Next.js",
+        "Cron",
+        "GA4",
+        "Ranking",
+        "Automation",
+        "Troubleshooting"
+      ]
     },
     {
       "title": "GitHub 스타 랭킹 TOP 10: 전 세계 오픈소스 보물창고",
-      "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md"
+      "file": "posts/20260901-1-github-top-starred-repositories-ranking-guide.md",
+      "tags": [
+        "GitHub",
+        "AI",
+        "OpenSource",
+        "StarRanking",
+        "GenerativeAI",
+        "SystemDesign",
+        "Productivity",
+        "NonDeveloperGuide"
+      ]
     },
     {
       "title": "Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드",
-      "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md"
+      "file": "posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide.md",
+      "tags": [
+        "Next.js",
+        "React",
+        "TOC",
+        "Frontend",
+        "Troubleshooting",
+        "CSS",
+        "createPortal",
+        "requestAnimationFrame"
+      ]
     },
     {
       "title": "온톨로지(Ontology)란 무엇인가? 이커머스 검색과 AI 추천 혁신의 핵심",
-      "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md"
+      "file": "posts/20260827-1-ecommerce-ontology-ai-search-guide.md",
+      "tags": [
+        "Ontology",
+        "E-Commerce",
+        "Knowledge Graph",
+        "AI Search",
+        "Digital Twin",
+        "GraphRAG",
+        "Neo4j",
+        "Data Modeling"
+      ]
     },
     {
       "title": "[트러블슈팅] 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱",
-      "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md"
+      "file": "posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck.md",
+      "tags": [
+        "Spring Boot",
+        "Redis",
+        "Lettuce",
+        "Troubleshooting",
+        "PostgreSQL",
+        "Database",
+        "Performance Tuning",
+        "Backend Architecture"
+      ]
     },
     {
       "title": "GitHub Pages 쿠팡 봇 뚫는 서버리스 장바구니 만들기",
-      "file": "posts/20260824-1-github-pages-serverless-cart-parser.md"
+      "file": "posts/20260824-1-github-pages-serverless-cart-parser.md",
+      "tags": [
+        "GitHub Pages",
+        "Next.js",
+        "Serverless",
+        "Cloudflare Workers",
+        "Coupang Partners API",
+        "Web Security",
+        "Architecture"
+      ]
     },
     {
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
-      "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md"
+      "file": "posts/20260822-1-github-pages-url-slug-seo-redirection.md",
+      "tags": [
+        "SEO",
+        "Redirection",
+        "URL Slug",
+        "Next.js",
+        "GitHub Pages"
+      ]
     },
     {
       "title": "기업 개인정보처리방침 가이드: CPO의 역할과 올바른 이행 마음가짐",
-      "file": "posts/20260811-1-privacy-policy-cpo-guide.md"
+      "file": "posts/20260811-1-privacy-policy-cpo-guide.md",
+      "tags": [
+        "Privacy Policy",
+        "CPO",
+        "Compliance",
+        "Legal",
+        "Web Standards"
+      ]
     },
     {
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
-      "file": "posts/20260807-1-github-pages-adsense-domain.md"
+      "file": "posts/20260807-1-github-pages-adsense-domain.md",
+      "tags": [
+        "AdSense",
+        "GitHub Pages",
+        "Custom Domain",
+        "Blogging",
+        "Monetization"
+      ]
     },
     {
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
-      "file": "posts/20260805-2-gsc-sitemap-lastmod-fix.md"
+      "file": "posts/20260805-2-gsc-sitemap-lastmod-fix.md",
+      "tags": [
+        "Google Search Console",
+        "Sitemap",
+        "Lastmod",
+        "SEO",
+        "Webmaster"
+      ]
     },
     {
       "title": "Giscus 댓글 오류 해결: discussion 생성 실패 탈출기",
-      "file": "posts/20260707-1-giscus-discussion-error-fix.md"
+      "file": "posts/20260707-1-giscus-discussion-error-fix.md",
+      "tags": [
+        "Giscus",
+        "GitHub Discussions",
+        "Next.js",
+        "Blog",
+        "Troubleshooting"
+      ]
     },
     {
       "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
-      "file": "posts/20250427-1-postgresql-install-setup-guide.md"
+      "file": "posts/20250427-1-postgresql-install-setup-guide.md",
+      "tags": [
+        "PostgreSQL",
+        "Database",
+        "macOS",
+        "Homebrew",
+        "Backend"
+      ]
     }
   ],
   "Hardware & DIY": [
     {
       "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
-      "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md"
+      "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md",
+      "tags": [
+        "Crocell",
+        "CFlip",
+        "KarabinerElements",
+        "macOS",
+        "KeyboardMapping",
+        "EscKey",
+        "Hardware",
+        "Productivity"
+      ]
     },
     {
       "title": "macOS 안드로이드 사진 전송법: OpenMTP 설치 및 파일 전송 가이드",
-      "file": "posts/20260812-1-macos-android-openmtp-guide.md"
+      "file": "posts/20260812-1-macos-android-openmtp-guide.md",
+      "tags": [
+        "macOS",
+        "Android",
+        "OpenMTP",
+        "File Transfer",
+        "Productivity"
+      ]
     },
     {
       "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부",
-      "file": "videos/20260803-2-sk-magic-ice-maker-cleaning-part2.md"
+      "file": "videos/20260803-2-sk-magic-ice-maker-cleaning-part2.md",
+      "tags": []
     },
     {
       "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부",
-      "file": "videos/20260803-1-sk-magic-ice-maker-cleaning-part1.md"
+      "file": "videos/20260803-1-sk-magic-ice-maker-cleaning-part1.md",
+      "tags": []
     },
     {
       "title": "싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁",
-      "file": "videos/20260624-2-santafe-tm-afterblow-step2.md"
+      "file": "videos/20260624-2-santafe-tm-afterblow-step2.md",
+      "tags": []
     },
     {
       "title": "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법",
-      "file": "videos/20260624-1-santafe-tm-afterblow-step1.md"
+      "file": "videos/20260624-1-santafe-tm-afterblow-step1.md",
+      "tags": []
     },
     {
       "title": "노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝",
-      "file": "videos/20260622-2-laptop-cooling-fan-cleaning.md"
+      "file": "videos/20260622-2-laptop-cooling-fan-cleaning.md",
+      "tags": []
     },
     {
       "title": "맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁",
-      "file": "videos/20260622-1-mac-mini-ipad-sidecar-mirroring.md"
+      "file": "videos/20260622-1-mac-mini-ipad-sidecar-mirroring.md",
+      "tags": []
     },
     {
       "title": "레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)",
-      "file": "videos/20260618-1-razer-basilisk-x-disassembly.md"
+      "file": "videos/20260618-1-razer-basilisk-x-disassembly.md",
+      "tags": []
     },
     {
       "title": "싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기",
-      "file": "videos/20260510-1-santafe-tm-turn-signal-bulb-fix.md"
+      "file": "videos/20260510-1-santafe-tm-turn-signal-bulb-fix.md",
+      "tags": []
     },
     {
       "title": "로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 연결 및 사용기",
-      "file": "videos/20230407-1-logitech-m750-flow-mouse-review.md"
+      "file": "videos/20230407-1-logitech-m750-flow-mouse-review.md",
+      "tags": []
     }
   ],
   "Lifestyle & Tech": [
     {
       "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
-      "file": "posts/20261005-2-leisurely-child-education-guide.md"
+      "file": "posts/20261005-2-leisurely-child-education-guide.md",
+      "tags": [
+        "Parenting",
+        "Education",
+        "SlowLiving",
+        "Play",
+        "SelfDirected"
+      ]
     },
     {
       "title": "책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법",
-      "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md"
+      "file": "posts/20260911-1-na-min-ae-reading-method-literacy-guide.md",
+      "tags": [
+        "Reading",
+        "Literacy",
+        "EBS",
+        "NaMinAe",
+        "SelfImprovement",
+        "BookGuide"
+      ]
     },
     {
       "title": "\"미국 주식은 무조건 우상향?\" 70년 금융사가 경고하는 인플레이션 시대 4대 생존 포트폴리오",
-      "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md"
+      "file": "posts/20260902-1-us-stock-70years-inflation-portfolio-strategy.md",
+      "tags": [
+        "Investment",
+        "AssetAllocation",
+        "Inflation",
+        "USStocks",
+        "Portfolio",
+        "AllWeather",
+        "Stagflation",
+        "PersonalFinance"
+      ]
     },
     {
       "title": "디발라 AS 로마 극적인 재계약 체결 - 의리와 낭만을 선택한 이유",
-      "file": "posts/20260715-1-dybala-as-roma-contract.md"
+      "file": "posts/20260715-1-dybala-as-roma-contract.md",
+      "tags": [
+        "Football",
+        "AS Roma",
+        "Dybala",
+        "Serie A",
+        "Sports"
+      ]
     },
     {
       "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
-      "file": "videos/20260706-1-crested-gecko-shedding-guide.md"
+      "file": "videos/20260706-1-crested-gecko-shedding-guide.md",
+      "tags": []
     },
     {
       "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
-      "file": "videos/20260628-1-peachtree-highball-cocktail-recipe.md"
+      "file": "videos/20260628-1-peachtree-highball-cocktail-recipe.md",
+      "tags": []
     },
     {
       "title": "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)",
-      "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md"
+      "file": "videos/20260602-1-crested-gecko-bomi-charcoalman.md",
+      "tags": []
     },
     {
       "title": "미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음질 테스트",
-      "file": "videos/20230428-1-mifa-a90-camping-bluetooth-speaker.md"
+      "file": "videos/20230428-1-mifa-a90-camping-bluetooth-speaker.md",
+      "tags": []
     },
     {
       "title": "선유도 구이찌정육식당 제육볶음 + 김치찌개 보글보글 점심 후기",
-      "file": "videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch.md"
+      "file": "videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch.md",
+      "tags": []
     },
     {
       "title": "애플 3-in-1 맥세이프 고속 무선 충전 거치대 추천 및 사용 후기",
-      "file": "videos/20230409-1-apple-3-in-1-magsafe-charging-stand.md"
+      "file": "videos/20230409-1-apple-3-in-1-magsafe-charging-stand.md",
+      "tags": []
     },
     {
       "title": "이쁘고 신기한 레트로 블루투스 스피커 디투(Ditoo) 사용 후기",
-      "file": "videos/20230310-1-divoom-ditoo-retro-pixel-speaker.md"
+      "file": "videos/20230310-1-divoom-ditoo-retro-pixel-speaker.md",
+      "tags": []
     },
     {
       "title": "당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기",
-      "file": "videos/20230309-1-mammoth-coffee-banana-latte-review.md"
+      "file": "videos/20230309-1-mammoth-coffee-banana-latte-review.md",
+      "tags": []
     }
   ]
 }

@@ -46,7 +46,8 @@ const generateCategories = () => {
 
             categories[data.category].push({
                 title: data.title || path.basename(filePath, ".md"),
-                file: relativePath
+                file: relativePath,
+                tags: Array.isArray(data.tags) ? data.tags : []
             });
         }
     });

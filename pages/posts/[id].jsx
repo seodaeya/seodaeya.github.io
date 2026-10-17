@@ -12,6 +12,8 @@ import TOC from '@/components/TOC';
 import SeriesNav from '@/components/SeriesNav';
 import BookmarkButton from '@/components/BookmarkButton';
 import FontSizeControl from '@/components/FontSizeControl';
+import SmartRandomWidget from '@/components/SmartRandomWidget';
+import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
 import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
@@ -233,6 +235,8 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
   const postId = canonicalId || id;
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [copiedInsta, setCopiedInsta] = useState(false);
+  useTrackReading(isRedirect ? null : `posts/${postId}`);
+  const readSet = useReadPostsSet();
 
   useEffect(() => {
     // 1. Wrap any remaining tables into isolated scroll containers
@@ -680,7 +684,12 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
                       </div>
                     )}
                     <div className={styles.relatedCardMeta}>
-                      <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{post.category}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{post.category}</span>
+                        {isContentRead(`${post.type}/${post.id}`, readSet) && (
+                          <span className="read-badge">✓ 읽음</span>
+                        )}
+                      </div>
                       <span>{formatDate(post.date)}</span>
                     </div>
                     <h4 className={styles.relatedCardTitle}>{post.title}</h4>
@@ -690,6 +699,9 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
               </div>
             </section>
           )}
+
+          {/* Smart Random Recommendation Card */}
+          <SmartRandomWidget variant="card" currentKey={`posts/${postId}`} />
 
           {/* Sponsor KakaoPay Support Box */}
           <Sponsor />

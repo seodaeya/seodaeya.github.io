@@ -2,6 +2,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import SEO from '@/components/SEO';
+import { useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import styles from '@/styles/categories.module.css';
 
 export async function getStaticProps() {
@@ -20,6 +21,8 @@ export async function getStaticProps() {
 }
 
 export default function Categories({ categories }) {
+  const readSet = useReadPostsSet();
+
   // Check if post is video or blog post
   const isVideo = (filePath) => {
     return filePath.includes('videos/') || filePath.includes('videos\\');
@@ -83,12 +86,15 @@ export default function Categories({ categories }) {
                       className={`glass-card ${styles.contentCard}`}
                     >
                       <div>
-                        <div className={styles.typeRow}>
+                        <div className={styles.typeRow} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span 
                             className={`${styles.typeBadge} ${videoType ? styles.videoBadge : styles.blogBadge}`}
                           >
                             {videoType ? '🎬 영상' : '📝 아티클'}
                           </span>
+                          {isContentRead(post.file, readSet) && (
+                            <span className="read-badge">✓ 읽음</span>
+                          )}
                         </div>
                         <h3 className={styles.cardTitle}>
                           {post.title}

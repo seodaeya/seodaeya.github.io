@@ -360,3 +360,494 @@ body {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+
+/* Read Status Badge for Post/Video List Cards */
+.read-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  color: #34d399;
+  white-space: nowrap;
+  line-height: 1.35;
+}
+
+:root.light .read-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+  color: #059669;
+}
+
+/* Smart Random Recommendation Card Widget */
+.smart-random-card {
+  margin-top: 36px;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+:root.light .smart-random-card {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.smart-random-card:hover {
+  border-color: var(--border-glass-active);
+}
+
+.smart-random-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.smart-random-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.smart-random-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.smart-random-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.smart-random-stat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+}
+
+:root.light .smart-random-stat {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.smart-random-help-toggle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--accent-light);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.smart-random-help-toggle:hover {
+  border-color: var(--accent-light);
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.smart-random-help-box {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  animation: fadeInUp 0.2s ease forwards;
+}
+
+.smart-random-help-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.smart-random-help-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.smart-random-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.smart-random-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.smart-random-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.smart-random-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(138, 43, 226, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.smart-random-action-btn:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
+}
+
+.smart-random-bookmark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  background: rgba(138, 43, 226, 0.12);
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+:root.light .smart-random-bookmark-btn {
+  background: rgba(138, 43, 226, 0.08);
+}
+
+.smart-random-bookmark-btn:hover {
+  border-color: var(--accent-light);
+  background: rgba(138, 43, 226, 0.22);
+  transform: translateY(-2px);
+}
+
+.smart-random-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: rgba(138, 43, 226, 0.14);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: var(--accent-light);
+  line-height: 1.3;
+}
+
+/* Instant Related Post Banner on Bookmark Save */
+.bookmark-instant-rec {
+  flex-basis: 100%;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.14), rgba(6, 182, 212, 0.1));
+  border: 1px solid rgba(168, 85, 247, 0.38);
+  animation: fadeInUp 0.22s ease forwards;
+}
+
+.bookmark-instant-rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.bookmark-instant-rec-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.bookmark-instant-rec-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+.bookmark-instant-rec-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bookmark-instant-rec-link {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+.bookmark-instant-rec-link:hover {
+  color: var(--accent-light) !important;
+}
+
+.bookmark-instant-rec-sublink {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-light) !important;
+  white-space: nowrap;
+}
+
+/* Bookmark Page Dedicated DNA Curation Section */
+.bookmark-curation-section {
+  margin-top: 36px;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
+}
+
+:root.light .bookmark-curation-section {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.bookmark-curation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.bookmark-curation-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 4px 0 4px 0;
+}
+
+.bookmark-curation-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.bookmark-curation-shuffle-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: rgba(138, 43, 226, 0.12);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bookmark-curation-shuffle-btn:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.bookmark-dna-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-glass);
+  margin-bottom: 16px;
+}
+
+.bookmark-dna-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.bookmark-curation-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.bookmark-curation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 15px 18px;
+  border-radius: 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-glass);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.bookmark-curation-card:hover {
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.bookmark-curation-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bookmark-curation-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.bookmark-curation-card-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.smart-random-preview {
+  margin-top: 16px;
+  padding: 15px 18px;
+  border-radius: 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  animation: fadeInUp 0.25s ease forwards;
+}
+
+.smart-random-preview:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+.smart-random-preview-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.smart-random-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.smart-random-reason-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.smart-random-preview-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.smart-random-preview-cta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .smart-random-card {
+    padding: 18px 16px;
+  }
+  .smart-random-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .smart-random-btn-group {
+    width: 100%;
+  }
+  .smart-random-action-btn,
+  .smart-random-bookmark-btn {
+    width: 100%;
+    padding: 11px 16px;
+  }
+  .smart-random-preview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .smart-random-preview-cta {
+    align-self: flex-end;
+  }
+  .bookmark-curation-section {
+    padding: 18px 16px;
+  }
+}
