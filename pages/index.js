@@ -484,8 +484,10 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                           {video.videoId ? (
                             <>
                               <img 
-                                src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
+                                src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`} 
                                 alt={video.title}
+                                width="320"
+                                height="180"
                                 className={styles.videoThumbnail}
                                 loading="lazy"
                               />
