@@ -110,14 +110,14 @@ export default function Header() {
           </Link>
 
           <Link 
-            href="/categories" 
+            href="/categories/" 
             className={`${styles.navLink} ${router.pathname === '/categories' || router.pathname.startsWith('/categories') ? styles.activeNavLink : ''}`}
           >
             카테고리
           </Link>
 
           <Link 
-            href="/ranking" 
+            href="/ranking/" 
             className={`${styles.navLink} ${router.pathname === '/ranking' || router.pathname.startsWith('/ranking') ? styles.activeNavLink : ''}`}
           >
             랭킹 🏆
@@ -149,7 +149,7 @@ export default function Header() {
                 onMouseLeave={handleMouseLeave}
               >
                 <Link 
-                  href="/cart" 
+                  href="/cart/" 
                   className={styles.dropdownItem}
                   onClick={() => setIsServicesOpen(false)}
                 >
@@ -162,7 +162,7 @@ export default function Header() {
                 </Link>
 
                 <Link
-                  href="/word-train"
+                  href="/word-train/"
                   className={styles.dropdownItem}
                   onClick={() => setIsServicesOpen(false)}
                 >
@@ -178,14 +178,14 @@ export default function Header() {
           </div>
 
           <Link 
-            href="/about" 
+            href="/about/" 
             className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
           >
             소개
           </Link>
 
           <Link 
-            href="/bookmarks" 
+            href="/bookmarks/" 
             className={`${styles.navLink} ${router.pathname === '/bookmarks' ? styles.activeNavLink : ''}`}
           >
             북마크 🔖
@@ -308,7 +308,7 @@ export default function Header() {
             </Link>
 
             <Link 
-              href="/categories" 
+              href="/categories/" 
               className={`${styles.mobileNavLink} ${router.pathname === '/categories' || router.pathname.startsWith('/categories') ? styles.activeMobileNavLink : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -316,7 +316,7 @@ export default function Header() {
             </Link>
 
             <Link 
-              href="/ranking" 
+              href="/ranking/" 
               className={`${styles.mobileNavLink} ${router.pathname === '/ranking' || router.pathname.startsWith('/ranking') ? styles.activeMobileNavLink : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -330,7 +330,7 @@ export default function Header() {
               </div>
               <div className={styles.mobileServiceList}>
                 <Link 
-                  href="/cart" 
+                  href="/cart/" 
                   className={`${styles.mobileServiceItem} ${isCartActive ? styles.activeMobileNavLink : ''}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -342,7 +342,7 @@ export default function Header() {
                   </div>
                 </Link>
                 <Link 
-                  href="/word-train" 
+                  href="/word-train/" 
                   className={styles.mobileServiceItem}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -357,7 +357,7 @@ export default function Header() {
             </div>
 
             <Link 
-              href="/about" 
+              href="/about/" 
               className={`${styles.mobileNavLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeMobileNavLink : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -365,7 +365,7 @@ export default function Header() {
             </Link>
 
             <Link 
-              href="/bookmarks" 
+              href="/bookmarks/" 
               className={`${styles.mobileNavLink} ${router.pathname === '/bookmarks' ? styles.activeMobileNavLink : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

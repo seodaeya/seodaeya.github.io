@@ -89,7 +89,7 @@ export default function BookmarkButton({ id, title }) {
             <Link href={relatedPost.url} className="bookmark-instant-rec-link">
               {relatedPost.title} →
             </Link>
-            <Link href="/bookmarks" className="bookmark-instant-rec-sublink">
+            <Link href="/bookmarks/" className="bookmark-instant-rec-sublink">
               내 북마크 맞춤 추천 전체보기
             </Link>
           </div>

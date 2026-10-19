@@ -8,6 +8,7 @@ export default function SEO({
   type = 'website',
   image = '/na_rd.jpeg', // 기본 프로필 이미지 경로
   date,
+  dateModified,
   videoId,
   noindex = false,
 }) {
@@ -89,6 +90,8 @@ export default function SEO({
   let specificSchema = null;
 
   if (type === 'article') {
+    const publishedIso = date ? new Date(date).toISOString() : new Date().toISOString();
+    const modifiedIso = (dateModified || date) ? new Date(dateModified || date).toISOString() : publishedIso;
     specificSchema = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -99,7 +102,8 @@ export default function SEO({
       'headline': pageTitle,
       'description': safeDescription,
       'image': ogImage,
-      'datePublished': date ? new Date(date).toISOString() : new Date().toISOString(),
+      'datePublished': publishedIso,
+      'dateModified': modifiedIso,
       'author': {
         '@type': 'Person',
         'name': 'NaRD',
@@ -115,6 +119,8 @@ export default function SEO({
       }
     };
   } else if ((type === 'video' || type === 'video.other') && videoId) {
+    const publishedIso = date ? new Date(date).toISOString() : new Date().toISOString();
+    const modifiedIso = (dateModified || date) ? new Date(dateModified || date).toISOString() : publishedIso;
     const thumbnailList = [
       `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
       `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
@@ -128,7 +134,9 @@ export default function SEO({
       'name': pageTitle,
       'description': safeDescription,
       'thumbnailUrl': thumbnailList,
-      'uploadDate': date ? new Date(date).toISOString() : new Date().toISOString(),
+      'uploadDate': publishedIso,
+      'datePublished': publishedIso,
+      'dateModified': modifiedIso,
       'embedUrl': `https://www.youtube.com/embed/${videoId}`,
       'publisher': {
         '@type': 'Person',
@@ -197,8 +205,14 @@ export default function SEO({
       <meta name="anthropic-crawler" content={noindex ? "noindex, follow" : "index, follow"} />
       <meta name="perplexitybot" content={noindex ? "noindex, follow" : "index, follow"} />
 
-      {/* Canonical Link */}
+      {/* Canonical Link & RSS Auto-Discovery */}
       <link rel="canonical" href={canonicalUrl} />
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="여전히, 나는 사람이다. RSS Feed"
+        href="https://seodaeya.github.io/rss.xml"
+      />
 
       {/* Language hreflang tags (ko & x-default only to prevent single-URL multi-language conflict) */}
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />

@@ -10,11 +10,15 @@ import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
+import BookmarkButton from '@/components/BookmarkButton';
+import FontSizeControl from '@/components/FontSizeControl';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
+import gitLastModUtils from '@/lib/gitLastMod';
 import styles from '@/styles/video.module.css';
 
 const { createPlainExcerpt } = contentUtils;
+const { resolveContentLastMod } = gitLastModUtils;
 
 export async function getStaticPaths() {
   const videosDir = path.join(process.cwd(), '/files/videos');
@@ -114,11 +118,12 @@ export async function getStaticProps({ params }) {
       prevVideo,
       nextVideo,
       relatedVideos,
+      dateModified: resolveContentLastMod('files/videos', targetFilename, data),
     },
   };
 }
 
-export default function Video({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, prevVideo, nextVideo, relatedVideos }) {
+export default function Video({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, prevVideo, nextVideo, relatedVideos, dateModified }) {
   useTrackReading(isRedirect ? null : `videos/${id}`);
   const readSet = useReadPostsSet();
 
@@ -191,6 +196,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
         url={`https://seodaeya.github.io/videos/${id}/`}
         type="video.other"
         date={frontmatter.date}
+        dateModified={dateModified}
         videoId={frontmatter.videoId}
         noindex={frontmatter.noindex === true}
       />
@@ -211,7 +217,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
           <header className={styles.videoHeader}>
             {frontmatter.category && (
               <Link
-                href={`/categories#category-${frontmatter.category.toUpperCase()}`}
+                href={`/categories/#category-${frontmatter.category}`}
                 className="category-badge"
                 style={{ marginBottom: '16px' }}
               >
@@ -226,6 +232,11 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
               <span className={styles.metaSeparator}>|</span>
               <span className={styles.metaItem}>작성자: NaRD</span>
             </div>
+            {/* 독서 도구: 북마크 저장 + 글꼴 크기 조절 (로컬 저장, 로그인 불필요) */}
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '14px', flexWrap: 'wrap' }}>
+              <BookmarkButton id={id} title={frontmatter.title} />
+              <FontSizeControl />
+            </div>
           </header>
 
           {/* Embedded YouTube Video Container */}
@@ -235,6 +246,7 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
                 className={styles.videoIframe}
                 src={`https://www.youtube-nocookie.com/embed/${frontmatter.videoId}`}
                 title={frontmatter.title}
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />

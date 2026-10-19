@@ -34,6 +34,7 @@ function verifySEO() {
   const htmlFiles = walkHtmlFiles(outDir);
   const robotsByRelPath = new Map();
   const canonicalByRelPath = new Map();
+  const dateModByRelPath = new Map();
 
   // 1. 전수 HTML 메타데이터 검사 (Canonical 단일성, Trailing Slash, Redirect 페이지 noindex, hreflang 충돌)
   for (const file of htmlFiles) {
@@ -108,6 +109,19 @@ function verifySEO() {
     if (!/<meta\s+http-equiv="content-language"\s+content="ko"/i.test(html)) {
       errors.push(`[메타 언어 태그 누락] ${relPath}: Bing SEO/GEO 필수 <meta http-equiv="content-language" content="ko"> 태그가 없습니다.`);
     }
+
+    // RSS Auto-Discovery 링크 검증 (피드 리더/검색엔진 자동 발견)
+    if (!/<link\s+rel="alternate"\s+type="application\/rss\+xml"/i.test(html)) {
+      errors.push(`[RSS Auto-Discovery 누락] ${relPath}: <link rel="alternate" type="application/rss+xml"> 태그가 없습니다.`);
+    }
+
+    const datePairMatch = html.match(/"datePublished":"([^"]+)","dateModified":"([^"]+)"/);
+    if (datePairMatch) {
+      dateModByRelPath.set(relPath, {
+        datePublished: datePairMatch[1],
+        dateModified: datePairMatch[2],
+      });
+    }
   }
 
   // 2. Sitemap.xml 무결성 검사 (noindex 포함 여부, Trailing Slash, Lastmod 일괄 덮어쓰기 방지)
@@ -153,6 +167,15 @@ function verifySEO() {
           errors.push(`[Sitemap lastmod 형식 오류] ${loc}: ${lastmod}`);
         }
         lastmodSet.add(lastmod);
+
+        if (relUrlPath.startsWith('posts/') || relUrlPath.startsWith('videos/')) {
+          const datePair = dateModByRelPath.get(expectedHtmlRelPath);
+          if (!datePair) {
+            errors.push(`[JSON-LD dateModified 누락] ${expectedHtmlRelPath}: 구조화 데이터에 datePublished/dateModified 필드가 없습니다.`);
+          } else if (!datePair.dateModified.startsWith(lastmod)) {
+            errors.push(`[Sitemap <-> JSON-LD dateModified 불일치] ${expectedHtmlRelPath}: sitemap(${lastmod}) !== dateModified(${datePair.dateModified})`);
+          }
+        }
       }
     }
 

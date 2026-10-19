@@ -181,7 +181,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
             AI라는 스마트한 도구 위에서 피어나는 가장 인간다운 생각과 일상의 기록.
           </p>
           <div className={styles.heroActions}>
-            <Link href="/about" className={styles.primaryButton}>
+            <Link href="/about/" className={styles.primaryButton}>
               블로그 이야기 읽기 ✨
             </Link>
             <a href="#feed" className={styles.secondaryButton}>
@@ -349,7 +349,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   );
                 })}
                 {/* 2~5위 하단 전체 랭킹 종합 순위 바로가기 버튼 */}
-                <Link href="/ranking" className={styles.leaderboardViewAllCta}>
+                <Link href="/ranking/" className={styles.leaderboardViewAllCta}>
                   <span>🏆</span> <strong>실시간 전체 랭킹 종합 순위표 보러가기 →</strong>
                 </Link>
               </div>
@@ -365,6 +365,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                 <iframe
                   src={`https://www.youtube.com/embed/${featuredVideo.videoId}`}
                   title={featuredVideo.title}
+                  loading="lazy"
                   allowFullScreen
                 ></iframe>
               </div>
@@ -413,7 +414,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   <h2 className={styles.columnTitle}>
                     <span className={styles.columnIcon}>📝</span> {cleanQuery ? `검색된 블로그 글 (${displayedPosts.length})` : '최근 블로그 글'}
                   </h2>
-                  <Link href="/categories" className={styles.viewAllLink}>
+                  <Link href="/categories/" className={styles.viewAllLink}>
                     카테고리 전체보기 →
                   </Link>
                 </div>

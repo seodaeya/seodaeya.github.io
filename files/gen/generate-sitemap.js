@@ -1,43 +1,12 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 const matter = require('gray-matter');
+const { getGitLastMod, resolveContentLastMod } = require('../../lib/gitLastMod');
 
 const siteUrl = 'https://seodaeya.github.io';
 const publicDir = path.join(process.cwd(), 'public');
 const postsDir = path.join(process.cwd(), 'files/posts');
 const videosDir = path.join(process.cwd(), 'files/videos');
-
-const normalizeDateStr = (rawDate, filename = '') => {
-  if (rawDate) {
-    try {
-      const d = new Date(rawDate);
-      if (!isNaN(d.getTime())) {
-        return d.toISOString().split('T')[0];
-      }
-    } catch (e) {}
-  }
-  const match = filename.match(/^(\d{4})(\d{2})(\d{2})/);
-  if (match) {
-    return `${match[1]}-${match[2]}-${match[3]}`;
-  }
-  return '2026-01-01';
-};
-
-const getGitLastMod = (relFilePath, fallbackDate) => {
-  try {
-    const out = execSync(`git log -1 --format="%cs" -- "${relFilePath}"`, {
-      cwd: process.cwd(),
-      stdio: ['ignore', 'pipe', 'ignore'],
-    })
-      .toString()
-      .trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) {
-      return out;
-    }
-  } catch (e) {}
-  return fallbackDate;
-};
 
 const getContentEntries = (dir) => {
   if (!fs.existsSync(dir)) return [];
@@ -50,10 +19,7 @@ const getContentEntries = (dir) => {
       const { data } = matter(fs.readFileSync(fullPath, 'utf8'));
       // noindex: true frontmatter pages are strictly excluded from sitemap.xml
       if (data.noindex === true) continue;
-      const frontmatterDate = normalizeDateStr(data.updated || data.lastmod || data.date, file);
-      const relFilePath = path.join(relDir, file);
-      const gitDate = getGitLastMod(relFilePath, frontmatterDate);
-      const lastmod = gitDate > frontmatterDate ? gitDate : frontmatterDate;
+      const lastmod = resolveContentLastMod(relDir, file, data);
       entries.push({
         id: file.replace('.md', ''),
         lastmod,

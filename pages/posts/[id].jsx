@@ -15,9 +15,12 @@ import FontSizeControl from '@/components/FontSizeControl';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
+import gitLastModUtils from '@/lib/gitLastMod';
 import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/post.module.css';
+
+const { resolveContentLastMod } = gitLastModUtils;
 
 const PostContent = React.memo(function PostContent({ content }) {
   return (
@@ -237,11 +240,12 @@ export async function getStaticProps({ params }) {
       seriesNav,
       views,
       canonicalId: targetFilename.replace('.md', ''),
+      dateModified: resolveContentLastMod('files/posts', targetFilename, data),
     },
   };
 }
 
-export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts, seriesNav, views, canonicalId }) {
+export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmatter, content, excerpt, readingTime, prevPost, nextPost, relatedPosts, seriesNav, views, canonicalId, dateModified }) {
   const postId = canonicalId || id;
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [copiedInsta, setCopiedInsta] = useState(false);
@@ -483,6 +487,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
         url={`https://seodaeya.github.io/posts/${id}/`}
         type="article"
         date={frontmatter.date}
+        dateModified={dateModified}
         noindex={frontmatter.noindex === true}
       />
 
@@ -505,7 +510,7 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
           <header className={styles.postHeader}>
             {frontmatter.category && (
               <Link
-                href={`/categories#category-${frontmatter.category.toUpperCase()}`}
+                href={`/categories/#category-${frontmatter.category}`}
                 className="category-badge"
                 style={{ marginBottom: '16px' }}
               >
