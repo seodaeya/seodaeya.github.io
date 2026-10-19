@@ -43,3 +43,18 @@
     2. In `generate-sitemap.js`, always evaluate `Math.max(gitDate, frontmatterDate)` for posts and videos, and pass stable historical fallback dates (never "today") for static core pages.
     3. Refer to [`docs/sitemap-lastmod-architecture.md`](docs/sitemap-lastmod-architecture.md) for full architecture rationale.
 
+## 7. Mandatory Agent Communication Channel Rule
+- **Always read [`docs/agent-channel.md`](docs/agent-channel.md) before starting any task in this repository.**
+  - It is the **agent-to-agent communication channel**: it holds the current plan, design decisions, implementation direction, thread board, open issues, and handover state.
+  - It contains the **invariants (I-1 ~ I-4)** that must never be violated, and records which changes are committed vs. uncommitted in the working tree.
+- **Always append a new entry to section `7. 대화 로그 (append-only)` when finishing a task.**
+  - Use the message format defined in section `0-4` (sender → receiver, thread ID, status, summary, evidence, next action, cautions).
+  - Update the matching row in section `2. 스레드 보드` at the same time.
+  - **Never delete or overwrite existing entries** — corrections must be added as new entries.
+- `docs/` is not deployed (it is not under `public/`), so editing the channel never affects the build or the SEO guardrail.
+- **The whole `docs/` directory is gitignored (`.gitignore`: `docs/`) as the agent working area, so the channel exists only on the local working copy.**
+  - It is never committed, never pushed, and therefore **absent in fresh clones, git worktrees, and CI runners**.
+  - So: **if `docs/agent-channel.md` exists, read it first and append to it.** If it does not exist, skip this section and do not create the file unless the user asks.
+  - Do not "fix" the missing file by committing it — that is a deliberate decision, not an oversight.
+  - Caveat: because the *entire* directory is ignored, a doc under `docs/` that genuinely *should* be committed needs an explicit `git add -f docs/<file>`. Already-tracked docs (`docs/sitemap-lastmod-architecture.md`, `docs/coupang-product-lookup.md`) are unaffected by the rule and keep being tracked normally.
+

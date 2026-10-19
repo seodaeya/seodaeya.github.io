@@ -40,3 +40,6 @@ workers/cart-product-lookup/.dev.vars
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent working files (local-only: must never be committed or deployed)
+docs/
