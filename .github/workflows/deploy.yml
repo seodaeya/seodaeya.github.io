@@ -80,7 +80,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      # 9. 검색엔진 실시간 자동 핑 (IndexNow: Bing, Naver, Yandex, Perplexity)
-      - name: Submit to IndexNow
-        run: node files/gen/submit-indexnow.js
+      # 9. 검색엔진 실시간 자동 핑 (IndexNow: Bing, Naver, Yandex, Seznam, Yep)
+      #    ⚠️ Google 은 IndexNow 미지원 → Google 색인은 Search Console 수동 요청만 가능.
+      #    전량이 아닌 "직전 커밋 대비 변경분"만 제출해 검색엔진 신호의 노이즈를 막는다.
+      #    push 이벤트에서만 실행한다(schedule/dispatch 는 콘텐츠 변경이 없음).
+      - name: Submit changed URLs to IndexNow
+        if: github.event_name == 'push'
+        run: node files/gen/submit-indexnow.js --base "${{ github.event.before }}"
         continue-on-error: true
