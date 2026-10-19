@@ -115,6 +115,26 @@ function verifySEO() {
       errors.push(`[RSS Auto-Discovery 누락] ${relPath}: <link rel="alternate" type="application/rss+xml"> 태그가 없습니다.`);
     }
 
+    // CLS 방어 검증: 종횡비를 예약하지 않는 <img> 는 width/height 속성이 필수
+    // (아래 래퍼들은 CSS로 공간이 이미 예약되어 있어 예외)
+    const CLS_SAFE_WRAPPERS = [
+      'relatedCardImageWrapper',
+      'videoThumbnailWrapper',
+      'imageWrapper',
+      'qrImageFrame',
+    ];
+    const imgRe = /<img\b[^>]*>/gi;
+    let imgMatch;
+    while ((imgMatch = imgRe.exec(html)) !== null) {
+      const imgTag = imgMatch[0];
+      if (/\bwidth\s*=/i.test(imgTag) && /\bheight\s*=/i.test(imgTag)) continue;
+      const preceding = html.slice(Math.max(0, imgMatch.index - 160), imgMatch.index);
+      if (CLS_SAFE_WRAPPERS.some((cls) => preceding.includes(cls))) continue;
+      errors.push(
+        `[이미지 크기 속성 누락(CLS)] ${relPath}: width/height 없는 <img> — ${imgTag.slice(0, 100)}`
+      );
+    }
+
     const datePairMatch = html.match(/"datePublished":"([^"]+)","dateModified":"([^"]+)"/);
     if (datePairMatch) {
       dateModByRelPath.set(relPath, {

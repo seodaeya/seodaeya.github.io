@@ -15,10 +15,12 @@ import FontSizeControl from '@/components/FontSizeControl';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
 import gitLastModUtils from '@/lib/gitLastMod';
+import enrichContentImages from '@/lib/enrichContentImages';
 import styles from '@/styles/video.module.css';
 
 const { createPlainExcerpt } = contentUtils;
 const { resolveContentLastMod } = gitLastModUtils;
+const { enrichLocalImageDimensions } = enrichContentImages;
 
 export async function getStaticPaths() {
   const videosDir = path.join(process.cwd(), '/files/videos');
@@ -113,7 +115,8 @@ export async function getStaticProps({ params }) {
       isRedirect: false,
       id: params.id,
       frontmatter: data,
-      content: marked(content),
+      // CLS 방어: 로컬 이미지에 실제 width/height 주입 (외부 URL은 그대로)
+      content: enrichLocalImageDimensions(marked(content)),
       excerpt: createPlainExcerpt(content, 120) || '영상 정보를 확인해보세요.',
       prevVideo,
       nextVideo,

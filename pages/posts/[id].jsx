@@ -16,11 +16,13 @@ import SmartRandomWidget from '@/components/SmartRandomWidget';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
 import gitLastModUtils from '@/lib/gitLastMod';
+import enrichContentImages from '@/lib/enrichContentImages';
 import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/post.module.css';
 
 const { resolveContentLastMod } = gitLastModUtils;
+const { enrichLocalImageDimensions } = enrichContentImages;
 
 const PostContent = React.memo(function PostContent({ content }) {
   return (
@@ -220,7 +222,8 @@ export async function getStaticProps({ params }) {
           const html = origBlockquote({ tokens });
           return html.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(<br\s*\/?>)?/gi, '');
         };
-        return marked(content, { renderer });
+        // CLS 방어: 로컬 이미지에 실제 width/height 주입 (외부 URL은 그대로)
+        return enrichLocalImageDimensions(marked(content, { renderer }));
       })(),
       excerpt: (() => {
         const base = (data.excerpt || '').trim();
