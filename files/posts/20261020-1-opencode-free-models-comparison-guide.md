@@ -9,30 +9,30 @@ excerpt: "OpenCode에서 무료로 쓸 수 있는 9개 모델을 컨텍스트·�
 
 ## 🚀 1. 무료 모델 9종, 지금 다시 정리하는 이유
 
-OpenCode의 무료 모델 라인업은 고정되어 있지 않습니다. 어떤 모델은 조용히 사라지고, 어떤 모델은 이름만 남은 채 유료로 전환됩니다. 실제로 2026년 10월 초까지 무료로 제공되던 Muse Spark 1.3 Contributor Free는 현재 사용할 수 없고, UI에는 유료 모델만 남아 있습니다. 무료 모델을 고를 때는 <strong>“지금 이 모델이 정말 무료인가”</strong>와 <strong>“내 작업에 맞는가”</strong>를 함께 확인해야 합니다.
+OpenCode의 무료 모델 라인업은 고정되어 있지 않습니다. 어떤 모델은 조용히 사라지고, 어떤 모델은 이름만 남은 채 유료로 전환됩니다. 실제로 [<strong>지난 글(OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안)</strong>](/posts/20261017-1-opencode-muse-spark-free-model-configuration-guide/)에서 다룬 것처럼, 2026년 10월 초까지 무료로 제공되던 `Muse Spark 1.3 Contributor Free`는 무료 엔드포인트가 종료되어 현재 사용할 수 없고 UI에는 유료 모델만 남아 있습니다. 무료 모델을 고를 때는 <strong>“지금 이 모델이 정말 무료인가”</strong>와 <strong>“내 작업에 맞는가”</strong>를 함께 확인해야 합니다.
 
-2026년 10월 20일 기준, OpenCode Console에서 무료로 제공되는 모델 중 코딩 에이전트의 메인·서브로 바로 쓸 수 있는 9종은 다음과 같습니다.
+2026년 10월 20일 기준, OpenCode Console에서 무료로 제공되는 모델 중 코딩 에이전트의 메인·서브로 바로 쓸 수 있는 핵심 9종은 다음과 같습니다.
 
-- Beam Free
-- DeepSeek V4.1 Flash Free
-- GLM-5.3-Flash Free
-- LongCat 2.5 Preview Free
-- MiMo-V2.6-Flash Free
-- MiniMax M3.1 Flash Free
-- Nemotron 3 Ultra Free
-- Nemotron 3.5 Lightning Free
-- Nemotron 3.5 Super VL Free
+- <strong>Beam Free</strong> (`opencode/beam-free`)
+- <strong>DeepSeek V4.1 Flash Free</strong> (`opencode/deepseek-v4.1-flash-free`)
+- <strong>GLM-5.3-Flash Free</strong> (`opencode/glm-5.3-flash-free`)
+- <strong>LongCat 2.5 Preview Free</strong> (`opencode/longcat-2.5-preview-free`)
+- <strong>MiMo-V2.6-Flash Free</strong> (`opencode/mimo-v2.6-flash-free`)
+- <strong>MiniMax M3.1 Flash Free</strong> (`opencode/minimax-m3.1-flash-free`)
+- <strong>Nemotron 3 Ultra Free</strong> (`opencode/nemotron-3-ultra-free`)
+- <strong>Nemotron 3.5 Lightning Free</strong> (`opencode/nemotron-3.5-lightning-free`)
+- <strong>Nemotron 3.5 Super VL Free</strong> (`opencode/nemotron-3.5-super-vl-free`)
 
-OpenCode 문서에는 Big Pickle, LL Alpha Free, Exo Free, MiMo-V2.5 Free, Jev 1.13 Free처럼 추가 무료 모델도 있습니다. 이 글은 그중에서도 코딩 작업에 바로 투입할 수 있는 9종만 다룹니다.
+OpenCode 공식 문서와 실시간 카탈로그(`opencode models`)에는 이외에도 `Big Pickle`, `LL Alpha Free`, `Exo Free`, `MiMo-V2.5 Free`, `Space Bunny Free`, `Jev 1.13 Free` 같은 무료 모델이 더 있습니다. 다만 `Jev 1.13 Free`는 텍스트·코드를 생성하는 LLM이 아니라 상태(State)를 평가해 확률·점수를 반환하는 특수 의사결정 모델(`System One`)이고, `MiMo-V2.5 Free`는 후속 버전(`V2.6`)이 나와 있어, 이 글은 <strong>범용 코딩 작업에 바로 투입할 수 있는 주력 9종</strong>만 집중 비교합니다.
 
-모두 <strong>입력·출력·캐시 토큰 요금이 0원</strong>입니다. 하지만 무료라는 말이 모든 조건에서 같다는 뜻은 아닙니다. 모델마다 문맥 길이와 출력 한도가 다르고, 잘하는 작업이 다르며, 프롬프트 데이터를 어떻게 처리하는지도 다릅니다. 특히 무료 프로모션은 <strong>한시적</strong>이고, 요청량이나 속도에 제한이 붙을 수 있습니다.
+9종 모두 <strong>입력·출력·캐시 읽기(Cached Read) 토큰 요금이 0원</strong>입니다. 하지만 무료라는 말이 모든 조건에서 같다는 뜻은 아닙니다. 모델마다 문맥 길이와 출력 한도가 다르고, 잘하는 작업이 다르며, 프롬프트 데이터를 어떻게 처리하는지도 다릅니다. 특히 무료 프로모션은 <strong>한시적</strong>이고, 요청량이나 속도에 제한이 붙을 수 있습니다.
 
 이 글은 다음 기준으로 작성했습니다.
 
-- <strong>문맥·출력 수치</strong>: OpenCode 모델 카탈로그 기준. 원 제공사 스펙과 다를 수 있습니다.
+- <strong>문맥·출력 수치</strong>: OpenCode 모델 카탈로그(`models.dev`) 기준. 원 제공사 스펙과 다를 수 있습니다.
 - <strong>성능 수치</strong>: 각 제공사 모델 카드와 공개 벤치마크. 측정 조건이 모델마다 다릅니다.
 - <strong>실사용량</strong>: OpenCode Data의 최근 7일 토큰 사용량. 무료와 유료 변형이 합산된 값입니다.
-- <strong>데이터 정책</strong>: OpenCode 공식 문서의 무료 모델 고지 기준.
+- <strong>데이터 정책</strong>: OpenCode 공식 문서(`Console Models — Privacy`)의 무료 모델 고지 기준.
 
 > 📌 <strong>먼저 기억할 것</strong><br />
 > 무료 모델은 “토큰 비용이 0원”일 뿐, “무제한”이나 “무조건 안전”이 아닙니다. 민감한 코드일수록 모델의 데이터 정책을 먼저 확인하세요.
@@ -41,19 +41,19 @@ OpenCode 문서에는 Big Pickle, LL Alpha Free, Exo Free, MiMo-V2.5 Free, Jev 1
 
 ## 📊 2. 한눈에 보는 9종 비교
 
-| 모델 | 문맥/출력 | 강점 | 약점 | 용도 |
+| 모델 (설정 ID) | 문맥 / 출력 | 강점 | 약점 | 추천 용도 |
 | :--- | :--- | :--- | :--- | :--- |
-| <strong>DeepSeek V4.1 Flash Free</strong> | 200K / 32K<br />(원본 1M / 384K) | 코딩·추론 최상위, 텍스트+이미지 | 지식 컷오프 2025-05, 32K 출력, 느릴 수 있음 | 복잡한 디버깅, 리팩터링, 알고리즘 |
-| <strong>GLM-5.3-Flash Free</strong> | 200K / 32K<br />(원본 1M) | 균형 최고, 멀티모달(영상·PDF) | 최상난도 추론은 DeepSeek에 밀림 | 일상 코딩 기본, 프론트/UI, 문서 |
-| <strong>MiMo-V2.6-Flash Free</strong> | 200K / 32K<br />(원본 1M) | 옴니모달, 에이전트 강함 | 데이터 학습 이용 가능, 추론 강도 조절 불가 | 멀티모달 에이전트, GUI 자동화 |
-| <strong>MiniMax M3.1 Flash Free</strong> | 1M / 512K | 초장문, 512K 출력, 멀티모달 | 코딩 일관성 중간, 신모델 | 대형 저장소 분석, 장문 생성 |
-| <strong>LongCat 2.5 Preview Free</strong> | 1M / 131K | 1M 문맥·툴콜, 텍스트+이미지 | 공식 코딩 벤치 제한적, 프리뷰, API 전용 | 장기 에이전트, 대형 코드베이스 탐색 |
-| <strong>Beam Free</strong> | 1M / 131K | 토큰 효율, 1M, 텍스트 전용 | 비전 불가, DeepSWE 43.0, 30일 보관 | 장문 텍스트/코드 분석 |
-| <strong>Nemotron 3 Ultra Free</strong> | 1M / 128K | GPQA 86.7, 추론·오케스트레이션 | 코딩 지수 낮음, 느림, 데이터 로깅 | 계획·리서치·멀티에이전트 설계 |
-| <strong>Nemotron 3.5 Lightning Free</strong> | 262K / 262K<br />(원본 최대 1M) | 300+ tps, SWE 51.6, 텍스트 전용 | 복잡한 추론 약함, 데이터 로깅 | 단순 수정, 서브에이전트, 대량 작업 |
-| <strong>Nemotron 3.5 Super VL Free</strong> | 1M / 131K | UI·문서·영상, 600+ tps | 코딩 메인으로는 약함, 데이터 로깅 | 스크린샷·PDF·영상 분석 |
+| <strong>DeepSeek V4.1 Flash Free</strong><br />`opencode/deepseek-v4.1-flash-free` | 200K / 32K<br />(원본 1M / 384K) | 코딩·추론 최상위, 텍스트+이미지, 제로 리텐션 | 지식 컷오프 2025-05, 32K 출력 제한, 긴 사고 시간 | 복잡한 디버깅, 리팩터링, 알고리즘 |
+| <strong>GLM-5.3-Flash Free</strong><br />`opencode/glm-5.3-flash-free` | 200K / 32K<br />(원본 1M) | 균형 최고, 멀티모달(이미지·영상·PDF), 제로 리텐션 | 최상난도 추론은 DeepSeek에 밀림 | 일상 코딩 기본값, 프론트/UI, 문서 |
+| <strong>MiMo-V2.6-Flash Free</strong><br />`opencode/mimo-v2.6-flash-free` | 200K / 32K<br />(원본 1M) | 옴니모달(오디오 포함), 에이전트 강함 | <strong>데이터 학습 이용 가능</strong>, 추론 강도 조절 불가 | 멀티모달 에이전트, GUI 자동화 (개인용) |
+| <strong>MiniMax M3.1 Flash Free</strong><br />`opencode/minimax-m3.1-flash-free` | 1M / 512K | <strong>512K 초대형 출력</strong>, 1M 문맥, 멀티모달, 제로 리텐션 | 코딩 일관성 중간, 장문 생성 시 지연 | 대형 저장소 분석, 장문 코드·문서 생성 |
+| <strong>LongCat 2.5 Preview Free</strong><br />`opencode/longcat-2.5-preview-free` | 1M / 131K | 1M 문맥·툴콜, 텍스트+이미지, 제로 리텐션 | 공식 코딩 벤치 제한적, 프리뷰 | 장기 에이전트, 대형 코드베이스 탐색 |
+| <strong>Beam Free</strong><br />`opencode/beam-free` | 1M / 131K | 토큰 효율 우수, 1M 문맥, 학습 미사용 | 텍스트 전용(비전 불가), DeepSWE 43.0, <strong>30일 보관</strong> | 장문 텍스트·로그·코드 분석 |
+| <strong>Nemotron 3 Ultra Free</strong><br />`opencode/nemotron-3-ultra-free` | 1M / 128K | GPQA 86.7, 고난도 추론·오케스트레이션 | 코딩 지수 낮음, 느림, <strong>NVIDIA 세션 로깅</strong> | 계획·리서치·멀티에이전트 설계 |
+| <strong>Nemotron 3.5 Lightning Free</strong><br />`opencode/nemotron-3.5-lightning-free` | 262K / 262K<br />(원본 최대 1M) | <strong>300+ tps 초고속</strong>, SWE 51.6, 262K 출력 | 복잡한 추론 약함, 텍스트 전용, <strong>NVIDIA 로깅</strong> | 단순 수정, 고속 탐색 서브에이전트 |
+| <strong>Nemotron 3.5 Super VL Free</strong><br />`opencode/nemotron-3.5-super-vl-free` | 1M / 131K | UI·문서·영상 비전 특화, 600+ tps | 코딩 메인으로는 부적합, <strong>NVIDIA 로깅</strong> | 스크린샷·PDF·차트·영상 분석 보조 |
 
-모델 ID는 `/models`에서 확인할 수 있습니다. 설정 파일에는 `opencode/<모델 ID>` 형식으로 넣으며, 예를 들어 GLM은 `opencode/glm-5.3-flash-free`, DeepSeek은 `opencode/deepseek-v4.1-flash-free`입니다.
+모델 ID는 TUI에서 `/models` 또는 터미널에서 `opencode models opencode` 명령어로 확인할 수 있습니다. 설정 파일(`opencode.jsonc`)이나 CLI 실행 시 위 표의 `opencode/<모델 ID>` 문자열을 그대로 복사해 넣으면 됩니다.
 
 > ⚠️ <strong>수치 해석 주의</strong><br />
 > DeepSeek·GLM·MiMo는 원 제공사 기준 1M 문맥을 지원하지만, OpenCode 무료 엔드포인트에서는 200K로 표시됩니다. 반대로 LongCat·Beam·MiniMax·Nemotron Ultra·Super VL은 OpenCode에서도 1M급 문맥을 제공합니다. 실제 요청 전에는 `/models`의 표시를 한 번 더 확인하세요.
