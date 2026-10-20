@@ -113,11 +113,11 @@ LongCat 2.5 Preview는 1.6T MoE에 약 48B를 활성화하는 Meituan의 프리�
 
 공식 코딩 벤치마크가 제한적이라는 점은 분명한 약점입니다. 공개된 실사용 후기에서는 문맥 유지, 툴 호출, 블로커 우회 능력이 좋다는 평가가 나오지만, 이는 벤치마크가 아닌 개인 경험입니다. 프리뷰 모델이고 API 전용이며 오픈 웨이트도 아닙니다. <strong>대형 코드베이스를 탐색하는 용도로는 매력적이지만, 핵심 프로덕션 작업에는 결과 검증이 필수</strong>입니다.
 
-### 2) Beam Free — 토큰 효율형 텍스트 specialist
+### 2) Beam Free — 토큰 효율형 텍스트 특화 모델
 
 Beam은 Reflection의 501B MoE 모델로, 23B를 활성화합니다. 1M 문맥을 지원하고 텍스트만 입력받습니다. SWE-bench Pro 65.9를 기록했지만 DeepSWE 43.0, SciCode 48.3으로 코딩 최상위권은 아닙니다. 대신 <strong>토큰 효율이 좋아 긴 코드·로그·문서를 다룰 때 비용 대비 처리량이 좋습니다</strong>.
 
-텍스트 전용이라는 점이 가장 큰 제약입니다. 스크린샷이나 PDF를 함께 넣어야 하는 작업에는 맞지 않습니다. 또한 OpenCode 문서 기준으로 프롬프트가 학습에 사용되지는 않지만 <strong>30일간 보관</strong>되며, 일부 국가에서는 사용할 수 없습니다.
+텍스트 전용이라는 점이 가장 큰 제약입니다. 스크린샷이나 PDF를 함께 넣어야 하는 작업에는 맞지 않습니다. 또한 OpenCode 문서 기준으로 프롬프트가 학습에 사용되지는 않지만 <strong>안전 목적으로 30일간 보관</strong>되며, 일부 국가에서는 사용할 수 없습니다.
 
 ### 3) MiniMax M3.1 Flash Free — 초대형 출력형
 
@@ -147,11 +147,11 @@ Nemotron 3.5 Lightning은 30B MoE에 3B를 활성화하는 초경량 모델입�
 
 OpenCode에서는 262K 문맥과 262K 출력으로 표시됩니다. 원 제공사 기준으로는 최대 1M 문맥을 지원합니다. 메인 모델이 느리게 느껴질 때 서브에이전트로 붙이거나, 반복 작업을 대량으로 돌릴 때 활용도가 높습니다.
 
-### 3) Nemotron 3.5 Super VL Free — 비전 specialist
+### 3) Nemotron 3.5 Super VL Free — 비전·문서 특화 모델
 
 Nemotron 3.5 Super VL은 120B MoE에 12B를 활성화하는 비전-언어 모델입니다. 1M 문맥, 600+ tokens/sec, UI·문서·영상 이해를 지원합니다. 스크린샷을 읽고 코드로 옮기거나, PDF·차트·영상 내용을 분석하는 작업에 적합합니다.
 
-코딩 메인 모델로 쓰기에는 부족합니다. 텍스트만 출력하며, 코딩 벤치마크도 다른 모델만큼 검증되어 있지 않습니다. <strong>“눈이 필요한 작업”을 맡기는 specialist</strong>로 쓰는 것이 정확합니다.
+코딩 메인 모델로 쓰기에는 부족합니다. 텍스트만 출력하며, 코딩 벤치마크도 다른 모델만큼 검증되어 있지 않습니다. <strong>“눈이 필요한 작업”을 맡기는 비전·문서 특화 보조 모델</strong>로 쓰는 것이 정확합니다.
 
 > 🔐 <strong>NVIDIA 무료 엔드포인트 주의</strong><br />
 > Nemotron 3종은 NVIDIA의 무료 trial 엔드포인트를 사용합니다. 개인정보나 기밀 데이터를 제출하면 안 되며, 사용 로그가 보안 및 제품 개선 목적으로 기록됩니다.
@@ -160,19 +160,19 @@ Nemotron 3.5 Super VL은 120B MoE에 12B를 활성화하는 비전-언어 모델
 
 ## 📈 6. 실제 사용량은 어땠나
 
-OpenCode Data가 2026년 10월 20일 12:56 UTC에 갱신한 최근 7일 토큰 사용량은 다음과 같습니다. 무료와 유료 변형이 합산된 값입니다.
+OpenCode Data가 2026년 10월 20일 12:56 UTC에 갱신한 최근 7일 토큰 사용량은 다음과 같습니다. 무료와 유료 변형이 합산된 값이며, 전체 순위 중 이미 무료 제공이 종료된 3위(`Muse Spark 1.3 Contributor`, 21T)와 유료 전용 모델(9위·11\~12위)을 제외한 9종의 위치입니다.
 
-| 모델 | 최근 7일 토큰 | 전체 순위 |
-| :--- | ---: | ---: |
-| DeepSeek V4.1 Flash | 90T | 1위 |
-| MiniMax M3.1 Flash | 22T | 2위 |
-| MiMo-V2.6-Flash | 10T | 4위 |
-| GLM-5.3-Flash | 6.2T | 5위 |
-| Beam | 3.9T | 6위 |
-| Nemotron 3 Ultra | 2.5T | 7위 |
-| LongCat 2.5 Preview | 2.3T | 8위 |
-| Nemotron 3.5 Super VL | 1.6T | 10위 |
-| Nemotron 3.5 Lightning | 538B | 13위 |
+| 모델 | 최근 7일 토큰 | 전체 순위 | 주간 추이 및 비고 |
+| :--- | ---: | ---: | :--- |
+| <strong>DeepSeek V4.1 Flash</strong> | <strong>90T</strong> | 1위 | 압도적 1위 (2·3위 합산의 2배 이상) |
+| <strong>MiniMax M3.1 Flash</strong> | 22T | 2위 | 초장문·512K 출력 수요 집중 |
+| <strong>MiMo-V2.6-Flash</strong> | 10T | 4위 | 옴니모달·GUI 에이전트 수요 |
+| <strong>GLM-5.3-Flash</strong> | 6.2T | 5위 | 전주 대비 <strong>+159%</strong> 최고 성장률 |
+| <strong>Beam</strong> | 3.9T | 6위 | 이번 주 신규 진입 (1M 텍스트) |
+| <strong>Nemotron 3 Ultra</strong> | 2.5T | 7위 | 고난도 추론·계획 오케스트레이션 |
+| <strong>LongCat 2.5 Preview</strong> | 2.3T | 8위 | 1M 장기 에이전트·코드베이스 탐색 |
+| <strong>Nemotron 3.5 Super VL</strong> | 1.6T | 10위 | 이번 주 신규 진입 (비전·문서 특화) |
+| <strong>Nemotron 3.5 Lightning</strong> | 538B | 13위 | 경량 고속 탐색 서브에이전트 |
 
 DeepSeek V4.1 Flash가 90T로 압도적 1위입니다. 2위 MiniMax M3.1 Flash(22T)와 3위 Muse Spark 1.3 Contributor(21T)를 합쳐도 DeepSeek의 절반 수준입니다. MiMo-V2.6-Flash는 10T로 4위, GLM-5.3-Flash는 6.2T로 5위에 올랐습니다. 특히 GLM은 전주 대비 <strong>+159%</strong>로 가장 빠르게 성장했고, Beam과 Super VL은 이번 주 새로 순위에 진입했습니다.
 
@@ -182,26 +182,26 @@ DeepSeek V4.1 Flash가 90T로 압도적 1위입니다. 2위 MiniMax M3.1 Flash(2
 
 ## 🔐 7. 데이터 정책: 무료의 진짜 비용
 
-무료 모델을 고를 때 가장 놓치기 쉬운 것이 데이터 정책입니다. 토큰 요금이 0원이어도, 프롬프트가 학습에 사용되거나 로그로 남으면 비용은 다른 곳에서 발생합니다.
+무료 모델을 고를 때 가장 놓치기 쉬운 것이 데이터 정책입니다. 토큰 요금이 0원이어도, 프롬프트가 학습에 사용되거나 로그로 남으면 비용은 다른 곳에서 발생합니다. OpenCode 공식 문서(`Console Models — Privacy`)에 따르면 모든 Console 모델은 <strong>미국(US) 및 유럽(EU)에 호스팅</strong>되며 기본적으로 <strong>제로 리텐션(Zero-Retention, 프롬프트 즉시 폐기 및 모델 학습 미사용)</strong> 정책을 따르지만, 일부 무료 프로모션 모델에는 아래와 같은 예외 조항이 적용됩니다.
 
-| 모델 | 데이터 정책 |
-| :--- | :--- |
-| <strong>GLM-5.3-Flash Free</strong> | zero-retention, 학습 미사용 (OpenCode 문서 기준) |
-| <strong>DeepSeek V4.1 Flash Free</strong> | zero-retention, 학습 미사용 (OpenCode 문서 기준) |
-| <strong>LongCat 2.5 Preview Free</strong> | zero-retention, 학습 미사용 (OpenCode 문서 기준) |
-| <strong>MiniMax M3.1 Flash Free</strong> | zero-retention, 학습 미사용 (OpenCode 문서 기준) |
-| <strong>Beam Free</strong> | 학습 미사용, 30일 보관, 일부 국가 사용 불가 |
-| <strong>MiMo-V2.6-Flash Free</strong> | 무료 기간 데이터가 모델 개선에 사용될 수 있음 |
-| <strong>Nemotron 3 Ultra Free</strong> | NVIDIA trial, 로그 기록, 개인·기밀 데이터 제출 금지 |
-| <strong>Nemotron 3.5 Lightning Free</strong> | NVIDIA trial, 로그 기록, 개인·기밀 데이터 제출 금지 |
-| <strong>Nemotron 3.5 Super VL Free</strong> | NVIDIA trial, 로그 기록, 개인·기밀 데이터 제출 금지 |
+| 모델 | 데이터 보관·로깅 정책 | 모델 학습 사용 | 사내·민감 코드 적합성 |
+| :--- | :--- | :---: | :---: |
+| <strong>GLM-5.3-Flash Free</strong> | 제로 리텐션 (즉시 폐기) | 미사용 | <strong>적합 (권장)</strong> |
+| <strong>DeepSeek V4.1 Flash Free</strong> | 제로 리텐션 (즉시 폐기) | 미사용 | <strong>적합 (권장)</strong> |
+| <strong>LongCat 2.5 Preview Free</strong> | 제로 리텐션 (즉시 폐기) | 미사용 | <strong>적합 (권장)</strong> |
+| <strong>MiniMax M3.1 Flash Free</strong> | 제로 리텐션 (즉시 폐기) | 미사용 | <strong>적합 (주기적 확인 권장)</strong> |
+| <strong>Beam Free</strong> | 안전 목적으로 <strong>30일 보관</strong> (일부 국가 차단) | 미사용 | 주의 (보관 정책 확인) |
+| <strong>MiMo-V2.6-Flash Free</strong> | 무료 기간 중 수집 | <strong>모델 개선에 사용 가능</strong> | <strong>부적합 (개인용만)</strong> |
+| <strong>Nemotron 3 Ultra Free</strong> | NVIDIA trial 세션 로깅 (비식별화) | NVIDIA 제품·서비스 개선 활용 | <strong>부적합 (기밀 제출 금지)</strong> |
+| <strong>Nemotron 3.5 Lightning Free</strong> | NVIDIA trial 세션 로깅 (비식별화) | NVIDIA 제품·서비스 개선 활용 | <strong>부적합 (기밀 제출 금지)</strong> |
+| <strong>Nemotron 3.5 Super VL Free</strong> | NVIDIA trial 세션 로깅 (비식별화) | NVIDIA 제품·서비스 개선 활용 | <strong>부적합 (기밀 제출 금지)</strong> |
 
 정리하면 다음과 같습니다.
 
-- <strong>회사 코드·고객 정보·API 키</strong>가 포함된 작업은 GLM, DeepSeek, LongCat, MiniMax를 우선 사용합니다.
-- <strong>개인 토이 프로젝트·학습용</strong>이라면 MiMo나 Nemotron을 써도 되지만, 민감 정보는 넣지 않습니다.
-- Beam은 학습에는 쓰지 않지만 30일 보관하고 일부 국가에서 차단됩니다. 글로벌 협업 프로젝트라면 지역 제한을 확인하세요.
-- MiniMax는 OpenCode 문서 기준 zero-retention이지만, 프리뷰 성격의 모델이므로 정책 변경 여부는 주기적으로 확인하는 편이 안전합니다.
+- <strong>회사 코드·고객 정보·API 키</strong>가 포함된 작업은 제로 리텐션이 적용되는 <strong>GLM, DeepSeek, LongCat, MiniMax</strong>를 우선 사용합니다.
+- <strong>개인 토이 프로젝트·학습용</strong>이라면 MiMo나 Nemotron을 써도 되지만, 개인정보나 기밀 데이터는 절대 넣지 않습니다.
+- Beam은 학습에는 쓰지 않지만 안전 목적으로 30일간 보관하고 일부 국가에서 차단됩니다. 글로벌 협업 프로젝트라면 지역 제한을 확인하세요.
+- MiniMax는 OpenCode 문서 기준 제로 리텐션 예외 목록에 포함되지 않은 기본 보호 대상이지만, 프리뷰 성격의 모델이므로 정책 변경 여부는 주기적으로 확인하는 편이 안전합니다.
 
 ---
 
@@ -250,7 +250,7 @@ DeepSeek V4.1 Flash가 90T로 압도적 1위입니다. 2위 MiniMax M3.1 Flash(2
     <rect width="832" height="42" rx="10" fill="#172033" stroke="#fb923c" stroke-width="1.2" />
     <text x="18" y="27" font-size="13" font-weight="700" fill="#fdba74">이미지·PDF·영상</text>
     <text x="250" y="27" font-size="13" fill="#e2e8f0">GLM-5.3-Flash / Super VL / MiMo</text>
-    <text x="650" y="27" font-size="12" fill="#94a3b8">비전 specialist</text>
+    <text x="650" y="27" font-size="12" fill="#94a3b8">비전·문서 특화</text>
   </g>
   <text x="34" y="360" font-size="12" fill="#94a3b8">민감한 코드는 GLM · DeepSeek · LongCat · MiniMax 우선 / MiMo · Nemotron은 데이터 정책 확인</text>
 </svg>
@@ -258,18 +258,22 @@ DeepSeek V4.1 Flash가 90T로 압도적 1위입니다. 2위 MiniMax M3.1 Flash(2
 
 ### 추천 조합
 
-1. <strong>일상 코딩</strong>: GLM-5.3-Flash Free를 기본으로 두고, 막히는 문제만 DeepSeek V4.1 Flash Free로 전환합니다.
-2. <strong>대형 저장소</strong>: LongCat 2.5 Preview Free로 구조를 파악하고, 실제 수정은 GLM-5.3-Flash Free로 합니다.
-3. <strong>프론트엔드/UI</strong>: GLM-5.3-Flash Free에 스크린샷을 넣고, 복잡한 화면 분석은 Nemotron 3.5 Super VL Free를 보조로 씁니다.
-4. <strong>대량 반복 작업</strong>: Nemotron 3.5 Lightning Free를 서브에이전트로 붙여 파일 탐색·테스트 보조를 맡깁니다.
-5. <strong>설계/리서치</strong>: Nemotron 3 Ultra Free로 계획을 세우고, 구현은 DeepSeek나 GLM에 맡깁니다.
-6. <strong>민감한 코드</strong>: GLM, DeepSeek, LongCat, MiniMax를 사용합니다.
+1. <strong>일상 코딩</strong>: `opencode/glm-5.3-flash-free`를 기본으로 두고, 막히는 문제만 `opencode/deepseek-v4.1-flash-free`로 전환합니다.
+2. <strong>대형 저장소</strong>: `opencode/longcat-2.5-preview-free`로 구조를 파악하고, 실제 수정은 `opencode/glm-5.3-flash-free`로 합니다.
+3. <strong>프론트엔드/UI</strong>: `opencode/glm-5.3-flash-free`에 스크린샷을 넣고, 복잡한 화면 분석은 `opencode/nemotron-3.5-super-vl-free`를 보조로 씁니다.
+4. <strong>대량 반복 작업</strong>: `opencode/nemotron-3.5-lightning-free`를 서브에이전트로 붙여 파일 탐색·테스트 보조를 맡깁니다.
+5. <strong>설계/리서치</strong>: `opencode/nemotron-3-ultra-free`나 `opencode/deepseek-v4.1-flash-free#high`로 계획을 세우고, 구현은 GLM에 맡깁니다.
+6. <strong>민감한 코드</strong>: 제로 리텐션이 보장되는 GLM, DeepSeek, LongCat, MiniMax만 사용합니다.
 
 ---
 
 ## ⚙️ 9. OpenCode에서 바로 바꾸는 방법
 
-모델은 TUI에서 `/models`를 실행한 뒤 `free`로 필터링해 선택할 수 있습니다. 설정 파일에 고정하려면 `opencode.jsonc`의 `model` 값을 바꿉니다.
+모델은 TUI에서 `/models`를 실행한 뒤 `free`로 필터링해 즉시 전환할 수 있습니다. 프로젝트나 전역 설정 파일(`opencode.jsonc`)에 고정해 두면 매번 수동으로 고를 필요가 없습니다.
+
+### 1) 단일 기본 모델 및 추론 강도(`#variant`) 지정
+
+기본 모델을 하나만 지정하려면 `model` 필드에 `opencode/<모델 ID>`를 넣습니다. 모델명 뒤에 `#low`, `#high`, `#max`처럼 추론 강도(variant)를 붙여 고정할 수도 있습니다.
 
 ```jsonc
 {
@@ -278,16 +282,46 @@ DeepSeek V4.1 Flash가 90T로 압도적 1위입니다. 2위 MiniMax M3.1 Flash(2
 }
 ```
 
-단발 실행은 `--model` 옵션으로 지정할 수 있습니다.
+### 2) 에이전트 역할별 멀티 모델 분담 설정 (`agents`)
 
-```bash
-opencode run --model "opencode/deepseek-v4.1-flash-free" "이 테스트 실패 원인을 분석해줘"
+앞서 정리한 추천 조합처럼 <strong>일상 구현(`build`), 설계·추론(`plan`), 고속 코드 탐색(`explore`)에 서로 다른 무료 모델을 배정</strong>하려면 공식 스키마의 `agents` 블록을 활용합니다.
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/glm-5.3-flash-free",
+  "agents": {
+    "build": {
+      "model": "opencode/glm-5.3-flash-free"
+    },
+    "plan": {
+      "model": "opencode/deepseek-v4.1-flash-free#high"
+    },
+    "explore": {
+      "model": "opencode/nemotron-3.5-lightning-free"
+    }
+  }
+}
 ```
 
-무료 모델은 토큰 요금이 0원이지만, 추론 강도를 높이면 느려지고 요청 소모가 커질 수 있습니다. 단순 작업은 `low`, 어려운 문제는 `high`나 `max`를 쓰는 식으로 조절하는 편이 좋습니다.
+이렇게 설정하면 평소 코드 작성은 균형 잡힌 `GLM-5.3-Flash Free`가 처리하고, 아키텍처 설계나 어려운 버그 분석(`plan` 모드)은 `DeepSeek V4.1 Flash Free`가 깊이 추론하며, 파일 트리 탐색 서브에이전트(`explore`)는 300+ tps 속도의 `Nemotron 3.5 Lightning Free`가 빠르게 수행합니다(단, 민감한 사내 저장소라면 `explore`에도 `opencode/glm-5.3-flash-free`나 `opencode/longcat-2.5-preview-free`를 배정하세요).
 
-> ⚠️ <strong>무료 모델은 사라질 수 있습니다</strong><br />
-> 오늘 보이는 모델이 다음 주에도 무료라는 보장은 없습니다. `opencode.jsonc`에 고정해 두었다면, 갑자기 `Model unavailable`이 나올 수 있으니 `/models`에서 대체 모델을 확인하세요.
+### 3) 터미널 CLI 단발 실행 및 이미지·문서 첨부
+
+설정 파일을 바꾸지 않고 특정 작업에만 다른 무료 모델을 쓰려면 `--model`(`-m`), 추론 과정 확인은 `--thinking`, UI 스크린샷이나 PDF 첨부는 `--file`(`-f`) 플래그를 조합합니다.
+
+```bash
+# 1. 고난도 버그 분석: DeepSeek V4.1 Flash + high 추론 강도 + 사고 과정 출력
+opencode run --model "opencode/deepseek-v4.1-flash-free#high" --thinking "이 비동기 레이스 컨디션 원인을 분석해줘"
+
+# 2. UI 스크린샷 분석: 비전 특화 모델에 이미지 파일 첨부
+opencode run --model "opencode/nemotron-3.5-super-vl-free" --file ./ui-layout-bug.png "깨진 레이아웃 원인과 수정할 CSS 속성을 알려줘"
+```
+
+무료 모델은 토큰 요금이 0원이지만, 추론 강도를 높이면 응답이 느려지고 요청 한도 소모가 커질 수 있습니다. 단순 작업은 기본값이나 `#low`, 어려운 문제는 `#high`나 `#max`로 나누어 쓰는 편이 효율적입니다.
+
+> ⚠️ <strong>무료 모델은 예고 없이 사라질 수 있습니다</strong><br />
+> 오늘 보이는 모델이 다음 주에도 무료라는 보장은 없습니다. `opencode.jsonc`에 특정 모델을 고정해 두었다가 갑자기 `Error: Model unavailable`이 발생하면, `/models` 또는 `opencode models opencode`로 현재 살아있는 대체 무료 모델을 확인해 교체하세요.
 
 ---
 
