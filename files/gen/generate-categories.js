@@ -36,6 +36,9 @@ const generateCategories = () => {
         const content = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(content);
 
+        // noindex: true 콘텐츠는 색인 대상이 아니므로 목록에서도 제외한다
+        if (data.noindex === true) return;
+
         if (data.category) {
             if (!categories[data.category]) {
                 categories[data.category] = [];

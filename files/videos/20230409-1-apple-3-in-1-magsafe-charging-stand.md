@@ -3,6 +3,7 @@ category: "Lifestyle & Tech"
 title: "애플 3-in-1 맥세이프 고속 무선 충전 거치대 추천 및 사용 후기"
 videoId: "o56XR1pYZdw"
 date: "2023-04-09"
+noindex: true
 ---
 
 ## 🔌 책상 위 복잡한 선을 단번에 정리하는 3-in-1 맥세이프 충전 거치대

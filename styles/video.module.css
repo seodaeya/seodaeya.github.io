@@ -282,11 +282,26 @@
 
 .relatedCardMeta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 6px 8px;
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-bottom: 8px;
+}
+
+.relatedCardBadges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.relatedCardDate {
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .relatedCardTitle {

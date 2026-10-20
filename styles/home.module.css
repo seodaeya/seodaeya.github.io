@@ -326,13 +326,16 @@
 
 .miniCardHeader {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 4px 8px;
 }
 
 .cardMeta {
   font-size: 0.75rem;
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .cardTitle {

@@ -4,6 +4,7 @@ title: "싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 
 videoId: "54Si9MFJuSY"
 date: "2026-06-24"
 image: "/images/afterblow_step2_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🔌 싼타페 TM 애프터블로우 DIY 2단계: 순정 블로우모터 전원 커넥터 분리법

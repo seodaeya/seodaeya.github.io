@@ -3,6 +3,7 @@ category: "Lifestyle & Tech"
 title: "봄이에게 남자친구가 생겼어요! (크레스티드 게코 챠콜맨과의 첫 만남)"
 videoId: "cyDSnlUkEy8"
 date: "2026-06-02"
+noindex: true
 ---
 
 ## 🦎 우리 집 봄이에게 새로운 가족이 생겼습니다!

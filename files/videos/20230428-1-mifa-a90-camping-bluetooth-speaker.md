@@ -4,6 +4,7 @@ title: "미파(MiFA) A90 60W 아웃도어 캠핑용 블루투스 스피커 음�
 videoId: "JPPdjBdK-uc"
 date: "2023-04-28"
 image: "/images/mifa_a90_speaker_thumbnail.png"
+noindex: true
 ---
 
 ## 🏕️ 캠핑장의 밤을 뒤흔드는 압도적 중저음, 미파(MiFA) A90 스피커

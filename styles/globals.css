@@ -161,6 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 .category-badge {
   display: inline-block;
   padding: 4px 12px;
+  white-space: nowrap;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -364,6 +365,8 @@ body {
 /* Read Status Badge for Post/Video List Cards */
 .read-badge {
   display: inline-flex;
+  flex-shrink: 0;
+  white-space: nowrap;
   align-items: center;
   gap: 3px;
   padding: 2px 8px;

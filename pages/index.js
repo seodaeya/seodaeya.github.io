@@ -22,6 +22,7 @@ export async function getStaticProps() {
       const filePath = path.join(postsDir, filename);
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
+      if (data.noindex === true) return null; // noindex 콘텐츠는 홈 목록에서 제외
       
       return {
         title: data.title || filename.replace('.md', ''),
@@ -31,7 +32,7 @@ export async function getStaticProps() {
         excerpt: createPlainExcerpt(content, 120) || '글 내용을 확인해보세요.',
         excerptHtml: createRichExcerpt(content, 120) || '글 내용을 확인해보세요.',
       };
-    });
+    }).filter(Boolean);
   }
 
   // Read all video posts
@@ -42,6 +43,7 @@ export async function getStaticProps() {
       const filePath = path.join(videosDir, filename);
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
+      if (data.noindex === true) return null; // noindex 콘텐츠는 홈 목록에서 제외
       
       return {
         title: data.title || filename.replace('.md', ''),
@@ -52,7 +54,7 @@ export async function getStaticProps() {
         excerpt: createPlainExcerpt(content, 80) || '유튜브 영상을 감상해 보세요.',
         excerptHtml: createRichExcerpt(content, 80) || '유튜브 영상을 감상해 보세요.',
       };
-    });
+    }).filter(Boolean);
   }
 
   const sortDate = (a, b) => {
@@ -427,7 +429,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                       style={!cleanQuery && idx >= visiblePostCount ? { display: 'none' } : undefined}
                     >
                       <div className={styles.miniCardHeader}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px', minWidth: 0 }}>
                           <span className="category-badge">{post.category}</span>
                           {isContentRead(post.file, readSet) && (
                             <span className="read-badge">✓ 읽음</span>

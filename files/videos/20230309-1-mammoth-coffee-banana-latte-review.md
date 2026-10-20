@@ -4,6 +4,7 @@ title: "당산역 메머드커피 바나나 달달 커피 쉐킷쉐킷 후기"
 videoId: "RXQqrpIGq78"
 date: "2023-03-09"
 image: "/images/mammoth_banana_coffee_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🍌 당산역 메머드 익스프레스에서 맛보는 시그니처 바나나 커피

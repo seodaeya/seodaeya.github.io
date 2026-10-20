@@ -129,6 +129,7 @@ export async function getStaticProps({ params }) {
     return fs.readdirSync(dir).filter(fn => fn.endsWith('.md')).map(filename => {
       const fc = fs.readFileSync(path.join(dir, filename), 'utf-8');
       const { data: d, content: c } = matter(fc);
+      if (d.noindex === true) return null; // noindex 콘텐츠는 관련글·이전/다음에서 제외
       return {
         id: filename.replace('.md', ''),
         type,
@@ -138,7 +139,7 @@ export async function getStaticProps({ params }) {
         image: d.image || '',
         excerpt: createPlainExcerpt(c, 100),
       };
-    });
+    }).filter(Boolean);
   };
 
   const allContent = [
@@ -163,9 +164,9 @@ export async function getStaticProps({ params }) {
       .map(filename => {
         const fc = fs.readFileSync(path.join(postsDir, filename), 'utf-8');
         const { data: d } = matter(fc);
-        return { id: filename.replace('.md', ''), title: d.title || '', date: d.date || '', series: d.series || '' };
+        return { id: filename.replace('.md', ''), title: d.title || '', date: d.date || '', series: d.series || '', noindex: d.noindex === true };
       })
-      .filter(item => item.series === data.series)
+      .filter(item => item.series === data.series && !item.noindex)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     if (seriesPosts.length > 1) {
       seriesNav = {
@@ -702,13 +703,13 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
                       </div>
                     )}
                     <div className={styles.relatedCardMeta}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div className={styles.relatedCardBadges}>
                         <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{post.category}</span>
                         {isContentRead(`${post.type}/${post.id}`, readSet) && (
                           <span className="read-badge">✓ 읽음</span>
                         )}
                       </div>
-                      <span>{formatDate(post.date)}</span>
+                      <span className={styles.relatedCardDate}>{formatDate(post.date)}</span>
                     </div>
                     <h4 className={styles.relatedCardTitle}>{post.title}</h4>
                     <p className={styles.relatedCardExcerpt}>{post.excerpt}</p>

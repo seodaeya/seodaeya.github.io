@@ -80,6 +80,7 @@ export async function getStaticProps({ params }) {
     return fs.readdirSync(dir).filter(fn => fn.endsWith('.md')).map(filename => {
       const fc = fs.readFileSync(path.join(dir, filename), 'utf-8');
       const { data: d, content: c } = matter(fc);
+      if (d.noindex === true) return null; // noindex 콘텐츠는 관련글·이전/다음에서 제외
       return {
         id: filename.replace('.md', ''),
         type,
@@ -89,7 +90,7 @@ export async function getStaticProps({ params }) {
         image: d.image || '',
         excerpt: createPlainExcerpt(c, 100),
       };
-    });
+    }).filter(Boolean);
   };
 
   const allContent = [
@@ -307,13 +308,13 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
                       </div>
                     )}
                     <div className={styles.relatedCardMeta}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div className={styles.relatedCardBadges}>
                         <span className="category-badge" style={{ padding: '2px 6px', fontSize: '0.65rem' }}>{video.category}</span>
                         {isContentRead(`${video.type}/${video.id}`, readSet) && (
                           <span className="read-badge">✓ 읽음</span>
                         )}
                       </div>
-                      <span>{formatDate(video.date)}</span>
+                      <span className={styles.relatedCardDate}>{formatDate(video.date)}</span>
                     </div>
                     <h4 className={styles.relatedCardTitle}>{video.title}</h4>
                     <p className={styles.relatedCardExcerpt}>{video.excerpt}</p>
