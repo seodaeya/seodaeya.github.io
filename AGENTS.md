@@ -44,17 +44,21 @@
     3. Refer to [`docs/sitemap-lastmod-architecture.md`](docs/sitemap-lastmod-architecture.md) for full architecture rationale.
 
 ## 7. Mandatory Agent Communication Channel Rule
-- **Always read [`docs/agent-channel.md`](docs/agent-channel.md) before starting any task in this repository.**
-  - It is the **agent-to-agent communication channel**: it holds the current plan, design decisions, implementation direction, thread board, open issues, and handover state.
-  - It contains the **invariants (I-1 ~ I-4)** that must never be violated, and records which changes are committed vs. uncommitted in the working tree.
-- **Always append a new entry to section `7. 대화 로그 (append-only)` when finishing a task.**
-  - Use the message format defined in section `0-4` (sender → receiver, thread ID, status, summary, evidence, next action, cautions).
-  - Update the matching row in section `2. 스레드 보드` at the same time.
+- **Always read [`docs/agent-guide.md`](docs/agent-guide.md) first, then [`docs/agent-threads.md`](docs/agent-threads.md), before starting any task in this repository.**
+  - `docs/agent-guide.md` — entry point: usage rules (0), invariants I-1~I-4 (1), design rationale (4), verification gate (5), handover checklist (6).
+  - `docs/agent-threads.md` — thread board (2) and thread details (3): current plan, design decisions, implementation direction, open issues.
+  - `docs/agent-log.md` — append-only conversation log (7).
+  - Together they are the **agent-to-agent communication channel**: they hold the current plan, design decisions, implementation direction, thread board, open issues, and handover state, and record which changes are committed vs. uncommitted in the working tree.
+  - They contain the **invariants (I-1 ~ I-4)** that must never be violated.
+- **Always append a new entry to section `7. 대화 로그 (append-only)` in [`docs/agent-log.md`](docs/agent-log.md) when finishing a task.**
+  - Use the message format defined in `docs/agent-guide.md` section `0-4` (sender → receiver, thread ID, status, summary, evidence, next action, cautions).
+  - Update the matching row in `docs/agent-threads.md` section `2. 스레드 보드` at the same time.
   - **Never delete or overwrite existing entries** — corrections must be added as new entries.
-- `docs/` is not deployed (it is not under `public/`), so editing the channel never affects the build or the SEO guardrail.
+- `docs/` is not deployed (it is not under `public/`), so editing these docs never affects the build or the SEO guardrail.
 - **The whole `docs/` directory is gitignored (`.gitignore`: `docs/`) as the agent working area, so the channel exists only on the local working copy.**
   - It is never committed, never pushed, and therefore **absent in fresh clones, git worktrees, and CI runners**.
-  - So: **if `docs/agent-channel.md` exists, read it first and append to it.** If it does not exist, skip this section and do not create the file unless the user asks.
-  - Do not "fix" the missing file by committing it — that is a deliberate decision, not an oversight.
+  - So: **if `docs/agent-guide.md` exists, read it first and append to `docs/agent-log.md`.** If it does not exist, skip this section and do not create the files unless the user asks.
+  - Do not "fix" the missing files by committing them — that is a deliberate decision, not an oversight.
+  - Note: `docs/agent-channel.md` was split into the three files above (2026-10-20) and no longer exists. Section numbers were **preserved**, so old references still map: `0·1·4·5·6장` → guide, `2·3장` → threads, `7장` → log.
   - Caveat: because the *entire* directory is ignored, a doc under `docs/` that genuinely *should* be committed needs an explicit `git add -f docs/<file>`. Already-tracked docs (`docs/sitemap-lastmod-architecture.md`, `docs/coupang-product-lookup.md`) are unaffected by the rule and keep being tracked normally.
 
