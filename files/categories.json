@@ -1,6 +1,20 @@
 {
   "AI & Intelligence": [
     {
+      "title": "OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드",
+      "file": "posts/20261020-1-opencode-free-models-comparison-guide.md",
+      "tags": [
+        "OpenCode",
+        "FreeAI",
+        "DeepSeek",
+        "GLM",
+        "MiniMax",
+        "Nemotron",
+        "CodingAgent",
+        "LLM"
+      ]
+    },
+    {
       "title": "OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안",
       "file": "posts/20261017-1-opencode-muse-spark-free-model-configuration-guide.md",
       "tags": [
