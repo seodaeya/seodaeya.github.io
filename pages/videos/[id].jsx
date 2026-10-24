@@ -10,6 +10,7 @@ import Sponsor from '@/components/Sponsor';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
+import CoupangCarousel from '@/components/CoupangCarousel';
 import BookmarkButton from '@/components/BookmarkButton';
 import FontSizeControl from '@/components/FontSizeControl';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
@@ -263,6 +264,9 @@ export default function Video({ isRedirect, redirectTo, targetTitle, id, frontma
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: content }}
           />
+
+          {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
+          <CoupangCarousel />
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>

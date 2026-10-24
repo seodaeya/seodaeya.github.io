@@ -13,6 +13,7 @@ import SeriesNav from '@/components/SeriesNav';
 import BookmarkButton from '@/components/BookmarkButton';
 import FontSizeControl from '@/components/FontSizeControl';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
+import CoupangCarousel from '@/components/CoupangCarousel';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import contentUtils from '@/lib/content';
 import gitLastModUtils from '@/lib/gitLastMod';
@@ -657,7 +658,8 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             </div>
           </section>
 
-
+          {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
+          <CoupangCarousel />
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>

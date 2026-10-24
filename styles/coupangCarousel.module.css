@@ -1,0 +1,46 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 34px 0 6px;
+}
+
+/* 위젯 높이는 140px 고정(iframe 이 자체 리사이즈) → 공간을 미리 확보해 CLS 를 막는다. */
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 140px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slot iframe {
+  display: block;
+  max-width: 100%;
+  border: 0;
+  vertical-align: top;
+}
+
+.disclosure {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  text-align: center;
+  word-break: keep-all;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    margin: 26px 0 4px;
+  }
+
+  .disclosure {
+    font-size: 0.68rem;
+    padding: 0 4px;
+  }
+}
