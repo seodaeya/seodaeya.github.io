@@ -32,34 +32,43 @@ const TRACKING_CODE = 'AF4228631';
 
 const WIDTH = 130;
 const MAX_HEIGHT = 600;
-const MIN_HEIGHT = 300; // 2행 + 로고 (실측: 152px = 1행까지 렌더 가능)
+const MIN_HEIGHT = 280; // 2행 + 로고 (실측: 152px = 1행까지 렌더 가능)
 const HEIGHT_STEP = 40;
 
-const GAP = 20; // 배너와 본문 사이 간격
-const EDGE = 12; // 화면 좌우 가장자리 최소 여백
+const GAP = 18; // 배너와 본문 사이 간격
+const EDGE = 10; // 화면 좌우 가장자리 최소 여백
 const SAFE_GAP = 24; // 헤더 하단·푸터 상단·뷰포트 상하단과의 최소 안전 공백
-const APPROACH_PAD = 24; // 푸터/헤더 접근 시 축소 효과가 미리 시작되는 완충 구간
+const APPROACH_PAD = 24; // 푸터 접근 시 높이 조절/이동이 시작되는 완충 구간
 const HEADER_H = 70; // 고정 헤더 기본 높이
 const GAP_BELOW = 8; // 위젯과 고지 문구 사이
 const DISCLOSURE_RESERVE = 76; // 130px 폭에서 고지 문구가 차지하는 높이(약 4줄)
+const MIN_SLOT_VISIBLE = 120; // 슬롯 가용 높이가 이 미만으로 줄어들면 투명도 페이드아웃
 
-const MIN_GUTTER = WIDTH + GAP + EDGE; // 162px 이상일 때만 노출 (≈ 뷰포트 1524px)
+// 좌우 여백에 따른 가로 축소 기준:
+// 1) 여백 158px 이상: 100% (width 130px)
+// 2) 여백 114px ~ 158px: 여백에 맞춰 너비를 68%~100% (약 88px~130px)로 축소 노출
+// 3) 여백 114px 미만: 완전 숨김
+const MIN_SCALE_WIDTH = 88;
+const MIN_GUTTER = MIN_SCALE_WIDTH + GAP + EDGE; // 116px (이 미만은 숨김)
+const FULL_GUTTER = WIDTH + GAP + EDGE; // 158px (이상이면 100% 너비)
 
 export default function CoupangSideBanner() {
   const router = useRouter();
   const asideRef = useRef(null);
   const slotRef = useRef(null);
   const rafRef = useRef(null);
-  const [layout, setLayout] = useState(null); // { left, height } | null
+  const [layout, setLayout] = useState(null); // { left, height, scale } | null
 
   // 콘텐츠가 없는 404 에는 광고를 노출하지 않는다(AdSense 정책).
   const hiddenHere = router.pathname === '/404';
 
-  // 스크롤·리사이즈 시 헤더 하단과 푸터 상단 사이의 안전 영역을 계산해
-  // 배너 위치와 축소 비율(scale)을 GPU transform 으로 즉시 반영한다(위젯 재생성 없음).
+  // 스크롤·리사이즈 시 헤더 하단과 푸터 상단 사이의 안전 영역을 계산한다.
+  // ★ 사용자 요구사항: 푸터를 만났을 때는 width를 줄이지 않고 slot의 height만 줄인다.
+  // (가로 축소 비율 scale은 여백 크기로만 결정되며, 세로 스크롤 중에는 불변)
   const syncVerticalBounds = useCallback(() => {
     const aside = asideRef.current;
-    if (!aside || typeof window === 'undefined') return;
+    const slot = slotRef.current;
+    if (!aside || !slot || !layout || typeof window === 'undefined') return;
 
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -76,61 +85,58 @@ export default function CoupangSideBanner() {
     const safeBottom = Math.min(viewportSafeBottom, footerTop - SAFE_GAP);
     const corridorHeight = safeBottom - safeTop;
 
-    //transform 적용 전 레이아웃 고유 높이(위젯 슬롯 + 간격 + 고지 문구)
-    const naturalHeight =
-      aside.offsetHeight ||
-      (slotRef.current ? slotRef.current.offsetHeight + GAP_BELOW + DISCLOSURE_RESERVE : 0);
+    const s = layout.scale || 1;
+    const baseSlotHeight = layout.height;
+    // 고지 문구 영역(고지 문구 높이 + 간격)
+    const disclosureHeight = DISCLOSURE_RESERVE;
+    const naturalVisualHeight = (baseSlotHeight + GAP_BELOW + disclosureHeight) * s;
 
-    if (!naturalHeight || corridorHeight <= 0) {
+    if (corridorHeight <= 0) {
       aside.style.opacity = '0';
       aside.style.pointerEvents = 'none';
       return;
     }
 
-    // 푸터가 화면 밖일 때의 기본 안착 위치(헤더 아래 ~ 뷰포트 하단 안전 영역의 중앙)
-    const baseCorridor = Math.max(naturalHeight, viewportSafeBottom - safeTop);
-    const restTop = safeTop + (baseCorridor - naturalHeight) / 2;
-    const restBottom = restTop + naturalHeight;
+    // 푸터가 화면 밖일 때의 기본 안착 위치 (헤더 아래 ~ 뷰포트 하단 안전 영역의 중앙)
+    const baseCorridor = Math.max(naturalVisualHeight, viewportSafeBottom - safeTop);
+    const restTop = safeTop + (baseCorridor - naturalVisualHeight) / 2;
+    const restBottom = restTop + naturalVisualHeight;
     const topSlack = Math.max(0, restTop - safeTop);
 
     let top = restTop;
-    let scale = 1;
 
-    // 푸터(또는 좁아진 뷰포트 하단)가 배너 하단 완충 구간(APPROACH_PAD) 안으로 접근하면
-    // 1) 상단 여유(topSlack) 범위 내에서 헤더 쪽 안전선(safeTop)까지 부드럽게 올라가고,
-    // 2) 동시에 배너 전체 크기를 축소(scale)해 헤더·푸터 어느 쪽도 침범하지 않게 한다.
+    // 푸터가 배너 하단 완충 구간(APPROACH_PAD) 안으로 접근하면
+    // 상단 여유(topSlack) 범위 내에서 헤더 안전선(safeTop)까지 부드럽게 글라이드
     const triggerBottom = restBottom + APPROACH_PAD;
     if (safeBottom < triggerBottom) {
       const encroachment = triggerBottom - safeBottom;
-      const shiftUp = Math.min(topSlack, encroachment * 0.45);
+      const shiftUp = Math.min(topSlack, encroachment * 0.5);
       top = Math.max(safeTop, restTop - shiftUp);
-
-      const maxVisualHeight = Math.max(
-        0,
-        safeBottom - top - Math.max(0, APPROACH_PAD - encroachment * 0.5)
-      );
-      scale = Math.min(1, maxVisualHeight / naturalHeight);
     }
 
-    // 뷰포트 자체가 낮아 기본 상태에서도 여백이 부족한 경우 안전선 내로 한 번 더 클램프
-    if (top + naturalHeight * scale > safeBottom) {
-      top = safeTop;
-      scale = Math.min(1, corridorHeight / naturalHeight);
-    }
+    // 푸터와 닿으려 할 때: 너비(scale)는 그대로 유지하고, 슬롯의 height만 줄인다!
+    // visualBottom = top + (currentSlotHeight + GAP_BELOW + disclosureHeight) * s <= safeBottom
+    const maxAllowedSlotHeight = (safeBottom - top) / s - GAP_BELOW - disclosureHeight;
+    const currentSlotHeight = Math.min(
+      baseSlotHeight,
+      Math.max(0, Math.round(maxAllowedSlotHeight))
+    );
 
-    const clampedScale = Math.max(0.1, Math.min(1, scale));
-    // 안전 공간이 극단적으로 좁아지면(scale < 0.52) 투명도를 함께 낮춰 찌그러져 보이지 않게 처리
-    const opacity =
-      scale < 0.52
-        ? Math.max(0, Math.min(1, (scale - 0.36) / (0.52 - 0.36)))
-        : 1;
+    // 슬롯의 CSS 높이만 즉시 조절 (내부 iframe 재로딩 없음, overflow: hidden으로 하단 깔끔히 클리핑)
+    slot.style.height = `${currentSlotHeight}px`;
+
+    // 슬롯이 너무 얇아지면(120px 미만) 자연스럽게 페이드아웃
+    let opacity = 1;
+    if (currentSlotHeight < MIN_SLOT_VISIBLE) {
+      opacity = Math.max(0, (currentSlotHeight - 60) / (MIN_SLOT_VISIBLE - 60));
+    }
 
     aside.style.transform = `translate3d(0, ${Math.round(top * 10) / 10}px, 0) scale(${
-      Math.round(clampedScale * 1000) / 1000
+      Math.round(s * 1000) / 1000
     })`;
     aside.style.opacity = String(Math.round(opacity * 100) / 100);
     aside.style.pointerEvents = opacity < 0.2 ? 'none' : 'auto';
-  }, []);
+  }, [layout]);
 
   const scheduleSyncBounds = useCallback(() => {
     if (typeof window === 'undefined') return;
@@ -153,31 +159,37 @@ export default function CoupangSideBanner() {
       return;
     }
 
-    // 좌우 여백이 배너 폭 + 간격 + 최소 여백을 수용하는지
+    // 좌우 여백 실측
     const mainLeft = main.getBoundingClientRect().left;
     if (mainLeft < MIN_GUTTER) {
       setLayout(null);
       return;
     }
 
-    // 세로: 헤더·상하 안전 여백·고지 문구를 뺀 만큼 (최대 600)
+    // ★ 사용자 요구사항: 좌우 여백이 좁아질 경우 width를 줄인다.
+    // 158px 이상이면 100%(130px), 116px~158px 구간에서는 여백에 비례해 scale을 축소(88px~130px)
+    const availableGutter = mainLeft - GAP - EDGE;
+    const scale = Math.min(1, Math.max(MIN_SCALE_WIDTH / WIDTH, availableGutter / WIDTH));
+    const visualWidth = Math.round(WIDTH * scale);
+
+    // 본문 왼쪽에 GAP(18px) 간격으로 배치
+    const left = Math.max(EDGE, Math.round(mainLeft - visualWidth - GAP));
+
+    // 세로 가용 높이 계산 (스케일 반영)
     const available =
       window.innerHeight -
       HEADER_H -
       SAFE_GAP * 2 -
-      DISCLOSURE_RESERVE -
-      GAP_BELOW;
-    if (available < MIN_HEIGHT) {
+      (DISCLOSURE_RESERVE + GAP_BELOW) * scale;
+    if (available / scale < MIN_HEIGHT) {
       setLayout(null);
       return;
     }
 
-    // 본문 바로 왼쪽에 붙인다(스카이스크래퍼 관례). 화면 끝을 넘지 않게 클램프.
-    const left = Math.max(EDGE, Math.round(mainLeft - WIDTH - GAP));
-    const target = Math.min(MAX_HEIGHT, Math.floor(available));
+    const target = Math.min(MAX_HEIGHT, Math.floor(available / scale));
 
     setLayout((prev) => {
-      if (!prev) return { left, height: target };
+      if (!prev) return { left, height: target, scale };
 
       // 창이 줄어들어 기존 높이가 가용 영역을 초과하면 즉시 줄이고,
       // 창이 커질 때만 40px 단위 히스테리시스를 두어 불필요한 광고 재요청을 방지한다.
@@ -186,8 +198,15 @@ export default function CoupangSideBanner() {
           ? target
           : prev.height;
 
-      if (left === prev.left && height === prev.height) return prev;
-      return { left, height };
+      // scale이나 left가 1% 이상 달라지거나 height가 변경되면 갱신
+      if (
+        Math.abs(left - prev.left) < 1 &&
+        height === prev.height &&
+        Math.abs(scale - prev.scale) < 0.01
+      ) {
+        return prev;
+      }
+      return { left, height, scale };
     });
   }, [hiddenHere]);
 

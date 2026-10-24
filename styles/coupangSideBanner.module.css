@@ -11,17 +11,19 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  transform-origin: center top;
+  transform-origin: left top;
   will-change: transform, opacity;
   transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
 }
 
-/* 높이는 컴포넌트가 인라인으로 지정한다(화면 높이에 맞춰 300~600). */
+/* 높이는 컴포넌트가 인라인으로 지정한다(화면 높이에 맞춰 300~600).
+   푸터를 만났을 때는 너비는 유지하고 이 슬롯의 높이만 부드럽게 축소된다. */
 .slot {
   width: 130px;
   overflow: hidden;
   border-radius: 10px;
   background-color: var(--bg-tertiary);
+  transition: height 0.12s ease-out;
 }
 
 .slot iframe {
