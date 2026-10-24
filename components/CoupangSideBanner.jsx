@@ -35,8 +35,8 @@ const MAX_HEIGHT = 600;
 const MIN_HEIGHT = 280; // 2행 + 로고 (실측: 152px = 1행까지 렌더 가능)
 const HEIGHT_STEP = 40;
 
-const GAP = 18; // 배너와 본문 사이 간격
-const EDGE = 10; // 화면 좌우 가장자리 최소 여백
+const GAP = 14; // 배너와 본문 사이 간격
+const EDGE = 8; // 화면 좌우 가장자리 최소 여백
 const SAFE_GAP = 24; // 헤더 하단·푸터 상단·뷰포트 상하단과의 최소 안전 공백
 const APPROACH_PAD = 24; // 푸터 접근 시 높이 조절/이동이 시작되는 완충 구간
 const HEADER_H = 70; // 고정 헤더 기본 높이
@@ -45,12 +45,14 @@ const DISCLOSURE_RESERVE = 76; // 130px 폭에서 고지 문구가 차지하는 
 const MIN_SLOT_VISIBLE = 120; // 슬롯 가용 높이가 이 미만으로 줄어들면 투명도 페이드아웃
 
 // 좌우 여백에 따른 가로 축소 기준:
-// 1) 여백 158px 이상: 100% (width 130px)
-// 2) 여백 114px ~ 158px: 여백에 맞춰 너비를 68%~100% (약 88px~130px)로 축소 노출
-// 3) 여백 114px 미만: 완전 숨김
-const MIN_SCALE_WIDTH = 88;
-const MIN_GUTTER = MIN_SCALE_WIDTH + GAP + EDGE; // 116px (이 미만은 숨김)
-const FULL_GUTTER = WIDTH + GAP + EDGE; // 158px (이상이면 100% 너비)
+// 사용자가 선택한 방식: 85%~100% 범위로만 완만하게 제한하여 텍스트/이미지 뭉개짐 방지
+// 1) 152px 이상: 100% (130px)
+// 2) 132px ~ 152px: 여백에 맞춰 너비를 85%~100% (110px~130px)로 완만하게 비례 축소
+// 3) 132px 미만: 찌그러짐 방지를 위해 완전 숨김
+const MIN_SCALE = 0.85; // 가로 축소 하한 (85%)
+const MIN_SCALE_WIDTH = Math.round(WIDTH * MIN_SCALE); // 110px
+const MIN_GUTTER = MIN_SCALE_WIDTH + GAP + EDGE; // 132px (이 미만은 숨김)
+const FULL_GUTTER = WIDTH + GAP + EDGE; // 152px (이상이면 100% 너비)
 
 export default function CoupangSideBanner() {
   const router = useRouter();
@@ -166,13 +168,12 @@ export default function CoupangSideBanner() {
       return;
     }
 
-    // ★ 사용자 요구사항: 좌우 여백이 좁아질 경우 width를 줄인다.
-    // 158px 이상이면 100%(130px), 116px~158px 구간에서는 여백에 비례해 scale을 축소(88px~130px)
+    // ★ 사용자 요구사항: 좌우 여백이 좁아질 경우 너비를 85%~100% 범위로만 완만하게 축소
     const availableGutter = mainLeft - GAP - EDGE;
-    const scale = Math.min(1, Math.max(MIN_SCALE_WIDTH / WIDTH, availableGutter / WIDTH));
+    const scale = Math.min(1, Math.max(MIN_SCALE, availableGutter / WIDTH));
     const visualWidth = Math.round(WIDTH * scale);
 
-    // 본문 왼쪽에 GAP(18px) 간격으로 배치
+    // 본문 왼쪽에 GAP 간격으로 밀착 배치
     const left = Math.max(EDGE, Math.round(mainLeft - visualWidth - GAP));
 
     // 세로 가용 높이 계산 (스케일 반영)
@@ -307,7 +308,14 @@ export default function CoupangSideBanner() {
         className={styles.slot}
         style={{ height: `${layout.height}px` }}
       />
-      <p className={styles.disclosure}>{COUPANG_DISCLOSURE}</p>
+      <p
+        className={styles.disclosure}
+        style={{
+          fontSize: `${(0.62 / (layout.scale || 1)).toFixed(3)}rem`,
+        }}
+      >
+        {COUPANG_DISCLOSURE}
+      </p>
     </aside>
   );
 }
