@@ -1,0 +1,53 @@
+/**
+ * 좌측 여백 세로 배너 (130×600, 화면 높이에 따라 자동 축소).
+ * 본문(max-width: 1200px) 바깥 여백에만 고정 노출된다. 여백이 없으면 컴포넌트가
+ * 아예 렌더되지 않으므로 이 스타일은 "공간이 있을 때"만 적용된다.
+ */
+.banner {
+  position: fixed;
+  top: 0;
+  width: 130px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform-origin: center top;
+  will-change: transform, opacity;
+  transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
+}
+
+/* 높이는 컴포넌트가 인라인으로 지정한다(화면 높이에 맞춰 300~600). */
+.slot {
+  width: 130px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--bg-tertiary);
+}
+
+.slot iframe {
+  display: block;
+  width: 130px;
+  border: 0;
+  vertical-align: top;
+}
+
+.disclosure {
+  margin: 0;
+  font-size: 0.62rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+  word-break: keep-all;
+}
+
+@media (max-height: 360px) {
+  .banner {
+    display: none;
+  }
+}
+
+@media print {
+  .banner {
+    display: none;
+  }
+}

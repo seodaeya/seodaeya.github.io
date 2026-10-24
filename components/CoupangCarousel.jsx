@@ -1,83 +1,69 @@
 import { useCallback, useEffect, useRef } from 'react';
 import styles from '@/styles/coupangCarousel.module.css';
+import {
+  COUPANG_DISCLOSURE,
+  createCoupangWidget,
+  loadCoupangScript,
+} from '@/lib/coupangWidget';
 
 /**
  * 쿠팡 파트너스 캐러셀 위젯.
- *
- * 공식 코드는 `new PartnersCoupang.G({ id, template, width, height, trackingCode })` 형태이며,
- * `container` 옵션으로 삽입 위치를 지정할 수 있다. (지정하지 않으면 페이지의 마지막 <script> 앞에
- * 삽입되어 React 트리 밖으로 튀어나가므로 반드시 container 를 넘긴다.)
  *
  * 폭은 위젯이 iframe 에 그대로 반영하고 내부 상품 카드가 리플로우되므로,
  * 뷰포트별로 인스턴스를 여러 개 만들지 않고 **컨테이너 실측 폭 하나**로만 생성한다.
  * (사이즈별 다중 인스턴스는 광고 요청·노출이 중복 집계되고 대역폭만 두 배가 된다.)
  */
-const SCRIPT_SRC = 'https://ads-partners.coupang.com/g.js';
-const WIDGET_ID = 350851;
-const TRACKING_CODE = 'AF4228631';
-const WIDGET_HEIGHT = 140;
-const MAX_WIDTH = 800;
-const MIN_WIDTH = 240;
-const REBUILD_THRESHOLD = 40;
-const DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
+const DEFAULTS = {
+  widgetId: 350851,
+  template: 'carousel',
+  trackingCode: 'AF4228631',
+  height: 140,
+  minWidth: 240,
+  maxWidth: 800,
+  rebuildThreshold: 40,
+};
 
-let scriptPromise = null;
-
-function loadWidgetScript() {
-  if (typeof window === 'undefined') return Promise.resolve(null);
-  if (window.PartnersCoupang) return Promise.resolve(window.PartnersCoupang);
-  if (scriptPromise) return scriptPromise;
-
-  scriptPromise = new Promise((resolve, reject) => {
-    const fail = () => reject(new Error('coupang widget script failed'));
-    const succeed = () => (window.PartnersCoupang ? resolve(window.PartnersCoupang) : fail());
-
-    const existing = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
-    if (existing) {
-      existing.addEventListener('load', succeed);
-      existing.addEventListener('error', fail);
-      if (window.PartnersCoupang) succeed();
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = SCRIPT_SRC;
-    script.async = true;
-    script.onload = succeed;
-    script.onerror = fail;
-    document.head.appendChild(script);
-  });
-
-  return scriptPromise;
-}
-
-export default function CoupangCarousel({ className = '' }) {
+export default function CoupangCarousel({
+  widgetId = DEFAULTS.widgetId,
+  template = DEFAULTS.template,
+  trackingCode = DEFAULTS.trackingCode,
+  height = DEFAULTS.height,
+  minWidth = DEFAULTS.minWidth,
+  maxWidth = DEFAULTS.maxWidth,
+  rebuildThreshold = DEFAULTS.rebuildThreshold,
+  showDisclosure = true,
+  className = '',
+  ariaLabel = '쿠팡 파트너스 추천 상품',
+}) {
   const wrapRef = useRef(null);
   const slotRef = useRef(null);
   const usedWidthRef = useRef(0);
 
-  const build = useCallback((width, slot) => {
-    if (!slot || !window.PartnersCoupang) return;
-    const clamped = Math.max(MIN_WIDTH, Math.min(MAX_WIDTH, Math.floor(width)));
-    if (usedWidthRef.current !== 0 && Math.abs(clamped - usedWidthRef.current) < REBUILD_THRESHOLD) return;
+  const build = useCallback(
+    (width, slot) => {
+      if (!slot || !window.PartnersCoupang) return;
 
-    slot.innerHTML = '';
-    usedWidthRef.current = clamped;
+      const clamped = Math.max(minWidth, Math.min(maxWidth, Math.floor(width)));
+      if (
+        usedWidthRef.current !== 0 &&
+        Math.abs(clamped - usedWidthRef.current) < rebuildThreshold
+      ) {
+        return;
+      }
 
-    try {
-      new window.PartnersCoupang.G({
-        id: WIDGET_ID,
-        template: 'carousel',
-        trackingCode: TRACKING_CODE,
-        width: String(clamped),
-        height: String(WIDGET_HEIGHT),
-        tsource: '',
+      const ok = createCoupangWidget({
         container: slot,
+        id: widgetId,
+        template,
+        trackingCode,
+        width: clamped,
+        height,
       });
-    } catch (error) {
-      usedWidthRef.current = 0;
-    }
-  }, []);
+
+      usedWidthRef.current = ok ? clamped : 0;
+    },
+    [height, maxWidth, minWidth, rebuildThreshold, template, trackingCode, widgetId]
+  );
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -89,7 +75,7 @@ export default function CoupangCarousel({ className = '' }) {
 
     const init = async () => {
       try {
-        await loadWidgetScript();
+        await loadCoupangScript();
         if (cancelled) return;
         build(slot.clientWidth || wrap.clientWidth, slot);
       } catch (error) {
@@ -166,11 +152,11 @@ export default function CoupangCarousel({ className = '' }) {
     <aside
       ref={wrapRef}
       className={`${styles.wrap} ${className}`.trim()}
-      aria-label="쿠팡 파트너스 추천 상품"
+      aria-label={ariaLabel}
     >
       {/* 차단·무응답일 때도 높이를 유지한다. 언마운트하면 아래 콘텐츠가 위로 튀며 CLS 가 발생한다. */}
       <div ref={slotRef} className={styles.slot} />
-      <p className={styles.disclosure}>{DISCLOSURE}</p>
+      {showDisclosure && <p className={styles.disclosure}>{COUPANG_DISCLOSURE}</p>}
     </aside>
   );
 }
