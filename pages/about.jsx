@@ -99,10 +99,87 @@ export default function About() {
             </div>
 
             <div className="glass-card" style={{ padding: '20px', borderRadius: '14px' }}>
-              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🦎</div>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>소중한 일상과 함께</h3>
+              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🏠</div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>사랑하는 가족·일상과 함께</h3>
               <p style={{ fontSize: '0.9rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                차량과 가전을 직접 고치고, 반려 도마뱀 '봄이'를 돌보며 손끝으로 만지는 지극히 현실적인 온기를 품습니다.
+                세 아이와 함께 웃고 자라며, 가족이 타는 차량과 가전을 직접 고치고 반려 도마뱀 '봄이'를 돌보며 손끝으로 만지는 지극히 현실적인 온기를 품습니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2.5: Father of Three & Family */}
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: '800', marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>👨‍👧‍👦</span> 세 아이의 아빠, 그리고 가족을 지키는 가장으로서
+          </h2>
+          <div
+            className="glass-card"
+            style={{
+              padding: '26px',
+              borderRadius: '18px',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '28px',
+              alignItems: 'center',
+            }}
+          >
+            {/* YouTube Shorts Vertical Embed */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+              <div
+                style={{
+                  width: '100%',
+                  maxWidth: '300px',
+                  aspectRatio: '9 / 16',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--border-glass-active)',
+                  boxShadow: '0 14px 36px rgba(0, 0, 0, 0.28)',
+                  background: '#000',
+                }}
+              >
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/IUsuzofrJwk"
+                  title="세 아이의 아빠이자 가장으로서 기록하는 우리의 일상 (YouTube Shorts)"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{ width: '100%', height: '100%', border: 0, display: 'block' }}
+                />
+              </div>
+              <a
+                href="https://youtube.com/shorts/IUsuzofrJwk"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: '0.84rem',
+                  fontWeight: '700',
+                  color: 'var(--accent-light)',
+                  textDecoration: 'none',
+                }}
+              >
+                YouTube Shorts 원본 영상 보기 ↗
+              </a>
+            </div>
+
+            {/* Fatherhood & Family Narrative */}
+            <div>
+              <p style={{ margin: '0 0 14px 0', fontSize: '1.1rem', fontWeight: '800', color: 'var(--accent-light)', lineHeight: '1.6' }}>
+                "제가 매일 배우고, 직접 고치고, 기록하는 가장 큰 이유는 사랑하는 가족입니다."
+              </p>
+              <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+                저는 개발자이기 이전에 <strong>세 아이의 아빠이자 한 가정의 가장</strong>입니다.
+                하루가 다르게 자라나는 세 아이의 눈망울을 마주할 때면, 급변하는 세상 속에서도 흔들리지 않고
+                <strong> 내 가족의 일상을 든든하게 지켜내고 싶다</strong>는 다짐이 마음 깊이 차오릅니다.
+              </p>
+              <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+                가족이 함께 타는 차를 내 손으로 직접 뜯어보고, 매일 마시는 정수기 필터도 직접 교체하며,
+                학교 안내문과 준비물을 챙기기 위해 가족 일정 관리 서비스를 직접 만들어 쓰는 것도 모두
+                <strong> 가족을 향한 사랑과 책임감</strong>에서 시작된 일입니다.
+              </p>
+              <p style={{ margin: 0, color: 'var(--text-primary)', fontWeight: '600' }}>
+                언젠가 훌쩍 자란 세 아이가 이 공간을 열어보았을 때, 완벽하진 않았어도 가족을 사랑하고 지키기 위해
+                매일 치열하게 배우고 따뜻하게 살아냈던 아빠의 진심이 전달되길 바랍니다.
               </p>
             </div>
           </div>
@@ -149,7 +226,7 @@ export default function About() {
             운영자 소개
           </h2>
           <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
-            <strong>NaRD</strong> — 직접 부딪히며 배우는 것을 기록하는 개발자이자 메이커입니다.
+            <strong>NaRD</strong> — 세 아이의 아빠이자 한 가정의 가장으로, 가족을 사랑하고 지키고 싶은 마음을 원동력 삼아 직접 부딪히며 배우는 것을 기록하는 개발자이자 메이커입니다.
             이 블로그의 모든 글은 AI 초안을 출발점으로 하되, 실제 실행·실측·검증을 거친 뒤에만 발행됩니다.
             코드와 설정은 공개 저장소에서 확인할 수 있습니다.
           </p>
