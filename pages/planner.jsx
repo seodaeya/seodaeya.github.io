@@ -86,6 +86,97 @@ function eventWhenLabel(event) {
   return event.allDay ? `${day} · 종일` : `${day} ${timeLabelOf(event)}`;
 }
 
+function CustomEventSelect({
+  value,
+  onChange,
+  events = [],
+  placeholder = '연결 안 함 (독립 할 일 · 준비물)',
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    function onPointerDown(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(e) {
+      if (e.key === 'Escape') setOpen(false);
+    }
+    if (open) {
+      document.addEventListener('pointerdown', onPointerDown);
+      document.addEventListener('keydown', onKeyDown);
+      return () => {
+        document.removeEventListener('pointerdown', onPointerDown);
+        document.removeEventListener('keydown', onKeyDown);
+      };
+    }
+  }, [open]);
+
+  const selectedEvent = events.find((e) => e.id === value);
+  const displayLabel = selectedEvent ? eventOptionLabel(selectedEvent) : placeholder;
+
+  return (
+    <div className={styles.customSelectWrap} ref={containerRef}>
+      <button
+        type="button"
+        className={`${styles.customSelectTrigger} ${open ? styles.customSelectTriggerOpen : ''}`}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span className={styles.customSelectText}>{displayLabel}</span>
+        <svg
+          className={`${styles.customSelectArrow} ${open ? styles.customSelectArrowOpen : ''}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open ? (
+        <ul className={styles.customSelectList} role="listbox">
+          <li
+            role="option"
+            aria-selected={!value}
+            className={`${styles.customSelectOption} ${!value ? styles.customSelectOptionActive : ''}`}
+            onClick={() => {
+              onChange('');
+              setOpen(false);
+            }}
+          >
+            <span className={styles.customSelectCheck}>{!value ? '✓' : ''}</span>
+            <span className={styles.customSelectOptionLabel}>{placeholder}</span>
+          </li>
+          {events.map((event) => {
+            const isSelected = event.id === value;
+            return (
+              <li
+                key={event.id}
+                role="option"
+                aria-selected={isSelected}
+                className={`${styles.customSelectOption} ${isSelected ? styles.customSelectOptionActive : ''}`}
+                onClick={() => {
+                  onChange(event.id);
+                  setOpen(false);
+                }}
+              >
+                <span className={styles.customSelectCheck}>{isSelected ? '✓' : ''}</span>
+                <span className={styles.customSelectOptionLabel}>{eventOptionLabel(event)}</span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
 function downloadFile(filename, text, mime) {
   const blob = new Blob([text], { type: mime || 'application/octet-stream' });
   const url = URL.createObjectURL(blob);
@@ -1620,23 +1711,17 @@ export default function Planner() {
                       </button>
                     </div>
                   ) : null}
-                  <select
+                  <CustomEventSelect
                     value={itemDraft.eventId}
-                    onChange={(event) => {
-                      const nextEventId = event.target.value;
+                    onChange={(nextEventId) => {
                       setItemDraft((prev) => ({ ...prev, eventId: nextEventId }));
                       if (itemDraft.id) {
                         linkItemToEvent(itemDraft.id, nextEventId || null);
                       }
                     }}
-                  >
-                    <option value="">연결 안 함 (독립 할 일 · 준비물)</option>
-                    {sortedEvents.map((event) => (
-                      <option key={event.id} value={event.id}>
-                        {eventOptionLabel(event)}
-                      </option>
-                    ))}
-                  </select>
+                    events={sortedEvents}
+                    placeholder="연결 안 함 (독립 할 일 · 준비물)"
+                  />
                   <p className={styles.fieldHelp}>
                     일정을 연결하면 일정 화면과 할 일 화면 양쪽에서 준비물·할 일을 바로 확인하고 연결·해제할 수 있습니다.
                   </p>
