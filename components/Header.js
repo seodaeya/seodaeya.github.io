@@ -89,6 +89,7 @@ export default function Header() {
   };
 
   const isCartActive = router.pathname.startsWith('/cart');
+  const isPlannerActive = router.pathname.startsWith('/planner');
 
   return (
     <header className={styles.header}>
@@ -132,7 +133,7 @@ export default function Header() {
           >
             <button 
               type="button"
-              className={`${styles.navDropdownTrigger} ${isCartActive ? styles.navDropdownTriggerActive : ''}`}
+              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive ? styles.navDropdownTriggerActive : ''}`}
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               aria-expanded={isServicesOpen}
             >
@@ -171,6 +172,19 @@ export default function Header() {
                   </div>
                   <div className={styles.dropdownItemDesc}>
                     유아부터 성인까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+
+                <Link
+                  href="/planner/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsServicesOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>📅</span> 가족 일정 관리
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    AI 정리 내용을 일정·준비물로, 브라우저에만 저장
                   </div>
                 </Link>
               </div>
@@ -351,6 +365,18 @@ export default function Header() {
                   </div>
                   <div className={styles.mobileServiceDesc}>
                     유아부터 성인까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+                <Link 
+                  href="/planner/" 
+                  className={`${styles.mobileServiceItem} ${isPlannerActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>📅</span> 가족 일정 관리
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    AI 정리 내용을 일정·준비물로, 브라우저에만 저장
                   </div>
                 </Link>
               </div>

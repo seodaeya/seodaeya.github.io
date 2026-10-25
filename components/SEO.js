@@ -51,6 +51,8 @@ export default function SEO({
       "'여전히, 나는 사람이다.' 블로그의 공식 개인정보처리방침 안내 페이지입니다. 방문자 개인정보 보호 원칙, Google Analytics 4·구글 애드센스·Microsoft Clarity 등 제3자 쿠키 활용 및 옵트아웃 방법을 명시합니다.",
     'https://seodaeya.github.io/bookmarks/':
       '나중에 다시 읽기 위해 저장한 북마크 아티클 목록과 내 관심 태그·주제 유사도 분석을 기반으로 맞춤형 연관 기술 아티클 및 영상을 추천해 주는 개인화 큐레이션 서재 페이지입니다.',
+    'https://seodaeya.github.io/planner/':
+      'AI로 정리한 안내문을 일정과 준비물로 나눠 브라우저에만 저장하는 로컬 우선 가족 일정 관리 서비스입니다. 일정과 준비물·할 일을 양방향으로 연결하고, 서버 없이 JSON 백업과 구글 캘린더·ICS 내보내기를 지원합니다. 설치 없이 무료로 사용하세요.',
   };
 
   // Bing/Google SEO: Ensure description is between 120 and 158 characters

@@ -42,6 +42,7 @@ const generateSitemap = () => {
     { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate },
     { loc: `${siteUrl}/cart/`, lastmod: getGitLastMod('pages/cart/index.jsx', '2026-09-18') },
     { loc: `${siteUrl}/word-train/`, lastmod: getGitLastMod('pages/word-train.jsx', '2026-10-09') },
+    { loc: `${siteUrl}/planner/`, lastmod: getGitLastMod('pages/planner.jsx', '2026-10-25') },
     { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05') },
     { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01') },
   ];
