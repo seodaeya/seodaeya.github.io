@@ -260,7 +260,7 @@ export default function Planner() {
     }
   };
 
-  const today = mounted ? todayKey() : null;
+  const today = todayKey();
   const sortedEvents = useMemo(() => sortEvents(data.events), [data.events]);
   const sortedItems = useMemo(() => sortItems(data.items), [data.items]);
   const eventTitleById = useMemo(
@@ -1076,19 +1076,6 @@ export default function Planner() {
     [data.events, itemDraft.eventId],
   );
 
-  if (!mounted) {
-    return (
-      <>
-        <SEO
-          title="가족 일정 관리 | 여전히, 나는 사람이다."
-          description="AI로 정리한 가정 통신문을 일정과 준비물로 나눠 브라우저에만 저장하는 로컬 우선 가족 일정 관리 서비스입니다. 일정과 준비물·할 일을 연결하고, 선택한 구글 캘린더로 바로 보내거나 JSON·ICS로 백업합니다. 설치 없이 무료로 사용하세요."
-          url="https://seodaeya.github.io/planner/"
-        />
-        <div className={styles.loading}>가족 일정 관리를 불러오는 중…</div>
-      </>
-    );
-  }
-
   return (
     <>
       <SEO
@@ -1144,7 +1131,7 @@ export default function Planner() {
           <section className={styles.stack}>
             <div className={styles.todayBar}>
               <div>
-                <p className={styles.todayLabel}>{formatDateLabel(today)}</p>
+                <p className={styles.todayLabel} suppressHydrationWarning>{formatDateLabel(today)}</p>
                 <h2 className={styles.todayTitle}>오늘의 우리 집</h2>
               </div>
               <div className={styles.summary}>

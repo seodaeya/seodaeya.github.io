@@ -80,7 +80,14 @@ function verifySEO() {
       errors.push(`[Hreflang 다국어 자기참조 충돌] ${relPath}: 단일 한국어 URL에 en/ja hreflang이 중복 선언되어 있습니다.`);
     }
 
-    // Bing/Google 필수 SEO/GEO 태그 검증 (Title, Meta Description, Meta Language)
+    // Bing/Google 필수 SEO/GEO 태그 검증 (H1, Title, Meta Description, Meta Language)
+    if (!isShortRedirectPage) {
+      const h1Matches = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)];
+      if (h1Matches.length === 0 || !h1Matches[0][1].replace(/<[^>]+>/g, '').trim()) {
+        errors.push(`[H1 태그 누락] ${relPath}: Bing/Google SEO/GEO 필수 <h1> 태그가 없거나 비어 있습니다.`);
+      }
+    }
+
     const titleMatches = [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)];
     if (titleMatches.length === 0 || !titleMatches[0][1].trim()) {
       errors.push(`[Title 태그 누락] ${relPath}: <title> 태그가 없거나 비어 있습니다.`);
