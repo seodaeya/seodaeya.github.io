@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sat, 24 Oct 2026 11:55:46 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 25 Oct 2026 13:07:10 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드]]></title>
+    <link>https://seodaeya.github.io/posts/20261025-1-family-planner-google-calendar-api-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261025-1-family-planner-google-calendar-api-guide/</guid>
+    <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[세 아이를 키우다 보면 학교·유치원 가정통신문, 학급 알림장, 현장체험학습 안내문이 매주 쏟아집니다. 달력에 일정을 적어두더라도 정작 당일 아침이 되면 "오늘 반 티 입는 날이었나?" , "도시락이랑 돗자리는 어느 일정 준비물이었지?" 하며 허둥대기 일쑤입니다. 기존...]]></description>
+  </item>
   <item>
     <title><![CDATA[OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20261020-1-opencode-free-models-comparison-guide/</link>

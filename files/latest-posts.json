@@ -1,5 +1,11 @@
 [
   {
+    "title": "가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드",
+    "category": "AI & Intelligence",
+    "file": "posts/20261025-1-family-planner-google-calendar-api-guide.md",
+    "date": "20261025"
+  },
+  {
     "title": "OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드",
     "category": "AI & Intelligence",
     "file": "posts/20261020-1-opencode-free-models-comparison-guide.md",
@@ -52,11 +58,5 @@
     "category": "Hardware & DIY",
     "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md",
     "date": "20261003"
-  },
-  {
-    "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
-    "category": "AI & Intelligence",
-    "file": "posts/20260923-2-eli5-ai-prompt-feynman-technique-guide.md",
-    "date": "20260923"
   }
 ]

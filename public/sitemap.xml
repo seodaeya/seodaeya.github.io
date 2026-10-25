@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://seodaeya.github.io/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/categories/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/ranking/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/cart/</loc>
@@ -22,12 +22,20 @@
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
+    <loc>https://seodaeya.github.io/planner/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
     <loc>https://seodaeya.github.io/about/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/privacy/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20261025-1-family-planner-google-calendar-api-guide/</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20261020-1-opencode-free-models-comparison-guide/</loc>
