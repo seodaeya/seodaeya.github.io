@@ -177,6 +177,169 @@ function CustomEventSelect({
   );
 }
 
+function CustomItemPicker({
+  items = [],
+  onSelect,
+  placeholder = '+ 기존 항목 연결',
+  eventTitleById,
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    function onPointerDown(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(e) {
+      if (e.key === 'Escape') setOpen(false);
+    }
+    if (open) {
+      document.addEventListener('pointerdown', onPointerDown);
+      document.addEventListener('keydown', onKeyDown);
+      return () => {
+        document.removeEventListener('pointerdown', onPointerDown);
+        document.removeEventListener('keydown', onKeyDown);
+      };
+    }
+  }, [open]);
+
+  if (!items.length) return null;
+
+  return (
+    <div className={styles.itemPickerWrap} ref={containerRef}>
+      <button
+        type="button"
+        className={`${styles.linkPickerButton} ${open ? styles.linkPickerButtonActive : ''}`}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>
+          {placeholder} ({items.length})
+        </span>
+        <svg
+          className={`${styles.linkPickerArrow} ${open ? styles.linkPickerArrowOpen : ''}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open ? (
+        <ul className={styles.itemPickerMenu} role="listbox">
+          {items.map((item) => {
+            const otherTitle =
+              item.eventId && eventTitleById ? eventTitleById.get(item.eventId) : null;
+            return (
+              <li
+                key={item.id}
+                role="option"
+                className={styles.itemPickerOption}
+                onClick={() => {
+                  onSelect(item.id);
+                  setOpen(false);
+                }}
+              >
+                <span className={styles.linkedType}>
+                  {TYPE_LABEL[item.listType] || '할 일'}
+                </span>
+                <span className={styles.itemPickerTitle}>
+                  {item.title}
+                  {item.qty ? ` (${item.qty})` : ''}
+                </span>
+                {otherTitle ? (
+                  <span className={styles.itemPickerOther}>· 현재: {otherTitle}</span>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
+function CustomEventPicker({
+  events = [],
+  onSelect,
+  placeholder = '+ 일정 연결',
+  compact = false,
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    function onPointerDown(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(e) {
+      if (e.key === 'Escape') setOpen(false);
+    }
+    if (open) {
+      document.addEventListener('pointerdown', onPointerDown);
+      document.addEventListener('keydown', onKeyDown);
+      return () => {
+        document.removeEventListener('pointerdown', onPointerDown);
+        document.removeEventListener('keydown', onKeyDown);
+      };
+    }
+  }, [open]);
+
+  if (!events.length) return null;
+
+  return (
+    <div className={styles.itemPickerWrap} ref={containerRef}>
+      <button
+        type="button"
+        className={`${compact ? styles.quickLinkButton : styles.linkPickerButton} ${
+          open ? styles.linkPickerButtonActive : ''
+        }`}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>{placeholder}</span>
+        <svg
+          className={`${styles.linkPickerArrow} ${open ? styles.linkPickerArrowOpen : ''}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open ? (
+        <ul className={styles.itemPickerMenu} role="listbox">
+          {events.map((event) => (
+            <li
+              key={event.id}
+              role="option"
+              className={styles.itemPickerOption}
+              onClick={() => {
+                onSelect(event.id);
+                setOpen(false);
+              }}
+            >
+              <span className={styles.itemPickerTitle}>{eventOptionLabel(event)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
 function downloadFile(filename, text, mime) {
   const blob = new Blob([text], { type: mime || 'application/octet-stream' });
   const url = URL.createObjectURL(blob);
@@ -1402,28 +1565,12 @@ export default function Planner() {
                       🔗 연결된 준비물 · 할 일 ({draftLinkedItems.length})
                     </span>
                     {draftAvailableItems.length ? (
-                      <select
-                        className={styles.linkPickerSelect}
-                        value=""
-                        onChange={(event) => {
-                          if (event.target.value) {
-                            linkItemInEventDraft(event.target.value);
-                          }
-                        }}
-                        aria-label="기존 준비물·할 일 연결"
-                      >
-                        <option value="">+ 기존 항목 연결 ({draftAvailableItems.length})</option>
-                        {draftAvailableItems.map((item) => {
-                          const otherEventTitle = item.eventId ? eventTitleById.get(item.eventId) : null;
-                          return (
-                            <option key={item.id} value={item.id}>
-                              [{TYPE_LABEL[item.listType] || '할 일'}] {item.title}
-                              {item.qty ? ` (${item.qty})` : ''}
-                              {otherEventTitle ? ` · 현재: ${otherEventTitle}` : ''}
-                            </option>
-                          );
-                        })}
-                      </select>
+                      <CustomItemPicker
+                        items={draftAvailableItems}
+                        onSelect={linkItemInEventDraft}
+                        placeholder="+ 기존 항목 연결"
+                        eventTitleById={eventTitleById}
+                      />
                     ) : null}
                   </div>
 
@@ -2672,57 +2819,43 @@ function EventRow({
           {showLinkTools ? (
             <div className={styles.inlineLinkBox}>
               {availableItems.length && onLinkItem ? (
-                <select
-                  className={styles.linkPickerSelect}
-                  value=""
-                  onChange={(e) => {
-                    if (e.target.value) {
-                      onLinkItem(e.target.value);
-                    }
-                  }}
-                  aria-label="기존 항목 연결"
-                >
-                  <option value="">+ 기존 항목 선택해 연결 ({availableItems.length})</option>
-                  {availableItems.map((item) => {
-                    const otherTitle =
-                      item.eventId && eventTitleById ? eventTitleById.get(item.eventId) : null;
-                    return (
-                      <option key={item.id} value={item.id}>
-                        [{TYPE_LABEL[item.listType] || '할 일'}] {item.title}
-                        {item.qty ? ` (${item.qty})` : ''}
-                        {otherTitle ? ` · 현재: ${otherTitle}` : ''}
-                      </option>
-                    );
-                  })}
-                </select>
+                <CustomItemPicker
+                  items={availableItems}
+                  onSelect={onLinkItem}
+                  placeholder="+ 기존 항목 선택해 연결"
+                  eventTitleById={eventTitleById}
+                />
               ) : null}
               {onQuickAddItem ? (
                 <div className={styles.inlineQuickAddRow}>
-                  <select
-                    value={quickType}
-                    onChange={(e) => setQuickType(e.target.value)}
-                    aria-label="새 항목 종류"
-                  >
+                  <div className={styles.miniChips} role="group" aria-label="새 항목 종류">
                     {LIST_TYPES.map((type) => (
-                      <option key={type.value} value={type.value}>
+                      <button
+                        key={type.value}
+                        type="button"
+                        className={`${styles.miniChip} ${quickType === type.value ? styles.miniChipActive : ''}`}
+                        onClick={() => setQuickType(type.value)}
+                      >
                         {type.label}
-                      </option>
+                      </button>
                     ))}
-                  </select>
-                  <input
-                    value={quickTitle}
-                    onChange={(e) => setQuickTitle(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        submitQuickAdd();
-                      }
-                    }}
-                    placeholder={`새 ${TYPE_LABEL[quickType] || '준비물'} 입력 후 추가`}
-                  />
-                  <button type="button" className={styles.btnSecondary} onClick={submitQuickAdd}>
-                    추가
-                  </button>
+                  </div>
+                  <div className={styles.inlineQuickAddInputGroup}>
+                    <input
+                      value={quickTitle}
+                      onChange={(e) => setQuickTitle(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          submitQuickAdd();
+                        }
+                      }}
+                      placeholder={`새 ${TYPE_LABEL[quickType] || '준비물'} 입력 후 추가`}
+                    />
+                    <button type="button" className={styles.btnSecondary} onClick={submitQuickAdd}>
+                      추가
+                    </button>
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -2831,23 +2964,12 @@ function ItemRow({ item, events = [], eventTitle, onJumpEvent, onLinkEvent, onUn
               ) : null}
             </span>
           ) : events.length && onLinkEvent ? (
-            <select
-              className={styles.quickLinkSelect}
-              value=""
-              onChange={(event) => {
-                if (event.target.value) {
-                  onLinkEvent(event.target.value);
-                }
-              }}
-              aria-label="연결할 일정 선택"
-            >
-              <option value="">+ 일정 연결</option>
-              {events.map((event) => (
-                <option key={event.id} value={event.id}>
-                  {eventOptionLabel(event)}
-                </option>
-              ))}
-            </select>
+            <CustomEventPicker
+              events={events}
+              onSelect={onLinkEvent}
+              placeholder="+ 일정 연결"
+              compact
+            />
           ) : null}
         </div>
       </div>
