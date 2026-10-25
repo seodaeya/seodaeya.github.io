@@ -18,7 +18,8 @@ excerpt: "제미나이로 정리한 가정 통신문을 일정과 준비물로 �
 
 그래서 <strong>모든 데이터는 사용자의 브라우저(`localStorage`)에만 저장하면서, AI로 안내문을 구조화하고 일정과 준비물을 양방향으로 연결한 뒤 내 구글 캘린더로 바로 보낼 수 있는 '가족 일정 관리' 서비스([/planner/](/planner/))</strong>를 구축했습니다.
 
-> 🔗 <strong>서비스 바로가기</strong>: 상단 메뉴의 <strong>[실험 서비스 ➔ 📅 가족 일정 관리](/planner/)</strong>에서 회원가입이나 설치 없이 무료로 사용할 수 있습니다.
+> 🔗 <strong>서비스 바로가기</strong>: 상단 메뉴의 <strong>[실험 서비스 ➔ 📅 가족 일정 관리](/planner/)</strong>에서 회원가입이나 설치 없이 무료로 사용할 수 있습니다.<br />
+> 📦 <strong>오픈소스 저장소</strong>: Mac 24시간 가족 AI 홈 허브 및 시스템 키체인 연동 코드는 GitHub <strong>[seodaeya/family-hub-with-ai](https://github.com/seodaeya/family-hub-with-ai)</strong>에 공개되어 있습니다.
 
 ---
 
@@ -213,7 +214,7 @@ export function buildEventDescription(event, items = []) {
 - <strong>GitHub Pages 배포 환경</strong>: GitHub 저장소의 <strong>[Settings ➔ Secrets and variables ➔ Actions ➔ Variables]</strong>에 `GOOGLE_CLIENT_ID` 변수를 등록하면 배포 워크플로가 빌드 시점에 `NEXT_PUBLIC_GOOGLE_CLIENT_ID`로 자동 주입합니다.
 
 > 💡 <strong>참고 (홈 허브 `우리집 AI`의 서비스 계정 + macOS 키체인 방식)</strong><br />
-> 집 안의 맥(Mac)에서 24시간 돌아가는 가족 허브 서버(`family-hub-with-ai`)에서는 브라우저 로그인 팝업 대신 <strong>서비스 계정(Service Account)</strong> 방식을 사용합니다. 이때는 발급받은 JSON 키를 디스크나 `.env`에 두지 않고 macOS 시스템 키체인(`/usr/bin/security` — `family-hub-google`)에 암호화 등록(`npm run google:setup`)한 뒤, Node.js 내장 `crypto`로 RS256 JWT를 직접 서명하고 `syncToken` 증분 Pull과 `If-Match`(`ETag`) 충돌 제어로 양방향 동기화를 수행합니다.
+> 집 안의 맥(Mac)에서 24시간 돌아가는 가족 허브 서버([seodaeya/family-hub-with-ai](https://github.com/seodaeya/family-hub-with-ai))에서는 브라우저 로그인 팝업 대신 <strong>서비스 계정(Service Account)</strong> 방식을 사용합니다. 이때는 발급받은 JSON 키를 디스크나 `.env`에 두지 않고 macOS 시스템 키체인(`/usr/bin/security` — `family-hub-google`)에 암호화 등록(`npm run google:setup`)한 뒤, Node.js 내장 `crypto`로 RS256 JWT를 직접 서명하고 `syncToken` 증분 Pull과 `If-Match`(`ETag`) 충돌 제어로 양방향 동기화를 수행합니다.
 
 ---
 
