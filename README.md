@@ -39,7 +39,14 @@
 * **기차 여행 테마 규칙**: 제한시간 경과 시 하트 -1, 정답 시 100점 만점 정답률 반영, 하트 단어 적중 시 하트 +1(최대 3개).
 * **점수 공유**: Web Share·클립보드 복사, 단계별 최고기록 로컬 저장.
 
-### 4. 📝 심층 아티클 엔지니어링 뷰어 (`/posts/[id]`)
+### 4. 📅 가족 일정 관리 (`/planner`)
+* **로컬 우선(Local-first) 프라이버시 설계**: 외부 데이터베이스나 로그인 서버 없이 모든 일정, 할 일, 준비물, 장보기 데이터는 브라우저 `localStorage`에만 안전하게 보관됩니다.
+* **AI 안내문 구조화 및 제미나이(Gemini) 연동**: 학교·유치원 가정통신문이나 알림장 텍스트를 붙여넣으면 일정과 준비물·할 일을 자동으로 추출·분리합니다.
+* **일정 ↔ 준비물·할 일 양방향(Bi-directional) 연결 UX**: 일정 상세 화면에서 연결된 준비물을 확인·해제하거나 인라인으로 즉시 추가할 수 있고, 반대로 준비물 목록에서도 일정 배지 클릭을 통한 이동 및 원클릭 연결·해제가 가능합니다.
+* **Google Calendar API 무서버 동기화**: `calendar.app.created` 최소 권한 스코프를 사용해 앱 전용 보조 캘린더(`우리집 AI`)에만 일정을 생성·수정하며, 개인 기존 캘린더는 완벽히 보호됩니다.
+* **3단계 유연한 일정 관리**: 브라우저 직결 OAuth 2.0 자동 동기화, 로그인 없는 수동 구글 캘린더 템플릿 열기, 표준 `.ics` 파일 내보내기 및 JSON 백업/복원을 모두 지원합니다.
+
+### 5. 📝 심층 아티클 엔지니어링 뷰어 (`/posts/[id]`)
 * **인터랙티브 다이어그램 (Mermaid SVG)**: 아키텍처 및 순서도를 Mermaid 코드로 작성하면 클라이언트에서 선명한 벡터 SVG로 자동 렌더링합니다. (다크모드 고대비 스타일 및 스크롤 롤백 방지 `React.memo` 최적화 적용)
 * **3D 온톨로지 지식 그래프 (`OntologyGraph3D`)**: Three.js를 활용하여 기술 개념 및 키워드 간의 연결 고리를 인터랙티브 3D 노드 그래프로 시각화합니다.
 * **시리즈 연재 네비게이션 (`SeriesNav`)**: `series` frontmatter로 묶은 연작을 날짜순 Part 목록 + 이전/다음 편 버튼으로 연결합니다.
@@ -50,7 +57,7 @@
 * **원클릭 코드 복사 & 반응형 테이블**: 모든 코드 블록에 복사 버튼이 자동 주입되며, 모바일에서 긴 테이블이 레이아웃을 깨뜨리지 않도록 가로 스크롤 컨테이너로 감쌉니다.
 * **Giscus 댓글 연동**: GitHub Discussions API 기반의 무서버 댓글 시스템으로, 블로그 테마(다크/라이트)에 맞춰 자동 전환됩니다.
 
-### 5. 🔍 검색엔진(SEO) & 생성형 AI(GEO/AEO) 최적화
+### 6. 🔍 검색엔진(SEO) & 생성형 AI(GEO/AEO) 최적화
 * **JSON-LD 구조화 데이터**: `BlogPosting`, `VideoObject`, `WebSite`, `Person` 스키마를 완벽 제공하여 검색엔진 리치 스니펫을 지원합니다.
 * **AI Key Summary & Global Takeaways**: 포스트 상단에 핵심 요약 박스를 배치하여 Perplexity, ChatGPT, Claude 등 최신 AI 검색 크롤러의 핵심 인용 확률을 극대화했습니다.
 * **IndexNow 실시간 핑**: 새 글 배포 시 Bing, Naver, Yandex 검색엔진에 즉시 URL을 핑하여 수 분 내 조기 색인을 유도합니다.
@@ -104,6 +111,7 @@ seodaeya.github.io
 │   ├── privacy.jsx               # 개인정보처리방침 (쿠키, 애드센스 고지)
 │   ├── cart/                     # 모두모아 장바구니 (CartInAll) 서비스
 │   ├── word-train.jsx            # 단어기차 게임 (한글·영어 단어 맞추기 + 타자 게임)
+│   ├── planner.jsx               # 가족 일정 관리 서비스 (로컬 우선, 양방향 연결, 구글 캘린더)
 │   ├── bookmarks.jsx             # 북마크 목록 페이지 (로컬 저장)
 │   ├── categories/               # 카테고리별 글 & 영상 모아보기
 │   ├── ranking/                  # 전체 실시간 랭킹 종합 순위표 페이지
@@ -122,10 +130,17 @@ seodaeya.github.io
 │   ├── post.module.css           # 포스트 본문, Mermaid, AI 요약 박스 스타일
 │   ├── cart.module.css           # 장바구니 인터페이스 스타일
 │   ├── game.module.css           # 단어기차 게임 스타일
+│   ├── planner.module.css        # 가족 일정 관리 인터페이스 스타일
 │   └── ranking.module.css        # 랭킹 순위표 및 배지 스타일
 ├── lib/                          # 공용 유틸리티
 │   ├── content.js                # 발췌문 생성 (SVG/코드 제외 클린 텍스트)
-│   └── word-train-words.js       # 단어기차 단어장 (단계별 한영 + 무료 AI 묶음 출제)
+│   ├── word-train-words.js       # 단어기차 단어장 (단계별 한영 + 무료 AI 묶음 출제)
+│   ├── planner-model.js          # 가족 일정 관리 모델 정규화 및 설명 텍스트 빌더
+│   ├── planner-parse.js          # AI 안내문 파서 및 마크다운·JSON 추출기
+│   ├── planner-storage.js        # 로컬스토리지 백업·복원·저장 유틸리티
+│   └── planner-google.js         # 구글 캘린더 OAuth2·동기화·50% 쿼터 가드레일
+├── tests/                        # 단위 테스트
+│   └── planner-google.test.mjs   # 구글 캘린더 모델 및 쿼터 안전 가드레일 테스트
 ├── workers/                      # Cloudflare Workers 백엔드
 │   └── cart-product-lookup/      # 쿠팡 파트너스 HMAC 서명 및 상품 조회 마이크로서비스
 ├── AGENTS.md                     # AI 에이전트 마크다운 포맷팅 및 SEO 영구 규칙서
@@ -145,6 +160,7 @@ seodaeya.github.io
 | **Visualization** | **Mermaid v11, Three.js** | 인터랙티브 아키텍처 다이어그램 및 3D 지식 그래프 |
 | **Markdown** | **Gray-Matter, Marked** | YAML 프론트매터 파싱 및 커스텀 렌더러 파이프라인 |
 | **Serverless** | **Cloudflare Workers (Wrangler)** | 쇼핑몰 API 암호화 서명 및 서버리스 마이크로서비스 |
+| **Calendar Sync** | **Google Identity Services (OAuth2)** | 브라우저 인메모리 토큰 및 Google Calendar API 동기화 |
 | **Analytics & SEO** | **GA4 API, IndexNow, Giscus** | 실시간 트래픽 분석, 즉시 색인 핑, GitHub 토론 기반 댓글 |
 | **CI/CD** | **GitHub Actions** | 매일 자정 자동 통계 갱신 및 GitHub Pages 무중단 배포 |
 
@@ -182,7 +198,7 @@ npm run dev
 ```bash
 npm run test
 ```
-Cloudflare Worker 헬퍼 함수 및 파트너스 서명 로직을 테스트합니다.
+Cloudflare Worker 헬퍼 및 구글 캘린더 연동·쿼터 가드레일 로직을 테스트합니다.
 
 ### 5. 정적 사이트 빌드
 ```bash
