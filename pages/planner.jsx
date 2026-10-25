@@ -1637,10 +1637,10 @@ export default function Planner() {
                       </option>
                     ))}
                   </select>
+                  <p className={styles.fieldHelp}>
+                    일정을 연결하면 일정 화면과 할 일 화면 양쪽에서 준비물·할 일을 바로 확인하고 연결·해제할 수 있습니다.
+                  </p>
                 </div>
-                <p className={styles.tiny}>
-                  일정을 연결하면 일정 화면과 할 일 화면 양쪽에서 준비물·할 일을 바로 확인하고 연결·해제할 수 있습니다.
-                </p>
                 <div className={styles.fieldRow}>
                   <label className={styles.field}>
                     <span>수량 (선택)</span>
