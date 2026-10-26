@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://seodaeya.github.io/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/categories/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/ranking/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/about/</loc>
@@ -20,6 +20,10 @@
   <url>
     <loc>https://seodaeya.github.io/privacy/</loc>
     <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20261026-1-webfont-import-lcp-render-blocking/</loc>
+    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20261025-1-family-planner-google-calendar-api-guide/</loc>

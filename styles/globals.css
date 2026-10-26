@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+/*
+ * 웹폰트(Inter/Outfit)는 CSS `@import` 대신 `pages/_document.js`의 <link>로 불러옵니다.
+ * @import는 "메인 CSS 다운로드 → 파싱 → 폰트 CSS 발견 → 폰트 파일"로 이어지는 직렬 체인을 만들어
+ * FCP/LCP를 수 초 지연시킵니다. <link>는 HTML 파싱 즉시 병렬로 발견됩니다.
+ */
 
 :root {
   /* HSL Color System - Dark Theme (Default) */

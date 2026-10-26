@@ -1,12 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from '@/styles/layout.module.css';
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState('ko');
 
-  useEffect(() => {
-    // 1. Initialize Google Translate element script
+  /**
+   * Google Translate 위젯 로드 (약 110KB + 추가 요청).
+   *
+   * 기존에는 모든 페이지에서 마운트 즉시 로드했으나, 실제로 번역을 쓰는 사용자는 소수이므로
+   * - 과거에 언어를 선택한 사용자(`googtrans` 쿠키 보유)만 즉시 로드해 자동 번역을 유지하고,
+   * - 그 외에는 언어 드롭다운을 처음 열 때 로드한다.
+   * 첫 화면(FCP/LCP)의 대역폭 경합을 줄이는 것이 목적이다.
+   */
+  const loadTranslate = useCallback(() => {
+    // 이미 초기화됐거나 로딩 중이면 다시 주입하지 않는다.
+    if (window.google && window.google.translate) return;
+    if (document.getElementById('google-translate-script')) return;
+
     if (!window.googleTranslateElementInit) {
       window.googleTranslateElementInit = () => {
         if (window.google && window.google.translate) {
@@ -20,19 +31,30 @@ export default function LanguageSwitcher() {
           );
         }
       };
-
-      const script = document.createElement('script');
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
     }
 
-    // Check existing cookie
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    // 로드 실패 시 다음 시도에서 다시 주입할 수 있도록 노드를 제거한다.
+    script.onerror = () => script.remove();
+    document.body.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    // 언어를 이미 선택한 사용자는 자동 번역이 계속 적용되어야 하므로 즉시 로드한다.
     const match = document.cookie.match(/googtrans=\/ko\/([a-zA-Z\-]+)/);
     if (match && match[1]) {
       setCurrentLang(match[1]);
+      loadTranslate();
     }
-  }, []);
+  }, [loadTranslate]);
+
+  const toggleOpen = () => {
+    if (!isOpen) loadTranslate();
+    setIsOpen(!isOpen);
+  };
 
   const changeLanguage = (langCode) => {
     setCurrentLang(langCode);
@@ -72,7 +94,7 @@ export default function LanguageSwitcher() {
 
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleOpen}
         className={styles.themeToggleBtn}
         style={{ width: 'auto', padding: '0 10px', borderRadius: '18px', gap: '4px', fontSize: '0.8rem', fontWeight: 600 }}
         aria-label="언어 변경 / Change Language"

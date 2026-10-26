@@ -232,6 +232,19 @@
   ],
   "Dev & Software": [
     {
+      "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import",
+      "file": "posts/20261026-1-webfont-import-lcp-render-blocking.md",
+      "tags": [
+        "Performance",
+        "CoreWebVitals",
+        "LCP",
+        "FCP",
+        "RenderBlocking",
+        "WebFont",
+        "NextJS"
+      ]
+    },
+    {
       "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
       "file": "posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide.md",
       "tags": [

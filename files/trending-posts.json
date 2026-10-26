@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 26일 21:07 KST",
+  "updatedAt": "2026년 10월 26일 22:05 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -217,6 +217,19 @@
       "rank": 12,
       "change": "new",
       "changeText": "NEW",
+      "badge": "Performance · Dev",
+      "category": "Dev & Software",
+      "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import",
+      "desc": "PageSpeed Insights 모바일 57점, FCP 6.0초·LCP 9.4초를 기록한 블로그에서 CSS @import가 만든 직렬 폰트 로딩 체인과 매 페이지 내려받던 번역 위젯 110KB를 찾아 제거한 과정을 실측 타임라인으로 정리합니다.",
+      "image": "/images/webfont_import_lcp_thumbnail.jpg",
+      "url": "/posts/20261026-1-webfont-import-lcp-render-blocking",
+      "date": "2026-10-26",
+      "views": null
+    },
+    {
+      "rank": 13,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "OpenCode · AI",
       "category": "AI & Intelligence",
       "title": "OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드",
@@ -227,7 +240,7 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "new",
       "changeText": "NEW",
       "badge": "OpenCode · AI",
@@ -240,7 +253,7 @@
       "views": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "change": "new",
       "changeText": "NEW",
       "badge": "AIModel · AI",
@@ -253,7 +266,7 @@
       "views": null
     },
     {
-      "rank": 15,
+      "rank": 16,
       "change": "new",
       "changeText": "NEW",
       "badge": "Gemini · AI",
@@ -266,7 +279,7 @@
       "views": null
     },
     {
-      "rank": 16,
+      "rank": 17,
       "change": "new",
       "changeText": "NEW",
       "badge": "REA · AI",
@@ -279,7 +292,7 @@
       "views": null
     },
     {
-      "rank": 17,
+      "rank": 18,
       "change": "new",
       "changeText": "NEW",
       "badge": "Parenting · Lifestyle",
@@ -292,7 +305,7 @@
       "views": null
     },
     {
-      "rank": 18,
+      "rank": 19,
       "change": "new",
       "changeText": "NEW",
       "badge": "OpenCode · AI",
@@ -305,7 +318,7 @@
       "views": null
     },
     {
-      "rank": 19,
+      "rank": 20,
       "change": "new",
       "changeText": "NEW",
       "badge": "Aside · AI",
@@ -318,9 +331,9 @@
       "views": null
     },
     {
-      "rank": 20,
+      "rank": 21,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Crocell · Hardware",
       "category": "Hardware & DIY",
       "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
@@ -331,9 +344,9 @@
       "views": null
     },
     {
-      "rank": 21,
+      "rank": 22,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "ELI5 · AI",
       "category": "AI & Intelligence",
       "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
@@ -344,9 +357,9 @@
       "views": null
     },
     {
-      "rank": 22,
+      "rank": 23,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Chrome · Dev",
       "category": "Dev & Software",
       "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
@@ -357,9 +370,9 @@
       "views": null
     },
     {
-      "rank": 23,
+      "rank": 24,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Jack Dorsey · AI",
       "category": "AI & Intelligence",
       "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
@@ -370,9 +383,9 @@
       "views": null
     },
     {
-      "rank": 24,
+      "rank": 25,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "GitHub Actions · Dev",
       "category": "Dev & Software",
       "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
@@ -383,9 +396,9 @@
       "views": null
     },
     {
-      "rank": 25,
+      "rank": 26,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "GitHub Pages · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 쿠팡 봇 뚫는 서버리스 장바구니 만들기",
@@ -396,9 +409,9 @@
       "views": null
     },
     {
-      "rank": 26,
+      "rank": 27,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "SEO · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
@@ -409,9 +422,9 @@
       "views": null
     },
     {
-      "rank": 27,
+      "rank": 28,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Actor Model · AI",
       "category": "AI & Intelligence",
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
@@ -422,9 +435,9 @@
       "views": null
     },
     {
-      "rank": 28,
+      "rank": 29,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "AI Framework · AI",
       "category": "AI & Intelligence",
       "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
@@ -435,9 +448,9 @@
       "views": null
     },
     {
-      "rank": 29,
+      "rank": 30,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Agentic AI · AI",
       "category": "AI & Intelligence",
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
@@ -448,9 +461,9 @@
       "views": null
     },
     {
-      "rank": 30,
+      "rank": 31,
       "change": "down",
-      "changeText": "▼ 9",
+      "changeText": "▼ 10",
       "badge": "Gemini 3.7 · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
@@ -461,9 +474,9 @@
       "views": null
     },
     {
-      "rank": 31,
+      "rank": 32,
       "change": "up",
-      "changeText": "▲ 2",
+      "changeText": "▲ 1",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "Giscus 댓글 오류 해결: discussion 생성 실패 탈출기",
@@ -474,9 +487,9 @@
       "views": null
     },
     {
-      "rank": 32,
+      "rank": 33,
       "change": "down",
-      "changeText": "▼ 10",
+      "changeText": "▼ 11",
       "badge": "AdSense · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
@@ -487,9 +500,9 @@
       "views": null
     },
     {
-      "rank": 33,
+      "rank": 34,
       "change": "down",
-      "changeText": "▼ 10",
+      "changeText": "▼ 11",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -500,9 +513,9 @@
       "views": null
     },
     {
-      "rank": 34,
+      "rank": 35,
       "change": "down",
-      "changeText": "▼ 7",
+      "changeText": "▼ 8",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
       "title": "AI 결정 시대에 인간에게 남은 질문: 휴먼 인 더 루프",
@@ -513,9 +526,9 @@
       "views": null
     },
     {
-      "rank": 35,
+      "rank": 36,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 12",
       "badge": "SEO · AI",
       "category": "AI & Intelligence",
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
@@ -526,9 +539,9 @@
       "views": null
     },
     {
-      "rank": 36,
+      "rank": 37,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 12",
       "badge": "Google Search Console · Dev",
       "category": "Dev & Software",
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
@@ -539,9 +552,9 @@
       "views": null
     },
     {
-      "rank": 37,
+      "rank": 38,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 12",
       "badge": "Kimi · AI",
       "category": "AI & Intelligence",
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",

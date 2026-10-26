@@ -1,5 +1,11 @@
 [
   {
+    "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import",
+    "category": "Dev & Software",
+    "file": "posts/20261026-1-webfont-import-lcp-render-blocking.md",
+    "date": "20261026"
+  },
+  {
     "title": "가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드",
     "category": "AI & Intelligence",
     "file": "posts/20261025-1-family-planner-google-calendar-api-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md",
     "date": "20261004"
-  },
-  {
-    "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
-    "category": "Hardware & DIY",
-    "file": "posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide.md",
-    "date": "20261003"
   }
 ]

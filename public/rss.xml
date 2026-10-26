@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Mon, 26 Oct 2026 12:07:02 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 13:05:12 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[PageSpeed 57점, LCP를 막던 웹폰트 @import]]></title>
+    <link>https://seodaeya.github.io/posts/20261026-1-webfont-import-lcp-render-blocking/</link>
+    <guid>https://seodaeya.github.io/posts/20261026-1-webfont-import-lcp-render-blocking/</guid>
+    <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[PageSpeed Insights에서 이 블로그의 모바일 성능은 57점 이었습니다. 점수 하나만 보면 막막하지만, 세부 지표를 나눠 보면 이야기가 달라집니다. ▲ PageSpeed Insights 모바일 진단 결과: 성능 57점, FCP 6.0초, LCP 9.4초 지표...]]></description>
+  </item>
   <item>
     <title><![CDATA[가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드]]></title>
     <link>https://seodaeya.github.io/posts/20261025-1-family-planner-google-calendar-api-guide/</link>
