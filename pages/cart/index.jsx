@@ -1033,8 +1033,8 @@ export default function CartInAll() {
           </div>
         )}
 
-        {/* 쿠팡 파트너스 캐러셀 (장바구니 하단) */}
-        <CoupangCarousel />
+        {/* 쿠팡 파트너스 캐러셀 (애드센스 심사 기간 임시 비활성화) */}
+        {/* <CoupangCarousel /> */}
 
       </div>
     </>

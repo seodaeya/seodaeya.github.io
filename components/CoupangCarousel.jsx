@@ -35,6 +35,12 @@ export default function CoupangCarousel({
   className = '',
   ariaLabel = '쿠팡 파트너스 추천 상품',
 }) {
+  // 애드센스 심사 기간 임시 비활성화 플래그 (심사 완료 후 false 로 변경)
+  const ADSENSE_REVIEW_MODE = true;
+  if (ADSENSE_REVIEW_MODE) {
+    return null;
+  }
+
   const wrapRef = useRef(null);
   const slotRef = useRef(null);
   const usedWidthRef = useRef(0);

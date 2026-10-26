@@ -659,8 +659,8 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
             </div>
           </section>
 
-          {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
-          <CoupangCarousel />
+          {/* 쿠팡 파트너스 캐러셀 (애드센스 심사 기간 임시 비활성화) */}
+          {/* <CoupangCarousel /> */}
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>
