@@ -96,7 +96,7 @@ export default function Header() {
       <div className={styles.headerContainer}>
         {/* Logo */}
         <div className={styles.logoArea}>
-          <Link href="/" className={styles.logoLink} onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/" prefetch={false} className={styles.logoLink} onClick={() => setIsMobileMenuOpen(false)}>
             <span className={styles.logoText}>여전히, 나는 사람이다.</span>
           </Link>
         </div>
@@ -105,6 +105,7 @@ export default function Header() {
         <nav className={styles.desktopNav}>
           <Link 
             href="/" 
+            prefetch={false}
             className={`${styles.navLink} ${router.pathname === '/' ? styles.activeNavLink : ''}`}
           >
             홈
@@ -112,6 +113,7 @@ export default function Header() {
 
           <Link 
             href="/categories/" 
+            prefetch={false}
             className={`${styles.navLink} ${router.pathname === '/categories' || router.pathname.startsWith('/categories') ? styles.activeNavLink : ''}`}
           >
             카테고리
@@ -119,6 +121,7 @@ export default function Header() {
 
           <Link 
             href="/ranking/" 
+            prefetch={false}
             className={`${styles.navLink} ${router.pathname === '/ranking' || router.pathname.startsWith('/ranking') ? styles.activeNavLink : ''}`}
           >
             랭킹 🏆
@@ -193,6 +196,7 @@ export default function Header() {
 
           <Link 
             href="/about/" 
+            prefetch={false}
             className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
           >
             소개
@@ -200,6 +204,7 @@ export default function Header() {
 
           <Link 
             href="/bookmarks/" 
+            prefetch={false}
             className={`${styles.navLink} ${router.pathname === '/bookmarks' ? styles.activeNavLink : ''}`}
           >
             북마크 🔖

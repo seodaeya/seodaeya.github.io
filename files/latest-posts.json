@@ -1,6 +1,6 @@
 [
   {
-    "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import",
+    "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
     "category": "Dev & Software",
     "file": "posts/20261026-1-webfont-import-lcp-render-blocking.md",
     "date": "20261026"

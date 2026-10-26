@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 26일 22:05 KST",
+  "updatedAt": "2026년 10월 26일 22:46 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "Performance · Dev",
+      "category": "Dev & Software",
+      "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
+      "desc": "PageSpeed Insights 모바일 57점(FCP 6.0초·LCP 9.4초)에서 @import를 <link>로 바꿨는데도 60점(LCP 9.0초)에 머문 이유를 Lighthouse Lantern 그래프로 역추적해 99점(FCP 1.1초·LCP 2.1초)까지 끌어올린 2단계 실측 기록입니다.",
+      "image": "/images/webfont_import_lcp_thumbnail.jpg",
+      "url": "/posts/20261026-1-webfont-import-lcp-render-blocking",
+      "date": "2026-10-26",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "FamilyPlanner · AI",
       "category": "AI & Intelligence",
       "title": "가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드",
@@ -211,19 +224,6 @@
       "image": "/images/family_planner_google_calendar_api_thumbnail.jpg",
       "url": "/posts/20261025-1-family-planner-google-calendar-api-guide",
       "date": "2026-10-25",
-      "views": null
-    },
-    {
-      "rank": 12,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "Performance · Dev",
-      "category": "Dev & Software",
-      "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import",
-      "desc": "PageSpeed Insights 모바일 57점, FCP 6.0초·LCP 9.4초를 기록한 블로그에서 CSS @import가 만든 직렬 폰트 로딩 체인과 매 페이지 내려받던 번역 위젯 110KB를 찾아 제거한 과정을 실측 타임라인으로 정리합니다.",
-      "image": "/images/webfont_import_lcp_thumbnail.jpg",
-      "url": "/posts/20261026-1-webfont-import-lcp-render-blocking",
-      "date": "2026-10-26",
       "views": null
     },
     {

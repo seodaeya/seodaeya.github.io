@@ -184,7 +184,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
             AI라는 스마트한 도구 위에서 피어나는 가장 인간다운 생각과 일상의 기록.
           </p>
           <div className={styles.heroActions}>
-            <Link href="/about/" className={styles.primaryButton}>
+            <Link href="/about/" prefetch={false} className={styles.primaryButton}>
               블로그 이야기 읽기 ✨
             </Link>
             <a href="#feed" className={styles.secondaryButton}>
@@ -316,7 +316,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
               </div>
 
               {/* 1st Place Hero Card */}
-              <Link href={rank1.url} className={styles.leaderboardRank1Card}>
+              <Link href={rank1.url} prefetch={false} className={styles.leaderboardRank1Card}>
                 <div className={styles.rankBadgeGroup}>
                   <span className={styles.rank1Badge}>🥇 1위</span>
                   <span className={`${styles.changePill} ${getChangeClass(rank1.change)}`}>
@@ -337,7 +337,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   const rankLabel = currentRank === 2 ? '🥈 2위' : currentRank === 3 ? '🥉 3위' : `${currentRank}위`;
 
                   return (
-                    <Link key={idx} href={post.url} className={styles.leaderboardItem}>
+                    <Link key={idx} href={post.url} prefetch={false} className={styles.leaderboardItem}>
                       <div className={styles.rankBadgeGroup}>
                         <span className={rankBadgeClass}>{rankLabel}</span>
                         <span className={`${styles.changePill} ${getChangeClass(post.change)}`}>
@@ -352,7 +352,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   );
                 })}
                 {/* 2~5위 하단 전체 랭킹 종합 순위 바로가기 버튼 */}
-                <Link href="/ranking/" className={styles.leaderboardViewAllCta}>
+                <Link href="/ranking/" prefetch={false} className={styles.leaderboardViewAllCta}>
                   <span>🏆</span> <strong>실시간 전체 랭킹 종합 순위표 보러가기 →</strong>
                 </Link>
               </div>
@@ -380,7 +380,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   Featured Video
                 </span>
                 <h2 className={styles.showcaseTitle}>
-                  <Link href={`/${featuredVideo.file.replace('.md', '')}`}>
+                  <Link href={`/${featuredVideo.file.replace('.md', '')}`} prefetch={false}>
                     {featuredVideo.title}
                   </Link>
                 </h2>
@@ -417,7 +417,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                   <h2 className={styles.columnTitle}>
                     <span className={styles.columnIcon}>📝</span> {cleanQuery ? `검색된 블로그 글 (${displayedPosts.length})` : '최근 블로그 글'}
                   </h2>
-                  <Link href="/categories/" className={styles.viewAllLink}>
+                  <Link href="/categories/" prefetch={false} className={styles.viewAllLink}>
                     카테고리 전체보기 →
                   </Link>
                 </div>
@@ -426,6 +426,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     <Link 
                       key={post.file} 
                       href={`/${post.file.replace('.md', '')}`} 
+                      prefetch={false}
                       className={styles.miniCard}
                       style={!cleanQuery && idx >= visiblePostCount ? { display: 'none' } : undefined}
                     >
@@ -479,6 +480,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                     <Link 
                       key={video.file} 
                       href={`/${video.file.replace('.md', '')}`} 
+                      prefetch={false}
                       className={`${styles.miniCard} ${styles.videoMiniCard}`}
                       style={!cleanQuery && idx >= visibleVideoCount ? { display: 'none' } : undefined}
                     >

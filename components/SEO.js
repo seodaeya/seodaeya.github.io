@@ -169,20 +169,7 @@ export default function SEO({
       <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
       <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
 
-      {/* Google AdSense Script (Strictly loaded only on indexable publisher content pages) */}
-      {!noindex && (
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086"
-          crossOrigin="anonymous"
-        />
-      )}
-
-      {/* Google Analytics 4 (GA4) Tracking Tag */}
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-      />
+      {/* Google AdSense & GA4 Deferred Loader (Prevents 400KB+ 3P scripts & AdSense iframes from blocking initial FCP/LCP) */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
@@ -192,6 +179,39 @@ export default function SEO({
             gtag('config', '${gaId}', {
               page_path: window.location.pathname,
             });
+            (function() {
+              var loaded = false;
+              function loadThirdParty() {
+                if (loaded) return;
+                loaded = true;
+                var events = ['scroll', 'touchstart', 'pointerdown', 'mousemove', 'keydown'];
+                for (var i = 0; i < events.length; i++) {
+                  window.removeEventListener(events[i], loadThirdParty, { passive: true });
+                }
+                ${!noindex ? `
+                var ad = document.createElement('script');
+                ad.async = true;
+                ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086';
+                ad.crossOrigin = 'anonymous';
+                document.head.appendChild(ad);
+                ` : ''}
+                var ga = document.createElement('script');
+                ga.async = true;
+                ga.src = 'https://www.googletagmanager.com/gtag/js?id=${gaId}';
+                document.head.appendChild(ga);
+              }
+              if (/Mediapartners-Google|AdsBot|Googlebot|bingbot/i.test(navigator.userAgent || '')) {
+                loadThirdParty();
+              } else {
+                var events = ['scroll', 'touchstart', 'pointerdown', 'mousemove', 'keydown'];
+                for (var i = 0; i < events.length; i++) {
+                  window.addEventListener(events[i], loadThirdParty, { passive: true, once: true });
+                }
+                window.addEventListener('load', function() {
+                  setTimeout(loadThirdParty, 3500);
+                }, { once: true });
+              }
+            })();
           `,
         }}
       />
