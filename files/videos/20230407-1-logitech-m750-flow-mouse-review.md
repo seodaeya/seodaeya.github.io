@@ -4,6 +4,7 @@ title: "로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 �
 videoId: "WL4GFGCCRl4"
 date: "2023-04-07"
 image: "/images/logitech_m750_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🖱️ 윈도우와 맥을 자유자재로 넘나드는 마우스, 로지텍 FLOW 실전 활용기

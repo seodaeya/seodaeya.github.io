@@ -4,6 +4,7 @@ title: "레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조�
 videoId: "APxCc13Bzng"
 date: "2026-06-18"
 image: "/images/razer_basilisk_disassembly_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🖱 멀쩡한 마우스를 분해해 버린 허탈한 자가 수리 후기

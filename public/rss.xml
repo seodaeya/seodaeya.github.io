@@ -5,7 +5,7 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 25 Oct 2026 14:10:31 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 12:07:02 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드]]></title>
@@ -239,20 +239,6 @@
     <description><![CDATA[개발자나 시스템 관리자가 복잡한 코드를 분석하거나 텍스트 데이터를 처리할 때, 웹 브라우저를 열고 카피 앤 페이스트(Copy & Paste)를 반복하는 과정은 작업 흐름을 끊는 커다란 요소입니다. 구글(Google)이 제공하는 공식 Gemini CLI(Command L...]]></description>
   </item>
   <item>
-    <title><![CDATA[SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부]]></title>
-    <link>https://seodaeya.github.io/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/</link>
-    <guid>https://seodaeya.github.io/videos/20260803-2-sk-magic-ice-maker-cleaning-part2/</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[지난 1부에서는 SK매직 올인원 얼음정수기(WPU I210) 의 얼음 토출부 커버 탈거 및 칫솔/물티슈를 활용한 1차 세척 과정을 다루었습니다. 이번 2부에서는 세척된 내부 부품의 2차 헹굼과 잔여 수분 완전 건조, 정확한 재결합 단계 , 그리고 청소 후 더욱 위생적으...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부]]></title>
-    <link>https://seodaeya.github.io/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/</link>
-    <guid>https://seodaeya.github.io/videos/20260803-1-sk-magic-ice-maker-cleaning-part1/</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[무더운 여름철 일상에서 가장 자주 사용하는 가전제품을 꼽으라면 단연 얼음 정수기 일 것입니다. 시원한 얼음물이나 아이스 아메리카노를 마실 때 매일 이용하지만, 정작 얼음이 쏟아져 나오는 '얼음 토출부' 안쪽 을 유심히 들여다보신 적은 많지 않으실 텐데요. 매달 방문 케...]]></description>
-  </item>
-  <item>
     <title><![CDATA[중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석]]></title>
     <link>https://seodaeya.github.io/posts/20260803-1-kimi-k3-moonshot-ai/</link>
     <guid>https://seodaeya.github.io/posts/20260803-1-kimi-k3-moonshot-ai/</guid>
@@ -267,13 +253,6 @@
     <description><![CDATA["오늘 저녁은 무엇을 먹을까?" "이번 주말에는 어떤 영화를 볼까?" 불과 몇 년 전만 해도 우리는 이런 일상의 소소한 질문들을 스스로 던지고 고민했습니다. 하지만 요즘은 다릅니다. 알고리즘과 인공지능(AI)이 나의 과거 취향을 먼저 파악해 선택지를 제안하고, 심지어...]]></description>
   </item>
   <item>
-    <title><![CDATA[GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까]]></title>
-    <link>https://seodaeya.github.io/posts/20260713-1-gpt-5-6-sol-terra-luna/</link>
-    <guid>https://seodaeya.github.io/posts/20260713-1-gpt-5-6-sol-terra-luna/</guid>
-    <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[OpenAI가 7월 9일 공개한 GPT 5.6 은 하나의 모델만 가리키는 이름이 아니다. 이번에는 성격이 다른 세 가지 모델, Sol , Terra , Luna 가 함께 나왔다. 처음 보면 이름이 조금 낯설다. 예전처럼 숫자가 올라간 새 모델 하나를 고르는 방식이 아니...]]></description>
-  </item>
-  <item>
     <title><![CDATA[Giscus 댓글 오류 해결: discussion 생성 실패 탈출기]]></title>
     <link>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</link>
     <guid>https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/</guid>
@@ -281,81 +260,11 @@
     <description><![CDATA[깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 Giscus 입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이스 없이 깔끔하게 댓글을 관리할 수 있는 강력한...]]></description>
   </item>
   <item>
-    <title><![CDATA[크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법]]></title>
-    <link>https://seodaeya.github.io/videos/20260706-1-crested-gecko-shedding-guide/</link>
-    <guid>https://seodaeya.github.io/videos/20260706-1-crested-gecko-shedding-guide/</guid>
-    <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[반려 파충류로 큰 사랑을 받고 있는 크레스티드 게코(Crested Gecko) 를 키우다 보면 온몸의 허물을 하얗게 벗어내는 신비로운 현상인 '탈피(Shedding)' 를 마주하게 됩니다. 탈피는 도마뱀이 성장하고 피부 건강을 유지하기 위해 거쳐야 하는 자연스럽고 필수...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피]]></title>
-    <link>https://seodaeya.github.io/videos/20260628-1-peachtree-highball-cocktail-recipe/</link>
-    <guid>https://seodaeya.github.io/videos/20260628-1-peachtree-highball-cocktail-recipe/</guid>
-    <pubDate>Sun, 28 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[집에서도 마치 휴양지 해변에 온 듯한 낭만적인 분위기를 낼 수 있는 비치 하이볼(피치 하이볼) 제조 방법을 소개합니다. 달콤하고 향긋한 복숭아 향의 피치트리(Peachtree) 리큐르와 푸른 바다 빛깔을 내주는 블루 큐라소(Blue Curacao) 시럽을 활용해 시각과...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁]]></title>
-    <link>https://seodaeya.github.io/videos/20260624-2-santafe-tm-afterblow-step2/</link>
-    <guid>https://seodaeya.github.io/videos/20260624-2-santafe-tm-afterblow-step2/</guid>
-    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[💡 이 작업은 조수석 언더커버가 미리 탈거되어 있어야 진행이 가능합니다. 👉 이전 단계 바로가기: 싼타페 TM 애프터블로우 설치 1단계 조수석 언더커버 셀프 탈거 방법 조수석 언더커버를 성공적으로 분리했다면, 이제 애프터블로우의 중간 브릿지 배선을 연결하기 위해 블...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법]]></title>
-    <link>https://seodaeya.github.io/videos/20260624-1-santafe-tm-afterblow-step1/</link>
-    <guid>https://seodaeya.github.io/videos/20260624-1-santafe-tm-afterblow-step1/</guid>
-    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[무더운 여름철 차량 에어컨을 가동한 후 시동을 끄면 에바포레이터(증발기)에 남은 차가운 결로 현상으로 인해 곰팡이와 세균이 번식하며 고약한 식초/걸레 냄새가 발생합니다. 이를 근본적으로 예방하기 위해 자체 리튬인산철 배터리로 시동 후 블로우 팬을 10\ 15분간 자동...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝]]></title>
-    <link>https://seodaeya.github.io/videos/20260622-2-laptop-cooling-fan-cleaning/</link>
-    <guid>https://seodaeya.github.io/videos/20260622-2-laptop-cooling-fan-cleaning/</guid>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[구매 후 5년 동안 단 한 번도 내부 청소를 하지 않았던 레노버 리전(Lenovo Legion) 게이밍 노트북 의 발열과 굉음 팬 소음을 해결하기 위해 직접 하판을 열고 셀프 쿨링 팬 클리닝 에 도전했습니다. 노트북 내부 쿨링 팬과 히트싱크 통풍구에 먼지가 두껍게 쌓이...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁]]></title>
-    <link>https://seodaeya.github.io/videos/20260622-1-mac-mini-ipad-sidecar-mirroring/</link>
-    <guid>https://seodaeya.github.io/videos/20260622-1-mac-mini-ipad-sidecar-mirroring/</guid>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[애플의 맥 미니(Mac Mini) 는 가성비와 성능이 뛰어난 콤팩트 데스크톱 컴퓨터입니다. 많은 유저들이 맥 미니를 가방에 넣고 다니며 아이패드를 휴대용 모니터( 사이드카 및 미러링 )로 활용해 카페나 외부에서 작업하고 싶어 합니다. 하지만 치명적인 문제가 있습니다....]]></description>
-  </item>
-  <item>
-    <title><![CDATA[레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)]]></title>
-    <link>https://seodaeya.github.io/videos/20260618-1-razer-basilisk-x-disassembly/</link>
-    <guid>https://seodaeya.github.io/videos/20260618-1-razer-basilisk-x-disassembly/</guid>
-    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[게이밍 마우스로 오랜 기간 가성비 끝판왕 자리를 지키고 있는 레이저 바실리스크 X 하이퍼스피드(Razer Basilisk X Hyperspeed) . 얼마 전 노트북과 마우스가 올려져 있던 간이 테이블을 옮기다가 그만 마우스가 바닥으로 뚝 떨어지는 사고가 발생했습니다....]]></description>
-  </item>
-  <item>
-    <title><![CDATA[싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기]]></title>
-    <link>https://seodaeya.github.io/videos/20260510-1-santafe-tm-turn-signal-bulb-fix/</link>
-    <guid>https://seodaeya.github.io/videos/20260510-1-santafe-tm-turn-signal-bulb-fix/</guid>
-    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[외출하려고 시동을 걸었는데 계기판에 방향지시등을 점검하라는 경고가 떠 있었습니다. 처음엔 당연히 당황했습니다. 약속 시간도 있었고, "이거 바로 정비소 가야 하나?", "운전해도 되는 건가?" 하는 생각이 먼저 들더라고요. 그래도 일단 밖으로 나가 방향지시등을 켜 보니...]]></description>
-  </item>
-  <item>
     <title><![CDATA[PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)]]></title>
     <link>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</link>
     <guid>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</guid>
     <pubDate>Sun, 27 Apr 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[PostgreSQL(포스트그레스큐엘) 은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON 데이터 처리, GIS 지리 정...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[선유도 구이찌정육식당 제육볶음 + 김치찌개 보글보글 점심 후기]]></title>
-    <link>https://seodaeya.github.io/videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch/</link>
-    <guid>https://seodaeya.github.io/videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch/</guid>
-    <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[서울 영등포구 선유도역 인근에 위치한 '구이찌정육식당' 은 점심시간마다 든든한 한 끼를 해결하려는 주변 직장인들로 늘 문전성시를 이루는 숨겨진 맛집입니다. 저녁에는 소고기와 돼지구이를 전문으로 판매하는 정육식당이지만, 점심에는 제육볶음이나 오징어볶음에 찌개(김치찌개 또...]]></description>
-  </item>
-  <item>
-    <title><![CDATA[로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 연결 및 사용기]]></title>
-    <link>https://seodaeya.github.io/videos/20230407-1-logitech-m750-flow-mouse-review/</link>
-    <guid>https://seodaeya.github.io/videos/20230407-1-logitech-m750-flow-mouse-review/</guid>
-    <pubDate>Fri, 07 Apr 2023 00:00:00 GMT</pubDate>
-    <description><![CDATA[데스크톱 PC와 맥북, 혹은 사무용 윈도우 랩톱과 개인용 아이맥 등 2대 이상의 컴퓨터를 책상에 올려두고 멀티태스킹을 하는 사용자들에게 최고의 생산성 도구는 바로 로지텍 시그니처 플러스 M750 (Logitech Signature Plus M750) 무소음 마우스입니다...]]></description>
   </item>
 </channel>
 </rss>

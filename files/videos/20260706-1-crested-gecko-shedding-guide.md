@@ -4,6 +4,7 @@ title: "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허�
 videoId: "ofVV7Obr6b0"
 date: "2026-07-06"
 image: "/images/crested_gecko_shedding_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🦎 크레스티드 게코의 건강 지표, '탈피'에 대한 모든 것

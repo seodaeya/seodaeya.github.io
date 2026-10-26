@@ -4,6 +4,7 @@ title: "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가�
 videoId: "xXh3qj1LOUQ"
 date: "2026-08-03"
 image: "/images/sk_magic_ice_chute_cleaning_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🧊 방치하기 쉬운 얼음 정수기 토출부, 위생 상태 점검해보셨나요?

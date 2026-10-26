@@ -134,6 +134,9 @@ function getAllPostsWithScores() {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // noindex: true 콘텐츠는 색인 및 랭킹 집계에서 제외
+    if (data.noindex === true) return null;
+
     const postDate = data.date ? new Date(data.date).getTime() : 0;
     const daysOld = Math.max(0, Math.floor((Date.now() - postDate) / (1000 * 60 * 60 * 24)));
     
@@ -154,7 +157,7 @@ function getAllPostsWithScores() {
       excerpt: data.excerpt || content.slice(0, 120).replace(/[#*`]/g, '').trim(),
       baseScore
     };
-  });
+  }).filter(Boolean);
 }
 
 // 3. 기존 보존된 조회수 맵 읽기 (로컬 빌드 시 GA 실측 조회수 유실 방지)

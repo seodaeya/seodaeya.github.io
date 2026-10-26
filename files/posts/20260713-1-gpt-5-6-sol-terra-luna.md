@@ -5,6 +5,7 @@ date: "2026-07-13"
 image: "/images/gpt_5_6_thumbnail.jpg"
 tags: ["AI Future", "Crypto", "Market Analysis", "Tech Trends"]
 excerpt: "차세대 GPT 모델의 진화 방향과 크립토 시장의 구조적 변화 및 리스크 관리 전략을 테크와 경제의 융합 관점에서 살펴봅니다."
+noindex: true
 ---
 ## GPT-5.6, 이름부터 조금 달라졌다
 

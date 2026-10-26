@@ -4,6 +4,7 @@ title: "맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 
 videoId: "aAy6FmVHnnE"
 date: "2026-06-22"
 image: "/images/mac_mini_ipad_sidecar_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🖥️ 모니터 없는 맥 미니(Mac Mini), 아이패드를 모니터로 쓰기

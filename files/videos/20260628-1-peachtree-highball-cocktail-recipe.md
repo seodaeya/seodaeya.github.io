@@ -4,6 +4,7 @@ title: "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이�
 videoId: "XMDb04S2FVY"
 date: "2026-06-28"
 image: "/images/beach_highball_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🍹 무더위를 날려버릴 청량한 한 잔, 비치(피치) 하이볼 만들기

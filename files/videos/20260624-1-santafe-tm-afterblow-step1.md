@@ -4,6 +4,7 @@ title: "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 
 videoId: "R82BkaBb4Ls"
 date: "2026-06-24"
 image: "/images/afterblow_step1_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🚗 차량 에어컨 냄새 예방을 위한 싼타페 TM 애프터블로우 DIY (1단계)

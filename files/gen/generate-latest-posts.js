@@ -132,11 +132,14 @@ const generateLatestPosts = () => {
 
     const filesWithDates = files
         .map(filePath => {
+            const content = fs.readFileSync(filePath, "utf-8");
+            const { data } = matter(content);
+            if (data.noindex === true) return null;
             const filename = path.basename(filePath, ".md");
             const date = extractDateFromFilename(filename);
             return { filePath, filename, date };
         })
-        .filter(file => file.date)
+        .filter(file => file && file.date)
         .sort((a, b) => {
             const dateDiff = b.date.localeCompare(a.date);
             if (dateDiff !== 0) return dateDiff;

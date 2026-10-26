@@ -169,6 +169,15 @@ export default function SEO({
       <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
       <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
 
+      {/* Google AdSense Script (Strictly loaded only on indexable publisher content pages) */}
+      {!noindex && (
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9646087317436086"
+          crossOrigin="anonymous"
+        />
+      )}
+
       {/* Google Analytics 4 (GA4) Tracking Tag */}
       <script
         async

@@ -518,6 +518,7 @@ export default function WordTrain() {
         title="단어기차 | 여전히, 나는 사람이다."
         description="기차 여행 테마 단어 맞추기 게임. 유아부터 성인까지 한글·영어 단어를 맞추고 점수를 공유하세요."
         url="https://seodaeya.github.io/word-train/"
+        noindex={true}
       />
       <div className={styles.gameWrap}>
         <div className={styles.sky}>

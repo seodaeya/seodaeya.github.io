@@ -648,6 +648,7 @@ export default function CartInAll() {
         title="모두모아 장바구니 | 실험 서비스"
         description="쿠팡, 네이버쇼핑, 알리 등 여러 쇼핑몰의 상품 링크를 한곳에 모아 관리하는 스마트 만능 장바구니 서비스입니다."
         url="https://seodaeya.github.io/cart/"
+        noindex={true}
       />
 
       <div className={styles.cartContainer}>

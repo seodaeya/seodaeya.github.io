@@ -63,6 +63,14 @@ function verifySEO() {
     const robotsContent = robotsMatch ? robotsMatch[1] : '';
     robotsByRelPath.set(relPath, robotsContent);
 
+    // AdSense 스크립트(adsbygoogle.js) 가드레일: noindex 페이지에서는 Mediapartners-Google 호출 원천 차단
+    const hasAdsenseScript = html.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
+    if (robotsContent.includes('noindex') && hasAdsenseScript) {
+      errors.push(`[AdSense 정책 위반 위험] ${relPath}: noindex 페이지에 adsbygoogle.js 스크립트가 포함되어 있습니다.`);
+    } else if (!robotsContent.includes('noindex') && !hasAdsenseScript) {
+      errors.push(`[AdSense 스크립트 누락] ${relPath}: 색인 대상 페이지에 adsbygoogle.js 스크립트가 누락되었습니다.`);
+    }
+
     // 단축 URL 리디렉션 페이지 (예: posts/20260805-2/index.html) 검증
     const isShortRedirectPage = /^(posts|videos)\/\d{8}-\d+\/index\.html$/.test(relPath);
     if (isShortRedirectPage) {

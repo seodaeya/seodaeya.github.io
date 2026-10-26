@@ -4,6 +4,7 @@ title: "노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝"
 videoId: "nhMowAmzGHA"
 date: "2026-06-22"
 image: "/images/laptop_fan_cleaning_thumbnail.jpg"
+noindex: true
 ---
 
 ## 🌬️ 5년 동안 방치된 게이밍 노트북, 붓과 입김만으로 쿨링 성능 부활시키기

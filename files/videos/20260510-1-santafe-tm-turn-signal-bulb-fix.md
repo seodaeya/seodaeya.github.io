@@ -4,6 +4,7 @@ title: "싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결�
 videoId: "FusrtP1vZeA"
 date: "2026-05-10"
 image: "/images/santafe_turn_signal_thumbnail.jpg"
+noindex: true
 ---
 
 ## 계기판에 처음 보는 경고가 떴다

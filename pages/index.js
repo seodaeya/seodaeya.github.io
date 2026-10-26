@@ -408,10 +408,10 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
         ) : (
           <section 
             id="feed" 
-            className={`${styles.feedSection} ${(cleanQuery && (displayedPosts.length === 0 || displayedVideos.length === 0)) ? styles.singleColumnFeed : ''}`}
+            className={`${styles.feedSection} ${(displayedPosts.length === 0 || displayedVideos.length === 0) ? styles.singleColumnFeed : ''}`}
           >
             {/* Left Column: Blog Posts */}
-            {(!cleanQuery || displayedPosts.length > 0) && (
+            {displayedPosts.length > 0 && (
               <div>
                 <div className={styles.columnHeader}>
                   <h2 className={styles.columnTitle}>
@@ -459,7 +459,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
             )}
 
             {/* Right Column: YouTube Videos */}
-            {(!cleanQuery || displayedVideos.length > 0) && (
+            {displayedVideos.length > 0 && (
               <div>
                 <div className={styles.columnHeader}>
                   <h2 className={styles.columnTitle}>

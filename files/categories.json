@@ -228,16 +228,6 @@
         "AI Governance",
         "Philosophy"
       ]
-    },
-    {
-      "title": "GPT-5.6 정리: Sol·Terra·Luna, 지금은 어떻게 골라 쓰면 될까",
-      "file": "posts/20260713-1-gpt-5-6-sol-terra-luna.md",
-      "tags": [
-        "AI Future",
-        "Crypto",
-        "Market Analysis",
-        "Tech Trends"
-      ]
     }
   ],
   "Dev & Software": [
@@ -429,51 +419,6 @@
         "File Transfer",
         "Productivity"
       ]
-    },
-    {
-      "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 2부",
-      "file": "videos/20260803-2-sk-magic-ice-maker-cleaning-part2.md",
-      "tags": []
-    },
-    {
-      "title": "SK매직 얼음 정수기(WPU-I210) 얼음 토출부 셀프 청소 가이드 1부",
-      "file": "videos/20260803-1-sk-magic-ice-maker-cleaning-part1.md",
-      "tags": []
-    },
-    {
-      "title": "싼타페 TM 애프터블로우 설치 2단계 - 블로우모터 순정 전원 커넥터 쉽게 탈거하는 팁",
-      "file": "videos/20260624-2-santafe-tm-afterblow-step2.md",
-      "tags": []
-    },
-    {
-      "title": "싼타페 TM 애프터블로우 설치 1단계 - 조수석 언더커버 셀프 탈거 방법",
-      "file": "videos/20260624-1-santafe-tm-afterblow-step1.md",
-      "tags": []
-    },
-    {
-      "title": "노트북 쿨링 팬 청소하기 - 셀프 자가 간단 클리닝",
-      "file": "videos/20260622-2-laptop-cooling-fan-cleaning.md",
-      "tags": []
-    },
-    {
-      "title": "맥 미니 화면 아이패드 미러링: 모니터 없이 사이드카 유지 팁",
-      "file": "videos/20260622-1-mac-mini-ipad-sidecar-mirroring.md",
-      "tags": []
-    },
-    {
-      "title": "레이저 바실리스크 X 하이퍼스피드 마우스 분해 및 조립 후기 (별 T7 규격 정보)",
-      "file": "videos/20260618-1-razer-basilisk-x-disassembly.md",
-      "tags": []
-    },
-    {
-      "title": "싼타페 TM 방향지시등 경고등, 전구 다시 끼워서 해결한 후기",
-      "file": "videos/20260510-1-santafe-tm-turn-signal-bulb-fix.md",
-      "tags": []
-    },
-    {
-      "title": "로지텍 시그니처 플러스 M750 무소음 마우스 FLOW 기능 연결 및 사용기",
-      "file": "videos/20230407-1-logitech-m750-flow-mouse-review.md",
-      "tags": []
     }
   ],
   "Lifestyle & Tech": [
@@ -513,21 +458,6 @@
         "Stagflation",
         "PersonalFinance"
       ]
-    },
-    {
-      "title": "크레스티드 게코 탈피 가이드 - 안전하고 건강하게 허물 벗는 법",
-      "file": "videos/20260706-1-crested-gecko-shedding-guide.md",
-      "tags": []
-    },
-    {
-      "title": "집에서 즐기는 푸른 바다 홈칵테일 - 비치(피치) 하이볼 황금 레시피",
-      "file": "videos/20260628-1-peachtree-highball-cocktail-recipe.md",
-      "tags": []
-    },
-    {
-      "title": "선유도 구이찌정육식당 제육볶음 + 김치찌개 보글보글 점심 후기",
-      "file": "videos/20230426-1-seonyudo-guijji-pork-kimchi-lunch.md",
-      "tags": []
     }
   ]
 }
