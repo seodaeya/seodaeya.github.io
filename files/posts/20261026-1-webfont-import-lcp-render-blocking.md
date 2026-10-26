@@ -4,10 +4,10 @@ title: "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리�
 date: "2026-10-26"
 image: "/images/webfont_import_lcp_thumbnail.jpg"
 tags: ["Performance", "CoreWebVitals", "LCP", "FCP", "RenderBlocking", "WebFont", "NextJS"]
-excerpt: "PageSpeed Insights 모바일 57점(FCP 6.0초·LCP 9.4초)에서 @import를 <link>로 바꿨는데도 60점(LCP 9.0초)에 머문 이유를 Lighthouse Lantern 그래프로 역추적해 99점(FCP 1.1초·LCP 2.1초)까지 끌어올린 2단계 실측 기록입니다."
+excerpt: "PageSpeed Insights 모바일 57점(FCP 6.0초·LCP 9.4초)에서 @import를 <link>로 바꿨는데도 60점(LCP 9.0초)에 머문 이유를 Lighthouse Lantern 그래프로 역추적해 실제 배포 모바일 98점(FCP 1.1초·LCP 2.1초)과 데스크톱 100점 만점까지 끌어올린 실전 기록입니다."
 ---
 
-> <strong>핵심 결과</strong>: 1차 수정(`@import` → `<link rel="stylesheet">` + 번역 위젯 110KB 지연 로드)만으로는 PageSpeed 모바일 점수가 <strong>57점 → 60점(FCP 5.5초, LCP 9.0초)</strong>에 그쳤다. Lighthouse의 <strong>Lantern 의존성 그래프</strong>를 직접 덤프해 원인을 역추적한 결과, (1) `<link rel="stylesheet">`로 남긴 구글 폰트와 `.woff2` 80KB가 여전히 FCP/LCP 크리티컬 패스에 <strong>+3,218ms</strong>를 더하고 있었고, (2) `<head>` 최상단에 배치된 `async` 스크립트(`adsbygoogle.js`, `gtag/js`, `clarity.js`)가 동적 주입한 크로스 오리진 iframe 4개가 Chromium Viz 서피스 동기화를 <strong>800ms 이상 지연</strong>시켜 650KB의 서드파티 체인이 통째로 LCP 시뮬레이션에 합산되고 있었다. 이를 비차단 폰트 스왑(`media="print"` → `load` 후 `media="all"`), 인터랙션 기반 서드파티 로더, 초기 뷰포트 `<Link prefetch={false}>`로 분리하자 모바일 성능이 <strong>99점(FCP 1.1초, LCP 2.1초, TBT 0ms, CLS 0.003)</strong>으로 수직 상승했다.
+> <strong>핵심 결과</strong>: 1차 수정(`@import` → `<link rel="stylesheet">`)만으로는 PageSpeed 모바일 점수가 <strong>57점 → 60점(FCP 5.5초, LCP 9.0초)</strong>에 그쳤다. Lighthouse의 <strong>Lantern 의존성 그래프</strong>를 직접 덤프해 원인을 역추적한 결과, (1) `<link rel="stylesheet">`로 남긴 구글 폰트와 `.woff2` 80KB가 FCP/LCP 크리티컬 패스에 <strong>+3,218ms</strong>를 더하고 있었고, (2) `<head>` 최상단에 배치된 `async` 서드파티 스크립트(`adsbygoogle.js`, `gtag/js`, `clarity.js`)가 동적 주입한 크로스 오리진 iframe 4개가 Chromium Viz 서피스 동기화를 <strong>800ms 이상 지연</strong>시켜 650KB 서드파티 체인이 통째로 LCP에 합산되고 있었다. 이를 비차단 폰트 스왑(`media="print"`), 인터랙션/유휴 분리 로더, 초기 뷰포트 `<Link prefetch={false}>`로 분리하자 PageSpeed Insights 실측에서 <strong>모바일 98점(FCP 1.1초, LCP 2.1초, TBT 70ms, CLS 0.003)과 데스크톱 100점 만점</strong>을 달성했다.
 
 ## 📉 1. 점수보다 먼저 본 것
 
@@ -276,20 +276,40 @@ if (isCrawler) {
   <p style="margin-top: 10px; font-size: 0.84rem; color: var(--text-secondary);">▲ 2차 배포 후 PageSpeed Insights 실측: 60점 → 72점. LCP가 9.0초에서 4.2초로 4.8초(53%) 단축되었고 렌더 차단 절감 시간이 900ms에서 150ms로 격감했다.</p>
 </div>
 
-### 최종 실측 비교 (57점 → 60점 → 72점 → 로컬 97\~99점)
+<div style="margin: 28px 0; text-align: center;">
+  <img 
+    src="/images/pagespeed_98_mobile_report.png" 
+    alt="3차 배포 후 PageSpeed Insights 모바일 98점 실측 결과 (FCP 1.1초, LCP 2.1초, TBT 70ms, CLS 0.003)" 
+    style="max-width: 680px; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: 0 8px 30px rgba(0,0,0,0.35);" 
+    loading="lazy"
+  />
+  <p style="margin-top: 10px; font-size: 0.84rem; color: var(--text-secondary);">▲ 3차 최종 배포 후 PageSpeed Insights 모바일 실측: <strong>98점</strong> 달성! FCP 1.1초, LCP 2.1초, TBT 70ms, CLS 0.003으로 전 지표 녹색 원 획득.</p>
+</div>
 
-동일한 Lighthouse 모바일 표준 조건(Moto G Power 에뮬레이션, Slow 4G 1.6Mbps / 150ms RTT, CPU 4x 감속)에서 측정한 단계별 변화입니다.
+<div style="margin: 28px 0; text-align: center;">
+  <img 
+    src="/images/pagespeed_100_desktop_report.png" 
+    alt="PageSpeed Insights 데스크톱 100점 만점 진단 결과 (FCP 0.3초, LCP 0.5초, TBT 20ms, CLS 0)" 
+    style="max-width: 680px; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: 0 8px 30px rgba(0,0,0,0.35);" 
+    loading="lazy"
+  />
+  <p style="margin-top: 10px; font-size: 0.84rem; color: var(--text-secondary);">▲ PageSpeed Insights 데스크톱 실측: <strong>100점 만점</strong> (FCP 0.3초, LCP 0.5초, TBT 20ms, CLS 0, Speed Index 0.6초).</p>
+</div>
 
-| 지표 | 수정 전 (초기) | 1차 수정 (`<link>` 유지) | 2차 수정 (웹폰트 비차단 분리) | 3차 최종 (유휴 서드파티 제어) |
-|---|---|---|---|---|
-| <strong>Mobile Performance 점수</strong> | 57점 | 60점 (+3) | <strong>72점 (+15)</strong> | <strong>97\~99점</strong> |
-| <strong>First Contentful Paint (FCP)</strong> | 6.0초 | 5.5초 | <strong>4.1초 (-1.9초)</strong> | <strong>1.1\~1.2초</strong> |
-| <strong>Largest Contentful Paint (LCP)</strong> | 9.4초 | 9.0초 | <strong>4.2초 (-5.2초)</strong> | <strong>2.1\~2.4초</strong> |
-| <strong>Total Blocking Time (TBT)</strong> | 160ms | 70ms | <strong>130ms</strong> | <strong>0\~10ms</strong> |
-| <strong>Cumulative Layout Shift (CLS)</strong> | 0 | 0 | <strong>0</strong> | <strong>0\~0.003</strong> |
-| <strong>Speed Index</strong> | 6.6초 | 6.4초 | <strong>5.6초 (-1.0초)</strong> | <strong>1.1\~2.8초</strong> |
+### 최종 실측 비교 (57점 → 60점 → 72점 → 모바일 98점 / 데스크톱 100점)
 
-2차 수정만으로도 배포 사이트의 LCP가 <strong>9.0초에서 4.2초로 절반 이하로 줄어들며 점수가 72점</strong>으로 도약했고, 3차 유휴 제어를 통해 첫 페인트와 메인 스레드 대기 시간을 극소화했습니다.
+동일한 Lighthouse 모바일 표준 조건(Moto G Power 에뮬레이션, Slow 4G 1.6Mbps / 150ms RTT, CPU 4x 감속) 및 데스크톱 환경에서 측정한 단계별 실제 배포 변화입니다.
+
+| 지표 | 수정 전 (초기) | 1차 수정 (`<link>` 유지) | 2차 수정 (웹폰트 비차단) | <strong>3차 최종 (모바일 실측)</strong> | <strong>데스크톱 실측</strong> |
+|---|---|---|---|---|---|
+| <strong>Performance 점수</strong> | 57점 | 60점 (+3) | 72점 (+15) | <strong>98점 (+41)</strong> | <strong>100점 (만점)</strong> |
+| <strong>First Contentful Paint (FCP)</strong> | 6.0초 | 5.5초 | 4.1초 | <strong>1.1초 (-4.9초)</strong> | <strong>0.3초</strong> |
+| <strong>Largest Contentful Paint (LCP)</strong> | 9.4초 | 9.0초 | 4.2초 | <strong>2.1초 (-7.3초)</strong> | <strong>0.5초</strong> |
+| <strong>Total Blocking Time (TBT)</strong> | 160ms | 70ms | 130ms | <strong>70ms (-90ms)</strong> | <strong>20ms</strong> |
+| <strong>Cumulative Layout Shift (CLS)</strong> | 0 | 0 | 0 | <strong>0.003 (최우수)</strong> | <strong>0 (최우수)</strong> |
+| <strong>Speed Index</strong> | 6.6초 | 6.4초 | 5.6초 | <strong>2.4초 (-4.2초)</strong> | <strong>0.6초</strong> |
+
+FCP는 <strong>6.0초 → 1.1초</strong>로 81.7% 단축되었고, LCP는 <strong>9.4초 → 2.1초</strong>로 77.7% 단축되면서 실제 배포 사이트의 모바일 성능이 <strong>98점</strong>, 데스크톱은 <strong>100점 만점</strong>에 도달했습니다.
 
 ## 🔬 8. 같은 방식으로 직접 재현하기
 
