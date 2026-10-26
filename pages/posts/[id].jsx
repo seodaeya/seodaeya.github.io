@@ -474,13 +474,14 @@ export default function Post({ isRedirect, redirectTo, targetTitle, id, frontmat
   };
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return '';
-    try {
-      const d = new Date(dateStr);
-      return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
-    } catch (e) {
-      return dateStr;
+    if (!dateStr || typeof dateStr !== 'string') return '';
+    // 타임존 변환(UTC vs 클라이언트 로컬)으로 인한 1일 밀림 및 React Hydration mismatch(#418) 방지
+    const match = dateStr.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+    if (match) {
+      const [, year, month, day] = match;
+      return `${year}년 ${parseInt(month, 10)}월 ${parseInt(day, 10)}일`;
     }
+    return dateStr;
   };
 
   return (

@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <p>© {currentYear} NaRD. All rights reserved. | Built with Next.js & Human Spirit</p>
+        <p suppressHydrationWarning>© {currentYear} NaRD. All rights reserved. | Built with Next.js & Human Spirit</p>
       </div>
     </footer>
   );

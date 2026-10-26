@@ -133,16 +133,14 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
   const featuredVideo = allVideos.length > 0 ? allVideos[0] : null;
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return '';
-    try {
-      const d = new Date(dateStr);
-      const year = d.getFullYear();
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const day = String(d.getDate()).padStart(2, '0');
-      return `${year}. ${month}. ${day}`;
-    } catch (e) {
-      return dateStr;
+    if (!dateStr || typeof dateStr !== 'string') return '';
+    // 타임존 변환(UTC vs 클라이언트 로컬)으로 인한 1일 밀림 및 React Hydration mismatch(#418) 방지
+    const match = dateStr.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+    if (match) {
+      const [, year, month, day] = match;
+      return `${year}. ${month.padStart(2, '0')}. ${day.padStart(2, '0')}`;
     }
+    return dateStr;
   };
 
   const cleanQuery = searchQuery.trim().toLowerCase();
