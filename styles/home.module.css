@@ -698,6 +698,12 @@
   word-break: keep-all;
 }
 
+:global(html.light) .infoTooltipFooter {
+  color: #065f46;
+  background: rgba(6, 95, 70, 0.08);
+  border-color: rgba(6, 95, 70, 0.2);
+}
+
 .footerDot {
   width: 5px;
   height: 5px;
@@ -706,8 +712,16 @@
   flex-shrink: 0;
 }
 
+:global(html.light) .footerDot {
+  background: #065f46;
+}
+
 .infoTooltipFooter strong {
   color: #34d399;
+}
+
+:global(html.light) .infoTooltipFooter strong {
+  color: #064e3b;
 }
 
 @media (max-width: 640px) {
@@ -763,7 +777,7 @@
 }
 
 :global(html.light) .rank1Badge {
-  color: #b45309; /* contrast > 5:1 on white */
+  color: #92400e; /* amber-800: contrast > 6.3:1 on light slate */
 }
 
 .rank2Badge {
@@ -775,7 +789,7 @@
 }
 
 :global(html.light) .rank2Badge {
-  color: #334155; /* contrast > 7:1 on white */
+  color: #334155; /* slate-700: contrast > 7:1 on light slate */
 }
 
 .rank3Badge {
@@ -787,7 +801,7 @@
 }
 
 :global(html.light) .rank3Badge {
-  color: #b45309; /* contrast > 5:1 on white */
+  color: #92400e; /* amber-800: contrast > 6.3:1 on light slate */
 }
 
 .rankNormalBadge {
@@ -818,9 +832,9 @@
 }
 
 :global(html.light) .changeUp {
-  background: rgba(4, 120, 87, 0.12);
-  color: #047857; /* contrast > 5.4:1 on white */
-  border: 1px solid rgba(4, 120, 87, 0.25);
+  background: rgba(6, 95, 70, 0.08);
+  color: #065f46; /* emerald-800: contrast > 6.1:1 on pill bg over light slate */
+  border: 1px solid rgba(6, 95, 70, 0.2);
 }
 
 .changeDown {
@@ -830,9 +844,9 @@
 }
 
 :global(html.light) .changeDown {
-  background: rgba(190, 18, 60, 0.12);
-  color: #be123c; /* contrast > 6.2:1 on white */
-  border: 1px solid rgba(190, 18, 60, 0.25);
+  background: rgba(159, 18, 57, 0.08);
+  color: #9f1239; /* rose-800: contrast > 6.2:1 on pill bg over light slate */
+  border: 1px solid rgba(159, 18, 57, 0.2);
 }
 
 .changeNew {
@@ -842,9 +856,9 @@
 }
 
 :global(html.light) .changeNew {
-  background: rgba(180, 83, 9, 0.12);
-  color: #b45309; /* contrast > 5.0:1 on white */
-  border: 1px solid rgba(180, 83, 9, 0.25);
+  background: rgba(146, 64, 14, 0.08);
+  color: #92400e; /* amber-800: contrast > 5.7:1 on pill bg over light slate */
+  border: 1px solid rgba(146, 64, 14, 0.2);
 }
 
 .changeSame {
@@ -854,9 +868,9 @@
 }
 
 :global(html.light) .changeSame {
-  background: rgba(71, 85, 105, 0.12);
-  color: #334155; /* contrast > 7:1 on white */
-  border: 1px solid rgba(71, 85, 105, 0.25);
+  background: rgba(51, 65, 85, 0.08);
+  color: #334155; /* slate-700: contrast > 8.1:1 on pill bg over light slate */
+  border: 1px solid rgba(51, 65, 85, 0.2);
 }
 
 .leaderboardTag {
@@ -871,9 +885,9 @@
 }
 
 :global(html.light) .leaderboardTag {
-  background: rgba(109, 40, 217, 0.1);
-  color: #6d28d9; /* contrast > 6:1 on white */
-  border: 1px solid rgba(109, 40, 217, 0.25);
+  background: rgba(91, 33, 182, 0.08);
+  color: #5b21b6; /* purple-800: contrast > 7.3:1 on light slate */
+  border: 1px solid rgba(91, 33, 182, 0.2);
 }
 
 .leaderboardTitleText {
