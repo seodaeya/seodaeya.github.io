@@ -29,7 +29,7 @@
   margin: 0;
   font-size: 0.72rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-align: center;
   word-break: keep-all;
 }

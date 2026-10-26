@@ -413,8 +413,7 @@ export default function Header() {
               href="/rss.xml" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className={styles.mobileYoutubeLink}
-              style={{ color: '#f59e0b', borderColor: 'rgba(245, 158, 11, 0.25)' }}
+              className={`${styles.mobileYoutubeLink} ${styles.footerRssLink}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <svg className={styles.youtubeIcon} viewBox="0 0 24 24" fill="currentColor">

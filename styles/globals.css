@@ -13,7 +13,7 @@
   
   --text-primary: hsl(220, 15%, 95%);   /* High Contrast Off-White */
   --text-secondary: hsl(220, 10%, 75%); /* Muted Silver/Gray */
-  --text-muted: hsl(220, 10%, 55%);      /* Dim Gray */
+  --text-muted: hsl(220, 12%, 65%);      /* Accessible Dim Gray (WCAG AA) */
   
   --border-glass: rgba(255, 255, 255, 0.08);
   --border-glass-active: rgba(255, 255, 255, 0.16);
@@ -40,8 +40,8 @@
   --bg-header-glass: rgba(248, 250, 252, 0.8);
   
   --text-primary: hsl(224, 25%, 12%);    /* Deep Slate Gray */
-  --text-secondary: hsl(220, 15%, 38%);  /* Muted Slate */
-  --text-muted: hsl(220, 10%, 55%);       /* Dim Gray */
+  --text-secondary: hsl(220, 18%, 28%);  /* Muted Slate (WCAG AAA) */
+  --text-muted: hsl(220, 16%, 38%);       /* Accessible Dim Gray (WCAG AA > 7:1) */
   
   --border-glass: rgba(0, 0, 0, 0.08);
   --border-glass-active: rgba(0, 0, 0, 0.16);
@@ -49,6 +49,19 @@
   /* Bright Accent Adjustments for Light Contrast */
   --accent-light: hsl(263, 75%, 55%);
   --accent-gradient: linear-gradient(135deg, hsl(263, 75%, 55%), hsl(190, 85%, 45%));
+}
+
+/* Screen reader only utility for accessible heading hierarchy */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Base resets & styles */

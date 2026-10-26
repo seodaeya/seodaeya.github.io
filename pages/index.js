@@ -257,6 +257,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
               className={`${styles.leaderboardSection} ${isLeaderboardOpen ? styles.leaderboardSectionExpanded : ''}`} 
               aria-label="월간 인기 아티클 랭킹"
             >
+              <h2 className="sr-only">월간 인기 아티클 랭킹</h2>
               {/* Header Row: Unified Minimalist Live Pill + Toggle Button */}
               <div className={styles.leaderboardHeaderRow}>
                 <div className={styles.leaderboardPillWrapper} ref={tooltipRef}>

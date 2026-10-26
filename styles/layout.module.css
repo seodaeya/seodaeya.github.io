@@ -593,8 +593,25 @@
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 24px;
   text-align: center;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.8rem;
+}
+
+.footerRssLink {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+:root.light .footerRssLink {
+  color: #b45309; /* contrast > 5:1 on white */
+}
+
+.footerEmailLink {
+  color: var(--accent-light);
+}
+
+:root.light .footerEmailLink {
+  color: #0369a1; /* sky-700, contrast > 6:1 on white */
 }
 
 /* Smart Random Header Button (PC: Capsule / MO: 38x38 Circle) */

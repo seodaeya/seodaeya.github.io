@@ -42,12 +42,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:seodaeya@gmail.com" style={{ color: 'var(--accent-light, #38bdf8)' }}>
+              <a href="mailto:seodaeya@gmail.com" className={styles.footerEmailLink}>
                 ✉️ 문의: seodaeya@gmail.com
               </a>
             </li>
             <li>
-              <a href="/rss.xml" target="_blank" rel="noopener noreferrer" style={{ color: '#f59e0b', fontWeight: 600 }}>
+              <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className={styles.footerRssLink}>
                 📡 RSS 피드 구독
               </a>
             </li>

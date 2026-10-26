@@ -762,6 +762,10 @@
   white-space: nowrap;
 }
 
+:root.light .rank1Badge {
+  color: #b45309; /* contrast > 5:1 on white */
+}
+
 .rank2Badge {
   font-family: var(--font-headings);
   font-size: 0.95rem;
@@ -770,12 +774,20 @@
   white-space: nowrap;
 }
 
+:root.light .rank2Badge {
+  color: #334155; /* contrast > 7:1 on white */
+}
+
 .rank3Badge {
   font-family: var(--font-headings);
   font-size: 0.95rem;
   font-weight: 800;
-  color: #d97706;
+  color: #f59e0b;
   white-space: nowrap;
+}
+
+:root.light .rank3Badge {
+  color: #b45309; /* contrast > 5:1 on white */
 }
 
 .rankNormalBadge {
@@ -801,37 +813,67 @@
 
 .changeUp {
   background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
+  color: #34d399;
   border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root.light .changeUp {
+  background: rgba(4, 120, 87, 0.12);
+  color: #047857; /* contrast > 5.4:1 on white */
+  border: 1px solid rgba(4, 120, 87, 0.25);
 }
 
 .changeDown {
   background: rgba(244, 63, 94, 0.15);
-  color: #f43f5e;
+  color: #fb7185;
   border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+:root.light .changeDown {
+  background: rgba(190, 18, 60, 0.12);
+  color: #be123c; /* contrast > 6.2:1 on white */
+  border: 1px solid rgba(190, 18, 60, 0.25);
 }
 
 .changeNew {
   background: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
+  color: #fbbf24;
   border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+:root.light .changeNew {
+  background: rgba(180, 83, 9, 0.12);
+  color: #b45309; /* contrast > 5.0:1 on white */
+  border: 1px solid rgba(180, 83, 9, 0.25);
 }
 
 .changeSame {
   background: rgba(100, 116, 139, 0.12);
-  color: #94a3b8;
+  color: #cbd5e1;
   border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+:root.light .changeSame {
+  background: rgba(71, 85, 105, 0.12);
+  color: #334155; /* contrast > 7:1 on white */
+  border: 1px solid rgba(71, 85, 105, 0.25);
 }
 
 .leaderboardTag {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-light);
+  color: #c084fc;
   background: rgba(138, 43, 226, 0.12);
   border: 1px solid rgba(138, 43, 226, 0.25);
   padding: 2px 8px;
   border-radius: 5px;
   white-space: nowrap;
+}
+
+:root.light .leaderboardTag {
+  background: rgba(109, 40, 217, 0.1);
+  color: #6d28d9; /* contrast > 6:1 on white */
+  border: 1px solid rgba(109, 40, 217, 0.25);
 }
 
 .leaderboardTitleText {
