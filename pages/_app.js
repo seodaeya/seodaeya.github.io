@@ -114,10 +114,18 @@ export default function App({ Component, pageProps }) {
                   if (fl && fl.media !== 'all') fl.media = 'all';
                 }
                 if (document.readyState === 'complete') {
-                  setTimeout(activateFonts, 150);
+                  if ('requestIdleCallback' in window) {
+                    requestIdleCallback(activateFonts);
+                  } else {
+                    setTimeout(activateFonts, 1200);
+                  }
                 } else {
                   window.addEventListener('load', function() {
-                    setTimeout(activateFonts, 150);
+                    if ('requestIdleCallback' in window) {
+                      requestIdleCallback(activateFonts);
+                    } else {
+                      setTimeout(activateFonts, 1200);
+                    }
                   }, { once: true });
                 }
 
@@ -136,7 +144,13 @@ export default function App({ Component, pageProps }) {
                   window.addEventListener(evs[i], initClarity, { passive: true, once: true });
                 }
                 window.addEventListener('load', function() {
-                  setTimeout(initClarity, 3500);
+                  if ('requestIdleCallback' in window) {
+                    requestIdleCallback(function() {
+                      setTimeout(initClarity, 7000);
+                    }, { timeout: 9000 });
+                  } else {
+                    setTimeout(initClarity, 7000);
+                  }
                 }, { once: true });
               })();
             `

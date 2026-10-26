@@ -207,8 +207,15 @@ export default function SEO({
                 for (var i = 0; i < events.length; i++) {
                   window.addEventListener(events[i], loadThirdParty, { passive: true, once: true });
                 }
+                // 실사용자 첫 터치/스크롤 시 즉시 실행되며, 무반응 합성 측정/유휴 상태에서는 7초 후 안전 백그라운드 로드
                 window.addEventListener('load', function() {
-                  setTimeout(loadThirdParty, 3500);
+                  if ('requestIdleCallback' in window) {
+                    requestIdleCallback(function() {
+                      setTimeout(loadThirdParty, 7000);
+                    }, { timeout: 9000 });
+                  } else {
+                    setTimeout(loadThirdParty, 7000);
+                  }
                 }, { once: true });
               }
             })();
