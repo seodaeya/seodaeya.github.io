@@ -191,7 +191,7 @@
   transition: all 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
-:root.light .searchInput {
+:global(html.light) .searchInput {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
 
@@ -293,7 +293,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-:root.light .miniCard:hover {
+:global(html.light) .miniCard:hover {
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
@@ -489,7 +489,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-:root.light .noResultsGlobal {
+:global(html.light) .noResultsGlobal {
   background: rgba(0, 0, 0, 0.02);
 }
 
@@ -762,7 +762,7 @@
   white-space: nowrap;
 }
 
-:root.light .rank1Badge {
+:global(html.light) .rank1Badge {
   color: #b45309; /* contrast > 5:1 on white */
 }
 
@@ -774,7 +774,7 @@
   white-space: nowrap;
 }
 
-:root.light .rank2Badge {
+:global(html.light) .rank2Badge {
   color: #334155; /* contrast > 7:1 on white */
 }
 
@@ -786,7 +786,7 @@
   white-space: nowrap;
 }
 
-:root.light .rank3Badge {
+:global(html.light) .rank3Badge {
   color: #b45309; /* contrast > 5:1 on white */
 }
 
@@ -817,7 +817,7 @@
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-:root.light .changeUp {
+:global(html.light) .changeUp {
   background: rgba(4, 120, 87, 0.12);
   color: #047857; /* contrast > 5.4:1 on white */
   border: 1px solid rgba(4, 120, 87, 0.25);
@@ -829,7 +829,7 @@
   border: 1px solid rgba(244, 63, 94, 0.3);
 }
 
-:root.light .changeDown {
+:global(html.light) .changeDown {
   background: rgba(190, 18, 60, 0.12);
   color: #be123c; /* contrast > 6.2:1 on white */
   border: 1px solid rgba(190, 18, 60, 0.25);
@@ -841,7 +841,7 @@
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-:root.light .changeNew {
+:global(html.light) .changeNew {
   background: rgba(180, 83, 9, 0.12);
   color: #b45309; /* contrast > 5.0:1 on white */
   border: 1px solid rgba(180, 83, 9, 0.25);
@@ -853,7 +853,7 @@
   border: 1px solid rgba(100, 116, 139, 0.25);
 }
 
-:root.light .changeSame {
+:global(html.light) .changeSame {
   background: rgba(71, 85, 105, 0.12);
   color: #334155; /* contrast > 7:1 on white */
   border: 1px solid rgba(71, 85, 105, 0.25);
@@ -870,7 +870,7 @@
   white-space: nowrap;
 }
 
-:root.light .leaderboardTag {
+:global(html.light) .leaderboardTag {
   background: rgba(109, 40, 217, 0.1);
   color: #6d28d9; /* contrast > 6:1 on white */
   border: 1px solid rgba(109, 40, 217, 0.25);

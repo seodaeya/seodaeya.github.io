@@ -255,9 +255,9 @@
   min-width: 140px;
 }
 
-:root.light .tableResponsiveWrapper td,
-:root.light .content :global(.table-responsive-wrapper) td,
-:root.light .content table td {
+:global(html.light) .tableResponsiveWrapper td,
+:global(html.light) .content :global(.table-responsive-wrapper) td,
+:global(html.light) .content table td {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -282,9 +282,9 @@
   border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-:root.light .tableResponsiveWrapper th:first-child,
-:root.light .content :global(.table-responsive-wrapper) th:first-child,
-:root.light .content table th:first-child {
+:global(html.light) .tableResponsiveWrapper th:first-child,
+:global(html.light) .content :global(.table-responsive-wrapper) th:first-child,
+:global(html.light) .content table th:first-child {
   border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 

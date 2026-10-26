@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 26일 22:46 KST",
+  "updatedAt": "2026년 10월 26일 23:29 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -207,7 +207,7 @@
       "badge": "Performance · Dev",
       "category": "Dev & Software",
       "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
-      "desc": "PageSpeed Insights 모바일 57점(FCP 6.0초·LCP 9.4초)에서 @import를 <link>로 바꿨는데도 60점(LCP 9.0초)에 머문 이유를 Lighthouse Lantern 그래프로 역추적해 99점(FCP 1.1초·LCP 2.1초)까지 끌어올린 2단계 실측 기록입니다.",
+      "desc": "PageSpeed Insights 모바일 57점(FCP 6.0초·LCP 9.4초)에서 @import를 <link>로 바꿨는데도 60점(LCP 9.0초)에 머문 이유를 Lighthouse Lantern 그래프로 역추적해 실제 배포 모바일 98점(FCP 1.1초·LCP 2.1초)과 데스크톱 100점 만점까지 끌어올린 실전 기록입니다.",
       "image": "/images/webfont_import_lcp_thumbnail.jpg",
       "url": "/posts/20261026-1-webfont-import-lcp-render-blocking",
       "date": "2026-10-26",

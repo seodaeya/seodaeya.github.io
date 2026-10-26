@@ -246,7 +246,7 @@
   flex-shrink: 0;
 }
 
-:root.light .themeToggleBtn {
+:global(html.light) .themeToggleBtn {
   background: rgba(0, 0, 0, 0.03);
 }
 
@@ -257,7 +257,7 @@
   transform: scale(1.05);
 }
 
-:root.light .themeToggleBtn:hover {
+:global(html.light) .themeToggleBtn:hover {
   background: rgba(0, 0, 0, 0.06);
 }
 
@@ -357,7 +357,7 @@
   transition: all 0.25s ease;
 }
 
-:root.light .hamburgerBtn {
+:global(html.light) .hamburgerBtn {
   background: rgba(0, 0, 0, 0.03);
 }
 
@@ -602,7 +602,7 @@
   font-weight: 600;
 }
 
-:root.light .footerRssLink {
+:global(html.light) .footerRssLink {
   color: #b45309; /* contrast > 5:1 on white */
 }
 
@@ -610,7 +610,7 @@
   color: var(--accent-light);
 }
 
-:root.light .footerEmailLink {
+:global(html.light) .footerEmailLink {
   color: #0369a1; /* sky-700, contrast > 6:1 on white */
 }
 
@@ -640,7 +640,7 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-:root.light .randomHeaderBtn {
+:global(html.light) .randomHeaderBtn {
   background: rgba(138, 43, 226, 0.08);
   border-color: rgba(138, 43, 226, 0.28);
 }
@@ -698,7 +698,7 @@
   white-space: normal;
 }
 
-:root.light .randomHeaderTooltip {
+:global(html.light) .randomHeaderTooltip {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
