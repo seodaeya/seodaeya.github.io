@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import SEO from '@/components/SEO';
-import CoupangCarousel from '@/components/CoupangCarousel';
 import styles from '@/styles/cart.module.css';
 
 const STORAGE_KEY = "cart_in_all_items";
@@ -1033,8 +1032,7 @@ export default function CartInAll() {
           </div>
         )}
 
-        {/* 쿠팡 파트너스 캐러셀 (장바구니 하단) */}
-        <CoupangCarousel />
+        {/* 쿠팡 파트너스 캐러셀 (애드센스 승인 심사 기간 비활성화) */}
 
       </div>
     </>

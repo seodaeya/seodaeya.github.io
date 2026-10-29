@@ -1,0 +1,13 @@
+import VideoPageLayout from '@/components/VideoPageLayout';
+import { getVideoStaticProps } from '@/lib/pageMeta';
+
+const VIDEO_ID = "20230309-1-mammoth-coffee-banana-latte-review";
+const VIDEO_HTML = "<h2>🍌 당산역 메머드 익스프레스에서 맛보는 시그니처 바나나 커피</h2>\n<p>바쁜 직장인들과 학생들의 가성비 천국, <strong>메머드커피(Mammoth Coffee Express) 당산역점</strong>에서 독특한 시그니처 메뉴인 <strong>&#39;바나나 달달 커피&#39;</strong>를 직접 주문해 마셔보았습니다. </p>\n<p>메머드커피는 저렴한 가격에 대용량 음료를 제공하여 인기가 매우 높은 테이크아웃 전문 프랜차이즈인데, 그중에서도 이 바나나 달달 커피는 나른하고 피곤한 오후에 강력한 당 충전과 카페인 수혈이 동시에 필요할 때 단연 추천할 만한 음료입니다.</p>\n<hr>\n<h3>☕ 1. 바나나 달달 커피의 특징과 비주얼 분석</h3>\n<ul>\n<li><strong>환상적인 3단 그라데이션:</strong> 컵 하단에는 묵직한 노란색 바나나 밀크 베이스와 달콤한 시럽이 깔려 있고, 그 위로 부드러운 우유 폼과 진한 에스프레소 투샷 크레마가 얹어져 있어 시각적인 만족도가 뛰어납니다.</li>\n<li><strong>완벽한 블렌딩을 위한 &#39;쉐킷쉐킷&#39;:</strong> 바나나 시럽의 밀도가 높아 그대로 빨대를 꽂으면 시럽만 빨려 올라옵니다. 따라서 마시기 전에 빨대로 위아래를 부드럽고 균일하게 회전시키며 골고루 섞어주는 작업(쉐킷쉐킷)이 필수입니다.</li>\n</ul>\n<hr>\n<h3>📊 2. 일반 바나나 라떼 vs 메머드 바나나 달달 커피 비교</h3>\n<table>\n<thead>\n<tr>\n<th align=\"left\">비교 항목</th>\n<th align=\"left\">일반 카페 바나나 라떼</th>\n<th align=\"left\">메머드커피 바나나 달달 커피</th>\n</tr>\n</thead>\n<tbody><tr>\n<td align=\"left\"><strong>가격대</strong></td>\n<td align=\"left\">4,500원 ~ 5,500원 선</td>\n<td align=\"left\"><strong>3,000원 대의 압도적 가성비</strong></td>\n</tr>\n<tr>\n<td align=\"left\"><strong>용량 옵션</strong></td>\n<td align=\"left\">기본 레귤러(약 355ml)</td>\n<td align=\"left\">S / M / L 대용량(최대 900ml) 선택 가능</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>풍미 밸런스</strong></td>\n<td align=\"left\">우유 맛 중심의 연한 맛</td>\n<td align=\"left\"><strong>진한 에스프레소 샷과 뚱바 풍미의 조화</strong></td>\n</tr>\n<tr>\n<td align=\"left\"><strong>카페인/당도 조합</strong></td>\n<td align=\"left\">당도 조절 불가 매장 다수</td>\n<td align=\"left\">키오스크에서 샷 추가, 덜 달게 옵션 선택 가능</td>\n</tr>\n</tbody></table>\n<hr>\n<h3>💡 3. 더 맛있게 즐기는 꿀조합 주문 팁</h3>\n<ol>\n<li><strong>에스프레소 1샷 추가:</strong> 바나나의 단맛이 강하게 느껴지시는 분들은 샷을 하나 추가하면 쌉싸름한 원두 향이 단맛을 잡아주어 고급스러운 디저트 커피 맛이 완성됩니다.</li>\n<li><strong>두유/아몬드브리즈 변경:</strong> 유당불내증이 있거나 더 고소한 곡물 풍미를 원할 경우 베이스 우유를 변경하여 즐길 수 있습니다.</li>\n<li><strong>오후 2~4시 당 충전 타이밍:</strong> 점심 식사 후 쏟아지는 졸음을 쫓아내고 집중력을 끌어올리는 오후 부스터 음료로 강력 추천합니다.</li>\n</ol>\n<hr>\n<h3>📺 쇼츠 영상으로 섞는 과정 감상하기</h3>\n<p>에스프레소와 바나나 우유가 만나면서 퍼지는 부드러운 믹싱 비주얼은 아래 쇼츠 영상을 통해 생생하게 감상해 보세요!</p>\n";
+
+export async function getStaticProps() {
+  return getVideoStaticProps(VIDEO_ID);
+}
+
+export default function VideoPage(props) {
+  return <VideoPageLayout {...props} contentHtml={VIDEO_HTML} />;
+}

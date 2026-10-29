@@ -1,0 +1,13 @@
+import VideoPageLayout from '@/components/VideoPageLayout';
+import { getVideoStaticProps } from '@/lib/pageMeta';
+
+const VIDEO_ID = "20230409-1-apple-3-in-1-magsafe-charging-stand";
+const VIDEO_HTML = "<h2>🔌 책상 위 복잡한 선을 단번에 정리하는 3-in-1 맥세이프 충전 거치대</h2>\n<p>아이폰(iPhone), 애플워치(Apple Watch), 에어팟(AirPods)을 매일 사용하는 애플 생태계 유저들의 가장 큰 스트레스는 침대 옆 협탁이나 데스크 위에 어지럽게 얽혀 있는 3개의 충전 케이블입니다.</p>\n<p>이러한 선 정리 지옥을 단 하나의 깔끔한 전원선으로 종결시켜 줄 <strong>3-in-1 맥세이프 고속 무선 충전 거치대</strong> 실사용 후기 및 추천 리뷰입니다.</p>\n<hr>\n<h3>✨ 1. 3-in-1 충전 거치대를 선택해야 하는 3가지 이유</h3>\n<ol>\n<li><strong>완벽한 맥세이프(MagSafe) 자력 정렬:</strong> 네오디뮴 자석이 아이폰 뒷면의 맥세이프 링을 강력하게 잡아주어, 어두운 밤에도 척 달라붙으며 <strong>충전 코일 이탈로 인한 미충전 사고를 100% 방지</strong>합니다.</li>\n<li><strong>데스크테리어(Deskterior)의 완성:</strong> 3개의 충전기를 각각 꽂을 필요 없이 C타입 케이블 단 하나로 3대 디바이스를 동시 고속 충전하여 극도의 미니멀리즘을 실현합니다.</li>\n<li><strong>스탠바이(StandBy) 모드 및 거치대 활용:</strong> 가로 거치 시 iOS 스탠바이 모드가 작동하여 탁상시계, 디지털 액자, 알림 대시보드로 200% 활용할 수 있습니다.</li>\n</ol>\n<hr>\n<h3>📊 2. 주요 충전 스펙 및 기기별 출력 분배</h3>\n<table>\n<thead>\n<tr>\n<th align=\"left\">충전 패드 위치</th>\n<th align=\"left\">충전 대상 기기</th>\n<th align=\"left\">최대 정격 출력</th>\n<th align=\"left\">안전 보호 기능</th>\n</tr>\n</thead>\n<tbody><tr>\n<td align=\"left\"><strong>상단 전면 마그네틱</strong></td>\n<td align=\"left\">아이폰 12~16 전 시리즈</td>\n<td align=\"left\"><strong>최대 15W 고속 무선 충전</strong></td>\n<td align=\"left\">이물질 감지(FOD), 과열 차단</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>상단 후면 워치 패드</strong></td>\n<td align=\"left\">애플워치 4~10 / Ultra</td>\n<td align=\"left\"><strong>5W 정격 충전</strong></td>\n<td align=\"left\">과충전 방지 스마트 IC</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>하단 베이스 패드</strong></td>\n<td align=\"left\">에어팟 프로 / 무선충전 기기</td>\n<td align=\"left\"><strong>5W 안정 충전</strong></td>\n<td align=\"left\">미끄럼 방지 실리콘 패드</td>\n</tr>\n</tbody></table>\n<hr>\n<h3>🛠️ 3. 실사용하면서 느낀 장단점 솔직 분석</h3>\n<ul>\n<li><strong>장점:</strong> 발열 제어가 우수한 알루미늄 합금 프레임으로 제작되어 충전 중 기기 온도가 안정적이며, 묵직한 무게감 덕분에 아이폰을 한 손으로 떼어낼 때 거치대가 딸려 올라오지 않습니다.</li>\n<li><strong>구매 전 주의사항:</strong> 3개 기기를 동시에 최대 출력으로 고속 충전하기 위해서는 반드시 <strong>30W 이상의 PD/QC 충전 어댑터</strong>를 연결해 주어야 전력 부족 현상이 발생하지 않습니다.</li>\n</ul>\n<p>책상 위를 호텔 라운지처럼 깔끔하게 정리하고 싶은 모든 애플 유저분들께 강력 추천하는 필수 테크 아이템입니다!</p>\n<hr>\n<div class=\"coupang-box\">\n  <a href=\"https://link.coupang.com/a/eLFkyQQfJI\" target=\"_blank\" rel=\"nofollow sponsored noopener noreferrer\">\n    뉴에이커 3in1 맥세이프 무선충전기 보러가기\n  </a>\n  <p>이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>\n</div>\n\n<hr>\n<h3>📺 쇼츠 영상으로 거치 및 충전 모습 확인하기</h3>\n<p>자석에 척 달라붙는 쾌감과 깔끔한 데스크 셋업 모습은 아래 영상에서 확인해 보세요!</p>\n";
+
+export async function getStaticProps() {
+  return getVideoStaticProps(VIDEO_ID);
+}
+
+export default function VideoPage(props) {
+  return <VideoPageLayout {...props} contentHtml={VIDEO_HTML} />;
+}

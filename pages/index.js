@@ -4,7 +4,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import { useState, useEffect, useRef } from 'react';
 import SEO from '@/components/SEO';
-import CoupangCarousel from '@/components/CoupangCarousel';
 import contentUtils from '@/lib/content';
 import { useReadPostsSet, isContentRead } from '@/lib/readingHistory';
 import styles from '@/styles/home.module.css';
@@ -537,8 +536,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
           </section>
         )}
 
-        {/* 쿠팡 파트너스 캐러셀 (최신 글 아래) */}
-        <CoupangCarousel />
+        {/* 쿠팡 파트너스 캐러셀 (애드센스 승인 심사 기간 비활성화) */}
       </div>
     </>
   );

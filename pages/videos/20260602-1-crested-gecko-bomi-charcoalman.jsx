@@ -1,0 +1,13 @@
+import VideoPageLayout from '@/components/VideoPageLayout';
+import { getVideoStaticProps } from '@/lib/pageMeta';
+
+const VIDEO_ID = "20260602-1-crested-gecko-bomi-charcoalman";
+const VIDEO_HTML = "<h2>🦎 우리 집 봄이에게 새로운 가족이 생겼습니다!</h2>\n<p>원래 혼자 조용히 단독 사육장 안에서 평화롭게 지내던 우리 집 귀염둥이 크레스티드 게코(Crested Gecko) 암컷 <strong>&#39;봄이&#39;</strong>에게 드디어 든든하고 멋진 남자친구가 생겼습니다. </p>\n<p>새롭게 우리 집 식구가 된 수컷 도마뱀의 이름은 바로 <strong>&#39;챠콜맨&#39;</strong>입니다! 이름 그대로 매력적이고 짙은 다크 챠콜 빛깔을 뽐내는 아주 건강하고 늠름한 친구랍니다.</p>\n<hr>\n<h3>💖 1. 봄이와 챠콜맨의 특징 및 모프(Morph) 비교</h3>\n<ul>\n<li><strong>봄이 (암컷, 성체):</strong> 맑고 부드러운 톤의 릴리/노멀 계열 베이스에 온순하고 호기심 많은 사랑스러운 성격</li>\n<li><strong>챠콜맨 (수컷, 준성체~성체):</strong> 어둡고 깊은 챠콜/블랙 계열의 묵직한 발색에 활동성이 뛰어나고 씩씩한 성격</li>\n</ul>\n<table>\n<thead>\n<tr>\n<th align=\"left\">구분</th>\n<th align=\"left\">암컷 &#39;봄이&#39;</th>\n<th align=\"left\">수컷 &#39;챠콜맨&#39;</th>\n</tr>\n</thead>\n<tbody><tr>\n<td align=\"left\"><strong>주요 모프 특징</strong></td>\n<td align=\"left\">밝고 크리미한 패턴과 선명한 볏</td>\n<td align=\"left\">짙은 차콜/다크 계열 바디와 묵직한 대비감</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>체중 및 체격</strong></td>\n<td align=\"left\">약 42g (완벽한 성체 체급)</td>\n<td align=\"left\">약 38g (탄탄한 골격의 건강한 수컷)</td>\n</tr>\n<tr>\n<td align=\"left\"><strong>선호 먹이</strong></td>\n<td align=\"left\">판게아 무화과/인섹트 슈퍼푸드</td>\n<td align=\"left\">레파시 클래식 및 귀뚜라미 칼슘 더스팅 피딩</td>\n</tr>\n</tbody></table>\n<p>색감 대비가 뚜렷해서 둘이 나란히 있으면 정말 한 쌍의 예술 작품 같은 비주얼을 자랑합니다. 크레스티드 게코 특유의 속눈썹 같은 볏과 앙증맞은 발바닥으로 둘이 꼬물거리는 모습을 보고 있으면 시간 가는 줄 모릅니다.</p>\n<hr>\n<h3>⚠️ 2. 크레스티드 게코 암수 합사(Co-habitation) 전 필수 체크리스트</h3>\n<p>도마뱀을 키울 때 많은 초보 집사님들이 하는 실수가 &quot;친해지라고 바로 한 사육장에 넣어두는 것&quot;입니다. 파충류는 본래 단독 생활을 즐기는 영역 동물이기 때문에, 합사 전에는 반드시 아래 수칙을 지켜야 합니다:</p>\n<ol>\n<li><strong>체중 및 성숙도 확인:</strong> 암컷의 체중이 최소 40g 이상이어야 산란으로 인한 칼슘 결핍(MBD)을 예방할 수 있습니다.</li>\n<li><strong>격리 검역 기간(Quarantine):</strong> 새로 데려온 개체(챠콜맨)는 최소 2~4주간 별도의 격리 사육장에서 건강 상태와 배변 활동을 면밀히 모니터링해야 합니다.</li>\n<li><strong>사육장 분리 유지:</strong> 메이팅(짝짓기) 목적의 일시적 합사를 제외하고는 평소에는 각자의 독립 사육장에서 1견 1실로 생활하는 것이 스트레스를 방지하는 최선의 방법입니다.</li>\n</ol>\n<hr>\n<h3>🌿 3. 최적의 게코 하우스 환경 세팅</h3>\n<ul>\n<li><strong>적정 사육 온도:</strong> 22°C ~ 25°C (28°C 이상의 고온은 열사병 위험이 있으므로 주의)</li>\n<li><strong>일일 습도 관리:</strong> 아침/저녁 하루 2회 분무를 통해 60% ~ 80% 유지 (환기가 잘 되는 구조 필수)</li>\n<li><strong>은신처 및 구조물:</strong> 백스코르크 튜브, 인조 덩굴식물을 풍성하게 배치하여 안정감 제공</li>\n</ul>\n<p>앞으로 봄이와 챠콜맨이 싸우지 않고 건강하게 무럭무럭 자랄 수 있도록 많은 관심과 사랑 부탁드립니다!</p>\n<hr>\n<h3>📺 쇼츠 영상으로 귀여운 첫 만남 감상하기</h3>\n<p>둘이 처음 마주했을 때의 리얼하고 심쿵하는 순간은 아래 유튜브 쇼츠 영상에서 확인해 보실 수 있습니다. 구독과 좋아요는 큰 힘이 됩니다! 😊</p>\n";
+
+export async function getStaticProps() {
+  return getVideoStaticProps(VIDEO_ID);
+}
+
+export default function VideoPage(props) {
+  return <VideoPageLayout {...props} contentHtml={VIDEO_HTML} />;
+}
