@@ -47,12 +47,6 @@ const MIN_SCALE_WIDTH = Math.round(WIDTH * MIN_SCALE); // 110px
 const MIN_GUTTER = MIN_SCALE_WIDTH + GAP + EDGE; // 132px (이 미만은 숨김)
 
 export default function CoupangSideBanner() {
-  // 애드센스 심사 기간 임시 비활성화 플래그 (심사 완료 후 false 로 변경)
-  const ADSENSE_REVIEW_MODE = true;
-  if (ADSENSE_REVIEW_MODE) {
-    return null;
-  }
-
   const router = useRouter();
   const asideRef = useRef(null);
   const slotRef = useRef(null);

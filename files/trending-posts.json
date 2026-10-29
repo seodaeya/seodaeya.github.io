@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 10월 26일 23:54 KST",
+  "updatedAt": "2026년 10월 29일 21:33 KST",
   "baselineDate": "2026년 10월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -489,20 +489,7 @@
     {
       "rank": 33,
       "change": "down",
-      "changeText": "▼ 11",
-      "badge": "AdSense · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
-      "desc": "GitHub Pages 정적 블로그에서 구글 애드센스 승인을 통과하기 위한 도메인 연결, ads.txt 설정, 개인정보처리방침 구비 팁을 공유합니다.",
-      "image": "/images/github_pages_adsense_domain_guide_thumbnail.jpg",
-      "url": "/posts/20260807-1-github-pages-adsense-domain",
-      "date": "2026-08-07",
-      "views": null
-    },
-    {
-      "rank": 34,
-      "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 10",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -510,6 +497,19 @@
       "image": "/images/gemini_cli_install_guide_thumbnail.jpg",
       "url": "/posts/20260804-1-gemini-cli-install-guide",
       "date": "2026-08-04",
+      "views": null
+    },
+    {
+      "rank": 34,
+      "change": "down",
+      "changeText": "▼ 12",
+      "badge": "AdSense · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
+      "desc": "GitHub Pages 정적 블로그에서 구글 애드센스 승인을 통과하기 위한 도메인 연결, ads.txt 설정, 개인정보처리방침 구비 팁을 공유합니다.",
+      "image": "/images/github_pages_adsense_domain_guide_thumbnail.jpg",
+      "url": "/posts/20260807-1-github-pages-adsense-domain",
+      "date": "2026-08-07",
       "views": null
     },
     {
