@@ -22,16 +22,10 @@ export default function Footer() {
               <Link href="/about/" prefetch={false}>블로그 소개</Link>
             </li>
             <li>
-              <Link href="/editorial/" prefetch={false}>편집 원칙</Link>
-            </li>
-            <li>
               <Link href="/contact/" prefetch={false}>연락처</Link>
             </li>
             <li>
               <Link href="/privacy/" prefetch={false}>개인정보처리방침</Link>
-            </li>
-            <li>
-              <Link href="/terms/" prefetch={false}>이용약관 및 면책</Link>
             </li>
             <li>
               <a 

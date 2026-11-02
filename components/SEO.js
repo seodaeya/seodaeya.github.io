@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { isNoAdsPath } from '@/lib/adPolicy';
 
 export default function SEO({
   title = '여전히, 나는 사람이다. | 기술과 일상의 기록',
@@ -47,14 +48,10 @@ export default function SEO({
       '기차 여행 테마의 인터랙티브 단어 맞추기 웹 게임입니다. 유아부터 성인까지 단계별 난이도에 맞춰 한글·영어 필수 어휘와 힌트를 추리하며 어휘력과 두뇌 회전을 키우고, 최종 점수를 친구들과 간편하게 공유해 보세요.',
     'https://seodaeya.github.io/about/':
       '완벽하지 않기에 배우고, 실수하기에 끊임없이 도전합니다. 생성형 AI 시대 속에서도 사람이 직접 부딪히며 얻은 소프트웨어 엔지니어링 인사이트와 일상의 온기, 그리고 성장의 여정을 진솔하게 기록하는 NaRD 블로그 소개 페이지입니다.',
-    'https://seodaeya.github.io/editorial/':
-      "'여전히, 나는 사람이다.' 블로그의 편집 원칙을 공개합니다. 직접 실행·측정한 1차 경험 중심 작성 기준, 생성형 AI 도구 활용 원칙과 한계, 공식 문서 교차 검증 및 오류 정정 절차를 투명하게 안내합니다.",
     'https://seodaeya.github.io/contact/':
       "'여전히, 나는 사람이다.' 블로그 운영자 NaRD에게 연락하는 방법을 정리했습니다. 콘텐츠 오류 정정, 인용·재게시 허락, 제휴·광고, 개인정보 문의 유형별 절차와 답변 소요 시간, GitHub·YouTube 채널을 안내합니다.",
     'https://seodaeya.github.io/privacy/':
       "'여전히, 나는 사람이다.' 블로그의 공식 개인정보처리방침 안내 페이지입니다. 방문자 개인정보 보호 원칙, Google Analytics 4·구글 애드센스·Microsoft Clarity 등 제3자 쿠키 활용 및 옵트아웃 방법을 명시합니다.",
-    'https://seodaeya.github.io/terms/':
-      "'여전히, 나는 사람이다.' 블로그의 이용약관과 면책 고지입니다. 콘텐츠의 성격, 전문 조언이 아님, 저작권과 인용 범위, 쿠팡 파트너스·애드센스 대가성 고지, 외부 링크 책임, 정정 정책과 약관 변경 절차를 담았습니다.",
     'https://seodaeya.github.io/bookmarks/':
       '나중에 다시 읽기 위해 저장한 북마크 아티클 목록과 내 관심 태그·주제 유사도 분석을 기반으로 맞춤형 연관 기술 아티클 및 영상을 추천해 주는 개인화 큐레이션 서재 페이지입니다.',
     'https://seodaeya.github.io/planner/':
@@ -88,7 +85,6 @@ export default function SEO({
     'url': 'https://seodaeya.github.io/',
     'description': 'AI 시대에 남기는 지극히 인간적인 기록들',
     'inLanguage': 'ko',
-    'publishingPrinciples': 'https://seodaeya.github.io/editorial/',
     'publisher': {
       '@type': 'Person',
       'name': 'NaRD',
@@ -117,7 +113,6 @@ export default function SEO({
       'image': ogImage,
       'datePublished': publishedIso,
       'dateModified': modifiedIso,
-      'publishingPrinciples': 'https://seodaeya.github.io/editorial/',
       'author': {
         '@type': 'Person',
         'name': 'NaRD',
@@ -186,7 +181,7 @@ export default function SEO({
       <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
 
       {/* Google AdSense Official Script (Directly rendered in static <head> on indexable pages for immediate crawler & verification detection) */}
-      {!noindex && (
+      {!noindex && !isNoAdsPath(canonicalUrl) && (
         <script
           async
           fetchPriority="low"

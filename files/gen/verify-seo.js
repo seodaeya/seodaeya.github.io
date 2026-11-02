@@ -2,7 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const { noAdPaths } = require('../ad-policy.json');
+
 const siteUrl = 'https://seodaeya.github.io';
+
+// 광고 비노출 경로(정책·문의·유틸리티)는 색인 대상이어도 AdSense 스크립트가 없는 것이 정상이다.
+// 단일 원천: files/ad-policy.json (SEO.js·CoupangSideBanner 와 공유)
+function isNoAdsRelPath(relPath) {
+  const pagePath = relPath === 'index.html'
+    ? '/'
+    : `/${relPath.replace(/index\.html$/, '')}`;
+  return noAdPaths.includes(pagePath);
+}
 const outDir = path.join(process.cwd(), 'out');
 const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 
@@ -65,9 +76,10 @@ function verifySEO() {
 
     // AdSense 스크립트(adsbygoogle.js) 가드레일: noindex 페이지에서는 Mediapartners-Google 호출 원천 차단
     const hasAdsenseScript = html.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
-    if (robotsContent.includes('noindex') && hasAdsenseScript) {
-      errors.push(`[AdSense 정책 위반 위험] ${relPath}: noindex 페이지에 adsbygoogle.js 스크립트가 포함되어 있습니다.`);
-    } else if (!robotsContent.includes('noindex') && !hasAdsenseScript) {
+    const adExcluded = robotsContent.includes('noindex') || isNoAdsRelPath(relPath);
+    if (adExcluded && hasAdsenseScript) {
+      errors.push(`[AdSense 정책 위반 위험] ${relPath}: 광고 비노출 페이지(noindex 또는 ad-policy 제외 경로)에 adsbygoogle.js 스크립트가 포함되어 있습니다.`);
+    } else if (!adExcluded && !hasAdsenseScript) {
       errors.push(`[AdSense 스크립트 누락] ${relPath}: 색인 대상 페이지에 adsbygoogle.js 스크립트가 누락되었습니다.`);
     }
 

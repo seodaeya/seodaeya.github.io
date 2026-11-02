@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SEO from '@/components/SEO';
 import Comments from '@/components/Comments';
 import Sponsor from '@/components/Sponsor';
+import CoupangCarousel from '@/components/CoupangCarousel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
@@ -110,6 +111,9 @@ export default function VideoPageLayout({
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
+
+          {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
+          <CoupangCarousel />
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>

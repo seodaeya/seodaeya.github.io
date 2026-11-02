@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SEO from '@/components/SEO';
 import Comments from '@/components/Comments';
 import Sponsor from '@/components/Sponsor';
+import CoupangCarousel from '@/components/CoupangCarousel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TOC from '@/components/TOC';
 import SeriesNav from '@/components/SeriesNav';
@@ -408,6 +409,9 @@ export default function PostPageLayout({
               </button>
             </div>
           </section>
+
+          {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
+          <CoupangCarousel />
 
           {/* Prev/Next Navigation Section */}
           <div className={styles.prevNextSection}>

@@ -49,7 +49,18 @@ export default function Privacy() {
           방문자는 웹브라우저 옵션 설정을 통해 쿠키 허용 수준을 직접 제어하거나 거부할 수 있습니다. (Chrome 기준: 설정 &gt; 개인정보 보호 및 보안 &gt; 서드파티 쿠키 차단 설정)
         </p>
 
-        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>4. 문의처</h2>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>4. 제휴(어필리에이트) 링크 및 콘텐츠 고지</h2>
+        <p style={{ marginBottom: '1rem' }}>
+          본 블로그는 쿠팡 파트너스 등 제휴 프로그램에 참여합니다. 제휴 링크를 통해 상품을 구매하시면
+          운영자에게 일정액의 수수료가 지급되며, <strong>구매자에게 추가 비용이 발생하지 않습니다.</strong>
+          제휴 여부는 해당 링크가 포함된 글과 위젯에 표시하며, 제휴 관계가 글의 평가나 결론에 영향을 주지 않습니다.
+        </p>
+        <p style={{ marginBottom: '1rem' }}>
+          본 블로그의 글은 운영자가 직접 작성한 기록이며, 법률·의료·투자 등 전문적 판단을 대체하지 않습니다.
+          기기 분해·수리나 금융 상품 선택처럼 결과가 중요한 결정은 해당 분야 전문가와 상담하시기 바랍니다.
+        </p>
+
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>5. 문의처</h2>
         <p style={{ marginBottom: '1rem' }}>
           본 블로그 운영 방식이나 개인정보 관련 문의사항은 아래 GitHub 저장소를 통해 문의하실 수 있습니다.
         </p>

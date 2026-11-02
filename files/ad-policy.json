@@ -1,0 +1,14 @@
+{
+  "_comment": "광고(AdSense·제휴) 비노출 경로. SEO.js, CoupangSideBanner, verify-seo.js가 공통 참조합니다.",
+  "_rationale": "AdSense Program policies: 'Placed on any non-content-based page' 금지 (https://support.google.com/adsense/answer/48182)",
+  "noAdPaths": [
+    "/about/",
+    "/contact/",
+    "/privacy/",
+    "/cart/",
+    "/word-train/",
+    "/planner/",
+    "/bookmarks/",
+    "/404/"
+  ]
+}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/styles/coupangSideBanner.module.css';
+import { isNoAdsPath } from '@/lib/adPolicy';
 import {
   COUPANG_DISCLOSURE,
   createCoupangWidget,
@@ -59,7 +60,8 @@ export default function CoupangSideBanner() {
   const [baseHeight, setBaseHeight] = useState(MAX_HEIGHT);
 
   // 콘텐츠가 없는 404 에는 광고를 노출하지 않는다(AdSense 정책).
-  const hiddenHere = router.pathname === '/404';
+  // 정책·문의·유틸리티 페이지에는 제휴 배너도 노출하지 않는다(AdSense 비콘텐츠 페이지 정책과 동일 기준).
+  const hiddenHere = isNoAdsPath(router.pathname);
 
   /**
    * requestAnimationFrame 기반 60/120fps 실시간 경계 & 크기 동기화.
