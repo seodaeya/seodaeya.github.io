@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '@/styles/layout.module.css';
 
 export default function Footer() {
@@ -7,7 +8,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
         <div className={styles.footerInfo}>
-          <h3 className={styles.footerLogo}>여전히, 나는 사람이다.</h3>
+          <p className={styles.footerLogo}>여전히, 나는 사람이다.</p>
           <p className={styles.footerDescription}>
             AI가 세상을 분석하고 답할 때, 한 사람의 시선으로 바라보고 경험한 이야기들을 남깁니다.
             기술, 일상, 그리고 지극히 주관적인 생각들의 기록.
@@ -15,13 +16,22 @@ export default function Footer() {
         </div>
 
         <div className={styles.footerLinks}>
-          <h4>사이트 안내</h4>
+          <p className={styles.footerLinksHeading}>사이트 안내</p>
           <ul>
             <li>
-              <a href="/about/">블로그 소개</a>
+              <Link href="/about/" prefetch={false}>블로그 소개</Link>
             </li>
             <li>
-              <a href="/privacy/">개인정보처리방침</a>
+              <Link href="/editorial/" prefetch={false}>편집 원칙</Link>
+            </li>
+            <li>
+              <Link href="/contact/" prefetch={false}>연락처</Link>
+            </li>
+            <li>
+              <Link href="/privacy/" prefetch={false}>개인정보처리방침</Link>
+            </li>
+            <li>
+              <Link href="/terms/" prefetch={false}>이용약관 및 면책</Link>
             </li>
             <li>
               <a 

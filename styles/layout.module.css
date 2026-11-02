@@ -557,7 +557,8 @@
   max-width: 480px;
 }
 
-.footerLinks h4 {
+.footerLinks h4,
+.footerLinksHeading {
   font-family: var(--font-headings);
   font-size: 1rem;
   font-weight: 600;

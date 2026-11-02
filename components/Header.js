@@ -90,6 +90,7 @@ export default function Header() {
 
   const isCartActive = router.pathname.startsWith('/cart');
   const isPlannerActive = router.pathname.startsWith('/planner');
+  const isBookmarksActive = router.pathname.startsWith('/bookmarks');
 
   return (
     <header className={styles.header}>
@@ -136,7 +137,7 @@ export default function Header() {
           >
             <button 
               type="button"
-              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive ? styles.navDropdownTriggerActive : ''}`}
+              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive || isBookmarksActive ? styles.navDropdownTriggerActive : ''}`}
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               aria-expanded={isServicesOpen}
             >
@@ -190,6 +191,19 @@ export default function Header() {
                     AI 정리 내용을 일정·준비물로, 브라우저에만 저장
                   </div>
                 </Link>
+
+                <Link
+                  href="/bookmarks/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsServicesOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🔖</span> 북마크
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    읽은 글과 저장한 글을 브라우저에 모아보기
+                  </div>
+                </Link>
               </div>
             )}
           </div>
@@ -200,14 +214,6 @@ export default function Header() {
             className={`${styles.navLink} ${router.pathname === '/about' || router.pathname.startsWith('/about') ? styles.activeNavLink : ''}`}
           >
             소개
-          </Link>
-
-          <Link 
-            href="/bookmarks/" 
-            prefetch={false}
-            className={`${styles.navLink} ${router.pathname === '/bookmarks' ? styles.activeNavLink : ''}`}
-          >
-            북마크 🔖
           </Link>
         </nav>
 
@@ -384,6 +390,18 @@ export default function Header() {
                     AI 정리 내용을 일정·준비물로, 브라우저에만 저장
                   </div>
                 </Link>
+                <Link 
+                  href="/bookmarks/" 
+                  className={`${styles.mobileServiceItem} ${isBookmarksActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>🔖</span> 북마크
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    읽은 글과 저장한 글을 브라우저에 모아보기
+                  </div>
+                </Link>
               </div>
             </div>
 
@@ -393,14 +411,6 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>👤</span> 소개 (About)
-            </Link>
-
-            <Link 
-              href="/bookmarks/" 
-              className={`${styles.mobileNavLink} ${router.pathname === '/bookmarks' ? styles.activeMobileNavLink : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span>🔖</span> 북마크
             </Link>
 
             <SmartRandomWidget

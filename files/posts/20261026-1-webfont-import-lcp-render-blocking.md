@@ -117,7 +117,7 @@ HTML
 |---|---|
 | 단순 `<link rel="stylesheet">` 유지 (1차 시도) | `@import` 직렬 1단계만 줄어들 뿐, `fonts.googleapis.com/css2` 자체가 여전히 <strong>Render-Blocking</strong>이다. 브라우저는 FCP 전에 `@font-face`를 발견해 `Inter.woff2`(48KB) + `Outfit.woff2`(32KB) 총 80KB를 `VeryHigh` 우선순위로 받는다. 정작 LCP 요소(`<h1>여전히, 나는 사람이다.</h1>`)는 <strong>한글</strong>이라 영문 웹폰트 글리프를 쓰지도 않는데, Lantern 시뮬레이션에서 <strong>+3,218ms(CSS 921ms + woff2 2,297ms)</strong>를 FCP/LCP에 그대로 가산한다. |
 | `&display=optional` | 폰트가 늦으면 대체 글꼴로 확정되어 영문·숫자 타이포그래피가 방문자마다 달라진다. |
-| `media="print"` 비차단 로드 + 첫 페인트 직후 `media="all"` 전환 (2차 최종 채택) | 초기 렌더 트리 생성에서 외부 폰트 CSS와 80KB `.woff2`를 완전히 분리해 FCP를 <strong>1.1초</strong>로 앞당기고, `window.load` 직후(`+150ms`) 활성화한다. 한글 헤드라인은 시스템 산세리프 메트릭이 유지되어 <strong>CLS는 0.003으로 전혀 증가하지 않는다.</strong> |
+| `media="print"` 비차단 로드 + 첫 페인트 직후 `media="all"` 전환 (2차 최종 채택) | 초기 렌더 트리 생성에서 외부 폰트 CSS와 80KB `.woff2`를 완전히 분리해 FCP를 <strong>1.1초</strong>로 앞당기고, `window.load` 이후 `requestIdleCallback`(미지원 시 1.2초 타이머)에서 활성화한다. 한글 헤드라인은 시스템 산세리프 메트릭이 유지되어 <strong>CLS는 0.003으로 전혀 증가하지 않는다.</strong> |
 
 ## 📦 5. 두 번째 범인: 아무도 안 쓰는데 매 페이지 110KB
 
@@ -220,12 +220,12 @@ Lantern의 `FirstContentfulPaint.getOptimisticGraph`는 `hasRenderBlockingPriori
 
 ---
 
-## 🚀 7. 2차 근본 수술과 최종 실측: 60점 → 99점 (FCP 1.1초, LCP 2.1초)
+## 🚀 7. 2차 근본 수술과 최종 실측: 60점 → 98점 (FCP 1.1초, LCP 2.1초)
 
 원인이 수학적으로 규명되었으니 세 가지 병목을 정확히 도려냈습니다.
 
 ### 1) 웹폰트 비차단 로드 (`media="print"` → 첫 페인트 후 `media="all"`)
-`pages/_document.js`에서 구글 폰트 `<link>`를 `media="print"`로 선언해 렌더 트리 차단에서 완전히 빼고, `pages/_app.js`에서 `window.load` 150ms 뒤에 `media="all"`로 전환했습니다.
+`pages/_document.js`에서 구글 폰트 `<link>`를 `media="print"`로 선언해 렌더 트리 차단에서 완전히 빼고, `pages/_app.js`에서 `window.load` 이후 `requestIdleCallback` 콜백에서 `media="all"`로 전환했습니다(미지원 브라우저는 1.2초 타이머).
 
 ```jsx
 // pages/_document.js
@@ -237,10 +237,12 @@ Lantern의 `FirstContentfulPaint.getOptimisticGraph`는 `hasRenderBlockingPriori
 />
 ```
 
-### 2) 서드파티 스크립트(`AdSense`, `GA4`, `Clarity`) 인터랙션·유휴 지연 로더 (크롤러 분기 포함)
-`components/SEO.js`와 `pages/_app.js`에서 `<head>` 상단의 외부 `<script async src="...">` 태그를 제거하고, <strong>사용자의 첫 인터랙션(`scroll`, `touchstart`, `pointerdown`, `keydown`)</strong>에 스크립트를 즉시 주입하도록 변경했습니다.
+### 2) 서드파티 스크립트 분리: `GA4`·`Clarity`는 인터랙션·유휴 로더 (크롤러 분기 포함)
+`components/SEO.js`와 `pages/_app.js`에서 `<head>` 상단의 분석 스크립트(`gtag/js`, `clarity.js`) 태그를 제거하고, <strong>사용자의 첫 인터랙션(`scroll`, `touchstart`, `pointerdown`, `keydown`)</strong>에 주입하도록 변경했습니다.
 사용자 조작이 없는 유휴(Idle) 상태에서는 초기 페인트 측정을 방해하지 않도록 `requestIdleCallback`과 7초 타이머 뒤에 백그라운드로 안전하게 로드합니다.
-단, 애드센스 심사 봇이나 검색엔진 크롤러(`Mediapartners-Google`, `AdsBot`, `Googlebot`)가 접속했을 때는 지연 없이 `0ms` 즉시 실행되도록 User-Agent 분기를 넣어 SEO와 애드센스 정책 무결성을 100% 보존했습니다.
+단, 검색엔진 크롤러(`Googlebot`, `bingbot`)가 접속했을 때는 지연 없이 `0ms` 즉시 실행되도록 User-Agent 분기를 넣어 색인 무결성을 유지했습니다.
+
+> <strong>2026-10-29 보강</strong>: 애드센스 <strong>사이트 확인</strong>은 정적 HTML의 `<head>`에 코드가 있어야 안정적으로 통과합니다. 그래서 AdSense 코드만 `<head>`에 `async` + `fetchpriority="low"`로 되돌렸습니다. 이 경우 <strong>Auto ads를 끄고</strong> 승인 후 광고 단위를 직접 배치해야, 이 글에서 측정한 98점과 CLS를 유지할 수 있습니다(실측: Auto ads가 켜지면 광고 iframe 2개가 주입되어 CLS가 0.003 → 0.046으로 증가).
 
 ```jsx
 // components/SEO.js (핵심 발췌)
@@ -374,11 +376,11 @@ Lighthouse가 지적한 항목 중에는 <strong>고치지 않는 게 맞다고 
 
 1. <strong>CSS 안에서 `@import`로 웹폰트를 불러오지 않는다.</strong> 나아가 한글이 주력인 사이트에서 영문 웹폰트 `<link rel="stylesheet">`가 첫 페인트를 막지 않도록 `media="print"` 후 `media="all"` 스왑이나 비차단 전략을 적용한다.
 2. <strong>`<head>` 상단의 `<script async>`를 맹신하지 않는다.</strong> `async`는 HTML 파서만 멈추지 않을 뿐, 대역폭을 선점하고 크로스 오리진 iframe을 주입해 컴포지터의 첫 페인트 프레젠테이션 타임스탬프를 수백 ms 이상 밀어낸다.
-3. <strong>분석·광고 스크립트(`AdSense`, `GA4`, `Clarity`)는 첫 인터랙션 또는 `load` 이후 유휴 시점으로 지연한다.</strong> 단, 검색·광고 크롤러 User-Agent는 즉시 로드하도록 분기해 심사·색인 무결성을 지킨다.
+3. <strong>분석 스크립트(`GA4`, `Clarity`)는 첫 인터랙션 또는 `load` 이후 유휴 시점으로 지연한다.</strong> 광고 스크립트는 사이트 확인을 위해 `<head>`에 두되 `fetchpriority="low"`를 주고, <strong>Auto ads는 승인 전까지 끈다</strong>. 광고 iframe이 먼저 뜨면 CLS가 커진다(실측 0.003 → 0.046).
 4. <strong>Next.js `<Link>`의 뷰포트 자동 프리패치를 통제한다.</strong> 첫 화면에 링크가 많다면 `prefetch={false}`로 초기 JSON·라우트 청크 스탬피드를 막는다.
 5. <strong>로컬 랩 측정과 실제 PageSpeed(Lantern 시뮬레이션)는 다르다.</strong> 점수가 기대만큼 오르지 않을 때는 Lighthouse의 `optimisticGraph`에 어떤 네트워크 노드가 끼어들었는지 확인해야 진짜 병목을 잡을 수 있다.
 
-성능 최적화는 "무엇을 줄일까"보다 <strong>"무엇이 첫 페인트의 커트라인 안으로 끼어들어 시뮬레이션 그래프를 부풀리고 있는가"</strong>를 찾는 일에 가깝습니다. 이번에는 `@import` 뒤에 숨어 있던 렌더 차단 폰트 80KB와 `<head>` 최상단 서드파티 스크립트 체인을 걷어내어 <strong>57점(LCP 9.4초)이던 모바일 성능을 99점(LCP 2.1초)</strong>으로 끌어올렸습니다.
+성능 최적화는 "무엇을 줄일까"보다 <strong>"무엇이 첫 페인트의 커트라인 안으로 끼어들어 시뮬레이션 그래프를 부풀리고 있는가"</strong>를 찾는 일에 가깝습니다. 이번에는 `@import` 뒤에 숨어 있던 렌더 차단 폰트 80KB와 `<head>` 최상단 서드파티 스크립트 체인을 걷어내어 <strong>57점(LCP 9.4초)이던 모바일 성능을 98점(LCP 2.1초)</strong>으로 끌어올렸습니다.
 
 ## 관련 글
 

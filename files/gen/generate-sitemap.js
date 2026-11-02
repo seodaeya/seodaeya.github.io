@@ -42,7 +42,10 @@ const generateSitemap = () => {
     { loc: `${siteUrl}/categories/`, lastmod: latestContentDate },
     { loc: `${siteUrl}/ranking/`, lastmod: latestContentDate },
     { loc: `${siteUrl}/about/`, lastmod: getGitLastMod('pages/about.jsx', '2026-10-05') },
+    { loc: `${siteUrl}/editorial/`, lastmod: getGitLastMod('pages/editorial.jsx', '2026-10-29') },
+    { loc: `${siteUrl}/contact/`, lastmod: getGitLastMod('pages/contact.jsx', '2026-10-29') },
     { loc: `${siteUrl}/privacy/`, lastmod: getGitLastMod('pages/privacy.jsx', '2026-09-01') },
+    { loc: `${siteUrl}/terms/`, lastmod: getGitLastMod('pages/terms.jsx', '2026-10-29') },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
