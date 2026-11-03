@@ -295,6 +295,22 @@ print(response.choices[0].message.content)
 
 ---
 
+## 🧭 벤치마크 수치를 읽는 방법
+
+이 글의 성능 수치는 <strong>mlx-serve 공식 벤치마크(M4 Max 128GB, 동일 가중치·기본 설정)</strong>를 인용한 것입니다. 직접 재현한 값이 아니므로, 내 Mac에 그대로 적용된다고 기대하면 안 됩니다. 아래 세 가지를 함께 보세요.
+
+* <strong>메모리 대역폭이 성능을 좌우합니다.</strong> 같은 M4 계열이라도 Pro/Max/Ultra에 따라 디코딩 속도 차이가 크게 납니다. 모델 크기보다 "내 칩의 대역폭"을 먼저 확인하세요.
+* <strong>프리필과 디코딩은 병목이 다릅니다.</strong> 긴 문서를 넣는 작업은 프리필(입력 처리)이, 대화형 응답은 디코딩(토큰 생성)이 체감 속도를 결정합니다.
+* <strong>양자화(quantization) 수준</strong>에 따라 품질과 속도가 함께 달라집니다. 4비트와 8비트는 같은 모델이 아닙니다.
+
+> 공식 수치는 "이 정도 차이가 날 수 있다"는 상한선으로 읽고, 실제 도입 전에는 내 환경에서 같은 프롬프트로 한 번 비교해 보는 편이 정확합니다.
+
+## 📚 참고 자료
+
+* mlx-serve 저장소 — https://github.com/ddalcu/mlx-serve
+* mlx-serve 공식 사이트 — https://mlxserve.com/
+* Apple MLX — https://github.com/ml-explore/mlx
+
 ## 🎯 8. 요약 및 결론
 
 <strong>mlx-serve</strong>는 Apple Silicon 생태계에서 로컬 LLM을 다루는 방식을 완전히 한 단계 끌어올린 혁신적인 소프트웨어입니다.

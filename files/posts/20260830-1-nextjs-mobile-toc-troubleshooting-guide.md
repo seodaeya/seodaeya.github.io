@@ -206,6 +206,25 @@ const handleScroll = () => {
 
 ---
 
+## 📱 6-1. 실제 배포 화면과 재측정값 (2026-11-02)
+
+여기까지가 구현 당시의 기록이라면, 아래는 <strong>실제 운영 빌드에서 다시 측정한 값</strong>입니다. 측정 환경은 Chromium 모바일 에뮬레이션(390×844, DPR 2)이고, 대상은 이 글 자체입니다.
+
+![모바일 우측 하단에 고정된 목차 플로팅 버튼](/images/nextjs-mobile-toc-pill.png)
+
+* 플로팅 버튼 그룹: `position: fixed`, `z-index: 1500`, 133×48px, 우측 여백 16px, 하단 여백 84px
+* 버튼의 실제 부모 노드는 `BODY` — `createPortal`로 `<main>` 바깥에 마운트된 상태가 확인됩니다
+* 스크롤 직후: `opacity: 0`, `translateX(36px)` 이동 + `scale(0.85)` 축소
+* 스크롤을 멈추고 약 2.2초 뒤: `opacity: 1`로 복귀
+
+![바텀시트로 열린 모바일 목차](/images/nextjs-mobile-toc-drawer.png)
+
+바텀시트는 화면 폭 390px 전체를 사용하고, 높이 633px(뷰포트의 약 75%)로 올라옵니다. 이 글 기준 H2·H3 16개가 한 화면에 들어오며, 항목을 누르면 해당 위치로 이동한 뒤 서랍이 닫힙니다.
+
+> 측정은 `getBoundingClientRect()`와 `getComputedStyle()`을 읽는 방식이라 기기·브라우저·글 길이에 따라 값은 달라집니다. 그래서 확인해야 할 본질은 숫자 자체가 아니라 <strong>"부모 노드가 BODY인가"</strong>와 <strong>"스크롤 중 opacity가 0이 되는가"</strong>라는 두 가지 상태 전이입니다.
+
+---
+
 ## 🎯 7. 요약 및 프론트엔드 개발 체크리스트
 
 | 점검 항목 | 문제 원인 | 적용한 해결책 |

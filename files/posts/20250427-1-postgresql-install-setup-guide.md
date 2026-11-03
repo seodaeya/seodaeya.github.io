@@ -108,6 +108,25 @@ GRANT ALL PRIVILEGES ON DATABASE my_app_db TO my_app_user;
 
 ---
 
+## 🔄 2026-11 기준 버전 확인
+
+설치 마법사의 화면 구성은 메이저 버전에 따라 조금씩 달라집니다. 이 글을 쓴 뒤 공식 배포판을 확인해 보니 최신 버전은 <strong>PostgreSQL 19</strong>였습니다(2026-11-02 기준, postgresql.org 첫 화면 표기). 설치 파일을 받을 때는 아래 두 가지를 함께 확인하세요.
+
+* <strong>설치 파일 이름에 붙은 버전 번호</strong>를 확인하세요. 메이저 버전이 다르면 데이터 디렉터리 구조와 기본 설정이 달라집니다.
+* 보안 패치는 <strong>마이너 버전</strong>으로 배포됩니다. 설치 후 `SELECT version();`으로 실제 서버 버전을 확인하고, 주기적으로 마이너 업데이트를 적용하는 편이 안전합니다.
+
+## 🧭 이 글의 적용 범위
+
+* <strong>Windows GUI 설치 마법사(EDB Interactive Installer)</strong> 기준입니다. macOS(Homebrew)·Linux(apt/dnf)는 패키지 매니저 흐름이 달라 별도 절차가 필요합니다.
+* `pgAdmin 4`의 메뉴 이름은 버전에 따라 다를 수 있습니다. "서버 등록 → 연결 → Query Tool" 순서는 동일합니다.
+* 운영 환경이라면 설치 후 `pg_hba.conf`와 `postgresql.conf`를 반드시 검토하세요. 설치 기본값은 로컬 개발용입니다.
+
+## 📚 참고 자료
+
+* PostgreSQL Windows 설치 안내 — https://www.postgresql.org/download/windows/
+* PostgreSQL 공식 문서 — https://www.postgresql.org/docs/current/
+* pgAdmin 공식 사이트 — https://www.pgadmin.org/
+
 ## 📌 요약 및 체크리스트
 설치를 완료한 후 아래 항목이 정상 동작하는지 확인해 보세요.
 - [ ] pgAdmin 4 정상 실행 및 관리자 서버 로그인 여부

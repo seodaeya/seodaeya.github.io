@@ -238,6 +238,26 @@ public class LettuceTuningConfig {
 
 ---
 
+## 🧪 수치를 재현할 때 확인할 것
+
+위 표의 개선 폭은 <strong>저사양 단일 인스턴스 + 커넥션 풀 10개</strong>라는 특정 조건에서 나온 값입니다. 같은 코드를 다른 환경에 적용하면 숫자는 달라집니다. 재현하거나 사내에 적용할 때는 아래를 먼저 맞춰야 비교가 성립합니다.
+
+* <strong>커넥션 풀 크기</strong>: HikariCP `maximum-pool-size`가 병목의 출발점입니다. DB가 감당 가능한 동시 연결 수와 애플리케이션 스레드 수를 함께 봐야 합니다.
+* <strong>캐시 TTL과 히트율</strong>: 98% 히트율은 데이터가 자주 바뀌지 않는다는 전제가 있습니다. TTL을 짧게 잡으면 히트율이 떨어지고 DB 부하가 다시 올라갑니다.
+* <strong>직렬화 비용</strong>: `RedisTemplate`의 기본 직렬화 방식(JDK 직렬화)은 읽기 쉬운 JSON보다 느리고 저장 크기도 큽니다. 객체를 그대로 캐싱한다면 직렬화 방식부터 정하세요.
+* <strong>장애 시 동작</strong>: Redis가 죽었을 때 요청이 그대로 DB로 몰리면 원래 장애가 재현됩니다. 서킷 브레이커나 로컬 캐시 같은 완충 장치를 함께 설계해야 합니다.
+
+## ⚠️ 자주 하는 실수
+
+* `@Cacheable`은 <strong>같은 클래스 내부 호출에서는 동작하지 않습니다</strong>(프록시 기반 AOP). 컨트롤러에서 서비스를 호출하는 정상 경로인지 확인하세요.
+* 캐시 키에 객체를 그대로 쓰면 `toString()` 결과에 의존하게 됩니다. 키는 문자열로 명시하는 편이 안전합니다.
+* `@CacheEvict`를 빠뜨리면 수정한 값이 TTL 만료까지 그대로 노출됩니다.
+
+## 📚 참고 자료
+
+* Spring Data Redis 공식 문서 — https://docs.spring.io/spring-data/redis/reference/
+* Lettuce 클라이언트 — https://github.com/redis/lettuce
+
 ## 📊 4. 개선 결과 및 효과
 
 캐싱 아키텍처 적용 후 부하 테스트 및 실제 마케팅 라이브 트래픽 유입 시 측정한 지표 비교입니다:

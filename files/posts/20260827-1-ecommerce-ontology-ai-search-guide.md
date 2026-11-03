@@ -317,6 +317,52 @@ RETURN laptop.name AS 대상노트북, charger.name AS 호환충전기, out.watt
 
 ---
 
+## 🧪 개념을 코드로 옮기기: schema.org JSON-LD 예제
+
+앞의 Cypher 예제는 그래프 DB 안에서의 표현입니다. 그런데 실제 이커머스에서는 <strong>검색엔진과 AI 크롤러가 읽는 형태</strong>도 함께 필요합니다. 이때 쓰는 공개 어휘가 schema.org이고, 표현 형식이 JSON-LD입니다. 같은 상품을 아래처럼 적으면 "이 캡슐은 어떤 기기와 호환되는가"라는 속성 제약을 기계가 읽을 수 있습니다.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "디카페인 캡슐 20개입",
+  "sku": "EXAMPLE-DECAF-20",
+  "brand": { "@type": "Brand", "name": "예시브랜드" },
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "호환 기기", "value": "Nespresso Original" },
+    { "@type": "PropertyValue", "name": "카페인 함량", "value": "0.1% 미만" }
+  ],
+  "isVariantOf": {
+    "@type": "ProductGroup",
+    "name": "디카페인 캡슐",
+    "variesBy": ["https://schema.org/size"]
+  }
+}
+```
+
+설계할 때 기억할 점 세 가지:
+
+* <strong>`additionalProperty`</strong>는 표준에 없는 도메인 속성(호환 기기, 캡슐 규격, 소재)을 붙이는 공식 확장 지점입니다. 별도 어휘를 만들기 전에 여기서 해결되는지 먼저 확인하세요.
+* <strong>`isVariantOf`</strong>로 용량·색상 옵션을 하나의 제품군으로 묶으면, 옵션마다 별도 상품 엔티티가 생겨 중복되는 문제를 줄일 수 있습니다.
+* 그래프 DB에서는 같은 구조를 `(:Product)-[:HAS_PROPERTY]->(:PropertyValue)`로 옮기면 됩니다. 즉 온톨로지 설계는 한 번 하고, 표현만 JSON-LD와 Cypher로 나눠 쓰는 셈입니다.
+
+> 위 예제의 `sku`와 브랜드명은 형식을 보여주기 위한 자리표시자입니다. 실제 값은 자사 카탈로그의 식별자로 바꿔야 합니다.
+
+## 🧭 이 글의 적용 범위
+
+* Cypher 예제는 Neo4j 5.x 문법을 기준으로 작성했으며, 별도 인스턴스를 띄워 실행 검증하지는 않았습니다.
+* Amazon Product Graph, 쿠팡·네이버의 카탈로그 매칭은 공개된 자료 범위에서 정리한 것이고, 내부 스키마를 확인한 것은 아닙니다.
+* JSON-LD 예제는 schema.org의 `Product`·`ProductGroup`·`additionalProperty` 정의를 기준으로 작성했습니다.
+
+## 📚 참고 자료
+
+* schema.org Product — https://schema.org/Product
+* schema.org ProductGroup — https://schema.org/ProductGroup
+* schema.org additionalProperty — https://schema.org/additionalProperty
+* W3C OWL 2 Primer — https://www.w3.org/TR/owl2-primer/
+* Neo4j Cypher Manual — https://neo4j.com/docs/cypher-manual/current/
+* Google 상품 데이터 사양 — https://support.google.com/merchants/answer/7052112
+
 ## 💡 10. 12세 청소년도 쉽게 이해하는 비유 (ELI12)
 
 > <strong>"규칙 없이 부품만 담아둔 '단순 서랍장(분류)'과, 결합 규칙(온톨로지)에 맞춰 완벽하게 조립된 '레고 블록 네트워크(지식 그래프)'의 차이입니다!"</strong>
