@@ -1,0 +1,555 @@
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem calc(3rem + env(safe-area-inset-bottom, 0px)) 1rem;
+  color: var(--text-primary);
+}
+
+.hero {
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-light);
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-headings);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.subtitle strong {
+  color: var(--text-primary);
+}
+
+/* ───────────── 난이도 ───────────── */
+.levelRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.levelChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.35rem;
+  min-height: 74px;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.levelChip:active {
+  transform: scale(0.97);
+}
+
+.levelChipActive {
+  border-color: var(--accent-light);
+  background: color-mix(in srgb, var(--accent-light) 14%, var(--bg-secondary));
+  color: var(--text-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-light) 35%, transparent);
+}
+
+.levelEmoji {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.levelName {
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.levelDesc {
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* ───────────── 기록 ───────────── */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 62px;
+}
+
+.statLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.statValue {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.resetBtn {
+  margin-left: auto;
+  padding: 0.45rem 0.7rem;
+  min-height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resetBtn:hover {
+  border-color: var(--border-glass-active);
+  color: var(--text-primary);
+}
+
+/* ───────────── 문제 ───────────── */
+.loadingCard {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  border-radius: 20px;
+  border: 1px dashed var(--border-glass);
+}
+
+.problemCard {
+  padding: 1.1rem 1rem 1.25rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-glass);
+  background:
+    radial-gradient(120% 120% at 0% 0%, color-mix(in srgb, var(--accent-light) 12%, transparent) 0%, transparent 55%),
+    var(--bg-secondary);
+  margin-bottom: 1rem;
+}
+
+.problemHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.problemEyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.problemText {
+  margin: 0 0 1rem 0;
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.problemClock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.problemClockMeta {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+}
+
+.metaLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.metaValue {
+  font-size: 0.98rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ───────────── 선택지 ───────────── */
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+}
+
+.choiceBtn {
+  min-height: 58px;
+  padding: 0.65rem 0.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 1.02rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choiceBtn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.choiceBtn:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.choiceCorrect {
+  border-color: #10b981;
+  background: color-mix(in srgb, #10b981 20%, var(--bg-tertiary));
+  box-shadow: 0 0 0 2px color-mix(in srgb, #10b981 40%, transparent);
+}
+
+.choiceWrong {
+  border-color: #ef4444;
+  color: #fca5a5;
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+/* ───────────── 피드백 ───────────── */
+.feedback {
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-glass);
+  margin-bottom: 0.9rem;
+  background: var(--bg-secondary);
+}
+
+.feedbackOk {
+  border-color: color-mix(in srgb, #10b981 55%, transparent);
+  background: color-mix(in srgb, #10b981 10%, var(--bg-secondary));
+}
+
+.feedbackNo {
+  border-color: color-mix(in srgb, var(--accent-light) 45%, transparent);
+}
+
+.feedbackTitle {
+  margin: 0 0 0.35rem 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.feedbackBody {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  word-break: keep-all;
+}
+
+.nextBtn {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.retryNote {
+  margin: 0 0 0.9rem 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ───────────── 힌트 ───────────── */
+.hintBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-glass-active);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hintBtn:active {
+  transform: scale(0.96);
+}
+
+.hintBtn:hover,
+.hintBtnOpen {
+  background: color-mix(in srgb, var(--accent-light) 18%, var(--bg-tertiary));
+  border-color: var(--accent-light);
+}
+
+.hintPanel {
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hintTitle {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.hintTarget {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hintHelp {
+  margin: 0.4rem 0 0 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  text-align: center;
+  word-break: keep-all;
+}
+
+.footNote {
+  margin: 1.6rem 0 0 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ───────────── 시계 ───────────── */
+.clockBox {
+  --clock-face-inner: #fffef8;
+  --clock-face-outer: #ece7d9;
+
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.clockFace {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.clockFaceInteractive {
+  touch-action: none;
+  cursor: grab;
+}
+
+.clockFaceInteractive:active {
+  cursor: grabbing;
+}
+
+.clockFaceInteractive:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.clockSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.clockRim {
+  fill: var(--accent-light);
+  opacity: 0.85;
+}
+
+.tickMinute {
+  stroke: #94a3b8;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.tickHour {
+  stroke: #334155;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.clockNumber {
+  font-family: var(--font-headings);
+  font-size: 13px;
+  font-weight: 800;
+  fill: #1e293b;
+}
+
+.targetTick {
+  stroke: #0ea5e9;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 4 4;
+  opacity: 0.9;
+}
+
+.hourHand {
+  stroke: #1e293b;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.minuteHand {
+  stroke: var(--accent-light);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.minuteTip {
+  fill: var(--accent-light);
+  stroke: #ffffff;
+  stroke-width: 1.4;
+}
+
+.clockPin {
+  fill: #1e293b;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+
+.clockReadout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.readoutValue {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(9, 12, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.clockReadoutArrived .readoutValue {
+  background: #059669;
+  border-color: #34d399;
+}
+
+.readoutArrived {
+  margin-right: 4px;
+  color: #d1fae5;
+  font-size: 0.82em;
+  font-weight: 800;
+}
+
+@media (max-width: 360px) {
+  .levelRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .levelChip:last-child {
+    grid-column: span 2;
+  }
+
+  .problemText {
+    font-size: 1.04rem;
+  }
+
+  .choiceGrid {
+    gap: 0.45rem;
+  }
+
+  .choiceBtn {
+    font-size: 0.94rem;
+    min-height: 54px;
+  }
+}
+
+@media (min-width: 480px) {
+  .wrap {
+    padding-top: 2rem;
+  }
+
+  .title {
+    font-size: 2.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .levelChip,
+  .choiceBtn,
+  .hintBtn {
+    transition: none;
+  }
+}

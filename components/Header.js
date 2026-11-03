@@ -91,6 +91,8 @@ export default function Header() {
   const isCartActive = router.pathname.startsWith('/cart');
   const isPlannerActive = router.pathname.startsWith('/planner');
   const isBookmarksActive = router.pathname.startsWith('/bookmarks');
+  const isTimeTrainActive = router.pathname.startsWith('/time-train');
+  const isWordTrainActive = router.pathname.startsWith('/word-train');
 
   return (
     <header className={styles.header}>
@@ -137,7 +139,7 @@ export default function Header() {
           >
             <button 
               type="button"
-              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive || isBookmarksActive ? styles.navDropdownTriggerActive : ''}`}
+              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive || isBookmarksActive || isTimeTrainActive || isWordTrainActive ? styles.navDropdownTriggerActive : ''}`}
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               aria-expanded={isServicesOpen}
             >
@@ -176,6 +178,19 @@ export default function Header() {
                   </div>
                   <div className={styles.dropdownItemDesc}>
                     유아부터 성인까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+
+                <Link
+                  href="/time-train/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsServicesOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>⏰</span> 시계 여행
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    분침을 움직이며 걸린 시간을 익히는 시간 학습
                   </div>
                 </Link>
 
@@ -376,6 +391,18 @@ export default function Header() {
                   </div>
                   <div className={styles.mobileServiceDesc}>
                     유아부터 성인까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+                <Link
+                  href="/time-train/"
+                  className={`${styles.mobileServiceItem} ${isTimeTrainActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>⏰</span> 시계 여행
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    분침을 움직이며 걸린 시간을 익히는 시간 학습
                   </div>
                 </Link>
                 <Link 
