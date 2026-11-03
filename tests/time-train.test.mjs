@@ -8,6 +8,7 @@ import {
   formatAnswer,
   formatClock,
   formatDuration,
+  isAtTarget,
 } from '../lib/time-train.js';
 
 const toMinutes = (text) => {
@@ -95,4 +96,13 @@ test('a 12-hour answer stays inside a single clock face', () => {
     // 2단계는 최대 150분이므로 12시간 경계를 넘어도 경과 분은 그대로 보여야 합니다.
     assert.equal(elapsed, problem.duration % 720);
   }
+});
+
+test('도착 판정은 목표와 정확히 같을 때만 true', () => {
+  assert.equal(isAtTarget(40, 40), true);
+  assert.equal(isAtTarget(39, 40), false, '1분 부족은 도착이 아닙니다');
+  assert.equal(isAtTarget(41, 40), false, '1분 초과는 도착이 아닙니다');
+  assert.equal(isAtTarget(0, 0), true);
+  assert.equal(isAtTarget(0, null), false);
+  assert.equal(isAtTarget(0, undefined), false);
 });

@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://seodaeya.github.io/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/categories/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/ranking/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/about/</loc>
@@ -24,6 +24,46 @@
   <url>
     <loc>https://seodaeya.github.io/privacy/</loc>
     <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260911-1-na-min-ae-reading-method-literacy-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260902-1-us-stock-70years-inflation-portfolio-strategy/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260827-1-ecommerce-ontology-ai-search-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260812-1-macos-android-openmtp-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20260811-1-privacy-policy-cpo-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</loc>
+    <lastmod>2026-11-03</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20261026-1-webfont-import-lcp-render-blocking/</loc>
@@ -62,10 +102,6 @@
     <lastmod>2026-10-07</lastmod>
   </url>
   <url>
-    <loc>https://seodaeya.github.io/posts/20260901-1-github-top-starred-repositories-ranking-guide/</loc>
-    <lastmod>2026-10-07</lastmod>
-  </url>
-  <url>
     <loc>https://seodaeya.github.io/posts/20260824-1-github-pages-serverless-cart-parser/</loc>
     <lastmod>2026-10-07</lastmod>
   </url>
@@ -83,14 +119,6 @@
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20261005-1-aside-ai-browser-mac-install-guide/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260902-1-us-stock-70years-inflation-portfolio-strategy/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260811-1-privacy-policy-cpo-guide/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
   <url>
@@ -118,28 +146,8 @@
     <lastmod>2026-09-23</lastmod>
   </url>
   <url>
-    <loc>https://seodaeya.github.io/posts/20260827-1-ecommerce-ontology-ai-search-guide/</loc>
-    <lastmod>2026-09-22</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260825-1-spring-boot-lettuce-redis-caching-traffic-bottleneck/</loc>
-    <lastmod>2026-09-22</lastmod>
-  </url>
-  <url>
     <loc>https://seodaeya.github.io/posts/20260917-1-block-jack-dorsey-ai-organization-from-hierarchy-to-intelligence/</loc>
     <lastmod>2026-09-17</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260911-1-na-min-ae-reading-method-literacy-guide/</loc>
-    <lastmod>2026-09-11</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/</loc>
-    <lastmod>2026-09-04</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/</loc>
-    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20260822-1-github-pages-url-slug-seo-redirection/</loc>
@@ -151,10 +159,6 @@
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20260815-1-gemini-3-7-flash-analysis/</loc>
-    <lastmod>2026-08-29</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20260812-1-macos-android-openmtp-guide/</loc>
     <lastmod>2026-08-29</lastmod>
   </url>
   <url>
@@ -171,10 +175,6 @@
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20260803-1-kimi-k3-moonshot-ai/</loc>
-    <lastmod>2026-08-29</lastmod>
-  </url>
-  <url>
-    <loc>https://seodaeya.github.io/posts/20250427-1-postgresql-install-setup-guide/</loc>
     <lastmod>2026-08-29</lastmod>
   </url>
 </urlset>

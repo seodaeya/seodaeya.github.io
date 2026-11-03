@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { MAX_OFFSET } from '@/lib/time-train';
+import { MAX_OFFSET, isAtTarget } from '@/lib/time-train';
 import styles from '@/styles/timeTrain.module.css';
 
 const VIEW = 200;
@@ -47,7 +47,7 @@ export default function TimeTrainClock({
     ? null
     : ((((baseMinutes + targetOffset) % 1440) + 1440) % 1440) % 60 * 6;
 
-  const arrived = targetOffset !== null && Math.abs(offset - targetOffset) <= 1;
+  const arrived = isAtTarget(offset, targetOffset);
 
   const minuteTip = polar(minuteAngle, 80);
   const hourTip = polar(hourAngle, 52);
