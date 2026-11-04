@@ -36,7 +36,7 @@ const generateSitemap = () => {
   const allDates = [...posts, ...videos].map((item) => item.lastmod).sort();
   const latestContentDate = allDates.length > 0 ? allDates[allDates.length - 1] : new Date().toISOString().split('T')[0];
 
-  // Note: Interactive web utility/game pages (/cart/, /word-train/, /time-train/, /planner/, /bookmarks/) are noindex and excluded from sitemap.xml
+  // Note: Interactive web utility/game pages (/cart/, /edu/, /word-train/, /time-train/, /planner/, /bookmarks/) are noindex and excluded from sitemap.xml
   const corePages = [
     { loc: `${siteUrl}/`, lastmod: latestContentDate },
     { loc: `${siteUrl}/categories/`, lastmod: latestContentDate },

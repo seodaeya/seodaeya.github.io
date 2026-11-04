@@ -8,8 +8,11 @@ import SmartRandomWidget from '@/components/SmartRandomWidget';
 export default function Header() {
   const router = useRouter();
   const [theme, setTheme] = useState('dark');
+  const [isEduOpen, setIsEduOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const eduDropdownRef = useRef(null);
+  const eduCloseTimeoutRef = useRef(null);
   const dropdownRef = useRef(null);
   const closeTimeoutRef = useRef(null);
   const mobileNavRef = useRef(null);
@@ -20,6 +23,9 @@ export default function Header() {
     setTheme(isLight ? 'light' : 'dark');
 
     const handleClickOutside = (event) => {
+      if (eduDropdownRef.current && !eduDropdownRef.current.contains(event.target)) {
+        setIsEduOpen(false);
+      }
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsServicesOpen(false);
       }
@@ -34,6 +40,7 @@ export default function Header() {
 
     const handleRouteChange = () => {
       setIsMobileMenuOpen(false);
+      setIsEduOpen(false);
       setIsServicesOpen(false);
     };
 
@@ -43,6 +50,7 @@ export default function Header() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       router.events?.off('routeChangeStart', handleRouteChange);
+      if (eduCloseTimeoutRef.current) clearTimeout(eduCloseTimeoutRef.current);
       if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     };
   }, [router]);
@@ -59,11 +67,27 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  const handleEduMouseEnter = () => {
+    if (eduCloseTimeoutRef.current) {
+      clearTimeout(eduCloseTimeoutRef.current);
+      eduCloseTimeoutRef.current = null;
+    }
+    setIsServicesOpen(false);
+    setIsEduOpen(true);
+  };
+
+  const handleEduMouseLeave = () => {
+    eduCloseTimeoutRef.current = setTimeout(() => {
+      setIsEduOpen(false);
+    }, 200);
+  };
+
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
       closeTimeoutRef.current = null;
     }
+    setIsEduOpen(false);
     setIsServicesOpen(true);
   };
 
@@ -91,8 +115,10 @@ export default function Header() {
   const isCartActive = router.pathname.startsWith('/cart');
   const isPlannerActive = router.pathname.startsWith('/planner');
   const isBookmarksActive = router.pathname.startsWith('/bookmarks');
+  const isEduHubActive = router.pathname.startsWith('/edu');
   const isTimeTrainActive = router.pathname.startsWith('/time-train');
   const isWordTrainActive = router.pathname.startsWith('/word-train');
+  const isAnyEduActive = isEduHubActive || isTimeTrainActive || isWordTrainActive;
 
   return (
     <header className={styles.header}>
@@ -130,6 +156,112 @@ export default function Header() {
             랭킹 🏆
           </Link>
 
+          {/* 교육 (생활 속 배움) 드롭다운 */}
+          <div
+            className={styles.navDropdownWrapper}
+            ref={eduDropdownRef}
+            onMouseEnter={handleEduMouseEnter}
+            onMouseLeave={handleEduMouseLeave}
+          >
+            <button
+              type="button"
+              className={`${styles.navDropdownTrigger} ${isAnyEduActive ? styles.navDropdownTriggerActive : ''}`}
+              onClick={() => setIsEduOpen(!isEduOpen)}
+              aria-expanded={isEduOpen}
+            >
+              교육 🎒
+              <svg className={styles.dropdownArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            {isEduOpen && (
+              <div
+                className={styles.navDropdownMenu}
+                onMouseEnter={handleEduMouseEnter}
+                onMouseLeave={handleEduMouseLeave}
+              >
+                <Link
+                  href="/edu/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🎒</span> 생활 속 배움 놀이터 (전체)
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    유치원·초등 생활 밀착형 학습 통합 홈
+                  </div>
+                </Link>
+
+                <Link
+                  href="/time-train/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>⏰</span> 시계 여행 (12시·24시)
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    분침을 움직이며 걸린 시간과 12시·24시 표기 익히기
+                  </div>
+                </Link>
+
+                <Link
+                  href="/edu/?tab=calendar"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🗓️</span> 달력과 날짜·요일 박사
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    어제·오늘·내일·모레와 일주일 뒤 날짜 찾기
+                  </div>
+                </Link>
+
+                <Link
+                  href="/edu/?tab=money"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🪙</span> 용돈과 가게 놀이
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    동전·지폐 세기, 물건 사기와 거스름돈 계산
+                  </div>
+                </Link>
+
+                <Link
+                  href="/edu/?tab=unit"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>📏</span> 단위와 온도 박사
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    길이(cm·m), 들이(mL·L), 온도계(°C)와 옷차림
+                  </div>
+                </Link>
+
+                <Link
+                  href="/word-train/"
+                  className={styles.dropdownItem}
+                  onClick={() => setIsEduOpen(false)}
+                >
+                  <div className={styles.dropdownItemTitle}>
+                    <span>🚂</span> 단어기차
+                  </div>
+                  <div className={styles.dropdownItemDesc}>
+                    유아부터 초등까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+              </div>
+            )}
+          </div>
+
           {/* 실험 서비스 드롭다운 */}
           <div 
             className={styles.navDropdownWrapper}
@@ -139,7 +271,7 @@ export default function Header() {
           >
             <button 
               type="button"
-              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive || isBookmarksActive || isTimeTrainActive || isWordTrainActive ? styles.navDropdownTriggerActive : ''}`}
+              className={`${styles.navDropdownTrigger} ${isCartActive || isPlannerActive || isBookmarksActive ? styles.navDropdownTriggerActive : ''}`}
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               aria-expanded={isServicesOpen}
             >
@@ -165,32 +297,6 @@ export default function Header() {
                   </div>
                   <div className={styles.dropdownItemDesc}>
                     여러 쇼핑몰 링크를 한곳에 모아 관리하는 위시리스트
-                  </div>
-                </Link>
-
-                <Link
-                  href="/word-train/"
-                  className={styles.dropdownItem}
-                  onClick={() => setIsServicesOpen(false)}
-                >
-                  <div className={styles.dropdownItemTitle}>
-                    <span>🚂</span> 단어기차
-                  </div>
-                  <div className={styles.dropdownItemDesc}>
-                    유아부터 성인까지 한글·영어 단어 맞추기 게임
-                  </div>
-                </Link>
-
-                <Link
-                  href="/time-train/"
-                  className={styles.dropdownItem}
-                  onClick={() => setIsServicesOpen(false)}
-                >
-                  <div className={styles.dropdownItemTitle}>
-                    <span>⏰</span> 시계 여행
-                  </div>
-                  <div className={styles.dropdownItemDesc}>
-                    분침을 움직이며 걸린 시간을 익히는 시간 학습
                   </div>
                 </Link>
 
@@ -363,6 +469,51 @@ export default function Header() {
               <span>🏆</span> 실시간 랭킹
             </Link>
 
+            {/* Mobile Education Group */}
+            <div className={styles.mobileServiceGroup}>
+              <div className={styles.mobileServiceGroupHeader}>
+                <span>🎒</span> 교육 · 생활 속 배움
+              </div>
+              <div className={styles.mobileServiceList}>
+                <Link
+                  href="/edu/"
+                  className={`${styles.mobileServiceItem} ${isEduHubActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>🎒</span> 생활 속 배움 놀이터
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    달력·요일, 용돈·거스름돈, 길이·들이·온도 학습
+                  </div>
+                </Link>
+                <Link
+                  href="/time-train/"
+                  className={`${styles.mobileServiceItem} ${isTimeTrainActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>⏰</span> 시계 여행 (12시·24시)
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    분침을 움직이며 걸린 시간과 12시·24시 표기 익히기
+                  </div>
+                </Link>
+                <Link 
+                  href="/word-train/" 
+                  className={`${styles.mobileServiceItem} ${isWordTrainActive ? styles.activeMobileNavLink : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className={styles.mobileServiceTitle}>
+                    <span>🚂</span> 단어기차
+                  </div>
+                  <div className={styles.mobileServiceDesc}>
+                    유아부터 성인까지 한글·영어 단어 맞추기 게임
+                  </div>
+                </Link>
+              </div>
+            </div>
+
             {/* Mobile Lab Services Group */}
             <div className={styles.mobileServiceGroup}>
               <div className={styles.mobileServiceGroupHeader}>
@@ -379,30 +530,6 @@ export default function Header() {
                   </div>
                   <div className={styles.mobileServiceDesc}>
                     여러 쇼핑몰 링크를 한곳에 모아 관리하는 위시리스트
-                  </div>
-                </Link>
-                <Link 
-                  href="/word-train/" 
-                  className={styles.mobileServiceItem}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <div className={styles.mobileServiceTitle}>
-                    <span>🚂</span> 단어기차
-                  </div>
-                  <div className={styles.mobileServiceDesc}>
-                    유아부터 성인까지 한글·영어 단어 맞추기 게임
-                  </div>
-                </Link>
-                <Link
-                  href="/time-train/"
-                  className={`${styles.mobileServiceItem} ${isTimeTrainActive ? styles.activeMobileNavLink : ''}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <div className={styles.mobileServiceTitle}>
-                    <span>⏰</span> 시계 여행
-                  </div>
-                  <div className={styles.mobileServiceDesc}>
-                    분침을 움직이며 걸린 시간을 익히는 시간 학습
                   </div>
                 </Link>
                 <Link 

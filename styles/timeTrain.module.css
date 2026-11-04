@@ -1,12 +1,37 @@
 .wrap {
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 1.5rem 1rem calc(3rem + env(safe-area-inset-bottom, 0px)) 1rem;
+  padding: 1.25rem 1rem calc(3rem + env(safe-area-inset-bottom, 0px)) 1rem;
   color: var(--text-primary);
 }
 
+.topBackRow {
+  margin-bottom: 0.85rem;
+}
+
+.eduHubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.eduHubLink:hover {
+  border-color: var(--accent-light);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
 .hero {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.1rem;
 }
 
 .eyebrow {
@@ -34,6 +59,87 @@
 
 .subtitle strong {
   color: var(--text-primary);
+}
+
+/* ───────────── 12시 / 24시 표기 방식 ───────────── */
+.notationBox {
+  padding: 0.8rem 0.9rem;
+  margin-bottom: 0.9rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+}
+
+.notationHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.55rem;
+}
+
+.notationLabel {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.notationHint {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.notationRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.notationChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.14rem;
+  padding: 0.5rem 0.35rem;
+  min-height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.notationChipActive {
+  border-color: var(--accent-light);
+  background: color-mix(in srgb, var(--accent-light) 16%, var(--bg-tertiary));
+  color: var(--text-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-light) 32%, transparent);
+}
+
+.notationBadge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.42rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-light) 22%, transparent);
+  color: var(--accent-light);
+}
+
+.notationName {
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.notationDesc {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
 }
 
 /* ───────────── 난이도 ───────────── */
@@ -163,14 +269,31 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.problemHeadTags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
 .problemEyebrow {
   margin: 0;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   color: var(--accent-light);
+}
+
+.activityTag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
 }
 
 .problemText {
@@ -185,27 +308,111 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
   flex-wrap: wrap;
 }
 
-.problemClockMeta {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 0.25rem 0.5rem;
-  align-items: baseline;
+.digitalBoardWrap {
+  flex: 1 1 220px;
+  min-width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
-.metaLabel {
-  font-size: 0.72rem;
+.digitalBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+}
+
+.digitalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.digitalTag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.digitalCompareRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.digitalCell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.42rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
+}
+
+.digitalCellHighlight {
+  border-color: color-mix(in srgb, var(--accent-light) 55%, var(--border-glass));
+  background: color-mix(in srgb, var(--accent-light) 10%, var(--bg-secondary));
+}
+
+.digitalCellMode {
+  font-size: 0.64rem;
   font-weight: 700;
   color: var(--text-muted);
 }
 
-.metaValue {
-  font-size: 0.98rem;
+.digitalCellTime {
+  font-size: 0.96rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.digitalEqual {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.conversionRuleNote {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  word-break: keep-all;
+}
+
+.hintDigitalLive {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-tertiary);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.hintDigitalLive strong {
+  color: var(--text-primary);
+}
+
+.hintDigitalDivider {
+  color: var(--text-muted);
 }
 
 /* ───────────── 선택지 ───────────── */

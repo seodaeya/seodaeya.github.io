@@ -4,11 +4,21 @@ import { test } from 'node:test';
 import {
   LEVELS,
   MAX_OFFSET,
+  NOTATIONS,
+  choiceTo24,
   createProblem,
+  explain12To24,
   formatAnswer,
+  formatAnswerByNotation,
+  formatChoiceByNotation,
   formatClock,
+  formatClock24,
+  formatClockByNotation,
+  formatClockWithPeriod,
+  formatDigital,
   formatDuration,
   isAtTarget,
+  to24HourMinutes,
 } from '../lib/time-train.js';
 
 const toMinutes = (text) => {
@@ -105,4 +115,34 @@ test('도착 판정은 목표와 정확히 같을 때만 true', () => {
   assert.equal(isAtTarget(0, 0), true);
   assert.equal(isAtTarget(0, null), false);
   assert.equal(isAtTarget(0, undefined), false);
+});
+
+test('12시간제·24시간제 표기 변환과 디지털 시계 포맷 검증', () => {
+  assert.equal(NOTATIONS.length, 3);
+  assert.equal(to24HourMinutes(200, 'pm'), 920); // 오후 3시 20분 -> 15시 20분
+  assert.equal(to24HourMinutes(560, 'am'), 560); // 오전 9시 20분 -> 09시 20분
+
+  assert.equal(formatClockWithPeriod(560), '오전 9시 20분');
+  assert.equal(formatClockWithPeriod(920), '오후 3시 20분');
+  assert.equal(formatClock24(560), '09시 20분');
+  assert.equal(formatClock24(920), '15시 20분');
+
+  assert.equal(formatDigital(560, '12h'), '오전 09:20');
+  assert.equal(formatDigital(920, '12h'), '오후 03:20');
+  assert.equal(formatDigital(560, '24h'), '09:20');
+  assert.equal(formatDigital(920, '24h'), '15:20');
+
+  assert.equal(formatClockByNotation(920, '12h'), '오후 3시 20분');
+  assert.equal(formatClockByNotation(920, '24h'), '15시 20분');
+  assert.equal(formatClockByNotation(920, 'both'), '오후 3시 20분 (15:20)');
+  assert.ok(explain12To24(920).includes('3 + 12 = 15시'));
+
+  for (let i = 0; i < 60; i += 1) {
+    const p = createProblem(2);
+    const ansLabel = formatAnswerByNotation(p, '24h');
+    const choiceLabels = p.choices.map((c) => formatChoiceByNotation(p, c, '24h'));
+    assert.ok(choiceLabels.includes(ansLabel));
+    assert.equal(new Set(choiceLabels).size, 4);
+    assert.equal(choiceTo24(p, p.answer), p.end24 % 1440);
+  }
 });
