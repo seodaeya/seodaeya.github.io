@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { isNoAdsPath } from '@/lib/adPolicy';
+import metaDescriptions from '../files/meta-descriptions.json';
 
 export default function SEO({
   title = '여전히, 나는 사람이다. | 기술과 일상의 기록',
@@ -60,8 +61,13 @@ export default function SEO({
       'AI로 정리한 안내문을 일정과 준비물로 나눠 브라우저에만 저장하는 로컬 우선 가족 일정 관리 서비스입니다. 일정과 준비물·할 일을 양방향으로 연결하고, 서버 없이 JSON 백업과 구글 캘린더·ICS 내보내기를 지원합니다. 설치 없이 무료로 사용하세요.',
   };
 
-  // Bing/Google SEO: Ensure description is between 120 and 158 characters
+  // Bing/Google SEO: Ensure description is between 120 and 160 characters
+  // 수동 보정값(files/meta-descriptions.json)이 있으면 자동 말줄임·보충보다 우선한다.
+  const descriptionOverride = metaDescriptions.overrides[canonicalUrl];
   const buildSafeDescription = (rawDesc) => {
+    if (descriptionOverride) {
+      return descriptionOverride.replace(/\s+/g, ' ').trim();
+    }
     let base = (coreDescriptions[canonicalUrl] || rawDesc || '').replace(/\s+/g, ' ').trim();
     if (base.length < 120) {
       const cleanTitle = pageTitle.replace(siteSuffix, '').trim();

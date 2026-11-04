@@ -278,6 +278,38 @@ function verifySEO() {
     }
   }
 
+  // 5. 수동 보정 메타 설명(files/meta-descriptions.json) 검증
+  //    - Bing 권장 150~160자, 말줄임(...) 금지, 빌드 산출물에 실제 반영되었는지 확인
+  const metaOverrides = require('../meta-descriptions.json').overrides;
+  for (const [url, desc] of Object.entries(metaOverrides)) {
+    if (desc.length < 150 || desc.length > 160) {
+      errors.push(`[수동 메타 설명 길이 부적합] ${url}: 현재 ${desc.length}자 (권장: 150~160자)`);
+    }
+    if (desc.trim().endsWith('...')) {
+      errors.push(`[수동 메타 설명 말줄임] ${url}: '...' 로 끝나지 않도록 완결된 문장을 사용하세요.`);
+    }
+
+    const relPath = url.replace(siteUrl, '').replace(/^\//, '');
+    const htmlPath = path.join(outDir, relPath === '' ? 'index.html' : `${relPath}index.html`);
+    if (!fs.existsSync(htmlPath)) {
+      errors.push(`[수동 메타 설명 대상 없음] ${url}: ${path.relative(process.cwd(), htmlPath)} 파일이 없습니다.`);
+      continue;
+    }
+
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    const match = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i);
+    const decoded = (match ? match[1] : '')
+      .replace(/&quot;/g, '"')
+      .replace(/&#x27;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .trim();
+    if (decoded !== desc) {
+      errors.push(`[수동 메타 설명 미반영] ${url}: SEO.js canonical URL 과 JSON 키가 일치하는지 확인하세요.`);
+    }
+  }
+
   if (errors.length > 0) {
     console.error(`\n🚨 [SEO Guardrail] 총 ${errors.length}건의 색인/SEO 결함이 감지되었습니다:\n`);
     errors.forEach((err, idx) => console.error(`  ${idx + 1}. ${err}`));
