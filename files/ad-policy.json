@@ -1,6 +1,7 @@
 {
   "_comment": "광고(AdSense·제휴) 비노출 경로. SEO.js, CoupangSideBanner, verify-seo.js가 공통 참조합니다.",
   "_rationale": "AdSense Program policies: 'Placed on any non-content-based page' 금지 (https://support.google.com/adsense/answer/48182)",
+  "_affiliateNote": "affiliateAllowedPaths 는 noAdPaths 예외로 제휴 배너만 허용합니다. AdSense 는 계속 차단됩니다(SEO.js 는 noindex 도 함께 검사).",
   "noAdPaths": [
     "/about/",
     "/contact/",
@@ -12,5 +13,8 @@
     "/planner/",
     "/bookmarks/",
     "/404/"
+  ],
+  "affiliateAllowedPaths": [
+    "/edu/"
   ]
 }
