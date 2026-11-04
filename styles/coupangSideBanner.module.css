@@ -1,5 +1,5 @@
 /**
- * 좌측 여백 세로 배너 (130×600, 화면 높이에 따라 자동 축소).
+ * 좌측 여백 세로 배너 (130×600, 화면 높이에 따라 위젯 높이를 재생성).
  * 본문(max-width: 1200px) 바깥 여백에만 고정 노출된다. 여백이 없으면 컴포넌트가
  * 아예 렌더되지 않으므로 이 스타일은 "공간이 있을 때"만 적용된다.
  */
@@ -17,8 +17,8 @@
   transition: opacity 0.18s ease;
 }
 
-/* 높이는 컴포넌트가 인라인으로 지정한다(화면 높이에 맞춰 300~600).
-   푸터를 만났을 때는 너비는 유지하고 이 슬롯의 높이만 부드럽게 축소된다. */
+/* 높이는 컴포넌트가 인라인으로 지정한다(화면 높이에 맞춰 280~600).
+   광고가 잘리지 않도록 푸터와 겹칠 상황에서는 컴포넌트가 통째로 숨긴다. */
 .slot {
   width: 130px;
   overflow: hidden;
@@ -35,9 +35,9 @@
 
 .disclosure {
   margin: 0;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   line-height: 1.45;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-align: center;
   word-break: keep-all;
 }
