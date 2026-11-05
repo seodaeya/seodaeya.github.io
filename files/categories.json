@@ -1,6 +1,20 @@
 {
   "AI & Intelligence": [
     {
+      "title": "FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자",
+      "file": "posts/20261106-1-fde-forward-deployed-engineer-guide.md",
+      "tags": [
+        "FDE",
+        "ForwardDeployedEngineer",
+        "Palantir",
+        "OpenAI",
+        "Anthropic",
+        "AIDeployment",
+        "EnterpriseAI",
+        "Career"
+      ]
+    },
+    {
       "title": "가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드",
       "file": "posts/20261025-1-family-planner-google-calendar-api-guide.md",
       "tags": [

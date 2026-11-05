@@ -1,5 +1,11 @@
 [
   {
+    "title": "FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자",
+    "category": "AI & Intelligence",
+    "file": "posts/20261106-1-fde-forward-deployed-engineer-guide.md",
+    "date": "20261106"
+  },
+  {
     "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
     "category": "Dev & Software",
     "file": "posts/20261026-1-webfont-import-lcp-render-blocking.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md",
     "date": "20261005"
-  },
-  {
-    "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
-    "category": "AI & Intelligence",
-    "file": "posts/20261004-1-opencode-muse-spark-free-setup-guide.md",
-    "date": "20261004"
   }
 ]

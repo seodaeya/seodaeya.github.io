@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://seodaeya.github.io/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/categories/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/ranking/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/about/</loc>
@@ -24,6 +24,10 @@
   <url>
     <loc>https://seodaeya.github.io/privacy/</loc>
     <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://seodaeya.github.io/posts/20261106-1-fde-forward-deployed-engineer-guide/</loc>
+    <lastmod>2026-11-06</lastmod>
   </url>
   <url>
     <loc>https://seodaeya.github.io/posts/20260911-1-na-min-ae-reading-method-literacy-guide/</loc>

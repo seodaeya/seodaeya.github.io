@@ -5,8 +5,15 @@
   <link>https://seodaeya.github.io</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 03 Nov 2026 13:29:56 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 05 Nov 2026 15:32:56 GMT</lastBuildDate>
   <atom:link href="https://seodaeya.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자]]></title>
+    <link>https://seodaeya.github.io/posts/20261106-1-fde-forward-deployed-engineer-guide/</link>
+    <guid>https://seodaeya.github.io/posts/20261106-1-fde-forward-deployed-engineer-guide/</guid>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[핵심 요약 : FDE(Forward Deployed Engineer)는 고객 현장에 들어가 문제를 정의하고, 프로토타입을 만들고, 프로덕션 배포까지 책임지는 소프트웨어 엔지니어입니다. 팔란티어가 2010년대 초 'Delta' 라는 이름으로 시작한 역할이 AI 시대에 다...]]></description>
+  </item>
   <item>
     <title><![CDATA[PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부]]></title>
     <link>https://seodaeya.github.io/posts/20261026-1-webfont-import-lcp-render-blocking/</link>
