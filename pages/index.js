@@ -166,7 +166,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
       <SEO 
         title="여전히, 나는 사람이다. | 기술과 일상의 기록"
         description="인공지능 트렌드부터 손끝의 일상까지, 직접 겪고 기록하는 이야기. IT 기기 리뷰, 개발 경험, 일상의 팁을 나눕니다."
-        url="https://seodaeya.github.io/"
+        url="/"
       />
 
       <div className={styles.homeContainer}>

@@ -110,5 +110,5 @@ AI가 수많은 답을 쏟아내는 세상 속에서, 나만의 독창적인 시
 ---
 
 ### 🔗 연관 아티클 & 공식 링크 바로가기
-* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20260819-1-ai-alter-framework" style="color: #38bdf8; font-weight: 600;">산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1 ↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide/" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260819-1-ai-alter-framework/" style="color: #38bdf8; font-weight: 600;">산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1 ↗)</a>

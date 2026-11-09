@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 
 const { noAdPaths } = require('../ad-policy.json');
 
-const siteUrl = 'https://seodaeya.github.io';
+const { host: siteHost, siteUrl } = require('../site-config.json');
 
 // 광고 비노출 경로(정책·문의·유틸리티)는 색인 대상이어도 AdSense 스크립트가 없는 것이 정상이다.
 // 단일 원천: files/ad-policy.json (SEO.js·CoupangSideBanner 와 공유)
@@ -162,6 +162,14 @@ function verifySEO() {
       );
     }
 
+    // 본문 내부 링크(/posts/..., /videos/... 등) 후행 슬래시(/) 누락 검증 (301 리디렉션 체인 방지)
+    for (const m of html.matchAll(/<a\s+[^>]*href="(\/(?:posts|videos|categories|ranking|about|contact|privacy|cart|planner|word-train|edu|time-train|bookmarks)[^"#?]*)"/gi)) {
+      const href = m[1];
+      if (!href.endsWith('/')) {
+        errors.push(`[내부 링크 슬래시(/) 누락] ${relPath}: href="${href}" (trailingSlash: true 환경에서는 '/'로 끝나야 합니다)`);
+      }
+    }
+
     const datePairMatch = html.match(/"datePublished":"([^"]+)","dateModified":"([^"]+)"/);
     if (datePairMatch) {
       dateModByRelPath.set(relPath, {
@@ -308,6 +316,24 @@ function verifySEO() {
     if (decoded !== desc) {
       errors.push(`[수동 메타 설명 미반영] ${url}: SEO.js canonical URL 과 JSON 키가 일치하는지 확인하세요.`);
     }
+  }
+
+  // 6. 커스텀 도메인(CNAME), robots.txt, ads.txt, llms.txt 정적 산출물 검증
+  const cnamePath = path.join(outDir, 'CNAME');
+  if (!fs.existsSync(cnamePath) || fs.readFileSync(cnamePath, 'utf8').trim() !== siteHost) {
+    errors.push(`[CNAME 불일치/누락] out/CNAME 파일이 없거나 ${siteHost}와 일치하지 않습니다.`);
+  }
+  const robotsTxtPath = path.join(outDir, 'robots.txt');
+  if (!fs.existsSync(robotsTxtPath) || !fs.readFileSync(robotsTxtPath, 'utf8').includes(`Sitemap: ${siteUrl}/sitemap.xml`)) {
+    errors.push(`[robots.txt Sitemap 불일치] out/robots.txt 내 Sitemap URL이 ${siteUrl}/sitemap.xml과 일치하지 않습니다.`);
+  }
+  const adsTxtPath = path.join(outDir, 'ads.txt');
+  if (!fs.existsSync(adsTxtPath) || !fs.readFileSync(adsTxtPath, 'utf8').includes('pub-9646087317436086')) {
+    errors.push(`[ads.txt 누락] out/ads.txt 파일이 없거나 게시자 ID가 누락되었습니다.`);
+  }
+  const llmsTxtPath = path.join(outDir, 'llms.txt');
+  if (!fs.existsSync(llmsTxtPath) || !fs.readFileSync(llmsTxtPath, 'utf8').includes(siteUrl)) {
+    errors.push(`[llms.txt 누락/불일치] out/llms.txt 파일이 없거나 ${siteUrl} 도메인이 반영되지 않았습니다.`);
   }
 
   if (errors.length > 0) {

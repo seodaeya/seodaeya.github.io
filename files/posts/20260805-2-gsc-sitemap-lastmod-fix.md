@@ -40,7 +40,7 @@ excerpt: "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있�
 문제 원인을 파악했다면, 내 웹사이트 서버에 실제 올려져 있는 `sitemap.xml` 파일이 정상 작동하고 있는지 먼저 확인해야 합니다.
 
 ### 점검 단계:
-1. 웹 브라우저 주소창에 내 사이트맵 주소(예: `https://seodaeya.github.io/sitemap.xml`)를 입력하고 직접 접속합니다.
+1. 웹 브라우저 주소창에 내 사이트맵 주소(예: `https://nardlog.com/sitemap.xml`)를 입력하고 직접 접속합니다.
 2. XML 파일 내에 내가 최근 작성한 포스트 URL들이 모두 포함되어 있는지 확인합니다.
 3. 터미널이 익숙하다면 아래 `curl` 커맨드로 서버 응답 헤더를 점검할 수 있습니다:
    ```bash
@@ -59,7 +59,7 @@ excerpt: "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있�
 
 1. 구글 서치콘솔 상단의 <strong>URL 검사 검색창</strong>에 사이트맵 전체 주소를 입력하고 엔터(Enter)를 누릅니다.
    ```text
-   https://seodaeya.github.io/sitemap.xml
+   https://nardlog.com/sitemap.xml
    ```
 2. 오른쪽 상단의 <strong>[실제 URL 테스트]</strong> 버튼을 클릭합니다. (약 30초 동안 구글봇이 실제 페이지 접속을 테스트합니다.)
 3. 테스트 완료 메시지가 뜨면 <strong>[색인 생성 요청 (Request Indexing)]</strong> 버튼을 클릭합니다.
@@ -75,7 +75,7 @@ excerpt: "구글 서치 콘솔에서 사이트맵 등록 시 발생할 수 있�
 User-agent: *
 Allow: /
 
-Sitemap: https://seodaeya.github.io/sitemap.xml
+Sitemap: https://nardlog.com/sitemap.xml
 ```
 
 또한 `sitemap.xml` 내부의 각 `<url>` 태그 안에 `<lastmod>2026-08-05</lastmod>`와 같이 최근 수정 일자를 명확히 적어두어야 구글봇이 "변경 사항이 있구나!" 하고 파일을 신속히 파싱합니다.

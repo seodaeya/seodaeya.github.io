@@ -6,4 +6,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://seodaeya.github.io/sitemap.xml
+Sitemap: https://nardlog.com/sitemap.xml

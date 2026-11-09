@@ -27,7 +27,7 @@ excerpt: "유료 API 결제 없이 OpenCode와 Muse Spark 1.3 Contributor Free �
 > 💡 <strong>이번 글의 주인공</strong><br />
 > <strong>Muse Spark 1.3 Contributor Free (모델 ID: muse-spark-1.3-contributor-free)</strong>는 2026년 10월 기준 OpenCode Zen에서 <strong>입력, 출력 모두 무료</strong>로 제공되는 Meta 계열 모델입니다. 한시적 무료 제공이며, 할인된 가격 대신 프롬프트와 응답이 향후 Meta 모델 학습에 활용될 수 있다는 점을 공식 문서에 명시하고 있습니다.
 
-이 글은 필자가 실제로 운영 중인 정적 블로그(seodaeya.github.io)에서 <strong>결제 정보 없이 무료 모델만으로 글을 기획하고 초안을 생성한 경험</strong>을 바탕으로, 설치부터 실전 프롬프트까지 재현 가능하게 정리한 것입니다.
+이 글은 필자가 실제로 운영 중인 정적 블로그(nardlog.com)에서 <strong>결제 정보 없이 무료 모델만으로 글을 기획하고 초안을 생성한 경험</strong>을 바탕으로, 설치부터 실전 프롬프트까지 재현 가능하게 정리한 것입니다.
 
 ---
 
@@ -440,5 +440,5 @@ OpenCode는 일반 텍스트 입력과의 충돌을 방지하기 위해 <strong>
 ### 🔗 연관 아티클 & 공식 링크 바로가기
 * <strong>OpenCode 공식 문서:</strong> <a href="https://opencode.ai/docs/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">OpenCode Intro - 설치부터 초기화까지 (공식 ↗)</a>
 * <strong>OpenCode Zen 모델·가격표:</strong> <a href="https://opencode.ai/docs/zen/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">Zen - Muse Spark 무료 티어 확인 (공식 ↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20260804-1-gemini-cli-install-guide" style="color: #38bdf8; font-weight: 600;">Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법 (↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide" style="color: #38bdf8; font-weight: 600;">Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260804-1-gemini-cli-install-guide/" style="color: #38bdf8; font-weight: 600;">Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260904-1-mlx-serve-apple-silicon-local-llm-guide/" style="color: #38bdf8; font-weight: 600;">Mac에서 가장 빠른 로컬 AI 서버, mlx-serve 완전 정복 (↗)</a>

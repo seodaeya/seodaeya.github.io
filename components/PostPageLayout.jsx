@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SITE_URL } from '@/lib/site';
 import SEO from '@/components/SEO';
 import Comments from '@/components/Comments';
 import Sponsor from '@/components/Sponsor';
@@ -257,7 +258,7 @@ export default function PostPageLayout({
         title={frontmatter.title}
         description={excerpt}
         image={frontmatter.image}
-        url={`https://seodaeya.github.io/posts/${postId}/`}
+        url={`/posts/${postId}/`}
         type="article"
         date={frontmatter.date}
         dateModified={dateModified}
@@ -362,7 +363,7 @@ export default function PostPageLayout({
 
               {/* 3. X */}
               <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title || '')}&url=${encodeURIComponent(`https://seodaeya.github.io/posts/${postId}/`)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title || '')}&url=${encodeURIComponent(`${SITE_URL}/posts/${postId}/`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.shareBtn} ${styles.shareBtnX}`}
@@ -376,7 +377,7 @@ export default function PostPageLayout({
 
               {/* 4. Threads */}
               <a
-                href={`https://service.threads.net/share?text=${encodeURIComponent(`${frontmatter.title || ''} https://seodaeya.github.io/posts/${postId}/`)}`}
+                href={`https://service.threads.net/share?text=${encodeURIComponent(`${frontmatter.title || ''} ${SITE_URL}/posts/${postId}/`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.shareBtn} ${styles.shareBtnThreads}`}

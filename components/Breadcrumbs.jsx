@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { SITE_URL } from '@/lib/site';
 import styles from '@/styles/breadcrumbs.module.css';
 
 export default function Breadcrumbs({ category, title }) {
-  const siteUrl = 'https://seodaeya.github.io';
+  const siteUrl = SITE_URL;
   const categoryAnchorUrl = category
     ? `${siteUrl}/categories/#category-${encodeURIComponent(category)}`
     : `${siteUrl}/categories/`;

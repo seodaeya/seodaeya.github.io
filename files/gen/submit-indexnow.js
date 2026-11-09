@@ -21,7 +21,7 @@ const matter = require('gray-matter');
  *   node files/gen/submit-indexnow.js --dry-run           # 네트워크 전송 없이 목록만 확인
  */
 
-const host = 'seodaeya.github.io';
+const { host } = require('../site-config.json');
 const apiKey = 'd757d9f030cc4789bb023a4b38e3ccf4';
 const keyLocation = `https://${host}/${apiKey}.txt`;
 

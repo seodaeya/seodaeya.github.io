@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { SITE_URL } from '@/lib/site';
 import SEO from '@/components/SEO';
 import { LEVELS, GOAL_OPTIONS, DEFAULT_TIME, TIME_MIN, TIME_MAX, pickLocalWord, fetchAIWords, decomposeHangul, getStrokeCount } from '@/lib/word-train-words';
 import styles from '@/styles/game.module.css';
@@ -492,10 +493,10 @@ export default function WordTrain() {
   const shareScore = async () => {
     const modeLabel = playMode === 'letter' ? '타자 게임' : '단어 맞추기';
     const extra = playMode === 'letter' ? `·${typeSpeed}타·정확도 ${accuracy}%` : '';
-    const text = `🚂 단어기차에서 ${score}점! (${lang === 'ko' ? '한글' : '영어'}·${LEVELS[level].label}·${modeLabel}${extra}) 나랑 대결하자 https://seodaeya.github.io/word-train/`;
+    const text = `🚂 단어기차에서 ${score}점! (${lang === 'ko' ? '한글' : '영어'}·${LEVELS[level].label}·${modeLabel}${extra}) 나랑 대결하자 ${SITE_URL}/word-train/`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: '단어기차 점수 공유', text, url: 'https://seodaeya.github.io/word-train/' });
+        await navigator.share({ title: '단어기차 점수 공유', text, url: `${SITE_URL}/word-train/` });
         setShared(true);
         return;
       }
@@ -517,7 +518,7 @@ export default function WordTrain() {
       <SEO
         title="단어기차 | 여전히, 나는 사람이다."
         description="기차 여행 테마 단어 맞추기 게임. 유아부터 성인까지 한글·영어 단어를 맞추고 점수를 공유하세요."
-        url="https://seodaeya.github.io/word-train/"
+        url="/word-train/"
         noindex={true}
       />
       <div className={styles.gameWrap}>

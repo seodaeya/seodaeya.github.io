@@ -66,7 +66,7 @@ export default function Bookmarks() {
       <SEO
         title="북마크 & 맞춤 추천 | 여전히, 나는 사람이다."
         description="나중에 읽기 위해 저장한 글 목록과 내 북마크 태그·취향 기반 맞춤 아티클 추천입니다."
-        url="https://seodaeya.github.io/bookmarks/"
+        url="/bookmarks/"
         noindex={true}
       />
       <div style={{ maxWidth: '820px', margin: '0 auto', padding: '2.5rem 1rem', color: 'var(--text-primary)', lineHeight: '1.85' }}>

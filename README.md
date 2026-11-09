@@ -3,7 +3,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.2.9-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.6-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Deploy](https://img.shields.io/badge/Deploy-GitHub%20Pages-222222?style=flat-square&logo=githubpages)](https://seodaeya.github.io)
+[![Deploy](https://img.shields.io/badge/Deploy-GitHub%20Pages-222222?style=flat-square&logo=githubpages)](https://nardlog.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 > **"완벽한 알고리즘의 세상 속에서, 서툴지만 뜨겁게 살아가는 인간의 기록"**  
@@ -16,7 +16,7 @@
 본 프로젝트는 **Next.js 15 (Pages Router, SSG `output: export`)**를 기반으로 구축된 100% 서버리스 정적 웹사이트입니다.  
 별도의 데이터베이스나 백엔드 서버 없이 **GitHub Actions 크론 스케줄러**, **Google Analytics 4 (GA4) API**, **Cloudflare Workers**를 유기적으로 결합하여 동적 웹 애플리케이션 수준의 기능을 구현했습니다.
 
-* **라이브 블로그**: [https://seodaeya.github.io](https://seodaeya.github.io)
+* **라이브 블로그**: [https://nardlog.com](https://nardlog.com)
 * **공식 유튜브 채널**: [@Na.R.D.](https://www.youtube.com/@Na.R.D.)
 
 ---

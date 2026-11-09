@@ -8,7 +8,7 @@ export default function About() {
       <SEO 
         title="블로그 소개 | 여전히, 나는 사람이다."
         description="완벽하지 않기에 배우고, 실수하기에 도전합니다. AI 시대 속에서도 사람의 온기와 배움의 여정을 기록하는 블로그 이야기."
-        url="https://seodaeya.github.io/about/"
+        url="/about/"
       />
       <div style={{ maxWidth: '820px', margin: '0 auto', padding: '2.5rem 1rem', color: 'var(--text-primary)', lineHeight: '1.85' }}>
         

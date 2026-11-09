@@ -128,7 +128,7 @@ API를 활성화했다면 좌측 메뉴의 <strong>[OAuth consent screen(OAuth �
 
 | 인증 방식 | 주요 용도 | 설정 및 발급 방법 |
 | :--- | :--- | :--- |
-| <strong>OAuth 클라이언트 ID</strong><br />(웹 `/planner/` 채택 방식) | 정적 웹·모바일 앱에서 <strong>사용자가 본인 구글 계정으로 로그인</strong>해 자기 캘린더에 일정을 보낼 때 | 1. <strong>OAuth 동의 화면</strong>: `External` 선택, 최소 권한 스코프(`calendar.app.created`) 추가, 가족 계정을 테스트 사용자로 등록<br />2. <strong>OAuth 클라이언트 ID</strong>: `웹 애플리케이션` 선택 후 승인된 JavaScript 출처(`https://seodaeya.github.io`, `http://localhost:4173`) 등록 |
+| <strong>OAuth 클라이언트 ID</strong><br />(웹 `/planner/` 채택 방식) | 정적 웹·모바일 앱에서 <strong>사용자가 본인 구글 계정으로 로그인</strong>해 자기 캘린더에 일정을 보낼 때 | 1. <strong>OAuth 동의 화면</strong>: `External` 선택, 최소 권한 스코프(`calendar.app.created`) 추가, 가족 계정을 테스트 사용자로 등록<br />2. <strong>OAuth 클라이언트 ID</strong>: `웹 애플리케이션` 선택 후 승인된 JavaScript 출처(`https://nardlog.com`, `http://localhost:4173`) 등록 |
 | <strong>서비스 계정 (Service Account)</strong><br />(홈 허브 `우리집 AI` 채택 방식) | 로그인 창 없이 <strong>홈 서버나 백엔드 데몬</strong>이 특정 공유 캘린더에 자동 접근해 일정을 양방향 관리할 때 | 1. 서비스 계정 생성 후 <strong>Keys 탭 ➔ Add Key ➔ JSON</strong> 다운로드<br />2. 구글 캘린더 웹의 <strong>[설정 및 공유]</strong>에서 서비스 계정 이메일(`...@...iam.gserviceaccount.com`)에 <strong>일정 변경 권한</strong> 부여 |
 | <strong>API 키 (API Key)</strong> | 전체 공개(Public) 설정된 캘린더의 일정을 <strong>단순 조회(읽기 전용)</strong>만 할 때 | 1. API 키 문자열 발급<br />2. 키 제한 설정에서 지정된 웹사이트/IP 및 `Google Calendar API`만 호출하도록 제한 |
 
@@ -197,7 +197,7 @@ export function buildEventDescription(event, items = []) {
 
 - <strong>`전송됨(synced)`</strong>: 마지막 전송 이후 수정 사항이 없는 상태입니다.
 - <strong>`변경됨(changed)`</strong>: 일정을 수정했거나 연결된 준비물이 바뀐 상태로, <strong>`구글 반영`</strong>(또는 `전체 동기화`)을 누르면 새 일정을 중복 생성하는 대신 기존 구글 일정을 `PATCH`로 깔끔하게 덮어씁니다. (만약 구글 웹에서 해당 일정을 수동 삭제해 `404`가 반환되면 자동으로 다시 `POST` 생성하여 복구합니다.)
-- API 전송(`iCalUID`)과 `.ics` 파일 내보내기(`UID`) 모두 `planner-${event.id}@seodaeya.github.io`라는 동일한 식별자를 사용하므로, 두 방식을 혼용해도 일정이 이중으로 생기지 않습니다.
+- API 전송(`iCalUID`)과 `.ics` 파일 내보내기(`UID`) 모두 `planner-${event.id}@nardlog.com`이라는 동일한 식별자를 사용하므로, 두 방식을 혼용해도 일정이 이중으로 생기지 않습니다.
 
 ### 4) 50% 쿼터 안전 브레이크 (`GOOGLE_DAILY_LIMIT`)
 

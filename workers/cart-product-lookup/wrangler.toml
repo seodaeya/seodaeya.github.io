@@ -9,4 +9,4 @@ workers_dev = true
 
 # 콤마로 구분한 호출 허용 Origin입니다. 실제 서비스 도메인만 남겨 두세요.
 [vars]
-ALLOWED_ORIGINS = "https://seodaeya.github.io,http://localhost:3000"
+ALLOWED_ORIGINS = "https://nardlog.com,https://www.nardlog.com,http://localhost:3000"

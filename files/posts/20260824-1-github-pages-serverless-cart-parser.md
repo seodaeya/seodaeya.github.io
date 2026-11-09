@@ -67,7 +67,7 @@ HTTP 403 Forbidden (AkamaiGHost 봇 방어벽 작동!)
            ▼ (HTTPS 요청)
 [ 2. Cloudflare Worker (비밀 보안 금고) ]
   • Wrangler Secret으로 암호화 보관된 쿠팡 API Key 호출
-  • 허용된 도메인(seodaeya.github.io)인지 CORS Origin 엄격 검증
+  • 허용된 도메인(nardlog.com)인지 CORS Origin 엄격 검증
   • 단축 링크를 1회 역추적하여 순수 상품 번호(#7168704316) 추출
   • HMAC-SHA256 암호화 서명 생성 ➔ 쿠팡 공식 API 게이트웨이 호출
   • 30분 엣지 캐싱(Cache-Control)으로 쿼터 절약

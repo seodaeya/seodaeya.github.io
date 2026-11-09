@@ -124,7 +124,7 @@ export default function TimeTrain() {
       <SEO
         title="시계 여행 | 여전히, 나는 사람이다."
         description="분침을 손가락으로 움직이며 걸린 시간과 12시간제·24시간제 표기법을 익히는 어린이 시간 학습 놀이터. 아날로그·디지털 시계를 함께 비교해 보세요."
-        url="https://seodaeya.github.io/time-train/"
+        url="/time-train/"
         noindex={true}
       />
 

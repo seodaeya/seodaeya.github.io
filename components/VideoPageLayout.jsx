@@ -45,7 +45,7 @@ export default function VideoPageLayout({
             ? `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`
             : undefined)
         }
-        url={`https://seodaeya.github.io/videos/${id}/`}
+        url={`/videos/${id}/`}
         type="video.other"
         date={frontmatter.date}
         dateModified={dateModified}

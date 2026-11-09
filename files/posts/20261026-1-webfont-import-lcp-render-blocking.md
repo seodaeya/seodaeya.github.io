@@ -351,7 +351,7 @@ const puppeteer = require('puppeteer');
     }).observe({ type: 'layout-shift', buffered: true });
   });
 
-  await page.goto('https://seodaeya.github.io/', { waitUntil: 'load' });
+  await page.goto('https://nardlog.com/', { waitUntil: 'load' });
   await new Promise((r) => setTimeout(r, 5000));  // 지연 로딩 리소스까지 대기
   console.log(await page.evaluate(() => window.__m));
   await browser.close();

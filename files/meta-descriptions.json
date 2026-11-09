@@ -1,13 +1,13 @@
 {
-  "_comment": "검색엔진(Bing/Google) 메타 설명 수동 보정. components/SEO.js 가 canonical URL 로 조회하며, 값이 있으면 자동 말줄임·길이 보충을 건너뜁니다.",
+  "_comment": "검색엔진(Bing/Google) 메타 설명 수동 보정. components/SEO.js 가 canonical 경로(도메인 제외, 예: /ranking/)로 조회하며, 값이 있으면 자동 말줄임·길이 보충을 건너뜁니다.",
   "_rule": "150~160자, 말줄임(...)으로 끝내지 않는다. files/gen/verify-seo.js 가 빌드 시 검증합니다.",
   "_source": "Bing Webmaster Tools SEO/GEO 감사 — 'Meta descriptions on many of your pages are too short' (2026-11-04)",
   "overrides": {
-    "https://seodaeya.github.io/": "인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 활용법, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 공유합니다. 카테고리별로 빠르게 찾아보세요.",
-    "https://seodaeya.github.io/ranking/": "매월 1일 기준 순위표와 Google Analytics 4(GA4) 페이지뷰를 바탕으로 한 달간 독자 반응을 분석해 매일 자정 자동 갱신하는 월간 인기 아티클 종합 순위표입니다. AI·개발·하드웨어·일상 카테고리에서 많이 읽힌 글의 순위와 월초 대비 변동까지 한눈에 확인해 보세요.",
-    "https://seodaeya.github.io/posts/20260815-1-gemini-3-7-flash-analysis/": "구글이 공개한 하이브리드 추론 모델 Gemini 3.7 Flash의 달라진 성능과 생각 시간 제어(Thinking Budget), 코딩 벤치마크, 토큰 가격 정책을 3.6 세대와 비교 분석합니다. AI 에이전트 파이프라인에 도입하기 전 확인할 장단점과 한계도 함께 정리했습니다.",
-    "https://seodaeya.github.io/posts/20260819-2-actor-framework-guide/": "AI 시대 독학법 시리즈 Part 2. ALTER 프레임워크로 세팅한 AI 교수진에 ACTOR 실행 루프를 결합해 방대한 지식을 실제 행동으로 바꾸는 5단계 실천 가이드입니다. 단순 수집가를 지적 건축가로 바꾸는 1일 1루프 데일리 루틴과 단계별 실행법, 총평까지 정리했습니다.",
-    "https://seodaeya.github.io/posts/20260807-1-github-pages-adsense-domain/": "GitHub Pages 정적 블로그가 구글 애드센스 심사에서 반복 거절되는 원인을 유형별로 분석하고, 직접 겪은 커스텀 도메인 연결과 ads.txt 설정, 개인정보처리방침 구비까지 2026년 실전판 기준 승인 통과 4단계 로드맵과 자주 묻는 질문, 그리고 실전 총평을 정리했습니다.",
-    "https://seodaeya.github.io/posts/20260707-1-giscus-discussion-error-fix/": "GitHub Pages 블로그에 Giscus 댓글 위젯을 연동할 때 발생하는 ‘giscus is not installed’와 discussion 생성 실패 오류의 원인과 해결책을 정리했습니다. Discussions 활성화부터 저장소·카테고리 ID 점검까지 단계별로 안내합니다."
+    "/": "인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 활용법, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 공유합니다. 카테고리별로 빠르게 찾아보세요.",
+    "/ranking/": "매월 1일 기준 순위표와 Google Analytics 4(GA4) 페이지뷰를 바탕으로 한 달간 독자 반응을 분석해 매일 자정 자동 갱신하는 월간 인기 아티클 종합 순위표입니다. AI·개발·하드웨어·일상 카테고리에서 많이 읽힌 글의 순위와 월초 대비 변동까지 한눈에 확인해 보세요.",
+    "/posts/20260815-1-gemini-3-7-flash-analysis/": "구글이 공개한 하이브리드 추론 모델 Gemini 3.7 Flash의 달라진 성능과 생각 시간 제어(Thinking Budget), 코딩 벤치마크, 토큰 가격 정책을 3.6 세대와 비교 분석합니다. AI 에이전트 파이프라인에 도입하기 전 확인할 장단점과 한계도 함께 정리했습니다.",
+    "/posts/20260819-2-actor-framework-guide/": "AI 시대 독학법 시리즈 Part 2. ALTER 프레임워크로 세팅한 AI 교수진에 ACTOR 실행 루프를 결합해 방대한 지식을 실제 행동으로 바꾸는 5단계 실천 가이드입니다. 단순 수집가를 지적 건축가로 바꾸는 1일 1루프 데일리 루틴과 단계별 실행법, 총평까지 정리했습니다.",
+    "/posts/20260807-1-github-pages-adsense-domain/": "GitHub Pages 정적 블로그가 구글 애드센스 심사에서 반복 거절되는 원인을 유형별로 분석하고, 직접 겪은 커스텀 도메인 연결과 ads.txt 설정, 개인정보처리방침 구비까지 2026년 실전판 기준 승인 통과 4단계 로드맵과 자주 묻는 질문, 그리고 실전 총평을 정리했습니다.",
+    "/posts/20260707-1-giscus-discussion-error-fix/": "GitHub Pages 블로그에 Giscus 댓글 위젯을 연동할 때 발생하는 ‘giscus is not installed’와 discussion 생성 실패 오류의 원인과 해결책을 정리했습니다. Discussions 활성화부터 저장소·카테고리 ID 점검까지 단계별로 안내합니다."
   }
 }

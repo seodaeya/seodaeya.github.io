@@ -200,5 +200,5 @@ A. 빈 시간을 주되 <strong>디지털 환경의 물리적 경계(거실 충�
 ---
 
 ### 🔗 연관 아티클 & 공식 링크 바로가기
-* <strong>관련 글:</strong> <a href="/posts/20260911-1-na-min-ae-reading-method-literacy-guide" style="color: #38bdf8; font-weight: 600;">책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260911-1-na-min-ae-reading-method-literacy-guide/" style="color: #38bdf8; font-weight: 600;">책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법 (↗)</a>
 * <strong>AAP 놀이 보고서:</strong> <a href="https://publications.aap.org/pediatrics/article/119/1/182/70699/The-Importance-of-Play-in-Promoting-Healthy-Child" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">The Importance of Play (Pediatrics, 공식 ↗)</a>

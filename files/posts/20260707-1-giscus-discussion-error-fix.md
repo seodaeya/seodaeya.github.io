@@ -10,7 +10,7 @@ excerpt: "GitHub Pages 블로그에서 Giscus 댓글 위젯 연동 시 발생하
 
 깃블로그(GitHub Pages)에 댓글 기능을 추가하기 위해 가장 많이 사용하는 도구 중 하나가 바로 <strong>Giscus</strong>입니다. Giscus는 GitHub Discussions를 기반으로 작동하여 정적 블로그에서도 데이터베이스 없이 깔끔하게 댓글을 관리할 수 있는 강력한 오픈소스 도구입니다.
 
-이 글은 필자가 직접 운영하는 Next.js 정적 블로그(seodaeya.github.io)에 Giscus를 붙이면서 실제로 겪은 오류와 해결 과정을 그대로 기록한 것입니다. 공식 문서대로 설정했는데도 화면에 아래 오류가 표시되며 댓글창이 뜨지 않았습니다.
+이 글은 필자가 직접 운영하는 Next.js 정적 블로그(nardlog.com)에 Giscus를 붙이면서 실제로 겪은 오류와 해결 과정을 그대로 기록한 것입니다. 공식 문서대로 설정했는데도 화면에 아래 오류가 표시되며 댓글창이 뜨지 않았습니다.
 
 > ❌ <strong>giscus is not installed on this repository</strong>
 > ❌ <strong>Unable to create discussion</strong>
@@ -147,4 +147,4 @@ Giscus 연동 시 발생하는 오류는 대부분 <strong>저장소 설정의 D
 
 ### 🔗 연관 아티클 & 공식 링크 바로가기
 * <strong>Giscus 공식 설정 도우미:</strong> <a href="https://giscus.app/ko" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">giscus.app에서 Repo ID 발급받기 (공식 ↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20260822-1-github-pages-url-slug-seo-redirection" style="color: #38bdf8; font-weight: 600;">GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20260822-1-github-pages-url-slug-seo-redirection/" style="color: #38bdf8; font-weight: 600;">GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드 (↗)</a>

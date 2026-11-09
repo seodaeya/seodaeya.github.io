@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import { isNoAdsPath } from '@/lib/adPolicy';
 import metaDescriptions from '../files/meta-descriptions.json';
+import { SITE_URL, absoluteUrl } from '@/lib/site';
 
 export default function SEO({
   title = '여전히, 나는 사람이다. | 기술과 일상의 기록',
   description = '인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 가이드, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 나눕니다.',
   keywords = 'NaRD, 블로그, 유튜브, 기술, 라이프',
-  url = 'https://seodaeya.github.io',
+  url = '/', // 경로('/about/') 또는 절대 URL
   type = 'website',
   image = '/na_rd.jpeg', // 기본 프로필 이미지 경로
   date,
@@ -26,8 +27,8 @@ export default function SEO({
 
   // Next.js trailingSlash: true 환경과 100% 일치하도록 정규화 (도메인 내 '.' 때문에 슬래시가 누락되던 버그 수정)
   const normalizeCanonicalUrl = (rawUrl) => {
-    if (!rawUrl) return 'https://seodaeya.github.io/';
-    const [base] = rawUrl.split(/[?#]/);
+    if (!rawUrl) return `${SITE_URL}/`;
+    const [base] = absoluteUrl(rawUrl).split(/[?#]/);
     const pathPart = base.replace(/^https?:\/\/[^/]+/, '');
     const lastSegment = pathPart.split('/').filter(Boolean).pop() || '';
     const hasFileExt = /\.[a-zA-Z0-9]+$/.test(lastSegment) && !lastSegment.endsWith('.html');
@@ -37,33 +38,33 @@ export default function SEO({
 
   // Core page dedicated 135~155 char descriptions (preserves git history of static page files)
   const coreDescriptions = {
-    'https://seodaeya.github.io/':
+    [`${SITE_URL}/`]:
       '인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 가이드, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 나눕니다.',
-    'https://seodaeya.github.io/categories/':
+    [`${SITE_URL}/categories/`]:
       '전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다. AI & Intelligence, 개발 트러블슈팅, 클라우드 인프라, IT 기기 리뷰, DIY 가이드 등 관심 분야별 콘텐츠를 빠르게 탐색해 보세요.',
-    'https://seodaeya.github.io/ranking/':
+    [`${SITE_URL}/ranking/`]:
       '매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 Google Analytics 4(GA4) 실시간 페이지뷰 변화를 감지하여 매일 자정 자동 갱신하는 월간 인기 아티클 종합 순위표(Monthly Leaderboard)입니다.',
-    'https://seodaeya.github.io/cart/':
+    [`${SITE_URL}/cart/`]:
       '쿠팡, 네이버 스마트스토어, 알리익스프레스 등 여러 온라인 쇼핑몰의 상품 링크를 한곳에 모아 가격과 이미지를 비교하고 카테고리별로 깔끔하게 관리하는 서버리스 기반 스마트 만능 장바구니 실험실 웹 서비스입니다.',
-    'https://seodaeya.github.io/word-train/':
+    [`${SITE_URL}/word-train/`]:
       '기차 여행 테마의 인터랙티브 단어 맞추기 웹 게임입니다. 유아부터 성인까지 단계별 난이도에 맞춰 한글·영어 필수 어휘와 힌트를 추리하며 어휘력과 두뇌 회전을 키우고, 최종 점수를 친구들과 간편하게 공유해 보세요.',
-    'https://seodaeya.github.io/edu/':
+    [`${SITE_URL}/edu/`]:
       '유치원생과 초등학생이 생활 속에서 직접 만지며 배우는 인터랙티브 교육 놀이터입니다. 시계(12시·24시), 달력과 요일, 용돈과 거스름돈, 길이·들이·온도 단위를 재미있게 익혀 보세요.',
-    'https://seodaeya.github.io/about/':
+    [`${SITE_URL}/about/`]:
       '완벽하지 않기에 배우고, 실수하기에 끊임없이 도전합니다. 생성형 AI 시대 속에서도 사람이 직접 부딪히며 얻은 소프트웨어 엔지니어링 인사이트와 일상의 온기, 그리고 성장의 여정을 진솔하게 기록하는 NaRD 블로그 소개 페이지입니다.',
-    'https://seodaeya.github.io/contact/':
+    [`${SITE_URL}/contact/`]:
       "'여전히, 나는 사람이다.' 블로그 운영자 NaRD에게 연락하는 방법을 정리했습니다. 콘텐츠 오류 정정, 인용·재게시 허락, 제휴·광고, 개인정보 문의 유형별 절차와 답변 소요 시간, GitHub·YouTube 채널을 안내합니다.",
-    'https://seodaeya.github.io/privacy/':
+    [`${SITE_URL}/privacy/`]:
       "'여전히, 나는 사람이다.' 블로그의 공식 개인정보처리방침 안내 페이지입니다. 방문자 개인정보 보호 원칙, Google Analytics 4·구글 애드센스·Microsoft Clarity 등 제3자 쿠키 활용 및 옵트아웃 방법을 명시합니다.",
-    'https://seodaeya.github.io/bookmarks/':
+    [`${SITE_URL}/bookmarks/`]:
       '나중에 다시 읽기 위해 저장한 북마크 아티클 목록과 내 관심 태그·주제 유사도 분석을 기반으로 맞춤형 연관 기술 아티클 및 영상을 추천해 주는 개인화 큐레이션 서재 페이지입니다.',
-    'https://seodaeya.github.io/planner/':
+    [`${SITE_URL}/planner/`]:
       'AI로 정리한 안내문을 일정과 준비물로 나눠 브라우저에만 저장하는 로컬 우선 가족 일정 관리 서비스입니다. 일정과 준비물·할 일을 양방향으로 연결하고, 서버 없이 JSON 백업과 구글 캘린더·ICS 내보내기를 지원합니다. 설치 없이 무료로 사용하세요.',
   };
 
   // Bing/Google SEO: Ensure description is between 120 and 160 characters
   // 수동 보정값(files/meta-descriptions.json)이 있으면 자동 말줄임·보충보다 우선한다.
-  const descriptionOverride = metaDescriptions.overrides[canonicalUrl];
+  const descriptionOverride = metaDescriptions.overrides[canonicalUrl.replace(SITE_URL, '')];
   const buildSafeDescription = (rawDesc) => {
     if (descriptionOverride) {
       return descriptionOverride.replace(/\s+/g, ' ').trim();
@@ -81,22 +82,23 @@ export default function SEO({
     return base;
   };
   const safeDescription = buildSafeDescription(description);
-  const defaultImage = 'https://seodaeya.github.io/na_rd.jpeg';
+  const defaultImage = `${SITE_URL}/na_rd.jpeg`;
   const finalImage = image && typeof image === 'string' && image.trim() !== '' ? image : '/na_rd.jpeg';
-  const ogImage = finalImage.startsWith('http') ? finalImage : `https://seodaeya.github.io${finalImage}`;
+  const ogImage = finalImage.startsWith('http') ? finalImage : `${SITE_URL}${finalImage}`;
 
   // JSON-LD structured data
   const baseSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': '여전히, 나는 사람이다. (NaRD Blog)',
-    'url': 'https://seodaeya.github.io/',
+    'alternateName': ['NaRD Blog', '여전히 나는 사람이다', 'nardlog.com'],
+    'url': `${SITE_URL}/`,
     'description': 'AI 시대에 남기는 지극히 인간적인 기록들',
-    'inLanguage': 'ko',
+    'inLanguage': 'ko-KR',
     'publisher': {
       '@type': 'Person',
       'name': 'NaRD',
-      'url': 'https://seodaeya.github.io/about/',
+      'url': `${SITE_URL}/about/`,
       'sameAs': [
         'https://github.com/seodaeya',
         'https://www.youtube.com/@Na.R.D.'
@@ -116,15 +118,17 @@ export default function SEO({
         '@type': 'WebPage',
         '@id': canonicalUrl
       },
+      'url': canonicalUrl,
       'headline': pageTitle,
       'description': safeDescription,
       'image': ogImage,
+      'inLanguage': 'ko-KR',
       'datePublished': publishedIso,
       'dateModified': modifiedIso,
       'author': {
         '@type': 'Person',
         'name': 'NaRD',
-        'url': 'https://seodaeya.github.io/about/',
+        'url': `${SITE_URL}/about/`,
         'sameAs': [
           'https://github.com/seodaeya',
           'https://www.youtube.com/@Na.R.D.'
@@ -253,17 +257,17 @@ export default function SEO({
       <meta name="DC.Identifier" content={canonicalUrl} />
 
       {/* SEO/AI Crawler Directives (noindex pages opt out of indexing) */}
-      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-      <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
-      <meta name="duckduckbot" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="slurp" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="yandex" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+      <meta name="duckduckbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="slurp" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="yandex" content={noindex ? "noindex, nofollow" : "index, follow"} />
       {/* Explicit instructions for AI Search Engines & LLM agents */}
-      <meta name="ai-crawlers" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="gptbot" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="anthropic-crawler" content={noindex ? "noindex, follow" : "index, follow"} />
-      <meta name="perplexitybot" content={noindex ? "noindex, follow" : "index, follow"} />
+      <meta name="ai-crawlers" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="gptbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="anthropic-crawler" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="perplexitybot" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
       {/* Canonical Link & RSS Auto-Discovery */}
       <link rel="canonical" href={canonicalUrl} />
@@ -271,7 +275,7 @@ export default function SEO({
         rel="alternate"
         type="application/rss+xml"
         title="여전히, 나는 사람이다. RSS Feed"
-        href="https://seodaeya.github.io/rss.xml"
+        href={`${SITE_URL}/rss.xml`}
       />
 
       {/* Language hreflang tags (ko & x-default only to prevent single-URL multi-language conflict) */}

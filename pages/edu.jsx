@@ -139,7 +139,7 @@ export default function EduHubPage() {
       <SEO
         title="생활 속 배움 놀이터 | 여전히, 나는 사람이다."
         description="유치원생과 초등학생이 생활 속에서 직접 만지며 배우는 인터랙티브 교육 놀이터입니다. 시계(12시·24시), 달력과 요일, 용돈과 거스름돈, 길이·들이·온도 단위를 재미있게 익혀 보세요."
-        url="https://seodaeya.github.io/edu/"
+        url="/edu/"
         noindex={true}
       />
 

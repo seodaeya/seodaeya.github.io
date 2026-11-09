@@ -1,0 +1,5 @@
+{
+  "_comment": "사이트 도메인 단일 원천. components/SEO.js·lib/site.js(ESM)와 files/gen/*.js(CommonJS)가 공통 참조합니다. 도메인 변경 시 이 파일과 public/CNAME·public/robots.txt만 수정합니다.",
+  "host": "nardlog.com",
+  "siteUrl": "https://nardlog.com"
+}

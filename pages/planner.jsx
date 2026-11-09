@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { SITE_URL } from '@/lib/site';
 import SEO from '@/components/SEO';
 import {
   GEMINI_PROMPT,
@@ -1335,7 +1336,7 @@ export default function Planner() {
       <SEO
         title="가족 일정 관리 | 여전히, 나는 사람이다."
         description="AI로 정리한 가정 통신문을 일정과 준비물로 나눠 브라우저에만 저장하는 로컬 우선 가족 일정 관리 서비스입니다. 일정과 준비물·할 일을 연결하고, 선택한 구글 캘린더로 바로 보내거나 JSON·ICS로 백업합니다. 설치 없이 무료로 사용하세요."
-        url="https://seodaeya.github.io/planner/"
+        url="/planner/"
         noindex={true}
       />
 
@@ -2200,13 +2201,13 @@ export default function Planner() {
                   </li>
                   <li>
                     <strong>OAuth 동의 화면</strong>: External → Testing으로 시작합니다. 앱 이름, 지원
-                    이메일, 개인정보처리방침 URL(<code>https://seodaeya.github.io/privacy/</code>)을 넣고,
+                    이메일, 개인정보처리방침 URL(<code>{`${SITE_URL}/privacy/`}</code>)을 넣고,
                     범위에 <code>https://www.googleapis.com/auth/calendar.app.created</code>를 추가합니다.
                     가족 구글 계정을 <strong>테스트 사용자</strong>로 등록하세요.
                   </li>
                   <li>
                     <strong>사용자 인증 정보 → OAuth 클라이언트 ID</strong>를 <strong>웹 애플리케이션</strong>
-                    으로 만듭니다. 승인된 JavaScript 출처에 <code>https://seodaeya.github.io</code>와{' '}
+                    으로 만듭니다. 승인된 JavaScript 출처에 <code>{SITE_URL}</code>와{' '}
                     <code>http://localhost:4173</code>을 넣습니다. 리디렉션 URI는 필요 없습니다.
                   </li>
                   <li>

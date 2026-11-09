@@ -318,4 +318,4 @@ REA의 진정한 가치는 복잡한 분석 도구의 설치나 조작법을 외
 ### 🔗 연관 아티클 & 공식 링크 바로가기
 * <strong>REA 공식 사이트:</strong> <a href="https://rea.tools/ko/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">코딩 에이전트와 함께 리버스 엔지니어링 (공식 ↗)</a>
 * <strong>REA 소스코드:</strong> <a href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">GitHub morluto/rea, MIT 라이선스 (↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide/" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>

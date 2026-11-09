@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/coupangSideBanner.module.css';
 import { isNoAffiliatePath } from '@/lib/adPolicy';
 import {
+  COUPANG_AFFILIATE_PAUSED,
   COUPANG_DISCLOSURE,
   createCoupangWidget,
   loadCoupangScript,
@@ -125,7 +126,7 @@ export default function CoupangSideBanner() {
 
   // 창 크기 기반 초기/장기 슬롯 높이 결정 (광고 재요청 최소화용 디바운스 적용)
   const evaluateWidgetSize = useCallback(() => {
-    if (typeof window === 'undefined' || hiddenHere) {
+    if (typeof window === 'undefined' || hiddenHere || COUPANG_AFFILIATE_PAUSED) {
       setVisible(false);
       return;
     }
@@ -255,7 +256,7 @@ export default function CoupangSideBanner() {
     };
   }, [visible, baseHeight, scheduleSync]);
 
-  if (!visible) return null;
+  if (COUPANG_AFFILIATE_PAUSED || !visible) return null;
 
   return (
     <aside

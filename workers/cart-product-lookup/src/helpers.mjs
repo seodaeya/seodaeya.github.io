@@ -48,7 +48,7 @@ export function makeCoupangSignedDate(date = new Date()) {
 }
 
 export function normalizeAllowedOrigins(value) {
-  return (value || 'https://seodaeya.github.io')
+  return (value || 'https://nardlog.com')
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean);

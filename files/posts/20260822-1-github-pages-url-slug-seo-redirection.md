@@ -50,18 +50,18 @@ URL을 변경할 때 가장 두려운 점은 <strong>"기존에 검색엔진에 
 
 ```text
 [ 유저 / 검색 봇의 구형 링크 접근 ]
-  👉 https://seodaeya.github.io/posts/20260819-1/
+  👉 https://nardlog.com/posts/20260819-1/
                       ⬇️
 [ 1차 방어선 : SSG 구형 정적 페이지 즉각 서빙 ]
   - <meta http-equiv="refresh" content="0;url=/posts/20260819-1-ai-alter-framework/" />
-  - <link rel="canonical" href="https://seodaeya.github.io/posts/20260819-1-ai-alter-framework/" />
+  - <link rel="canonical" href="https://nardlog.com/posts/20260819-1-ai-alter-framework/" />
   - window.location.replace("/posts/20260819-1-ai-alter-framework/");
                       ⬇️
 [ 2차 방어선 : 스마트 404 클라이언트 라우터 백업 ]
   - 예기치 못한 레거시 경로 접근 시 정규식 패턴 매칭 후 최적화 URL로 강제 포워딩
                       ⬇️
 [ 최종 도착 : 0.01초 만에 신규 키워드 URL로 순간 이동 완료! ]
-  👉 https://seodaeya.github.io/posts/20260819-1-ai-alter-framework/
+  👉 https://nardlog.com/posts/20260819-1-ai-alter-framework/
 ```
 
 ### 💻 실제 핵심 구현 코드 (`pages/posts/[id].jsx`)

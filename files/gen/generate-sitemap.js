@@ -3,7 +3,7 @@ const path = require('path');
 const matter = require('gray-matter');
 const { getGitLastMod, resolveContentLastMod } = require('../../lib/gitLastMod');
 
-const siteUrl = 'https://seodaeya.github.io';
+const { siteUrl } = require('../site-config.json');
 const publicDir = path.join(process.cwd(), 'public');
 const postsDir = path.join(process.cwd(), 'files/posts');
 const videosDir = path.join(process.cwd(), 'files/videos');

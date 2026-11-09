@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO';
+import { SITE_URL } from '@/lib/site';
 
 export default function Privacy() {
   return (
@@ -6,13 +7,13 @@ export default function Privacy() {
       <SEO 
         title="개인정보처리방침 | 여전히, 나는 사람이다."
         description="'여전히, 나는 사람이다.' 블로그의 개인정보처리방침, 제3자 서비스(구글 애드센스, MS Clarity) 쿠키 및 구글 캘린더 연동 안내입니다."
-        url="https://seodaeya.github.io/privacy/"
+        url="/privacy/"
       />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', color: 'var(--text-primary)', lineHeight: '1.75' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', borderBottom: '2px solid var(--border-glass)', paddingBottom: '0.5rem' }}>개인정보처리방침</h1>
         
         <p style={{ marginBottom: '1rem' }}>
-          '여전히, 나는 사람이다.' 블로그(https://seodaeya.github.io, 이하 '본 블로그')는 별도의 회원가입 없이 이용할 수 있는 정적 웹사이트로, <strong>블로그 운영자가 방문자의 성명, 연락처 등의 개인정보를 직접 수집하거나 보유하지 않습니다.</strong>
+          '여전히, 나는 사람이다.' 블로그({SITE_URL}, 이하 '본 블로그')는 별도의 회원가입 없이 이용할 수 있는 정적 웹사이트로, <strong>블로그 운영자가 방문자의 성명, 연락처 등의 개인정보를 직접 수집하거나 보유하지 않습니다.</strong>
         </p>
 
         <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>1. 제3자 서비스의 쿠키(Cookie) 및 서드파티 자동 수집 안내</h2>
@@ -27,7 +28,7 @@ export default function Privacy() {
 
         <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>2. 구글 캘린더 연동(선택 기능)</h2>
         <p style={{ marginBottom: '1rem' }}>
-          본 블로그의 가족 일정 관리 서비스(<a href="https://seodaeya.github.io/planner/" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>/planner/</a>)는
+          본 블로그의 가족 일정 관리 서비스(<a href="/planner/" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>/planner/</a>)는
           이용자가 원할 때만 구글 계정을 연결해 일정을 구글 캘린더로 보낼 수 있습니다. 이 기능을 사용하지 않으면
           구글 로그인이나 캘린더 API 호출이 전혀 발생하지 않습니다.
         </p>

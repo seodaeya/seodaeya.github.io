@@ -96,7 +96,7 @@ test('buildGoogleEvent sends an exclusive all-day end date and item summary', ()
   const payload = buildGoogleEvent(event, items);
   assert.deepEqual(payload.start, { date: '2026-10-27' });
   assert.deepEqual(payload.end, { date: '2026-10-28' });
-  assert.equal(payload.iCalUID, 'planner-event-1@seodaeya.github.io');
+  assert.equal(payload.iCalUID, 'planner-event-1@nardlog.com');
   assert.equal(payload.location, '불암산');
   assert.match(payload.description, /x반/);
   assert.match(payload.description, /\[준비물\]/);
@@ -128,7 +128,7 @@ test('buildGoogleEvent rejects undated events', () => {
 test('ICS, template URL, and description share the same stable UID/details', () => {
   const description = buildEventDescription(event, items);
   const ics = buildIcs([event], items);
-  assert.match(ics, /UID:planner-event-1@seodaeya\.github\.io/);
+  assert.match(ics, /UID:planner-event-1@nardlog\.com/);
   assert.match(ics, /DTSTART;VALUE=DATE:20261027/);
   assert.match(ics, /DTEND;VALUE=DATE:20261028/);
   assert.ok(ics.includes('DESCRIPTION:x반\\n\\n연결된 준비물'));

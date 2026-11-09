@@ -10,7 +10,7 @@ export default function Contact() {
       <SEO
         title="연락처 및 문의 | 여전히, 나는 사람이다."
         description="'여전히, 나는 사람이다.' 블로그 운영자 NaRD에게 연락하는 방법을 정리했습니다. 콘텐츠 오류 정정, 인용·재게시 허락, 제휴·광고, 개인정보 문의 유형별 절차와 답변 소요 시간, GitHub·YouTube 채널을 안내합니다."
-        url="https://seodaeya.github.io/contact/"
+        url="/contact/"
       />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', color: 'var(--text-primary)', lineHeight: '1.75' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', borderBottom: '2px solid var(--border-glass)', paddingBottom: '0.5rem' }}>연락처 및 문의</h1>

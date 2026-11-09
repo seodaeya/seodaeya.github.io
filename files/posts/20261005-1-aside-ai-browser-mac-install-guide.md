@@ -185,4 +185,4 @@ AI 브라우저 2026년 평가 기사 3건을 찾아 비교표로 정리해줘
 ### 🔗 연관 아티클 & 공식 링크 바로가기
 * <strong>Aside 공식 다운로드:</strong> <a href="https://aside.com/download?os=mac" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">Mac용 Aside 다운로드 (공식 ↗)</a>
 * <strong>Aside 브라우저 에이전트:</strong> <a href="https://aside.com/features/browser-agent" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">Browser Agent 기능 소개 (공식 ↗)</a>
-* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>
+* <strong>관련 글:</strong> <a href="/posts/20261004-1-opencode-muse-spark-free-setup-guide/" style="color: #38bdf8; font-weight: 600;">OpenCode 무료 활용법: Muse Spark 설치부터 실전까지 (↗)</a>

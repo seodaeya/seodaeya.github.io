@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import styles from '@/styles/coupangCarousel.module.css';
 import {
+  COUPANG_AFFILIATE_PAUSED,
   COUPANG_DISCLOSURE,
   createCoupangWidget,
   loadCoupangScript,
@@ -66,6 +67,7 @@ export default function CoupangCarousel({
   );
 
   useEffect(() => {
+    if (COUPANG_AFFILIATE_PAUSED) return undefined;
     const wrap = wrapRef.current;
     const slot = slotRef.current;
     if (!wrap || !slot) return undefined;
@@ -147,6 +149,8 @@ export default function CoupangCarousel({
       usedWidthRef.current = 0;
     };
   }, [build]);
+
+  if (COUPANG_AFFILIATE_PAUSED) return null;
 
   return (
     <aside
