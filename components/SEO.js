@@ -189,7 +189,7 @@ export default function SEO({
       <meta name="rating" content="general" />
 
       {/* Naver Search Advisor & Google Search Console Verification */}
-      <meta name="naver-site-verification" content="88667ea44fcae091f1e08a616b7908c9720d724d" />
+      <meta name="naver-site-verification" content="f3abee93374439e6ed07e7e6a5be7c40c4547117" />
       <meta name="google-site-verification" content="08GPePNe2hYuPGu3jKQsPQRXOH9X0onaK3Bk0ymQHeQ" />
 
       {/* Google AdSense Official Script (Directly rendered in static <head> on indexable pages for immediate crawler & verification detection) */}

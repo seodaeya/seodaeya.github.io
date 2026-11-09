@@ -27,7 +27,7 @@ function walkHtmlFiles(dir) {
       if (entry === '_next') continue;
       results = results.concat(walkHtmlFiles(fullPath));
     } else if (entry.endsWith('.html')) {
-      if (entry.startsWith('google')) continue;
+      if (entry.startsWith('google') || entry.startsWith('naver')) continue;
       results.push(fullPath);
     }
   }

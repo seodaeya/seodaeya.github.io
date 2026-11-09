@@ -3,27 +3,83 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/contact/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/privacy/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261026-1-webfont-import-lcp-render-blocking/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261025-1-family-planner-google-calendar-api-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261013-1-rea-reverse-engineering-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261005-2-leisurely-child-education-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261005-1-aside-ai-browser-mac-install-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261004-1-opencode-muse-spark-free-setup-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260911-2-github-actions-cron-monthly-ranking-system/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260824-1-github-pages-serverless-cart-parser/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260822-1-github-pages-url-slug-seo-redirection/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260819-2-actor-framework-guide/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260819-1-ai-alter-framework/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260805-2-gsc-sitemap-lastmod-fix/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260723-1-human-in-the-loop-ai-ethics/</loc>
+    <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260707-1-giscus-discussion-error-fix/</loc>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20261106-1-fde-forward-deployed-engineer-guide/</loc>
@@ -70,14 +126,6 @@
     <lastmod>2026-11-03</lastmod>
   </url>
   <url>
-    <loc>https://nardlog.com/posts/20261026-1-webfont-import-lcp-render-blocking/</loc>
-    <lastmod>2026-11-02</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20261025-1-family-planner-google-calendar-api-guide/</loc>
-    <lastmod>2026-10-25</lastmod>
-  </url>
-  <url>
     <loc>https://nardlog.com/posts/20261020-1-opencode-free-models-comparison-guide/</loc>
     <lastmod>2026-10-20</lastmod>
   </url>
@@ -90,51 +138,11 @@
     <lastmod>2026-10-17</lastmod>
   </url>
   <url>
-    <loc>https://nardlog.com/posts/20261004-1-opencode-muse-spark-free-setup-guide/</loc>
-    <lastmod>2026-10-17</lastmod>
-  </url>
-  <url>
     <loc>https://nardlog.com/posts/20261016-1-ai-model-version-evolution-architecture-guide/</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://nardlog.com/posts/20261013-1-rea-reverse-engineering-guide/</loc>
-    <lastmod>2026-10-13</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260911-2-github-actions-cron-monthly-ranking-system/</loc>
-    <lastmod>2026-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260824-1-github-pages-serverless-cart-parser/</loc>
-    <lastmod>2026-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260819-2-actor-framework-guide/</loc>
-    <lastmod>2026-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260819-1-ai-alter-framework/</loc>
-    <lastmod>2026-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20261005-2-leisurely-child-education-guide/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20261005-1-aside-ai-browser-mac-install-guide/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
     <loc>https://nardlog.com/posts/20260807-1-github-pages-adsense-domain/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260723-1-human-in-the-loop-ai-ethics/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260707-1-giscus-discussion-error-fix/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
   <url>
@@ -154,19 +162,11 @@
     <lastmod>2026-09-17</lastmod>
   </url>
   <url>
-    <loc>https://nardlog.com/posts/20260822-1-github-pages-url-slug-seo-redirection/</loc>
-    <lastmod>2026-08-29</lastmod>
-  </url>
-  <url>
     <loc>https://nardlog.com/posts/20260817-1-meta-ax-agentic-workflow/</loc>
     <lastmod>2026-08-29</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20260815-1-gemini-3-7-flash-analysis/</loc>
-    <lastmod>2026-08-29</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260805-2-gsc-sitemap-lastmod-fix/</loc>
     <lastmod>2026-08-29</lastmod>
   </url>
   <url>
