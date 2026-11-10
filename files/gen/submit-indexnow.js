@@ -21,11 +21,11 @@ const matter = require('gray-matter');
  *   node files/gen/submit-indexnow.js --dry-run           # 네트워크 전송 없이 목록만 확인
  */
 
-const { host } = require('../site-config.json');
-const apiKey = 'd757d9f030cc4789bb023a4b38e3ccf4';
+const { host, indexNowKey: apiKey } = require('../site-config.json');
 const keyLocation = `https://${host}/${apiKey}.txt`;
 
 const root = path.join(__dirname, '../..');
+const keyFilePath = path.join(root, 'public', `${apiKey}.txt`);
 
 // 콘텐츠 디렉터리 → URL 경로 매핑
 const contentDirs = [
@@ -172,6 +172,17 @@ const main = () => {
     return;
   }
 
+  // 키 파일은 사이트 루트에서 200으로 서빙되어야 IndexNow가 소유권을 확인한다.
+  // 누락·불일치 상태로 제출하면 403(UserForbiddenToAccessSite)만 반복되므로 먼저 막는다.
+  if (!fs.existsSync(keyFilePath)) {
+    console.warn(`   ⚠️  키 파일 없음: public/${apiKey}.txt → 제출을 생략합니다.`);
+    return;
+  }
+  if (fs.readFileSync(keyFilePath, 'utf8').trim() !== apiKey) {
+    console.warn(`   ⚠️  키 파일 내용 불일치: public/${apiKey}.txt → 제출을 생략합니다.`);
+    return;
+  }
+
   const payload = JSON.stringify({ host, key: apiKey, keyLocation, urlList: urls });
 
   const options = {
@@ -194,16 +205,20 @@ const main = () => {
     res.on('end', () => {
       if (res.statusCode === 200 || res.statusCode === 202) {
         console.log('   ✅ IndexNow 제출 성공 (Bing / Yandex / Naver 등).');
+      } else if (res.statusCode === 403 || res.statusCode === 422) {
+        // 키 소유권 확인 실패(도메인 이전 직후 캐시, 키 재사용 등). 배포를 실패시키지 않는다.
+        console.warn(`   ⚠️  IndexNow 소유권 확인 실패 (${res.statusCode}): ${body}`);
+        console.warn('      키 파일이 배포된 뒤 재시도하면 대부분 해결됩니다. 배포는 계속 진행합니다.');
       } else {
-        console.error(`   ❌ IndexNow 제출 실패: ${body}`);
-        process.exitCode = 1;
+        console.warn(`   ⚠️  IndexNow 응답 ${res.statusCode}: ${body}`);
+        console.warn('      검색엔진 핑 실패는 배포 실패로 처리하지 않습니다.');
       }
     });
   });
 
   req.on('error', (e) => {
-    console.error(`   ❌ 요청 오류: ${e.message}`);
-    process.exitCode = 1;
+    console.warn(`   ⚠️  IndexNow 요청 오류: ${e.message}`);
+    console.warn('      네트워크 오류는 배포 실패로 처리하지 않습니다.');
   });
 
   req.write(payload);
