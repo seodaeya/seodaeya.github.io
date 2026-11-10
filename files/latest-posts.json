@@ -1,5 +1,11 @@
 [
   {
+    "title": "\"주가가 오른 게 아니라 돈이 폭락했다\" 40년 화폐 패러다임 전환과 인플레이션 생존 투자 공식",
+    "category": "Lifestyle & Tech",
+    "file": "posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide.md",
+    "date": "20261110"
+  },
+  {
     "title": "FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자",
     "category": "AI & Intelligence",
     "file": "posts/20261106-1-fde-forward-deployed-engineer-guide.md",
@@ -51,12 +57,6 @@
     "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
     "category": "Lifestyle & Tech",
     "file": "posts/20261005-2-leisurely-child-education-guide.md",
-    "date": "20261005"
-  },
-  {
-    "title": "AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지",
-    "category": "AI & Intelligence",
-    "file": "posts/20261005-1-aside-ai-browser-mac-install-guide.md",
     "date": "20261005"
   }
 ]
