@@ -7,6 +7,12 @@ image: "/images/crocell_cflip_retro_esc_mapping_karabiner_thumbnail.jpg"
 tags: ["Crocell", "CFlip", "KarabinerElements", "macOS", "KeyboardMapping", "EscKey", "Hardware", "Productivity"]
 ---
 
+> <strong>3줄 요약</strong>
+>
+> 1. <strong>원인 분석</strong>: 크로셀 C-Flip 등 미니 접이식 키보드는 상단 1열에 독립된 Esc 키와 Fn Lock 영구 메모리가 없어, macOS 한글 입력 상태에서 첫 키가 <code>₩</code>(원화) 기호로 입력됩니다.
+> 2. <strong>단순 매핑의 한계</strong>: Karabiner-Elements에서 단순 1:1 리매핑을 적용하면 Esc는 작동하지만 마크다운 백틱(<code>`</code>)과 홈 경로 물결표(<code>\~</code>)가 영구 소실됩니다.
+> 3. <strong>복합 규칙 해결</strong>: <strong>Complex Modifications</strong>를 구축해 단독 탭 시 <code>escape</code>, Shift 조합 시 <code>\~</code>, Option 조합 시 <code>`</code>로 분기하여 세 기능을 100% 공존시킵니다.
+
 ## ⌨️ 1. 휴대용 끝판왕의 유일한 치명타: 누를 때마다 찍히는 '₩'
 
 카페나 출장지에서 가볍게 코딩과 문서 작업을 하기 위해 한 번 접히는 반접이식(폴딩형) 블루투스 키보드인 <strong>크로셀 C-Flip Retro</strong>를 선택하는 맥(Mac) 사용자들이 많습니다. 레트로한 타자기 감성의 조약돌 키캡과 주머니에 들어가는 압도적인 휴대성까지, 외형만 보면 미니멀 워크스페이스의 완성작처럼 보입니다.

@@ -5,14 +5,14 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 11 Nov 2026 15:25:28 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 16:26:57 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title><![CDATA[Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드]]></title>
+    <title><![CDATA[Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드]]></title>
     <link>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</link>
     <guid>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</guid>
     <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[이 글의 위치 : 정적 블로그(GitHub Pages + Next.js export)에 Cloudflare 프록시를 적용하면서 실제로 확인한 설정과 수치를 정리했습니다. 특정 계정의 ID·Zone ID·API 토큰·방문자 로그는 포함하지 않습니다. 3줄 요약 1. Cl...]]></description>
+    <description><![CDATA[이 글의 위치 : 정적 블로그(GitHub Pages + Next.js export)에 Cloudflare 프록시를 적용하면서 실제로 확인한 설정과 수치를 정리했습니다. 렌더링 차단과 LCP 개선은 웹폰트 @import와 LCP 글에서, GitHub Pages의 URL...]]></description>
   </item>
   <item>
     <title><![CDATA["주가 상승이 아니라 화폐 폭락" 40년 인플레이션 생존 투자법]]></title>
@@ -103,7 +103,7 @@
     <link>https://nardlog.com/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide/</link>
     <guid>https://nardlog.com/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide/</guid>
     <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[카페나 출장지에서 가볍게 코딩과 문서 작업을 하기 위해 한 번 접히는 반접이식(폴딩형) 블루투스 키보드인 크로셀 C Flip Retro 를 선택하는 맥(Mac) 사용자들이 많습니다. 레트로한 타자기 감성의 조약돌 키캡과 주머니에 들어가는 압도적인 휴대성까지, 외형만 보...]]></description>
+    <description><![CDATA[3줄 요약 1. 원인 분석 : 크로셀 C Flip 등 미니 접이식 키보드는 상단 1열에 독립된 Esc 키와 Fn Lock 영구 메모리가 없어, macOS 한글 입력 상태에서 첫 키가 ₩ (원화) 기호로 입력됩니다. 2. 단순 매핑의 한계 : Karabiner Eleme...]]></description>
   </item>
   <item>
     <title><![CDATA[5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복]]></title>

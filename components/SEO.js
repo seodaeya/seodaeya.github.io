@@ -14,6 +14,8 @@ export default function SEO({
   dateModified,
   videoId,
   noindex = false,
+  excerpt,
+  category,
 }) {
   const siteSuffix = ' | 여전히, 나는 사람이다.';
   let pageTitle = (!title.includes('여전히, 나는 사람이다.') && title.length + siteSuffix.length <= 60)
@@ -111,6 +113,7 @@ export default function SEO({
   if (type === 'article') {
     const publishedIso = date ? new Date(date).toISOString() : new Date().toISOString();
     const modifiedIso = (dateModified || date) ? new Date(dateModified || date).toISOString() : publishedIso;
+    const abstractText = (excerpt || description || safeDescription || '').replace(/\s+/g, ' ').trim();
     specificSchema = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -121,6 +124,8 @@ export default function SEO({
       'url': canonicalUrl,
       'headline': pageTitle,
       'description': safeDescription,
+      'abstract': abstractText,
+      ...(category ? { 'articleSection': category } : {}),
       'image': ogImage,
       'inLanguage': 'ko-KR',
       'datePublished': publishedIso,

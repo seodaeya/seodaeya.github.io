@@ -295,6 +295,8 @@ export default function PostPageLayout({
       <SEO
         title={frontmatter.title}
         description={excerpt}
+        excerpt={excerpt}
+        category={frontmatter.category}
         image={frontmatter.image}
         url={`/posts/${postId}/`}
         type="article"
@@ -351,6 +353,19 @@ export default function PostPageLayout({
               <FontSizeControl />
             </div>
           </header>
+
+          {/* 핵심 요약 (Quick Summary) — 보일러플레이트 없는 순수 팩트 요약 카드 */}
+          {excerpt && (
+            <aside className={styles.aiSummaryBox} aria-label="핵심 요약">
+              <div className={styles.aiSummaryTitle}>
+                <span className={styles.aiIcon}>💡</span>
+                <strong>핵심 요약 (Quick Summary)</strong>
+              </div>
+              <p className={styles.aiSummaryText} style={{ margin: 0 }}>
+                {excerpt}
+              </p>
+            </aside>
+          )}
 
           {/* Post Content */}
           <PostContent content={contentHtml} />

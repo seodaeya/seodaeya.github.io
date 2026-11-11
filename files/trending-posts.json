@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 11월 12일 00:25 KST",
+  "updatedAt": "2026년 11월 12일 01:26 KST",
   "baselineDate": "2026년 11월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -206,8 +206,8 @@
       "changeText": "NEW",
       "badge": "Cloudflare · Dev",
       "category": "Dev & Software",
-      "title": "Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드",
-      "desc": "GitHub Pages 블로그에 Cloudflare 프록시를 적용해 정적 자산 캐시를 4시간에서 1년으로 늘리고, Full (strict) SSL과 HTTP/3, 자동 압축까지 점검한 실전 기록입니다. 캐시 규칙의 안전한 범위와 보안 함정, 배포 후 검증 명령을 함께 정리합니다.",
+      "title": "Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드",
+      "desc": "GitHub Pages 블로그에 Cloudflare 프록시를 적용해 정적 자산 캐시를 10분에서 1년으로 늘리고, Full (strict) SSL과 HTTP/3, 자동 압축까지 점검한 실전 기록입니다. 캐시 규칙의 안전한 범위와 보안 함정, 배포 후 검증 명령을 함께 정리합니다.",
       "image": "/images/cloudflare_web_performance_cache_ssl_guide_thumbnail.jpg",
       "url": "/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide",
       "date": "2026-11-11",
