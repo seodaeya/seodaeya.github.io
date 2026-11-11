@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 11월 10일 23:48 KST",
+  "updatedAt": "2026년 11월 11일 23:17 KST",
   "baselineDate": "2026년 11월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -436,21 +436,8 @@
     },
     {
       "rank": 29,
-      "change": "down",
-      "changeText": "▼ 2",
-      "badge": "SEO · Dev",
-      "category": "Dev & Software",
-      "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
-      "desc": "GitHub Pages 정적 호스팅 환경에서 검색 엔진 순위(PageRank) 손실 없이 한글/영문 URL 슬러그를 301 리디렉션하는 기술적 구현 방안입니다.",
-      "image": "/github_pages_url_slug_seo_redirection_thumbnail.jpg",
-      "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
-      "date": "2026-08-22",
-      "views": null
-    },
-    {
-      "rank": 30,
       "change": "up",
-      "changeText": "▲ 2",
+      "changeText": "▲ 3",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "Giscus 댓글 오류 해결: discussion 생성 실패 탈출기",
@@ -458,6 +445,19 @@
       "image": "/images/giscus_guide_thumbnail.jpg",
       "url": "/posts/20260707-1-giscus-discussion-error-fix",
       "date": "2026-07-07",
+      "views": null
+    },
+    {
+      "rank": 30,
+      "change": "down",
+      "changeText": "▼ 3",
+      "badge": "SEO · Dev",
+      "category": "Dev & Software",
+      "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
+      "desc": "GitHub Pages 정적 호스팅 환경에서 검색 엔진 순위(PageRank) 손실 없이 한글/영문 URL 슬러그를 301 리디렉션하는 기술적 구현 방안입니다.",
+      "image": "/github_pages_url_slug_seo_redirection_thumbnail.jpg",
+      "url": "/posts/20260822-1-github-pages-url-slug-seo-redirection",
+      "date": "2026-08-22",
       "views": null
     },
     {

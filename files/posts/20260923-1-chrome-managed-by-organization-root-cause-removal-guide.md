@@ -63,24 +63,29 @@ tags: ["Chrome", "GoogleChrome", "BrowserSecurity", "Regedit", "Windows", "MacOS
 개인 PC에 기업 관리 정책이 심어지는 경로는 크게 4가지로 분류됩니다.
 
 ```mermaid
-graph TD
+flowchart TD
     Root["🚨 크롬 조직에서 관리 발생 4대 경로"]
     
-    C1["🏫 [유형 1] 학교·직장 MS 365 계정 연동<br/>Windows MDM 정책 자동 동기화"]
-    C2["🛡️ [유형 2] 백신 소프트웨어 실시간 감시<br/>안전 탐색 보호 모듈 주입 (Avast, V3 등)"]
-    C3["⚠️ [유형 3] 애드웨어 및 브라우저 하이재커<br/>악성 확장 프로그램 강제 등록 (ExtensionInstallForcelist)"]
-    C4["🧹 [유형 4] 삭제된 소프트웨어 잔여물<br/>과거에 지운 프로그램의 Policies 레지스트리 잔존"]
+    subgraph S1 ["정상 소프트웨어 및 계정 요인"]
+        C1["🏫 [유형 1] 학교·직장 MS 365 연동<br/>Windows MDM 정책 자동 동기화"]
+        C2["🛡️ [유형 2] 백신 소프트웨어 실시간 감시<br/>안전 탐색 보호 모듈 주입 (Avast, V3)"]
+    end
 
-    Root --> C1
-    Root --> C2
-    Root --> C3
-    Root --> C4
+    subgraph S2 ["비인가 프로그램 및 잔여물 요인"]
+        C3["⚠️ [유형 3] 애드웨어 및 브라우저 하이재커<br/>악성 확장 프로그램 강제 등록 (위험)"]
+        C4["🧹 [유형 4] 삭제된 소프트웨어 잔여물<br/>과거에 지운 프로그램의 Policies 잔존"]
+    end
 
-    style Root fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
-    style C1 fill:#ffffff,stroke:#64748b,stroke-width:1px
-    style C2 fill:#ffffff,stroke:#64748b,stroke-width:1px
-    style C3 fill:#fee2e2,stroke:#ef4444,stroke-width:2px
-    style C4 fill:#ffffff,stroke:#64748b,stroke-width:1px
+    Root --> S1
+    Root --> S2
+
+    style Root fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#1e293b
+    style C1 fill:#eff6ff,stroke:#3b82f6,stroke-width:1px,color:#1e293b
+    style C2 fill:#f0fdf4,stroke:#22c55e,stroke-width:1px,color:#1e293b
+    style C3 fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#1e293b
+    style C4 fill:#ffffff,stroke:#64748b,stroke-width:1px,color:#1e293b
+    style S1 fill:#f8fafc,stroke:#94a3b8,stroke-width:1px,stroke-dasharray: 4 4,color:#334155
+    style S2 fill:#f8fafc,stroke:#94a3b8,stroke-width:1px,stroke-dasharray: 4 4,color:#334155
 ```
 
 ### 유형 1: 학교·직장 Microsoft 계정(Office 365) 연동 (가장 흔함)
