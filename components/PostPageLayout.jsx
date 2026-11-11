@@ -11,6 +11,7 @@ import BookmarkButton from '@/components/BookmarkButton';
 import FontSizeControl from '@/components/FontSizeControl';
 import SmartRandomWidget from '@/components/SmartRandomWidget';
 import { useTrackReading, useReadPostsSet, isContentRead } from '@/lib/readingHistory';
+import { loadMermaid } from '@/lib/mermaidClient';
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/post.module.css';
 
@@ -128,67 +129,101 @@ export default function PostPageLayout({
     });
 
     // 3. Auto-render Mermaid diagrams if present
+    //    다이어그램이 화면 근처에 들어올 때만 npm mermaid(ESM)를 동적 import한다.
+    //    CDN UMD 빌드(약 1MB gzip) 대신 webpack이 분할한 flowchart 청크만 받는다.
     const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
+    let mermaidCleanup = null;
+
     if (mermaidBlocks.length > 0) {
-      const renderMermaid = () => {
-        window.mermaid?.initialize({
-          startOnLoad: false,
-          theme: 'base',
-          themeVariables: {
-            background: '#ffffff',
-            primaryColor: '#fef3c7',
-            primaryTextColor: '#1e293b',
-            primaryBorderColor: '#f59e0b',
-            lineColor: '#64748b',
-            secondaryColor: '#fce7e7',
-            tertiaryColor: '#d1fae5',
-            edgeLabelBackground: '#ffffff',
-            clusterBkg: '#f8fafc',
-            clusterBorder: '#cbd5e1',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontSize: '13px',
-          },
-          flowchart: {
-            curve: 'step',
-            padding: 16,
-            nodeSpacing: 40,
-            rankSpacing: 40,
-            htmlLabels: true,
-          },
-        });
-        const currentBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid');
-        currentBlocks.forEach((block) => {
-          const pre = block.parentElement;
-          let codeText = block.textContent.trim();
-          if (!codeText.startsWith('%%{init:')) {
-            codeText = `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${codeText}`;
-          }
-          const div = document.createElement('div');
-          div.className = 'mermaid';
-          div.style.textAlign = 'center';
-          div.style.margin = '20px 0';
-          div.innerHTML = codeText;
-          pre.parentNode.replaceChild(div, pre);
-        });
-        window.mermaid?.run();
+      let started = false;
+      let cancelled = false;
+      let observer = null;
+
+      const renderMermaid = async () => {
+        if (started || cancelled) return;
+        started = true;
+
+        try {
+          const mermaid = await loadMermaid();
+          if (cancelled) return;
+
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+              background: '#ffffff',
+              primaryColor: '#fef3c7',
+              primaryTextColor: '#1e293b',
+              primaryBorderColor: '#f59e0b',
+              lineColor: '#64748b',
+              secondaryColor: '#fce7e7',
+              tertiaryColor: '#d1fae5',
+              edgeLabelBackground: '#ffffff',
+              clusterBkg: '#f8fafc',
+              clusterBorder: '#cbd5e1',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '13px',
+            },
+            flowchart: {
+              curve: 'step',
+              padding: 16,
+              nodeSpacing: 40,
+              rankSpacing: 40,
+              htmlLabels: true,
+            },
+          });
+
+          const nodes = [];
+          document
+            .querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid')
+            .forEach((block) => {
+              const pre = block.parentElement;
+              let codeText = block.textContent.trim();
+              if (!codeText.startsWith('%%{init:')) {
+                codeText = `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${codeText}`;
+              }
+              const div = document.createElement('div');
+              div.className = 'mermaid';
+              div.style.textAlign = 'center';
+              div.style.margin = '20px 0';
+              div.textContent = codeText;
+              pre.parentNode.replaceChild(div, pre);
+              nodes.push(div);
+            });
+
+          await mermaid.run({ nodes });
+        } catch (err) {
+          console.warn('[mermaid] 다이어그램 렌더링을 건너뜁니다:', err);
+        }
       };
 
-      if (window.mermaid) {
-        renderMermaid();
+      const firstBlock = mermaidBlocks[0];
+      const firstPre = firstBlock.closest('pre');
+
+      if ('IntersectionObserver' in window && firstPre) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              renderMermaid();
+            }
+          },
+          { rootMargin: '800px 0px' }
+        );
+        observer.observe(firstPre);
       } else {
-        let script = document.querySelector('script[src*="mermaid"]');
-        if (!script) {
-          script = document.createElement('script');
-          script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
-          script.async = true;
-          script.crossOrigin = 'anonymous';
-          script.onload = renderMermaid;
-          document.head.appendChild(script);
-        } else {
-          script.addEventListener('load', renderMermaid);
-        }
+        renderMermaid();
       }
+
+      mermaidCleanup = () => {
+        cancelled = true;
+        observer?.disconnect();
+      };
     }
+
+    return () => {
+      mermaidCleanup?.();
+    };
   }, [id, contentHtml]);
 
   const handleCopyUrl = async () => {
