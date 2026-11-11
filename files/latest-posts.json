@@ -1,5 +1,11 @@
 [
   {
+    "title": "Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드",
+    "category": "Dev & Software",
+    "file": "posts/20261111-1-cloudflare-web-performance-cache-ssl-guide.md",
+    "date": "20261111"
+  },
+  {
     "title": "\"주가 상승이 아니라 화폐 폭락\" 40년 인플레이션 생존 투자법",
     "category": "Lifestyle & Tech",
     "file": "posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261013-1-rea-reverse-engineering-guide.md",
     "date": "20261013"
-  },
-  {
-    "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
-    "category": "Lifestyle & Tech",
-    "file": "posts/20261005-2-leisurely-child-education-guide.md",
-    "date": "20261005"
   }
 ]

@@ -246,6 +246,20 @@
   ],
   "Dev & Software": [
     {
+      "title": "Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드",
+      "file": "posts/20261111-1-cloudflare-web-performance-cache-ssl-guide.md",
+      "tags": [
+        "Cloudflare",
+        "WebPerformance",
+        "Cache",
+        "CoreWebVitals",
+        "HTTPS",
+        "SEO",
+        "StaticSite",
+        "GitHubPages"
+      ]
+    },
+    {
       "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
       "file": "posts/20261026-1-webfont-import-lcp-render-blocking.md",
       "tags": [

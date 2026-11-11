@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 11 Nov 2026 14:28:38 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 15:25:28 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드]]></title>
+    <link>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</link>
+    <guid>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</guid>
+    <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 정적 블로그(GitHub Pages + Next.js export)에 Cloudflare 프록시를 적용하면서 실제로 확인한 설정과 수치를 정리했습니다. 특정 계정의 ID·Zone ID·API 토큰·방문자 로그는 포함하지 않습니다. 3줄 요약 1. Cl...]]></description>
+  </item>
   <item>
     <title><![CDATA["주가 상승이 아니라 화폐 폭락" 40년 인플레이션 생존 투자법]]></title>
     <link>https://nardlog.com/posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide/</link>
