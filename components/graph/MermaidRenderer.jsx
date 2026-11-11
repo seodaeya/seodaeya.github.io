@@ -49,10 +49,12 @@ export default function MermaidRenderer({ chart, className = '' }) {
 
         initMermaid(mermaid);
 
-        // Enforce orthogonal step routing if chart has not explicitly declared a curve
+        // Mermaid %%{init}%% directives take precedence over initialize(), so this
+        // fallback must match the global curve. 'step' produces duplicated final
+        // coordinates that break marker (arrowhead) orientation.
         const formattedChart = chart.trim().startsWith('%%{init:')
           ? chart
-          : `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${chart}`;
+          : `%%{init: {'flowchart': {'curve': 'linear'}}}%%\n${chart}`;
 
         const containerId = `mermaid-container-${uid}`;
         const { svg } = await mermaid.render(containerId, formattedChart);

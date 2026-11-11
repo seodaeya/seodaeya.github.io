@@ -179,8 +179,11 @@ export default function PostPageLayout({
             .forEach((block) => {
               const pre = block.parentElement;
               let codeText = block.textContent.trim();
+              // 다이어그램별 init 지시문이 없을 때만 명시적으로 곡선을 주입한다.
+              // 주의: Mermaid에서 %%{init}%% 지시문은 initialize() 설정보다 우선하므로
+              // 여기 값을 'step'으로 두면 전역 curve: 'linear'가 무시된다.
               if (!codeText.startsWith('%%{init:')) {
-                codeText = `%%{init: {'flowchart': {'curve': 'step'}}}%%\n${codeText}`;
+                codeText = `%%{init: {'flowchart': {'curve': 'linear'}}}%%\n${codeText}`;
               }
               const div = document.createElement('div');
               div.className = 'mermaid';
