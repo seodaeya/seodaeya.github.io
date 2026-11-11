@@ -19,7 +19,7 @@ function initMermaid(mermaid) {
       fontSize: '13px'
     },
     flowchart: {
-      curve: 'step',
+      curve: 'linear',
       padding: 16,
       nodeSpacing: 40,
       rankSpacing: 40,

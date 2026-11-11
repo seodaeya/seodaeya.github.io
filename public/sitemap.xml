@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
@@ -24,6 +24,10 @@
   <url>
     <loc>https://nardlog.com/privacy/</loc>
     <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</loc>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide/</loc>
@@ -155,10 +159,6 @@
   </url>
   <url>
     <loc>https://nardlog.com/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide/</loc>
-    <lastmod>2026-09-23</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</loc>
     <lastmod>2026-09-23</lastmod>
   </url>
   <url>
