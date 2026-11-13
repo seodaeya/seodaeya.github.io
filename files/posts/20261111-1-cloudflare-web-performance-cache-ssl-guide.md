@@ -42,7 +42,7 @@ Cloudflare 프록시를 앞에 두면 원본을 바꾸지 않고도 다음을 �
 
 ## 📊 2. 적용 전후: 숫자로 보는 변화
 
-이 블로그(`nardlog.com`)에서 직접 확인한 값입니다.
+이 블로그(`nardlog.com`)에서 직접 확인한 값입니다. 설정을 켠 뒤 "왜 달라졌는지"를 설명하려면 적용 전 값을 먼저 남겨야 합니다. 그래서 숫자부터 비교합니다.
 
 | 대상 | 적용 전 | 적용 후 | 판정 |
 |---|---|---|---|
@@ -57,7 +57,7 @@ Cloudflare 프록시를 앞에 두면 원본을 바꾸지 않고도 다음을 �
 
 ## 🌐 3. 1단계: 프록시(주황 구름) 켜기
 
-Cloudflare의 Cache Rules는 <strong>DNS 레코드가 프록시(주황 구름) 상태일 때만</strong> 동작합니다. DNS 전용(회색 구름)이면 Cloudflare는 이름만 해석하고 트래픽에는 관여하지 않습니다.
+<strong>왜 프록시를 켜나요?</strong> Cloudflare의 캐시 규칙·WAF·압축은 모두 프록시된 트래픽에만 적용됩니다. DNS 전용(회색 구름)이면 Cloudflare는 이름만 해석하고 트래픽에는 관여하지 않으므로, 원본의 짧은 캐시 헤더도 그대로 남습니다. Cache Rules가 동작하려면 DNS 레코드가 <strong>프록시(주황 구름)</strong> 상태여야 합니다.
 
 ### 해야 할 일
 
@@ -83,7 +83,7 @@ curl -sI https://nardlog.com/ | grep -iE '^(server|cf-ray):'
 
 ## 🔐 4. 2단계: SSL/TLS를 Full (strict)로
 
-SSL/TLS 모드는 성능보다 <strong>보안</strong>에 직결됩니다. Cloudflare 공식 문서도 가능한 한 Full (strict)를 권장합니다.
+<strong>왜 Full (strict)인가요?</strong> 브라우저 주소창의 자물쇠는 <strong>브라우저와 Cloudflare 구간</strong>만 보장합니다. Cloudflare와 원본 사이가 평문이면 그 구간에서 내용이 노출될 수 있어, SSL/TLS 모드는 성능보다 <strong>보안</strong>에 직결됩니다. Cloudflare 공식 문서도 가능한 한 Full (strict)를 권장합니다.
 
 | 모드 | 브라우저 ↔ Cloudflare | Cloudflare ↔ 원본 | 판정 |
 |---|---|---|---|
@@ -108,6 +108,8 @@ SSL/TLS 모드는 성능보다 <strong>보안</strong>에 직결됩니다. Cloud
 > <strong>Full (strict)의 전제</strong>: 원본이 유효한 인증서를 제시해야 합니다. 인증서가 만료되었거나 도메인과 불일치하면 <strong>526 오류</strong>가 발생합니다. 이때는 모드를 낮추는 대신 원본 인증서를 먼저 점검하세요.
 
 ## 🗄️ 5. 3단계: 캐시 규칙 — 범위가 전부다
+
+<strong>왜 캐시를 '해시 유무'로 나누나요?</strong> 캐시 사고의 대부분은 "갱신되어야 할 것이 갱신되지 않는" 문제에서 시작합니다. 파일명에 콘텐츠 해시가 있으면 내용이 바뀔 때 URL도 바뀌므로 길게 캐시해도 안전하고, 해시가 없으면 길게 캐시하는 순간 교체가 막힙니다. 이 기준 하나로 캐시 범위를 정하면 됩니다.
 
 Cloudflare는 기본적으로 <strong>HTML과 JSON을 캐시하지 않습니다</strong>. 파일 확장자 기준으로 JS·CSS·이미지·폰트 등을 캐시합니다. 이 기본 동작은 정적 블로그에 잘 맞습니다. 우리가 할 일은 <strong>해시가 붙은 정적 자산의 TTL만 늘리는 것</strong>입니다.
 
@@ -181,6 +183,8 @@ Cloudflare의 기본 캐시 키는 호스트·경로·쿼리 중심으로 구성
 
 ## ⚡ 6. 4단계: 압축과 프로토콜
 
+<strong>왜 압축과 프로토콜을 같이 보나요?</strong> 둘 다 원본 코드를 바꾸지 않고 전송 비용만 줄이는 개선입니다. 압축은 바이트 수를, HTTP/3·TLS 1.3은 핸드셰이크 왕복을 줄입니다. 다만 Early Hints·0-RTT는 조건과 위험이 있어 "무조건 켜기"가 아닙니다.
+
 Cloudflare는 텍스트 기반 응답을 자동으로 압축합니다. 현재 문서 기준으로 플랜과 브라우저에 따라 Gzip·Brotli·Zstandard가 선택되며, <strong>Free 플랜은 Zstandard가 기본</strong>입니다. 별도로 "Brotli를 켠다"는 설정에 집착할 필요가 없습니다.
 
 함께 확인할 항목은 다음과 같습니다.
@@ -193,6 +197,8 @@ Cloudflare는 텍스트 기반 응답을 자동으로 압축합니다. 현재 �
 > <strong>압축의 함정</strong>: Automatic HTTPS Rewrites, Rocket Loader, Polish, Email Address Obfuscation, RUM(Web Analytics) 같은 기능이 켜져 있으면 Cloudflare가 응답을 압축 해제 후 다시 압축할 수 있습니다. 성능 기능이 오히려 CPU 비용을 늘리는 조합이니, 필요한 기능만 켜세요.
 
 ## 🧯 7. 5단계: Rocket Loader·Auto Minify·Cache Everything 정리
+
+<strong>왜 기본 기능을 끄나요?</strong> Cloudflare의 자동 최적화는 특정 프레임워크를 가정하지 않는 범용 설정입니다. Next.js처럼 하이드레이션 순서와 빌드 산출물에 의존하는 사이트에서는 이 자동화가 오히려 충돌을 만들 수 있습니다. 기준은 "기능이 많을수록 좋다"가 아니라 <strong>"내 스택과 충돌하지 않는 것만 켠다"</strong>입니다.
 
 ### 7-1. Rocket Loader & Auto Minify
 - <strong>Rocket Loader</strong>: 모든 JavaScript를 비동기 지연 로드하여 첫 화면을 앞당기려 하지만, Next.js처럼 <strong>하이드레이션 순서와 React 런타임에 의존하는 프레임워크</strong>에서는 이벤트 핸들러가 끊기거나 화면이 깜빡이는 심각한 부작용을 일으킵니다. 반드시 <strong>OFF</strong>로 둡니다.
@@ -221,6 +227,8 @@ HTML까지 캐시하는 `Cache Everything`은 정적 사이트에서도 위험�
 정적 블로그는 <strong>기본 캐시 + 정적 자산 규칙</strong> 조합이 가장 안전합니다.
 
 ## 🛡️ 8. 보안 체크리스트 — 캐시는 편리하지만 위험하다
+
+<strong>왜 캐시를 보안 문제로 다루나요?</strong> 캐시는 같은 URL의 응답을 재사용하는 기능이라, 개인화된 응답이 섞이면 다른 사용자에게 그대로 노출될 수 있습니다. 성능 설정과 보안 경계는 같은 스위치에서 나옵니다.
 
 캐시는 성능 기능이지만, 잘못 설정하면 <strong>다른 사용자의 응답이 노출되는 사고</strong>로 이어집니다. Cloudflare 공식 문서의 캐시 보안 권고를 이 블로그에 맞게 정리하면 다음과 같습니다.
 
@@ -264,7 +272,7 @@ Cloudflare는 "캐시 키가 같은 요청"끼리 응답을 재사용합니다. 
 
 ## 🔎 9. 검증: 헤더와 명령어
 
-설정은 대시보드에서 끝나지 않습니다. 실제 응답 헤더로 확인해야 합니다.
+<strong>왜 헤더로 확인하나요?</strong> 대시보드의 설정은 "의도"이고, 실제 응답은 규칙 우선순위·캐시 상태·브라우저 캐시에 따라 달라집니다. 설정은 대시보드에서 끝나지 않습니다. 실제 응답 헤더가 유일한 사실입니다.
 
 ### 정적 자산 캐시
 
@@ -355,6 +363,8 @@ curl -sI https://nardlog.com/images/cloudflare_web_performance_cache_ssl_guide_t
 
 ### 즉시 롤백
 
+<strong>왜 롤백을 먼저 정하나요?</strong> 프록시는 정상일 때는 보이지 않지만, 장애가 나면 원인 구간이 하나 더 늘어난 구조입니다. 되돌릴 방법을 먼저 정해두면 새 설정을 두려움 없이 시험할 수 있습니다.
+
 문제가 생기면 프록시된 DNS 레코드를 모두 <strong>DNS 전용(회색 구름)</strong>으로 되돌리면 됩니다. 저장소 변경은 없습니다. 전파 시간은 TTL에 따르지만 대체로 빠릅니다.
 
 ### GitHub Pages 인증서 갱신
@@ -376,6 +386,8 @@ curl -sI https://nardlog.com/images/cloudflare_web_performance_cache_ssl_guide_t
 ## 🧭 11. 정리
 
 Cloudflare 설정은 "기능을 많이 켜는 일"이 아니라 <strong>캐시의 경계를 정확히 긋는 일</strong>입니다.
+
+이 순서에는 이유가 있습니다. 프록시가 켜져야 캐시 규칙이 동작하고, TLS가 고정되어야 캐시된 응답이 안전하게 전달되며, 캐시 범위가 정해진 뒤에야 불필요한 기능을 판단할 수 있기 때문입니다.
 
 이 블로그에서 실제로 효과가 있었던 순서는 다음과 같습니다.
 
