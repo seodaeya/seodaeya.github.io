@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 11 Nov 2026 16:26:57 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 00:01:45 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것]]></title>
+    <link>https://nardlog.com/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/</link>
+    <guid>https://nardlog.com/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/</guid>
+    <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : Cloudflare 캐시·SSL 실전 가이드를 적용한 뒤, 체감 속도가 기대만큼 오르지 않아 Speed의 추천 사이트 설정 을 한 번에 켠 기록입니다. 그 뒤 PageSpeed는 첫 측정 80점대, 두 번째 측정 100점이 나왔습니다. 설정 목록을 그...]]></description>
+  </item>
   <item>
     <title><![CDATA[Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드]]></title>
     <link>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</link>

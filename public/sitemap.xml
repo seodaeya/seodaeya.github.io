@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
@@ -26,7 +26,15 @@
     <lastmod>2026-11-10</lastmod>
   </url>
   <url>
+    <loc>https://nardlog.com/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
     <loc>https://nardlog.com/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide/</loc>
     <lastmod>2026-11-12</lastmod>
   </url>
   <url>
@@ -156,10 +164,6 @@
   <url>
     <loc>https://nardlog.com/posts/20260807-1-github-pages-adsense-domain/</loc>
     <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20261003-1-crocell-cflip-retro-esc-mapping-karabiner-guide/</loc>
-    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide/</loc>
