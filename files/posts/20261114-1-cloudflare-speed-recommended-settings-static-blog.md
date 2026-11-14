@@ -13,11 +13,15 @@ tags: ["Cloudflare", "WebPerformance", "Cache", "PageSpeed", "StaticSite", "SEO"
 
 > <strong>3줄 요약</strong>
 >
-> 1. 추천 설정의 상당수는 이미 켜져 있던 항목의 재확인이고, 실제로 추가된 것은 <strong>0-RTT, Opportunistic Encryption, Cache Level Aggressive, WebSockets, RUM</strong> 정도입니다.
+> 1. 추천 설정의 상당수는 이미 켜져 있던 항목의 재확인입니다. 이번에 실제로 추가·변경된 것은 <strong>0-RTT, Opportunistic Encryption, Cache Level Aggressive, WebSockets, RUM</strong> 5개이고, 이 중 체감 효과가 있을 만한 것은 0-RTT 정도입니다. Speed Brain은 이번 추가분이 아니라 Free 플랜 기본 활성화 항목입니다.
 > 2. 이 중 <strong>RUM은 스크립트와 요청을 추가</strong>하고, <strong>0-RTT는 재전송 위험</strong>이 있습니다. 나머지는 정적 블로그에서 효과가 작거나 거의 없습니다.
 > 3. PageSpeed 실험실 점수는 같은 사이트에서도 80점대와 100점을 오갑니다. 정적 자산이 엣지 캐시에 데워졌는지, 측정 시점의 네트워크가 어땠는지에 따라 달라지므로 한 번의 점수로 판단하면 안 됩니다.
 
+> 켜고 끄는 결론만 먼저 보려면 [5. 켜둘 것과 끌 것](#heading-14)로 바로 이동하세요.
+
 ## ⚡ 1. 80점대였던 점수가 두 번째 측정에서 100점이 나왔다
+
+<strong>Cloudflare 추천 설정은 "바닥"을 채워주는 체크리스트이지, 점수를 올리는 만능 버튼이 아닙니다. 같은 사이트의 PageSpeed 점수는 측정마다 80점대와 100점을 오갈 수 있어, 한 번의 점수로 설정 효과를 판단하면 안 됩니다.</strong>
 
 기존 글에서는 프록시, Full (strict), `/_next/static/*` 1년 캐시, HTTP/3, Zstd 압축까지 적용했습니다. 그런데 첫 PageSpeed 측정은 80점대였고, 추천 설정을 켠 뒤 두 번째 측정에서는 100점이 나왔습니다. 같은 사이트인데 점수가 이렇게 달라지면, 무엇이 실제로 개선인지 헷갈립니다.
 
@@ -36,7 +40,7 @@ tags: ["Cloudflare", "WebPerformance", "Cache", "PageSpeed", "StaticSite", "SEO"
 | 그대로 둔 것 | HSTS, Minify, Rocket Loader | 의도적으로 OFF |
 | 목록에 없지만 켜진 것 | Speed Brain | Free 플랜 기본 활성화 |
 
-두 번째 측정이 100점이었다는 것은, 그 실행에서 <strong>FCP 0.9초·LCP 0.9초·TBT 10ms·CLS 0.003</strong>이 나왔다는 뜻입니다. 이 정도면 정적 페이지가 매우 빠르게 로드된 것이고, 점수도 그에 맞게 나온 것입니다. 문제는 같은 URL도 실행할 때마다 이 값이 조금씩 달라진다는 점입니다.
+두 번째 측정이 100점이었다는 것은, 그 실행에서 <strong>FCP 0.9초·LCP 0.9초·TBT 10ms·CLS 0.003</strong>이 나왔다는 뜻입니다. (단일 실행 값이며, 모바일/데스크톱 구분과 측정 시각은 따로 기록하지 않았습니다. 재현 기준이 아니라 참고용 수치로 봐주세요.) 이 정도면 정적 페이지가 매우 빠르게 로드된 것이고, 점수도 그에 맞게 나온 것입니다. 문제는 같은 URL도 실행할 때마다 이 값이 조금씩 달라진다는 점입니다.
 
 > <strong>측정 팁</strong>: PageSpeed는 같은 URL도 실행할 때마다 점수가 달라집니다. 3\~5회 실행해 중앙값을 보고, 가능하면 필드 데이터(CrUX)와 함께 판단하세요.
 
@@ -99,9 +103,8 @@ tags: ["Cloudflare", "WebPerformance", "Cache", "PageSpeed", "StaticSite", "SEO"
 
 ```bash
 # HTML
-h='cache-control|cf-cache-status|content-encoding|alt-svc'
-h="$h|speculation-rules|strict-transport-security"
-curl -sI https://nardlog.com/ | grep -iE "^($h):"
+curl -sI https://nardlog.com/ \
+  | grep -iE '^(cache-control|cf-cache-status|alt-svc|speculation-rules|strict-transport-security):'
 ```
 
 ```text
@@ -167,9 +170,9 @@ PageSpeed의 브라우저는 실행마다 새 프로필을 쓰므로, 방문자 
 
 - HTML: `DYNAMIC` → 매번 원본(GitHub Pages)까지 요청
 - JS·CSS·이미지: 첫 요청 `MISS`, 이후 `HIT`
-- 두 번째 측정이 100점이었다면, 그 실행에서 정적 자산이 이미 엣지에 데워져 있었을 가능성이 큽니다.
+- 두 번째 측정에서는 정적 자산이 이미 엣지에 데워져 있었을 <strong>가능성</strong>이 있습니다. 다만 당시 `cf-cache-status`를 측정 전후로 기록하지 않았기 때문에, 캐시 효과인지 단순한 측정 변동인지는 구분할 수 없습니다.
 
-이 차이를 확인하려면 측정 전후에 `cf-cache-status`를 보면 됩니다. HTML이 `DYNAMIC`이고 JS·이미지가 `HIT`라면 정상적인 상태입니다. "캐시가 되어서 100점이 나왔다"는 추정은 절반은 맞고, 절반은 측정 변동입니다.
+이 차이를 확인하려면 측정 전후에 `cf-cache-status`를 보면 됩니다. HTML이 `DYNAMIC`이고 JS·이미지가 `HIT`라면 정상적인 상태입니다. "캐시가 되어서 100점이 나왔다"고 단정할 수는 없고, 캐시 효과와 측정 변동이 섞여 있다고 보는 편이 정확합니다.
 
 ### 4-3. TTFB는 Cloudflare만으로 해결되지 않는다
 
@@ -185,7 +188,7 @@ HTML은 `DYNAMIC`이라 엣지가 캐시하지 않고 원본까지 가져옵니�
 
 ### 4-5. RUM 비콘은 작지만 공짜는 아니다
 
-`beacon.min.js`는 작은 스크립트지만, 초기 HTML 파싱 직후 서드파티 도메인으로 연결이 하나 늘어납니다. 네트워크가 느린 모바일에서는 이 한 번의 연결이 체감에 영향을 줄 수 있습니다. 측정 데이터가 필요 없다면 끄는 편이 낫습니다. 100점이 나온 실행에서도 비콘 요청은 계속 발생합니다.
+`beacon.min.js`는 작은 스크립트지만, 초기 HTML 파싱 직후 서드파티 도메인으로 연결이 하나 늘어납니다. 네트워크가 느린 모바일에서는 이 한 번의 연결이 체감에 영향을 줄 수 있습니다. 측정 데이터가 필요 없다면 끄는 편이 낫습니다. 두 번째 측정(100점) 때도 RUM은 ON 상태였으므로, 이 요청이 있어도 100점은 가능했다는 뜻입니다. 즉 비콘은 "점수를 크게 깎는 요인"이라기보다 "굳이 감수할 이유가 없는 추가 비용"에 가깝습니다.
 
 ### 4-6. 캐시 적중률은 "두 번째 방문"부터다
 
@@ -209,13 +212,13 @@ HTML은 `DYNAMIC`이라 엣지가 캐시하지 않고 원본까지 가져옵니�
 | HSTS | 보류 | 모든 서브도메인이 HTTPS가 될 때까지 OFF |
 | Cache Level Aggressive | 유지 | 정적 자산 쿼리스트링 캐시. HTML에는 영향 없음 |
 | 0-RTT | 유지 검토 | 정적 GET에는 이점, 재전송 위험은 감수 |
-| Opportunistic Encryption | 유지 또는 OFF | Always HTTPS가 켜져 있으면 효과는 작음 |
-| WebSockets | OFF 검토 | WebSocket을 쓰지 않으면 켤 이유가 없음 |
+| Opportunistic Encryption | 유지 | 비용이 없고 Always HTTPS가 켜져 있어 효과는 작지만 해로울 것도 없음 |
+| WebSockets | OFF | 이 블로그는 WebSocket을 쓰지 않으므로 켤 이유가 없음 |
 | RUM | <strong>OFF 권장</strong> | GA4가 있으면 중복 측정·추가 요청 |
 | Early Hints | 유지 | `Link` 헤더가 없으면 효과 제한 |
 | H2 Prioritization·Polish·WebP·Prefetch | 해당 없음 | 무료 플랜에서 켤 수 없음 |
 
-<strong>추천 설정은 "바닥"이지 "만능 버튼"이 아닙니다.</strong> 이 목록을 켰다고해서 LCP가 2초대로 내려가거나 TBT가 사라지지는 않습니다. 그건 JavaScript 번들, 이미지, 폰트, 서드파티 스크립트의 문제입니다.
+<strong>추천 설정은 "바닥"이지 "만능 버튼"이 아닙니다.</strong> 이 목록을 켰다고 해서 LCP가 2초대로 내려가거나 TBT가 사라지지는 않습니다. 그건 JavaScript 번들, 이미지, 폰트, 서드파티 스크립트의 문제입니다.
 
 ## 📏 6. 다음에 측정할 것
 
@@ -237,7 +240,7 @@ done
 
 ## 🧭 7. 정리
 
-Cloudflare의 추천 설정은 <strong>이미 잘 되어 있는 구성을 빠뜨리지 않게 해주는 체크리스트</strong>에 가깝습니다. 이번에 새로 켜진 항목 중 체감 속도를 실제로 바꾸는 것은 0-RTT와 Speed Brain 정도이고, 둘 다 <strong>첫 페이지가 아니라 재방문·다음 페이지</strong>에서 효과가 납니다.
+Cloudflare의 추천 설정은 <strong>이미 잘 되어 있는 구성을 빠뜨리지 않게 해주는 체크리스트</strong>에 가깝습니다. 이번에 새로 켜진 항목 중 체감 속도를 바꿀 만한 것은 0-RTT 정도이고, 기본 활성화 상태인 Speed Brain과 함께 둘 다 <strong>첫 페이지가 아니라 재방문·다음 페이지</strong>에서 효과가 납니다.
 
 두 번째 측정에서 나온 100점은 <strong>그 실행이 빠르게 끝났다는 증거</strong>이지, 추천 설정이 80점을 100점으로 끌어올렸다는 증거는 아닙니다. 정적 자산이 엣지에서 `HIT`였고, TBT 10ms·LCP 0.9초가 나온 좋은 표본이었습니다. 같은 조건에서 다시 돌리면 90점대가 나올 수도 있습니다.
 
