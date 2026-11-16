@@ -1,5 +1,11 @@
 [
   {
+    "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
+    "category": "AI & Intelligence",
+    "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
+    "date": "20261116"
+  },
+  {
     "title": "Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것",
     "category": "Dev & Software",
     "file": "posts/20261114-1-cloudflare-speed-recommended-settings-static-blog.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md",
     "date": "20261016"
-  },
-  {
-    "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
-    "category": "AI & Intelligence",
-    "file": "posts/20261014-1-gemini-4-argon-analysis-guide.md",
-    "date": "20261014"
   }
 ]

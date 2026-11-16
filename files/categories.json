@@ -1,6 +1,21 @@
 {
   "AI & Intelligence": [
     {
+      "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
+      "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
+      "tags": [
+        "Gemini",
+        "Gemini 4",
+        "Carbon",
+        "Hydrogen",
+        "Argon",
+        "Google AI",
+        "LLM",
+        "Orchestrator",
+        "CodingAgent"
+      ]
+    },
+    {
       "title": "FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자",
       "file": "posts/20261106-1-fde-forward-deployed-engineer-guide.md",
       "tags": [

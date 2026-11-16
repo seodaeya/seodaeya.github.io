@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
@@ -24,6 +24,10 @@
   <url>
     <loc>https://nardlog.com/privacy/</loc>
     <lastmod>2026-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</loc>
+    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/</loc>

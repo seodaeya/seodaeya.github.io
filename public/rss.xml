@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Sat, 14 Nov 2026 00:06:07 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 15:17:03 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
+    <link>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</link>
+    <guid>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</guid>
+    <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 지난 10월 공개된 프론티어 모델에 대한 구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격의 후속편입니다. 2026년 11월 10일과 12일 연달아 정식 출시(GA)된 Gemini 4 Carbon 과 Gemini 4 Hydrogen 의...]]></description>
+  </item>
   <item>
     <title><![CDATA[Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것]]></title>
     <link>https://nardlog.com/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/</link>
