@@ -324,5 +324,6 @@ A. 코드 리팩토링이나 취약점 점검처럼 <strong>외부 채점자(CI/
 ---
 
 ### 🔗 연관 아티클 & 공식 링크 바로가기
+* <strong>후속 비교 글:</strong> <a href="/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/" style="color: #38bdf8; font-weight: 600;">Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택 (↗)</a>
 * <strong>구글 공식 발표:</strong> <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">Gemini 4 Argon: our next era of frontier intelligence (공식 ↗)</a>
 * <strong>관련 글:</strong> <a href="/posts/20260815-1-gemini-3-7-flash-analysis/" style="color: #38bdf8; font-weight: 600;">구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교 (↗)</a>

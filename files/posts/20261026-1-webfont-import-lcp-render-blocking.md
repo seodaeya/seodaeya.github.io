@@ -384,6 +384,8 @@ Lighthouse가 지적한 항목 중에는 <strong>고치지 않는 게 맞다고 
 
 ## 관련 글
 
+- [Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드](/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/) — 프론트엔드 LCP 개선 이후 엣지 캐시(1년)와 SSL·압축을 잡은 후속편
+- [Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것](/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog/) — Speed 추천 설정의 실제 헤더·TPS·PageSpeed 점수 검증 기록
 - [Next.js 블로그 반응형 목차(TOC) 개발과 4단계 실전 트러블슈팅 가이드](/posts/20260830-1-nextjs-mobile-toc-troubleshooting-guide/) — 같은 Pages Router 블로그에서 겪은 프론트엔드 트러블슈팅
 - [GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략](/posts/20260807-1-github-pages-adsense-domain/) — 이 블로그가 GitHub Pages를 쓰기 때문에 생기는 구조적 제약
 - [SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략](/posts/20260805-1-seo-geo-ai-search-strategy/) — 속도 개선이 최종적으로 향하는 목적

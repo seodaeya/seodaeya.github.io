@@ -199,6 +199,7 @@ A. 빈 시간을 주되 <strong>디지털 환경의 물리적 경계(거실 충�
 
 ---
 
-### 🔗 연관 아티클 & 공식 링크 바로가기
+### 🔗 연관 아티클 & 함께 해볼 수 있는 무료 웹 도구
 * <strong>관련 글:</strong> <a href="/posts/20260911-1-na-min-ae-reading-method-literacy-guide/" style="color: #38bdf8; font-weight: 600;">책 한 권을 읽어도 제대로 남기려면: 서울대 나민애 교수가 밝히는 진짜 문해력 독서법 (↗)</a>
+* <strong>직접 체험 도구:</strong> <a href="/edu/" style="color: #38bdf8; font-weight: 600;">어린이 생활 교육 놀이터 (/edu/)</a> · <a href="/word-train/" style="color: #38bdf8; font-weight: 600;">기차 여행 단어 게임 (/word-train/)</a> — 아이가 지시 없이 스스로 만지며 시계·달력·어휘를 익히는 무료 인터랙티브 웹 도구
 * <strong>AAP 놀이 보고서:</strong> <a href="https://publications.aap.org/pediatrics/article/119/1/182/70699/The-Importance-of-Play-in-Promoting-Healthy-Child" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-weight: 600;">The Importance of Play (Pediatrics, 공식 ↗)</a>

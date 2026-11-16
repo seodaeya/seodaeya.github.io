@@ -237,3 +237,9 @@ const handleScroll = () => {
 반응형 목차(TOC)는 작은 UI 컴포넌트처럼 보이지만, <strong>CSS 컨테인먼트, React 렌더링 라이프사이클(Hydration), 브라우저 렌더링 파이프라인(Reflow), 사용자 경험(UX)</strong>이 모두 집약된 고난도 엔지니어링 과제입니다. 
 
 위의 패턴들을 적용하면 어떤 복잡한 레이아웃과 긴 본문에서도 100% 안정적으로 동작하는 프리미엄 목차 시스템을 구축할 수 있습니다.
+
+---
+
+## 🔗 관련 글
+- [PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부](/posts/20261026-1-webfont-import-lcp-render-blocking/) — 같은 블로그에서 모바일 LCP를 9.4초에서 2.1초로 줄인 렌더링 최적화 기록
+- [Cloudflare 웹 성능 설정: 캐시·SSL·압축 실전 가이드](/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide/) — 정적 자산(`/_next/static/*`) 1년 캐시와 Full (strict) SSL 설정 가이드
