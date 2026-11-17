@@ -1,5 +1,11 @@
 [
   {
+    "title": "AI 에이전트 브라우저 비교: ChatGPT · Claude · Gemini",
+    "category": "AI & Intelligence",
+    "file": "posts/20261117-3-ai-agent-browser-comparison-chatgpt-claude-gemini.md",
+    "date": "20261117"
+  },
+  {
     "title": "아동수당 2026·2027 총정리: 지역별 지급액·확대 논의",
     "category": "Lifestyle & Tech",
     "file": "posts/20261117-2-child-allowance-2026-2027-expansion-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261025-1-family-planner-google-calendar-api-guide.md",
     "date": "20261025"
-  },
-  {
-    "title": "OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드",
-    "category": "AI & Intelligence",
-    "file": "posts/20261020-1-opencode-free-models-comparison-guide.md",
-    "date": "20261020"
   }
 ]

@@ -1,6 +1,20 @@
 {
   "AI & Intelligence": [
     {
+      "title": "AI 에이전트 브라우저 비교: ChatGPT · Claude · Gemini",
+      "file": "posts/20261117-3-ai-agent-browser-comparison-chatgpt-claude-gemini.md",
+      "tags": [
+        "AIBrowser",
+        "AIAgent",
+        "PlaywrightMCP",
+        "ChromeDevToolsMCP",
+        "AgentBrowser",
+        "ClaudeInChrome",
+        "GeminiInChrome",
+        "BrowserUse"
+      ]
+    },
+    {
       "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
       "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
       "tags": [

@@ -188,7 +188,8 @@
   color: var(--accent-secondary);
   border: 1px solid var(--border-glass);
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .content pre code {
@@ -755,6 +756,20 @@
 
 .content :global(.mermaid) * {
   color: #0f172a;
+}
+
+/* 모바일에서 다이어그램이 4~6px로 축소되어 읽을 수 없게 되는 문제 방지.
+   컨테이너 안에서 가로 스크롤하고, SVG는 최소 폭을 유지한다. */
+@media (max-width: 720px) {
+  .content :global(.mermaid) {
+    padding: 12px;
+    /* 가운데 정렬 상태로 가로 스크롤하면 양쪽이 잘려 보이므로 왼쪽부터 읽게 한다. */
+    text-align: left !important;
+  }
+
+  .content :global(.mermaid svg) {
+    min-width: 560px;
+  }
 }
 
 .content :global(.mermaid span),
