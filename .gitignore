@@ -43,3 +43,4 @@ next-env.d.ts
 
 # agent working files (local-only: must never be committed or deployed)
 docs/
+files/gsc-*.csv

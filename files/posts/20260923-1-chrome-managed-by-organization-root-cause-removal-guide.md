@@ -1,15 +1,21 @@
 ---
 category: "Dev & Software"
-title: "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)"
+title: "크롬 '조직에서 관리하는 브라우저' 해제·삭제 방법: 뜨는 이유와 정책 초기화"
 date: "2026-09-23"
-excerpt: "개인 PC 크롬에 나타난 '조직에서 관리' 알림 원인을 chrome://policy로 진단하고, Windows 레지스트리와 macOS 프로파일을 안전하게 초기화하여 악성 확장 프로그램을 삭제하는 완벽 가이드입니다."
+excerpt: "크롬에 '조직에서 관리하는 브라우저입니다'가 뜨는 이유를 chrome://policy로 진단하고, Windows 레지스트리(Policies) 정책 삭제와 macOS 프로파일 초기화를 통해 완벽히 해제·제거하는 실전 해결 방법입니다."
 image: "/images/chrome_managed_by_organization_removal_guide_thumbnail.jpg"
 tags: ["Chrome", "GoogleChrome", "BrowserSecurity", "Regedit", "Windows", "MacOS", "GroupPolicy", "Troubleshooting"]
 ---
 
-## 😱 1. 개인 PC인데 왜? 크롬 "조직에서 관리"의 충격과 실체
+> <strong>3줄 요약</strong>
+>
+> 1. <strong>뜨는 이유</strong>: 개인 PC 크롬에 "조직에서 관리하는 브라우저입니다"가 뜨는 원인은 학교·회사 계정(MDM), 백신 보호 모듈, 애드웨어, 과거 프로그램이 남긴 정책 레지스트리(Policies) 때문입니다.
+> 2. <strong>진단 방법</strong>: 주소창에 `chrome://policy`를 입력해 어떤 정책이 강제 적용 중인지 먼저 확인해야 합니다.
+> 3. <strong>해제·삭제 방법</strong>: Windows는 레지스트리(`HKLM`/`HKCU\...\Policies\Google\Chrome`) 삭제 및 `gpupdate /force`, macOS는 프로파일 및 `com.google.Chrome.plist` 초기화로 완벽히 제거할 수 있습니다.
 
-구글 크롬(Chrome) 브라우저를 사용하다가 우측 상단 더보기 메뉴(점 세 개 `⋮`)를 눌렀을 때, 최하단에 <strong>"조직에서 관리(Managed by your organization)"</strong>라는 문구가 떠 있는 것을 보고 깜짝 놀란 경험이 한 번쯤 있을 것입니다.
+## 😱 1. 개인 PC인데 왜? 크롬 "조직에서 관리하는 브라우저입니다"의 충격과 실체
+
+구글 크롬(Chrome) 브라우저를 사용하다가 우측 상단 더보기 메뉴(점 세 개 `⋮`)를 눌렀을 때, 최하단에 <strong>"조직에서 관리(Managed by your organization)"</strong> 또는 설정 상단에 <strong>"조직에서 관리하는 브라우저입니다"</strong>라는 문구가 떠 있는 것을 보고 깜짝 놀란 경험이 한 번쯤 있을 것입니다.
 
 회사나 학교에서 지급받은 업무용 PC가 아니라 <strong>온전히 개인이 구매한 가정용 데스크톱이나 노트북</strong>임에도 불구하고 이 문구가 표시되면, 대다수의 사용자는 극심한 보안 불안을 느낍니다:
 

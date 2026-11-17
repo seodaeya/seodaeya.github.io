@@ -12,28 +12,43 @@ const matter = require('gray-matter');
  *   (인자를 생략하면 files/gsc-queries.csv 를 기본 탐색합니다)
  */
 
-function parseCsvLine(line) {
-  const result = [];
+function parseCsvRecords(rawCsv) {
+  const records = [];
+  let row = [];
   let cur = '';
   let inQuotes = false;
-  for (let i = 0; i < line.length; i += 1) {
-    const ch = line[i];
+
+  for (let i = 0; i < rawCsv.length; i += 1) {
+    const ch = rawCsv[i];
     if (ch === '"') {
-      if (inQuotes && line[i + 1] === '"') {
+      if (inQuotes && rawCsv[i + 1] === '"') {
         cur += '"';
         i += 1;
       } else {
         inQuotes = !inQuotes;
       }
     } else if (ch === ',' && !inQuotes) {
-      result.push(cur.trim());
+      row.push(cur.trim());
+      cur = '';
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && rawCsv[i + 1] === '\n') i += 1;
+      row.push(cur.trim());
+      if (row.some((cell) => cell.length > 0)) {
+        records.push(row);
+      }
+      row = [];
       cur = '';
     } else {
       cur += ch;
     }
   }
-  result.push(cur.trim());
-  return result;
+  if (cur.length > 0 || row.length > 0) {
+    row.push(cur.trim());
+    if (row.some((cell) => cell.length > 0)) {
+      records.push(row);
+    }
+  }
+  return records;
 }
 
 function normalizeHeader(name) {
@@ -100,13 +115,13 @@ function main() {
   }
 
   const rawCsv = fs.readFileSync(csvPath, 'utf8');
-  const lines = rawCsv.split(/\r?\n/).filter((l) => l.trim().length > 0);
-  if (lines.length < 2) {
+  const records = parseCsvRecords(rawCsv);
+  if (records.length < 2) {
     console.log('⚠️ CSV 데이터가 비어 있습니다.');
     process.exit(0);
   }
 
-  const headers = parseCsvLine(lines[0]).map(normalizeHeader);
+  const headers = records[0].map(normalizeHeader);
   const idxQuery = headers.findIndex((h) => h.includes('quer') || h.includes('검색어'));
   const idxClicks = headers.findIndex((h) => h.includes('click') || h.includes('클릭'));
   const idxImpr = headers.findIndex((h) => h.includes('impr') || h.includes('노출'));
@@ -119,8 +134,7 @@ function main() {
   }
 
   const posts = loadExistingPosts();
-  const rows = lines.slice(1).map((line) => {
-    const cols = parseCsvLine(line);
+  const rows = records.slice(1).map((cols) => {
     const query = cols[idxQuery] || '';
     const clicks = idxClicks !== -1 ? parseNumber(cols[idxClicks]) : 0;
     const impressions = parseNumber(cols[idxImpr]);
@@ -129,10 +143,20 @@ function main() {
     return { query, clicks, impressions, ctr, position };
   });
 
-  // 핵심 타깃: 순위 11~50위 (2~5페이지) & 노출 >= 20 & 저클릭(CTR < 3%)
+  const maxImpr = Math.max(...rows.map((r) => r.impressions), 0);
+  const isEarlyDomain = rows.length < 50 || maxImpr < 20;
+  const minImpr = isEarlyDomain ? 1 : 10;
+  const maxPos = isEarlyDomain ? 200 : 55;
+
+  // [A] 1페이지(1~10위) 진입했으나 클릭이 저조한 제목/CTR 개선 대상
+  const ctrOpportunities = rows
+    .filter((r) => r.query && r.position > 0 && r.position <= 10.4 && r.impressions >= minImpr && r.ctr < 3)
+    .sort((a, b) => b.impressions - a.impressions || a.position - b.position);
+
+  // [B] 2페이지 이후(11위~)에 걸려있는 순위 상승/신규 공략 대상
   const gaps = rows
-    .filter((r) => r.query && r.position >= 10.5 && r.position <= 55 && r.impressions >= 20 && r.ctr < 3)
-    .sort((a, b) => b.impressions - a.impressions);
+    .filter((r) => r.query && r.position >= 10.5 && r.position <= maxPos && r.impressions >= minImpr && r.ctr < 3)
+    .sort((a, b) => b.impressions - a.impressions || a.position - b.position);
 
   const refreshCandidates = [];
   const newTopicCandidates = [];
@@ -147,10 +171,26 @@ function main() {
   }
 
   console.log('======================================================================');
-  console.log(`🔍 [GSC Keyword Gap Report] 총 ${rows.length}개 쿼리 중 기회의 갭 ${gaps.length}개 발굴`);
+  console.log(
+    `🔍 [GSC Keyword Gap Report] 총 ${rows.length}개 쿼리 (${isEarlyDomain ? '초기 도메인 전수 모드: 노출≥1' : '표준 모드: 노출≥10'})`
+  );
   console.log('======================================================================\n');
 
-  console.log('📌 [1] 기존 글 보강 추천 (이미 글이 있으나 11~50위권에 머문 쿼리 TOP 10)');
+  console.log('🎯 [1] 1페이지(1~10위) CTR/제목 개선 추천 (노출 대비 클릭 확보 가능)');
+  if (ctrOpportunities.length === 0) {
+    console.log('  - 해당 조건의 대상이 없습니다.\n');
+  } else {
+    ctrOpportunities.slice(0, 10).forEach((c, i) => {
+      const matched = findMatchingPosts(c.query, posts);
+      console.log(
+        `  ${String(i + 1).padStart(2, '0')}. "${c.query}" | 노출 ${c.impressions} | 클릭 ${c.clicks} | 순위 ${c.position.toFixed(1)}`
+      );
+      matched.forEach((m) => console.log(`      ↳ 매칭 글: ${m.filename} (${m.title})`));
+    });
+    console.log('');
+  }
+
+  console.log(`📌 [2] 기존 글 보강 추천 (11~${maxPos}위권 · 본문 H2/요약/내부링크 보강 대상)`);
   if (refreshCandidates.length === 0) {
     console.log('  - 해당 조건의 보강 대상이 없습니다.\n');
   } else {
@@ -163,7 +203,7 @@ function main() {
     console.log('');
   }
 
-  console.log('🆕 [2] 신규 글감 추천 (기존 글과 매칭 약함 · 고노출 저클릭 TOP 15)');
+  console.log('🆕 [3] 신규 글감 추천 (기존 글과 매칭 약함 · 고노출 저클릭 TOP 15)');
   if (newTopicCandidates.length === 0) {
     console.log('  - 해당 조건의 신규 글감 후보가 없습니다.\n');
   } else {

@@ -5,7 +5,7 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Mon, 16 Nov 2026 15:53:04 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 13:36:14 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
@@ -127,11 +127,11 @@
     <description><![CDATA[생성형 AI(ChatGPT, Claude, Gemini)와 대화할 때 최신 테크 커뮤니티와 글로벌 직장인들 사이에서 가장 뜨겁게 회자되는 마법의 키워드가 있습니다. 바로 ELI5 입니다. 항목 핵심 내용 : : 풀이 Explain Like I'm 5 (영미권 인터넷 신...]]></description>
   </item>
   <item>
-    <title><![CDATA[크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)]]></title>
+    <title><![CDATA[크롬 '조직에서 관리하는 브라우저' 해제·삭제 방법: 뜨는 이유와 정책 초기화]]></title>
     <link>https://nardlog.com/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</link>
     <guid>https://nardlog.com/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide/</guid>
     <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[구글 크롬(Chrome) 브라우저를 사용하다가 우측 상단 더보기 메뉴(점 세 개 ⋮ )를 눌렀을 때, 최하단에 "조직에서 관리(Managed by your organization)" 라는 문구가 떠 있는 것을 보고 깜짝 놀란 경험이 한 번쯤 있을 것입니다. 회사나 학교...]]></description>
+    <description><![CDATA[3줄 요약 1. 뜨는 이유 : 개인 PC 크롬에 "조직에서 관리하는 브라우저입니다"가 뜨는 원인은 학교·회사 계정(MDM), 백신 보호 모듈, 애드웨어, 과거 프로그램이 남긴 정책 레지스트리(Policies) 때문입니다. 2. 진단 방법 : 주소창에 chrome://p...]]></description>
   </item>
   <item>
     <title><![CDATA["중간 관리자는 사라진다": 잭 도시와 블록의 AI 조직 모델 분석]]></title>

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 11월 17일 00:53 KST",
+  "updatedAt": "2026년 11월 17일 22:36 KST",
   "baselineDate": "2026년 11월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -427,8 +427,8 @@
       "changeText": "▼ 5",
       "badge": "Chrome · Dev",
       "category": "Dev & Software",
-      "title": "크롬 '조직에서 관리' 완벽 해제 가이드: 레지스트리 및 정책 초기화 (Win/Mac)",
-      "desc": "개인 PC 크롬에 나타난 '조직에서 관리' 알림 원인을 chrome://policy로 진단하고, Windows 레지스트리와 macOS 프로파일을 안전하게 초기화하여 악성 확장 프로그램을 삭제하는 완벽 가이드입니다.",
+      "title": "크롬 '조직에서 관리하는 브라우저' 해제·삭제 방법: 뜨는 이유와 정책 초기화",
+      "desc": "크롬에 '조직에서 관리하는 브라우저입니다'가 뜨는 이유를 chrome://policy로 진단하고, Windows 레지스트리(Policies) 정책 삭제와 macOS 프로파일 초기화를 통해 완벽히 해제·제거하는 실전 해결 방법입니다.",
       "image": "/images/chrome_managed_by_organization_removal_guide_thumbnail.jpg",
       "url": "/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide",
       "date": "2026-09-23",
