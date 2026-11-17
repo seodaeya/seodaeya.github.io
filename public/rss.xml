@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 17 Nov 2026 14:05:21 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 14:29:55 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[아동수당 2026·2027 총정리: 지역별 지급액·확대 논의]]></title>
+    <link>https://nardlog.com/posts/20261117-2-child-allowance-2026-2027-expansion-guide/</link>
+    <guid>https://nardlog.com/posts/20261117-2-child-allowance-2026-2027-expansion-guide/</guid>
+    <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 2026년 11월 중순 보도로 관심이 커진 아동수당 확대 이슈 를 정리했습니다. 현재 실제로 지급되는 2026년 확정 기준 과 국회에서 논의 중인 2027년 조기 확대안 을 구분해, 헷갈리는 부분을 한 번에 정리합니다. 3줄 요약 1. 현재(2026년...]]></description>
+  </item>
   <item>
     <title><![CDATA[Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석]]></title>
     <link>https://nardlog.com/posts/20261117-1-redis-insight-mac-install-usage-guide/</link>

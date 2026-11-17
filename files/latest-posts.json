@@ -1,5 +1,11 @@
 [
   {
+    "title": "아동수당 2026·2027 총정리: 지역별 지급액·확대 논의",
+    "category": "Lifestyle & Tech",
+    "file": "posts/20261117-2-child-allowance-2026-2027-expansion-guide.md",
+    "date": "20261117"
+  },
+  {
     "title": "Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석",
     "category": "Dev & Software",
     "file": "posts/20261117-1-redis-insight-mac-install-usage-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261020-1-opencode-free-models-comparison-guide.md",
     "date": "20261020"
-  },
-  {
-    "title": "OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안",
-    "category": "AI & Intelligence",
-    "file": "posts/20261017-1-opencode-muse-spark-free-model-configuration-guide.md",
-    "date": "20261017"
   }
 ]
