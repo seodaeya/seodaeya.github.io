@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Tue, 17 Nov 2026 13:36:14 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 14:05:21 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석]]></title>
+    <link>https://nardlog.com/posts/20261117-1-redis-insight-mac-install-usage-guide/</link>
+    <guid>https://nardlog.com/posts/20261117-1-redis-insight-mac-install-usage-guide/</guid>
+    <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 앞서 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱에서 인메모리 캐싱 아키텍처를 다뤘다면, 이 글은 실제 Redis 내부의 키·TTL·메모리·슬로우 쿼리를 눈으로 확인하고 진단하는 공식 GUI 도구(Redi...]]></description>
+  </item>
   <item>
     <title><![CDATA[Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
     <link>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</link>

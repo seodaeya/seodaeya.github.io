@@ -296,3 +296,8 @@ public class LettuceTuningConfig {
    - 인기 상품 캐시(TTL 1분)가 만료되는 순간 많은 요청이 일시에 DB로 쏟아지는 현상을 방지하기 위해, 만료 시간에 <strong>랜덤 지터(Random Jitter)</strong>를 부여하거나 <strong>Redisson 분산 락</strong>을 활용한 단일 스레드 갱신 구조를 추가 적용할 예정입니다.
 * <strong>Redis 장애 시 Circuit Breaker</strong>:
    - 캐시 서버가 다운되더라도 메인 애플리케이션이 멈추지 않고 안전하게 Fallback 정적 데이터를 반환할 수 있도록 Resilience4j 기반의 서킷 브레이커 연동을 준비하고 있습니다.
+
+---
+
+## 🔗 관련 글
+- [Redis Insight 설치 및 실전 사용법: Mac·Windows 다운로드부터 Slowlog·프로파일링까지](/posts/20261117-1-redis-insight-mac-install-usage-guide/) — 캐시 키 구조, TTL, Slowlog, 메모리 점유율을 GUI로 검증하는 실무 가이드

@@ -1,5 +1,11 @@
 [
   {
+    "title": "Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석",
+    "category": "Dev & Software",
+    "file": "posts/20261117-1-redis-insight-mac-install-usage-guide.md",
+    "date": "20261117"
+  },
+  {
     "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
     "category": "AI & Intelligence",
     "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
@@ -52,11 +58,5 @@
     "category": "AI & Intelligence",
     "file": "posts/20261017-1-opencode-muse-spark-free-model-configuration-guide.md",
     "date": "20261017"
-  },
-  {
-    "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
-    "category": "AI & Intelligence",
-    "file": "posts/20261016-1-ai-model-version-evolution-architecture-guide.md",
-    "date": "20261016"
   }
 ]

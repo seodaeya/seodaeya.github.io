@@ -261,6 +261,20 @@
   ],
   "Dev & Software": [
     {
+      "title": "Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석",
+      "file": "posts/20261117-1-redis-insight-mac-install-usage-guide.md",
+      "tags": [
+        "Redis",
+        "RedisInsight",
+        "Mac",
+        "Database",
+        "GUI",
+        "Caching",
+        "DevOps",
+        "Troubleshooting"
+      ]
+    },
+    {
       "title": "Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것",
       "file": "posts/20261114-1-cloudflare-speed-recommended-settings-static-blog.md",
       "tags": [
