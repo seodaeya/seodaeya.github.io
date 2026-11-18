@@ -484,6 +484,8 @@
       "tags": [
         "PostgreSQL",
         "Database",
+        "psql",
+        "Windows",
         "macOS",
         "Homebrew",
         "Backend"

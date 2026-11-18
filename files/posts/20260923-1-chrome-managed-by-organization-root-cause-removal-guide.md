@@ -234,3 +234,16 @@ sudo rm -rf "/Library/Preferences/com.google.Chrome.plist"
 필요 없는 MS 조직 계정 동기화를 해제하고, 레지스트리 및 Plist 정책 키를 안전하게 소거하는 것만으로도 브라우저의 모든 통제권을 온전히 되찾을 수 있습니다.
 
 내 브라우저의 자유와 개인정보 주권을 지키기 위해, 오늘 안내해 드린 단계별 체크리스트를 통해 깔끔하고 안전한 웹 서핑 환경을 완성해 보시기 바랍니다.
+
+---
+
+## ❓ 9. 자주 묻는 질문 (북마크 · 시스템 가속 · 관리자 권한)
+
+<strong>Q1. "관리자가 북마크를 설정함" 때문에 크롬 북마크 삭제가 안 됩니다.</strong><br />
+`chrome://policy` 화면에서 `ManagedBookmarks` 항목이 보인다면 회사/학교 계정 또는 외부 프로그램이 정책을 주입한 상태입니다. 4\~6단계의 레지스트리(Windows `Policies\Google\Chrome`) 또는 macOS 프로파일·plist를 초기화하면 관리 잠금이 풀려 북마크를 자유롭게 수정·삭제할 수 있습니다.
+
+<strong>Q2. 설정의 "시스템 가속(하드웨어 가속)" 스위치가 잠겨서 바꿀 수 없습니다.</strong><br />
+`chrome://policy`에서 `HardwareAccelerationModeEnabled` 같은 시스템 정책이 강제 적용된 경우입니다. 이 역시 크롬 자체 버그가 아니라 외부 정책 파일 때문이므로, 위 절차대로 정책 키를 제거한 뒤 크롬을 재시작하면 토글이 정상적으로 열립니다.
+
+<strong>Q3. 크롬 아이콘을 우클릭해 '관리자 권한으로 실행'하면 조직 관리가 해제되나요?</strong><br />
+크롬 자체를 관리자 권한으로 실행하는 것만으로는 이미 시스템에 심어진 정책이 지워지지 않습니다. <strong>관리자 권한이 필요한 대상은 크롬이 아니라 레지스트리 삭제 명령을 실행하는 PowerShell 또는 레지스트리 편집기(`regedit`)</strong>입니다. PowerShell을 관리자 권한으로 실행해 `HKLM:\SOFTWARE\Policies\Google` 키를 삭제하고 `gpupdate /force`를 입력해야 근본적으로 해제됩니다.

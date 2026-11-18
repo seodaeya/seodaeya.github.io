@@ -342,3 +342,13 @@ From key: grave_accent_and_tilde (`)  -->  To key: escape
 | <strong>백틱 입력</strong> | <strong>`Option`</strong> + 해당 키 | <strong>`` ` ``</strong> (백틱 기호) | 인라인 코드 작성, 마크다운 ` ``` ` 코드 블록 생성 |
 
 접이식 미니 키보드의 콤팩트한 휴대성을 그대로 누리면서도, 외출 시 겪어야 했던 `₩` 오타 스트레스와 백틱 누락 문제를 완벽하게 해소할 수 있습니다. 동일한 접이식 키보드뿐만 아니라 미니 60% 배열을 사용하는 맥 유저라면 이 설정 하나로 작업 생산성을 극대화해 보시기 바랍니다.
+
+---
+
+## 📶 9. 참고: 크로셀 C-Flip 블루투스 페어링 및 재연결 점검
+
+Karabiner 매핑 전에 블루투스 페어링 자체가 끊기거나 기기 전환이 어긋나는 경우에는 아래 순서로 먼저 점검해 보세요.
+
+1. <strong>macOS 블루투스 목록 초기화 후 재페어링</strong>: `시스템 설정 → Bluetooth`에서 기존에 등록된 `C-Flip Retro` 옆의 `ⓘ` 버튼을 눌러 <strong>이 기기 지우기</strong>를 실행한 뒤, 키보드 전원을 껐다 켜고 페어링 모드로 다시 연결합니다.
+2. <strong>멀티페어링 채널 및 OS 레이아웃 확인</strong>: 멀티페어링을 지원하는 접이식 키보드는 채널 전환 키와 Mac/Windows OS 모드 단축키(제품 동봉 매뉴얼 참조)가 분리되어 있습니다. OS 모드가 Windows로 되어 있으면 Command(⌘)/Option(⌥) 키 위치가 뒤바뀔 수 있으므로 Mac 모드로 맞춘 뒤 Karabiner를 적용하세요.
+3. <strong>재페어링 후 `Modify events` 재확인</strong>: 블루투스 기기를 삭제했다가 다시 연결하면 Karabiner-Elements의 `Devices` 탭에서 <strong>`C-Flip Retro`의 `Modify events` 스위치가 꺼진 상태로 초기화될 수 있으므로</strong> 반드시 다시 켜야 합니다.

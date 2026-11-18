@@ -3,9 +3,16 @@ category: "Dev & Software"
 title: "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)"
 date: "2025-04-27"
 image: "/images/postgresql_guide_thumbnail.jpg"
-tags: ["PostgreSQL", "Database", "macOS", "Homebrew", "Backend"]
-excerpt: "macOS 환경에서 Homebrew를 이용한 PostgreSQL 데이터베이스 설치부터 사용자 계정 생성, pgAdmin 연동 및 보안 설정까지 단계별로 안내합니다."
+tags: ["PostgreSQL", "Database", "psql", "Windows", "macOS", "Homebrew", "Backend"]
+excerpt: "Windows와 macOS 환경에서 PostgreSQL(최신 19 버전 포함) 다운로드·설치부터 관리자 권한 오류 해결, pgAdmin 4 연동, psql 환경 변수(PATH) 등록 및 기본 SQL 설정까지 단계별로 안내합니다."
 ---
+
+> <strong>3줄 요약</strong>
+>
+> 1. <strong>다운로드 및 설치</strong>: 공식 홈페이지(`postgresql.org/download`)에서 Windows는 EDB 인스톨러를, macOS는 Homebrew 또는 인스톨러를 내려받아 설치합니다(2026년 11월 기준 최신 PostgreSQL 19).
+> 2. <strong>Windows 설치 오류 & `psql` 연동</strong>: 설치 중 권한 오류가 나면 <strong>관리자 권한으로 실행</strong>하고, 터미널에서 `psql`을 쓰려면 설치 경로의 `bin` 폴더를 시스템 환경 변수 `Path`에 등록해야 합니다.
+> 3. <strong>초기 보안 설정</strong>: 기본 슈퍼유저(`postgres`) 외에 애플리케이션 전용 일반 사용자와 데이터베이스를 별도로 분리 생성하는 것이 안전합니다.
+
 ## 🐘 PostgreSQL 개요
 
 <strong>PostgreSQL(포스트그레스큐엘)</strong>은 엔터프라이즈급 성능과 신뢰성을 자랑하는 세계에서 가장 진보된 오픈소스 관계형 데이터베이스(RDBMS) 중 하나입니다. 강력한 복잡성 처리 능력, 뛰어난 표준 준수(SQL 표준), 확장 기능(JSON 데이터 처리, GIS 지리 정보 지원 등) 덕분에 스타트업부터 대기업까지 널리 사랑받고 있습니다.
@@ -69,7 +76,7 @@ PostgreSQL의 기본 포트 번호는 <strong>`5432`</strong>입니다. 이미 �
 1. 시작 메뉴에서 '시스템 환경 변수 편집'을 검색하여 엽니다.
 2. `환경 변수` 버튼을 클릭한 뒤, 시스템 변수 목록 중 `Path`를 찾아 편집을 클릭합니다.
 3. `새로 만들기`를 누르고 PostgreSQL이 설치된 경로의 `bin` 폴더 경로를 추가합니다. 
-   *(예: `C:\Program Files\PostgreSQL\버전in`)*
+   *(예: `C:\Program Files\PostgreSQL\19\bin`)*
 4. 확인을 누른 후 모든 명령 프롬프트 창을 새로 엽니다.
 
 ### 터미널 접속 및 기본 SQL 활용
@@ -102,6 +109,8 @@ GRANT ALL PRIVILEGES ON DATABASE my_app_db TO my_app_user;
 
 ## ⚠️ 5단계: 흔히 겪는 설치 및 연결 문제 해결법
 
+* <strong>Windows 설치 관리자 권한 오류 (`Access Denied` · `Unable to write inside TEMP` · 서비스 시작 실패):</strong> 설치 파일(`.exe`)을 더블 클릭하지 말고 <strong>마우스 우클릭 → 관리자 권한으로 실행</strong>으로 시작하세요. 또한 이전 설치 실패 잔여 파일이 `C:\Program Files\PostgreSQL`이나 데이터 폴더에 남아 있거나 백신 실시간 감시가 차단하는 경우 권한 오류가 나므로, 기존 폴더 정리 및 관리자 권한 실행을 함께 확인해야 합니다.
+* <strong>`psql` 명령어를 찾을 수 없음 (`'psql'은(는) 내부 또는 외부 명령...이 아닙니다`):</strong> 4단계의 시스템 환경 변수 `Path`에 `...\PostgreSQL\<버전>\bin` 경로가 빠졌거나, 추가한 뒤 기존 터미널(CMD/PowerShell)을 재시작하지 않아 발생합니다. 새 터미널을 열어 `psql --version`으로 인식 여부를 확인하세요.
 * <strong>포트 충돌 (`Port 5432 is already in use`):</strong> 다른 프로그램이 이미 5432 포트를 점유하고 있는 경우입니다. 설치 중 포트 번호를 `5433` 등으로 변경하여 설치하거나, 작업 관리자에서 기존에 돌고 있는 포트 관련 프로세스(예: Docker 컨테이너 등)를 종료해야 합니다.
 * <strong>접속 인증 오류 (`Password authentication failed`):</strong> 비밀번호가 틀린 경우입니다. pgAdmin이나 `psql` 로그인 시 입력한 패스워드가 설치 단계에서 지정한 슈퍼유저 패스워드와 정확히 일치하는지 확인하세요.
 * <strong>방화벽 및 로컬 접근 문제 (`pg_hba.conf` 설정):</strong> 외부 서버나 컨테이너에서 접근이 안 될 때는 PostgreSQL 설치 폴더 내 `data/pg_hba.conf` 파일 및 `postgresql.conf` 파일에서 외부 접근 허용 IP 목록(`listen_addresses = '*'`)을 수정해 주어야 합니다.

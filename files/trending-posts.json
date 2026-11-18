@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 11월 18일 00:19 KST",
+  "updatedAt": "2026년 11월 18일 21:25 KST",
   "baselineDate": "2026년 11월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -168,7 +168,7 @@
       "badge": "PostgreSQL · Dev",
       "category": "Dev & Software",
       "title": "PostgreSQL 다운로드, 설치 및 초기 설정 총정리 가이드 (Windows/macOS)",
-      "desc": "macOS 환경에서 Homebrew를 이용한 PostgreSQL 데이터베이스 설치부터 사용자 계정 생성, pgAdmin 연동 및 보안 설정까지 단계별로 안내합니다.",
+      "desc": "Windows와 macOS 환경에서 PostgreSQL(최신 19 버전 포함) 다운로드·설치부터 관리자 권한 오류 해결, pgAdmin 4 연동, psql 환경 변수(PATH) 등록 및 기본 SQL 설정까지 단계별로 안내합니다.",
       "image": "/images/postgresql_guide_thumbnail.jpg",
       "url": "/posts/20250427-1-postgresql-install-setup-guide",
       "date": "2025-04-27",
@@ -450,26 +450,26 @@
     {
       "rank": 30,
       "change": "down",
-      "changeText": "▼ 8",
-      "badge": "ELI5 · AI",
-      "category": "AI & Intelligence",
-      "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
-      "desc": "어려운 개념을 5살 아이에게 설명하듯 쉽게 풀어내는 ELI5(Explain Like I'm 5)의 기원과 원리, 파인만 학습법과의 연계, 그리고 AI(ChatGPT·Claude)에서 200% 효과를 내는 4단계 실전 프롬프트 템플릿을 완벽 정리합니다.",
-      "image": "/images/eli5_ai_prompt_feynman_technique_guide_thumbnail.jpg",
-      "url": "/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide",
-      "date": "2026-09-23",
-      "views": null
-    },
-    {
-      "rank": 31,
-      "change": "down",
-      "changeText": "▼ 8",
+      "changeText": "▼ 7",
       "badge": "Chrome · Dev",
       "category": "Dev & Software",
       "title": "크롬 '조직에서 관리하는 브라우저' 해제·삭제 방법: 뜨는 이유와 정책 초기화",
       "desc": "크롬에 '조직에서 관리하는 브라우저입니다'가 뜨는 이유를 chrome://policy로 진단하고, Windows 레지스트리(Policies) 정책 삭제와 macOS 프로파일 초기화를 통해 완벽히 해제·제거하는 실전 해결 방법입니다.",
       "image": "/images/chrome_managed_by_organization_removal_guide_thumbnail.jpg",
       "url": "/posts/20260923-1-chrome-managed-by-organization-root-cause-removal-guide",
+      "date": "2026-09-23",
+      "views": null
+    },
+    {
+      "rank": 31,
+      "change": "down",
+      "changeText": "▼ 9",
+      "badge": "ELI5 · AI",
+      "category": "AI & Intelligence",
+      "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
+      "desc": "어려운 개념을 5살 아이에게 설명하듯 쉽게 풀어내는 ELI5(Explain Like I'm 5)의 기원과 원리, 파인만 학습법과의 연계, 그리고 AI(ChatGPT·Claude)에서 200% 효과를 내는 4단계 실전 프롬프트 템플릿을 완벽 정리합니다.",
+      "image": "/images/eli5_ai_prompt_feynman_technique_guide_thumbnail.jpg",
+      "url": "/posts/20260923-2-eli5-ai-prompt-feynman-technique-guide",
       "date": "2026-09-23",
       "views": null
     },
