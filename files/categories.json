@@ -275,6 +275,20 @@
   ],
   "Dev & Software": [
     {
+      "title": "Java4Shell(CVE-2026-114938) 영향 버전·패치 총정리",
+      "file": "posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide.md",
+      "tags": [
+        "Java",
+        "Java4Shell",
+        "CVE-2026-114938",
+        "Security",
+        "OpenJDK",
+        "KISA",
+        "SpringBoot",
+        "Backend"
+      ]
+    },
+    {
       "title": "Redis Insight 완전 활용: Mac 설치·Slowlog·메모리 분석",
       "file": "posts/20261117-1-redis-insight-mac-install-usage-guide.md",
       "tags": [
@@ -520,6 +534,19 @@
     }
   ],
   "Lifestyle & Tech": [
+    {
+      "title": "GTA 6 출시 당일 체크리스트: 0시 해금·가격·212GB",
+      "file": "posts/20261118-2-gta6-launch-day-checklist-price-preload-guide.md",
+      "tags": [
+        "GTA6",
+        "GTA6출시",
+        "GTA6가격",
+        "PS5",
+        "XboxSeriesX",
+        "사전다운로드",
+        "게임가이드"
+      ]
+    },
     {
       "title": "아동수당 2026·2027 총정리: 지역별 지급액·확대 논의",
       "file": "posts/20261117-2-child-allowance-2026-2027-expansion-guide.md",

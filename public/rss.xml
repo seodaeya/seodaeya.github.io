@@ -5,8 +5,22 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 18 Nov 2026 12:25:11 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 13:08:28 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[GTA 6 출시 당일 체크리스트: 0시 해금·가격·212GB]]></title>
+    <link>https://nardlog.com/posts/20261118-2-gta6-launch-day-checklist-price-preload-guide/</link>
+    <guid>https://nardlog.com/posts/20261118-2-gta6-launch-day-checklist-price-preload-guide/</guid>
+    <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : GTA 6(그랜드 테프트 오토 VI)가 2026년 11월 19일 0시(한국 시간) 출시됩니다. 출시 하루 전인 11월 18일 리뷰가 풀렸고, 사전 다운로드는 이미 시작됐습니다. 이 글은 "지금 사도 되는지" 와 "출시 당일 무엇을 확인해야 하는지" 만...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Java4Shell(CVE-2026-114938) 영향 버전·패치 총정리]]></title>
+    <link>https://nardlog.com/posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide/</link>
+    <guid>https://nardlog.com/posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide/</guid>
+    <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 2026년 11월 17일(현지 시각) Oracle 11월 정기 보안 패치(CSPU), 11월 18일 KISA 보호나라 보안 공지, CISA 권고로 이어진 Java4Shell(CVE 2026 114938) 의 발생 조건, 영향 버전, 패치 전 즉시 적용...]]></description>
+  </item>
   <item>
     <title><![CDATA[AI 에이전트 브라우저 비교: ChatGPT · Claude · Gemini]]></title>
     <link>https://nardlog.com/posts/20261117-3-ai-agent-browser-comparison-chatgpt-claude-gemini/</link>
