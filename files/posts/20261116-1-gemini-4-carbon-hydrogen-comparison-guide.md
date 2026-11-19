@@ -1,6 +1,6 @@
 ---
 category: "AI & Intelligence"
-title: "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택"
+title: "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택"
 date: "2026-11-16"
 image: "/images/gemini_4_carbon_hydrogen_comparison_thumbnail.jpg"
 tags: ["Gemini", "Gemini 4", "Carbon", "Neon", "Hydrogen", "Argon", "Google AI", "LLM", "Orchestrator", "CodingAgent"]
@@ -142,6 +142,7 @@ flowchart LR
 
 > <strong>참고 자료</strong>
 >
+> - [Google — Introducing Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/)
 > - [Google — Gemini 4 Carbon is now available](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/)
 > - [Google — Introducing Gemini 4 Hydrogen](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/)
 > - [Google — Build with Gemini 4 Hydrogen](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/)

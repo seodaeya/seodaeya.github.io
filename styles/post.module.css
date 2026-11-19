@@ -40,7 +40,8 @@
   margin-bottom: 20px;
   line-height: 1.2;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .metaInfo {

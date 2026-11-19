@@ -3,15 +3,15 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
@@ -26,7 +26,19 @@
     <lastmod>2026-11-10</lastmod>
   </url>
   <url>
+    <loc>https://nardlog.com/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide/</loc>
+    <lastmod>2026-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide/</loc>
+    <lastmod>2026-11-20</lastmod>
+  </url>
+  <url>
     <loc>https://nardlog.com/posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026/</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</loc>
     <lastmod>2026-11-19</lastmod>
   </url>
   <url>
@@ -59,10 +71,6 @@
   </url>
   <url>
     <loc>https://nardlog.com/posts/20261117-1-redis-insight-mac-install-usage-guide/</loc>
-    <lastmod>2026-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</loc>
     <lastmod>2026-11-17</lastmod>
   </url>
   <url>

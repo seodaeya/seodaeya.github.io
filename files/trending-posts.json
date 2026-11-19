@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026년 11월 19일 23:38 KST",
+  "updatedAt": "2026년 11월 20일 01:06 KST",
   "baselineDate": "2026년 11월 1일 기준",
   "isRealGA": true,
   "posts": [
@@ -204,6 +204,19 @@
       "rank": 11,
       "change": "new",
       "changeText": "NEW",
+      "badge": "NGINX · Dev",
+      "category": "Dev & Software",
+      "title": "NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법",
+      "desc": "2026년 11월 공개된 NGINX 치명적 보안 취약점 'NGINX2Root'(CVE-2026-123007 등)의 원인과 영향 버전, KISA 권고 패치 버전(1.30.7 · 1.31.9) 및 임시 HTTP/2 비활성화 대응 방법을 정리합니다.",
+      "image": "/images/nginx2root_security_advisory_2026_thumbnail.jpg",
+      "url": "/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide",
+      "date": "2026-11-20",
+      "views": null
+    },
+    {
+      "rank": 12,
+      "change": "new",
+      "changeText": "NEW",
       "badge": "Java · Dev",
       "category": "Dev & Software",
       "title": "자바 취약점 Java4Shell, 영향 확인과 해결 방법",
@@ -214,7 +227,7 @@
       "views": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "change": "new",
       "changeText": "NEW",
       "badge": "GTA6 · Lifestyle",
@@ -227,7 +240,7 @@
       "views": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "change": "new",
       "changeText": "NEW",
       "badge": "AIBrowser · AI",
@@ -240,7 +253,7 @@
       "views": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "change": "new",
       "changeText": "NEW",
       "badge": "Redis · Dev",
@@ -253,12 +266,12 @@
       "views": null
     },
     {
-      "rank": 15,
+      "rank": 16,
       "change": "new",
       "changeText": "NEW",
       "badge": "Gemini · AI",
       "category": "AI & Intelligence",
-      "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택",
+      "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택",
       "desc": "2026년 11월 연달아 출시된 Gemini 4 Carbon·Hydrogen·Neon을 Argon까지 4종 비교합니다. 공식 가격·속도(tok/s)·벤치마크, 무료 티어와 캐시 단가, Orchestrator(Neon/Argon) 실전 선택 기준까지 정리했습니다.",
       "image": "/images/gemini_4_carbon_hydrogen_comparison_thumbnail.jpg",
       "url": "/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide",
@@ -266,46 +279,7 @@
       "views": null
     },
     {
-      "rank": 16,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "Cloudflare · Dev",
-      "category": "Dev & Software",
-      "title": "Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것",
-      "desc": "Cloudflare의 Speed 추천 설정을 적용한 뒤, 정적 블로그에서 실제로 달라진 항목과 그대로인 항목을 헤더로 확인했습니다. PageSpeed가 80점대와 100점을 오가는 이유, 캐시가 점수에 미치는 영향, RUM·0-RTT의 숨은 비용까지 정리합니다.",
-      "image": "/images/cloudflare_speed_recommended_settings_thumbnail.jpg",
-      "url": "/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog",
-      "date": "2026-11-14",
-      "views": null
-    },
-    {
       "rank": 17,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "아동수당 · Lifestyle",
-      "category": "Lifestyle & Tech",
-      "title": "아동수당 2026·2027 총정리: 지역별 지급액·확대 논의",
-      "desc": "2026년 4월 24일부터 만 9세 미만으로 확대된 아동수당. 수도권 10만 원부터 인구감소 특별지역 13만 원까지 지역별 지급액과 2017년생 소급·특례, 매월 25일 지급일, 60일 이내 신청해야 출생월부터 받는 규칙, 2027년 만 13세 조기 확대 논의까지 정리합니다.",
-      "image": "/images/child_allowance_2026_2027_expansion_thumbnail.jpg",
-      "url": "/posts/20261117-2-child-allowance-2026-2027-expansion-guide",
-      "date": "2026-11-17",
-      "views": null
-    },
-    {
-      "rank": 18,
-      "change": "new",
-      "changeText": "NEW",
-      "badge": "Cloudflare · Dev",
-      "category": "Dev & Software",
-      "title": "Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드",
-      "desc": "GitHub Pages 블로그에 Cloudflare 프록시를 적용해 정적 자산 캐시를 10분에서 1년으로 늘리고, Full (strict) SSL과 HTTP/3, 자동 압축까지 점검한 실전 기록입니다. 캐시 규칙의 안전한 범위와 보안 함정, 배포 후 검증 명령을 함께 정리합니다.",
-      "image": "/images/cloudflare_web_performance_cache_ssl_guide_thumbnail.jpg",
-      "url": "/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide",
-      "date": "2026-11-11",
-      "views": null
-    },
-    {
-      "rank": 19,
       "change": "new",
       "changeText": "NEW",
       "badge": "사이버보안 · Lifestyle",
@@ -318,7 +292,59 @@
       "views": null
     },
     {
+      "rank": 18,
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "SEO · Dev",
+      "category": "Dev & Software",
+      "title": "도메인 변경 후 서치콘솔 색인·탐색경로 급락 해결: 301과 주소 변경 실전",
+      "desc": "GitHub Pages에서 커스텀 도메인으로 이전한 뒤 서치콘솔 탐색경로 유효 항목이 급락하고 '크롤링됨 - 현재 색인이 생성되지 않음'이 쌓일 때, 301 리디렉션과 Googlebot 검증, 주소 변경 도구로 해결하는 과정을 정리합니다.",
+      "image": "/images/custom_domain_migration_gsc_indexing_thumbnail.jpg",
+      "url": "/posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide",
+      "date": "2026-11-20",
+      "views": null
+    },
+    {
+      "rank": 19,
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "Cloudflare · Dev",
+      "category": "Dev & Software",
+      "title": "Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것",
+      "desc": "Cloudflare의 Speed 추천 설정을 적용한 뒤, 정적 블로그에서 실제로 달라진 항목과 그대로인 항목을 헤더로 확인했습니다. PageSpeed가 80점대와 100점을 오가는 이유, 캐시가 점수에 미치는 영향, RUM·0-RTT의 숨은 비용까지 정리합니다.",
+      "image": "/images/cloudflare_speed_recommended_settings_thumbnail.jpg",
+      "url": "/posts/20261114-1-cloudflare-speed-recommended-settings-static-blog",
+      "date": "2026-11-14",
+      "views": null
+    },
+    {
       "rank": 20,
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "아동수당 · Lifestyle",
+      "category": "Lifestyle & Tech",
+      "title": "아동수당 2026·2027 총정리: 지역별 지급액·확대 논의",
+      "desc": "2026년 4월 24일부터 만 9세 미만으로 확대된 아동수당. 수도권 10만 원부터 인구감소 특별지역 13만 원까지 지역별 지급액과 2017년생 소급·특례, 매월 25일 지급일, 60일 이내 신청해야 출생월부터 받는 규칙, 2027년 만 13세 조기 확대 논의까지 정리합니다.",
+      "image": "/images/child_allowance_2026_2027_expansion_thumbnail.jpg",
+      "url": "/posts/20261117-2-child-allowance-2026-2027-expansion-guide",
+      "date": "2026-11-17",
+      "views": null
+    },
+    {
+      "rank": 21,
+      "change": "new",
+      "changeText": "NEW",
+      "badge": "Cloudflare · Dev",
+      "category": "Dev & Software",
+      "title": "Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드",
+      "desc": "GitHub Pages 블로그에 Cloudflare 프록시를 적용해 정적 자산 캐시를 10분에서 1년으로 늘리고, Full (strict) SSL과 HTTP/3, 자동 압축까지 점검한 실전 기록입니다. 캐시 규칙의 안전한 범위와 보안 함정, 배포 후 검증 명령을 함께 정리합니다.",
+      "image": "/images/cloudflare_web_performance_cache_ssl_guide_thumbnail.jpg",
+      "url": "/posts/20261111-1-cloudflare-web-performance-cache-ssl-guide",
+      "date": "2026-11-11",
+      "views": null
+    },
+    {
+      "rank": 22,
       "change": "new",
       "changeText": "NEW",
       "badge": "FDE · AI",
@@ -331,7 +357,7 @@
       "views": null
     },
     {
-      "rank": 21,
+      "rank": 23,
       "change": "new",
       "changeText": "NEW",
       "badge": "Investment · Lifestyle",
@@ -344,9 +370,9 @@
       "views": null
     },
     {
-      "rank": 22,
+      "rank": 24,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Performance · Dev",
       "category": "Dev & Software",
       "title": "PageSpeed 57점, LCP를 막던 웹폰트 @import와 서드파티 크리티컬 패스 해부",
@@ -357,9 +383,9 @@
       "views": null
     },
     {
-      "rank": 23,
+      "rank": 25,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "FamilyPlanner · AI",
       "category": "AI & Intelligence",
       "title": "가족 일정 관리 서비스와 구글 캘린더 API 연동 완벽 가이드",
@@ -370,9 +396,9 @@
       "views": null
     },
     {
-      "rank": 24,
+      "rank": 26,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "OpenCode · AI",
       "category": "AI & Intelligence",
       "title": "OpenCode 무료 모델 9종 장단점: 용도별 선택 가이드",
@@ -383,9 +409,9 @@
       "views": null
     },
     {
-      "rank": 25,
+      "rank": 27,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "OpenCode · AI",
       "category": "AI & Intelligence",
       "title": "OpenCode Muse Spark 1.3 무료 종료: 과금 함정과 대안",
@@ -396,9 +422,9 @@
       "views": null
     },
     {
-      "rank": 26,
+      "rank": 28,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "AIModel · AI",
       "category": "AI & Intelligence",
       "title": "AI 모델 버전별 진화 핵심 분석: 아키텍처부터 추론·에이전트까지",
@@ -409,9 +435,9 @@
       "views": null
     },
     {
-      "rank": 27,
+      "rank": 29,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Gemini · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격",
@@ -422,9 +448,9 @@
       "views": null
     },
     {
-      "rank": 28,
+      "rank": 30,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "REA · AI",
       "category": "AI & Intelligence",
       "title": "코딩 에이전트로 리버스엔지니어링: REA 설치부터 실전까지",
@@ -435,9 +461,9 @@
       "views": null
     },
     {
-      "rank": 29,
+      "rank": 31,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Parenting · Lifestyle",
       "category": "Lifestyle & Tech",
       "title": "아둥바둥 살지 않는 아이로 키우는 법: 여유로운 교육 5원칙",
@@ -448,9 +474,9 @@
       "views": null
     },
     {
-      "rank": 30,
+      "rank": 32,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "OpenCode · AI",
       "category": "AI & Intelligence",
       "title": "OpenCode 무료 활용법: Muse Spark 설치부터 실전까지",
@@ -461,9 +487,9 @@
       "views": null
     },
     {
-      "rank": 31,
+      "rank": 33,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Aside · AI",
       "category": "AI & Intelligence",
       "title": "AI 브라우저 Aside 설치법: Mac 다운로드부터 실전까지",
@@ -474,9 +500,9 @@
       "views": null
     },
     {
-      "rank": 32,
+      "rank": 34,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Crocell · Hardware",
       "category": "Hardware & DIY",
       "title": "크로셀 C-Flip 접이식 키보드 Esc 매핑 해결기: ₩ 탈출부터 백틱(`)·물결 보존까지 (macOS)",
@@ -487,9 +513,9 @@
       "views": null
     },
     {
-      "rank": 33,
+      "rank": 35,
       "change": "down",
-      "changeText": "▼ 10",
+      "changeText": "▼ 12",
       "badge": "Chrome · Dev",
       "category": "Dev & Software",
       "title": "크롬 '조직에서 관리하는 브라우저' 해제·삭제 방법: 뜨는 이유와 정책 초기화",
@@ -500,9 +526,9 @@
       "views": null
     },
     {
-      "rank": 34,
+      "rank": 36,
       "change": "down",
-      "changeText": "▼ 12",
+      "changeText": "▼ 14",
       "badge": "ELI5 · AI",
       "category": "AI & Intelligence",
       "title": "5살 아이에게 설명하듯: 요즘 핫한 ELI5 프롬프트와 파인만 학습법 완전 정복",
@@ -513,9 +539,9 @@
       "views": null
     },
     {
-      "rank": 35,
+      "rank": 37,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Jack Dorsey · AI",
       "category": "AI & Intelligence",
       "title": "\"중간 관리자는 사라진다\": 잭 도시와 블록의 AI 조직 모델 분석",
@@ -526,9 +552,9 @@
       "views": null
     },
     {
-      "rank": 36,
+      "rank": 38,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "GitHub Actions · Dev",
       "category": "Dev & Software",
       "title": "DB 없이 매일 자정 순위 갱신: GitHub Actions 크론 구축기",
@@ -539,9 +565,9 @@
       "views": null
     },
     {
-      "rank": 37,
+      "rank": 39,
       "change": "down",
-      "changeText": "▼ 5",
+      "changeText": "▼ 7",
       "badge": "Giscus · Dev",
       "category": "Dev & Software",
       "title": "Giscus 댓글 오류 해결: discussion 생성 실패 탈출기",
@@ -552,9 +578,9 @@
       "views": null
     },
     {
-      "rank": 38,
+      "rank": 40,
       "change": "down",
-      "changeText": "▼ 12",
+      "changeText": "▼ 14",
       "badge": "GitHub Pages · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 쿠팡 봇 뚫는 서버리스 장바구니 만들기",
@@ -565,9 +591,9 @@
       "views": null
     },
     {
-      "rank": 39,
+      "rank": 41,
       "change": "down",
-      "changeText": "▼ 8",
+      "changeText": "▼ 10",
       "badge": "Gemini 3.7 · AI",
       "category": "AI & Intelligence",
       "title": "구글 Gemini 3.7 Flash 완전 분석: 성능, 하이브리드 추론 및 비교",
@@ -578,9 +604,9 @@
       "views": null
     },
     {
-      "rank": 40,
+      "rank": 42,
       "change": "down",
-      "changeText": "▼ 13",
+      "changeText": "▼ 15",
       "badge": "SEO · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션 완벽 가이드",
@@ -591,9 +617,9 @@
       "views": null
     },
     {
-      "rank": 41,
+      "rank": 43,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Agentic AI · AI",
       "category": "AI & Intelligence",
       "title": "메타 테크리드가 밝히는 '진짜 AX'와 에이전틱 워크플로의 본질",
@@ -604,9 +630,9 @@
       "views": null
     },
     {
-      "rank": 42,
+      "rank": 44,
       "change": "down",
-      "changeText": "▼ 14",
+      "changeText": "▼ 16",
       "badge": "Actor Model · AI",
       "category": "AI & Intelligence",
       "title": "AI 시대 지식을 무기로 바꾸는 법: ACTOR 프레임워크 5단계 실천 가이드 (Part 2)",
@@ -617,9 +643,9 @@
       "views": null
     },
     {
-      "rank": 43,
+      "rank": 45,
       "change": "down",
-      "changeText": "▼ 10",
+      "changeText": "▼ 12",
       "badge": "Gemini CLI · AI",
       "category": "AI & Intelligence",
       "title": "Gemini CLI 설치 가이드: macOS 및 Windows 환경별 설정법",
@@ -630,9 +656,9 @@
       "views": null
     },
     {
-      "rank": 44,
+      "rank": 46,
       "change": "down",
-      "changeText": "▼ 15",
+      "changeText": "▼ 17",
       "badge": "AI Framework · AI",
       "category": "AI & Intelligence",
       "title": "산딥 스와디아가 밝히는 AI 시대 1인 대학 구축법: ALTER 프레임워크 (Part 1)",
@@ -643,9 +669,9 @@
       "views": null
     },
     {
-      "rank": 45,
+      "rank": 47,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "AdSense · Dev",
       "category": "Dev & Software",
       "title": "GitHub Pages 애드센스 거절 원인과 커스텀 도메인 승인 전략",
@@ -656,9 +682,9 @@
       "views": null
     },
     {
-      "rank": 46,
+      "rank": 48,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "AI Ethics · AI",
       "category": "AI & Intelligence",
       "title": "AI 결정 시대에 인간에게 남은 질문: 휴먼 인 더 루프",
@@ -669,9 +695,9 @@
       "views": null
     },
     {
-      "rank": 47,
+      "rank": 49,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "SEO · AI",
       "category": "AI & Intelligence",
       "title": "SEO와 GEO 완벽 비교: 생성형 AI 검색 시대에 블로그를 상위 노출시키는 최강 전략",
@@ -682,9 +708,9 @@
       "views": null
     },
     {
-      "rank": 48,
+      "rank": 50,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Google Search Console · Dev",
       "category": "Dev & Software",
       "title": "구글 서치콘솔 사이트맵 마지막으로 읽은 날짜 고정 및 수집 오류 해결법",
@@ -695,9 +721,9 @@
       "views": null
     },
     {
-      "rank": 49,
+      "rank": 51,
       "change": "down",
-      "changeText": "▼ 11",
+      "changeText": "▼ 13",
       "badge": "Kimi · AI",
       "category": "AI & Intelligence",
       "title": "중국 문샷 AI Kimi 3(K3) 공개: 2.8조 파라미터 기술 스펙 분석",

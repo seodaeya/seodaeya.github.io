@@ -15,7 +15,7 @@
       ]
     },
     {
-      "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택",
+      "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택",
       "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
       "tags": [
         "Gemini",
@@ -275,6 +275,32 @@
     }
   ],
   "Dev & Software": [
+    {
+      "title": "NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법",
+      "file": "posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide.md",
+      "tags": [
+        "NGINX",
+        "NGINX2Root",
+        "보안취약점",
+        "CVE-2026-123007",
+        "HTTP2",
+        "KISA",
+        "서버보안"
+      ]
+    },
+    {
+      "title": "도메인 변경 후 서치콘솔 색인·탐색경로 급락 해결: 301과 주소 변경 실전",
+      "file": "posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide.md",
+      "tags": [
+        "SEO",
+        "GoogleSearchConsole",
+        "DomainMigration",
+        "301Redirect",
+        "GitHubPages",
+        "Cloudflare",
+        "Breadcrumbs"
+      ]
+    },
     {
       "title": "자바 취약점 Java4Shell, 영향 확인과 해결 방법",
       "file": "posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide.md",

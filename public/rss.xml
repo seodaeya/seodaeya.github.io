@@ -5,8 +5,22 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 19 Nov 2026 14:38:04 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 16:06:54 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법]]></title>
+    <link>https://nardlog.com/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide/</link>
+    <guid>https://nardlog.com/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 2026년 11월 18일(현지 시간) F5/NGINX가 보안 패치를 배포했고, 국내 보안 기업 티오리(Theori)의 AI 기반 취약점 탐지 플랫폼 '진트(Xint)'가 NGINX RCE 취약점 5종과 이를 호스트 root 로 연결하는 리눅스 커널 L...]]></description>
+  </item>
+  <item>
+    <title><![CDATA[도메인 변경 후 서치콘솔 색인·탐색경로 급락 해결: 301과 주소 변경 실전]]></title>
+    <link>https://nardlog.com/posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide/</link>
+    <guid>https://nardlog.com/posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 앞서 GitHub Pages 블로그 URL 슬러그 개편과 SEO 리디렉션과 Cloudflare 웹 성능 설정에 이어, 실제 이 블로그를 seodaeya.github.io 에서 nardlog.com 으로 이전한 직후 겪은 Google Search Con...]]></description>
+  </item>
   <item>
     <title><![CDATA[미국 사이버 공격 공포의 진실: 11월 연쇄 장애와 실제 보안 이슈 4가지]]></title>
     <link>https://nardlog.com/posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026/</link>
@@ -50,7 +64,7 @@
     <description><![CDATA[이 글의 위치 : 앞서 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱에서 인메모리 캐싱 아키텍처를 다뤘다면, 이 글은 실제 Redis 내부의 키·TTL·메모리·슬로우 쿼리를 눈으로 확인하고 진단하는 공식 GUI 도구(Redi...]]></description>
   </item>
   <item>
-    <title><![CDATA[Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
+    <title><![CDATA[Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택]]></title>
     <link>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</link>
     <guid>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</guid>
     <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>

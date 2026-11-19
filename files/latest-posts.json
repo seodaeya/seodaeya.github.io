@@ -1,5 +1,17 @@
 [
   {
+    "title": "NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법",
+    "category": "Dev & Software",
+    "file": "posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide.md",
+    "date": "20261120"
+  },
+  {
+    "title": "도메인 변경 후 서치콘솔 색인·탐색경로 급락 해결: 301과 주소 변경 실전",
+    "category": "Dev & Software",
+    "file": "posts/20261120-1-custom-domain-migration-gsc-indexing-breadcrumbs-guide.md",
+    "date": "20261120"
+  },
+  {
     "title": "미국 사이버 공격 공포의 진실: 11월 연쇄 장애와 실제 보안 이슈 4가지",
     "category": "Lifestyle & Tech",
     "file": "posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026.md",
@@ -36,7 +48,7 @@
     "date": "20261117"
   },
   {
-    "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택",
+    "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택",
     "category": "AI & Intelligence",
     "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
     "date": "20261116"
@@ -46,17 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20261114-1-cloudflare-speed-recommended-settings-static-blog.md",
     "date": "20261114"
-  },
-  {
-    "title": "Cloudflare 웹 성능·보안 설정: 캐시·SSL·압축 실전 가이드",
-    "category": "Dev & Software",
-    "file": "posts/20261111-1-cloudflare-web-performance-cache-ssl-guide.md",
-    "date": "20261111"
-  },
-  {
-    "title": "\"주가 상승이 아니라 화폐 폭락\" 40년 인플레이션 생존 투자법",
-    "category": "Lifestyle & Tech",
-    "file": "posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide.md",
-    "date": "20261110"
   }
 ]
