@@ -63,7 +63,8 @@ export default function About() {
             <span>🌱</span> 왜 '여전히, 나는 사람이다.'인가요?
           </h2>
           <p style={{ marginBottom: '1rem' }}>
-            이 블로그의 글과 코드는 인공지능(AI)을 초안 파트너로 활용하되, 모든 내용은 운영자가 직접 실행·검증하고 최종 책임을 지고 발행합니다.
+            이 블로그의 글은 운영자가 직접 코드·도구를 실행해 확인하는 <strong>실습·실측형</strong>과 공식 문서·보안 권고·보도를 교차 확인해 정리하는 <strong>자료 분석형</strong>으로 구분해 발행합니다.
+            인공지능(AI)을 리서치와 초안 파트너로 활용하되, 모든 내용은 운영자가 직접 검증하고 최종 책임을 지고 발행합니다.
             최초의 호기심, 시행착오를 겪으며 느끼는 당혹감, 그리고 마침내 문제를 해결했을 때 찾아오는 순수한 기쁨은 모두 <strong>한 사람의 심장에서 시작</strong>됩니다.
           </p>
           <p style={{ marginBottom: '1rem' }}>
@@ -102,7 +103,7 @@ export default function About() {
               <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🏠</div>
               <h3 style={{ fontSize: '1.05rem', fontWeight: '700', margin: '0 0 8px 0', color: 'var(--accent-light)' }}>사랑하는 가족·일상과 함께</h3>
               <p style={{ fontSize: '0.9rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                세 아이와 함께 웃고 자라며, 가족이 타는 차량과 가전을 직접 고치고 반려 도마뱀 '봄이'를 돌보며 손끝으로 만지는 지극히 현실적인 온기를 품습니다.
+                세 아이와 함께 웃고 자라며, 가족이 타는 차량과 가전을 직접 고치고 반려 도마뱀 '봄이'를 돌보는 현실적인 온기를 텍스트와 유튜브 영상 아카이브로 기록합니다.
               </p>
             </div>
           </div>

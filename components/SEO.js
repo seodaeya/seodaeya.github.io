@@ -41,11 +41,11 @@ export default function SEO({
   // Core page dedicated 135~155 char descriptions (preserves git history of static page files)
   const coreDescriptions = {
     [`${SITE_URL}/`]:
-      '인공지능(AI) 트렌드와 소프트웨어 아키텍처 분석부터 손끝의 일상까지, 직접 겪고 기록하는 테크 블로그입니다. 실무 백엔드 개발 트러블슈팅, 최신 LLM·코딩 에이전트 가이드, IT 기기 리뷰와 생활 밀착형 DIY 노하우를 깊이 있게 나눕니다.',
+      '인공지능(AI) 트렌드와 소프트웨어·보안 분석부터 실전 트러블슈팅과 일상의 기록까지, 직접 검증하고 정리하는 테크 블로그입니다. 백엔드 개발, 최신 LLM·코딩 에이전트 가이드, 생활 정보와 유튜브 DIY 영상 아카이브를 나눕니다.',
     [`${SITE_URL}/categories/`]:
-      '전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다. AI & Intelligence, 개발 트러블슈팅, 클라우드 인프라, IT 기기 리뷰, DIY 가이드 등 관심 분야별 콘텐츠를 빠르게 탐색해 보세요.',
+      '전체 카테고리별 기술 아티클 및 유튜브 영상을 한눈에 분류하여 확인하실 수 있습니다. AI & Intelligence, Dev & Software, Lifestyle & Tech, Hardware & DIY 및 영상 아카이브를 빠르게 탐색해 보세요.',
     [`${SITE_URL}/ranking/`]:
-      '매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 Google Analytics 4(GA4) 실시간 페이지뷰 변화를 감지하여 매일 자정 자동 갱신하는 월간 인기 아티클 종합 순위표(Monthly Leaderboard)입니다.',
+      '매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 Google Analytics 4(GA4) 실시간 페이지뷰 변화를 감지하여 매일 자정 무렵 자동 갱신하는 월간 인기 아티클 종합 순위표(Monthly Leaderboard)입니다.',
     [`${SITE_URL}/cart/`]:
       '쿠팡, 네이버 스마트스토어, 알리익스프레스 등 여러 온라인 쇼핑몰의 상품 링크를 한곳에 모아 가격과 이미지를 비교하고 카테고리별로 깔끔하게 관리하는 서버리스 기반 스마트 만능 장바구니 실험실 웹 서비스입니다.',
     [`${SITE_URL}/word-train/`]:
@@ -187,11 +187,8 @@ export default function SEO({
       <meta name="language" content="ko" />
       <title>{pageTitle}</title>
       <meta name="description" content={safeDescription} />
-      <meta name="keywords" content={keywords} />
       <meta name="thumbnail" content={ogImage} />
       <meta name="author" content="NaRD" />
-      <meta name="distribution" content="global" />
-      <meta name="rating" content="general" />
 
       {/* Naver Search Advisor & Google Search Console Verification */}
       <meta name="naver-site-verification" content="f3abee93374439e6ed07e7e6a5be7c40c4547117" />
@@ -261,18 +258,10 @@ export default function SEO({
       <meta name="DC.Language" content="ko" />
       <meta name="DC.Identifier" content={canonicalUrl} />
 
-      {/* SEO/AI Crawler Directives (noindex pages opt out of indexing) */}
+      {/* SEO/Crawler Directives (noindex pages opt out of indexing) */}
       <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
       <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
-      <meta name="duckduckbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="slurp" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="yandex" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      {/* Explicit instructions for AI Search Engines & LLM agents */}
-      <meta name="ai-crawlers" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="gptbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="anthropic-crawler" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="perplexitybot" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
       {/* Canonical Link & RSS Auto-Discovery */}
       <link rel="canonical" href={canonicalUrl} />
@@ -293,15 +282,24 @@ export default function SEO({
       <meta property="og:description" content={safeDescription} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:alt" content={pageTitle} />
       <meta property="og:site_name" content="여전히, 나는 사람이다." />
       <meta property="og:locale" content="ko_KR" />
+      {type === 'article' && date && (
+        <meta property="article:published_time" content={new Date(date).toISOString()} />
+      )}
+      {type === 'article' && (dateModified || date) && (
+        <meta property="article:modified_time" content={new Date(dateModified || date).toISOString()} />
+      )}
+      {type === 'article' && category && (
+        <meta property="article:section" content={category} />
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={safeDescription} />
       <meta name="twitter:image" content={ogImage} />
-      <meta name="twitter:creator" content="@Na.R.D." />
 
       {/* Favicon & Theme Color */}
       <meta name="theme-color" content="#0f172a" />

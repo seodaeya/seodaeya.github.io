@@ -21,8 +21,9 @@ export default function Privacy() {
           본 블로그는 사이트 기능 제공, 방문 분석 및 광고 서빙을 위해 구글(Google) 및 마이크로소프트(Microsoft) 등 제3자 서비스 엔진을 연동하고 있습니다. 이 과정에서 브라우저의 '쿠키(Cookie)' 기술을 통해 비식별 정보가 자동으로 처리될 수 있습니다.
         </p>
         <ul style={{ marginLeft: '1.5rem', marginBottom: '1rem' }}>
-          <li><strong>Google AdSense (애드센스):</strong> Google을 포함한 타사 판매자는 쿠키를 사용하여 방문자의 이전 방문 기록을 바탕으로 맞춤형 광고를 게재합니다. 방문자는 <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Google 광고 설정</a>에서 맞춤설정 광고 수신을 거부할 수 있습니다.</li>
+          <li><strong>Google AdSense (애드센스):</strong> Google을 포함한 타사 판매자는 쿠키를 사용하여 방문자의 이전 방문 기록(웹사이트 행태정보)을 바탕으로 맞춤형 광고를 게재합니다. 방문자는 <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Google 광고 설정</a>이나 <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Digital Advertising Alliance</a>에서 맞춤설정 광고 수신을 거부할 수 있습니다.</li>
           <li><strong>Microsoft Clarity / Google Analytics:</strong> 웹사이트 이용 패턴 분석 및 사용자 경험 개선을 위해 익명의 사용 행태 로그를 자동 수집합니다.</li>
+          <li><strong>Cloudflare (네트워크 프록시 · 보안):</strong> 전송 보안(TLS) 및 DDoS·봇 방어, 캐싱 처리를 위해 요청 헤더·접속 IP 등 최소한의 네트워크 메타데이터가 Cloudflare 에지 서버를 거쳐 일시 처리될 수 있습니다.</li>
           <li><strong>Giscus (댓글 기능):</strong> GitHub API 기반으로 운영되며, 댓글 작성 시 사용자의 GitHub 로그인 세션이 이용됩니다. 본 블로그는 별도의 댓글 데이터베이스를 운영하지 않습니다.</li>
         </ul>
 
@@ -45,9 +46,12 @@ export default function Privacy() {
           본 서비스의 구글 API 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Google API Services User Data Policy</a>를 따르며, Limited Use 요구사항을 포함합니다.
         </p>
 
-        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>3. 쿠키 설치 및 거부 방법</h2>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>3. 보유·이용 기간, 정보주체 권리 및 쿠키 거부 방법</h2>
         <p style={{ marginBottom: '1rem' }}>
-          방문자는 웹브라우저 옵션 설정을 통해 쿠키 허용 수준을 직접 제어하거나 거부할 수 있습니다. (Chrome 기준: 설정 &gt; 개인정보 보호 및 보안 &gt; 서드파티 쿠키 차단 설정)
+          본 블로그는 회원 DB를 운영하지 않으므로 운영자 서버에 방문자 개인정보를 보유하지 않습니다. 북마크·플래너·글꼴 설정 등은 방문자 브라우저(<code>localStorage</code>)에만 저장되며, 방문자는 브라우저 저장소 삭제 또는 서비스 내 초기화 버튼으로 언제든지 직접 삭제할 수 있습니다.
+        </p>
+        <p style={{ marginBottom: '1rem' }}>
+          방문자는 웹브라우저 옵션 설정을 통해 쿠키 허용 수준을 직접 제어하거나 거부할 수 있으며(Chrome 기준: 설정 &gt; 개인정보 보호 및 보안 &gt; 서드파티 쿠키 차단 설정), 제3자 분석·광고 쿠키의 열람·정정·삭제·처리정지는 각 서비스 제공자(Google·Microsoft·GitHub)의 계정 및 개인정보 설정을 통해 행사할 수 있습니다.
         </p>
 
         <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>4. 제휴(어필리에이트) 링크 및 콘텐츠 고지</h2>
@@ -57,21 +61,22 @@ export default function Privacy() {
           제휴 여부는 해당 링크가 포함된 글과 위젯에 표시하며, 제휴 관계가 글의 평가나 결론에 영향을 주지 않습니다.
         </p>
         <p style={{ marginBottom: '1rem' }}>
-          본 블로그의 글은 운영자가 직접 작성한 기록이며, 법률·의료·투자 등 전문적 판단을 대체하지 않습니다.
+          본 블로그의 글은 인공지능(AI)을 리서치·초안 작성의 보조 도구로 활용하되 운영자가 직접 실행 또는 공식 출처를 교차 검증하여 발행하는 기록이며, 법률·의료·투자 등 전문적 판단을 대체하지 않습니다.
           기기 분해·수리나 금융 상품 선택처럼 결과가 중요한 결정은 해당 분야 전문가와 상담하시기 바랍니다.
         </p>
 
-        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>5. 문의처</h2>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginTop: '2rem', marginBottom: '0.75rem' }}>5. 개인정보 보호책임자 및 문의처</h2>
         <p style={{ marginBottom: '1rem' }}>
-          본 블로그 운영 방식이나 개인정보 관련 문의사항은 아래 GitHub 저장소를 통해 문의하실 수 있습니다.
+          본 블로그의 개인정보 처리 및 운영 방식에 관한 문의사항은 아래 보호책임자 연락처 또는 GitHub 저장소를 통해 문의하실 수 있습니다.
         </p>
         <ul style={{ marginLeft: '1.5rem', marginBottom: '1rem' }}>
+          <li>개인정보 보호책임자: 블로그 운영자 NaRD</li>
           <li>이메일: <a href="mailto:seodaeya@gmail.com" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>seodaeya@gmail.com</a></li>
           <li>GitHub: <a href="https://github.com/seodaeya" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>https://github.com/seodaeya</a></li>
         </ul>
 
         <p style={{ marginTop: '2.5rem', fontSize: '0.9rem', opacity: 0.7 }}>
-          공고 일자: 2026년 8월 3일 | 최종 개정일: 2026년 10월 25일 | 시행 일자: 2026년 10월 25일
+          공고 일자: 2026년 8월 3일 | 최종 개정일: 2026년 11월 20일 | 시행 일자: 2026년 11월 20일
         </p>
       </div>
     </>

@@ -336,6 +336,14 @@ export default function PostPageLayout({
               <span className={styles.metaItem}>
                 작성일: <time>{formatDate(frontmatter.date)}</time>
               </span>
+              {dateModified && dateModified.slice(0, 10) !== String(frontmatter.date || '').slice(0, 10) && (
+                <>
+                  <span className={styles.metaSeparator}>|</span>
+                  <span className={styles.metaItem}>
+                    최종 수정일: <time>{formatDate(dateModified)}</time>
+                  </span>
+                </>
+              )}
               <span className={styles.metaSeparator}>|</span>
               <span className={styles.metaItem}>작성자: NaRD</span>
               <span className={styles.metaSeparator}>|</span>

@@ -91,8 +91,8 @@ export default function RankingPage({ updatedAt, baselineDate, isRealGA, allRank
   return (
     <>
       <SEO 
-        title="월간 인기 아티클 랭킹 | 서대야 블로그"
-        description="매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 페이지뷰 변화를 감지하여 반영하는 월간 종합 순위표입니다."
+        title="월간 인기 아티클 랭킹 | 여전히, 나는 사람이다."
+        description="매월 1일 기준 순위표를 바탕으로 한 달간 독자 반응과 페이지뷰 변화를 감지하여 매일 자정 무렵 반영하는 월간 종합 순위표입니다."
         url="/ranking/"
       />
 
@@ -110,7 +110,7 @@ export default function RankingPage({ updatedAt, baselineDate, isRealGA, allRank
           </div>
           <h1 className={styles.heroTitle}>🏆 월간 인기 아티클 랭킹</h1>
           <p className={styles.heroSubtitle}>
-            Google Analytics 4(GA4)의 실제 독자 페이지뷰를 기반으로 매월 1일 기준 순위표를 수립하고, 일일 독자 반응의 변화를 감지하여 매일 자정(00:00 KST) 갱신되는 월간 종합 순위표입니다.
+            Google Analytics 4(GA4)의 실제 독자 페이지뷰를 기반으로 매월 1일 기준 순위표를 수립하고, 일일 독자 반응의 변화를 감지하여 매일 자정 무렵(KST) 갱신되는 월간 종합 순위표입니다.
           </p>
         </section>
 

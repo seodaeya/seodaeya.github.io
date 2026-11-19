@@ -5,7 +5,7 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 19 Nov 2026 16:06:54 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 16:32:02 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
   <item>
     <title><![CDATA[NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법]]></title>

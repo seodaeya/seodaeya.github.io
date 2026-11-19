@@ -293,7 +293,7 @@ export default function Home({ allPosts = [], allVideos = [], trendingData = { u
                         <strong>월간 인기 순위 집계 안내</strong>
                       </div>
                       <p className={styles.infoTooltipText}>
-                        매월 1일 기준 순위표를 바탕으로 한 달간 GA4 실측 페이지뷰와 독자 관심도의 일일 변화를 감지하여 매일 자정(00:00 KST) 순위가 갱신됩니다.
+                        매월 1일 기준 순위표를 바탕으로 한 달간 GA4 실측 페이지뷰와 독자 관심도의 일일 변화를 감지하여 매일 자정 무렵(KST) 순위가 갱신됩니다. 카드의 ▲/▼ 수치는 월초(1일) 대비 순위 변동폭입니다.
                       </p>
                       <div className={styles.infoTooltipFooter}>
                         <span className={styles.footerDot} />
