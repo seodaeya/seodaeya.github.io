@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Wed, 18 Nov 2026 13:08:28 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 14:38:04 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[미국 사이버 공격 공포의 진실: 11월 연쇄 장애와 실제 보안 이슈 4가지]]></title>
+    <link>https://nardlog.com/posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026/</link>
+    <guid>https://nardlog.com/posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026/</guid>
+    <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 2026년 11월 중순 미국 SNS에서 "미국이 대규모 사이버 공격을 받고 있다"는 불안이 빠르게 퍼졌습니다. 이 글은 실제 사이버 공격이 아니었던 연쇄 IT 장애(오해) 와, 시민들의 불안을 키운 진짜 보안 사고 4가지(사실) 를 명확히 구분해 정리...]]></description>
+  </item>
   <item>
     <title><![CDATA[GTA 6 출시 당일 체크리스트: 0시 해금·가격·212GB]]></title>
     <link>https://nardlog.com/posts/20261118-2-gta6-launch-day-checklist-price-preload-guide/</link>
@@ -15,7 +22,7 @@
     <description><![CDATA[이 글의 위치 : GTA 6(그랜드 테프트 오토 VI)가 2026년 11월 19일 0시(한국 시간) 출시됩니다. 출시 하루 전인 11월 18일 리뷰가 풀렸고, 사전 다운로드는 이미 시작됐습니다. 이 글은 "지금 사도 되는지" 와 "출시 당일 무엇을 확인해야 하는지" 만...]]></description>
   </item>
   <item>
-    <title><![CDATA[Java4Shell(CVE-2026-114938) 영향 버전·패치 총정리]]></title>
+    <title><![CDATA[자바 취약점 Java4Shell, 영향 확인과 해결 방법]]></title>
     <link>https://nardlog.com/posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide/</link>
     <guid>https://nardlog.com/posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide/</guid>
     <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
@@ -43,11 +50,11 @@
     <description><![CDATA[이 글의 위치 : 앞서 트래픽 급증 시 DB 병목 해결기: Spring Boot + Lettuce Redis 캐싱에서 인메모리 캐싱 아키텍처를 다뤘다면, 이 글은 실제 Redis 내부의 키·TTL·메모리·슬로우 쿼리를 눈으로 확인하고 진단하는 공식 GUI 도구(Redi...]]></description>
   </item>
   <item>
-    <title><![CDATA[Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
+    <title><![CDATA[Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택]]></title>
     <link>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</link>
     <guid>https://nardlog.com/posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide/</guid>
     <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[이 글의 위치 : 지난 10월 공개된 프론티어 모델에 대한 구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격의 후속편입니다. 2026년 11월 10일과 12일 연달아 정식 출시(GA)된 Gemini 4 Carbon 과 Gemini 4 Hydrogen 의...]]></description>
+    <description><![CDATA[이 글의 위치 : 지난 10월 공개된 구글 Gemini 4 Argon 완전 분석: 100만 토큰과 가격의 후속편입니다. 2026년 11월 10일 Carbon , 11월 12일 Hydrogen 에 이어 11월 18일 Gemini 4 Neon 까지 합류한 4종 라인업의 스...]]></description>
   </item>
   <item>
     <title><![CDATA[Cloudflare Speed 추천 설정, 정적 블로그에서 실제로 달라진 것]]></title>

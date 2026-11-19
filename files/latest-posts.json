@@ -1,12 +1,18 @@
 [
   {
+    "title": "미국 사이버 공격 공포의 진실: 11월 연쇄 장애와 실제 보안 이슈 4가지",
+    "category": "Lifestyle & Tech",
+    "file": "posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026.md",
+    "date": "20261119"
+  },
+  {
     "title": "GTA 6 출시 당일 체크리스트: 0시 해금·가격·212GB",
     "category": "Lifestyle & Tech",
     "file": "posts/20261118-2-gta6-launch-day-checklist-price-preload-guide.md",
     "date": "20261118"
   },
   {
-    "title": "Java4Shell(CVE-2026-114938) 영향 버전·패치 총정리",
+    "title": "자바 취약점 Java4Shell, 영향 확인과 해결 방법",
     "category": "Dev & Software",
     "file": "posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide.md",
     "date": "20261118"
@@ -30,7 +36,7 @@
     "date": "20261117"
   },
   {
-    "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
+    "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택",
     "category": "AI & Intelligence",
     "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
     "date": "20261116"
@@ -52,11 +58,5 @@
     "category": "Lifestyle & Tech",
     "file": "posts/20261110-1-fake-money-real-wealth-inflation-portfolio-guide.md",
     "date": "20261110"
-  },
-  {
-    "title": "FDE 엔지니어란? AI 도입을 성공시키는 현장형 개발자",
-    "category": "AI & Intelligence",
-    "file": "posts/20261106-1-fde-forward-deployed-engineer-guide.md",
-    "date": "20261106"
   }
 ]

@@ -15,12 +15,13 @@
       ]
     },
     {
-      "title": "Gemini 4 Carbon·Hydrogen 비교: 가격·속도·실전 선택",
+      "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·실전 선택",
       "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
       "tags": [
         "Gemini",
         "Gemini 4",
         "Carbon",
+        "Neon",
         "Hydrogen",
         "Argon",
         "Google AI",
@@ -275,7 +276,7 @@
   ],
   "Dev & Software": [
     {
-      "title": "Java4Shell(CVE-2026-114938) 영향 버전·패치 총정리",
+      "title": "자바 취약점 Java4Shell, 영향 확인과 해결 방법",
       "file": "posts/20261118-1-java4shell-cve-2026-114938-security-advisory-guide.md",
       "tags": [
         "Java",
@@ -534,6 +535,19 @@
     }
   ],
   "Lifestyle & Tech": [
+    {
+      "title": "미국 사이버 공격 공포의 진실: 11월 연쇄 장애와 실제 보안 이슈 4가지",
+      "file": "posts/20261119-1-us-cybersecurity-anxiety-outages-breaches-2026.md",
+      "tags": [
+        "사이버보안",
+        "미국보안이슈",
+        "데이터유출",
+        "CISA",
+        "인프라장애",
+        "피싱",
+        "보안트렌드"
+      ]
+    },
     {
       "title": "GTA 6 출시 당일 체크리스트: 0시 해금·가격·212GB",
       "file": "posts/20261118-2-gta6-launch-day-checklist-price-preload-guide.md",
