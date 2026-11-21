@@ -5,8 +5,15 @@
   <link>https://nardlog.com</link>
   <description>AI 시대에 남기는 지극히 인간적인 기록들</description>
   <language>ko</language>
-  <lastBuildDate>Thu, 19 Nov 2026 16:32:02 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 09:09:54 GMT</lastBuildDate>
   <atom:link href="https://nardlog.com/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title><![CDATA[초등학생 의자 추천: 유어체어스 띵크 메쉬 의자 조립 후기]]></title>
+    <link>https://nardlog.com/posts/20261121-1-your-chairs-think-mesh-child-chair-review/</link>
+    <guid>https://nardlog.com/posts/20261121-1-your-chairs-think-mesh-child-chair-review/</guid>
+    <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이 글의 위치 : 아이가 초등학교에 다니면서 기존에 쓰던 유어체어스 띵크 메쉬 의자(무회전 타입) 는 둘째에게 물려주고, 첫째용으로 동일 제품(기본 타입 · 발받침 포함) 을 재구매해 직접 조립했습니다. 이 글은 재구매를 결심한 이유(장기 내구성 검증), 개봉부터 조립...]]></description>
+  </item>
   <item>
     <title><![CDATA[NGINX 취약점 NGINX2Root, 영향 확인과 패치 방법]]></title>
     <link>https://nardlog.com/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide/</link>

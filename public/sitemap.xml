@@ -3,19 +3,19 @@
   <!-- Core Pages -->
   <url>
     <loc>https://nardlog.com/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/categories/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/ranking/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/about/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/contact/</loc>
@@ -23,7 +23,11 @@
   </url>
   <url>
     <loc>https://nardlog.com/privacy/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://nardlog.com/posts/20261121-1-your-chairs-think-mesh-child-chair-review/</loc>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://nardlog.com/posts/20261120-2-nginx2root-cve-2026-123007-security-advisory-guide/</loc>

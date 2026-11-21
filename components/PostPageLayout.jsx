@@ -472,6 +472,9 @@ export default function PostPageLayout({
             </div>
           </section>
 
+          {/* Sponsor KakaoPay Support Box */}
+          <Sponsor />
+
           {/* 쿠팡 파트너스 캐러셀 (본문 하단) */}
           <CoupangCarousel />
 
@@ -537,9 +540,6 @@ export default function PostPageLayout({
 
           {/* Smart Random Recommendation Card */}
           <SmartRandomWidget variant="card" currentKey={`posts/${postId}`} />
-
-          {/* Sponsor KakaoPay Support Box */}
-          <Sponsor />
 
           {/* Giscus Comments widget */}
           <Comments key={id} />
