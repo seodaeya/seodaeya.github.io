@@ -1,5 +1,11 @@
 [
   {
+    "title": "전동 모션데스크 추천: Xpanse 1200×600 조립·사용법 후기",
+    "category": "Hardware & DIY",
+    "file": "posts/20261121-2-xpanse-electric-standing-desk-assembly-guide.md",
+    "date": "20261121"
+  },
+  {
     "title": "초등학생 의자 추천: 유어체어스 띵크 메쉬 재구매 조립 후기",
     "category": "Lifestyle & Tech",
     "file": "posts/20261121-1-your-chairs-think-mesh-child-chair-review.md",
@@ -52,11 +58,5 @@
     "category": "Dev & Software",
     "file": "posts/20261117-1-redis-insight-mac-install-usage-guide.md",
     "date": "20261117"
-  },
-  {
-    "title": "Gemini 4 Carbon·Neon·Hydrogen 비교: 가격·속도·선택",
-    "category": "AI & Intelligence",
-    "file": "posts/20261116-1-gemini-4-carbon-hydrogen-comparison-guide.md",
-    "date": "20261116"
   }
 ]
